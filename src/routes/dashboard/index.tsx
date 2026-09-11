@@ -123,7 +123,7 @@ const formatChatTime = (timestamp: string) => {
 export const Route = createFileRoute("/dashboard/")({
   head: () => ({
     meta: [
-      { title: "Admin Portal Dashboard | Brown Lawn Care & Cleaning Service LLC" },
+      { title: "Admin Portal Dashboard | Southern Storm Shelters LLC" },
       { name: "description", content: "Business operations management portal." },
       { name: "robots", content: "noindex, nofollow" }
     ],
@@ -221,15 +221,15 @@ function DashboardPage() {
   const [isViewingEmail, setIsViewingEmail] = useState(false);
 
   // Portal & Site Config States
-  const [alertEmail, setAlertEmail] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_alertEmail") : null) || "Williams@electricalcontractorcorp.com");
-  const [officePhone, setOfficePhone] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_officePhone") : null) || "(786) 307-5933");
-  const [smsTemplate, setSmsTemplate] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_smsTemplate") : null) || "Hi {Name}, thank you for contacting R&E Electrical Contractor Corp! An electrician will contact you during the {Time} to discuss your {Type} project.");
+  const [alertEmail, setAlertEmail] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_alertEmail") : null) || "admin@nashvillesiteworks.com");
+  const [officePhone, setOfficePhone] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_officePhone") : null) || "615-991-2361");
+  const [smsTemplate, setSmsTemplate] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_smsTemplate") : null) || "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you to discuss your {Type} project.");
   const [emailAlert, setEmailAlert] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_emailAlert") !== "false" : true));
   const [smsAlert, setSmsAlert] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_smsAlert") !== "false" : true));
   const [maintenanceMode, setMaintenanceMode] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_maintenanceMode") === "true" : false));
-  const [weekdays, setWeekdays] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_weekdays") : null) || "8:00 AM - 5:00 PM");
-  const [saturdays, setSaturdays] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_saturdays") : null) || "8:00 AM - 5:00 PM");
-  const [sundays, setSundays] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_sundays") : null) || "Closed (Emergency 24/7)");
+  const [weekdays, setWeekdays] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_weekdays") : null) || "Open 24/7 (Emergency Dispatch Available)");
+  const [saturdays, setSaturdays] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_saturdays") : null) || "Open 24/7 (Emergency Dispatch Available)");
+  const [sundays, setSundays] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_sundays") : null) || "Open 24/7 (Emergency Dispatch Available)");
 
   const [confirmConfig, setConfirmConfig] = useState<{
     title: string;
@@ -448,21 +448,21 @@ function DashboardPage() {
 
   const serviceSplit = useMemo(() => {
     const total = leads.length;
-    const commercial = leads.filter((l) => l.projectType === "commercial").length;
+    const underground = leads.filter((l) => l.projectType === "underground" || l.projectType === "vault").length;
     const residential = leads.filter((l) => l.projectType === "residential").length;
-    const evCharger = leads.filter((l) => l.projectType === "ev-charger").length;
-    const generator = leads.filter((l) => l.projectType === "generator").length;
+    const commercial = leads.filter((l) => l.projectType === "commercial").length;
+    const installation = leads.filter((l) => l.projectType === "installation" || l.projectType === "upgrades").length;
 
-    const commercialPct = total > 0 ? Math.round((commercial / total) * 100) : 40;
-    const residentialPct = total > 0 ? Math.round((residential / total) * 100) : 30;
-    const evPct = total > 0 ? Math.round((evCharger / total) * 100) : 20;
-    const genPct = total > 0 ? Math.round((generator / total) * 100) : 10;
+    const underPct = total > 0 ? Math.round((underground / total) * 100) : 45;
+    const resPct = total > 0 ? Math.round((residential / total) * 100) : 35;
+    const commPct = total > 0 ? Math.round((commercial / total) * 100) : 10;
+    const instPct = total > 0 ? Math.round((installation / total) * 100) : 10;
 
     return [
-      { label: "Commercial", val: `${commercialPct}%`, pct: commercialPct, color: "bg-copper" },
-      { label: "Residential", val: `${residentialPct}%`, pct: residentialPct, color: "bg-copper/70" },
-      { label: "EV Charger", val: `${evPct}%`, pct: evPct, color: "bg-copper/50" },
-      { label: "Generator", val: `${genPct}%`, pct: genPct, color: "bg-copper/30" }
+      { label: "Underground Vault", val: `${underPct}%`, pct: underPct, color: "bg-[#dc2626]" },
+      { label: "Residential Shelter", val: `${resPct}%`, pct: resPct, color: "bg-[#dc2626]/80" },
+      { label: "Commercial Safe Room", val: `${commPct}%`, pct: commPct, color: "bg-[#dc2626]/60" },
+      { label: "Crane Installation", val: `${instPct}%`, pct: instPct, color: "bg-[#dc2626]/40" }
     ];
   }, [leads]);
 
@@ -915,12 +915,13 @@ function DashboardPage() {
 
           {/* Header branding */}
           <div className="flex items-center justify-between pb-2">
-            <div className="flex items-center gap-2">
-              <img src={logo} alt="R&E Electrical Office" className="h-12 w-auto object-contain" />
+            <div className="flex items-center gap-2.5">
+              <img src={logo} alt="Southern Storm Shelters LLC" className="h-10 w-auto object-contain" />
+              <div className="flex flex-col text-left">
+                <span className="text-xs font-black uppercase tracking-tight text-slate-900 leading-tight">Southern</span>
+                <span className="text-[10px] font-black uppercase tracking-wider text-[#dc2626] leading-tight">Storm Shelters</span>
+              </div>
             </div>
-            <button className="text-[#a0aec0] hover:text-[#4f566b]">
-              <ChevronDown className="w-3.5 h-3.5" />
-            </button>
           </div>
 
           {/* Main Menu Links */}
@@ -1413,7 +1414,7 @@ function DashboardPage() {
               <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden text-left">
                 <div className="p-5 border-b border-slate-100 flex flex-col sm:flex-row gap-4 items-center justify-between">
                   <div>
-                    <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">Electrical Leads & Jobs Status</h3>
+                    <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">Storm Shelter Leads &amp; Installations</h3>
                   </div>
 
                   <div className="flex gap-2 w-full sm:w-auto">
@@ -1652,7 +1653,7 @@ function DashboardPage() {
 
                       {rev.replyText && (
                         <div className="mt-3 bg-slate-50 border border-slate-100 rounded-xl p-3.5 text-sm leading-relaxed text-slate-700">
-                          <span className="font-black text-xs uppercase tracking-wider text-copper block mb-0.5">R&E Electrical Response</span>
+                          <span className="font-black text-xs uppercase tracking-wider text-[#dc2626] block mb-0.5">Southern Storm Shelters Response</span>
                           "{rev.replyText}"
                         </div>
                       )}
@@ -2456,7 +2457,7 @@ function DashboardPage() {
                             required
                             value={addUsername}
                             onChange={(e) => setAddUsername(e.target.value)}
-                            placeholder="e.g. electrical-assistant"
+                            placeholder="e.g. shelter-installer"
                             className="w-full bg-[#fdfdfd] border border-slate-200 rounded-xl py-2.5 px-4 focus:outline-none focus:ring-1 focus:ring-copper focus:border-copper font-medium"
                           />
                         </div>

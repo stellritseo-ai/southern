@@ -98,18 +98,18 @@ function buildHtmlEmail(payload: EmailNotificationPayload, recipient: string): s
           
           <!-- Header Banner -->
           <tr>
-            <td style="background: linear-gradient(135deg, #0A140B 0%, #1B5E20 100%); padding: 28px 24px; text-align: left; border-bottom: 3px solid #D4AF37;">
+            <td style="background: linear-gradient(135deg, #0B0F15 0%, #1E0A0D 100%); padding: 28px 24px; text-align: left; border-bottom: 3px solid #DC2626;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                 <tr>
                   <td>
-                    <span style="display: inline-block; background-color: rgba(212, 175, 55, 0.2); border: 1px solid #D4AF37; color: #FFD54F; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; rounded-full; border-radius: 20px; margin-bottom: 8px;">
-                      🌿 New Website Lead
+                    <span style="display: inline-block; background-color: rgba(220, 38, 38, 0.2); border: 1px solid #DC2626; color: #F87171; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 20px; margin-bottom: 8px;">
+                      ⚡ New Storm Shelter Lead
                     </span>
                     <h1 style="color: #ffffff; font-size: 22px; font-weight: 800; margin: 6px 0 2px 0; letter-spacing: -0.5px;">
-                      Brown Lawn Care &amp; Cleaning Service
+                      Southern Storm Shelters LLC
                     </h1>
-                    <p style="color: #a7f3d0; font-size: 13px; margin: 0;">
-                      Horn Lake, MS &bull; (662) 571-1048 &bull; Delivered to ${recipient}
+                    <p style="color: #cbd5e1; font-size: 13px; margin: 0;">
+                      Nashville, TN &bull; 615-991-2361 &bull; Delivered to ${recipient}
                     </p>
                   </td>
                 </tr>
@@ -120,11 +120,11 @@ function buildHtmlEmail(payload: EmailNotificationPayload, recipient: string): s
           <!-- Summary Alert Box -->
           <tr>
             <td style="padding: 24px 24px 12px 24px;">
-              <div style="background-color: #f0fdf4; border-left: 4px solid #2e7d32; padding: 14px 16px; border-radius: 0 8px 8px 0;">
-                <p style="margin: 0; font-size: 14px; font-weight: 700; color: #166534;">
+              <div style="background-color: #fef2f2; border-left: 4px solid #dc2626; padding: 14px 16px; border-radius: 0 8px 8px 0;">
+                <p style="margin: 0; font-size: 14px; font-weight: 700; color: #991b1b;">
                   ${customerName} submitted a form via <em>${source}</em>
                 </p>
-                <p style="margin: 4px 0 0 0; font-size: 12px; color: #15803d;">
+                <p style="margin: 4px 0 0 0; font-size: 12px; color: #b91c1c;">
                   Received on ${submissionTime} (Central Time)
                 </p>
               </div>
@@ -167,7 +167,7 @@ function buildHtmlEmail(payload: EmailNotificationPayload, recipient: string): s
                     payload.email
                       ? `
                   <td align="left" style="padding-right: 8px;">
-                    <a href="mailto:${payload.email}?subject=Regarding%20Your%20Inquiry%20-%20Brown%20Lawn%20Care" style="display: inline-block; background-color: #2e7d32; color: #ffffff; font-size: 13px; font-weight: 700; text-decoration: none; padding: 10px 18px; border-radius: 8px; text-align: center;">
+                    <a href="mailto:${payload.email}?subject=Regarding%20Your%20Inquiry%20-%20Southern%20Storm%20Shelters" style="display: inline-block; background-color: #dc2626; color: #ffffff; font-size: 13px; font-weight: 700; text-decoration: none; padding: 10px 18px; border-radius: 8px; text-align: center;">
                       ✉️ Reply to ${payload.name || "Client"}
                     </a>
                   </td>`
@@ -190,12 +190,12 @@ function buildHtmlEmail(payload: EmailNotificationPayload, recipient: string): s
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #0A140B; padding: 20px 24px; text-align: center; border-top: 1px solid #e2e8f0;">
+            <td style="background-color: #0B0F15; padding: 20px 24px; text-align: center; border-top: 1px solid #e2e8f0;">
               <p style="margin: 0; font-size: 12px; color: #94a3b8;">
-                This notification was sent automatically from <strong style="color: #FFD54F;">Brown Lawn Care &amp; Cleaning Service, LLC</strong>.
+                This notification was sent automatically from <strong style="color: #F87171;">Southern Storm Shelters LLC</strong>.
               </p>
               <p style="margin: 4px 0 0 0; font-size: 11px; color: #64748b;">
-                Serving Horn Lake, MS &amp; a 50-Mile Radius &bull; Licensed, Insured &amp; Bonded
+                Serving Nashville, TN &amp; a 100-Mile Radius &bull; Licensed, Insured &amp; Bonded &bull; FEMA P-320
               </p>
             </td>
           </tr>
@@ -214,15 +214,15 @@ function buildHtmlEmail(payload: EmailNotificationPayload, recipient: string): s
 export async function sendZohoNotification(payload: EmailNotificationPayload): Promise<{ success: boolean; messageId?: string; error?: string }> {
   const toEmail = process.env.NOTIFICATION_TO_EMAIL || "eva@stellrit.com";
   const user = process.env.ZOHO_USER || "eva@stellrit.com";
-  const fromName = process.env.EMAIL_FROM_NAME || "Brown Lawn Care & Cleaning Service";
+  const fromName = process.env.EMAIL_FROM_NAME || "Southern Storm Shelters LLC";
 
   const customerName = payload.name || "Website Lead";
   const source = payload.source || "Website Form";
-  const subject = payload.subject || `New Lead from ${customerName} (${source}) - Brown Lawn Care`;
+  const subject = payload.subject || `New Lead from ${customerName} (${source}) - Southern Storm Shelters LLC`;
 
   const html = buildHtmlEmail(payload, toEmail);
   const text = `
-NEW WEBSITE SUBMISSION - BROWN LAWN CARE & CLEANING SERVICE
+NEW WEBSITE SUBMISSION - SOUTHERN STORM SHELTERS LLC
 ============================================================
 Source: ${source}
 Date: ${new Date().toLocaleString()}
@@ -230,14 +230,14 @@ Date: ${new Date().toLocaleString()}
 Customer Name: ${payload.name || "Not provided"}
 Phone: ${payload.phone || "Not provided"}
 Email: ${payload.email || "Not provided"}
-Service: ${payload.service || "General Inquiry"}
+Service: ${payload.service || "Storm Shelter Inquiry"}
 
 Message:
 ${payload.message || "No message content"}
 
 ------------------------------------------------------------
-Brown Lawn Care & Cleaning Service, LLC
-Horn Lake, MS | (662) 571-1048
+Southern Storm Shelters LLC
+Nashville, TN | 615-991-2361
   `.trim();
 
   try {

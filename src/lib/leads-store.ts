@@ -70,86 +70,86 @@ export interface GalleryPhoto {
   uploadedAt: string;
 }
 
-// ── INITIAL PRE-SEEDS CUSTOMIZED FOR MIAMI / R&E ELECTRICAL ──
+// ── INITIAL PRE-SEEDS CUSTOMIZED FOR NASHVILLE / SOUTHERN STORM SHELTERS LLC ──
 export const INITIAL_LEADS: Lead[] = [
   {
     id: "lead-1",
-    name: "Marcus Vance",
+    name: "Marcus & Sarah Vance",
     email: "marcus.vance@gmail.com",
-    phone: "(786) 555-0192",
-    address: "18206 Heron Cove Dr, Miami, FL 33149",
-    projectType: "panel-upgrades",
-    description: "Looking to upgrade our old 100 Amp panel to 200 Amps to support a new central A/C unit and a backyard hot tub. Needs permits and inspections in Miami Beach.",
+    phone: "(615) 555-0192",
+    address: "1824 Hillsboro Rd, Franklin, TN 37069",
+    projectType: "residential",
+    description: "Looking to install an underground storm shelter in our backyard before severe weather season. Needs site evaluation for yard slope and crane access.",
     contactTime: "morning",
     status: "new",
-    estimatedValue: 3500,
+    estimatedValue: 11500,
     createdAt: "2026-06-15T09:30:00Z"
   },
   {
     id: "lead-2",
-    name: "Sarah Jenkins",
-    email: "sarah.j.ev@yahoo.com",
-    phone: "(954) 555-8831",
-    address: "704 Beach Dr NE, Fort Lauderdale, FL 33301",
-    projectType: "ev-charger",
-    description: "Installation of a Tesla Wall Connector in our home garage. The panel is in the garage, so the run is short (about 5 feet). Needs permit.",
+    name: "David Jenkins",
+    email: "david.jenkins.tn@yahoo.com",
+    phone: "(615) 555-8831",
+    address: "704 Medical Center Pkwy, Murfreesboro, TN 37129",
+    projectType: "underground",
+    description: "Interested in a subterranean reinforced steel storm vault with hydraulic hatch for family of 6. Easy crane access from driveway.",
     contactTime: "afternoon",
     status: "contacted",
-    estimatedValue: 1200,
+    estimatedValue: 9800,
     createdAt: "2026-06-14T14:15:00Z"
   },
   {
     id: "lead-3",
-    name: "Daniel Alvarez",
-    email: "dan_alvarez@outlook.com",
-    phone: "(786) 555-4421",
-    address: "9405 Oakwood Dr, Coral Gables, FL 33156",
-    projectType: "generator",
-    description: "Wanting an estimate to install a Kohler 20kW home standby generator with an automatic transfer switch (ATS). House runs on LP gas.",
+    name: "Elena Alvarez",
+    email: "elena_alvarez@outlook.com",
+    phone: "(615) 555-4421",
+    address: "9405 Concord Rd, Brentwood, TN 37027",
+    projectType: "residential",
+    description: "Wanting an on-site estimate to install a FEMA P-320 compliant underground shelter. Yard has moderate clay soil.",
     contactTime: "evening",
     status: "proposal_sent",
-    estimatedValue: 14500,
+    estimatedValue: 12500,
     createdAt: "2026-06-12T11:00:00Z"
   },
   {
     id: "lead-4",
-    name: "Emily Croft",
-    email: "emily.croft@gmail.com",
-    phone: "(305) 555-7729",
-    address: "3102 N Highland Ave, Miami, FL 33137",
-    projectType: "wiring-rewiring",
-    description: "Full kitchen electrical renovation. Need dedicated appliance circuits, GFCI outlets, under-cabinet LED lighting, and installation of a new island light fixture.",
+    name: "Brian Croft",
+    email: "brian.croft@gmail.com",
+    phone: "(615) 555-7729",
+    address: "3102 Saundersville Rd, Hendersonville, TN 37075",
+    projectType: "installation",
+    description: "Turnkey crane placement and ground excavation. Need professional anchoring and laser leveling flush to lawn grade.",
     contactTime: "afternoon",
     status: "consultation_scheduled",
-    estimatedValue: 8500,
+    estimatedValue: 14000,
     createdAt: "2026-06-11T16:40:00Z"
   },
   {
     id: "lead-5",
     name: "Amanda Carter",
     email: "amanda.carter@comcast.net",
-    phone: "(786) 555-1284",
-    address: "1282 Bayshore Blvd, Key Biscayne, FL 33149",
+    phone: "(615) 555-1284",
+    address: "1282 Craighead St, Nashville, TN 37204",
     projectType: "commercial",
-    description: "Commercial build-out. Need panel installation, conduit routing, retail layout lighting, and emergency exit sign installations.",
+    description: "Commercial facility tornado shelter build-out. Need engineered safe room for 25 employees with dual emergency exit latches.",
     contactTime: "morning",
     status: "won",
-    notes: "Contract signed. Sub-panel permits pulled. Commencing next Tuesday.",
-    estimatedValue: 32000,
+    notes: "Contract signed. Engineering specs approved. Installation commencing next Tuesday.",
+    estimatedValue: 38000,
     createdAt: "2026-06-08T10:10:00Z"
   },
   {
     id: "lead-6",
     name: "Jonathan Riggs",
-    email: "jriggs_investments@gmail.com",
-    phone: "(305) 555-9012",
-    address: "4202 NW 74th Ave, Doral, FL 33166",
-    projectType: "industrial",
-    description: "High-bay LED lighting retrofit and 3-phase machinery hookups in a new manufacturing warehouse.",
+    email: "jriggs_tn@gmail.com",
+    phone: "(615) 555-9012",
+    address: "4202 Trotwood Ave, Columbia, TN 38401",
+    projectType: "upgrades",
+    description: "Existing shelter hatch replacement with heavy hydraulic gas struts and secondary escape air venting.",
     contactTime: "evening",
-    status: "lost",
-    notes: "Client chose a competitor that submitted a lower bid.",
-    estimatedValue: 54000,
+    status: "proposal_sent",
+    notes: "Followed up with site photo assessment.",
+    estimatedValue: 4200,
     createdAt: "2026-06-05T15:20:00Z"
   }
 ];
@@ -157,40 +157,40 @@ export const INITIAL_LEADS: Lead[] = [
 export const INITIAL_REVIEWS: Review[] = [
   {
     id: "review-1",
-    title: "Perfect Panel Upgrade - Clean and Professional!",
-    text: "R&E Electrical upgraded our home panel in Miami Beach. They handles permits, arrived early, and walked us through the inspections. Unbelievably neat wire work inside the panel cover. Highly recommend!",
-    author: "David R.",
-    location: "Miami, FL",
+    title: "Complete Peace of Mind During Tornado Season!",
+    text: "Southern Storm Shelters installed our underground storm vault in Franklin, TN. From excavation to crane placement and backfilling, the entire job was completed in one day. Outstanding craftsmanship and FEMA P-320 certification.",
+    author: "Marcus H.",
+    location: "Franklin, TN",
     rating: 5,
     featured: true,
     createdAt: "2026-05-01T12:00:00Z"
   },
   {
     id: "review-2",
-    title: "Highly Recommend for EV Charger Installs",
-    text: "Fast, honest, and competitive quote for my home Tesla Wall Connector. The job was clean, labeled correctly on the panel, and works perfectly. Excellent work!",
-    author: "Lisa M.",
-    location: "Fort Lauderdale, FL",
+    title: "Heavy-Duty Hydraulic Hatch & Airtight Seal",
+    text: "Fast, honest, and competitive quote for our Murfreesboro backyard shelter. The gas-strut hatch is effortless to lift, the interior is clean and secure, and our family feels completely protected. Highly recommend!",
+    author: "David K.",
+    location: "Murfreesboro, TN",
     rating: 5,
     featured: true,
     createdAt: "2026-05-02T12:00:00Z"
   },
   {
     id: "review-3",
-    title: "standby Generator Installation Done Right",
-    text: "Outstanding service. The team installed our standby generator system seamlessly. They took care of everything from LP gas connection coordination to final inspections. Exceptional project management.",
-    author: "Marcus T.",
-    location: "Coral Gables, FL",
+    title: "Commercial Safe Room Done Right",
+    text: "Outstanding service. The team engineered and installed our commercial storm shelter seamlessly. They took care of everything from permitting to heavy crane logistics. Exceptional project management.",
+    author: "Brian T.",
+    location: "Nashville, TN",
     rating: 5,
     featured: true,
     createdAt: "2026-05-03T12:00:00Z"
   },
   {
     id: "review-4",
-    title: "Honest Electricians - No Surprise Fees",
-    text: "I was quoted for a full home rewire, and they stuck to the quote exactly. No surprise fees, no hidden costs. Cleaned up every single day before leaving. Highly professional team.",
-    author: "Elena P.",
-    location: "Miami, FL",
+    title: "Laser-Guided Excavation With Zero Lawn Mess",
+    text: "We were quoted for an 8-person underground vault and they stuck to the quote exactly. No hidden charges. The crew was professional, courteous, and cleaned up every square foot before leaving.",
+    author: "Elena R.",
+    location: "Hendersonville, TN",
     rating: 5,
     featured: true,
     createdAt: "2026-05-04T12:00:00Z"
@@ -204,9 +204,9 @@ export const INITIAL_EMAILS: WebEmail[] = [
     id: "email-1",
     name: "Charlotte Horn",
     email: "charlotte.horn@gmail.com",
-    phone: "786-555-8291",
-    service: "EV Charger Installation",
-    message: "Hi, I just bought an electric vehicle and need an estimate to install a Level 2 charger in my garage in Coral Gables. Thanks!",
+    phone: "(615) 555-8291",
+    service: "Residential Underground Storm Shelter",
+    message: "Hi, we are building a new home in Franklin, TN and need an itemized quote for an underground 8-person storm shelter installed in our backyard before spring storm season. Thanks!",
     source: "Contact Page",
     createdAt: "2026-06-16T18:22:00Z"
   }
@@ -966,26 +966,18 @@ export const getSiteSettings = async (): Promise<SiteSettings> => {
     return await apiCall<SiteSettings>("/api/settings?t=" + Date.now(), "GET");
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage settings:", err);
-    let email = getStorageItem("electrical_settings_alertEmail", "Williams@electricalcontractorcorp.com");
-    if (email === "revitalizerealestate@gmail.com") {
-      email = "Williams@electricalcontractorcorp.com";
-      setStorageItem("electrical_settings_alertEmail", email);
-    }
-    let phone = getStorageItem("electrical_settings_officePhone", "(786) 307-5933");
-    if (phone === "(813) 323-0291") {
-      phone = "(786) 307-5933";
-      setStorageItem("electrical_settings_officePhone", phone);
-    }
+    let email = getStorageItem("shelter_settings_alertEmail", "admin@nashvillesiteworks.com");
+    let phone = getStorageItem("shelter_settings_officePhone", "615-991-2361");
     return {
       alertEmail: email,
       officePhone: phone,
-      smsTemplate: getStorageItem("electrical_settings_smsTemplate", "Hi {Name}, thank you for contacting R&E Electrical Contractor Corp! An electrician will contact you during the {Time} to discuss your {Type} project."),
-      emailAlert: getStorageItem("electrical_settings_emailAlert", "true") === "true",
-      smsAlert: getStorageItem("electrical_settings_smsAlert", "true") === "true",
-      maintenanceMode: getStorageItem("electrical_settings_maintenanceMode", "false") === "true",
-      weekdays: getStorageItem("electrical_settings_weekdays", "8:00 AM - 5:00 PM"),
-      saturdays: getStorageItem("electrical_settings_saturdays", "8:00 AM - 5:00 PM"),
-      sundays: getStorageItem("electrical_settings_sundays", "Closed (Emergency 24/7)")
+      smsTemplate: getStorageItem("shelter_settings_smsTemplate", "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you during the {Time} to discuss your {Type} installation."),
+      emailAlert: getStorageItem("shelter_settings_emailAlert", "true") === "true",
+      smsAlert: getStorageItem("shelter_settings_smsAlert", "true") === "true",
+      maintenanceMode: getStorageItem("shelter_settings_maintenanceMode", "false") === "true",
+      weekdays: getStorageItem("shelter_settings_weekdays", "Open 24/7"),
+      saturdays: getStorageItem("shelter_settings_saturdays", "Open 24/7"),
+      sundays: getStorageItem("shelter_settings_sundays", "Open 24/7 (Emergency Response)")
     };
   }
 };

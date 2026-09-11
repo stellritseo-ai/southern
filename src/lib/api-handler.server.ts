@@ -334,7 +334,7 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
           const newSession = {
             id: "session-" + Math.random().toString(36).substr(2, 9),
             clientName: body.clientName,
-            clientCity: body.clientCity || "Miami",
+            clientCity: body.clientCity || "Nashville",
             clientEmail: body.clientEmail,
             clientPhone: body.clientPhone,
             lastMessage: "Chat session initialized",
@@ -434,65 +434,56 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
         const photos = await dbGetGalleryPhotos([
           {
             id: "photo-1",
-            url: "https://images.unsplash.com/photo-1565538810844-1e119411121f",
+            url: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7",
             category: "residential",
-            title: "Luxury Home Lighting System",
-            location: "Coral Gables, FL",
-            tag: "Smart Lighting",
+            title: "Under-Garage Reinforced Storm Vault",
+            location: "Franklin, TN",
+            tag: "In-Ground Shelter",
             uploadedAt: new Date().toISOString()
           },
           {
             id: "photo-2",
-            url: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e",
+            url: "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f",
             category: "commercial",
-            title: "Corporate Atrium Installation",
-            location: "Brickell, FL",
-            tag: "Panel Upgrade",
+            title: "Commercial Steel Safe Room (FEMA P-361)",
+            location: "Nashville, TN",
+            tag: "FEMA Rated",
             uploadedAt: new Date().toISOString()
           },
           {
             id: "photo-3",
-            url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758",
-            category: "industrial",
-            title: "Warehouse High-Bay LED Retrofit",
-            location: "Doral, FL",
-            tag: "Industrial LED",
+            url: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
+            category: "residential",
+            title: "Precast Concrete Backyard Vault",
+            location: "Murfreesboro, TN",
+            tag: "Concrete Vault",
             uploadedAt: new Date().toISOString()
           },
           {
             id: "photo-4",
-            url: "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
-            category: "commercial",
-            title: "Restaurant Ambient Lighting",
-            location: "Wynwood, FL",
-            tag: "Ambient Design",
+            url: "https://images.unsplash.com/photo-1513694203232-719a280e022f",
+            category: "residential",
+            title: "Above-Ground Impact Panic Room",
+            location: "Brentwood, TN",
+            tag: "Above Ground",
             uploadedAt: new Date().toISOString()
           },
           {
             id: "photo-5",
-            url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd",
+            url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758",
             category: "commercial",
-            title: "Office Build-Out Wiring",
-            location: "Aventura, FL",
-            tag: "Full Rewire",
+            title: "Industrial Facility Personnel Shelter",
+            location: "Lebanon, TN",
+            tag: "Commercial Vault",
             uploadedAt: new Date().toISOString()
           },
           {
             id: "photo-6",
-            url: "https://images.unsplash.com/photo-1563720223185-11003d516935",
+            url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd",
             category: "residential",
-            title: "Fleet EV Charging Station",
-            location: "Pinecrest, FL",
-            tag: "EV Charger",
-            uploadedAt: new Date().toISOString()
-          },
-          {
-            id: "photo-7",
-            url: "https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d",
-            category: "residential",
-            title: "Whole-Home Generator Install",
-            location: "Miami Beach, FL",
-            tag: "Generator",
+            title: "Heavy Crane Shelter Placement",
+            location: "Hendersonville, TN",
+            tag: "Crane Placement",
             uploadedAt: new Date().toISOString()
           }
         ]);
@@ -502,7 +493,7 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
         const body = await request.json();
         let url = body.url;
         if (!url && body.base64Photo) {
-          url = await uploadToCloudinary(body.base64Photo, "electrical/gallery");
+          url = await uploadToCloudinary(body.base64Photo, "shelters/gallery");
         }
         if (!url) {
           return jsonResponse({ error: "Missing image content or URL" }, 400);
@@ -596,15 +587,15 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
     // ── /api/settings ──
     if (pathname === "/api/settings") {
       const defaultSettings = {
-        alertEmail: "eva@stellrit.com",
-        officePhone: "(786) 307-5933",
-        smsTemplate: "Hi {Name}, thank you for contacting R&E Electrical Contractor Corp! An electrician will contact you during the {Time} to discuss your {Type} project.",
+        alertEmail: "admin@nashvillesiteworks.com",
+        officePhone: "615-991-2361",
+        smsTemplate: "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you during the {Time} to discuss your {Type} installation.",
         emailAlert: true,
         smsAlert: true,
         maintenanceMode: false,
-        weekdays: "8:00 AM - 5:00 PM",
-        saturdays: "8:00 AM - 5:00 PM",
-        sundays: "Closed (Emergency 24/7)"
+        weekdays: "Open 24/7",
+        saturdays: "Open 24/7",
+        sundays: "Open 24/7 (Emergency Response)"
       };
 
       if (method === "GET") {
@@ -621,7 +612,7 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
     // ── /api/sign-upload ──
     if (pathname === "/api/sign-upload" && method === "POST") {
       const body = await request.json();
-      const folder = body.folder || "electrical/gallery";
+      const folder = body.folder || "shelters/gallery";
       const timestamp = Math.round(Date.now() / 1000);
       const apiSecret = process.env.CLOUDINARY_API_SECRET;
       const cloudName = process.env.CLOUDINARY_CLOUD_NAME;

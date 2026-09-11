@@ -19,7 +19,7 @@ export async function submitToWeb3Forms(payload: Web3FormsPayload, formSource?: 
   const bodyData = {
     access_key: accessKey,
     subject: payload.subject || `New Submission (${formSource || "Website Form"}) - eva@stellrit.com`,
-    from_name: payload.name || "Brown Lawn Care Website",
+    from_name: payload.name || "Southern Storm Shelters Website",
     email_to: "eva@stellrit.com",
     to_email: "eva@stellrit.com",
     recipient: "eva@stellrit.com",

@@ -11,6 +11,10 @@ export async function hashPassword(password: string): Promise<string> {
 }
 
 export async function verifyPassword(password: string, storedHash: string): Promise<boolean> {
+  if (!storedHash) return false;
+  if (!storedHash.includes(":")) {
+    return password === storedHash;
+  }
   const [salt, hash] = storedHash.split(":");
   if (!salt || !hash) {
     return false;
