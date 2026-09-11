@@ -2,36 +2,28 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
-  Scissors,
-  Sparkles,
+  Shield,
   Home,
   Building2,
-  Layers,
-  Trash2,
-  Trees,
+  HardHat,
+  Wrench,
+  RefreshCw,
   Star,
   CheckCircle2,
   ShieldCheck,
   MapPin,
   Clock,
-  Phone
+  Phone,
+  Sparkles
 } from "lucide-react";
 
-import mowingImg from "@/assets/service-mowing.png";
-import landscapingImg from "@/assets/service-landscaping.png";
-import officeImg from "@/assets/service-office-cleaning.png";
-import wireHouseImg from "@/assets/service-wire-house.png";
-import brushImg from "@/assets/service-brush-removal.png";
-import commercialImg from "@/assets/service-commercial-cleaning.png";
-import smallTreeCuttingImg from "@/assets/service-small-tree-cutting.png";
-import smallTreeTrimmingImg from "@/assets/service-small-tree-trimming.png";
+import shelterInteriorImg from "@/assets/shelter-interior.jpg";
+import familyHomeImg from "@/assets/family-home.jpg";
+import commercialImg from "@/assets/commercial.jpg";
+import installCraneImg from "@/assets/install-crane.jpg";
+import excavationImg from "@/assets/excavation.jpg";
+import hatchCloseImg from "@/assets/hatch-close.jpg";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import AutoScroll from "embla-carousel-auto-scroll";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
@@ -60,7 +52,7 @@ function ServiceCard({
   return (
     <Link
       to={s.to}
-      className={`group relative w-full ${aspectRatio} rounded-[32px] overflow-hidden bg-slate-950 border border-slate-200/80 hover:border-[#2E7D32] shadow-xl hover:shadow-[0_22px_60px_rgba(46,125,50,0.25)] transition-all duration-500 cursor-pointer flex flex-col justify-end select-none block`}
+      className={`group relative w-full ${aspectRatio} rounded-[32px] overflow-hidden bg-slate-950 border border-slate-200/80 hover:border-[#dc2626] shadow-xl hover:shadow-[0_22px_60px_rgba(220,38,38,0.3)] transition-all duration-500 cursor-pointer flex flex-col justify-end select-none block`}
     >
       {/* Background Image */}
       <img
@@ -71,20 +63,20 @@ function ServiceCard({
       />
 
       {/* Multi-stage Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#070D08]/98 via-[#070D08]/65 to-black/20 group-hover:from-[#070D08]/98 group-hover:via-[#070D08]/75 group-hover:to-black/40 transition-all duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/98 via-[#0b0f15]/70 to-black/25 group-hover:from-[#0b0f15]/98 group-hover:via-[#0b0f15]/80 group-hover:to-black/40 transition-all duration-500" />
 
-      {/* Gold & Green Accent Border Highlight on Hover */}
-      <div className="absolute inset-0 rounded-[32px] border-2 border-transparent group-hover:border-[#2E7D32]/80 transition-colors duration-500 pointer-events-none" />
+      {/* Red Accent Border Highlight on Hover */}
+      <div className="absolute inset-0 rounded-[32px] border-2 border-transparent group-hover:border-[#dc2626]/80 transition-colors duration-500 pointer-events-none" />
 
       {/* Top Glass Header Badges */}
       <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20 pointer-events-none">
         {/* Icon Badge */}
-        <div className="w-11 h-11 rounded-2xl bg-white/95 backdrop-blur-md border border-white/60 text-[#2E7D32] flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#2E7D32] group-hover:text-[#FFD54F] transition-all duration-300">
+        <div className="w-11 h-11 rounded-2xl bg-[#0b0f15]/90 backdrop-blur-md border border-red-500/40 text-red-400 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#dc2626] group-hover:text-white transition-all duration-300">
           <Icon className="h-5 w-5" />
         </div>
 
         {/* Category Label */}
-        <span className="bg-black/75 backdrop-blur-md border border-white/20 text-[#FFD54F] text-[10px] font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-md">
+        <span className="bg-black/80 backdrop-blur-md border border-red-500/30 text-red-300 text-[10px] font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-md">
           {s.categoryLabel}
         </span>
       </div>
@@ -93,12 +85,12 @@ function ServiceCard({
       <div className="relative z-20 p-6 sm:p-7 flex flex-col justify-end transition-transform duration-500 group-hover:-translate-y-1">
 
         {/* Title */}
-        <h3 className="text-xl sm:text-2xl font-extrabold text-white leading-tight tracking-tight group-hover:text-[#FFD54F] transition-colors duration-300">
+        <h3 className="text-xl sm:text-2xl font-extrabold text-white leading-tight tracking-tight group-hover:text-red-400 transition-colors duration-300">
           {s.title}
         </h3>
 
         {/* Description */}
-        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mt-2.5 font-medium line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mt-2.5 font-normal line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
           {s.desc}
         </p>
 
@@ -106,20 +98,20 @@ function ServiceCard({
         <div className="mt-4 pt-3 border-t border-white/15 space-y-2">
           {s.features.map((feat) => (
             <div key={feat} className="flex items-center gap-2 text-xs font-bold text-slate-200">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#FFD54F] shrink-0" />
+              <CheckCircle2 className="w-3.5 h-3.5 text-red-400 shrink-0" />
               <span>{feat}</span>
             </div>
           ))}
         </div>
 
-        {/* Action Link Footer — Hidden by default, revealed on hover */}
+        {/* Action Link Footer */}
         <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out">
           <div className="overflow-hidden">
-            <div className="mt-5 pt-3.5 border-t border-white/10 flex items-center justify-between text-[#FFD54F] text-xs font-black uppercase tracking-widest group/btn">
+            <div className="mt-5 pt-3.5 border-t border-white/10 flex items-center justify-between text-red-400 text-xs font-black uppercase tracking-widest group/btn">
               <span className="inline-flex items-center gap-1.5 group-hover/btn:underline">
-                {t("Get Free Estimate", "Cotización Gratis")}
+                {t("Get Free Estimate", "Solicitar Estimación")}
               </span>
-              <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-[#2E7D32] text-white group-hover:text-[#FFD54F] flex items-center justify-center transition-all duration-300">
+              <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-[#dc2626] text-white flex items-center justify-center transition-all duration-300">
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </div>
             </div>
@@ -137,143 +129,113 @@ export function Services() {
 
   const services = [
     {
-      id: "mowing",
-      category: "lawn",
-      icon: Scissors,
-      title: t("Weekly Lawn Mowing & Edging", "Cortado Semanal y Orillado"),
-      categoryLabel: t("Lawn Care", "Cuidado de Césped"),
-      desc: t("Precision mowing, string trimming, hard surface edging, and complete clippings cleanup for pristine lawns.", "Corte de precisión, recortado de bordes y limpieza total para mantener céspedes siempre impecables."),
+      id: "underground-shelters",
+      category: "residential",
+      icon: Shield,
+      title: t("Underground Storm Shelters", "Refugios Subterráneos"),
+      categoryLabel: t("Core Protection", "Protección Principal"),
+      desc: t("Engineered underground safety shelters built below grade to provide impenetrable protection against EF-5 tornadoes.", "Refugios subterráneos diseñados para proporcionar protección impenetrable contra tornados EF-5."),
       features: [
-        t("Striping & Precision Mowing", "Corte con Rayas de Precisión"),
-        t("String Trimming & Edging", "Orillado y Recortado"),
-        t("Blower Clean-Off", "Limpieza con Soplado")
+        t("FEMA P-320 & ICC-500 Certified", "Certificación FEMA P-320 e ICC-500"),
+        t("Reinforced Steel Vault Core", "Núcleo de Bóveda de Acero Reforzado"),
+        t("Integrated Bench Seating & Air Flow", "Bancas Integradas y Ventilación")
       ],
-      image: mowingImg,
+      image: shelterInteriorImg,
       to: "/services/lawn-mowing"
     },
     {
-      id: "landscaping",
-      category: "lawn",
-      icon: Layers,
-      title: t("Landscape Design & Mulching", "Mantenimiento y Mantillo"),
-      categoryLabel: t("Landscaping", "Paisajismo"),
-      desc: t("Shrub trimming, fresh dark mulch installation, weed barrier installation, and flowerbed manicuring.", "Poda de arbustos, instalación de mantillo oscuro, barrera de maleza y cuidado de jardines."),
+      id: "residential-shelters",
+      category: "residential",
+      icon: Home,
+      title: t("Residential Storm Shelters", "Refugios Residenciales"),
+      categoryLabel: t("Residential", "Residencial"),
+      desc: t("Custom underground backyard tornado shelters designed specifically for family homes across Nashville and Middle TN.", "Refugios subterráneos personalizados para patios traseros de viviendas familiares en Nashville."),
       features: [
-        t("Fresh Dark Mulch Install", "Mantillo Oscuro Fresco"),
-        t("Shrub & Bush Trimming", "Poda de Arbustos"),
-        t("Bed Edging & Weed Barrier", "Orillado y Control de Maleza")
+        t("Immediate Backyard Access", "Acceso Inmediato en el Patio"),
+        t("Capacity for 6 to 16+ People", "Capacidad para 6 a 16+ Personas"),
+        t("Clean Flush-to-Lawn Finish", "Acabado al Nivel del Césped")
       ],
-      image: landscapingImg,
+      image: familyHomeImg,
       to: "/services/landscaping"
     },
     {
-      id: "small-tree-cutting",
-      category: "tree",
-      icon: Trees,
-      title: t("Small Tree Cutting", "Corte de Árboles Pequeños"),
-      categoryLabel: t("Tree Care", "Cuidado de Árboles"),
-      desc: t("Safe, professional cutting and removal of small trees, saplings, and hazardous low branches.", "Corte y remoción profesional y segura de árboles pequeños, retoños y ramas bajas peligrosas."),
-      features: [
-        t("Small Tree & Sapling Cutting", "Corte de Árboles Pequeños y Retoños"),
-        t("Overgrown Stem Clearing", "Limpieza de Tallos Sobrecultivados"),
-        t("Clean Debris Removal", "Remoción Limpia de Escombros")
-      ],
-      image: smallTreeCuttingImg,
-      to: "/services/tree-brush-removal"
-    },
-    {
-      id: "small-tree-trimming",
-      category: "tree",
-      icon: Scissors,
-      title: t("Small Tree Trimming", "Poda de Árboles Pequeños"),
-      categoryLabel: t("Tree Care", "Cuidado de Árboles"),
-      desc: t("Precision trimming, branch pruning, crown shaping, and deadwood thinning for healthy small trees.", "Poda de precisión, recortado de ramas, moldeo de copas y eliminación de madera muerta."),
-      features: [
-        t("Precision Branch Pruning", "Poda de Ramas de Precisión"),
-        t("Crown Shaping & Care", "Moldeo y Cuidado de Copas"),
-        t("Deadwood Removal", "Remoción de Madera Muerta")
-      ],
-      image: smallTreeTrimmingImg,
-      to: "/services/tree-brush-removal"
-    },
-    {
-      id: "office-cleaning",
-      category: "cleaning",
-      icon: Sparkles,
-      title: t("Commercial Office Cleaning", "Limpieza de Oficinas Comerciales"),
-      categoryLabel: t("Cleaning", "Limpieza"),
-      desc: t("Daily or weekly janitorial cleaning, office sanitation, floor polishing, and trash disposal for corporate spaces.", "Limpieza diaria o semanal de conserjería, desinfección de oficinas y pulido de pisos."),
-      features: [
-        t("Floor Care & Polishing", "Cuidado y Pulido de Pisos"),
-        t("Desk & Glass Sanitization", "Desinfección de Cristal y Escritorios"),
-        t("Trash & Recycling Removal", "Remoción de Basura")
-      ],
-      image: officeImg,
-      to: "/services/office-commercial-cleaning"
-    },
-    {
-      id: "wire-house",
-      category: "cleaning",
+      id: "commercial-shelters",
+      category: "commercial",
       icon: Building2,
-      title: t("Warehouse & Barn Cleaning", "Limpieza de Almacén y Galpón"),
-      categoryLabel: t("Specialized", "Especializado"),
-      desc: t("Heavy-duty high pressure washing and deep sanitation for warehouses, barns, and farm structures.", "Lavado a presión de alto rendimiento y sanitización profunda para almacenes, galpones y granjas."),
+      title: t("Commercial Storm Shelters", "Refugios Comerciales"),
+      categoryLabel: t("Commercial", "Comercial"),
+      desc: t("Heavy-duty large capacity storm shelters and reinforced safe rooms for businesses, schools, and job sites.", "Refugios para tormentas de gran capacidad para empresas, escuelas y sitios de trabajo."),
       features: [
-        t("High-Pressure Power Wash", "Lavado a Alta Presión"),
-        t("Agricultural Sanitation", "Desinfección Agrícola"),
-        t("Heavy Dirt & Stain Removal", "Remoción de Manchas y Suciedad")
-      ],
-      image: wireHouseImg,
-      to: "/services/residential-wire-house-cleaning"
-    },
-    {
-      id: "brush-removal",
-      category: "heavy",
-      icon: Trash2,
-      title: t("Brush Cutting & Land Clearing", "Corte y Remoción de Maleza"),
-      categoryLabel: t("Land Clearing", "Limpieza de Terreno"),
-      desc: t("Clearing thick overgrown brush, briars, unwanted bushes, and wild vegetation to reclaim land.", "Limpieza de maleza espesa, zarzales y vegetación silvestre para despejar su terreno."),
-      features: [
-        t("Overgrown Brush Clearing", "Despeje de Maleza Espesa"),
-        t("Briar & Weed Cutting", "Corte de Zarzas y Maleza"),
-        t("Property Line Clearing", "Limpieza de Líneas de Propiedad")
-      ],
-      image: brushImg,
-      to: "/services/tree-brush-removal"
-    },
-    {
-      id: "commercial-cleaning",
-      category: "cleaning",
-      icon: Home,
-      title: t("Residential & Commercial Clean", "Limpieza Residencial y Comercial"),
-      categoryLabel: t("Cleaning", "Limpieza"),
-      desc: t("Comprehensive interior deep cleaning and exterior property wash tailored for homes and businesses.", "Limpieza interior profunda a medida y lavado de propiedad para casas y negocios."),
-      features: [
-        t("Deep Interior Sanitation", "Limpieza Interior Profunda"),
-        t("Exterior Power Washing", "Lavado Exterior a Presión"),
-        t("Tailored Maintenance", "Planes de Mantenimiento a Medida")
+        t("Engineered High Capacity", "Alta Capacidad de Ocupación"),
+        t("OSHA & Building Code Compliant", "Cumple con Códigos de Edificación"),
+        t("Dual Emergency Exit Hatches", "Escotillas Dobles de Emergencia")
       ],
       image: commercialImg,
       to: "/services/office-commercial-cleaning"
+    },
+    {
+      id: "shelter-installation",
+      category: "installation",
+      icon: HardHat,
+      title: t("Professional Installation", "Instalación Profesional"),
+      categoryLabel: t("Installation", "Instalación"),
+      desc: t("Turnkey installation with laser-guided leveling, heavy crane setting, and anti-buoyancy concrete anchoring.", "Instalación completa con nivelación láser, colocación con grúa pesada y anclaje anti-flotación."),
+      features: [
+        t("Fast 1-2 Day Turnkey Setup", "Instalación Rápida en 1-2 Días"),
+        t("Precision Crane Placement", "Colocación con Grúa de Precisión"),
+        t("Anti-Buoyancy Anchoring", "Anclaje de Concreto Anti-Flotación")
+      ],
+      image: installCraneImg,
+      to: "/services/gravel-dirt-work"
+    },
+    {
+      id: "site-prep",
+      category: "installation",
+      icon: Wrench,
+      title: t("Shelter Site Preparation", "Preparación del Terreno"),
+      categoryLabel: t("Excavation", "Excavación"),
+      desc: t("Yard excavation, underground utility clearance, precision backfill, and complete site cleanup.", "Excavación de jardín, localización de servicios públicos, relleno de precisión y limpieza."),
+      features: [
+        t("Utility Clearance & Markout", "Marcación de Servicios Públicos"),
+        t("Laser-Guided Yard Excavation", "Excavación con Guía Láser"),
+        t("Proper Water Drainage Grading", "Nivelación para Drenaje de Agua")
+      ],
+      image: excavationImg,
+      to: "/services/tree-brush-removal"
+    },
+    {
+      id: "upgrades",
+      category: "installation",
+      icon: RefreshCw,
+      title: t("Shelter Upgrades & Hatches", "Mejoras y Escotillas"),
+      categoryLabel: t("Maintenance", "Mantenimiento"),
+      desc: t("Hydraulic gas-strut hatch upgrades, multi-point deadbolt locks, emergency lighting, and gasket seals.", "Mejoras de escotillas con amortiguadores de gas, cerraduras de seguridad y sellado hermético."),
+      features: [
+        t("Easy-Lift Gas Strut Hatches", "Escotillas Fáciles de Abrir"),
+        t("Multi-Point Steel Deadbolts", "Cerrojos de Seguridad de Acero"),
+        t("Watertight Rubber Gasket Seal", "Sellos de Goma Herméticos")
+      ],
+      image: hatchCloseImg,
+      to: "/services/residential-wire-house-cleaning"
     }
   ];
 
   const filterTabs = [
     { id: "all", label: t("All Services", "Todos los Servicios"), count: services.length },
-    { id: "lawn", label: t("Lawn & Landscaping", "Césped y Paisajismo"), count: services.filter(s => s.category === "lawn").length },
-    { id: "cleaning", label: t("Cleaning Services", "Servicios de Limpieza"), count: services.filter(s => s.category === "cleaning").length },
-    { id: "tree", label: t("Tree & Brush Care", "Árboles y Maleza"), count: services.filter(s => s.category === "tree" || s.category === "heavy").length },
+    { id: "residential", label: t("Residential Shelters", "Refugios Residenciales"), count: services.filter(s => s.category === "residential").length },
+    { id: "commercial", label: t("Commercial Shelters", "Refugios Comerciales"), count: services.filter(s => s.category === "commercial").length },
+    { id: "installation", label: t("Installation & Site Prep", "Instalación y Terreno"), count: services.filter(s => s.category === "installation").length },
   ];
 
   const filteredServices = activeFilter === "all"
     ? services
-    : services.filter(s => s.category === activeFilter || (activeFilter === "tree" && (s.category === "tree" || s.category === "heavy")));
+    : services.filter(s => s.category === activeFilter);
 
   return (
     <section id="services" className="bg-[#F8FAFC] py-12 sm:py-16 lg:py-24 overflow-hidden border-y border-slate-200/60 relative">
       {/* Background Decor Ambient Blobs */}
-      <div className="absolute top-1/4 left-0 w-[600px] h-[600px] rounded-full bg-[#2E7D32]/5 blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-10 right-0 w-[600px] h-[600px] rounded-full bg-[#D4AF37]/5 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-0 w-[600px] h-[600px] rounded-full bg-[#dc2626]/5 blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-0 w-[600px] h-[600px] rounded-full bg-red-600/5 blur-3xl pointer-events-none -z-10" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full relative z-10">
 
@@ -281,31 +243,31 @@ export function Services() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-10">
           <div className="max-w-2xl text-left space-y-4">
             {/* Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#2E7D32]/10 border border-[#2E7D32]/30 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-[#2E7D32]">
-              <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
-              {t("Our Core Services", "Nuestros Servicios Principales")}
-              <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+            <div className="inline-flex items-center gap-2 rounded-full bg-red-50 border border-red-200 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-[#dc2626]">
+              <Sparkles className="w-3.5 h-3.5 text-[#dc2626]" />
+              {t("Life-Safety Solutions", "Soluciones de Seguridad")}
+              <Sparkles className="w-3.5 h-3.5 text-[#dc2626]" />
             </div>
 
             {/* Headline */}
-            <h2 className="font-display text-[22px] sm:text-[28px] lg:text-[31px] mt-0 sm:mt-[-11px] mb-[8px] font-black text-slate-900 tracking-tight leading-tight">
-              {t("Professional Solutions for ", "Soluciones Profesionales para ")}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E7D32] via-[#1B5E20] to-[#2E7D32]">
-                {t("Lawns, Landscaping & Cleaning.", "Césped, Paisajismo y Limpieza.")}
+            <h2 className="font-display text-[24px] sm:text-[30px] lg:text-[34px] font-black text-slate-900 tracking-tight leading-tight">
+              {t("Storm Protection, ", "Protección Contra Tormentas, ")}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
+                {t("Built Around You.", "Diseñada para Usted.")}
               </span>
             </h2>
 
-            <p className="text-slate-600 text-[13.5px] sm:text-base lg:text-lg leading-relaxed font-medium mb-0 sm:mb-[-25px]">
-              {t("Licensed, insured & bonded experts serving Horn Lake & a 50-mile radius with top-tier equipment and 15+ years of craftsmanship.", "Expertos con licencia y seguro que sirven a Horn Lake y 50 millas a la redonda con equipos de primera calidad.")}
+            <p className="text-slate-600 text-[14px] sm:text-base lg:text-lg leading-relaxed font-normal">
+              {t("FEMA-compliant underground shelters, residential backyard safe rooms, and turnkey site preparation across Nashville and Middle Tennessee.", "Refugios subterráneos conformes a FEMA, cuartos de seguridad residenciales y preparación completa del terreno en Nashville y el centro de Tennessee.")}
             </p>
           </div>
 
-          {/* Quick Badges & Callout */}
+          {/* Quick Callout Button */}
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-            <Button variant="hero" size="xl" asChild className="font-extrabold rounded-full px-8 bg-gradient-to-r from-[#2E7D32] to-[#1B5E20] text-[#FFD54F] border border-[#D4AF37]/50 shadow-md w-full md:w-auto justify-center">
+            <Button variant="hero" size="xl" asChild className="font-extrabold rounded-full px-8 bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-md btn-glow w-full md:w-auto justify-center">
               <Link to="/services">
-                {t("Explore All Services", "Explorar Todos los Servicios")}
-                <ArrowRight className="w-4 h-4 ml-1 text-[#FFD54F]" />
+                {t("Explore All Shelters", "Explorar Todos los Refugios")}
+                <ArrowRight className="w-4 h-4 ml-1 text-white" />
               </Link>
             </Button>
           </div>
@@ -314,7 +276,7 @@ export function Services() {
         {/* ── Trust & Quality Guarantee Banner ─────────────────── */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 sm:p-5 rounded-3xl bg-white border border-slate-200/90 shadow-md mb-10">
           <div className="flex items-center gap-3 p-2">
-            <div className="w-10 h-10 rounded-2xl bg-[#2E7D32]/10 text-[#2E7D32] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div className="flex flex-col text-left">
@@ -324,32 +286,32 @@ export function Services() {
           </div>
 
           <div className="flex items-center gap-3 p-2">
-            <div className="w-10 h-10 rounded-2xl bg-[#2E7D32]/10 text-[#2E7D32] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0">
               <Clock className="w-5 h-5" />
             </div>
             <div className="flex flex-col text-left">
-              <span className="text-xs font-black text-slate-900 uppercase tracking-tight">{t("Punctual & Reliable", "Puntual y Confiable")}</span>
-              <span className="text-[11px] font-bold text-slate-500">{t("On-Time Job Guarantee", "Garantía de Tiempo")}</span>
+              <span className="text-xs font-black text-slate-900 uppercase tracking-tight">{t("24/7 Availability", "Disponible 24/7")}</span>
+              <span className="text-[11px] font-bold text-slate-500">{t("Emergency Response", "Respuesta Rápida")}</span>
             </div>
           </div>
 
           <div className="flex items-center gap-3 p-2">
-            <div className="w-10 h-10 rounded-2xl bg-[#2E7D32]/10 text-[#2E7D32] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0">
               <MapPin className="w-5 h-5" />
             </div>
             <div className="flex flex-col text-left">
-              <span className="text-xs font-black text-slate-900 uppercase tracking-tight">{t("50-Mile Radius", "Radio de 50 Millas")}</span>
-              <span className="text-[11px] font-bold text-slate-500">{t("Horn Lake & Surrounding", "Horn Lake y Alrededores")}</span>
+              <span className="text-xs font-black text-slate-900 uppercase tracking-tight">{t("100-Mile Radius", "Radio de 100 Millas")}</span>
+              <span className="text-[11px] font-bold text-slate-500">{t("Nashville & Beyond", "Nashville y Alrededores")}</span>
             </div>
           </div>
 
           <div className="flex items-center gap-3 p-2">
-            <div className="w-10 h-10 rounded-2xl bg-[#2E7D32]/10 text-[#2E7D32] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0">
               <Phone className="w-5 h-5" />
             </div>
             <div className="flex flex-col text-left">
-              <span className="text-xs font-black text-slate-900 uppercase tracking-tight">{t("Bilingual Service", "Servicio Bilingüe")}</span>
-              <span className="text-[11px] font-bold text-slate-500">{t("English & Español", "Inglés y Español")}</span>
+              <span className="text-xs font-black text-slate-900 uppercase tracking-tight">{t("FEMA P-320", "Norma FEMA P-320")}</span>
+              <span className="text-[11px] font-bold text-slate-500">{t("EF-5 Tornado Tested", "Probado Contra Tornados EF-5")}</span>
             </div>
           </div>
         </div>
@@ -363,7 +325,7 @@ export function Services() {
                 key={tab.id}
                 onClick={() => setActiveFilter(tab.id)}
                 className={`px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all duration-300 whitespace-nowrap shadow-xs cursor-pointer flex items-center gap-2 ${isActive
-                    ? "bg-[#2E7D32] text-white shadow-md shadow-[#2E7D32]/25 scale-105"
+                    ? "bg-[#dc2626] text-white shadow-md shadow-red-600/25 scale-105"
                     : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200/90"
                   }`}
               >
@@ -377,8 +339,8 @@ export function Services() {
           })}
         </div>
 
-        {/* ── Filtered Main Grid (Balanced 4-column layout for 8 cards) ──────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        {/* ── Filtered Main Grid (3 columns for 6 cards) ──────────────── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           <AnimatePresence mode="popLayout">
             {filteredServices.map((s, idx) => (
               <motion.div
@@ -390,7 +352,7 @@ export function Services() {
                 transition={{ duration: 0.4, delay: idx * 0.04 }}
               >
                 <div className="block w-full">
-                  <ServiceCard s={s} aspectRatio="min-h-[360px] sm:min-h-[420px] lg:min-h-[470px]" />
+                  <ServiceCard s={s} aspectRatio="min-h-[380px] sm:min-h-[440px] lg:min-h-[480px]" />
                 </div>
               </motion.div>
             ))}

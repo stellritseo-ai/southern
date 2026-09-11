@@ -1,34 +1,30 @@
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { Phone, Clock, ShieldCheck, CheckCircle2, AlertTriangle, Zap, ArrowRight } from "lucide-react";
+import { Phone, Clock, ShieldCheck, CheckCircle2, AlertTriangle, Zap, ArrowRight, MapPin } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
+import heroStorm from "@/assets/hero-storm.jpg";
 
 export function EmergencyCTA() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-24 text-white bg-[#0A100B] border-y border-[#2E7D32]/30">
-      {/* Background Video with Multi-Layered Gradients */}
+    <section className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-24 text-white bg-[#0b0f15] border-y border-red-500/30">
+      {/* Background Image with Multi-Layered Gradients */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className="h-full w-full object-cover scale-105 filter brightness-75"
-        >
-          <source src="https://res.cloudinary.com/ki6vfkhw/video/upload/v1787692982/herovideo.mov" />
-        </video>
+        <img
+          src={heroStorm}
+          alt="Severe weather supercell storm over Tennessee"
+          className="h-full w-full object-cover scale-105 filter brightness-50 contrast-125"
+        />
 
-        {/* Layered Gradient Overlays for High Contrast & Visual Luxury */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#080D09]/98 via-[#080D09]/85 to-[#080D09]/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#080D09] via-transparent to-[#080D09]/70" />
+        {/* Layered Gradient Overlays for High Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/98 via-[#0b0f15]/88 to-[#0b0f15]/65" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15] via-transparent to-[#0b0f15]/75" />
 
         {/* Ambient Glowing Blobs */}
-        <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 rounded-full bg-[#2E7D32]/15 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-10 w-96 h-96 rounded-full bg-[#D4AF37]/15 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 rounded-full bg-[#dc2626]/20 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-10 w-96 h-96 rounded-full bg-red-600/15 blur-3xl pointer-events-none" />
       </div>
 
       <div className="relative z-10 mx-auto w-[90%] max-w-7xl">
@@ -42,15 +38,15 @@ export function EmergencyCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2.5 rounded-full bg-black/60 backdrop-blur-xl border border-[#D4AF37]/50 px-4 py-2 text-xs font-black uppercase tracking-widest text-[#FFD54F] shadow-lg"
+              className="inline-flex items-center gap-2.5 rounded-full bg-black/70 backdrop-blur-xl border border-red-500/50 px-4 py-2 text-xs font-black uppercase tracking-widest text-red-400 shadow-lg"
             >
               <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFD54F] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FFD54F]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
               </span>
               <span className="flex items-center gap-1.5">
-                <Zap className="w-3.5 h-3.5 fill-[#FFD54F] text-[#FFD54F]" />
-                {t("Emergency Dispatch (Business Hours)", "Despacho de Emergencia (Horario Comercial)")}
+                <Zap className="w-3.5 h-3.5 fill-red-500 text-red-500" />
+                {t("Severe Weather Alert — Open 24/7", "Alerta de Clima Severo — Abierto 24/7")}
               </span>
             </motion.div>
 
@@ -60,12 +56,13 @@ export function EmergencyCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display text-[22px] sm:text-[26px] lg:text-[28px] mt-0 sm:mt-[-13px] mb-[7px] font-black tracking-tight leading-tight text-white max-w-2xl">
+              className="font-display text-[24px] sm:text-[30px] lg:text-[36px] font-black tracking-tight leading-tight text-white max-w-2xl"
+            >
               <span className="block">
-                {t("Storm Damage or Fallen Trees on Your Property?", "¿Daños por Tormenta o Árboles Caídos en su Propiedad?")}
+                {t("Don't Wait for the Next Severe Storm.", "No Espere a la Próxima Tormenta Severa.")}
               </span>
-              <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-[#FFD54F] via-amber-200 to-[#D4AF37]">
-                {t("Immediate Response During Business Hours.", "Respuesta Inmediata en Horario Comercial.")}
+              <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-300 to-amber-300">
+                {t("Protect Your Family With an Underground Shelter.", "Proteja a Su Familia con un Refugio Subterráneo.")}
               </span>
             </motion.h2>
 
@@ -75,9 +72,9 @@ export function EmergencyCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed font-medium"
+              className="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed font-normal"
             >
-              {t("Did severe weather damage your yard or block your driveway with fallen limbs? We dispatch emergency clearing crews during business hours across Horn Lake and the 50-mile radius.", "¿Tormentas dañaron su propiedad o árboles cayeron en su entrada? Despachamos equipos de emergencia en horario comercial en Horn Lake y 50 millas a la redonda.")}
+              {t("Tornado sirens offer only minutes of warning. Give your family an unshakeable, certified underground safe vault steps from your home. We provide turnkey installation and consultation across Nashville and a 100-mile service radius.", "Las sirenas de tornado ofrecen solo minutos de aviso. Brinde a su familia una bóveda de seguridad subterránea certificada e inquebrantable a pasos de su hogar. Ofrecemos instalación completa en Nashville y 100 millas a la redonda.")}
             </motion.p>
 
             {/* Feature Cards Grid */}
@@ -89,42 +86,42 @@ export function EmergencyCTA() {
               className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2 w-full max-w-xl"
             >
               <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#2E7D32]/40 text-[#FFD54F] shrink-0 border border-[#D4AF37]/30">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
                   <Clock className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-xs font-extrabold text-white">{t("Business Hours Line", "Línea en Horario Comercial")}</span>
-                  <span className="text-[11px] text-slate-400 font-medium">{t("Mon-Fri 10am-7pm | Sat 3pm-8pm", "Lun-Vie 10am-7pm | Sáb 3pm-8pm")}</span>
+                  <span className="text-xs font-extrabold text-white">{t("24/7 Availability", "Disponible 24/7")}</span>
+                  <span className="text-[11px] text-slate-400 font-medium">{t("Always Ready to Dispatch", "Siempre Listos")}</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#2E7D32]/40 text-[#FFD54F] shrink-0 border border-[#D4AF37]/30">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
                   <AlertTriangle className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-xs font-extrabold text-white">{t("Rapid Dispatch", "Despacho Rápido")}</span>
-                  <span className="text-[11px] text-slate-400 font-medium">{t("Fast Equipment Deployment", "Despliegue Rápido de Equipo")}</span>
+                  <span className="text-xs font-extrabold text-white">{t("EF-5 Rated Strength", "Resistencia EF-5")}</span>
+                  <span className="text-[11px] text-slate-400 font-medium">{t("250+ MPH Wind Protection", "Vientos de Más de 250 MPH")}</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#2E7D32]/40 text-[#FFD54F] shrink-0 border border-[#D4AF37]/30">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
                   <ShieldCheck className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-xs font-extrabold text-white">{t("Licensed & Insured", "Licenciado y Asegurado")}</span>
-                  <span className="text-[11px] text-slate-400 font-medium">{t("100% Bonded Protection", "Protección 100% Afianzado")}</span>
+                  <span className="text-xs font-extrabold text-white">{t("Licensed • Insured • Bonded", "Licenciado • Asegurado • Afianzado")}</span>
+                  <span className="text-[11px] text-slate-400 font-medium">{t("100% Certified Installs", "Instalaciones 100% Certificadas")}</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 p-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#2E7D32]/40 text-[#FFD54F] shrink-0 border border-[#D4AF37]/30">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
                   <CheckCircle2 className="h-4 w-4" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-xs font-extrabold text-white">{t("15+ Years Experience", "15+ Años de Experiencia")}</span>
-                  <span className="text-[11px] text-slate-400 font-medium">{t("Trusted Family Crew", "Equipo Familiar de Confianza")}</span>
+                  <span className="text-xs font-extrabold text-white">{t("5+ Years Experience", "5+ Años de Experiencia")}</span>
+                  <span className="text-[11px] text-slate-400 font-medium">{t("Nashville's Trusted Crew", "Equipo Confiable de Nashville")}</span>
                 </div>
               </div>
             </motion.div>
@@ -146,29 +143,29 @@ export function EmergencyCTA() {
             {/* Primary Phone Action Card */}
             <div className="relative group w-full max-w-md">
               {/* Glowing Aura Effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#2E7D32] via-[#FFD54F] to-[#1B5E20] rounded-[28px] blur-md opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#dc2626] via-red-500 to-[#b91c1c] rounded-[28px] blur-md opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse" />
 
               <a
-                href="tel:6625711048"
-                className="relative flex flex-col items-center justify-between gap-4 rounded-[20px] sm:rounded-[24px] bg-gradient-to-br from-[#132215] via-[#0D180E] to-[#0A120B] border border-[#D4AF37]/60 p-5 sm:p-6 lg:p-7 shadow-2xl hover:scale-[1.02] transition-all duration-300 w-full text-center sm:text-left sm:flex-row cursor-pointer"
+                href="tel:6159912361"
+                className="relative flex flex-col items-center justify-between gap-4 rounded-[20px] sm:rounded-[24px] bg-[#0b0f15] border border-red-500/60 p-5 sm:p-6 lg:p-7 shadow-2xl hover:scale-[1.02] transition-all duration-300 w-full text-center sm:text-left sm:flex-row cursor-pointer"
               >
                 <div className="flex items-center gap-4 justify-center sm:justify-start text-left w-full sm:w-auto">
-                  <span className="relative grid place-items-center h-14 w-14 rounded-2xl bg-gradient-to-br from-[#2E7D32] to-[#1B5E20] border border-[#D4AF37]/50 shrink-0 shadow-lg">
-                    <Phone className="h-6 w-6 text-[#FFD54F] animate-bounce" />
+                  <span className="relative grid place-items-center h-14 w-14 rounded-2xl bg-[#dc2626] border border-red-400/50 shrink-0 shadow-lg">
+                    <Phone className="h-6 w-6 text-white animate-bounce" />
                   </span>
                   <div className="flex flex-col">
-                    <span className="text-[10px] uppercase tracking-widest text-[#FFD54F] font-black flex items-center gap-1.5">
-                      <span className="h-2 w-2 rounded-full bg-[#FFD54F] animate-ping" />
-                      {t("Direct Emergency Line", "Línea Directa de Emergencia")}
+                    <span className="text-[10px] uppercase tracking-widest text-red-400 font-black flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-400 animate-ping" />
+                      {t("24/7 Shelter Hotline", "Línea Directa 24/7")}
                     </span>
-                    <span className="text-[22px] sm:text-[23px] font-display font-black leading-tight tracking-tight mt-1 text-white">
-                      (662) 571-1048
+                    <span className="text-[22px] sm:text-[24px] font-display font-black leading-tight tracking-tight mt-1 text-white">
+                      (615) 991-2361
                     </span>
                   </div>
                 </div>
 
                 <div className="w-full sm:w-auto flex justify-end">
-                  <span className="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl bg-[#FFD54F] text-[#111111] text-xs font-black uppercase tracking-wider shadow-md group-hover:bg-white transition-colors">
+                  <span className="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl bg-[#dc2626] text-white text-xs font-black uppercase tracking-wider shadow-md group-hover:bg-[#b91c1c] transition-colors">
                     {t("Call Now", "Llamar")}
                   </span>
                 </div>
@@ -179,16 +176,16 @@ export function EmergencyCTA() {
             <div className="w-full max-w-md">
               <Button variant="outline" size="xl" asChild className="w-full rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-slate-900 font-extrabold text-sm py-4 shadow-lg">
                 <Link to="/free-quote">
-                  {t("Request Emergency Service Online", "Solicitar Servicio de Emergencia")}
+                  {t("Request a Free Estimate Online", "Solicitar Estimación en Línea")}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </Button>
             </div>
 
             {/* Micro-trust glass badge */}
-            <div className="flex items-center gap-2.5 rounded-2xl bg-black/50 backdrop-blur-md border border-white/15 px-5 py-3 text-xs text-slate-300 w-full max-w-md justify-center shadow-md">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#2E7D32] shrink-0" />
-              <span className="font-semibold">{t("Serving Horn Lake, Southaven, Olive Branch & 50-Mile Radius", "Sirviendo Horn Lake, Southaven, Olive Branch y 50 Millas")}</span>
+            <div className="flex items-center gap-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-red-500/20 px-5 py-3 text-xs text-slate-300 w-full max-w-md justify-center shadow-md">
+              <MapPin className="h-4 w-4 text-red-400 shrink-0" />
+              <span className="font-semibold">{t("Proudly Serving Nashville & 100-Mile Radius (24/7)", "Sirviendo a Nashville y un Radio de 100 Millas (24/7)")}</span>
             </div>
           </motion.div>
 

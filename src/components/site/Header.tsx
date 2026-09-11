@@ -12,15 +12,15 @@ import {
   ShieldCheck,
   ArrowRight,
   Sparkles,
-  Scissors,
-  Trees,
-  Trash2,
+  Shield,
+  HardHat,
+  Building2,
   Truck,
   AlertTriangle,
+  Zap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logoImg from "@/assets/logo.png";
-import bbbLogo from "@/assets/bbb.svg";
+import logoImg from "@/assets/logo-mark.png";
 import { useLanguage } from "@/hooks/useLanguage";
 
 export function Header() {
@@ -28,57 +28,56 @@ export function Header() {
 
   const navItems = [
     { to: "/", label: t("Home", "Inicio") },
-    { to: "/about", label: t("About Us", "Sobre Nosotros") },
-    { to: "/services", label: t("Services", "Servicios") },
-    // { to: "/service-areas", label: t("Service Areas", "Áreas de Servicio") },
+    { to: "/about", label: t("About", "Sobre Nosotros") },
+    { to: "/services", label: t("Storm Shelters", "Refugios") },
     { to: "/projects", label: t("Gallery", "Galería") },
     { to: "/reviews", label: t("Reviews", "Reseñas") },
-    { to: "/free-quote", label: t("Free Estimates", "Estimaciones Gratuitas") },
-    { to: "/contact", label: t("Contact Us", "Contáctenos") },
+    { to: "/free-quote", label: t("Free Estimates", "Estimaciones") },
+    { to: "/contact", label: t("Contact", "Contacto") },
   ];
 
   const serviceLinks = [
     {
-      to: "/services/lawn-mowing",
-      l: t("Lawn Mowing & Maintenance", "Cortado y Cuidado de Césped"),
-      desc: t("Weekly mowing, edging, trimming & yard upkeep", "Cortado semanal, orillado, podado y cuidado"),
-      icon: Scissors,
-      tag: "Popular",
+      to: "/services",
+      l: t("Underground Storm Shelters", "Refugios Subterráneos"),
+      desc: t("Engineered subterranean storm vaults for total severe weather safety", "Bóvedas subterráneas para máxima seguridad"),
+      icon: Shield,
+      tag: "FEMA P-320",
     },
     {
-      to: "/services/landscaping",
-      l: t("Landscaping & Design", "Paisajismo y Diseño"),
-      desc: t("Mulch, sod installation, flower beds & design", "Mantillo, césped en rollo y jardinería"),
-      icon: Trees,
-      tag: "Featured",
+      to: "/services",
+      l: t("Residential Storm Shelters", "Refugios Residenciales"),
+      desc: t("Custom turnkey home safe rooms engineered for Tennessee families", "Salas seguras familiares para hogares de Tennessee"),
+      icon: Home,
+      tag: "99% Residential",
     },
     {
-      to: "/services/tree-brush-removal",
-      l: t("Tree & Brush Removal", "Remoción de Árboles y Maleza"),
-      desc: t("Professional tree cutting, brush clearing & haul-off", "Corte de árboles, maleza y retiro"),
-      icon: Trash2,
-      tag: "Safe & Fast",
-    },
-    {
-      to: "/services/gravel-dirt-work",
-      l: t("Gravel & Dirt Work", "Trabajos de Grava y Tierra"),
-      desc: t("Gravel driveway repair, grading, topsoil & leveling", "Reparación de entradas, nivelación y grava"),
-      icon: Truck,
-      tag: "Heavy-Duty",
-    },
-    {
-      to: "/services/office-commercial-cleaning",
-      l: t("Office & Commercial Cleaning", "Limpieza de Oficinas y Comercial"),
-      desc: t("Scheduled janitorial, office & commercial cleaning", "Limpieza programada de oficinas y comercios"),
-      icon: Sparkles,
+      to: "/services",
+      l: t("Commercial Storm Shelters", "Refugios Comerciales"),
+      desc: t("High-capacity safe havens for businesses, job sites and facilities", "Refugios de gran capacidad para empresas y obras"),
+      icon: Building2,
       tag: "Commercial",
     },
     {
-      to: "/services/residential-wire-house-cleaning",
-      l: t("Residential & Warehouse Cleaning", "Limpieza Residencial y Almacén"),
-      desc: t("Deep home cleaning, move-in/out & warehouses", "Limpieza profunda, mudanzas y almacenes"),
-      icon: Home,
-      tag: "Residential",
+      to: "/services",
+      l: t("Professional Installation", "Instalación Profesional"),
+      desc: t("Heavy crane placement, laser leveling and high-strength ground anchoring", "Colocación con grúa, nivelación láser y anclaje"),
+      icon: HardHat,
+      tag: "Turnkey",
+    },
+    {
+      to: "/services",
+      l: t("Shelter Site Preparation", "Preparación de Terreno"),
+      desc: t("Precision backhoe excavation, watershed grading and soil evaluation", "Excavación de precisión y nivelación de agua"),
+      icon: Truck,
+      tag: "Site Prep",
+    },
+    {
+      to: "/services",
+      l: t("Shelter Upgrades & Hatches", "Mejoras y Escotillas"),
+      desc: t("Hydraulic gas-strut doors, secondary latches & emergency air venting", "Escotillas hidráulicas y ventilación de emergencia"),
+      icon: Sparkles,
+      tag: "Upgrades",
     },
   ];
 
@@ -113,10 +112,10 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex flex-col w-full bg-transparent pointer-events-none select-none">
 
-      {/* ── TOP UTILITY BAR (Dark #111111, Primary Green #2E7D32 & Yellow #FFD54F) ────── */}
+      {/* ── TOP UTILITY BAR (Dark #0B0F15, Storm Red #DC2626 & Amber #FBBF24) ────── */}
       <div
         className={cn(
-          "w-full bg-[#111111] text-white border-b border-[#D4AF37]/30 px-4 sm:px-6 lg:px-8 pointer-events-auto transition-all duration-300 origin-top overflow-hidden",
+          "w-full bg-[#0b0f15] text-white border-b border-red-500/30 px-4 sm:px-6 lg:px-8 pointer-events-auto transition-all duration-300 origin-top overflow-hidden",
           scrolled ? "max-h-0 py-0 opacity-0 border-none" : "max-h-14 py-2 opacity-100"
         )}
       >
@@ -126,34 +125,35 @@ export function Header() {
           <div className="flex items-center gap-4 text-slate-300 min-w-0">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFD54F] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FFD54F]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fbbf24] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#fbbf24]"></span>
               </span>
-              <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-[#FFD54F]">
-                {t("Emergency Service (Business Hours)", "Servicio de Emergencia (Horario Comercial)")}
+              <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-[#fbbf24] flex items-center gap-1">
+                <Zap className="h-3 w-3 fill-current" />
+                {t("Emergency Ready 24/7", "Listo para Emergencias 24/7")}
               </span>
             </div>
 
-            <div className="hidden md:flex items-center gap-1.5 border-l border-white/15 pl-4 text-[11px] font-semibold text-[#D4AF37]">
-              <ShieldCheck className="h-3.5 w-3.5 text-[#2E7D32]" />
-              <span>Licensed · Insured · Bonded · 15 Years Exp.</span>
+            <div className="hidden md:flex items-center gap-1.5 border-l border-white/15 pl-4 text-[11px] font-semibold text-slate-300">
+              <ShieldCheck className="h-3.5 w-3.5 text-[#dc2626]" />
+              <span>Licensed • Insured • Bonded • FEMA P-320 &amp; ICC-500 Compliant</span>
             </div>
           </div>
 
           {/* Right: Office Hours & Language Switcher */}
           <div className="flex items-center gap-4 text-xs shrink-0">
             <div className="hidden sm:flex items-center gap-1.5 text-slate-300 font-semibold text-[11px]">
-              <Clock className="h-3.5 w-3.5 text-[#D4AF37]" />
-              <span>Mon–Fri: 10am–7pm | Sat: 3pm–8pm</span>
+              <Clock className="h-3.5 w-3.5 text-red-400" />
+              <span>Open 24/7 • 100-Mile Radius</span>
             </div>
 
-            <div className="flex items-center gap-1 bg-[#1B5E20]/60 border border-[#D4AF37]/40 rounded-full px-1.5 py-0.5">
+            <div className="flex items-center gap-1 bg-black/60 border border-red-500/40 rounded-full px-1.5 py-0.5">
               <button
                 onClick={() => setLanguage("en")}
                 className={cn(
                   "flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold transition-all cursor-pointer",
                   language === "en"
-                    ? "bg-[#2E7D32] text-[#FFD54F] shadow-sm border border-[#D4AF37]/40"
+                    ? "bg-[#dc2626] text-white shadow-sm border border-red-400/40"
                     : "text-slate-300 hover:text-white"
                 )}
               >
@@ -165,7 +165,7 @@ export function Header() {
                 className={cn(
                   "flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold transition-all cursor-pointer",
                   language === "es"
-                    ? "bg-[#2E7D32] text-[#FFD54F] shadow-sm border border-[#D4AF37]/40"
+                    ? "bg-[#dc2626] text-white shadow-sm border border-red-400/40"
                     : "text-slate-300 hover:text-white"
                 )}
               >
@@ -183,33 +183,41 @@ export function Header() {
         className={cn(
           "w-full transition-all duration-300 px-3 sm:px-4 lg:px-8 pointer-events-auto",
           scrolled
-            ? "py-2 bg-[#FFFFFF]/98 backdrop-blur-md shadow-md border-b border-[#D4AF37]/30"
-            : "py-3 bg-[#F7F7F7]/95 backdrop-blur-md border-b border-[#D4AF37]/20 shadow-sm"
+            ? "py-2 bg-[#FFFFFF]/98 backdrop-blur-md shadow-md border-b border-red-500/20"
+            : "py-3 bg-[#F8FAFC]/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm"
         )}
       >
         <div className="mx-auto max-w-7xl flex items-center justify-between w-full gap-4">
 
           {/* ── MOBILE NAVBAR HEADER ───────────────────────────────── */}
           <div className="flex items-center justify-between w-full md:hidden">
-            <Link to="/" className="flex items-center shrink-0">
-              <img src={logoImg} alt="Brown Lawn Care Logo" className="h-12 sm:h-14 w-auto object-contain" />
+            <Link to="/" className="flex items-center gap-2.5 shrink-0">
+              <img src={logoImg} alt="Southern Storm Shelters Logo" className="h-10 sm:h-12 w-auto object-contain" />
+              <div className="flex flex-col text-left">
+                <span className="text-[13px] font-black uppercase tracking-tight text-[#0b0f15] leading-none">
+                  Southern
+                </span>
+                <span className="text-[10px] font-black uppercase tracking-wider text-[#dc2626] leading-none mt-0.5">
+                  Storm Shelters
+                </span>
+              </div>
             </Link>
 
             <div className="flex items-center gap-2">
               <a
-                href="tel:6625711048"
-                className="flex items-center gap-1.5 bg-gradient-to-r from-[#2E7D32] to-[#1B5E20] text-[#FFD54F] text-[11px] font-extrabold rounded-full px-3.5 py-1.5 border border-[#D4AF37]/50 shadow-sm active:scale-95 transition-transform"
+                href="tel:6159912361"
+                className="flex items-center gap-1.5 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white text-[11px] font-extrabold rounded-full px-3.5 py-1.5 border border-red-400/50 shadow-sm active:scale-95 transition-transform"
               >
                 <Phone className="h-3.5 w-3.5 fill-current" />
-                <span className="hidden xs:inline">(662) 571-1048</span>
+                <span className="hidden xs:inline">(615) 991-2361</span>
                 <span className="inline xs:hidden">Call</span>
               </a>
               <button
                 aria-label="Toggle navigation menu"
                 onClick={() => setOpen((v) => !v)}
-                className="grid h-9 w-9 place-items-center rounded-xl border border-[#D4AF37]/40 bg-[#FFFFFF] text-[#111111] transition hover:border-[#2E7D32] active:scale-95"
+                className="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-[#0b0f15] transition hover:border-[#dc2626] active:scale-95"
               >
-                {open ? <X className="h-5 w-5 text-[#2E7D32]" /> : <Menu className="h-5 w-5 text-[#2E7D32]" />}
+                {open ? <X className="h-5 w-5 text-[#dc2626]" /> : <Menu className="h-5 w-5 text-[#dc2626]" />}
               </button>
             </div>
           </div>
@@ -217,20 +225,28 @@ export function Header() {
           {/* ── DESKTOP UNIFIED HEADER: BIGGER LOGO LEFT | MENU & CTA RIGHT ── */}
           <div className="hidden md:flex items-center justify-between w-full gap-6">
 
-            {/* Left: Prominent Extra Large Brand Logo */}
-            <Link to="/" className="flex items-center shrink-0 group">
+            {/* Left: Prominent Brand Logo */}
+            <Link to="/" className="flex items-center gap-3 shrink-0 group">
               <img
                 src={logoImg}
-                alt="Brown Lawn Care & Cleaning Service Logo"
-                className="h-16 lg:h-20 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                alt="Southern Storm Shelters Logo"
+                className="h-12 lg:h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
               />
+              <div className="flex flex-col text-left">
+                <span className="text-base lg:text-lg font-black uppercase tracking-tight text-[#0b0f15] leading-none">
+                  Southern
+                </span>
+                <span className="text-xs lg:text-sm font-black uppercase tracking-widest text-[#dc2626] leading-none mt-1">
+                  Storm Shelters <span className="text-[10px] text-slate-500 font-bold">LLC</span>
+                </span>
+              </div>
             </Link>
 
-            {/* Right Side Stack: Nav Items Pill + Phone Button + BBB Logo */}
+            {/* Right Side Stack: Nav Items Pill + Phone Button */}
             <div className="flex items-center gap-3 lg:gap-4 shrink-0 ml-auto">
 
               {/* Nav Items Pill */}
-              <nav className="rounded-full bg-[#FFFFFF] border border-[#D4AF37]/40 px-3 lg:px-4 py-1.5 flex items-center gap-1.5 lg:gap-2.5 shadow-sm">
+              <nav className="rounded-full bg-white border border-slate-200 px-3 lg:px-4 py-1.5 flex items-center gap-1.5 lg:gap-2.5 shadow-sm">
                 {navItems.map((item) => {
                   const active = pathname === item.to;
 
@@ -242,39 +258,39 @@ export function Header() {
                           className={cn(
                             "flex items-center gap-1 rounded-full px-2.5 lg:px-3 py-1 text-[13px] font-bold uppercase tracking-wider transition-colors whitespace-nowrap cursor-pointer",
                             active
-                              ? "text-[#2E7D32] bg-[#2E7D32]/10 border border-[#D4AF37]/30"
-                              : "text-[#111111] hover:text-[#2E7D32]"
+                              ? "text-[#dc2626] bg-red-50 border border-red-200"
+                              : "text-[#0b0f15] hover:text-[#dc2626]"
                           )}
                           style={{ fontSize: "13px", fontWeight: 700, textTransform: "uppercase" }}
                         >
-                          {t("Services", "Servicios")}
-                          <ChevronDown className="h-3.5 w-3.5 text-[#D4AF37] group-hover/nav:rotate-180 transition-transform duration-200" />
+                          {t("Storm Shelters", "Refugios")}
+                          <ChevronDown className="h-3.5 w-3.5 text-[#dc2626] group-hover/nav:rotate-180 transition-transform duration-200" />
                         </Link>
 
                         {/* ── PREMIUM PIXEL-PERFECT SUBMENU DROPDOWN ──────────────── */}
                         <div className="absolute left-1/2 -translate-x-1/2 top-full z-50 pt-3 opacity-0 invisible pointer-events-none group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:pointer-events-auto transition-all duration-300 transform group-hover/nav:translate-y-0 translate-y-2">
-                          <div className="w-[640px] max-w-[calc(100vw-32px)] bg-white border-2 border-[#D4AF37]/50 rounded-[28px] shadow-[0_25px_60px_-15px_rgba(17,17,17,0.25)] p-5 sm:p-6 flex flex-col gap-4.5 relative overflow-hidden backdrop-blur-xl">
+                          <div className="w-[640px] max-w-[calc(100vw-32px)] bg-white border-2 border-red-500/40 rounded-[28px] shadow-[0_25px_60px_-15px_rgba(11,15,21,0.35)] p-5 sm:p-6 flex flex-col gap-4.5 relative overflow-hidden backdrop-blur-xl">
 
                             {/* Subtle background glow blobs */}
-                            <div className="absolute top-0 right-0 w-48 h-48 bg-[#2E7D32]/10 rounded-full blur-2xl pointer-events-none" />
-                            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#D4AF37]/10 rounded-full blur-2xl pointer-events-none" />
+                            <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/10 rounded-full blur-2xl pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
                             {/* Submenu Top Header Bar */}
                             <div className="flex justify-between items-center border-b border-slate-100 pb-3.5 relative z-10">
                               <div className="flex items-center gap-2">
-                                <span className="p-1 rounded-lg bg-[#2E7D32]/10 text-[#2E7D32] border border-[#2E7D32]/30">
-                                  <Sparkles className="w-4 h-4 text-[#2E7D32]" />
+                                <span className="p-1 rounded-lg bg-red-50 text-[#dc2626] border border-red-200">
+                                  <Sparkles className="w-4 h-4 text-[#dc2626]" />
                                 </span>
-                                <span className="text-[11px] font-black text-[#111111] uppercase tracking-widest">
-                                  {t("Complete Property & Cleaning Solutions", "Soluciones de Propiedad y Limpieza")}
+                                <span className="text-[11px] font-black text-[#0b0f15] uppercase tracking-widest">
+                                  {t("Engineered Underground Safety Systems", "Sistemas de Seguridad Diseñados")}
                                 </span>
                               </div>
                               <Link
                                 to="/services"
-                                className="text-[11px] font-extrabold uppercase text-[#2E7D32] hover:text-[#1B5E20] tracking-wider transition-colors flex items-center gap-1 group/all"
+                                className="text-[11px] font-extrabold uppercase text-[#dc2626] hover:text-[#b91c1c] tracking-wider transition-colors flex items-center gap-1 group/all"
                               >
-                                <span>{t("Explore All Services", "Ver Todos Los Servicios")}</span>
-                                <ArrowRight className="w-3.5 h-3.5 text-[#D4AF37] group-hover/all:translate-x-1 transition-transform" />
+                                <span>{t("Explore All Shelters", "Ver Todos Los Refugios")}</span>
+                                <ArrowRight className="w-3.5 h-3.5 text-[#dc2626] group-hover/all:translate-x-1 transition-transform" />
                               </Link>
                             </div>
 
@@ -284,18 +300,18 @@ export function Header() {
                                 <Link
                                   key={srv.l}
                                   to={srv.to}
-                                  className="group/item flex items-start gap-3.5 rounded-2xl p-3 bg-[#F7F7F7]/80 hover:bg-white border border-slate-200/80 hover:border-[#D4AF37] hover:shadow-md transition-all duration-300 text-left relative overflow-hidden"
+                                  className="group/item flex items-start gap-3.5 rounded-2xl p-3 bg-slate-50 hover:bg-white border border-slate-200 hover:border-[#dc2626] hover:shadow-md transition-all duration-300 text-left relative overflow-hidden"
                                 >
-                                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2E7D32]/15 to-[#1B5E20]/20 group-hover/item:from-[#2E7D32] group-hover/item:to-[#1B5E20] border border-[#D4AF37]/40 flex items-center justify-center text-[#2E7D32] group-hover/item:text-[#FFD54F] transition-all duration-300 shrink-0 shadow-xs group-hover/item:scale-105">
+                                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500/15 to-red-600/20 group-hover/item:from-[#dc2626] group-hover/item:to-[#b91c1c] border border-red-400/40 flex items-center justify-center text-[#dc2626] group-hover/item:text-white transition-all duration-300 shrink-0 shadow-xs group-hover/item:scale-105">
                                     <srv.icon className="h-5 w-5" />
                                   </div>
                                   <div className="flex flex-col text-left min-w-0 pr-1">
                                     <div className="flex items-center gap-1.5">
-                                      <span className="text-[13px] font-extrabold text-[#111111] group-hover/item:text-[#2E7D32] transition-colors leading-tight truncate">
+                                      <span className="text-[13px] font-extrabold text-[#0b0f15] group-hover/item:text-[#dc2626] transition-colors leading-tight truncate">
                                         {srv.l}
                                       </span>
                                     </div>
-                                    <span className="text-[10px] text-slate-600 font-medium leading-normal mt-1 line-clamp-2">
+                                    <span className="text-[10px] text-slate-500 font-medium leading-normal mt-1 line-clamp-2">
                                       {srv.desc}
                                     </span>
                                   </div>
@@ -303,27 +319,27 @@ export function Header() {
                               ))}
                             </div>
 
-                            {/* Emergency Dispatch Banner inside Submenu */}
-                            <div className="bg-gradient-to-r from-[#111111] to-[#1a2e1d] border border-[#D4AF37]/50 rounded-2xl p-4 flex justify-between items-center gap-4 relative z-10 shadow-sm">
+                            {/* Severe Weather Alert Banner inside Submenu */}
+                            <div className="bg-gradient-to-r from-[#0b0f15] to-[#1e0a0d] border border-red-500/40 rounded-2xl p-4 flex justify-between items-center gap-4 relative z-10 shadow-sm">
                               <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-xl bg-[#2E7D32] border border-[#D4AF37]/40 flex items-center justify-center text-[#FFD54F] shrink-0 shadow-md">
-                                  <AlertTriangle className="h-5 w-5 animate-pulse text-[#FFD54F]" />
+                                <div className="w-10 h-10 rounded-xl bg-[#dc2626] border border-red-400/50 flex items-center justify-center text-white shrink-0 shadow-md">
+                                  <AlertTriangle className="h-5 w-5 animate-pulse text-white" />
                                 </div>
                                 <div className="flex flex-col text-left">
                                   <span className="text-[12px] font-extrabold text-white">
-                                    {t("Storm Damage or Fallen Trees on Property?", "¿Daños por Tormenta o Árboles Caídos?")}
+                                    {t("Prepare Before Severe Weather Threatens", "Prepárese Antes del Mal Clima")}
                                   </span>
                                   <span className="text-[10px] text-slate-300 font-semibold mt-0.5">
-                                    {t("Emergency dispatch during business hours across Horn Lake & 50-mi radius.", "Despacho de emergencia en horario comercial en Horn Lake y 50 millas.")}
+                                    {t("On-site evaluations & turnkey installs across Nashville & 100-mile radius.", "Evaluaciones en el sitio e instalaciones en Nashville y 100 millas.")}
                                   </span>
                                 </div>
                               </div>
                               <a
-                                href="tel:6625711048"
-                                className="bg-gradient-to-r from-[#2E7D32] to-[#1B5E20] hover:from-[#1B5E20] hover:to-[#2E7D32] text-[#FFD54F] text-[11px] font-black uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all border border-[#D4AF37]/50 shadow-md whitespace-nowrap active:scale-95 flex items-center gap-1.5"
+                                href="tel:6159912361"
+                                className="bg-gradient-to-r from-[#dc2626] to-[#b91c1c] hover:from-[#b91c1c] hover:to-[#dc2626] text-white text-[11px] font-black uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all border border-red-400/50 shadow-md whitespace-nowrap active:scale-95 flex items-center gap-1.5"
                               >
-                                <span>{t("Call (662) 571-1048", "Llamar Ahora")}</span>
-                                <ArrowRight className="w-3.5 h-3.5 text-[#FFD54F]" />
+                                <span>{t("Call 615-991-2361", "Llamar 615-991-2361")}</span>
+                                <ArrowRight className="w-3.5 h-3.5 text-white" />
                               </a>
                             </div>
 
@@ -340,8 +356,8 @@ export function Header() {
                       className={cn(
                         "rounded-full px-2.5 lg:px-3 py-1 text-[13px] font-bold uppercase tracking-wider transition-colors whitespace-nowrap cursor-pointer",
                         active
-                          ? "text-[#2E7D32] bg-[#2E7D32]/10 border border-[#D4AF37]/30"
-                          : "text-[#111111] hover:text-[#2E7D32]"
+                          ? "text-[#dc2626] bg-red-50 border border-red-200"
+                          : "text-[#0b0f15] hover:text-[#dc2626]"
                       )}
                       style={{ fontSize: "13px", fontWeight: 700, textTransform: "uppercase" }}
                     >
@@ -353,36 +369,20 @@ export function Header() {
 
               {/* Call Direct CTA Button */}
               <a
-                href="tel:6625711048"
-                className="bg-gradient-to-r from-[#2E7D32] to-[#1B5E20] hover:from-[#1B5E20] hover:to-[#2E7D32] text-white flex items-center gap-2.5 shadow-[0_8px_25px_-6px_rgba(46,125,50,0.5)] hover:shadow-[0_12px_30px_-4px_rgba(46,125,50,0.7)] transition-all duration-300 shrink-0 px-4.5 py-2.5 border border-[#D4AF37]/50 active:scale-95"
-                style={{ borderRadius: "50px 0px 50px 50px" }}
+                href="tel:6159912361"
+                className="bg-gradient-to-r from-[#dc2626] to-[#b91c1c] hover:from-[#b91c1c] hover:to-[#dc2626] text-white flex items-center gap-2.5 shadow-[0_8px_25px_-6px_rgba(220,38,38,0.5)] hover:shadow-[0_12px_30px_-4px_rgba(220,38,38,0.7)] transition-all duration-300 shrink-0 px-4.5 py-2.5 border border-red-400/50 active:scale-95 rounded-full"
               >
-                <div className="w-7 h-7 rounded-full bg-[#FFFFFF]/20 flex items-center justify-center border border-[#FFD54F]/40 shrink-0 shadow-xs">
-                  <Phone className="h-3.5 w-3.5 fill-current text-[#FFD54F] animate-pulse" />
+                <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center border border-white/30 shrink-0 shadow-xs">
+                  <Phone className="h-3.5 w-3.5 fill-current text-white animate-pulse" />
                 </div>
                 <div className="flex flex-col text-left leading-none">
-                  <span className="text-[9px] font-black uppercase tracking-wider text-[#FFD54F]">
-                    {t("Call Direct", "Llámenos")}
+                  <span className="text-[9px] font-black uppercase tracking-wider text-red-200">
+                    {t("24/7 Hotline", "Línea 24/7")}
                   </span>
                   <span className="text-xs lg:text-sm font-black text-white mt-0.5 tracking-tight">
-                    (662) 571-1048
+                    615-991-2361
                   </span>
                 </div>
-              </a>
-
-              {/* BBB Accredited Logo */}
-              <a
-                href="https://www.bbb.org/us/ms/horn-lake/profile/lawn-care/brown-lawn-care-cleaning-service-llc-0543-44186181"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0 hidden lg:flex items-center pl-1 group/bbb cursor-pointer"
-                title="BBB Accredited Business Profile"
-              >
-                <img
-                  src={bbbLogo}
-                  alt="BBB Accredited Business"
-                  className="h-10 lg:h-12 w-auto object-contain drop-shadow-xs group-hover/bbb:scale-105 transition-transform duration-300"
-                />
               </a>
 
             </div>
@@ -395,7 +395,7 @@ export function Header() {
       {/* ── MOBILE MENU DRAWER ─────────────────────────────────── */}
       <div
         className={cn(
-          "md:hidden overflow-y-auto transition-[max-height,opacity] duration-300 bg-[#FFFFFF] pointer-events-auto shadow-2xl border-t border-[#D4AF37]/30",
+          "md:hidden overflow-y-auto transition-[max-height,opacity] duration-300 bg-white pointer-events-auto shadow-2xl border-t border-red-500/30",
           open ? "max-h-[calc(100vh-70px)] opacity-100" : "max-h-0 opacity-0"
         )}
       >
@@ -411,28 +411,28 @@ export function Header() {
                   <div key="services-mobile" className="space-y-1">
                     <button
                       onClick={() => setServicesOpen((v) => !v)}
-                      className="w-full flex items-center justify-between rounded-2xl px-4 py-3 text-[13px] font-bold uppercase tracking-wider text-[#111111] hover:bg-[#F7F7F7] transition"
+                      className="w-full flex items-center justify-between rounded-2xl px-4 py-3 text-[13px] font-bold uppercase tracking-wider text-[#0b0f15] hover:bg-slate-50 transition"
                       style={{ fontSize: "13px", fontWeight: 700, textTransform: "uppercase" }}
                     >
-                      <span>{t("Services", "Servicios")}</span>
+                      <span>{t("Storm Shelters", "Refugios")}</span>
                       <ChevronDown
                         className={cn(
-                          "h-4 w-4 text-[#D4AF37] transition-transform duration-300",
+                          "h-4 w-4 text-[#dc2626] transition-transform duration-300",
                           servicesOpen && "rotate-180"
                         )}
                       />
                     </button>
 
                     {servicesOpen && (
-                      <div className="ml-4 pl-4 border-l-2 border-[#2E7D32]/30 space-y-1.5 py-1">
+                      <div className="ml-4 pl-4 border-l-2 border-[#dc2626]/30 space-y-1.5 py-1">
                         {serviceLinks.map((srv) => (
                           <Link
                             key={srv.l}
                             to={srv.to}
-                            className="flex items-center gap-2.5 py-2 px-2 rounded-xl text-[13px] font-bold text-[#111111] hover:text-[#2E7D32] hover:bg-[#F7F7F7] transition"
+                            className="flex items-center gap-2.5 py-2 px-2 rounded-xl text-[13px] font-bold text-[#0b0f15] hover:text-[#dc2626] hover:bg-slate-50 transition"
                             style={{ fontSize: "13px", fontWeight: 700 }}
                           >
-                            <srv.icon className="h-4 w-4 text-[#2E7D32] shrink-0" />
+                            <srv.icon className="h-4 w-4 text-[#dc2626] shrink-0" />
                             <span>{srv.l}</span>
                           </Link>
                         ))}
@@ -449,8 +449,8 @@ export function Header() {
                   className={cn(
                     "rounded-2xl px-4 py-3 text-[13px] font-bold uppercase tracking-wider transition-colors",
                     active
-                      ? "bg-[#2E7D32]/10 text-[#2E7D32] border border-[#D4AF37]/30"
-                      : "text-[#111111] hover:bg-[#F7F7F7]"
+                      ? "bg-red-50 text-[#dc2626] border border-red-200"
+                      : "text-[#0b0f15] hover:bg-slate-50"
                   )}
                   style={{ fontSize: "13px", fontWeight: 700, textTransform: "uppercase" }}
                 >
@@ -461,38 +461,38 @@ export function Header() {
           </nav>
 
           {/* Quick Contact & Emergency Call Card */}
-          <div className="border-t border-[#D4AF37]/20 pt-5 flex flex-col gap-4">
+          <div className="border-t border-slate-200 pt-5 flex flex-col gap-4">
             <a
-              href="tel:6625711048"
-              className="flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-[#2E7D32] to-[#1B5E20] text-[#FFD54F] py-3.5 text-sm font-black border border-[#D4AF37]/40 shadow-lg transition"
+              href="tel:6159912361"
+              className="flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white py-3.5 text-sm font-black border border-red-400/40 shadow-lg transition"
             >
               <Phone className="h-4 w-4 fill-current" />
-              <span>(662) 571-1048</span>
+              <span>(615) 991-2361</span>
             </a>
 
-            <div className="flex flex-col gap-2.5 text-xs text-[#6D4C41] font-semibold px-2">
+            <div className="flex flex-col gap-2.5 text-xs text-slate-600 font-semibold px-2">
               <a
-                href="mailto:royleebrown@ymail.com"
-                className="flex items-center gap-2.5 hover:text-[#2E7D32] transition"
+                href="mailto:admin@nashvillesiteworks.com"
+                className="flex items-center gap-2.5 hover:text-[#dc2626] transition"
               >
-                <Mail className="h-4 w-4 text-[#2E7D32] shrink-0" />
-                <span className="truncate">royleebrown@ymail.com</span>
+                <Mail className="h-4 w-4 text-[#dc2626] shrink-0" />
+                <span className="truncate">admin@nashvillesiteworks.com</span>
               </a>
               <div className="flex items-center gap-2.5">
-                <MapPin className="h-4 w-4 text-[#2E7D32] shrink-0" />
-                <span>Alden Lake Dr W, Horn Lake, MS</span>
+                <MapPin className="h-4 w-4 text-[#dc2626] shrink-0" />
+                <span>468 Craighead St, Nashville, TN 37204</span>
               </div>
             </div>
 
             {/* Mobile Language Switcher */}
-            <div className="flex items-center justify-center gap-2 bg-[#F7F7F7] border border-[#D4AF37]/30 rounded-2xl p-2 mt-2">
+            <div className="flex items-center justify-center gap-2 bg-slate-50 border border-slate-200 rounded-2xl p-2 mt-2">
               <button
                 onClick={() => setLanguage("en")}
                 className={cn(
                   "flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-black transition-all cursor-pointer",
                   language === "en"
-                    ? "bg-[#2E7D32] text-[#FFD54F] shadow-sm border border-[#D4AF37]/40"
-                    : "text-[#111111] hover:bg-white"
+                    ? "bg-[#dc2626] text-white shadow-sm border border-red-400/40"
+                    : "text-[#0b0f15] hover:bg-white"
                 )}
               >
                 <span>🇺🇸</span>
@@ -503,8 +503,8 @@ export function Header() {
                 className={cn(
                   "flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-black transition-all cursor-pointer",
                   language === "es"
-                    ? "bg-[#2E7D32] text-[#FFD54F] shadow-sm border border-[#D4AF37]/40"
-                    : "text-[#111111] hover:bg-white"
+                    ? "bg-[#dc2626] text-white shadow-sm border border-red-400/40"
+                    : "text-[#0b0f15] hover:bg-white"
                 )}
               >
                 <span>🇲🇽</span>

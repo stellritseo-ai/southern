@@ -5,16 +5,17 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
+ * Design system definition — Southern Storm Shelters LLC
  *
- * Primary Green: #2E7D32
- * Dark Green: #1B5E20
- * Golden: #D4AF37
- * Brown: #6D4C41
- * Yellow Accent: #FFD54F
+ * Primary Storm Red: #DC2626
+ * Dark Storm Red: #B91C1C
+ * Vivid Red: #EF4444
+ * Obsidian Dark: #0B0F15
+ * Dark Slate: #111722
+ * Ink Muted: #1A2230
+ * Amber Accent: #FBBF24 / #F59E0B
  * White: #FFFFFF
- * Off White: #F7F7F7
- * Black: #111111
+ * Slate Off-White: #F8FAFC
  */
 
 @theme inline {
@@ -57,61 +58,65 @@
 
 :root {
   --radius: 1rem;
-  /* Brand palette: Primary Green #2E7D32, Dark Green #1B5E20, Golden #D4AF37, Yellow Accent #FFD54F, Off White #F7F7F7 */
-  --background: oklch(0.98 0.003 140); /* #F7F7F7 */
-  --foreground: oklch(0.18 0.01 140); /* #111111 */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.01 140);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.01 140);
-  --primary: oklch(0.50 0.16 142); /* #2E7D32 */
-  --primary-foreground: oklch(0.92 0.14 90); /* #FFD54F */
-  --secondary: oklch(0.38 0.14 142); /* #1B5E20 */
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.96 0.005 140);
-  --muted-foreground: oklch(0.45 0.04 60); /* #6D4C41 */
-  --accent: oklch(0.74 0.14 85); /* #D4AF37 */
-  --accent-foreground: oklch(0.18 0.01 140);
-  --destructive: oklch(0.6 0.24 27);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.85 0.08 85 / 0.3); /* #D4AF37 / 30% */
-  --input: oklch(0.92 0.008 140);
-  --ring: oklch(0.50 0.16 142);
+  /* Brand palette: Primary Storm Red #DC2626, Dark Slate #111722, Obsidian Dark #0B0F15, Amber #FBBF24, Slate Off-White #F8FAFC */
+  --background: #F8FAFC;
+  --foreground: #0B0F15;
+  --card: #FFFFFF;
+  --card-foreground: #0B0F15;
+  --popover: #FFFFFF;
+  --popover-foreground: #0B0F15;
+  --primary: #DC2626;
+  --primary-foreground: #FFFFFF;
+  --secondary: #111722;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #DC2626;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(220, 38, 38, 0.22);
+  --input: #E2E8F0;
+  --ring: #DC2626;
 
   /* Brand tokens */
-  --brand-green: #2E7D32;
-  --brand-dark-green: #1B5E20;
-  --brand-gold: #D4AF37;
-  --brand-yellow: #FFD54F;
-  --brand-brown: #6D4C41;
-  --gradient-green: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
-  --gradient-gold: linear-gradient(135deg, #FFD54F 0%, #D4AF37 100%);
-  --gradient-text-gold: linear-gradient(135deg, #FFD54F 0%, #D4AF37 100%);
-  --shadow-elegant: 0 20px 50px -20px rgba(27, 94, 32, 0.25);
-  --shadow-glow: 0 0 60px -10px rgba(46, 125, 50, 0.55);
-  --shadow-card: 0 10px 30px -12px rgba(17, 17, 17, 0.12);
-  --font-display: "Inter", system-ui, sans-serif;
+  --brand-red: #DC2626;
+  --brand-dark-red: #B91C1C;
+  --brand-slate: #111722;
+  --brand-dark: #0B0F15;
+  --brand-gold: #FBBF24;
+  --brand-green: #DC2626;
+  --brand-dark-green: #111722;
+  --brand-brown: #1A2230;
+  --brand-yellow: #FBBF24;
+  --gradient-green: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  --gradient-gold: linear-gradient(135deg, #F87171 0%, #DC2626 100%);
+  --gradient-text-gold: linear-gradient(135deg, #F87171 0%, #DC2626 100%);
+  --shadow-elegant: 0 20px 50px -20px rgba(220, 38, 38, 0.35);
+  --shadow-glow: 0 0 60px -10px rgba(220, 38, 38, 0.55);
+  --shadow-card: 0 10px 30px -12px rgba(11, 15, 21, 0.12);
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
 }
 
 .dark {
-  --background: oklch(0.18 0.01 140);
-  --foreground: oklch(0.98 0.003 140);
-  --card: oklch(0.22 0.03 142);
-  --card-foreground: oklch(0.98 0.003 140);
-  --popover: oklch(0.22 0.03 142);
-  --popover-foreground: oklch(0.98 0.003 140);
-  --primary: oklch(0.50 0.16 142);
-  --primary-foreground: oklch(0.92 0.14 90);
-  --secondary: oklch(0.38 0.14 142);
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.25 0.03 142);
-  --muted-foreground: oklch(0.74 0.14 85);
-  --accent: oklch(0.74 0.14 85);
-  --accent-foreground: oklch(0.18 0.01 140);
-  --border: oklch(1 0 0 / 15%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.50 0.16 142);
+  --background: #0B0F15;
+  --foreground: #F8FAFC;
+  --card: #111722;
+  --card-foreground: #F8FAFC;
+  --popover: #111722;
+  --popover-foreground: #F8FAFC;
+  --primary: #DC2626;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1A2230;
+  --secondary-foreground: #FFFFFF;
+  --muted: #1A2230;
+  --muted-foreground: #94A3B8;
+  --accent: #DC2626;
+  --accent-foreground: #FFFFFF;
+  --border: rgba(220, 38, 38, 0.25);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #DC2626;
 }
 
 @layer base {
@@ -145,38 +150,38 @@
 
 /* Custom utilities */
 @utility glass-nav {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(11, 15, 21, 0.95);
   backdrop-filter: saturate(180%) blur(18px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  border-bottom: 1px solid rgba(220, 38, 38, 0.25);
 }
 
 @utility glass-card {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: saturate(180%) blur(14px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(220, 38, 38, 0.2);
   box-shadow: var(--shadow-card);
 }
 
 @utility gradient-text-orange {
-  background: linear-gradient(135deg, #FFD54F 0%, #D4AF37 50%, #2E7D32 100%);
+  background: linear-gradient(135deg, #F87171 0%, #DC2626 50%, #EF4444 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 @utility gradient-text-gold {
-  background: linear-gradient(135deg, #FFD54F 0%, #D4AF37 100%);
+  background: linear-gradient(135deg, #F87171 0%, #DC2626 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 @utility btn-glow {
-  box-shadow: 0 10px 30px -8px rgba(46, 125, 50, 0.55);
+  box-shadow: 0 10px 30px -8px rgba(220, 38, 38, 0.55);
 }
 
 @utility btn-green-glow {
-  box-shadow: 0 10px 30px -8px rgba(46, 125, 50, 0.55);
+  box-shadow: 0 10px 30px -8px rgba(220, 38, 38, 0.55);
 }
 
 @utility section-padding {

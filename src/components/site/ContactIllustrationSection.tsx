@@ -10,10 +10,11 @@ import {
   Clock,
   Star,
   Sparkles,
-  MessageSquare,
+  Zap,
 } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
-import faqImg from "@/assets/faq-image.png";
+import shelterInteriorImg from "@/assets/shelter-interior.jpg";
+import logoImg from "@/assets/logo-mark.png";
 
 interface FAQItem {
   id: string;
@@ -26,42 +27,47 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     id: "faq-1",
-    q: "How quickly can you respond to storm emergencies or fallen trees?",
-    qEs: "¿Con qué rapidez pueden responder a emergencias por tormentas o árboles caídos?",
-    a: "We provide emergency dispatch during business hours. For urgent storm damage, tree blockages, or fallen limbs in Horn Lake and surrounding areas, our crew can be on-site rapidly to secure your property and clear debris.",
-    aEs: "Ofrecemos despacho de emergencia en horario comercial. Para daños urgentes por tormentas o árboles caídos en Horn Lake y áreas cercanas, nuestro equipo estará en el lugar rápidamente.",
+    q: "How deep is an underground storm shelter installed?",
+    qEs: "¿A qué profundidad se instala un refugio subterráneo?",
+    a: "Most residential underground shelters are engineered so the reinforced lid sits slightly above natural grade for proper watershed, with the reinforced vault resting 6 to 8 feet below ground level. Exact depth is determined during the on-site evaluation.",
+    aEs: "La mayoría de los refugios subterráneos residenciales están diseñados para que la tapa reforzada quede ligeramente sobre el nivel del suelo para el drenaje de agua, con la bóveda a 6-8 pies bajo tierra.",
   },
   {
     id: "faq-2",
-    q: "Are you licensed, bonded, and fully insured?",
-    qEs: "¿Están licenciados, afianzados y totalmente asegurados?",
-    a: "Yes! We carry comprehensive liability coverage and worker's compensation insurance to protect your property and our crew completely on every job.",
-    aEs: "¡Sí! Contamos con cobertura de responsabilidad civil y seguro para trabajadores para proteger completamente su propiedad y a nuestro equipo.",
+    q: "How long does the shelter installation process take?",
+    qEs: "¿Cuánto tiempo toma el proceso de instalación del refugio?",
+    a: "Most residential turnkey installations are completed in a single day once site excavation begins. We coordinate heavy crane setting, anchoring, sealing, and backfill efficiently with minimal yard disruption.",
+    aEs: "La mayoría de las instalaciones residenciales llave en mano se completan en un solo día una vez iniciada la excavación. Coordinamos la grúa pesada, el anclaje y el relleno eficientemente.",
   },
   {
     id: "faq-3",
-    q: "What areas do you serve around Horn Lake, MS?",
-    qEs: "¿Qué áreas sirven alrededor de Horn Lake, MS?",
-    a: "We serve a 50-mile radius around Horn Lake, MS — including Southaven, Olive Branch, Hernando, Nesbit, Memphis (TN), West Memphis (AR), and surrounding communities.",
-    aEs: "Servimos un radio de 50 millas alrededor de Horn Lake, MS — incluyendo Southaven, Olive Branch, Hernando, Nesbit, Memphis (TN) y comunidades circundantes.",
+    q: "Are you licensed, bonded, and FEMA P-320 compliant?",
+    qEs: "¿Están licenciados, afianzados y cumplen con las normas FEMA P-320?",
+    a: "Yes! Southern Storm Shelters LLC is fully licensed, insured, and bonded. Every shelter design meets or exceeds FEMA P-320 and ICC-500 standards for EF-5 tornado wind speeds up to 250+ MPH.",
+    aEs: "¡Sí! Southern Storm Shelters LLC está totalmente licenciado, asegurado y afianzado. Cada refugio cumple o supera los estándares FEMA P-320 e ICC-500 para vientos de tornado EF-5.",
   },
   {
     id: "faq-4",
-    q: "Do you offer bilingual communication (English & Spanish)?",
-    qEs: "¿Ofrecen comunicación bilingüe (Inglés y Español)?",
-    a: "Yes! Our team speaks both English and Spanish fluently. We ensure clear, friendly, and hassle-free communication from the first quote to final walk-through.",
-    aEs: "¡Sí! Nuestro equipo habla inglés y español con fluidez. Garantizamos una comunicación clara y amigable desde el presupuesto hasta la inspección final.",
+    q: "What areas do you serve around Nashville, TN?",
+    qEs: "¿Qué áreas cubren alrededor de Nashville, TN?",
+    a: "We serve a 100-mile radius around Nashville, Tennessee — including Franklin, Murfreesboro, Hendersonville, Brentwood, Clarksville, Columbia, Lebanon, Mount Juliet, and surrounding Middle Tennessee communities.",
+    aEs: "Servimos un radio de 100 millas alrededor de Nashville, TN — incluyendo Franklin, Murfreesboro, Hendersonville, Brentwood, Clarksville, Columbia, Lebanon y comunidades cercanas.",
   },
   {
     id: "faq-5",
-    q: "How do I request a free quote for my property?",
-    qEs: "¿Cómo solicito una cotización gratis para mi propiedad?",
-    a: "You can call us directly at (662) 571-1048 or click 'Schedule Service' to send a request online. We provide fast, transparent estimates with zero obligation.",
-    aEs: "Puede llamarnos al (662) 571-1048 o hacer clic en 'Agendar Servicio' en línea. Ofrecemos estimados rápidos y transparentes sin compromiso.",
+    q: "Do you offer residential and commercial safe rooms?",
+    qEs: "¿Ofrecen salas seguras residenciales y comerciales?",
+    a: "Yes! While approximately 99% of our projects protect residential families and homeowners, we also engineer and install heavy-capacity commercial storm shelters for businesses and job sites.",
+    aEs: "¡Sí! Aunque aproximadamente el 99% de nuestros proyectos son para familias residenciales, también diseñamos e instalamos refugios comerciales de alta capacidad para empresas.",
+  },
+  {
+    id: "faq-6",
+    q: "How do I request a free on-site estimate?",
+    qEs: "¿Cómo solicito una estimación gratuita en el sitio?",
+    a: "You can call our 24/7 hotline directly at 615-991-2361 or submit an estimate request online. We evaluate your property, soil, access, and provide an upfront transparent quote.",
+    aEs: "Puede llamar a nuestra línea directa 24/7 al 615-991-2361 o enviar una solicitud en línea. Evaluamos su propiedad, suelo y brindamos una cotización transparente.",
   },
 ];
-
-import logoImg from "@/assets/logo.png";
 
 export function ContactIllustrationSection() {
   const { t } = useLanguage();
@@ -72,10 +78,10 @@ export function ContactIllustrationSection() {
   };
 
   const servicesList = [
-    "Lawn Care",
-    "Landscaping",
-    "Tree Removal",
-    "Office Cleaning",
+    "Underground Shelters",
+    "Residential Vaults",
+    "Commercial Shelters",
+    "Turnkey Crane Sets",
   ];
 
   return (
@@ -84,8 +90,8 @@ export function ContactIllustrationSection() {
       {/* ── Background Decorations ──────────────────────── */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:28px_28px] opacity-60" />
-        <div className="absolute -top-40 right-0 w-[560px] h-[560px] rounded-full bg-[#2E7D32]/8 blur-[130px]" />
-        <div className="absolute bottom-0 -left-24 w-[500px] h-[500px] rounded-full bg-[#D4AF37]/8 blur-[120px]" />
+        <div className="absolute -top-40 right-0 w-[560px] h-[560px] rounded-full bg-red-600/8 blur-[130px]" />
+        <div className="absolute bottom-0 -left-24 w-[500px] h-[500px] rounded-full bg-amber-500/8 blur-[120px]" />
       </div>
 
       <div className="relative z-10 mx-auto w-[90%] max-w-7xl">
@@ -100,7 +106,7 @@ export function ContactIllustrationSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 bg-[#2E7D32]/8 border border-[#2E7D32]/25 rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest text-[#2E7D32] shadow-sm"
+              className="inline-flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest text-[#dc2626] shadow-sm"
             >
               <HelpCircle className="w-3.5 h-3.5" />
               {t("Frequently Asked Questions", "Preguntas Frecuentes")}
@@ -116,14 +122,14 @@ export function ContactIllustrationSection() {
             >
               <h2 className="font-display font-black text-slate-900 tracking-tight leading-tight text-[24px] sm:text-[32px] lg:text-[37px]">
                 {t("Got Questions? ", "¿Tiene Preguntas? ")}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E7D32] to-[#1B5E20]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
                   {t("We Have Clear Answers.", "Tenemos Respuestas Claras.")}
                 </span>
               </h2>
               <p className="text-slate-500 font-medium text-[14.5px] leading-relaxed max-w-xl">
                 {t(
-                  "Everything you need to know about our lawn care, landscaping, tree removal, and property maintenance services.",
-                  "Todo lo que necesita saber sobre nuestros servicios de cuidado de césped, paisajismo y mantenimiento."
+                  "Everything you need to know about engineering specs, site evaluation, and installation timeline for Middle Tennessee properties.",
+                  "Todo lo que necesita saber sobre especificaciones de ingeniería, evaluación del sitio y tiempos de instalación en Middle Tennessee."
                 )}
               </p>
             </motion.div>
@@ -140,8 +146,8 @@ export function ContactIllustrationSection() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.35, delay: idx * 0.05 }}
                     className={`rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen
-                      ? "bg-[#2E7D32]/4 border-[#2E7D32]/35 shadow-md"
-                      : "bg-white border-slate-200 hover:border-[#2E7D32]/25 hover:shadow-sm"
+                      ? "bg-red-50/30 border-[#dc2626]/40 shadow-md"
+                      : "bg-white border-slate-200 hover:border-red-300 hover:shadow-sm"
                       }`}
                   >
                     <button
@@ -150,13 +156,13 @@ export function ContactIllustrationSection() {
                       aria-expanded={isOpen}
                     >
                       <span className="font-extrabold text-[15px] sm:text-[16px] text-slate-900 leading-snug flex items-center gap-3">
-                        <span className={`w-2 h-2 rounded-full shrink-0 transition-colors duration-300 ${isOpen ? "bg-[#2E7D32]" : "bg-slate-300"
+                        <span className={`w-2 h-2 rounded-full shrink-0 transition-colors duration-300 ${isOpen ? "bg-[#dc2626]" : "bg-slate-300"
                           }`} />
                         {t(faq.q, faq.qEs)}
                       </span>
                       <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen
-                        ? "bg-[#2E7D32] text-[#FFD54F] rotate-180 shadow-xs"
-                        : "bg-slate-100 text-slate-500 group-hover:bg-[#2E7D32]/10"
+                        ? "bg-[#dc2626] text-white rotate-180 shadow-xs"
+                        : "bg-slate-100 text-slate-500 group-hover:bg-red-50"
                         }`}>
                         <ChevronDown className="w-4 h-4" />
                       </div>
@@ -170,7 +176,7 @@ export function ContactIllustrationSection() {
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.28, ease: "easeInOut" }}
                         >
-                          <div className="px-5 pb-5 pt-0 text-slate-600 font-medium text-[13.5px] leading-relaxed border-t border-[#2E7D32]/10 mt-1 pt-3.5">
+                          <div className="px-5 pb-5 pt-0 text-slate-600 font-medium text-[13.5px] leading-relaxed border-t border-red-100 mt-1 pt-3.5">
                             {t(faq.a, faq.aEs)}
                           </div>
                         </motion.div>
@@ -185,17 +191,17 @@ export function ContactIllustrationSection() {
             <div className="pt-2 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#2E7D32] to-[#1B5E20] text-[#FFD54F] border border-[#D4AF37]/50 text-[11px] font-black uppercase tracking-widest rounded-full px-7 py-3.5 shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 w-full sm:w-auto cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white border border-red-500/50 text-[11px] font-black uppercase tracking-widest rounded-full px-7 py-3.5 shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 w-full sm:w-auto cursor-pointer"
               >
                 {t("Ask a Question", "Hacer una Pregunta")}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
-                href="tel:6625711048"
-                className="inline-flex items-center gap-2 text-slate-800 text-[13px] font-extrabold hover:text-[#2E7D32] transition-colors cursor-pointer"
+                href="tel:6159912361"
+                className="inline-flex items-center gap-2 text-slate-800 text-[13px] font-extrabold hover:text-[#dc2626] transition-colors cursor-pointer"
               >
-                <Phone className="h-4 w-4 text-[#2E7D32]" />
-                {t("Call (662) 571-1048", "Llamar (662) 571-1048")}
+                <Phone className="h-4 w-4 text-[#dc2626]" />
+                {t("Call (615) 991-2361", "Llamar (615) 991-2361")}
               </a>
             </div>
 
@@ -204,7 +210,7 @@ export function ContactIllustrationSection() {
           {/* ── RIGHT COLUMN: Section Image Showcase (col-span-5) — hidden on mobile ─ */}
           <div className="hidden lg:block lg:col-span-5 relative w-full lg:sticky lg:top-[120px] self-start">
             {/* Outer ambient glow */}
-            <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-[#2E7D32]/15 via-transparent to-[#D4AF37]/15 blur-xl pointer-events-none" />
+            <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-red-600/15 via-transparent to-amber-500/15 blur-xl pointer-events-none" />
 
             <motion.div
               initial={{ opacity: 0, scale: 0.94, y: 20 }}
@@ -215,8 +221,8 @@ export function ContactIllustrationSection() {
             >
               {/* Main Image */}
               <img
-                src={faqImg}
-                alt="Brown Lawn Care & Cleaning Service Team Member"
+                src={shelterInteriorImg}
+                alt="Southern Storm Shelters Reinforced Interior Vault"
                 className="w-full h-[480px] sm:h-[540px] lg:h-[580px] object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
               />
 
@@ -226,19 +232,19 @@ export function ContactIllustrationSection() {
               {/* Floating Top Header Bar: Logo + Business Name & Phone */}
               <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 z-20">
                 <div className="flex items-center gap-2.5 bg-slate-950/80 backdrop-blur-md border border-white/20 px-3.5 py-2 rounded-2xl shadow-lg">
-                  <img src={logoImg} alt="Brown Logo" className="w-6 h-6 object-contain" />
+                  <img src={logoImg} alt="Southern Storm Shelters Logo" className="w-6 h-6 object-contain" />
                   <div className="text-left">
-                    <p className="text-[11px] font-black text-white leading-none tracking-tight">Brown Lawn Care</p>
-                    <p className="text-[9px] font-bold text-[#FFD54F] leading-none mt-0.5">& Cleaning Service</p>
+                    <p className="text-[11px] font-black text-white leading-none tracking-tight">Southern Storm Shelters</p>
+                    <p className="text-[9px] font-bold text-red-400 leading-none mt-0.5">LLC · Nashville, TN</p>
                   </div>
                 </div>
 
                 <a
-                  href="tel:6625711048"
-                  className="inline-flex items-center gap-1.5 bg-[#2E7D32] border border-[#D4AF37]/50 text-[#FFD54F] text-[10px] font-black uppercase tracking-wider px-3.5 py-2 rounded-2xl shadow-lg hover:scale-105 transition-transform"
+                  href="tel:6159912361"
+                  className="inline-flex items-center gap-1.5 bg-[#dc2626] border border-red-400/50 text-white text-[10px] font-black uppercase tracking-wider px-3.5 py-2 rounded-2xl shadow-lg hover:scale-105 transition-transform"
                 >
                   <Phone className="w-3 h-3 fill-current" />
-                  <span>(662) 571-1048</span>
+                  <span>(615) 991-2361</span>
                 </a>
               </div>
 
@@ -248,9 +254,9 @@ export function ContactIllustrationSection() {
                   {servicesList.map((srv) => (
                     <span
                       key={srv}
-                      className="inline-flex items-center gap-1 bg-[#2E7D32]/10 border border-[#2E7D32]/25 text-[#2E7D32] text-[9.5px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full"
+                      className="inline-flex items-center gap-1 bg-red-50 border border-red-200 text-[#dc2626] text-[9.5px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full"
                     >
-                      <Sparkles className="w-2.5 h-2.5 text-[#2E7D32]" />
+                      <Sparkles className="w-2.5 h-2.5 text-[#dc2626]" />
                       {t(srv, srv)}
                     </span>
                   ))}
@@ -258,16 +264,16 @@ export function ContactIllustrationSection() {
 
                 <div className="flex items-center justify-between pt-1 border-t border-slate-100">
                   <div>
-                    <span className="text-[9px] uppercase tracking-widest text-[#2E7D32] font-black block">
-                      {t("Family-Owned • Horn Lake, MS", "Negocio Familiar • Horn Lake, MS")}
+                    <span className="text-[9px] uppercase tracking-widest text-[#dc2626] font-black block">
+                      {t("Licensed • Insured • Bonded • Nashville, TN", "Licenciado • Asegurado • Afianzado • Nashville, TN")}
                     </span>
                     <p className="text-xs sm:text-sm font-extrabold text-slate-900 mt-0.5">
-                      {t("Call (662) 571-1048 for Free Quotes", "Llama al (662) 571-1048 para Cotización")}
+                      {t("Call (615) 991-2361 for Free Estimates", "Llama al (615) 991-2361 para Estimaciones")}
                     </p>
                   </div>
                   <a
-                    href="tel:6625711048"
-                    className="shrink-0 w-9 h-9 rounded-full bg-[#0F172A] text-[#FFD54F] flex items-center justify-center border border-white/20 shadow-md hover:bg-[#2E7D32] transition-colors"
+                    href="tel:6159912361"
+                    className="shrink-0 w-9 h-9 rounded-full bg-[#0F172A] text-white flex items-center justify-center border border-white/20 shadow-md hover:bg-[#dc2626] transition-colors"
                   >
                     <ArrowRight className="w-4 h-4" />
                   </a>

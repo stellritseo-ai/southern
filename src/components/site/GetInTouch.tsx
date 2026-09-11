@@ -9,12 +9,12 @@ import {
   ArrowRight,
   CheckCircle2,
   ShieldCheck,
-  Sparkles,
+  Zap,
 } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 
 const TinySparkleIcon = () => (
-  <svg className="w-3.5 h-3.5 text-[#2E7D32] fill-[#2E7D32] shrink-0" viewBox="0 0 24 24">
+  <svg className="w-3.5 h-3.5 text-[#dc2626] fill-[#dc2626] shrink-0" viewBox="0 0 24 24">
     <path d="M12 2l2.4 7.2L21.6 12l-7.2 2.4L12 21.6l-2.4-7.2L2.4 12l7.2-2.4z" />
   </svg>
 );
@@ -33,7 +33,7 @@ export function GetInTouch() {
     const phone = (form.querySelector("input[name='phone']") as HTMLInputElement)?.value || "";
     const email = (form.querySelector("input[name='email']") as HTMLInputElement)?.value || "";
     const address = (form.querySelector("input[name='address']") as HTMLInputElement)?.value || "";
-    const propertyType = (form.querySelector("select[name='propertyType']") as HTMLSelectElement)?.value || "";
+    const projectType = (form.querySelector("select[name='projectType']") as HTMLSelectElement)?.value || "";
     const timeframe = (form.querySelector("select[name='timeframe']") as HTMLSelectElement)?.value || "";
     const msg = (form.querySelector("textarea[name='message']") as HTMLTextAreaElement)?.value || "";
 
@@ -42,9 +42,9 @@ export function GetInTouch() {
         name,
         phone,
         email,
-        service: `Property: ${propertyType} | Timeframe: ${timeframe} | Address: ${address}`,
+        service: `Project: ${projectType} | Timeframe: ${timeframe} | Address: ${address}`,
         message: msg,
-        source: "Landing Get-In-Touch Form"
+        source: "Landing Free Estimate Form"
       });
 
       setSubmitted(true);
@@ -60,15 +60,20 @@ export function GetInTouch() {
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-30 pointer-events-none" />
       <div className="mx-auto w-[90%] max-w-7xl relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="inline-flex items-center gap-2 bg-[#2E7D32]/10 border border-[#2E7D32]/30 text-[#2E7D32] rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-5">
-            <TinySparkleIcon /> {t("Request a Quote", "Solicitar Cotización")} <TinySparkleIcon />
+          <span className="inline-flex items-center gap-2 bg-red-50 border border-red-200 text-[#dc2626] rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-5">
+            <TinySparkleIcon /> {t("Request a Free Estimate", "Solicitar Estimación Gratis")} <TinySparkleIcon />
           </span>
           <h2 className="text-[22px] sm:text-3xl lg:text-[40px] font-extrabold text-[#0F172A] leading-tight mt-0 sm:mt-[-10px] mb-[5px] tracking-tight capitalize">
             {t("Get Your Free, ", "Obtenga Su ")}
-            <span className="text-[#2E7D32]">{t("No-Obligation Quote", "Cotización Sin Compromiso")}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
+              {t("No-Obligation Estimate", "Estimación Sin Compromiso")}
+            </span>
           </h2>
           <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-lg mx-auto">
-            {t("Tell us what you need — lawn care, landscaping, cleaning, tree removal, or gravel work — and we'll provide an honest, competitive quote within 24 hours.", "Díganos lo que necesita y le brindaremos una cotización honesta y competitiva en 24 horas.")}
+            {t(
+              "Tell us about your property — residential underground shelter, commercial safe room, or crane installation — and our team will provide a transparent evaluation within 24 hours.",
+              "Cuéntenos sobre su propiedad — refugio subterráneo residencial, comercial o instalación con grúa — y le daremos una evaluación transparente en 24 horas."
+            )}
           </p>
         </div>
 
@@ -79,54 +84,54 @@ export function GetInTouch() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 150, damping: 20 }}
-            className="lg:col-span-5 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#111111] via-[#1B5E20] to-[#2E7D32] text-white p-6 sm:p-8 lg:p-10 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-[#D4AF37]/40"
+            className="lg:col-span-5 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0b0f15] via-[#111722] to-[#1f0a0c] text-white p-6 sm:p-8 lg:p-10 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-red-500/30"
           >
             <div className="absolute inset-0 bg-grid opacity-10 mix-blend-overlay pointer-events-none" />
-            <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-[#FFD54F]/15 blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-red-600/15 blur-3xl pointer-events-none" />
 
             <div className="relative">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-6 border border-[#D4AF37]/30 text-[#FFD54F]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#FFD54F] animate-pulse" />
-                Horn Lake Office &amp; 50-Mile Dispatch
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-6 border border-red-500/40 text-red-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#fbbf24] animate-pulse" />
+                Nashville Office &amp; 100-Mile Dispatch
               </span>
-              <h3 className="text-2xl font-display font-black uppercase tracking-wider text-[#FFD54F]">
+              <h3 className="text-2xl font-display font-black uppercase tracking-wider text-white">
                 Contact Info
               </h3>
-              <p className="mt-3 text-sm text-white/90 font-medium leading-relaxed">
-                Brown Lawn Care &amp; Cleaning Service, LLC — Family Owned • 6 Years in Business (15+ Yrs Experience).
+              <p className="mt-3 text-sm text-slate-300 font-medium leading-relaxed">
+                Southern Storm Shelters LLC — Engineered Underground Storm Shelters &amp; Severe Weather Safe Rooms.
               </p>
 
               <ul className="mt-8 space-y-6">
                 <Item
                   icon={Phone}
-                  label="Direct Phone & Emergency"
-                  value="(662) 571-1048"
-                  href="tel:6625711048"
+                  label="Direct Phone & 24/7 Hotline"
+                  value="615-991-2361"
+                  href="tel:6159912361"
                   isCall
                 />
                 <Item
                   icon={Mail}
                   label="Direct Email"
-                  value="royleebrown@ymail.com"
-                  href="mailto:royleebrown@ymail.com"
+                  value="admin@nashvillesiteworks.com"
+                  href="mailto:admin@nashvillesiteworks.com"
                 />
                 <Item
                   icon={MapPin}
                   label="Office Address"
-                  value="Alden Lake Dr W, Horn Lake, MS"
+                  value="468 Craighead St, Nashville, TN 37204"
                 />
                 <Item
                   icon={Clock}
                   label="Business Hours"
-                  value="Mon–Fri: 10am–7pm | Sat: 3pm–8pm | Sun: Closed | Emergency Service (Business Hours)"
+                  value="Open 24/7 / 365 Days — Immediate Dispatch Available"
                 />
               </ul>
             </div>
 
             <div className="relative mt-10 pt-6 border-t border-white/15 flex items-center gap-3">
-              <ShieldCheck className="h-5 w-5 text-[#FFD54F] shrink-0" />
-              <span className="text-[10px] uppercase font-bold tracking-wider text-white/90">
-                Licensed · Insured · Bonded
+              <ShieldCheck className="h-5 w-5 text-[#dc2626] shrink-0" />
+              <span className="text-[10px] uppercase font-bold tracking-wider text-slate-300">
+                Licensed • Insured • Bonded • FEMA P-320 Compliant
               </span>
             </div>
           </motion.div>
@@ -147,14 +152,14 @@ export function GetInTouch() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   className="grid place-items-center text-center py-16"
                 >
-                  <div className="grid place-items-center h-16 w-16 rounded-full bg-[#2E7D32]/15 text-[#2E7D32] mb-5 shadow-sm">
-                    <CheckCircle2 className="h-8 w-8 text-[#2E7D32]" />
+                  <div className="grid place-items-center h-16 w-16 rounded-full bg-red-50 text-[#dc2626] mb-5 shadow-sm">
+                    <CheckCircle2 className="h-8 w-8 text-[#dc2626]" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-[#0F172A] uppercase tracking-wider">
-                    Request Received
+                    Estimate Request Received
                   </h3>
                   <p className="mt-3 text-sm text-slate-600 font-semibold max-w-sm">
-                    We'll respond within 24 hours. For urgent needs, call (662) 571-1048.
+                    Thanks! We'll review your property details and respond promptly. For urgent assistance, call 615-991-2361.
                   </p>
                 </motion.div>
               ) : (
@@ -166,14 +171,14 @@ export function GetInTouch() {
                     <Field
                       label="Full Name *"
                       name="name"
-                      placeholder="Roy Brown"
+                      placeholder="Homeowner / Business Name"
                       required
                     />
                     <Field
                       label="Phone Number *"
                       name="phone"
                       type="tel"
-                      placeholder="(662) 571-1048"
+                      placeholder="615-991-2361"
                       required
                     />
                     <Field
@@ -184,47 +189,48 @@ export function GetInTouch() {
                       required
                     />
                     <Field
-                      label="Address / City *"
+                      label="Address or ZIP Code *"
                       name="address"
-                      placeholder="Horn Lake, MS"
+                      placeholder="Nashville, TN 37204"
                       required
                     />
 
                     <div>
-                      <Label>Property Type</Label>
+                      <Label>Shelter Project Type</Label>
                       <select
-                        name="propertyType"
+                        name="projectType"
                         required
-                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] focus:bg-white transition-all cursor-pointer"
+                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all cursor-pointer"
                       >
-                        <option value="Residential">Residential</option>
-                        <option value="Commercial">Commercial</option>
-                        <option value="Warehouse Cleaning">Warehouse Cleaning</option>
-                        <option value="Other">Other</option>
+                        <option value="Residential Underground Shelter">Residential Underground Shelter</option>
+                        <option value="Commercial Storm Shelter">Commercial Storm Shelter</option>
+                        <option value="Shelter Installation & Crane Set">Shelter Installation & Crane Set</option>
+                        <option value="Site Preparation & Excavation">Site Preparation & Excavation</option>
+                        <option value="Shelter Replacement / Upgrade">Shelter Replacement / Upgrade</option>
                       </select>
                     </div>
 
                     <div>
-                      <Label>How soon do you need service?</Label>
+                      <Label>Timeline / Urgency</Label>
                       <select
                         name="timeframe"
                         required
-                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] focus:bg-white transition-all cursor-pointer"
+                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all cursor-pointer"
                       >
-                        <option value="Urgent">Urgent</option>
-                        <option value="Within 1 week">Within 1 week</option>
-                        <option value="Within 2 weeks">Within 2 weeks</option>
-                        <option value="Flexible">Flexible</option>
+                        <option value="Immediate / Urgent">Immediate / Urgent (Storm Season)</option>
+                        <option value="Within 1-2 weeks">Within 1-2 weeks</option>
+                        <option value="Within 30 days">Within 30 days</option>
+                        <option value="Planning / Future project">Planning / Future project</option>
                       </select>
                     </div>
 
                     <div className="sm:col-span-2">
-                      <Label>Brief Description of the Job</Label>
+                      <Label>Tell Us About Your Property</Label>
                       <textarea
                         name="message"
                         rows={3}
-                        placeholder="Tell us what you need — lawn care, landscaping, cleaning, tree removal, or gravel work..."
-                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] focus:bg-white transition-all resize-none"
+                        placeholder="Describe your yard access, property grade, family capacity needs, or any specific requirements..."
+                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all resize-none"
                       />
                     </div>
                   </div>
@@ -234,13 +240,13 @@ export function GetInTouch() {
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={submitting}
-                    className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-[#2E7D32] to-[#1B5E20] text-[#FFD54F] border border-[#D4AF37]/50 px-6 py-4 text-xs font-black uppercase tracking-wider shadow-md hover:brightness-110 cursor-pointer transition-all duration-300 disabled:opacity-75"
+                    className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white border border-red-500/50 px-6 py-4 text-xs font-black uppercase tracking-wider shadow-md hover:brightness-110 cursor-pointer transition-all duration-300 disabled:opacity-75"
                   >
-                    <span>{submitting ? "Submitting..." : "Submit Request →"}</span>
+                    <span>{submitting ? "Submitting..." : "Request a Free Estimate →"}</span>
                   </motion.button>
 
                   <p className="text-center text-[11px] text-slate-500 font-semibold">
-                    We'll respond within 24 hours. For urgent needs, call (662) 571-1048.
+                    We respond promptly. For urgent assistance or weather emergencies, call 615-991-2361.
                   </p>
                 </form>
               )}
@@ -271,18 +277,18 @@ function Item({
         whileHover={{ scale: 1.05 }}
         className={`grid place-items-center h-10 w-10 rounded-xl text-white shrink-0 transition-all duration-300 ${
           isCall 
-            ? "bg-[#2E7D32] text-[#FFD54F] border border-[#D4AF37]/40 shadow-sm" 
+            ? "bg-[#dc2626] text-white border border-red-400/40 shadow-sm" 
             : "bg-white/10 border border-white/10 hover:bg-white/15"
         }`}
       >
-        <Icon className="h-5 w-5 text-[#FFD54F]" />
+        <Icon className="h-5 w-5 text-white" />
       </motion.div>
       <div className="text-left">
         <div className="text-[9px] uppercase tracking-wider text-white/70 font-bold">
           {label}
         </div>
         <div
-          className={`font-display font-bold leading-tight ${isCall ? "text-lg text-[#FFD54F]" : "text-sm text-white/95"}`}
+          className={`font-display font-bold leading-tight ${isCall ? "text-lg text-white" : "text-sm text-white/95"}`}
         >
           {value}
         </div>
@@ -329,7 +335,7 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-[#2E7D32]/10 focus:border-[#2E7D32] focus:bg-white transition-all"
+        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all"
       />
     </div>
   );

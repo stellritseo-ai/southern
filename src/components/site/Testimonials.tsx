@@ -16,7 +16,7 @@ interface Review {
 }
 
 const avatarColors = [
-  "#2E7D32", "#1B5E20", "#33691E", "#558B2F", "#1565C0", "#6D4C41", "#4527A0",
+  "#dc2626", "#b91c1c", "#111722", "#0b0f15", "#d97706", "#475569", "#991b1b",
 ];
 
 function StarRating({ count }: { count: number }) {
@@ -27,7 +27,7 @@ function StarRating({ count }: { count: number }) {
           key={i}
           className={cn(
             "w-3.5 h-3.5",
-            i < count ? "fill-[#FFD54F] text-[#FFD54F]" : "fill-slate-200 text-slate-200"
+            i < count ? "fill-[#fbbf24] text-[#fbbf24]" : "fill-slate-200 text-slate-200"
           )}
         />
       ))}
@@ -39,22 +39,22 @@ function TestimonialCard({ review, isGrid = false }: { review: Review; isGrid?: 
   return (
     <div className={cn(
       "relative bg-white border border-slate-100 rounded-2xl p-5 flex flex-col gap-3 group transition-all duration-300 text-left",
-      "shadow-[0_2px_16px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_rgba(46,125,50,0.14)] hover:border-[#2E7D32]/35",
+      "shadow-[0_2px_16px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_rgba(220,38,38,0.12)] hover:border-[#dc2626]/35",
       isGrid ? "w-full" : "flex-shrink-0 w-[340px] sm:w-[370px] mx-3"
     )}>
 
       {/* Top row: rating + verified badge */}
       <div className="flex items-center justify-between">
         <StarRating count={review.rating} />
-        <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-wider text-[#2E7D32] bg-[#2E7D32]/8 border border-[#2E7D32]/20 px-2 py-0.5 rounded-full">
+        <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-wider text-[#dc2626] bg-red-50 border border-red-200 px-2 py-0.5 rounded-full">
           <BadgeCheck className="w-3 h-3" />
-          Verified
+          Verified Install
         </span>
       </div>
 
       {/* Quote icon + text */}
       <div className="relative">
-        <Quote className="absolute -top-1 -left-0.5 w-6 h-6 text-[#2E7D32]/15 fill-[#2E7D32]/15" />
+        <Quote className="absolute -top-1 -left-0.5 w-6 h-6 text-[#dc2626]/15 fill-[#dc2626]/15" />
         <p className="text-slate-700 text-[13.5px] leading-relaxed font-medium pl-5 flex-1">
           {review.text}
         </p>
@@ -62,16 +62,16 @@ function TestimonialCard({ review, isGrid = false }: { review: Review; isGrid?: 
 
       {/* Service tag */}
       {review.service && (
-        <span className="self-start inline-flex items-center bg-[#2E7D32]/8 border border-[#2E7D32]/20 text-[#2E7D32] text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full">
+        <span className="self-start inline-flex items-center bg-red-50 border border-red-200 text-[#dc2626] text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full">
           {review.service}
         </span>
       )}
 
       {/* Business reply */}
       {review.replyText && (
-        <div className="mt-1 bg-[#2E7D32]/8 border border-[#2E7D32]/20 p-3 rounded-xl text-xs">
-          <p className="font-extrabold text-[#2E7D32] uppercase tracking-wider text-[9px] mb-1">
-            Brown Lawn Care Response
+        <div className="mt-1 bg-red-50/60 border border-red-200/80 p-3 rounded-xl text-xs">
+          <p className="font-extrabold text-[#dc2626] uppercase tracking-wider text-[9px] mb-1">
+            Southern Storm Shelters Response
           </p>
           <p className="text-slate-700 font-medium leading-relaxed">"{review.replyText}"</p>
         </div>
@@ -80,7 +80,7 @@ function TestimonialCard({ review, isGrid = false }: { review: Review; isGrid?: 
       {/* Author */}
       <div className="flex items-center gap-3 pt-3 border-t border-slate-100 mt-auto">
         <div
-          className="w-9 h-9 rounded-full flex items-center justify-center text-[#FFD54F] text-xs font-black flex-shrink-0 shadow-sm"
+          className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-black flex-shrink-0 shadow-sm"
           style={{ backgroundColor: review.avatarColor }}
         >
           {review.initials}
@@ -141,76 +141,101 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
 
   const reviews: Review[] = [
     {
-      text: t("Roy and his team transformed our overgrown yard into a total showpiece! They arrived on time, stayed professional all day, and the price was more than fair. I've never seen our lawn look this good.", "¡Roy y su equipo transformaron nuestro jardín descuidado en una obra de arte! Puntuales, profesionales y precio justo."),
-      name: "Sarah M.",
-      role: t("Homeowner · Horn Lake, MS", "Propietaria · Horn Lake, MS"),
+      text: t(
+        "Having a certified underground storm shelter in our backyard gives our entire family complete peace of mind. The crew excavated, set the unit by crane, and backfilled all in one day with zero lawn damage.",
+        "Tener un refugio subterráneo certificado en nuestro patio le da a toda nuestra familia total tranquilidad. El equipo excavó, instaló la unidad con grúa y rellenó todo en un solo día."
+      ),
+      name: "Marcus & Sarah H.",
+      role: t("Homeowners · Franklin, TN", "Propietarios · Franklin, TN"),
       rating: 5,
-      initials: "SM",
+      initials: "MH",
       avatarColor: avatarColors[0],
-      service: t("Lawn Mowing", "Corte de Césped"),
+      service: t("Underground Shelter", "Refugio Subterráneo"),
+      replyText: t("Thank you Marcus! Protecting Middle Tennessee families is our highest calling.", "¡Gracias Marcus! Proteger a las familias de Middle Tennessee es nuestra máxima vocación."),
     },
     {
-      text: t("We hired Brown Lawn Care for a full office deep cleaning. Everything was spotless — they even came back the next day to touch up a few areas at no charge. Incredible service and professionalism.", "Contratamos a Brown Lawn Care para limpieza profunda de oficina. Todo quedó impecable. Regresaron al día siguiente sin costo extra."),
-      name: "James T.",
-      role: t("Business Owner · Southaven, MS", "Dueño de Negocio · Southaven, MS"),
-      rating: 5,
-      initials: "JT",
-      avatarColor: avatarColors[1],
-      service: t("Office Cleaning", "Limpieza de Oficina"),
-    },
-    {
-      text: t("A huge tree fell on our driveway during a storm. I called at 10 PM and Roy had his crew out at 7 AM the next morning. They cleared everything and even repaired the gravel. Absolute lifesavers!", "Un árbol cayó en nuestra entrada durante la tormenta. Llamé a las 10 PM y Roy envió a su equipo a las 7 AM. ¡Nos salvaron!"),
-      name: "Linda R.",
-      role: t("Homeowner · Olive Branch, MS", "Propietaria · Olive Branch, MS"),
-      rating: 5,
-      initials: "LR",
-      avatarColor: avatarColors[2],
-      service: t("Emergency Tree Removal", "Remoción de Árbol de Emergencia"),
-    },
-    {
-      text: t("I love that they're bilingual! It made everything so much easier for my parents who speak Spanish. Our yard has never looked better. You can tell this is a family-owned business that truly cares.", "¡Me encanta que hablen español! Hizo todo mucho más fácil para mis padres. El jardín nunca se ha visto mejor. Se nota que esta familia se preocupa."),
-      name: "Carlos G.",
-      role: t("Homeowner · Memphis, TN", "Propietario · Memphis, TN"),
-      rating: 5,
-      initials: "CG",
-      avatarColor: avatarColors[5],
-      service: t("Landscaping", "Paisajismo"),
-    },
-    {
-      text: t("We use Brown for our commercial property on a weekly basis — mowing, landscaping, and seasonal cleanups. Consistently on time and always professional. Highly recommend for any business property.", "Usamos a Brown para nuestra propiedad comercial semanalmente. Siempre puntuales y profesionales. Los recomiendo para cualquier propiedad comercial."),
-      name: "Diana K.",
-      role: t("Property Manager · Hernando, MS", "Gerente de Propiedad · Hernando, MS"),
+      text: t(
+        "When the tornado sirens blew through Murfreesboro last spring, stepping down into our Southern Storm Shelter was the greatest relief of my life. Solid steel, airtight seals, and emergency latching.",
+        "Cuando sonaron las sirenas de tornado en Murfreesboro la primavera pasada, bajar a nuestro refugio de Southern Storm Shelters fue el mayor alivio de mi vida."
+      ),
+      name: "David K.",
+      role: t("Homeowner · Murfreesboro, TN", "Propietario · Murfreesboro, TN"),
       rating: 5,
       initials: "DK",
       avatarColor: avatarColors[1],
-      service: t("Commercial Maintenance", "Mantenimiento Comercial"),
+      service: t("Residential Tornado Vault", "Bóveda Tornado Residencial"),
     },
     {
-      text: t("Fantastic gravel driveway installation. Level, compacted perfectly, and it looks beautiful. They even hauled away all the old material without being asked. No mess, no hassle. Will definitely use again.", "Instalación de entrada de grava fantástica. Nivelado, perfectamente compactado y se ve hermoso. Retiraron todo el material viejo sin pedirlo."),
-      name: "Mike D.",
-      role: t("Homeowner · Nesbit, MS", "Propietario · Nesbit, MS"),
+      text: t(
+        "We needed an engineered storm shelter for our commercial depot just outside Nashville. Southern Storm Shelters handled engineering specs, permits, and heavy crane placement flawlessly.",
+        "Necesitábamos un refugio contra tormentas con ingeniería certificada para nuestro depósito comercial en Nashville. Manejaron especificaciones, permisos y colocación de grúa a la perfección."
+      ),
+      name: "Brian T.",
+      role: t("Facility Operations · Nashville, TN", "Operaciones de Instalación · Nashville, TN"),
       rating: 5,
-      initials: "MD",
+      initials: "BT",
+      avatarColor: avatarColors[2],
+      service: t("Commercial Safe Room", "Sala Segura Comercial"),
+    },
+    {
+      text: t(
+        "Outstanding communication from the initial site evaluation to the final hydraulic hatch inspection. They explained soil grades, drainage, and FEMA P-320 standards clearly.",
+        "Comunicación sobresaliente desde la evaluación inicial hasta la inspección final de la escotilla hidráulica. Explicaron la nivelación, drenaje y normas FEMA con claridad."
+      ),
+      name: "Elena R.",
+      role: t("Homeowner · Hendersonville, TN", "Propietaria · Hendersonville, TN"),
+      rating: 5,
+      initials: "ER",
+      avatarColor: avatarColors[4],
+      service: t("Turnkey Installation", "Instalación Llave en Mano"),
+    },
+    {
+      text: t(
+        "Living in Tornado Alley here in Tennessee, this was the best investment we have ever made in our property. Professional, courteous, punctual, and genuine life-savers.",
+        "Viviendo en el callejón de tornados aquí en Tennessee, esta fue la mejor inversión que hemos hecho en nuestra propiedad. Profesionales, puntuales y salvavidas reales."
+      ),
+      name: "James & Karen W.",
+      role: t("Homeowners · Brentwood, TN", "Propietarios · Brentwood, TN"),
+      rating: 5,
+      initials: "JW",
       avatarColor: avatarColors[0],
-      service: t("Gravel Work", "Trabajo de Grava"),
+      service: t("Family Safe Haven", "Refugio Seguro Familiar"),
     },
     {
-      text: t("Brown Lawn Care did a brush clearing job on our 3-acre property. It was a big job and they knocked it out in one day! Reasonable quote, zero mess left behind, and very courteous crew.", "Brown Lawn Care hizo el desmonte de nuestra propiedad de 3 acres. ¡Un trabajo grande terminado en un día! Precio razonable, sin desorden."),
-      name: "Patricia W.",
-      role: t("Homeowner · Horn Lake, MS", "Propietaria · Horn Lake, MS"),
+      text: t(
+        "We upgraded an aging shelter with a new reinforced steel entrance hatch and air filtration vents. Quick turnaround, clean welds, and incredible build quality.",
+        "Actualizamos un refugio antiguo con una nueva escotilla de entrada de acero reforzado y respiraderos de filtración de aire. Excelente calidad de construcción."
+      ),
+      name: "Robert P.",
+      role: t("Homeowner · Lebanon, TN", "Propietario · Lebanon, TN"),
       rating: 5,
-      initials: "PW",
+      initials: "RP",
+      avatarColor: avatarColors[5],
+      service: t("Shelter Upgrade", "Mejora de Refugio"),
+    },
+    {
+      text: t(
+        "Our yard has dense clay and rock, but the excavation team brought the right heavy machinery and completed the precision excavation without disturbing our septic or utilities.",
+        "Nuestro patio tiene arcilla densa y roca, pero el equipo de excavación trajo la maquinaria pesada adecuada y completó la excavación con precisión sin tocar servicios."
+      ),
+      name: "Patricia G.",
+      role: t("Homeowner · Mount Juliet, TN", "Propietaria · Mount Juliet, TN"),
+      rating: 5,
+      initials: "PG",
       avatarColor: avatarColors[3],
-      service: t("Brush Removal", "Remoción de Maleza"),
+      service: t("Site Preparation & Excavation", "Preparación y Excavación"),
     },
     {
-      text: t("We needed our entire apartment complex landscaped and maintained seasonally. Roy gave a very competitive bid and delivered on every promise. Our tenants constantly compliment the curb appeal now!", "Necesitamos nuestro complejo de apartamentos mantenido estacionalmente. Roy ofreció un precio competitivo y cumplió con todo."),
-      name: "Robert A.",
-      role: t("Landlord · Southaven, MS", "Arrendador · Southaven, MS"),
+      text: t(
+        "From our first call to their 24/7 hotline to the day the crane lowered our vault into place, Southern Storm Shelters showed why they are the leaders in Tennessee storm protection.",
+        "Desde nuestra primera llamada a su línea directa 24/7 hasta el día en que la grúa colocó nuestra bóveda, demostraron por qué son los líderes en protección contra tormentas en Tennessee."
+      ),
+      name: "Michael C.",
+      role: t("Homeowner · Columbia, TN", "Propietario · Columbia, TN"),
       rating: 5,
-      initials: "RA",
+      initials: "MC",
       avatarColor: avatarColors[6],
-      service: t("Commercial Landscaping", "Paisajismo Comercial"),
+      service: t("Underground Vault", "Bóveda Subterránea"),
     },
   ];
 
@@ -223,15 +248,15 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
     <section id="reviews" className="relative py-12 sm:py-16 lg:py-20 overflow-hidden" style={{ background: sectionBg }}>
 
       {/* Background blobs */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-[#2E7D32]/10 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[300px] rounded-full bg-[#D4AF37]/10 blur-[100px]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-red-600/10 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[300px] rounded-full bg-amber-500/10 blur-[100px]" />
 
       {/* Dot grid */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
-          backgroundImage: "radial-gradient(circle, #2E7D32 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, #dc2626 1px, transparent 1px)",
           backgroundSize: "30px 30px",
         }}
       />
@@ -245,16 +270,16 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
         className="mx-auto w-[90%] max-w-7xl text-center mb-8 sm:mb-14 relative z-10"
       >
         {/* Eyebrow */}
-        <div className="inline-flex items-center gap-2 bg-white border border-[#2E7D32]/25 rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest text-[#2E7D32] mb-5 shadow-sm">
-          <Star className="w-3.5 h-3.5 fill-[#FFD54F] text-[#FFD54F]" />
+        <div className="inline-flex items-center gap-2 bg-white border border-red-200 rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest text-[#dc2626] mb-5 shadow-sm">
+          <Star className="w-3.5 h-3.5 fill-[#fbbf24] text-[#fbbf24]" />
           {t("Client Reviews", "Opiniones de Clientes")}
-          <Star className="w-3.5 h-3.5 fill-[#FFD54F] text-[#FFD54F]" />
+          <Star className="w-3.5 h-3.5 fill-[#fbbf24] text-[#fbbf24]" />
         </div>
 
         <h2 className="text-[22px] sm:text-[32px] lg:text-[40px] font-black text-slate-900 tracking-tight leading-tight mt-0 sm:mt-[-8px] mb-[10px]">
-          {t("What Our ", "Lo Que Dicen ")}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E7D32] to-[#1B5E20]">
-            {t("Customers Say", "Nuestros Clientes")}
+          {t("Trusted to Protect ", "De Confianza para Proteger ")}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
+            {t("What Matters Most", "Lo Que Más Importa")}
           </span>
         </h2>
 
@@ -262,17 +287,17 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
           "mx-auto max-w-xl text-slate-500 text-[14px] sm:text-[15px] leading-relaxed font-medium",
           isGrid ? "mb-0" : "mb-[-30px]"
         )}>
-          {t("Real 5-star experiences from homeowners and businesses across Horn Lake, MS and a 50-mile radius.", "Experiencias reales de propietarios y empresas en Horn Lake, MS y un radio de 50 millas.")}
+          {t("Real 5-star experiences from homeowners and businesses across Nashville, TN and our 100-mile service radius.", "Experiencias reales de 5 estrellas de propietarios y empresas en Nashville, TN y nuestro radio de 100 millas.")}
         </p>
 
         {/* Aggregate trust row */}
         {!isGrid && (
           <div className="flex items-center justify-center gap-3 mt-6">
             <div className="flex -space-x-2">
-              {["SM","JT","LR","CG","DK"].map((init, i) => (
+              {["MH","DK","BT","ER","JW"].map((init, i) => (
                 <div
                   key={i}
-                  className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-black text-[#FFD54F] shadow-md"
+                  className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-black text-white shadow-md"
                   style={{ backgroundColor: avatarColors[i % avatarColors.length], zIndex: 5 - i }}
                 >
                   {init}
@@ -281,10 +306,10 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
             </div>
             <div className="text-left">
               <div className="flex items-center gap-1">
-                {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-[#FFD54F] text-[#FFD54F]" />)}
+                {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-[#fbbf24] text-[#fbbf24]" />)}
                 <span className="text-[13px] font-black text-slate-900 ml-1">5.0</span>
               </div>
-              <p className="text-[11px] text-slate-500 font-medium">{t("200+ verified reviews", "200+ reseñas verificadas")}</p>
+              <p className="text-[11px] text-slate-500 font-medium">{t("200+ verified shelter installations", "200+ instalaciones verificadas")}</p>
             </div>
           </div>
         )}
