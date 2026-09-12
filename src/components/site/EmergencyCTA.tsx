@@ -9,7 +9,10 @@ export function EmergencyCTA() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-24 text-white bg-[#0b0f15] border-y border-red-500/30">
+    <section
+      className="relative w-full overflow-hidden py-[50px] text-white bg-[#0b0f15] border-y border-red-500/30"
+      style={{ paddingTop: "50px", paddingBottom: "50px" }}
+    >
       {/* Background Image with Multi-Layered Gradients */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
         <img
