@@ -264,7 +264,7 @@ export function Services() {
 
           {/* Quick Callout Button */}
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-            <Button variant="hero" size="xl" asChild className="font-extrabold rounded-full px-8 bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-md btn-glow w-full md:w-auto justify-center">
+            <Button variant="hero" size="lg" asChild className="font-bold rounded-full px-6 text-sm sm:text-base bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-md hover:shadow-lg transition-all duration-200 w-full md:w-auto justify-center">
               <Link to="/services">
                 {t("Explore All Shelters", "Explorar Todos los Refugios")}
                 <ArrowRight className="w-4 h-4 ml-1 text-white" />
