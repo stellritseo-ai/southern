@@ -109,7 +109,10 @@ export function WhyChooseUs() {
             </h2>
 
             {/* Subtext */}
-            <p className="text-slate-500 text-[14px] sm:text-[15px] leading-relaxed mb-7 font-normal max-w-2xl">
+            <p
+              className="text-slate-500 text-[14px] sm:text-[15px] leading-relaxed font-normal max-w-2xl"
+              style={{ marginBottom: "10px" }}
+            >
               {t("Southern Storm Shelters LLC is a licensed, insured, and bonded storm shelter company dedicated to defending Tennessee families and businesses against severe tornadoes.", "Southern Storm Shelters LLC es una empresa de refugios con licencia, seguro y fianza dedicada a defender a las familias y empresas de Tennessee contra tornados severos.")}
             </p>
 
