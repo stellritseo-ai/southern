@@ -305,7 +305,11 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
   const sectionBg = "#F8FAFC";
 
   return (
-    <section id="reviews" className="relative py-14 sm:py-18 lg:py-24 overflow-hidden" style={{ background: sectionBg }}>
+    <section
+      id="reviews"
+      className="relative py-[60px] overflow-hidden"
+      style={{ background: sectionBg, paddingTop: "60px", paddingBottom: "60px" }}
+    >
 
       {/* Background ambient lighting */}
       <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-red-600/8 blur-[120px]" />
@@ -409,23 +413,6 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
         </div>
       )}
 
-      {/* Bottom Google Authenticity Trust Bar */}
-      <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-slate-500 font-medium relative z-10 select-none px-4">
-        <div className="flex items-center gap-1.5">
-          <GoogleIcon className="w-4 h-4" />
-          <span className="font-bold text-slate-800">100% Authentic Google Reviews</span>
-        </div>
-        <span className="hidden sm:inline text-slate-300">•</span>
-        <div className="flex items-center gap-1.5">
-          <BadgeCheck className="w-4 h-4 text-emerald-600" />
-          <span>{t("Verified Middle Tennessee Homeowners", "Propietarios Verificados de Middle Tennessee")}</span>
-        </div>
-        <span className="hidden sm:inline text-slate-300">•</span>
-        <div className="flex items-center gap-1.5 text-slate-700 font-semibold">
-          <Star className="w-3.5 h-3.5 fill-[#fbbf24] text-[#fbbf24]" />
-          <span>{t("5.0 Star Average Across All Installations", "Promedio de 5.0 Estrellas en Todas las Instalaciones")}</span>
-        </div>
-      </div>
 
       {/* CSS Animations */}
       <style>{`
