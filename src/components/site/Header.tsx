@@ -195,7 +195,7 @@ export function Header() {
               <img
                 src={logoImg}
                 alt="Southern Storm Shelters LLC"
-                className="h-9 sm:h-11 w-auto max-w-[200px] sm:max-w-[240px] object-contain"
+                className="h-11 sm:h-13 w-auto max-w-[220px] sm:max-w-[260px] object-contain"
               />
             </Link>
 
@@ -222,11 +222,11 @@ export function Header() {
           <div className="hidden md:flex items-center justify-between w-full gap-6">
 
             {/* Left: Prominent Brand Logo */}
-            <Link to="/" className="flex items-center shrink-0 group" aria-label="Southern Storm Shelters LLC Home">
+            <Link to="/" className="flex items-center shrink-0 group py-0.5" aria-label="Southern Storm Shelters LLC Home">
               <img
                 src={logoImg}
                 alt="Southern Storm Shelters LLC"
-                className="h-12 lg:h-14 w-auto max-w-[240px] lg:max-w-[280px] object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                className="h-14 lg:h-16 xl:h-[70px] w-auto max-w-[260px] lg:max-w-[300px] xl:max-w-[340px] object-contain group-hover:scale-105 transition-transform duration-300"
               />
             </Link>
 
