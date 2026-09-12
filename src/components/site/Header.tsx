@@ -241,10 +241,9 @@ export function Header() {
                   if (item.to === "/services") {
                     return (
                       <div key={item.label} className="relative group/nav">
-                        <Link
-                          to="/services"
+                        <div
                           className={cn(
-                            "flex items-center gap-1 rounded-full px-2.5 lg:px-3 py-1 text-[13px] font-bold uppercase tracking-wider transition-colors whitespace-nowrap cursor-pointer",
+                            "flex items-center gap-1 rounded-full px-2.5 lg:px-3 py-1 text-[13px] font-bold uppercase tracking-wider transition-colors whitespace-nowrap cursor-default",
                             active
                               ? "text-[#dc2626] bg-red-50 border border-red-200"
                               : "text-[#0b0f15] hover:text-[#dc2626]"
@@ -253,7 +252,7 @@ export function Header() {
                         >
                           {t("Storm Shelters", "Refugios")}
                           <ChevronDown className="h-3.5 w-3.5 text-[#dc2626] group-hover/nav:rotate-180 transition-transform duration-200" />
-                        </Link>
+                        </div>
 
                         {/* ── PREMIUM PIXEL-PERFECT SUBMENU DROPDOWN ──────────────── */}
                         <div className="absolute left-1/2 -translate-x-1/2 top-full z-50 pt-3 opacity-0 invisible pointer-events-none group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:pointer-events-auto transition-all duration-300 transform group-hover/nav:translate-y-0 translate-y-2">
@@ -273,22 +272,20 @@ export function Header() {
                                   {t("Engineered Underground Safety Systems", "Sistemas de Seguridad Diseñados")}
                                 </span>
                               </div>
-                              <Link
-                                to="/services"
+                              <span
                                 className="text-[11px] font-extrabold uppercase text-[#dc2626] hover:text-[#b91c1c] tracking-wider transition-colors flex items-center gap-1 group/all"
                               >
                                 <span>{t("Explore All Shelters", "Ver Todos Los Refugios")}</span>
                                 <ArrowRight className="w-3.5 h-3.5 text-[#dc2626] group-hover/all:translate-x-1 transition-transform" />
-                              </Link>
+                              </span>
                             </div>
 
                             {/* 2-Column Pixel-Perfect Service Cards Grid */}
                             <div className="grid grid-cols-2 gap-3 relative z-10">
                               {serviceLinks.map((srv) => (
-                                <Link
+                                <div
                                   key={srv.l}
-                                  to={srv.to}
-                                  className="group/item flex items-start gap-3.5 rounded-2xl p-3 bg-slate-50 hover:bg-white border border-slate-200 hover:border-[#dc2626] hover:shadow-md transition-all duration-300 text-left relative overflow-hidden"
+                                  className="group/item flex items-start gap-3.5 rounded-2xl p-3 bg-slate-50 hover:bg-white border border-slate-200 hover:border-[#dc2626] hover:shadow-md transition-all duration-300 text-left relative overflow-hidden cursor-default"
                                 >
                                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500/15 to-red-600/20 group-hover/item:from-[#dc2626] group-hover/item:to-[#b91c1c] border border-red-400/40 flex items-center justify-center text-[#dc2626] group-hover/item:text-white transition-all duration-300 shrink-0 shadow-xs group-hover/item:scale-105">
                                     <srv.icon className="h-5 w-5" />
@@ -303,7 +300,7 @@ export function Header() {
                                       {srv.desc}
                                     </span>
                                   </div>
-                                </Link>
+                                </div>
                               ))}
                             </div>
 
@@ -338,11 +335,10 @@ export function Header() {
                   }
 
                   return (
-                    <Link
+                    <span
                       key={item.label}
-                      to={item.to}
                       className={cn(
-                        "rounded-full px-2.5 lg:px-3 py-1 text-[13px] font-bold uppercase tracking-wider transition-colors whitespace-nowrap cursor-pointer",
+                        "rounded-full px-2.5 lg:px-3 py-1 text-[13px] font-bold uppercase tracking-wider transition-colors whitespace-nowrap cursor-default",
                         active
                           ? "text-[#dc2626] bg-red-50 border border-red-200"
                           : "text-[#0b0f15] hover:text-[#dc2626]"
@@ -350,7 +346,7 @@ export function Header() {
                       style={{ fontSize: "13px", fontWeight: 700, textTransform: "uppercase" }}
                     >
                       {item.label}
-                    </Link>
+                    </span>
                   );
                 })}
               </nav>
@@ -414,15 +410,14 @@ export function Header() {
                     {servicesOpen && (
                       <div className="ml-4 pl-4 border-l-2 border-[#dc2626]/30 space-y-1.5 py-1">
                         {serviceLinks.map((srv) => (
-                          <Link
+                          <div
                             key={srv.l}
-                            to={srv.to}
-                            className="flex items-center gap-2.5 py-2 px-2 rounded-xl text-[13px] font-bold text-[#0b0f15] hover:text-[#dc2626] hover:bg-slate-50 transition"
+                            className="flex items-center gap-2.5 py-2 px-2 rounded-xl text-[13px] font-bold text-[#0b0f15] hover:text-[#dc2626] hover:bg-slate-50 transition cursor-default"
                             style={{ fontSize: "13px", fontWeight: 700 }}
                           >
                             <srv.icon className="h-4 w-4 text-[#dc2626] shrink-0" />
                             <span>{srv.l}</span>
-                          </Link>
+                          </div>
                         ))}
                       </div>
                     )}
@@ -431,11 +426,10 @@ export function Header() {
               }
 
               return (
-                <Link
+                <span
                   key={item.label}
-                  to={item.to}
                   className={cn(
-                    "rounded-2xl px-4 py-3 text-[13px] font-bold uppercase tracking-wider transition-colors",
+                    "rounded-2xl px-4 py-3 text-[13px] font-bold uppercase tracking-wider transition-colors cursor-default",
                     active
                       ? "bg-red-50 text-[#dc2626] border border-red-200"
                       : "text-[#0b0f15] hover:bg-slate-50"
@@ -443,7 +437,7 @@ export function Header() {
                   style={{ fontSize: "13px", fontWeight: 700, textTransform: "uppercase" }}
                 >
                   {item.label}
-                </Link>
+                </span>
               );
             })}
           </nav>

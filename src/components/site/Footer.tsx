@@ -202,9 +202,9 @@ export function Footer() {
             <ul className="space-y-2.5">
               {quickLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <Link to={href} className="text-xs text-slate-300 hover:text-red-400 font-semibold block">
+                  <span className="text-xs text-slate-300 font-semibold block cursor-default">
                     {label}
-                  </Link>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -214,9 +214,9 @@ export function Footer() {
             <ul className="space-y-2.5">
               {servicesLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <Link to={href} className="text-xs text-slate-300 hover:text-red-400 font-semibold block">
+                  <span className="text-xs text-slate-300 font-semibold block cursor-default">
                     {label}
-                  </Link>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -226,9 +226,9 @@ export function Footer() {
             <ul className="space-y-2.5">
               {serviceAreaLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <Link to={href} className="text-xs text-slate-300 hover:text-red-400 font-semibold block">
+                  <span className="text-xs text-slate-300 font-semibold block cursor-default">
                     {label}
-                  </Link>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -330,13 +330,12 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm font-semibold">
               {quickLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <Link
-                    to={href}
-                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2 group"
+                  <span
+                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2 group cursor-default"
                   >
                     <ArrowRight className="h-3 w-3 text-[#dc2626] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     <span>{label}</span>
-                  </Link>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -350,13 +349,12 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm font-semibold">
               {servicesLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <Link
-                    to={href}
-                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2 group"
+                  <span
+                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2 group cursor-default"
                   >
                     <ArrowRight className="h-3 w-3 text-[#dc2626] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     <span>{label}</span>
-                  </Link>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -370,13 +368,12 @@ export function Footer() {
             <ul className="space-y-2 text-xs font-semibold">
               {serviceAreaLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <Link
-                    to={href}
-                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-1.5 group"
+                  <span
+                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-1.5 group cursor-default"
                   >
                     <ArrowRight className="h-2.5 w-2.5 text-[#dc2626] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     <span className="truncate">{label}</span>
-                  </Link>
+                  </span>
                 </li>
               ))}
             </ul>

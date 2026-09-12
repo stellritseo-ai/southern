@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link } from "@tanstack/react-router";
+
 import { useLanguage } from "@/hooks/useLanguage";
 import whyUsVideo from "@/assets/whyus.mp4";
 import installCraneImg from "@/assets/install-crane.jpg";
@@ -148,13 +148,12 @@ export function WhyChooseUs() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-3">
-              <Link
-                to="/services"
-                className="inline-flex items-center justify-center gap-2 bg-[#0b0f15] hover:bg-[#111722] text-white text-[11px] font-black uppercase tracking-widest rounded-full px-5 sm:px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-pointer w-full sm:w-auto"
+              <div
+                className="inline-flex items-center justify-center gap-2 bg-[#0b0f15] hover:bg-[#111722] text-white text-[11px] font-black uppercase tracking-widest rounded-full px-5 sm:px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-default w-full sm:w-auto"
               >
                 {t("Explore Shelters", "Explorar Refugios")}
                 <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              </div>
               <a
                 href="tel:6159912361"
                 className="inline-flex items-center justify-center gap-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white text-[11px] font-black uppercase tracking-widest rounded-full px-5 sm:px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-pointer w-full sm:w-auto"

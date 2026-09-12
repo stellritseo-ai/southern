@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+
 import {
   ArrowRight,
   Shield,
@@ -50,9 +50,8 @@ function ServiceCard({
   const { t } = useLanguage();
 
   return (
-    <Link
-      to={s.to}
-      className={`group relative w-full ${aspectRatio} rounded-[32px] overflow-hidden bg-slate-950 border border-slate-200/80 hover:border-[#dc2626] shadow-xl hover:shadow-[0_22px_60px_rgba(220,38,38,0.3)] transition-all duration-500 cursor-pointer flex flex-col justify-end select-none block`}
+    <div
+      className={`group relative w-full ${aspectRatio} rounded-[32px] overflow-hidden bg-slate-950 border border-slate-200/80 hover:border-[#dc2626] shadow-xl hover:shadow-[0_22px_60px_rgba(220,38,38,0.3)] transition-all duration-500 cursor-default flex flex-col justify-end select-none block`}
     >
       {/* Background Image */}
       <img
@@ -124,7 +123,7 @@ function ServiceCard({
         </div>
 
       </div>
-    </Link>
+    </div>
   );
 }
 
@@ -272,11 +271,9 @@ export function Services() {
 
           {/* Quick Callout Button */}
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-            <Button variant="hero" size="lg" asChild className="font-bold rounded-full px-6 text-sm sm:text-base bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-md hover:shadow-lg transition-all duration-200 w-full md:w-auto justify-center">
-              <Link to="/services">
-                {t("Explore All Shelters", "Explorar Todos los Refugios")}
-                <ArrowRight className="w-4 h-4 ml-1 text-white" />
-              </Link>
+            <Button variant="hero" size="lg" className="font-bold rounded-full px-6 text-sm sm:text-base bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-md hover:shadow-lg transition-all duration-200 w-full md:w-auto justify-center">
+              {t("Explore All Shelters", "Explorar Todos los Refugios")}
+              <ArrowRight className="w-4 h-4 ml-1 text-white" />
             </Button>
           </div>
         </div>
