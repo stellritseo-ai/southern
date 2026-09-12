@@ -9,7 +9,6 @@ import {
   ShieldCheck,
   Clock,
   Star,
-  Sparkles,
   Zap,
 } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -77,15 +76,12 @@ export function ContactIllustrationSection() {
     setOpenId((prev) => (prev === id ? null : id));
   };
 
-  const servicesList = [
-    "Underground Shelters",
-    "Residential Vaults",
-    "Commercial Shelters",
-    "Turnkey Crane Sets",
-  ];
-
   return (
-    <section id="faq" className="relative py-12 sm:py-16 lg:py-28 bg-white border-b border-slate-100 overflow-hidden">
+    <section
+      id="faq"
+      className="relative py-[60px] bg-white border-b border-slate-100 overflow-hidden"
+      style={{ paddingTop: "60px", paddingBottom: "60px" }}
+    >
 
       {/* ── Background Decorations ──────────────────────── */}
       <div className="pointer-events-none absolute inset-0">
@@ -251,21 +247,9 @@ export function ContactIllustrationSection() {
                 </a>
               </div>
 
-              {/* Floating Bottom Card: Service Pills & Action */}
+              {/* Floating Bottom Card: Action & Details */}
               <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-white/40 rounded-2xl p-4 shadow-2xl text-left z-20">
-                <div className="flex flex-wrap gap-1.5 mb-2.5">
-                  {servicesList.map((srv) => (
-                    <span
-                      key={srv}
-                      className="inline-flex items-center gap-1 bg-red-50 border border-red-200 text-[#dc2626] text-[9.5px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full"
-                    >
-                      <Sparkles className="w-2.5 h-2.5 text-[#dc2626]" />
-                      {t(srv, srv)}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between pt-1 border-t border-slate-100">
+                <div className="flex items-center justify-between">
                   <div>
                     <span className="text-[9px] uppercase tracking-widest text-[#dc2626] font-black block">
                       {t("Licensed • Insured • Bonded • Nashville, TN", "Licenciado • Asegurado • Afianzado • Nashville, TN")}
