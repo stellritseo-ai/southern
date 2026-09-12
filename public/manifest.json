@@ -1,11 +1,11 @@
 {
-  "name": "Brown Lawn Care & Cleaning Service, LLC",
-  "short_name": "Brown Lawn Care",
-  "description": "Professional Lawn Care, Landscaping, Tree Removal & Commercial Cleaning in Horn Lake, MS & 50-mile radius.",
+  "name": "Southern Storm Shelters LLC",
+  "short_name": "Southern Shelters",
+  "description": "FEMA P-320 & ICC-500 Compliant Underground Storm Shelters & Safe Rooms in Nashville, TN & 100-Mile Radius.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2E7D32",
+  "background_color": "#0b0f15",
+  "theme_color": "#dc2626",
   "icons": [
     {
       "src": "/favicon.png",

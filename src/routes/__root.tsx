@@ -11,7 +11,7 @@ import {
 import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import favIcon from "../assets/logo.png";
+import favIcon from "../assets/logo-mark.png";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LanguageProvider } from "../hooks/useLanguage";
 import { getSiteSettings } from "../lib/leads-store";
@@ -125,28 +125,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#2E7D32" },
-      { title: "Brown Lawn Care & Cleaning Service, LLC | Horn Lake, MS" },
-      { name: "description", content: "Family-owned lawn care, landscaping, tree removal, gravel driveway repair, and commercial/residential cleaning in Horn Lake, MS & 50-mile radius across MS, TN, and AR. Licensed, insured, bonded." },
-      { name: "keywords", content: "lawn care horn lake ms, lawn mowing horn lake, landscaping horn lake ms, tree removal olive branch ms, office cleaning southhaven ms, gravel driveway repair memphis, residential cleaning horn lake" },
+      { name: "theme-color", content: "#dc2626" },
+      { title: "Southern Storm Shelters LLC | Nashville, TN" },
+      { name: "description", content: "FEMA P-320 & ICC-500 compliant residential underground storm shelters, garage vaults, and commercial safe rooms in Nashville, TN & 100-mile radius. Licensed, insured, bonded." },
+      { name: "keywords", content: "storm shelters nashville tn, underground storm shelters, tornado shelters tennessee, safe rooms franklin tn, murfreesboro storm shelter, residential storm shelter" },
       { name: "robots", content: "index, follow" },
-      { name: "author", content: "Brown Lawn Care & Cleaning Service, LLC" },
-      { name: "geo.region", content: "US-MS" },
-      { name: "geo.placename", content: "Horn Lake, MS" },
-      { name: "geo.position", content: "34.9537;-90.0348" },
-      { name: "ICBM", content: "34.9537, -90.0348" },
-      { property: "og:title", content: "Brown Lawn Care & Cleaning Service, LLC | Horn Lake, MS" },
-      { property: "og:description", content: "15+ Years Experience & 6 Years in Business — Licensed, Insured & Bonded Lawn Care, Landscaping & Cleaning in Horn Lake, MS & 50-Mile Radius." },
+      { name: "author", content: "Southern Storm Shelters LLC" },
+      { name: "geo.region", content: "US-TN" },
+      { name: "geo.placename", content: "Nashville, TN" },
+      { name: "geo.position", content: "36.1627;-86.7816" },
+      { name: "ICBM", content: "36.1627, -86.7816" },
+      { property: "og:title", content: "Southern Storm Shelters LLC | Nashville, TN" },
+      { property: "og:description", content: "FEMA P-320 & ICC-500 compliant residential underground storm shelters, garage vaults, and commercial safe rooms in Nashville, TN & 100-mile radius." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.brownlawncarecleaningservicellc.com" },
-      { property: "og:image", content: "https://www.brownlawncarecleaningservicellc.com/assets/logo.png" },
-      { property: "og:site_name", content: "Brown Lawn Care & Cleaning Service, LLC" },
+      { property: "og:url", content: "https://www.southernstormshelters.com" },
+      { property: "og:image", content: "https://www.southernstormshelters.com/favicon.png" },
+      { property: "og:site_name", content: "Southern Storm Shelters LLC" },
       { property: "og:locale", content: "en_US" },
       { property: "og:locale:alternate", content: "es_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Brown Lawn Care & Cleaning Service, LLC | Horn Lake, MS" },
-      { name: "twitter:description", content: "Family-owned lawn care, landscaping, tree removal, gravel driveway repair, and commercial/residential cleaning in Horn Lake, MS & 50-mile radius across MS, TN, and AR." },
-      { name: "twitter:image", content: "https://www.brownlawncarecleaningservicellc.com/assets/logo.png" },
+      { name: "twitter:title", content: "Southern Storm Shelters LLC | Nashville, TN" },
+      { name: "twitter:description", content: "FEMA P-320 & ICC-500 compliant residential underground storm shelters, garage vaults, and commercial safe rooms in Nashville, TN & 100-mile radius." },
+      { name: "twitter:image", content: "https://www.southernstormshelters.com/favicon.png" },
     ],
     links: [
       { rel: "icon", href: favIcon, type: "image/png" },

@@ -88,34 +88,34 @@ export function Footer() {
 
   const quickLinks = [
     { label: t("Home", "Inicio"), href: "/" },
-    { label: t("About Us", "Sobre Nosotros"), href: "/about" },
-    { label: t("Storm Shelters", "Refugios"), href: "/services" },
-    { label: t("Service Area (100-Mi)", "Área de Servicio"), href: "/service-areas" },
-    { label: t("Free Estimate", "Cotización Gratis"), href: "/free-quote" },
-    { label: t("Gallery", "Galería"), href: "/projects" },
-    { label: t("Reviews", "Reseñas"), href: "/reviews" },
+    { label: t("About Us", "Sobre Nosotros"), href: "/" },
+    { label: t("Storm Shelters", "Refugios"), href: "/" },
+    { label: t("Service Area (100-Mi)", "Área de Servicio"), href: "/" },
+    { label: t("Free Estimate", "Cotización Gratis"), href: "/" },
+    { label: t("Gallery", "Galería"), href: "/" },
+    { label: t("Reviews", "Reseñas"), href: "/" },
     { label: t("Contact", "Contacto"), href: "/contact" },
   ];
 
   const servicesLinks = [
-    { label: t("Underground Storm Shelters", "Refugios Subterráneos"), href: "/services" },
-    { label: t("Residential Storm Shelters", "Refugios Residenciales"), href: "/services" },
-    { label: t("Commercial Storm Shelters", "Refugios Comerciales"), href: "/services" },
-    { label: t("Shelter Installation & Crane Sets", "Instalación y Colocación"), href: "/services" },
-    { label: t("Site Preparation & Excavation", "Preparación de Terreno"), href: "/services" },
-    { label: t("Shelter Upgrades & Modernization", "Mejoras de Refugios"), href: "/services" },
+    { label: t("Underground Storm Shelters", "Refugios Subterráneos"), href: "#" },
+    { label: t("Residential Storm Shelters", "Refugios Residenciales"), href: "#" },
+    { label: t("Commercial Storm Shelters", "Refugios Comerciales"), href: "#" },
+    { label: t("Shelter Installation & Crane Sets", "Instalación y Colocación"), href: "#" },
+    { label: t("Site Preparation & Excavation", "Preparación de Terreno"), href: "#" },
+    { label: t("Shelter Upgrades & Modernization", "Mejoras de Refugios"), href: "#" },
   ];
 
   const serviceAreaLinks = [
-    { label: "Nashville, TN (HQ)", href: "/service-areas" },
-    { label: "Franklin, TN", href: "/service-areas" },
-    { label: "Murfreesboro, TN", href: "/service-areas" },
-    { label: "Hendersonville, TN", href: "/service-areas" },
-    { label: "Brentwood, TN", href: "/service-areas" },
-    { label: "Clarksville, TN", href: "/service-areas" },
-    { label: "Columbia, TN", href: "/service-areas" },
-    { label: "Lebanon, TN", href: "/service-areas" },
-    { label: "All Service Areas (100-Mi)", href: "/service-areas" },
+    { label: "Nashville, TN (HQ)", href: "#" },
+    { label: "Franklin, TN", href: "#" },
+    { label: "Murfreesboro, TN", href: "#" },
+    { label: "Hendersonville, TN", href: "#" },
+    { label: "Brentwood, TN", href: "#" },
+    { label: "Clarksville, TN", href: "#" },
+    { label: "Columbia, TN", href: "#" },
+    { label: "Lebanon, TN", href: "#" },
+    { label: "All Service Areas (100-Mi)", href: "#" },
   ];
 
   return (
@@ -127,7 +127,10 @@ export function Footer() {
       <div className="absolute -top-40 left-1/4 w-[400px] h-[400px] bg-red-600/10 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: "8s" }} />
       <div className="absolute -bottom-40 right-10 w-[350px] h-[350px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: "10s" }} />
 
-      <div className="relative mx-auto w-[90%] max-w-7xl pt-10 pb-8 sm:pt-14 sm:pb-10 lg:py-20 z-10 text-left">
+      <div
+        className="relative mx-auto w-[90%] max-w-7xl pt-10 sm:pt-14 lg:pt-20 pb-[30px] z-10 text-left"
+        style={{ paddingBottom: "30px" }}
+      >
 
         {/* ── MOBILE VERSION ────────────────────────── */}
         <div className="block lg:hidden">
@@ -452,8 +455,7 @@ export function Footer() {
         <div className="mt-10 sm:mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-3 order-2 sm:order-1 text-xs text-slate-400 font-semibold">
             <p>
-              © 2026 Southern Storm Shelters LLC.{" "}
-              {t("Licensed, Insured & Bonded.", "Licenciado, Asegurado y Afianzado.")}
+              © 2026 Southern Storm Shelters LLC. Design By StellR IT LLC{" "}
             </p>
             <span className="hidden sm:inline text-white/20">|</span>
             <div className="flex items-center gap-1.5 text-slate-400">
