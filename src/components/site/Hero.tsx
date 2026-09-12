@@ -18,23 +18,22 @@ export function Hero() {
           muted
           playsInline
           poster={heroStorm}
-          className="h-full w-full object-cover object-center filter brightness-[0.70] contrast-110 pointer-events-none select-none scale-105"
+          className="h-full w-full object-cover object-center filter brightness-95 sm:brightness-100 contrast-105 pointer-events-none select-none"
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
-        {/* Multi-stage dark gradient overlays for maximum text contrast & dramatic atmosphere */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/95 via-[#0b0f15]/80 to-[#0b0f15]/50 sm:from-[#0b0f15]/92 sm:via-[#0b0f15]/70 sm:to-[#0b0f15]/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15] via-transparent to-[#0b0f15]/60" />
+        {/* Lightened, balanced gradient overlays to maximize video visibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/80 via-[#0b0f15]/40 to-black/15 sm:from-[#0b0f15]/75 sm:via-[#0b0f15]/30 sm:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/80 via-transparent to-[#0b0f15]/25" />
       </div>
 
-      {/* Animated blobs */}
+      {/* Subtle atmospheric glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/3 h-80 w-80 rounded-full bg-[#dc2626]/20 blur-3xl animate-blob" />
-        <div className="absolute bottom-10 right-10 h-96 w-96 rounded-full bg-red-600/15 blur-3xl animate-blob" style={{ animationDelay: "3s" }} />
+        <div className="absolute top-1/4 left-1/3 h-80 w-80 rounded-full bg-[#dc2626]/10 blur-3xl animate-blob" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pt-20 w-full flex justify-start">
-        <div className="animate-fade-up text-white flex flex-col items-start text-left max-w-5xl w-full">
+        <div className="animate-fade-up text-white flex flex-col items-start text-left max-w-5xl w-full drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
 
           {/* Eyebrow badge */}
           <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/40 bg-black/60 px-3.5 py-1.5 text-[11px] sm:text-xs font-semibold backdrop-blur-md shadow-md">
