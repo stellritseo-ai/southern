@@ -62,8 +62,13 @@ function ServiceCard({
         loading="lazy"
       />
 
-      {/* Multi-stage Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/98 via-[#0b0f15]/70 to-black/25 group-hover:from-[#0b0f15]/98 group-hover:via-[#0b0f15]/80 group-hover:to-black/40 transition-all duration-500" />
+      {/* Gradient Overlay: Dark at bottom for text, crystal clear & light at top to showcase the image */}
+      <div
+        className="absolute inset-0 pointer-events-none transition-all duration-500"
+        style={{
+          background: "linear-gradient(to top, rgba(11, 15, 21, 0.98) 0%, rgba(11, 15, 21, 0.92) 36%, rgba(11, 15, 21, 0.45) 60%, rgba(11, 15, 21, 0.08) 80%, rgba(0, 0, 0, 0) 100%)"
+        }}
+      />
 
       {/* Red Accent Border Highlight on Hover */}
       <div className="absolute inset-0 rounded-[32px] border-2 border-transparent group-hover:border-[#dc2626]/80 transition-colors duration-500 pointer-events-none" />
