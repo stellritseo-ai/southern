@@ -2,6 +2,7 @@ import { ArrowRight, Award, BadgeCheck, Check, Clock, MapPin, Phone, ShieldCheck
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
+import heroVideo from "@/assets/hero.mp4";
 import heroStorm from "@/assets/hero-storm.jpg";
 
 export function Hero() {
@@ -9,16 +10,21 @@ export function Hero() {
 
   return (
     <section className="relative isolate min-h-screen overflow-hidden pt-16 md:pt-20 flex items-center bg-[#0b0f15]">
-      {/* Background Image with Cinematic Overlay */}
-      <div className="absolute inset-0 -z-10">
-        <img
-          src={heroStorm}
-          alt="Underground storm shelter hatch beneath severe Tennessee weather"
-          className="h-full w-full object-cover object-center filter brightness-90 contrast-105"
-        />
-        {/* Multi-stage dark gradient overlays for maximum text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/98 via-[#0b0f15]/85 to-[#0b0f15]/50 sm:from-[#0b0f15]/95 sm:via-[#0b0f15]/75 sm:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15] via-transparent to-[#0b0f15]/70" />
+      {/* Background Video with Cinematic Dark Contrast Overlays */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={heroStorm}
+          className="h-full w-full object-cover object-center filter brightness-[0.70] contrast-110 pointer-events-none select-none scale-105"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
+        {/* Multi-stage dark gradient overlays for maximum text contrast & dramatic atmosphere */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/95 via-[#0b0f15]/80 to-[#0b0f15]/50 sm:from-[#0b0f15]/92 sm:via-[#0b0f15]/70 sm:to-[#0b0f15]/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15] via-transparent to-[#0b0f15]/60" />
       </div>
 
       {/* Animated blobs */}
