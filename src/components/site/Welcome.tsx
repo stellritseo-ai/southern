@@ -40,7 +40,10 @@ export function Welcome() {
             </div>
 
             {/* Main Headline */}
-            <h2 className="font-display text-[24px] sm:text-[30px] lg:text-[36px] mt-0 font-extrabold leading-tight text-[#0b0f15] tracking-tight">
+            <h2
+              className="font-display font-extrabold leading-tight text-[#0b0f15] tracking-tight -mt-[14px] mb-[10px] text-[32px] sm:text-[41px]"
+              style={{ fontSize: "41px", marginTop: "-14px", marginBottom: "10px" }}
+            >
               {t("When the Storm Comes, ", "Cuando Llega la Tormenta, ")}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
                 {t("Be Ready.", "Esté Preparado.")}
