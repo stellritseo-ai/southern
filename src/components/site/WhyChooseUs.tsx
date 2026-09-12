@@ -98,7 +98,10 @@ export function WhyChooseUs() {
             </div>
 
             {/* Headline */}
-            <h2 className="text-slate-900 font-black tracking-tight leading-[1.18] text-[24px] sm:text-[30px] lg:text-[36px] mt-0 mb-3 sm:mb-4 max-w-2xl">
+            <h2
+              className="text-slate-900 font-black tracking-tight leading-[1.18] max-w-2xl"
+              style={{ fontSize: "32px", marginTop: "-7px", marginBottom: "10px" }}
+            >
               {t("Built on Experience. ", "Basado en Experiencia. ")}
               <span className="bg-gradient-to-r from-[#dc2626] to-[#b91c1c] bg-clip-text text-transparent">
                 {t("Focused on Protection.", "Enfocados en la Protección.")}
