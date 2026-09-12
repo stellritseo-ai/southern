@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import shelterInteriorImg from "@/assets/shelter-interior.jpg";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
+import welcomeVideo from "@/assets/welcome.mp4";
 
 const TinySparkleIcon = () => (
   <svg className="w-3.5 h-3.5 text-[#dc2626] fill-[#dc2626] shrink-0" viewBox="0 0 24 24">
@@ -149,11 +150,16 @@ export function Welcome() {
 
             <div className="relative w-full max-w-[360px] sm:max-w-[460px] aspect-square lg:aspect-[4/5] rounded-[24px] sm:rounded-[32px] border border-red-500/30 bg-[#0b0f15] p-2.5 sm:p-3.5 shadow-2xl overflow-hidden group">
 
-              <img
-                src={shelterInteriorImg}
-                alt="Inside view of an underground storm shelter with bench seating"
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster={shelterInteriorImg}
                 className="w-full h-full object-cover rounded-[22px] select-none transition-transform duration-700 group-hover:scale-105"
-              />
+              >
+                <source src={welcomeVideo} type="video/mp4" />
+              </video>
 
               {/* Top Floating Glass Badge */}
               <div className="absolute top-5 left-5 z-20 flex items-center gap-2 bg-[#0b0f15]/90 backdrop-blur-md border border-red-500/40 px-3.5 py-2 rounded-2xl shadow-md select-none">
