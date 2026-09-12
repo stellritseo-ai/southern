@@ -1,4 +1,4 @@
-import { ArrowRight, Award, BadgeCheck, Clock, MapPin, Phone, ShieldCheck, Star } from "lucide-react";
+import { ArrowRight, Award, BadgeCheck, Check, Clock, MapPin, Phone, ShieldCheck, Star } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -70,13 +70,65 @@ export function Hero() {
             </Button>
           </div>
 
-          {/* Trust badges */}
-          <div className="mt-5 flex flex-wrap items-center gap-x-3.5 gap-y-2 text-xs sm:text-sm text-white/90 font-medium">
-            <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4 text-red-500" /> ✓ {t("100-Mile Service Area", "Área de 100 Millas")}</span>
-            <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4 text-red-500" /> ✓ {t("24/7 Availability", "Disponible 24/7")}</span>
-            <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-red-500" /> ✓ {t("Licensed • Insured • Bonded", "Licenciado • Asegurado • Afianzado")}</span>
-            <span className="inline-flex items-center gap-1.5"><Award className="h-4 w-4 text-red-500" /> ✓ {t("5+ Years Experience", "5+ Años de Experiencia")}</span>
-            <span className="inline-flex items-center gap-1.5"><BadgeCheck className="h-4 w-4 text-red-500" /> ✓ {t("FEMA Compliant", "Cumplimiento FEMA")}</span>
+          {/* Trust Badges — Pixel-Perfect Premium Glassmorphic Pills */}
+          <div className="mt-8 pt-6 border-t border-white/10 w-full">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+              {/* 1. 100-Mile Service Area */}
+              <div className="group inline-flex items-center gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-red-500/40 px-3.5 py-1.5 sm:px-4 sm:py-2 text-[11.5px] sm:text-xs font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none">
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
+                  <Check className="h-2.5 w-2.5 stroke-[3]" />
+                </span>
+                <MapPin className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
+                <span className="tracking-wide">
+                  <strong className="text-white font-bold">100-Mile</strong> {t("Service Area", "Área de Servicio")}
+                </span>
+              </div>
+
+              {/* 2. 24/7 Availability */}
+              <div className="group inline-flex items-center gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-red-500/40 px-3.5 py-1.5 sm:px-4 sm:py-2 text-[11.5px] sm:text-xs font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none">
+                <span className="relative flex h-2.5 w-2.5 shrink-0 items-center justify-center">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <Clock className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
+                <span className="tracking-wide">
+                  <strong className="text-white font-bold">24/7</strong> {t("Availability", "Disponibilidad")}
+                </span>
+              </div>
+
+              {/* 3. Licensed • Insured • Bonded */}
+              <div className="group inline-flex items-center gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-red-500/40 px-3.5 py-1.5 sm:px-4 sm:py-2 text-[11.5px] sm:text-xs font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none">
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
+                  <Check className="h-2.5 w-2.5 stroke-[3]" />
+                </span>
+                <ShieldCheck className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
+                <span className="tracking-wide font-medium">
+                  {t("Licensed • Insured • Bonded", "Licenciado • Asegurado • Afianzado")}
+                </span>
+              </div>
+
+              {/* 4. 5+ Years Experience */}
+              <div className="group inline-flex items-center gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-red-500/40 px-3.5 py-1.5 sm:px-4 sm:py-2 text-[11.5px] sm:text-xs font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none">
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
+                  <Check className="h-2.5 w-2.5 stroke-[3]" />
+                </span>
+                <Award className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
+                <span className="tracking-wide">
+                  <strong className="text-white font-bold">5+ Years</strong> {t("Experience", "Experiencia")}
+                </span>
+              </div>
+
+              {/* 5. FEMA Compliant */}
+              <div className="group inline-flex items-center gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-red-500/30 hover:border-red-500/60 px-3.5 py-1.5 sm:px-4 sm:py-2 text-[11.5px] sm:text-xs font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none shadow-red-950/20">
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-red-500/20 text-red-400 border border-red-500/40 shrink-0">
+                  <Check className="h-2.5 w-2.5 stroke-[3]" />
+                </span>
+                <BadgeCheck className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
+                <span className="tracking-wide">
+                  <strong className="text-white font-bold">FEMA</strong> {t("Compliant", "Cumplimiento")}
+                </span>
+              </div>
+            </div>
           </div>
 
         </div>
