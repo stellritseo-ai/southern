@@ -72,7 +72,11 @@ export function WhyChooseUs() {
   const items = features(t);
 
   return (
-    <section id="why-choose-us" className="relative py-12 sm:py-16 lg:py-28 bg-white border-b border-slate-100 overflow-hidden">
+    <section
+      id="why-choose-us"
+      className="relative py-[60px] bg-white border-b border-slate-100 overflow-hidden"
+      style={{ paddingTop: "60px", paddingBottom: "60px" }}
+    >
 
       {/* Subtle background blobs */}
       <div aria-hidden className="pointer-events-none absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-[#dc2626]/[0.04] blur-3xl" />
