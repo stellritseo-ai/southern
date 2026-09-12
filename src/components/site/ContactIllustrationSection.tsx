@@ -120,7 +120,10 @@ export function ContactIllustrationSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="space-y-2"
             >
-              <h2 className="font-display font-black text-slate-900 tracking-tight leading-tight text-[24px] sm:text-[32px] lg:text-[37px]">
+              <h2
+                className="font-display font-black text-slate-900 tracking-tight leading-tight text-[24px] sm:text-[32px] lg:text-[37px]"
+                style={{ marginTop: "-18px", marginBottom: "5px" }}
+              >
                 {t("Got Questions? ", "¿Tiene Preguntas? ")}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
                   {t("We Have Clear Answers.", "Tenemos Respuestas Claras.")}
