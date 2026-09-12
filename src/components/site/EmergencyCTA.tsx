@@ -7,6 +7,28 @@ import heroStorm from "@/assets/hero-storm.jpg";
 
 export function EmergencyCTA() {
   const { t } = useLanguage();
+  const trustBadges = [
+    {
+      icon: Clock,
+      title: t("24/7 Availability", "Disponible 24/7"),
+      subtitle: t("Always Ready to Dispatch", "Siempre Listos"),
+    },
+    {
+      icon: AlertTriangle,
+      title: t("EF-5 Rated Strength", "Resistencia EF-5"),
+      subtitle: t("250+ MPH Wind Protection", "Vientos de Más de 250 MPH"),
+    },
+    {
+      icon: ShieldCheck,
+      title: t("Licensed • Insured • Bonded", "Licenciado • Asegurado • Afianzado"),
+      subtitle: t("100% Certified Installs", "Instalaciones 100% Certificadas"),
+    },
+    {
+      icon: CheckCircle2,
+      title: t("5+ Years Experience", "5+ Años de Experiencia"),
+      subtitle: t("Nashville's Trusted Crew", "Equipo Confiable de Nashville"),
+    },
+  ];
 
   return (
     <section
@@ -83,52 +105,35 @@ export function EmergencyCTA() {
               {t("Tornado sirens offer only minutes of warning. Give your family an unshakeable, certified underground safe vault steps from your home. We provide turnkey installation and consultation across Nashville and a 100-mile service radius.", "Las sirenas de tornado ofrecen solo minutos de aviso. Brinde a su familia una bóveda de seguridad subterránea certificada e inquebrantable a pasos de su hogar. Ofrecemos instalación completa en Nashville y 100 millas a la redonda.")}
             </motion.p>
 
-            {/* Feature Cards Grid — In Same Row */}
+            {/* Feature Cards — Infinite Auto Scrolling Marquee */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-2 w-full"
+              className="relative w-full overflow-hidden pt-2 [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]"
             >
-              <div className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-red-500/40 transition-colors">
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
-                  <Clock className="h-4 w-4" />
-                </div>
-                <div className="flex flex-col text-left min-w-0">
-                  <span className="text-xs font-extrabold text-white leading-tight">{t("24/7 Availability", "Disponible 24/7")}</span>
-                  <span className="text-[11px] text-slate-400 font-medium leading-tight mt-0.5">{t("Always Ready to Dispatch", "Siempre Listos")}</span>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-red-500/40 transition-colors">
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
-                  <AlertTriangle className="h-4 w-4" />
-                </div>
-                <div className="flex flex-col text-left min-w-0">
-                  <span className="text-xs font-extrabold text-white leading-tight">{t("EF-5 Rated Strength", "Resistencia EF-5")}</span>
-                  <span className="text-[11px] text-slate-400 font-medium leading-tight mt-0.5">{t("250+ MPH Wind Protection", "Vientos de Más de 250 MPH")}</span>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-red-500/40 transition-colors">
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
-                  <ShieldCheck className="h-4 w-4" />
-                </div>
-                <div className="flex flex-col text-left min-w-0">
-                  <span className="text-xs font-extrabold text-white leading-tight">{t("Licensed • Insured • Bonded", "Licenciado • Asegurado • Afianzado")}</span>
-                  <span className="text-[11px] text-slate-400 font-medium leading-tight mt-0.5">{t("100% Certified Installs", "Instalaciones 100% Certificadas")}</span>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-red-500/40 transition-colors">
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
-                  <CheckCircle2 className="h-4 w-4" />
-                </div>
-                <div className="flex flex-col text-left min-w-0">
-                  <span className="text-xs font-extrabold text-white leading-tight">{t("5+ Years Experience", "5+ Años de Experiencia")}</span>
-                  <span className="text-[11px] text-slate-400 font-medium leading-tight mt-0.5">{t("Nashville's Trusted Crew", "Equipo Confiable de Nashville")}</span>
-                </div>
+              <div
+                className="flex w-max gap-3.5 animate-marquee hover:[animation-play-state:paused]"
+                style={{ animation: "marquee 22s linear infinite" }}
+              >
+                {[...trustBadges, ...trustBadges].map((badge, idx) => {
+                  const Icon = badge.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-red-500/40 hover:bg-white/10 transition-all duration-300 shrink-0 select-none shadow-sm cursor-default"
+                    >
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
+                        <Icon className="h-4 w-4" />
+                      </div>
+                      <div className="flex flex-col text-left whitespace-nowrap">
+                        <span className="text-xs font-extrabold text-white leading-tight">{badge.title}</span>
+                        <span className="text-[11px] text-slate-400 font-medium leading-tight mt-0.5">{badge.subtitle}</span>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
           </div>
