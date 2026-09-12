@@ -28,7 +28,7 @@ export function Hero() {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pt-20 w-full flex justify-start">
-        <div className="animate-fade-up text-white flex flex-col items-start text-left max-w-3xl w-full">
+        <div className="animate-fade-up text-white flex flex-col items-start text-left max-w-4xl w-full">
 
           {/* Eyebrow badge */}
           <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/40 bg-black/60 px-3.5 py-1.5 text-[11px] sm:text-xs font-semibold backdrop-blur-md shadow-md">
@@ -41,10 +41,14 @@ export function Hero() {
           </span>
 
           {/* Main Headline */}
-          <h1 className="mt-4 sm:mt-6 font-display text-[28px] sm:text-[38px] md:text-[46px] lg:text-[52px] leading-[1.15] sm:leading-[1.2] font-extrabold tracking-tight">
-            {t("Protect What Matters ", "Proteja Lo Que Más ")}
-            <span className="gradient-text-orange">{t("Most.", "Importa.")}</span>{" "}
-            {t("— Premium Underground Storm Shelters.", "— Refugios Subterráneos de Alta Resistencia.")}
+          <h1 className="mt-4 sm:mt-5 font-display font-extrabold tracking-tight leading-[1.2] sm:leading-[1.25]">
+            <span className="block text-[21px] sm:text-[28px] md:text-[34px] lg:text-[38px] whitespace-normal sm:whitespace-nowrap">
+              {t("Protect What Matters ", "Proteja Lo Que Más ")}
+              <span className="gradient-text-orange">{t("Most.", "Importa.")}</span>
+            </span>
+            <span className="block text-[17px] sm:text-[25px] md:text-[31px] lg:text-[36px] whitespace-normal sm:whitespace-nowrap text-slate-200 mt-1 sm:mt-1.5">
+              {t("— Premium Underground Storm Shelters.", "— Refugios Subterráneos de Alta Resistencia.")}
+            </span>
           </h1>
 
           {/* Description */}
