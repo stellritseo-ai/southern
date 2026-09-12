@@ -59,21 +59,29 @@ export function GetInTouch() {
     <section id="get-in-touch" className="relative py-[60px] bg-white border-b border-slate-100 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-30 pointer-events-none" />
       <div className="mx-auto w-[90%] max-w-7xl relative z-10">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="inline-flex items-center gap-2 bg-red-50 border border-red-200 text-[#dc2626] rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-5">
             <TinySparkleIcon /> {t("Request a Free Estimate", "Solicitar Estimación Gratis")} <TinySparkleIcon />
           </span>
-          <h2 className="text-[22px] sm:text-3xl lg:text-[40px] font-extrabold text-[#0F172A] leading-tight mt-0 sm:mt-[-10px] mb-[5px] tracking-tight capitalize">
+          <h2 className="text-[19px] sm:text-[24px] lg:text-[30px] font-extrabold text-[#0F172A] leading-tight mt-0 sm:mt-[-10px] mb-[5px] tracking-tight sm:whitespace-nowrap">
             {t("Get Your Free, ", "Obtenga Su ")}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
               {t("No-Obligation Estimate", "Estimación Sin Compromiso")}
             </span>
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-lg mx-auto">
-            {t(
-              "Tell us about your property — residential underground shelter, commercial safe room, or crane installation — and our team will provide a transparent evaluation within 24 hours.",
-              "Cuéntenos sobre su propiedad — refugio subterráneo residencial, comercial o instalación con grúa — y le daremos una evaluación transparente en 24 horas."
-            )}
+          <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-3xl mx-auto">
+            <span className="md:block">
+              {t(
+                "Tell us about your property — residential underground shelter, commercial safe room, or crane installation —",
+                "Cuéntenos sobre su propiedad — refugio subterráneo residencial, comercial o instalación con grúa —"
+              )}
+            </span>{" "}
+            <span className="md:block">
+              {t(
+                "and our team will provide a transparent evaluation within 24 hours.",
+                "y le daremos una evaluación transparente en 24 horas."
+              )}
+            </span>
           </p>
         </div>
 
