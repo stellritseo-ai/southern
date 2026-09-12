@@ -13,7 +13,7 @@ import {
   Zap,
 } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
-import shelterInteriorImg from "@/assets/shelter-interior.jpg";
+import residentialShelterImg from "@/assets/residential-shelter.jpg";
 import logoImg from "@/assets/logo-mark.png";
 
 interface FAQItem {
@@ -221,8 +221,8 @@ export function ContactIllustrationSection() {
             >
               {/* Main Image */}
               <img
-                src={shelterInteriorImg}
-                alt="Southern Storm Shelters Reinforced Interior Vault"
+                src={residentialShelterImg}
+                alt="Residential Underground Storm Shelter Installation in Nashville, TN"
                 className="w-full h-[480px] sm:h-[540px] lg:h-[580px] object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
               />
 
