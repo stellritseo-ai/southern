@@ -61,7 +61,10 @@ export function EmergencyCTA() {
               <span className="block">
                 {t("Don't Wait for the Next Severe Storm.", "No Espere a la Próxima Tormenta Severa.")}
               </span>
-              <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-300 to-amber-300">
+              <span
+                className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-300 to-amber-300 text-[28px] -mb-[14px]"
+                style={{ fontSize: "28px", marginBottom: "-14px" }}
+              >
                 {t("Protect Your Family With an Underground Shelter.", "Proteja a Su Familia con un Refugio Subterráneo.")}
               </span>
             </motion.h2>
@@ -77,51 +80,51 @@ export function EmergencyCTA() {
               {t("Tornado sirens offer only minutes of warning. Give your family an unshakeable, certified underground safe vault steps from your home. We provide turnkey installation and consultation across Nashville and a 100-mile service radius.", "Las sirenas de tornado ofrecen solo minutos de aviso. Brinde a su familia una bóveda de seguridad subterránea certificada e inquebrantable a pasos de su hogar. Ofrecemos instalación completa en Nashville y 100 millas a la redonda.")}
             </motion.p>
 
-            {/* Feature Cards Grid */}
+            {/* Feature Cards Grid — In Same Row */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2 w-full max-w-xl"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-2 w-full"
             >
-              <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
+              <div className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-red-500/40 transition-colors">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
                   <Clock className="h-4 w-4" />
                 </div>
-                <div className="flex flex-col text-left">
-                  <span className="text-xs font-extrabold text-white">{t("24/7 Availability", "Disponible 24/7")}</span>
-                  <span className="text-[11px] text-slate-400 font-medium">{t("Always Ready to Dispatch", "Siempre Listos")}</span>
+                <div className="flex flex-col text-left min-w-0">
+                  <span className="text-xs font-extrabold text-white leading-tight">{t("24/7 Availability", "Disponible 24/7")}</span>
+                  <span className="text-[11px] text-slate-400 font-medium leading-tight mt-0.5">{t("Always Ready to Dispatch", "Siempre Listos")}</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
+              <div className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-red-500/40 transition-colors">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
                   <AlertTriangle className="h-4 w-4" />
                 </div>
-                <div className="flex flex-col text-left">
-                  <span className="text-xs font-extrabold text-white">{t("EF-5 Rated Strength", "Resistencia EF-5")}</span>
-                  <span className="text-[11px] text-slate-400 font-medium">{t("250+ MPH Wind Protection", "Vientos de Más de 250 MPH")}</span>
+                <div className="flex flex-col text-left min-w-0">
+                  <span className="text-xs font-extrabold text-white leading-tight">{t("EF-5 Rated Strength", "Resistencia EF-5")}</span>
+                  <span className="text-[11px] text-slate-400 font-medium leading-tight mt-0.5">{t("250+ MPH Wind Protection", "Vientos de Más de 250 MPH")}</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
+              <div className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-red-500/40 transition-colors">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
                   <ShieldCheck className="h-4 w-4" />
                 </div>
-                <div className="flex flex-col text-left">
-                  <span className="text-xs font-extrabold text-white">{t("Licensed • Insured • Bonded", "Licenciado • Asegurado • Afianzado")}</span>
-                  <span className="text-[11px] text-slate-400 font-medium">{t("100% Certified Installs", "Instalaciones 100% Certificadas")}</span>
+                <div className="flex flex-col text-left min-w-0">
+                  <span className="text-xs font-extrabold text-white leading-tight">{t("Licensed • Insured • Bonded", "Licenciado • Asegurado • Afianzado")}</span>
+                  <span className="text-[11px] text-slate-400 font-medium leading-tight mt-0.5">{t("100% Certified Installs", "Instalaciones 100% Certificadas")}</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 p-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
+              <div className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-red-500/40 transition-colors">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
                   <CheckCircle2 className="h-4 w-4" />
                 </div>
-                <div className="flex flex-col text-left">
-                  <span className="text-xs font-extrabold text-white">{t("5+ Years Experience", "5+ Años de Experiencia")}</span>
-                  <span className="text-[11px] text-slate-400 font-medium">{t("Nashville's Trusted Crew", "Equipo Confiable de Nashville")}</span>
+                <div className="flex flex-col text-left min-w-0">
+                  <span className="text-xs font-extrabold text-white leading-tight">{t("5+ Years Experience", "5+ Años de Experiencia")}</span>
+                  <span className="text-[11px] text-slate-400 font-medium leading-tight mt-0.5">{t("Nashville's Trusted Crew", "Equipo Confiable de Nashville")}</span>
                 </div>
               </div>
             </motion.div>
