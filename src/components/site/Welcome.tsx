@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, Star } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, Star, HardHat, Home, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import shelterInteriorImg from "@/assets/shelter-interior.jpg";
 import { Button } from "@/components/ui/button";
@@ -14,10 +14,30 @@ export function Welcome() {
   const { t } = useLanguage();
 
   const promisePoints = [
-    t("EF-5 Tornado Protection — Meets & exceeds FEMA P-320 & ICC-500 standards.", "Protección contra tornados EF-5 — Cumple con las normas FEMA P-320 e ICC-500."),
-    t("Rapid 1-2 Day Installation — Complete excavation, crane placement & backfill.", "Instalación rápida en 1-2 días — Excavación completa y colocación con grúa."),
-    t("Immediate Backyard Access — Steps away from your back door when alarms sound.", "Acceso inmediato en el patio — A pasos de su puerta cuando suenen las alarmas."),
-    t("100-Mile Service Area — Serving Nashville & all surrounding Middle Tennessee counties.", "Área de 100 millas — Sirviendo a Nashville y todos los condados cercanos."),
+    {
+      title: t("EF-5 Tornado Protection", "Protección contra Tornados EF-5"),
+      desc: t("Meets & exceeds FEMA P-320 & ICC-500 standards.", "Cumple con las normas FEMA P-320 e ICC-500."),
+      icon: ShieldCheck,
+      tag: "FEMA Certified",
+    },
+    {
+      title: t("Rapid 1-2 Day Installation", "Instalación Rápida en 1-2 Días"),
+      desc: t("Complete excavation, crane placement & backfill.", "Excavación completa, colocación con grúa y relleno."),
+      icon: HardHat,
+      tag: "Turnkey",
+    },
+    {
+      title: t("Immediate Backyard Access", "Acceso Inmediato en el Patio"),
+      desc: t("Steps away from your back door when alarms sound.", "A pasos de su puerta cuando suenen las alarmas."),
+      icon: Home,
+      tag: "Fast Entry",
+    },
+    {
+      title: t("100-Mile Service Area", "Área de Cobertura de 100 Millas"),
+      desc: t("Serving Nashville & all surrounding Middle Tennessee counties.", "Sirviendo a Nashville y todos los condados cercanos."),
+      icon: MapPin,
+      tag: "Middle TN",
+    },
   ];
 
   return (
@@ -66,16 +86,48 @@ export function Welcome() {
               <span>{t("Approximately 99% of our work is dedicated to protecting residential family homes, with custom commercial shelter solutions also available.", "Aproximadamente el 99% de nuestro trabajo está dedicado a proteger hogares familiares residenciales, con soluciones comerciales también disponibles.")}</span>
             </div>
 
-            {/* Promise Points List */}
+            {/* Promise Points List — Premium Interactive Hover Cards */}
             <div className="w-full pt-1">
-              <ul className="grid gap-3 sm:grid-cols-2">
-                {promisePoints.map((point) => (
-                  <li key={point} className="flex items-start gap-2.5 text-slate-800 font-semibold text-xs sm:text-sm leading-snug">
-                    <CheckCircle2 className="h-5 w-5 text-[#dc2626] shrink-0 mt-0.5" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="grid gap-3 sm:gap-3.5 sm:grid-cols-2">
+                {promisePoints.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={item.title}
+                      className="group relative rounded-2xl p-3.5 sm:p-4 bg-gradient-to-br from-slate-50/90 via-white to-slate-50/50 border border-slate-200/90 hover:border-[#dc2626]/40 shadow-xs hover:shadow-[0_12px_28px_-8px_rgba(220,38,38,0.16)] transition-all duration-300 hover:-translate-y-1 overflow-hidden select-none"
+                    >
+                      {/* Ambient corner glow on hover */}
+                      <div className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-[#dc2626]/10 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                      <div className="relative z-10 flex items-start gap-3">
+                        {/* Icon Jewel */}
+                        <div className="w-10 h-10 rounded-xl bg-red-50 group-hover:bg-[#dc2626] text-[#dc2626] group-hover:text-white border border-red-200/70 group-hover:border-[#dc2626] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 shadow-xs group-hover:shadow-md group-hover:shadow-red-600/30">
+                          <Icon className="h-5 w-5 transition-transform duration-300" />
+                        </div>
+
+                        {/* Text & Details */}
+                        <div className="flex flex-col text-left min-w-0 flex-1">
+                          <div className="flex items-center justify-between gap-1 mb-0.5">
+                            <span className="text-[13px] sm:text-[13.5px] font-black text-[#0b0f15] group-hover:text-[#dc2626] transition-colors duration-200 leading-snug">
+                              {item.title}
+                            </span>
+                            <span className="text-[9px] uppercase font-black tracking-wider text-slate-400 bg-white/90 border border-slate-200/80 px-1.5 py-0.5 rounded-full group-hover:border-red-200 group-hover:text-[#dc2626] group-hover:bg-red-50/80 transition-colors shrink-0">
+                              {item.tag}
+                            </span>
+                          </div>
+
+                          <p className="text-[11.5px] sm:text-[12px] text-slate-500 group-hover:text-slate-700 leading-relaxed font-medium transition-colors">
+                            {item.desc}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Bottom glowing underline accent on hover */}
+                      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#dc2626] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
             {/* CTA Button */}
