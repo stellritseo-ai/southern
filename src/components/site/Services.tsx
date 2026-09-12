@@ -250,7 +250,10 @@ export function Services() {
             </div>
 
             {/* Headline */}
-            <h2 className="font-display text-[24px] sm:text-[30px] lg:text-[34px] font-black text-slate-900 tracking-tight leading-tight">
+            <h2
+              className="font-display text-[24px] sm:text-[30px] lg:text-[34px] font-black text-slate-900 tracking-tight leading-tight -mt-[10px] mb-[7px]"
+              style={{ marginTop: "-10px", marginBottom: "7px" }}
+            >
               {t("Storm Protection, ", "Protección Contra Tormentas, ")}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
                 {t("Built Around You.", "Diseñada para Usted.")}
