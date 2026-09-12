@@ -143,12 +143,12 @@ export function Welcome() {
           </div>
 
           {/* Right Column: Visual Container */}
-          <div className="lg:col-span-5 relative w-full flex justify-center items-center max-w-sm sm:max-w-md mx-auto lg:max-w-none">
+          <div className="lg:col-span-5 relative w-full flex justify-center items-center max-w-md sm:max-w-lg lg:max-w-none mx-auto">
 
             {/* Soft Ambient Glow backdrop */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] rounded-full bg-[#dc2626]/10 blur-3xl -z-10 animate-pulse" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] sm:w-[480px] h-[500px] sm:h-[640px] rounded-full bg-[#dc2626]/15 blur-3xl -z-10 pointer-events-none animate-pulse" />
 
-            <div className="relative w-full max-w-[360px] sm:max-w-[460px] aspect-square lg:aspect-[4/5] rounded-[24px] sm:rounded-[32px] border border-red-500/30 bg-[#0b0f15] p-2.5 sm:p-3.5 shadow-2xl overflow-hidden group">
+            <div className="relative w-full max-w-[400px] sm:max-w-[480px] lg:max-w-[500px] xl:max-w-[520px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-[3/4] min-h-[460px] sm:min-h-[560px] lg:min-h-[640px] xl:min-h-[680px] rounded-[24px] sm:rounded-[32px] border border-red-500/30 bg-[#0b0f15] p-2.5 sm:p-3.5 shadow-2xl overflow-hidden group">
 
               <video
                 autoPlay
@@ -156,7 +156,7 @@ export function Welcome() {
                 muted
                 playsInline
                 poster={shelterInteriorImg}
-                className="w-full h-full object-cover rounded-[22px] select-none transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover rounded-[20px] sm:rounded-[26px] select-none transition-transform duration-700 group-hover:scale-105"
               >
                 <source src={welcomeVideo} type="video/mp4" />
               </video>
