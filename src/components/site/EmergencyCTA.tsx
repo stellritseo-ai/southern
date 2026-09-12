@@ -4,6 +4,7 @@ import { Phone, Clock, ShieldCheck, CheckCircle2, AlertTriangle, Zap, ArrowRight
 import { useLanguage } from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
 import heroStorm from "@/assets/hero-storm.jpg";
+import welcomeVideo from "@/assets/welcome.mp4";
 
 export function EmergencyCTA() {
   const { t } = useLanguage();
@@ -35,17 +36,22 @@ export function EmergencyCTA() {
       className="relative w-full overflow-hidden py-[50px] text-white bg-[#0b0f15] border-y border-red-500/30"
       style={{ paddingTop: "50px", paddingBottom: "50px" }}
     >
-      {/* Background Image with Multi-Layered Gradients */}
+      {/* Background Video with Balanced Visibility */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
-        <img
-          src={heroStorm}
-          alt="Severe weather supercell storm over Tennessee"
-          className="h-full w-full object-cover scale-105 filter brightness-50 contrast-125"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={heroStorm}
+          className="h-full w-full object-cover scale-105 filter brightness-85 contrast-110 select-none"
+        >
+          <source src={welcomeVideo} type="video/mp4" />
+        </video>
 
-        {/* Layered Gradient Overlays for High Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/98 via-[#0b0f15]/88 to-[#0b0f15]/65" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15] via-transparent to-[#0b0f15]/75" />
+        {/* Soft balanced overlays so the video is clearly visible with strong text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/90 via-[#0b0f15]/75 to-[#0b0f15]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/90 via-transparent to-[#0b0f15]/60" />
 
         {/* Ambient Glowing Blobs */}
         <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 rounded-full bg-[#dc2626]/20 blur-3xl pointer-events-none" />
