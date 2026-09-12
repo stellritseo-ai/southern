@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/hooks/useLanguage";
+import whyUsVideo from "@/assets/whyus.mp4";
 import installCraneImg from "@/assets/install-crane.jpg";
 import {
   ShieldCheck,
@@ -172,13 +173,18 @@ export function WhyChooseUs() {
             <div aria-hidden className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-[#dc2626]/15 via-transparent to-red-600/15 blur-xl pointer-events-none" />
             <div aria-hidden className="absolute -inset-1 rounded-[32px] bg-gradient-to-tr from-[#dc2626]/20 to-red-500/20 blur-md pointer-events-none" />
 
-            {/* Image container */}
+            {/* Video container */}
             <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_80px_-12px_rgba(0,0,0,0.25)] border-2 border-slate-100 group bg-[#0b0f15]">
-              <img
-                src={installCraneImg}
-                alt="Crane lowering an engineered underground storm shelter into a residential backyard in Nashville"
-                className="w-full h-[320px] sm:h-[400px] lg:h-[530px] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster={installCraneImg}
+                className="w-full h-[320px] sm:h-[400px] lg:h-[530px] object-cover transition-transform duration-700 ease-out group-hover:scale-105 select-none"
+              >
+                <source src={whyUsVideo} type="video/mp4" />
+              </video>
 
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/85 via-[#0b0f15]/20 to-transparent pointer-events-none" />
