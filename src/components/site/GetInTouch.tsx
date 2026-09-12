@@ -208,7 +208,7 @@ export function GetInTouch() {
                       <select
                         name="projectType"
                         required
-                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all cursor-pointer"
+                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all cursor-pointer"
                       >
                         <option value="Residential Underground Shelter">Residential Underground Shelter</option>
                         <option value="Commercial Storm Shelter">Commercial Storm Shelter</option>
@@ -223,7 +223,7 @@ export function GetInTouch() {
                       <select
                         name="timeframe"
                         required
-                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all cursor-pointer"
+                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all cursor-pointer"
                       >
                         <option value="Immediate / Urgent">Immediate / Urgent (Storm Season)</option>
                         <option value="Within 1-2 weeks">Within 1-2 weeks</option>
@@ -238,7 +238,7 @@ export function GetInTouch() {
                         name="message"
                         rows={3}
                         placeholder="Describe your yard access, property grade, family capacity needs, or any specific requirements..."
-                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all resize-none"
+                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all resize-none"
                       />
                     </div>
                   </div>
@@ -343,7 +343,7 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all"
+        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all"
       />
     </div>
   );

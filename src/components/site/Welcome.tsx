@@ -62,8 +62,8 @@ export function Welcome() {
 
             {/* Main Headline */}
             <h2
-              className="font-display font-extrabold leading-tight text-[#0b0f15] tracking-tight -mt-[14px] mb-[10px] text-[32px] sm:text-[41px]"
-              style={{ fontSize: "41px", marginTop: "-14px", marginBottom: "10px" }}
+              className="font-display font-extrabold leading-tight text-[#0b0f15] tracking-tight -mt-[14px] mb-[10px] text-[28px] sm:text-[36px] lg:text-[41px]"
+              style={{ fontSize: "clamp(26px, 4vw, 41px)", marginTop: "-14px", marginBottom: "10px" }}
             >
               {t("When the Storm Comes, ", "Cuando Llega la Tormenta, ")}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
@@ -148,7 +148,7 @@ export function Welcome() {
             {/* Soft Ambient Glow backdrop */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] sm:w-[480px] h-[500px] sm:h-[640px] rounded-full bg-[#dc2626]/15 blur-3xl -z-10 pointer-events-none animate-pulse" />
 
-            <div className="relative w-full max-w-[400px] sm:max-w-[480px] lg:max-w-[500px] xl:max-w-[520px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-[3/4] min-h-[460px] sm:min-h-[560px] lg:min-h-[640px] xl:min-h-[680px] rounded-[24px] sm:rounded-[32px] border border-red-500/30 bg-[#0b0f15] p-2.5 sm:p-3.5 shadow-2xl overflow-hidden group">
+            <div className="relative w-full max-w-[400px] sm:max-w-[480px] lg:max-w-[500px] xl:max-w-[520px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-[3/4] min-h-[340px] sm:min-h-[460px] lg:min-h-[640px] xl:min-h-[680px] rounded-[24px] sm:rounded-[32px] border border-red-500/30 bg-[#0b0f15] p-2.5 sm:p-3.5 shadow-2xl overflow-hidden group">
 
               <video
                 autoPlay

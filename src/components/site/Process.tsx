@@ -468,8 +468,7 @@ export function Process() {
           </h2>
 
           <p
-            className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto font-normal leading-relaxed"
-            style={{ marginBottom: "-50px" }}
+            className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto font-normal leading-relaxed mb-6 lg:-mb-[50px]"
           >
             {t("From initial laser site evaluation to precision crane placement and final hydrostatic anchoring, our turnkey process delivers complete family safety in just 1 to 2 days.", "Desde la evaluación láser inicial del terreno hasta la colocación con grúa pesada y el anclaje final, nuestro proceso entrega seguridad total en solo 1 o 2 días.")}
           </p>
@@ -567,23 +566,23 @@ export function Process() {
         </div>
 
         {/* ── 2. MOBILE: Vertical Timeline ────────────────── */}
-        <div className="relative grid gap-8 pl-14 lg:hidden pt-14 pb-14">
+        <div className="relative grid gap-8 pl-14 sm:pl-16 lg:hidden pt-12 pb-14">
 
           {/* Mobile Top Start Icon */}
-          <div className="absolute left-[44px] -top-12 z-20 -translate-x-1/2 flex items-center justify-center filter drop-shadow-[0_8px_16px_rgba(220,38,38,0.2)]">
-            <AnimatedStartIcon className="w-24 h-18 sm:w-28 sm:h-21" />
+          <div className="absolute left-[28px] -top-10 z-20 -translate-x-1/2 flex items-center justify-center filter drop-shadow-[0_8px_16px_rgba(220,38,38,0.2)]">
+            <AnimatedStartIcon className="w-22 h-16 sm:w-26 sm:h-20" />
           </div>
 
           {/* Animated vertical conduit */}
-          <div className="absolute left-[39px] top-4 bottom-4 w-2.5 pointer-events-none z-0">
+          <div className="absolute left-[23px] top-4 bottom-4 w-2.5 pointer-events-none z-0">
             <div className="absolute inset-0 bg-slate-900/10 rounded-full blur-[2px]" />
             <div className="absolute inset-0 bg-[#111722] rounded-full" />
             <div className="absolute inset-[2px] rounded-full mobile-red-flow" />
           </div>
 
           {/* Mobile Bottom Finish Icon */}
-          <div className="absolute left-[44px] -bottom-12 z-20 -translate-x-1/2 flex items-center justify-center filter drop-shadow-[0_8px_16px_rgba(34,197,94,0.22)]">
-            <AnimatedFinishIcon className="w-24 h-18 sm:w-28 sm:h-21" />
+          <div className="absolute left-[28px] -bottom-10 z-20 -translate-x-1/2 flex items-center justify-center filter drop-shadow-[0_8px_16px_rgba(34,197,94,0.22)]">
+            <AnimatedFinishIcon className="w-22 h-16 sm:w-26 sm:h-20" />
           </div>
 
           {steps.map((s, i) => {
@@ -598,7 +597,7 @@ export function Process() {
                 className="relative flex flex-col group text-left"
               >
                 {/* Circle node */}
-                <div className="absolute -left-[54px] top-0 w-12 h-12 rounded-full bg-white shadow-md border border-slate-200 flex items-center justify-center z-10 transition-all duration-300 group-hover:scale-105 group-hover:border-[#dc2626]">
+                <div className="absolute -left-[52px] top-0 w-12 h-12 rounded-full bg-white shadow-md border border-slate-200 flex items-center justify-center z-10 transition-all duration-300 group-hover:scale-105 group-hover:border-[#dc2626]">
                   {/* Step badge */}
                   <div className="absolute -top-1.5 -right-0.5 w-4.5 h-4.5 rounded-full bg-[#dc2626] text-white flex items-center justify-center border border-white">
                     <span className="text-[9px] font-black">{i + 1}</span>
@@ -607,7 +606,7 @@ export function Process() {
                 </div>
 
                 {/* Content */}
-                <div className="pl-4 py-0.5">
+                <div className="pl-2 sm:pl-3 py-0.5">
                   <h3 className="font-extrabold text-base text-slate-900 leading-tight mt-0 mb-1.5 group-hover:text-[#dc2626] transition-colors duration-300">
                     {s.title}
                   </h3>

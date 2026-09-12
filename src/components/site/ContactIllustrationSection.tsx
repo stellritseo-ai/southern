@@ -206,8 +206,8 @@ export function ContactIllustrationSection() {
 
           </div>
 
-          {/* ── RIGHT COLUMN: Section Image Showcase (col-span-5) — hidden on mobile ─ */}
-          <div className="hidden lg:block lg:col-span-5 relative w-full lg:sticky lg:top-[120px] self-start">
+          {/* ── RIGHT COLUMN: Section Image Showcase (col-span-5) ─ */}
+          <div className="lg:col-span-5 relative w-full lg:sticky lg:top-[120px] self-start mt-8 lg:mt-0">
             {/* Outer ambient glow */}
             <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-red-600/15 via-transparent to-amber-500/15 blur-xl pointer-events-none" />
 
@@ -222,7 +222,7 @@ export function ContactIllustrationSection() {
               <img
                 src={residentialShelterImg}
                 alt="Residential Underground Storm Shelter Installation in Nashville, TN"
-                className="w-full h-[480px] sm:h-[540px] lg:h-[580px] object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                className="w-full h-[360px] sm:h-[480px] lg:h-[580px] object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
               />
 
               {/* Dark Gradient Overlays */}

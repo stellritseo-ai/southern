@@ -93,8 +93,7 @@ export function EmergencyCTA() {
                 {t("Don't Wait for the Next Severe Storm.", "No Espere a la Próxima Tormenta Severa.")}
               </span>
               <span
-                className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-300 to-amber-300 text-[28px] -mb-[14px]"
-                style={{ fontSize: "28px", marginBottom: "-14px" }}
+                className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-300 to-amber-300 text-[20px] sm:text-[28px] leading-tight mb-2 sm:-mb-[14px]"
               >
                 {t("Protect Your Family With an Underground Shelter.", "Proteja a Su Familia con un Refugio Subterráneo.")}
               </span>

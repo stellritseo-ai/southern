@@ -282,44 +282,44 @@ export function Services() {
         </div>
 
         {/* ── Trust & Quality Guarantee Banner ─────────────────── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 sm:p-5 rounded-3xl bg-white border border-slate-200/90 shadow-md mb-10">
-          <div className="flex items-center gap-3 p-2">
-            <div className="w-10 h-10 rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-5 h-5" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 p-3 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-slate-200/90 shadow-md mb-8 sm:mb-10">
+          <div className="flex items-center gap-2 sm:gap-3 p-1.5 sm:p-2 min-w-0">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div className="flex flex-col text-left">
-              <span className="text-xs font-black text-slate-900 uppercase tracking-tight">{t("Licensed & Insured", "Licencia y Seguro")}</span>
-              <span className="text-[11px] font-bold text-slate-500">{t("100% Bonded Protection", "Protección 100% Garantizada")}</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 p-2">
-            <div className="w-10 h-10 rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0">
-              <Clock className="w-5 h-5" />
-            </div>
-            <div className="flex flex-col text-left">
-              <span className="text-xs font-black text-slate-900 uppercase tracking-tight">{t("24/7 Availability", "Disponible 24/7")}</span>
-              <span className="text-[11px] font-bold text-slate-500">{t("Emergency Response", "Respuesta Rápida")}</span>
+            <div className="flex flex-col text-left min-w-0">
+              <span className="text-[11px] sm:text-xs font-black text-slate-900 uppercase tracking-tight truncate">{t("Licensed & Insured", "Licencia y Seguro")}</span>
+              <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-500 truncate">{t("100% Bonded Protection", "Protección 100% Garantizada")}</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-2">
-            <div className="w-10 h-10 rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0">
-              <MapPin className="w-5 h-5" />
+          <div className="flex items-center gap-2 sm:gap-3 p-1.5 sm:p-2 min-w-0">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0">
+              <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div className="flex flex-col text-left">
-              <span className="text-xs font-black text-slate-900 uppercase tracking-tight">{t("100-Mile Radius", "Radio de 100 Millas")}</span>
-              <span className="text-[11px] font-bold text-slate-500">{t("Nashville & Beyond", "Nashville y Alrededores")}</span>
+            <div className="flex flex-col text-left min-w-0">
+              <span className="text-[11px] sm:text-xs font-black text-slate-900 uppercase tracking-tight truncate">{t("24/7 Availability", "Disponible 24/7")}</span>
+              <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-500 truncate">{t("Emergency Response", "Respuesta Rápida")}</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-2">
-            <div className="w-10 h-10 rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0">
-              <Phone className="w-5 h-5" />
+          <div className="flex items-center gap-2 sm:gap-3 p-1.5 sm:p-2 min-w-0">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0">
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div className="flex flex-col text-left">
-              <span className="text-xs font-black text-slate-900 uppercase tracking-tight">{t("FEMA P-320", "Norma FEMA P-320")}</span>
-              <span className="text-[11px] font-bold text-slate-500">{t("EF-5 Tornado Tested", "Probado Contra Tornados EF-5")}</span>
+            <div className="flex flex-col text-left min-w-0">
+              <span className="text-[11px] sm:text-xs font-black text-slate-900 uppercase tracking-tight truncate">{t("100-Mile Radius", "Radio de 100 Millas")}</span>
+              <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-500 truncate">{t("Nashville & Beyond", "Nashville y Alrededores")}</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 sm:gap-3 p-1.5 sm:p-2 min-w-0">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0">
+              <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+            </div>
+            <div className="flex flex-col text-left min-w-0">
+              <span className="text-[11px] sm:text-xs font-black text-slate-900 uppercase tracking-tight truncate">{t("FEMA P-320", "Norma FEMA P-320")}</span>
+              <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-500 truncate">{t("EF-5 Tornado Tested", "Probado Contra Tornados EF-5")}</span>
             </div>
           </div>
         </div>
@@ -360,7 +360,7 @@ export function Services() {
                 transition={{ duration: 0.4, delay: idx * 0.04 }}
               >
                 <div className="block w-full">
-                  <ServiceCard s={s} aspectRatio="min-h-[380px] sm:min-h-[440px] lg:min-h-[480px]" />
+                  <ServiceCard s={s} aspectRatio="min-h-[350px] sm:min-h-[420px] lg:min-h-[480px]" />
                 </div>
               </motion.div>
             ))}

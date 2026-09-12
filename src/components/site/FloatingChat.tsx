@@ -245,7 +245,7 @@ export function FloatingChat() {
                     placeholder="Your Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-[#dc2626] transition"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-base sm:text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-[#dc2626] transition"
                   />
                 )}
                 <div className="relative flex items-center">
@@ -255,7 +255,7 @@ export function FloatingChat() {
                     placeholder="Type a message..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50/50 pl-3 pr-10 py-2 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-[#dc2626] transition"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50/50 pl-3 pr-10 py-2 text-base sm:text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-[#dc2626] transition"
                   />
                   <button
                     type="submit"

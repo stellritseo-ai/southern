@@ -77,11 +77,11 @@ export function ServiceArea() {
             </div>
 
             {/* Stats row */}
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
               {statCards.map((s) => (
-                <div key={s.label} className="flex flex-col items-center p-3 rounded-2xl bg-red-50/60 border border-red-200/80 text-center">
-                  <span className="text-[#dc2626] font-black text-[18px] leading-tight">{s.value}</span>
-                  <span className="text-slate-400 text-[9px] font-bold uppercase tracking-wide mt-0.5 leading-tight">{s.label}</span>
+                <div key={s.label} className="flex flex-col items-center p-2.5 sm:p-3 rounded-2xl bg-red-50/60 border border-red-200/80 text-center">
+                  <span className="text-[#dc2626] font-black text-[17px] sm:text-[18px] leading-tight">{s.value}</span>
+                  <span className="text-slate-500 text-[9px] font-bold uppercase tracking-wide mt-0.5 leading-tight">{s.label}</span>
                 </div>
               ))}
             </div>
@@ -118,7 +118,7 @@ export function ServiceArea() {
             {/* "Don't see your city" card */}
             <div className="relative group max-w-lg w-full">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] rounded-2xl blur opacity-15 group-hover:opacity-30 transition duration-500" />
-              <div className="relative flex items-center justify-between gap-4 bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
+              <div className="relative flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
                 <div className="flex items-start gap-3">
                   <div className="shrink-0 w-8 h-8 rounded-xl bg-red-50 border border-red-200 flex items-center justify-center mt-0.5">
                     <CheckCircle2 className="w-4 h-4 text-[#dc2626]" />
@@ -132,7 +132,7 @@ export function ServiceArea() {
                 </div>
                 <a
                   href="tel:6159912361"
-                  className="shrink-0 inline-flex items-center gap-1.5 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white border border-red-500/40 text-[10px] font-black uppercase tracking-wider px-3.5 py-2 rounded-xl transition-all duration-200 hover:scale-[1.04] shadow-md cursor-pointer"
+                  className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white border border-red-500/40 text-[10px] font-black uppercase tracking-wider px-3.5 py-2.5 sm:py-2 rounded-xl transition-all duration-200 hover:scale-[1.04] shadow-md cursor-pointer"
                 >
                   <Phone className="h-3.5 w-3.5" />
                   {t("Call", "Llamar")}

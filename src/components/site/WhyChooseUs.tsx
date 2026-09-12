@@ -105,7 +105,7 @@ export function WhyChooseUs() {
             {/* Headline */}
             <h2
               className="text-slate-900 font-black tracking-tight leading-[1.18] max-w-2xl"
-              style={{ fontSize: "32px", marginTop: "-7px", marginBottom: "10px" }}
+              style={{ fontSize: "clamp(24px, 5.5vw, 32px)", marginTop: "-7px", marginBottom: "10px" }}
             >
               {t("Built on Experience. ", "Basado en Experiencia. ")}
               <span className="bg-gradient-to-r from-[#dc2626] to-[#b91c1c] bg-clip-text text-transparent">
@@ -150,14 +150,14 @@ export function WhyChooseUs() {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 to="/services"
-                className="inline-flex items-center gap-2 bg-[#0b0f15] hover:bg-[#111722] text-white text-[11px] font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 bg-[#0b0f15] hover:bg-[#111722] text-white text-[11px] font-black uppercase tracking-widest rounded-full px-5 sm:px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-pointer w-full sm:w-auto"
               >
                 {t("Explore Shelters", "Explorar Refugios")}
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <a
                 href="tel:6159912361"
-                className="inline-flex items-center gap-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white text-[11px] font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white text-[11px] font-black uppercase tracking-widest rounded-full px-5 sm:px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-pointer w-full sm:w-auto"
               >
                 <Phone className="w-3.5 h-3.5" />
                 {t("Call (615) 991-2361", "Llamar (615) 991-2361")}
@@ -195,11 +195,11 @@ export function WhyChooseUs() {
 
               {/* Trust Stats Bar at bottom */}
               <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-10">
-                <div className="bg-[#0b0f15]/85 backdrop-blur-md border border-red-500/30 rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 grid grid-cols-4 divide-x divide-white/15">
+                <div className="bg-[#0b0f15]/85 backdrop-blur-md border border-red-500/30 rounded-2xl px-2 sm:px-4 py-2 sm:py-3 grid grid-cols-4 divide-x divide-white/15">
                   {trustStats.map((s) => (
-                    <div key={s.label} className="flex flex-col items-center px-1 sm:px-2">
-                      <span className="text-red-400 font-black text-[14px] sm:text-[16px] leading-tight">{s.value}</span>
-                      <span className="text-white/80 text-[8.5px] sm:text-[9.5px] font-bold uppercase tracking-wide text-center leading-tight mt-0.5">{s.label}</span>
+                    <div key={s.label} className="flex flex-col items-center px-0.5 sm:px-2">
+                      <span className="text-red-400 font-black text-[12px] sm:text-[16px] leading-tight">{s.value}</span>
+                      <span className="text-white/80 text-[7.5px] sm:text-[9.5px] font-bold uppercase tracking-wide text-center leading-tight mt-0.5">{s.label}</span>
                     </div>
                   ))}
                 </div>

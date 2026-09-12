@@ -63,7 +63,7 @@ function TestimonialCard({ review, isGrid = false }: { review: Review; isGrid?: 
     <div className={cn(
       "relative bg-white border border-slate-200/80 rounded-2xl p-5 sm:p-6 flex flex-col gap-3.5 group transition-all duration-300 text-left",
       "shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_36px_-6px_rgba(220,38,38,0.14)] hover:border-[#dc2626]/40 hover:-translate-y-1",
-      isGrid ? "w-full" : "flex-shrink-0 w-[340px] sm:w-[380px] mx-3"
+      isGrid ? "w-full" : "flex-shrink-0 w-[285px] sm:w-[360px] lg:w-[380px] mx-2 sm:mx-3"
     )}>
 
       {/* Top row: Star rating + Google Verified Badge */}
