@@ -78,7 +78,7 @@ export function WhyChooseUs() {
       <div aria-hidden className="pointer-events-none absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full bg-red-600/[0.04] blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
-        <div className="grid gap-10 sm:gap-14 lg:grid-cols-2 lg:gap-20 items-center">
+        <div className="grid gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-12 xl:gap-16 items-center">
 
           {/* ── LEFT: Content ───────────────────────────────────── */}
           <motion.div
@@ -86,7 +86,7 @@ export function WhyChooseUs() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.75, ease: "easeOut" }}
-            className="flex flex-col order-2 lg:order-1"
+            className="flex flex-col order-2 lg:order-1 lg:col-span-7"
           >
             {/* Eyebrow Badge */}
             <div className="inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-[#dc2626] text-[10px] font-black uppercase tracking-widest mb-5 shadow-sm select-none">
@@ -98,7 +98,7 @@ export function WhyChooseUs() {
             </div>
 
             {/* Headline */}
-            <h2 className="text-slate-900 font-black tracking-tight leading-[1.18] text-[24px] sm:text-[30px] lg:text-[36px] mt-0 mb-3 sm:mb-4 max-w-lg">
+            <h2 className="text-slate-900 font-black tracking-tight leading-[1.18] text-[24px] sm:text-[30px] lg:text-[36px] mt-0 mb-3 sm:mb-4 max-w-2xl">
               {t("Built on Experience. ", "Basado en Experiencia. ")}
               <span className="bg-gradient-to-r from-[#dc2626] to-[#b91c1c] bg-clip-text text-transparent">
                 {t("Focused on Protection.", "Enfocados en la Protección.")}
@@ -106,12 +106,12 @@ export function WhyChooseUs() {
             </h2>
 
             {/* Subtext */}
-            <p className="text-slate-500 text-[14px] sm:text-[15px] leading-relaxed mb-7 font-normal max-w-[520px]">
+            <p className="text-slate-500 text-[14px] sm:text-[15px] leading-relaxed mb-7 font-normal max-w-2xl">
               {t("Southern Storm Shelters LLC is a licensed, insured, and bonded storm shelter company dedicated to defending Tennessee families and businesses against severe tornadoes.", "Southern Storm Shelters LLC es una empresa de refugios con licencia, seguro y fianza dedicada a defender a las familias y empresas de Tennessee contra tornados severos.")}
             </p>
 
             {/* Feature Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
               {items.map((f, i) => {
                 const Icon = f.icon;
                 return (
@@ -160,7 +160,7 @@ export function WhyChooseUs() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.75, ease: "easeOut" }}
-            className="relative order-1 lg:order-2 lg:sticky lg:top-[100px]"
+            className="relative order-1 lg:order-2 lg:col-span-5 lg:sticky lg:top-[100px] w-full max-w-[460px] lg:max-w-none mx-auto"
           >
             {/* Decorative glow rings */}
             <div aria-hidden className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-[#dc2626]/15 via-transparent to-red-600/15 blur-xl pointer-events-none" />
@@ -171,19 +171,19 @@ export function WhyChooseUs() {
               <img
                 src={installCraneImg}
                 alt="Crane lowering an engineered underground storm shelter into a residential backyard in Nashville"
-                className="w-full h-[320px] sm:h-[420px] lg:h-[600px] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                className="w-full h-[320px] sm:h-[400px] lg:h-[530px] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
 
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/85 via-[#0b0f15]/20 to-transparent pointer-events-none" />
 
               {/* Trust Stats Bar at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 z-10">
-                <div className="bg-[#0b0f15]/85 backdrop-blur-md border border-red-500/30 rounded-2xl px-4 py-3 grid grid-cols-4 divide-x divide-white/15">
+              <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-10">
+                <div className="bg-[#0b0f15]/85 backdrop-blur-md border border-red-500/30 rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 grid grid-cols-4 divide-x divide-white/15">
                   {trustStats.map((s) => (
-                    <div key={s.label} className="flex flex-col items-center px-2">
-                      <span className="text-red-400 font-black text-[15px] sm:text-[17px] leading-tight">{s.value}</span>
-                      <span className="text-white/80 text-[9px] sm:text-[10px] font-bold uppercase tracking-wide text-center leading-tight mt-0.5">{s.label}</span>
+                    <div key={s.label} className="flex flex-col items-center px-1 sm:px-2">
+                      <span className="text-red-400 font-black text-[14px] sm:text-[16px] leading-tight">{s.value}</span>
+                      <span className="text-white/80 text-[8.5px] sm:text-[9.5px] font-bold uppercase tracking-wide text-center leading-tight mt-0.5">{s.label}</span>
                     </div>
                   ))}
                 </div>
