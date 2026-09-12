@@ -98,7 +98,7 @@ export function ContactIllustrationSection() {
         <div className="grid gap-10 sm:gap-14 lg:grid-cols-12 lg:gap-16 items-start">
 
           {/* ── LEFT COLUMN: FAQ Accordion (col-span-7) ───── */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          <div className="lg:col-span-7 space-y-4 text-left">
 
             {/* Eyebrow */}
             <motion.div
@@ -138,7 +138,7 @@ export function ContactIllustrationSection() {
             </motion.div>
 
             {/* Accordion list */}
-            <div className="space-y-3 pt-2">
+            <div className="space-y-2 pt-1">
               {faqs.map((faq, idx) => {
                 const isOpen = openId === faq.id;
                 return (
@@ -148,26 +148,26 @@ export function ContactIllustrationSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.35, delay: idx * 0.05 }}
-                    className={`rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen
-                      ? "bg-red-50/30 border-[#dc2626]/40 shadow-md"
-                      : "bg-white border-slate-200 hover:border-red-300 hover:shadow-sm"
+                    className={`rounded-xl border transition-all duration-300 overflow-hidden ${isOpen
+                      ? "bg-red-50/30 border-[#dc2626]/40 shadow-xs"
+                      : "bg-white border-slate-200 hover:border-red-300 hover:shadow-xs"
                       }`}
                   >
                     <button
                       onClick={() => toggleFAQ(faq.id)}
-                      className="w-full flex items-center justify-between p-4 sm:p-5 text-left gap-4 cursor-pointer select-none"
+                      className="w-full flex items-center justify-between py-2.5 px-3.5 sm:py-3 sm:px-4 text-left gap-3 cursor-pointer select-none"
                       aria-expanded={isOpen}
                     >
-                      <span className="font-extrabold text-[15px] sm:text-[16px] text-slate-900 leading-snug flex items-center gap-3">
-                        <span className={`w-2 h-2 rounded-full shrink-0 transition-colors duration-300 ${isOpen ? "bg-[#dc2626]" : "bg-slate-300"
+                      <span className="font-extrabold text-[13.5px] sm:text-[14.5px] text-slate-900 leading-snug flex items-center gap-2.5">
+                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors duration-300 ${isOpen ? "bg-[#dc2626]" : "bg-slate-300"
                           }`} />
                         {t(faq.q, faq.qEs)}
                       </span>
-                      <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen
+                      <div className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen
                         ? "bg-[#dc2626] text-white rotate-180 shadow-xs"
                         : "bg-slate-100 text-slate-500 group-hover:bg-red-50"
                         }`}>
-                        <ChevronDown className="w-4 h-4" />
+                        <ChevronDown className="w-3.5 h-3.5" />
                       </div>
                     </button>
 
@@ -179,7 +179,7 @@ export function ContactIllustrationSection() {
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.28, ease: "easeInOut" }}
                         >
-                          <div className="px-5 pb-5 pt-0 text-slate-600 font-medium text-[13.5px] leading-relaxed border-t border-red-100 mt-1 pt-3.5">
+                          <div className="px-4 pb-3 pt-0 text-slate-600 font-medium text-[12.5px] sm:text-[13px] leading-relaxed border-t border-red-100 mt-0.5 pt-2.5">
                             {t(faq.a, faq.aEs)}
                           </div>
                         </motion.div>
