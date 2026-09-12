@@ -20,7 +20,7 @@ import {
   Zap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logoImg from "@/assets/logo-mark.png";
+import logoImg from "@/assets/logo.png";
 import { useLanguage } from "@/hooks/useLanguage";
 
 export function Header() {
@@ -191,16 +191,12 @@ export function Header() {
 
           {/* ── MOBILE NAVBAR HEADER ───────────────────────────────── */}
           <div className="flex items-center justify-between w-full md:hidden">
-            <Link to="/" className="flex items-center gap-2.5 shrink-0">
-              <img src={logoImg} alt="Southern Storm Shelters Logo" className="h-10 sm:h-12 w-auto object-contain" />
-              <div className="flex flex-col text-left">
-                <span className="text-[13px] font-black uppercase tracking-tight text-[#0b0f15] leading-none">
-                  Southern
-                </span>
-                <span className="text-[10px] font-black uppercase tracking-wider text-[#dc2626] leading-none mt-0.5">
-                  Storm Shelters
-                </span>
-              </div>
+            <Link to="/" className="flex items-center shrink-0" aria-label="Southern Storm Shelters LLC Home">
+              <img
+                src={logoImg}
+                alt="Southern Storm Shelters LLC"
+                className="h-9 sm:h-11 w-auto max-w-[200px] sm:max-w-[240px] object-contain"
+              />
             </Link>
 
             <div className="flex items-center gap-2">
@@ -226,20 +222,12 @@ export function Header() {
           <div className="hidden md:flex items-center justify-between w-full gap-6">
 
             {/* Left: Prominent Brand Logo */}
-            <Link to="/" className="flex items-center gap-3 shrink-0 group">
+            <Link to="/" className="flex items-center shrink-0 group" aria-label="Southern Storm Shelters LLC Home">
               <img
                 src={logoImg}
-                alt="Southern Storm Shelters Logo"
-                className="h-12 lg:h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                alt="Southern Storm Shelters LLC"
+                className="h-12 lg:h-14 w-auto max-w-[240px] lg:max-w-[280px] object-contain group-hover:scale-[1.02] transition-transform duration-300"
               />
-              <div className="flex flex-col text-left">
-                <span className="text-base lg:text-lg font-black uppercase tracking-tight text-[#0b0f15] leading-none">
-                  Southern
-                </span>
-                <span className="text-xs lg:text-sm font-black uppercase tracking-widest text-[#dc2626] leading-none mt-1">
-                  Storm Shelters <span className="text-[10px] text-slate-500 font-bold">LLC</span>
-                </span>
-              </div>
             </Link>
 
             {/* Right Side Stack: Nav Items Pill + Phone Button */}
