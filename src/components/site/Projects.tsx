@@ -2,13 +2,26 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, ArrowRight, Sparkles, Shield, HardHat, Building2, Home, X, ZoomIn, Camera, Star } from "lucide-react";
 
-import heroStormImg from "@/assets/hero-storm.jpg";
-import shelterInteriorImg from "@/assets/shelter-interior.jpg";
-import familyHomeImg from "@/assets/family-home.jpg";
-import installCraneImg from "@/assets/install-crane.jpg";
-import excavationImg from "@/assets/excavation.jpg";
-import commercialImg from "@/assets/commercial.jpg";
-import hatchCloseImg from "@/assets/hatch-close.jpg";
+import g1 from "@/assets/gallery/1.png";
+import g2 from "@/assets/gallery/2.png";
+import g3 from "@/assets/gallery/3.png";
+import g4 from "@/assets/gallery/4.png";
+import g5 from "@/assets/gallery/5.png";
+import g6 from "@/assets/gallery/6.png";
+import g7 from "@/assets/gallery/7.png";
+import g8 from "@/assets/gallery/8.png";
+import g9 from "@/assets/gallery/9.png";
+import g10 from "@/assets/gallery/10.png";
+import g12 from "@/assets/gallery/12.png";
+import gShelterInstall from "@/assets/gallery/shelterinstall.jpg";
+import gTornadoShelters6 from "@/assets/gallery/tornadoshelters6.jpg";
+import gShelter5 from "@/assets/gallery/shelter5.jpg";
+import gProInstall from "@/assets/gallery/Professional Installation.jpg";
+import gGrangerPrepared from "@/assets/gallery/GrangerISSforPreparedSpared-e1741714349365.jpg";
+import gInsideShelter from "@/assets/gallery/InsideofShelter-scaled-r4ebojreuj4ns9cra8kvsdflptcw5p2mja6hh7h24g.jpg";
+import gImg0118 from "@/assets/gallery/IMG_0118-scaled-r4ebojreuj48ftcjj6kje1k3ffiqpa38l623yhkuf4.jpg";
+import gImg0137 from "@/assets/gallery/IMG_0137-scaled-r4ebojrkbvjcrsnwjnowdzrmtrncu4qwzlzsen983c.jpg";
+import gImg0181 from "@/assets/gallery/IMG_0181-scaled-r4ebojreuj4io40op7wrnlh3mcquc82tvwt0yyubk0.jpg";
 
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -19,8 +32,8 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
 
   const fallbackAll = [
     {
-      img: shelterInteriorImg,
-      title: t("Underground Residential Safe Haven", "Refugio Subterráneo Residencial"),
+      img: gTornadoShelters6,
+      title: t("Underground Safe Room Placement", "Colocación de Refugio Subterráneo"),
       cat: "Underground",
       loc: "Nashville, TN",
       year: "2024",
@@ -28,85 +41,175 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
       featured: true,
     },
     {
-      img: installCraneImg,
-      title: t("Heavy Crane Backyard Placement", "Colocación con Grúa en Patio"),
+      img: g2,
+      title: t("Precision Excavation & Shelter Set", "Excavación de Precisión e Instalación"),
       cat: "Installation",
       loc: "Franklin, TN",
       year: "2024",
-      tag: t("Crane Placement", "Colocación con Grúa"),
-      featured: false,
-    },
-    {
-      img: heroStormImg,
-      title: t("Severe Supercell Weather Defense", "Defensa Contra Clima Severo"),
-      cat: "Underground",
-      loc: "Murfreesboro, TN",
-      year: "2024",
-      tag: t("EF-5 Protection", "Protección EF-5"),
+      tag: t("Backyard Placement", "Colocación en Patio"),
       featured: true,
     },
     {
-      img: familyHomeImg,
-      title: t("Residential Backyard Completed Shelter", "Refugio Residencial Completado"),
-      cat: "Residential",
+      img: g6,
+      title: t("In-Ground Prefabricated Shelter", "Refugio Subterráneo Prefabricado"),
+      cat: "Underground",
+      loc: "Murfreesboro, TN",
+      year: "2024",
+      tag: t("In-Ground Shelter", "Refugio Subterráneo"),
+      featured: true,
+    },
+    {
+      img: gShelterInstall,
+      title: t("Turnkey Backyard Crane Placement", "Colocación con Grúa en Patio"),
+      cat: "Installation",
       loc: "Hendersonville, TN",
       year: "2024",
-      tag: t("Residential Shelter", "Refugio Residencial"),
-      featured: false,
+      tag: t("Crane Placement", "Colocación con Grúa"),
+      featured: true,
     },
     {
-      img: excavationImg,
-      title: t("Laser-Guided Ground Excavation", "Excavación con Guía Láser"),
-      cat: "Installation",
+      img: g1,
+      title: t("Steel Safe Room Structure", "Estructura de Sala Segura de Acero"),
+      cat: "Residential",
       loc: "Brentwood, TN",
       year: "2024",
-      tag: t("Site Excavation", "Excavación del Terreno"),
+      tag: t("Family Safe Haven", "Refugio Familiar"),
       featured: false,
     },
     {
-      img: commercialImg,
-      title: t("Commercial Facility Storm Room", "Sala de Tormentas para Instalación Comercial"),
-      cat: "Commercial",
-      loc: "Nashville, TN",
-      year: "2024",
-      tag: t("Commercial Shelter", "Refugio Comercial"),
-      featured: false,
-    },
-    {
-      img: hatchCloseImg,
-      title: t("Hydraulic Gas-Strut Hatch & Seal", "Escotilla Hidráulica con Sello"),
+      img: g3,
+      title: t("Multi-Point Security Hatch Door", "Puerta de Escotilla de Seguridad"),
       cat: "Underground",
       loc: "Lebanon, TN",
       year: "2024",
       tag: t("Watertight Hatch", "Escotilla Hermética"),
-      featured: true,
+      featured: false,
     },
     {
-      img: installCraneImg,
-      title: t("Turnkey Backyard Anchoring", "Anclaje de Refugio en Patio"),
-      cat: "Installation",
+      img: g4,
+      title: t("Reinforced Shelter Interior Chamber", "Cámara Interior Reforzada"),
+      cat: "Underground",
       loc: "Mount Juliet, TN",
       year: "2024",
-      tag: t("Concrete Anchoring", "Anclaje de Concreto"),
+      tag: t("Interior Vault", "Interior de Bóveda"),
       featured: false,
     },
     {
-      img: familyHomeImg,
-      title: t("Flush-to-Lawn Family Safe Haven", "Refugio al Nivel del Césped"),
-      cat: "Residential",
+      img: g5,
+      title: t("Heavy-Duty Jobsite Installation", "Instalación de Gran Capacidad"),
+      cat: "Installation",
       loc: "Spring Hill, TN",
       year: "2024",
-      tag: t("Family Shelter", "Refugio Familiar"),
+      tag: t("Jobsite Setup", "Preparación del Terreno"),
       featured: false,
     },
     {
-      img: shelterInteriorImg,
-      title: t("Steel Reinforced Interior Seating", "Bancas Interiores de Acero"),
+      img: g7,
+      title: t("Underground Modular Storm Shelter", "Refugio Modular Subterráneo"),
       cat: "Underground",
       loc: "Columbia, TN",
       year: "2024",
-      tag: t("Interior Vault", "Interior de Bóveda"),
+      tag: t("Modular Safe Room", "Sala Segura Modular"),
       featured: true,
+    },
+    {
+      img: g8,
+      title: t("Engineered Shelter Shell Assembly", "Ensamblaje de Carcasa de Refugio"),
+      cat: "Residential",
+      loc: "Gallatin, TN",
+      year: "2024",
+      tag: t("Engineered Shell", "Carcasa Diseñada"),
+      featured: false,
+    },
+    {
+      img: g9,
+      title: t("Backyard Excavation & Anchoring", "Excavación y Anclaje en Patio"),
+      cat: "Installation",
+      loc: "Smyrna, TN",
+      year: "2024",
+      tag: t("Ground Anchoring", "Anclaje al Terreno"),
+      featured: false,
+    },
+    {
+      img: g10,
+      title: t("Safe Entry Access System", "Sistema de Acceso Seguro"),
+      cat: "Residential",
+      loc: "Clarksville, TN",
+      year: "2024",
+      tag: t("Entry Access", "Acceso Seguro"),
+      featured: false,
+    },
+    {
+      img: g12,
+      title: t("Heavy Equipment Rigging & Set", "Maniobra y Colocación con Equipo Pesado"),
+      cat: "Installation",
+      loc: "Dickson, TN",
+      year: "2024",
+      tag: t("Heavy Rigging", "Maniobra Pesada"),
+      featured: true,
+    },
+    {
+      img: gProInstall,
+      title: t("Professional Jobsite Installation", "Instalación Profesional en Terreno"),
+      cat: "Installation",
+      loc: "Nashville, TN",
+      year: "2024",
+      tag: t("Professional Install", "Instalación Profesional"),
+      featured: false,
+    },
+    {
+      img: gShelter5,
+      title: t("Residential Flush-Ground Shelter", "Refugio a Nivel del Césped"),
+      cat: "Residential",
+      loc: "Franklin, TN",
+      year: "2024",
+      tag: t("Flush Ground", "Al Nivel del Suelo"),
+      featured: true,
+    },
+    {
+      img: gInsideShelter,
+      title: t("Interior Molded Seating & Stairs", "Asientos Moldeados y Escalones Interiores"),
+      cat: "Underground",
+      loc: "Murfreesboro, TN",
+      year: "2024",
+      tag: t("Interior Comfort", "Comodidad Interior"),
+      featured: false,
+    },
+    {
+      img: gGrangerPrepared,
+      title: t("Turnkey In-Ground Shelter Unit", "Unidad Subterránea Llave en Mano"),
+      cat: "Underground",
+      loc: "Brentwood, TN",
+      year: "2024",
+      tag: t("Prefabricated Vault", "Bóveda Prefabricada"),
+      featured: false,
+    },
+    {
+      img: gImg0118,
+      title: t("Site Preparation & Leveling", "Nivelación y Preparación del Sitio"),
+      cat: "Installation",
+      loc: "Hendersonville, TN",
+      year: "2024",
+      tag: t("Site Prep", "Preparación de Terreno"),
+      featured: false,
+    },
+    {
+      img: gImg0137,
+      title: t("Safe Ground Hatch Installation", "Instalación de Escotilla a Nivel de Tierra"),
+      cat: "Residential",
+      loc: "Lebanon, TN",
+      year: "2024",
+      tag: t("Ground Hatch", "Escotilla de Suelo"),
+      featured: false,
+    },
+    {
+      img: gImg0181,
+      title: t("Underground Entryway & Latching", "Entrada y Cerraduras Subterráneas"),
+      cat: "Underground",
+      loc: "Mount Juliet, TN",
+      year: "2024",
+      tag: t("Secure Latching", "Cerradura de Seguridad"),
+      featured: false,
     },
   ];
 
@@ -117,7 +220,6 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
     Residential: t("Residential", "Residencial"),
     Installation: t("Installation & Prep", "Instalación y Terreno"),
     Underground: t("Underground Vaults", "Bóvedas Subterráneas"),
-    Commercial: t("Commercial", "Comercial"),
   };
 
   const dynamicCats = useMemo(() => {
@@ -130,8 +232,9 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
   }, [all]);
 
   const [active, setActive] = useState<string>("All");
+  const [showAll, setShowAll] = useState<boolean>(false);
   const items = active === "All" ? all : all.filter((p) => p.cat === active);
-  const displayItems = isLanding ? items.slice(0, 15) : items;
+  const displayItems = isLanding && !showAll ? items.slice(0, 8) : items;
 
   // Lightbox state
   const [lightbox, setLightbox] = useState<null | (typeof all)[number]>(null);
@@ -262,7 +365,7 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className={isLanding
-              ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4"
+              ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4"
               : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
             }
           >
@@ -304,6 +407,22 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
             ))}
           </motion.div>
         </AnimatePresence>
+
+        {/* ── View More Button ── */}
+        {isLanding && items.length > 8 && (
+          <div className="mt-8 sm:mt-12 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((prev) => !prev)}
+              className="group inline-flex items-center gap-2.5 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/90 hover:border-[#dc2626] text-xs sm:text-sm font-black uppercase tracking-wider px-8 py-3.5 rounded-full shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <span>{showAll ? t("Show Less", "Ver Menos") : t("View More", "Ver Más")}</span>
+              <div className="w-6 h-6 rounded-full bg-red-50 text-[#dc2626] group-hover:bg-[#dc2626] group-hover:text-white flex items-center justify-center transition-colors">
+                <ArrowRight className={cn("w-3.5 h-3.5 transition-transform", showAll ? "-rotate-90" : "rotate-90")} />
+              </div>
+            </button>
+          </div>
+        )}
 
       </div>
 
@@ -369,30 +488,15 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
                 />
               </div>
 
-              {/* Info bar */}
-              <div className="bg-white px-5 py-4 flex items-center justify-between gap-4 shrink-0 border-t border-slate-100">
-                <div className="flex items-center gap-3 min-w-0">
-                  <span className="bg-[#dc2626] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shrink-0">
-                    {catLabels[lightbox.cat as keyof typeof catLabels] || lightbox.cat}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="font-extrabold text-slate-900 text-sm sm:text-base leading-tight truncate">{lightbox.title}</p>
-                    <p className="flex items-center gap-1 text-xs text-slate-500 mt-0.5">
-                      <MapPin className="h-3.5 w-3.5 text-[#dc2626] shrink-0" />
-                      {lightbox.loc}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 shrink-0">
-                  <span className="text-xs font-bold text-slate-400">{lightbox.year}</span>
-                  <button
-                    type="button"
-                    onClick={closeLightbox}
-                    className="hidden sm:inline-flex items-center gap-1.5 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white border border-red-500/40 text-[10px] font-black uppercase tracking-wider px-4 py-2 rounded-full hover:scale-[1.03] transition-transform shadow-md cursor-pointer"
-                  >
-                    {t("Get a Quote", "Cotizar")} <ArrowRight className="h-3 w-3" />
-                  </button>
-                </div>
+              {/* Bottom bar with Get a Quote button */}
+              <div className="bg-white px-5 py-3.5 flex items-center justify-center shrink-0 border-t border-slate-100">
+                <a
+                  href="/free-quote"
+                  onClick={closeLightbox}
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white text-xs sm:text-sm font-black uppercase tracking-wider px-6 py-2.5 rounded-full hover:scale-[1.03] active:scale-[0.98] transition-transform shadow-md cursor-pointer"
+                >
+                  {t("Get a Quote", "Solicitar Cotización")} <ArrowRight className="h-3.5 w-3.5" />
+                </a>
               </div>
             </motion.div>
           </motion.div>

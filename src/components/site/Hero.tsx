@@ -1,30 +1,52 @@
-import { ArrowRight, Award, BadgeCheck, Check, Clock, MapPin, Phone, ShieldCheck, Star } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowRight, Award, Check, Clock, MapPin, Phone, Star } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
-import heroVideo from "@/assets/hero.mp4";
-import heroStorm from "@/assets/hero-storm.jpg";
+import heroImg1 from "@/assets/gallery/tornadoshelters6.jpg";
+import heroImg2 from "@/assets/gallery/2.png";
+
+const heroImages = [
+  {
+    src: heroImg1,
+    alt: "Tornado shelter installation",
+  },
+  {
+    src: heroImg2,
+    alt: "Underground storm shelter structure",
+  },
+];
 
 export function Hero() {
   const { t } = useLanguage();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="relative isolate min-h-screen overflow-hidden pt-16 md:pt-20 flex items-center bg-[#0b0f15]">
-      {/* Background Video with Cinematic Dark Contrast Overlays */}
+      {/* Background Image Carousel with Cinematic Dark Contrast Overlays */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster={heroStorm}
-          className="h-full w-full object-cover object-center filter brightness-95 sm:brightness-100 contrast-105 pointer-events-none select-none"
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
-        {/* Lightened, balanced gradient overlays to maximize video visibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/80 via-[#0b0f15]/40 to-black/15 sm:from-[#0b0f15]/75 sm:via-[#0b0f15]/30 sm:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/80 via-transparent to-[#0b0f15]/25" />
+        {heroImages.map((image, index) => (
+          <img
+            key={index}
+            src={image.src}
+            alt={image.alt}
+            className={`absolute inset-0 h-full w-full object-cover object-center transition-all duration-1000 ease-in-out ${
+              currentImageIndex === index
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-105 pointer-events-none"
+            }`}
+          />
+        ))}
+        {/* Lightened, balanced gradient overlays to maximize image visibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/85 via-[#0b0f15]/50 to-black/25 sm:from-[#0b0f15]/80 sm:via-[#0b0f15]/40 sm:to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/85 via-transparent to-[#0b0f15]/30" />
       </div>
 
       {/* Subtle atmospheric glow */}
@@ -41,7 +63,7 @@ export function Hero() {
               {[...Array(5)].map((_, i) => <Star key={i} className="h-3 w-3 sm:h-3.5 sm:w-3.5 fill-current text-amber-400" />)}
             </span>
             <span className="text-red-300 font-bold">
-              {t("FEMA P-320 & ICC-500 Certified • Nashville's Shelter Experts", "Certificación FEMA P-320 e ICC-500 • Expertos en Refugios de Nashville")}
+              {t("Nashville's Storm Shelter Experts", "Expertos en Refugios de Nashville")}
             </span>
           </span>
 
@@ -52,13 +74,13 @@ export function Hero() {
               <span className="gradient-text-orange">{t("Most.", "Importa.")}</span>
             </span>
             <span className="block text-[17px] sm:text-[25px] md:text-[31px] lg:text-[36px] whitespace-normal sm:whitespace-nowrap text-slate-200 mt-1 sm:mt-1.5">
-              {t("— Premium Underground Storm Shelters.", "— Refugios Subterráneos de Alta Resistencia.")}
+              {t("— Premium Custom Built Storm Shelters.", "— Refugios Personalizados de Alta Resistencia.")}
             </span>
           </h1>
 
           {/* Description */}
           <p className="max-w-2xl mt-3 mb-0 text-slate-200 text-[13px] sm:text-[15px] md:text-[17px] leading-relaxed font-normal">
-            {t("Protect your family, home, and future with professionally installed underground storm shelters from Southern Storm Shelters LLC. Engineered for serious severe-weather and tornado protection across Nashville and a 100-mile service radius.", "Proteja a su familia, hogar y futuro con refugios subterráneos contra tormentas instalados profesionalmente por Southern Storm Shelters LLC. Diseñados para tornados severos y protección climática extrema en Nashville y un radio de 100 millas.")}
+            {t("Protect your family, home, and future with professionally installed storm shelters from Southern Storm Shelters LLC. Choose from prefabricated in-ground shelters or a fully custom concrete build — serving Nashville and a 100-mile radius across Middle Tennessee.", "Proteja a su familia con refugios instalados profesionalmente por Southern Storm Shelters LLC. Elija entre refugios subterráneos prefabricados o un refugio de concreto totalmente personalizado.")}
           </p>
 
           {/* CTA Buttons */}
@@ -99,42 +121,37 @@ export function Hero() {
                 </span>
               </div>
 
-              {/* 3. Licensed • Insured • Bonded */}
+
+              {/* 4. Nashville & Middle TN */}
               <div className="group inline-flex items-center gap-1.5 lg:gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-red-500/40 px-3 py-1.5 text-[11px] lg:text-[11.5px] font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none whitespace-nowrap shrink-0">
                 <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
                   <Check className="h-2 w-2 stroke-[3]" />
                 </span>
-                <ShieldCheck className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
-                <span className="tracking-wide font-medium">
-                  {t("Licensed • Insured • Bonded", "Licenciado • Asegurado • Afianzado")}
-                </span>
-              </div>
-
-              {/* 4. 5+ Years Experience */}
-              <div className="group inline-flex items-center gap-1.5 lg:gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-red-500/40 px-3 py-1.5 text-[11px] lg:text-[11.5px] font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none whitespace-nowrap shrink-0">
-                <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
-                  <Check className="h-2 w-2 stroke-[3]" />
-                </span>
-                <Award className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
+                <MapPin className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
                 <span className="tracking-wide">
-                  <strong className="text-white font-bold">5+ Years</strong> {t("Experience", "Experiencia")}
-                </span>
-              </div>
-
-              {/* 5. FEMA Compliant */}
-              <div className="group inline-flex items-center gap-1.5 lg:gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-red-500/30 hover:border-red-500/60 px-3 py-1.5 text-[11px] lg:text-[11.5px] font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none whitespace-nowrap shrink-0 shadow-red-950/20">
-                <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-red-500/20 text-red-400 border border-red-500/40 shrink-0">
-                  <Check className="h-2 w-2 stroke-[3]" />
-                </span>
-                <BadgeCheck className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
-                <span className="tracking-wide">
-                  <strong className="text-white font-bold">FEMA</strong> {t("Compliant", "Cumplimiento")}
+                  <strong className="text-white font-bold">Nashville</strong> {t("& Middle TN", "y Middle TN")}
                 </span>
               </div>
             </div>
           </div>
 
         </div>
+      </div>
+
+      {/* Slide indicators */}
+      <div className="absolute bottom-5 right-6 z-20 flex items-center gap-2 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15 shadow-lg">
+        {heroImages.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentImageIndex(idx)}
+            aria-label={`Switch to slide ${idx + 1}`}
+            className={`h-2 transition-all duration-300 rounded-full ${
+              currentImageIndex === idx
+                ? "w-6 bg-red-500"
+                : "w-2 bg-white/40 hover:bg-white/70"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );

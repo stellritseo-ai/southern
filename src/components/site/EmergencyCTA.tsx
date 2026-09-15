@@ -3,8 +3,7 @@ import { motion } from "framer-motion";
 import { Phone, Clock, ShieldCheck, CheckCircle2, AlertTriangle, Zap, ArrowRight, MapPin } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
-import heroStorm from "@/assets/hero-storm.jpg";
-import welcomeVideo from "@/assets/welcome.mp4";
+import grangerInstallImg from "@/assets/granger-install.jpg";
 
 export function EmergencyCTA() {
   const { t } = useLanguage();
@@ -15,19 +14,14 @@ export function EmergencyCTA() {
       subtitle: t("Always Ready to Dispatch", "Siempre Listos"),
     },
     {
-      icon: AlertTriangle,
-      title: t("EF-5 Rated Strength", "Resistencia EF-5"),
-      subtitle: t("250+ MPH Wind Protection", "Vientos de Más de 250 MPH"),
+      icon: MapPin,
+      title: t("Nashville & Middle TN", "Nashville y Middle TN"),
+      subtitle: t("100-Mile Service Area", "Radio de 100 Millas"),
     },
     {
       icon: ShieldCheck,
-      title: t("Licensed • Insured • Bonded", "Licenciado • Asegurado • Afianzado"),
-      subtitle: t("100% Certified Installs", "Instalaciones 100% Certificadas"),
-    },
-    {
-      icon: CheckCircle2,
-      title: t("5+ Years Experience", "5+ Años de Experiencia"),
-      subtitle: t("Nashville's Trusted Crew", "Equipo Confiable de Nashville"),
+      title: t("Professional Installation", "Instalación Profesional"),
+      subtitle: t("In-Ground & Custom Built", "Subterráneo y Personalizado"),
     },
   ];
 
@@ -36,20 +30,15 @@ export function EmergencyCTA() {
       className="relative w-full overflow-hidden py-[50px] text-white bg-[#0b0f15] border-y border-red-500/30"
       style={{ paddingTop: "50px", paddingBottom: "50px" }}
     >
-      {/* Background Video with Balanced Visibility */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster={heroStorm}
-          className="h-full w-full object-cover scale-105 filter brightness-85 contrast-110 select-none"
-        >
-          <source src={welcomeVideo} type="video/mp4" />
-        </video>
+        <img
+          src={grangerInstallImg}
+          alt="Storm shelter installation"
+          className="h-full w-full object-cover scale-105 filter brightness-[0.3] contrast-110 select-none"
+        />
 
-        {/* Soft balanced overlays so the video is clearly visible with strong text contrast */}
+        {/* Overlays for text contrast */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/90 via-[#0b0f15]/75 to-[#0b0f15]/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/90 via-transparent to-[#0b0f15]/60" />
 
@@ -89,7 +78,7 @@ export function EmergencyCTA() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-display font-black tracking-tight leading-[1.2] text-white max-w-2xl"
             >
-              <span className="block text-[22px] sm:text-[30px] lg:text-[36px] xl:text-[40px]">
+              <span className="block text-[36px]" style={{ fontSize: "36px" }}>
                 {t("Don't Wait for the Next Severe Storm.", "No Espere a la Próxima Tormenta Severa.")}
               </span>
               <span
@@ -107,7 +96,7 @@ export function EmergencyCTA() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-[13.5px] sm:text-base lg:text-lg text-slate-300 max-w-xl leading-relaxed font-normal"
             >
-              {t("Tornado sirens offer only minutes of warning. Give your family an unshakeable, certified underground safe vault steps from your home. We provide turnkey installation and consultation across Nashville and a 100-mile service radius.", "Las sirenas de tornado ofrecen solo minutos de aviso. Brinde a su familia una bóveda de seguridad subterránea certificada e inquebrantable a pasos de su hogar. Ofrecemos instalación completa en Nashville y 100 millas a la redonda.")}
+              {t("Tornado sirens offer only minutes of warning. Give your family a safe, underground storm shelter just steps from your home. We offer prefabricated in-ground units and fully custom concrete shelters across Nashville and a 100-mile service radius.", "Las sirenas de tornado ofrecen solo minutos de aviso. Brinde a su familia un refugio subterráneo seguro a pasos de su hogar. Ofrecemos unidades prefabricadas y refugios de concreto personalizados en Nashville y 100 millas a la redonda.")}
             </motion.p>
 
             {/* Feature Cards — Infinite Auto Scrolling Marquee */}

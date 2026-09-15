@@ -5,7 +5,6 @@ import { Welcome } from "@/components/site/Welcome";
 import { Services } from "@/components/site/Services";
 import { WhyChooseUs } from "@/components/site/WhyChooseUs";
 import { Projects } from "@/components/site/Projects";
-import { Testimonials } from "@/components/site/Testimonials";
 import { ContactIllustrationSection } from "@/components/site/ContactIllustrationSection";
 import { ServiceArea } from "@/components/site/ServiceArea";
 import { GetInTouch } from "@/components/site/GetInTouch";
@@ -19,18 +18,18 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Engineered underground storm shelters, residential safe rooms & commercial tornado protection in Nashville, TN & 100-mile service radius across Middle Tennessee. Licensed, insured, bonded. Call 615-991-2361.",
+          "Engineered underground storm shelters, residential safe rooms & custom tornado protection in Nashville, TN & 100-mile service radius across Middle Tennessee. Call 615-991-2361.",
       },
       {
         name: "keywords",
         content:
-          "storm shelters nashville tn, underground storm shelters nashville, storm shelter installation nashville, underground tornado shelters nashville, residential storm shelters nashville, tornado shelters nashville tn, storm shelter company nashville, commercial storm shelters nashville",
+          "storm shelters nashville tn, underground storm shelters nashville, storm shelter installation nashville, underground tornado shelters nashville, residential storm shelters nashville, tornado shelters nashville tn, storm shelter company nashville, custom storm shelters nashville",
       },
       { property: "og:title", content: "Storm Shelters Nashville TN | Southern Storm Shelters LLC" },
       {
         property: "og:description",
         content:
-          "5+ Years Experience — Licensed, Insured & Bonded Underground Storm Shelters & Safe Rooms in Nashville, TN & 100-Mile Radius. FEMA P-320 & ICC-500 Compliant.",
+          "Underground Storm Shelters & Safe Rooms in Nashville, TN & 100-Mile Radius.",
       },
       { property: "og:url", content: "https://www.southernstormsheltersllc.com" },
       { property: "og:type", content: "website" },
@@ -89,48 +88,16 @@ function Index() {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Underground Storm Shelters",
-            "description": "Engineered subterranean tornado storm shelters built to FEMA P-320 and ICC-500 standards in Nashville, TN."
+            "name": "In-Ground Prefabricated Storm Shelters",
+            "description": "Prefabricated in-ground storm shelters installed quickly in your backyard."
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Residential Storm Shelters",
-            "description": "Turnkey family safe rooms and backyard underground vaults for 99% residential homeowners."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Commercial Storm Shelters",
-            "description": "Heavy-capacity engineered storm shelters for business sites, warehouses, and commercial properties."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Storm Shelter Installation",
-            "description": "Turnkey laser-leveling, crane setting, concrete anchoring, and waterproof sealing."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Shelter Site Preparation",
-            "description": "Precision backhoe excavation, grade stabilization, and soil evaluation for safe installation."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Shelter Upgrades & Hatches",
-            "description": "Hydraulic gas-strut hatch doors, emergency latch mechanisms, and multi-point air venting."
+            "name": "Custom Built Storm Shelters",
+            "description": "A fully custom-designed concrete storm shelter built to your exact specifications."
           }
         }
       ]
@@ -172,14 +139,6 @@ function Index() {
           "@type": "Answer",
           "text": "We serve a 100-mile radius around Nashville, covering Middle Tennessee communities including Franklin, Murfreesboro, Hendersonville, Brentwood, Clarksville, Columbia, Gallatin, Lebanon, Mount Juliet, and Dickson."
         }
-      },
-      {
-        "@type": "Question",
-        "name": "Is Southern Storm Shelters LLC licensed and insured?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, we are fully licensed, insured, and bonded. Every shelter meets or exceeds FEMA P-320 and ICC-500 standards for severe weather and EF-5 tornadoes."
-        }
       }
     ]
   };
@@ -217,7 +176,6 @@ function Index() {
       <Process />
       <WhyChooseUs />
       <Projects isLanding={true} />
-      <Testimonials />
       <ContactIllustrationSection />
       <ServiceArea />
       <GetInTouch />

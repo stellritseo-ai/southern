@@ -38,13 +38,7 @@ const faqs: FAQItem[] = [
     a: "Most residential turnkey installations are completed in a single day once site excavation begins. We coordinate heavy crane setting, anchoring, sealing, and backfill efficiently with minimal yard disruption.",
     aEs: "La mayoría de las instalaciones residenciales llave en mano se completan en un solo día una vez iniciada la excavación. Coordinamos la grúa pesada, el anclaje y el relleno eficientemente.",
   },
-  {
-    id: "faq-3",
-    q: "Are you licensed, bonded, and FEMA P-320 compliant?",
-    qEs: "¿Están licenciados, afianzados y cumplen con las normas FEMA P-320?",
-    a: "Yes! Southern Storm Shelters LLC is fully licensed, insured, and bonded. Every shelter design meets or exceeds FEMA P-320 and ICC-500 standards for EF-5 tornado wind speeds up to 250+ MPH.",
-    aEs: "¡Sí! Southern Storm Shelters LLC está totalmente licenciado, asegurado y afianzado. Cada refugio cumple o supera los estándares FEMA P-320 e ICC-500 para vientos de tornado EF-5.",
-  },
+
   {
     id: "faq-4",
     q: "What areas do you serve around Nashville, TN?",
@@ -251,7 +245,7 @@ export function ContactIllustrationSection() {
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="text-[9px] uppercase tracking-widest text-[#dc2626] font-black block">
-                      {t("Licensed • Insured • Bonded • Nashville, TN", "Licenciado • Asegurado • Afianzado • Nashville, TN")}
+                      {t("Nashville, TN", "Nashville, TN")}
                     </span>
                     <p className="text-xs sm:text-sm font-extrabold text-slate-900 mt-0.5">
                       {t("Call (615) 991-2361 for Free Estimates", "Llama al (615) 991-2361 para Estimaciones")}

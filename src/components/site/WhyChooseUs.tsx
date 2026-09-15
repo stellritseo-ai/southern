@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 
 import { useLanguage } from "@/hooks/useLanguage";
-import whyUsVideo from "@/assets/whyus.mp4";
-import installCraneImg from "@/assets/install-crane.jpg";
+import tornadoShelterImg from "@/assets/gallery/tornadoshelters6.jpg";
 import {
   ShieldCheck,
   Clock,
@@ -23,11 +22,7 @@ const features = (t: (en: string, es: string) => string) => [
     title: t("5+ Years of Experience", "5+ Años de Experiencia"),
     desc: t("Proven craftsmanship in underground shelter excavation, leveling & anchoring.", "Experiencia comprobada en excavación, nivelación y anclaje de refugios."),
   },
-  {
-    icon: ShieldCheck,
-    title: t("Licensed, Insured & Bonded", "Licenciado, Asegurado y Afianzado"),
-    desc: t("Full liability protection and compliance on every single residential install.", "Protección de responsabilidad completa y cumplimiento en cada instalación."),
-  },
+
   {
     icon: Clock,
     title: t("24/7 Availability", "Disponible 24/7"),
@@ -38,11 +33,7 @@ const features = (t: (en: string, es: string) => string) => [
     title: t("100-Mile Service Area", "Radio de 100 Millas"),
     desc: t("Nashville, TN and all surrounding Middle Tennessee counties and towns.", "Nashville, TN y todos los condados y pueblos de Middle Tennessee."),
   },
-  {
-    icon: HardHat,
-    title: t("FEMA P-320 & ICC-500", "Normas FEMA e ICC"),
-    desc: t("Engineered to withstand EF-5 tornado wind loads of 250+ MPH.", "Diseñados para soportar cargas de viento de tornados EF-5 de más de 250 MPH."),
-  },
+
   {
     icon: Home,
     title: t("99% Residential Focus", "99% Enfoque Residencial"),
@@ -64,7 +55,6 @@ const trustStats = [
   { value: "5+", label: "Years Exp." },
   { value: "100mi", label: "Service Radius" },
   { value: "24/7", label: "Availability" },
-  { value: "100%", label: "FEMA Compliant" },
 ];
 
 export function WhyChooseUs() {
@@ -118,7 +108,7 @@ export function WhyChooseUs() {
               className="text-slate-500 text-[14px] sm:text-[15px] leading-relaxed font-normal max-w-2xl"
               style={{ marginBottom: "10px" }}
             >
-              {t("Southern Storm Shelters LLC is a licensed, insured, and bonded storm shelter company dedicated to defending Tennessee families and businesses against severe tornadoes.", "Southern Storm Shelters LLC es una empresa de refugios con licencia, seguro y fianza dedicada a defender a las familias y empresas de Tennessee contra tornados severos.")}
+              {t("Southern Storm Shelters LLC is a storm shelter company dedicated to defending Tennessee families and businesses against severe tornadoes.", "Southern Storm Shelters LLC es una empresa de refugios dedicada a defender a las familias y empresas de Tennessee contra tornados severos.")}
             </p>
 
             {/* Feature Grid */}
@@ -176,25 +166,21 @@ export function WhyChooseUs() {
             <div aria-hidden className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-[#dc2626]/15 via-transparent to-red-600/15 blur-xl pointer-events-none" />
             <div aria-hidden className="absolute -inset-1 rounded-[32px] bg-gradient-to-tr from-[#dc2626]/20 to-red-500/20 blur-md pointer-events-none" />
 
-            {/* Video container */}
+            {/* Visual image container */}
             <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_80px_-12px_rgba(0,0,0,0.25)] border-2 border-slate-100 group bg-[#0b0f15]">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                poster={installCraneImg}
+              <img
+                src={tornadoShelterImg}
+                alt="Tornado storm shelter installation"
                 className="w-full h-[320px] sm:h-[400px] lg:h-[530px] object-cover transition-transform duration-700 ease-out group-hover:scale-105 select-none"
-              >
-                <source src={whyUsVideo} type="video/mp4" />
-              </video>
+                loading="lazy"
+              />
 
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/85 via-[#0b0f15]/20 to-transparent pointer-events-none" />
 
               {/* Trust Stats Bar at bottom */}
               <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-10">
-                <div className="bg-[#0b0f15]/85 backdrop-blur-md border border-red-500/30 rounded-2xl px-2 sm:px-4 py-2 sm:py-3 grid grid-cols-4 divide-x divide-white/15">
+                <div className="bg-[#0b0f15]/85 backdrop-blur-md border border-red-500/30 rounded-2xl px-2 sm:px-4 py-2 sm:py-3 grid grid-cols-3 divide-x divide-white/15">
                   {trustStats.map((s) => (
                     <div key={s.label} className="flex flex-col items-center px-0.5 sm:px-2">
                       <span className="text-red-400 font-black text-[12px] sm:text-[16px] leading-tight">{s.value}</span>

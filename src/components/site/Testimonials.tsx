@@ -94,17 +94,13 @@ function TestimonialCard({ review, isGrid = false }: { review: Review; isGrid?: 
         </p>
       </div>
 
-      {/* Service tag + FEMA Compliance */}
+      {/* Service tag only */}
       <div className="flex flex-wrap items-center gap-2 pt-0.5">
         {review.service && (
           <span className="self-start inline-flex items-center bg-red-50/90 border border-red-200 text-[#dc2626] text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
             {review.service}
           </span>
         )}
-        <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/70 px-2 py-0.5 rounded-full select-none">
-          <BadgeCheck className="w-3 h-3 text-emerald-600" />
-          FEMA Inspected
-        </span>
       </div>
 
       {/* Business owner reply */}
@@ -333,12 +329,12 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
         transition={{ duration: 0.6 }}
         className="mx-auto w-[90%] max-w-7xl text-center mb-10 sm:mb-14 relative z-10"
       >
-        {/* Eyebrow Badge: Google Verified */}
+        {/* Eyebrow Badge */}
         <div className="inline-flex items-center gap-2 bg-white border border-slate-200/90 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-wider text-slate-800 mb-4 shadow-sm select-none">
-          <GoogleIcon className="w-4 h-4" />
-          <span>{t("Google Verified Reviews", "Reseñas Verificadas de Google")}</span>
+          <span>⭐</span>
+          <span>{t("Customer Stories", "Historias de Clientes")}</span>
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-          <span className="text-[#dc2626] font-extrabold tracking-normal">5.0 ★★★★★</span>
+          <span className="text-[#dc2626] font-extrabold tracking-normal">Nashville, TN</span>
         </div>
 
         <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-black text-slate-900 tracking-tight leading-tight mt-0 sm:mt-[-4px] mb-3">
@@ -361,22 +357,7 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-6 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl sm:rounded-full px-5 py-2.5 sm:px-6 sm:py-3 shadow-[0_8px_30px_rgba(0,0,0,0.06)] select-none"
           >
-            {/* Google Rating */}
-            <div className="flex items-center gap-2.5">
-              <GoogleIcon className="w-5 h-5 flex-shrink-0" />
-              <div className="text-left">
-                <span className="font-extrabold text-slate-900 text-xs sm:text-sm tracking-tight block leading-tight">Google Rating</span>
-                <span className="text-[10px] text-slate-400 font-semibold block leading-tight">Verified Reviews</span>
-              </div>
-              <div className="flex items-center gap-1 bg-amber-50 border border-amber-200/80 px-2 py-0.5 rounded-md ml-1">
-                <Star className="w-3.5 h-3.5 fill-[#fbbf24] text-[#fbbf24]" />
-                <span className="text-xs font-black text-slate-900 leading-none">5.0</span>
-              </div>
-            </div>
-
-            <div className="hidden sm:block w-px h-6 bg-slate-200" />
-
-            {/* Stars & Customer Stats */}
+            {/* Stars */}
             <div className="flex items-center gap-2.5">
               <div className="flex gap-0.5">
                 {[1, 2, 3, 4, 5].map((i) => (
@@ -384,7 +365,7 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
                 ))}
               </div>
               <span className="text-xs font-semibold text-slate-600">
-                {t("100% Recommendation Rate · 200+ Shelter Installs", "100% Tasa de Recomendación · 200+ Instalaciones")}
+                {t("Nashville & Middle Tennessee", "Nashville y Middle Tennessee")}
               </span>
             </div>
           </motion.div>

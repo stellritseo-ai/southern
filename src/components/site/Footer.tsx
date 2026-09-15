@@ -93,17 +93,12 @@ export function Footer() {
     { label: t("Service Area (100-Mi)", "Área de Servicio"), href: "/" },
     { label: t("Free Estimate", "Cotización Gratis"), href: "/" },
     { label: t("Gallery", "Galería"), href: "/" },
-    { label: t("Reviews", "Reseñas"), href: "/" },
     { label: t("Contact", "Contacto"), href: "/contact" },
   ];
 
   const servicesLinks = [
-    { label: t("Underground Storm Shelters", "Refugios Subterráneos"), href: "#" },
-    { label: t("Residential Storm Shelters", "Refugios Residenciales"), href: "#" },
-    { label: t("Commercial Storm Shelters", "Refugios Comerciales"), href: "#" },
-    { label: t("Shelter Installation & Crane Sets", "Instalación y Colocación"), href: "#" },
-    { label: t("Site Preparation & Excavation", "Preparación de Terreno"), href: "#" },
-    { label: t("Shelter Upgrades & Modernization", "Mejoras de Refugios"), href: "#" },
+    { label: t("In-Ground Prefabricated Storm Shelters", "Refugios Subterráneos"), href: "#" },
+    { label: t("Custom Built Storm Shelters", "Refugios Personalizados"), href: "#" },
   ];
 
   const serviceAreaLinks = [
@@ -150,7 +145,7 @@ export function Footer() {
 
             <p className="text-[13px] text-slate-300 leading-relaxed font-medium mb-4">
               {t(
-                "Underground storm shelter installation for homeowners and businesses across Nashville and a 100-mile service area throughout Middle Tennessee. FEMA P-320 & ICC-500 compliant engineering.",
+                "Underground storm shelter installation for homeowners and businesses across Nashville and a 100-mile service area throughout Middle Tennessee.",
                 "Instalación de refugios subterráneos para hogares y empresas en Nashville y un área de servicio de 100 millas en Middle Tennessee."
               )}
             </p>
@@ -168,16 +163,6 @@ export function Footer() {
                 <span className="font-black text-white text-[15px] tracking-tight leading-tight">615-991-2361</span>
               </div>
             </a>
-
-            {/* Trust Badges - 2x2 grid */}
-            <div className="grid grid-cols-2 gap-2 mb-4">
-              {["Licensed", "Insured", "Bonded", "FEMA P-320"].map((badge) => (
-                <div key={badge} className="flex items-center gap-2 bg-red-950/40 border border-red-500/40 rounded-xl px-3 py-2 text-[10px] font-bold text-red-300 uppercase tracking-wide">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#fbbf24] animate-pulse shrink-0" />
-                  ✓ {badge}
-                </div>
-              ))}
-            </div>
 
             {/* Socials */}
             <div className="flex items-center gap-3 mb-6">
@@ -287,7 +272,7 @@ export function Footer() {
 
             <p className="text-sm text-slate-300 leading-relaxed max-w-sm font-medium">
               {t(
-                "Engineered underground storm shelter installation for homeowners and businesses across Nashville and a 100-mile service radius throughout Middle Tennessee. FEMA P-320 & ICC-500 compliant.",
+                "Engineered underground storm shelter installation for homeowners and businesses across Nashville and a 100-mile service radius throughout Middle Tennessee.",
                 "Instalación de refugios subterráneos diseñados para hogares y empresas en Nashville y un radio de 100 millas en Middle Tennessee."
               )}
             </p>
@@ -311,15 +296,6 @@ export function Footer() {
               ))}
             </div>
 
-            {/* Trust Badges */}
-            <div className="flex flex-wrap gap-2 pt-1">
-              {["Licensed", "Insured", "Bonded", "5+ Yrs Exp."].map((badge) => (
-                <div key={badge} className="flex items-center gap-1.5 bg-red-950/40 border border-red-500/40 rounded-xl px-3 py-1.5 text-[10px] font-bold text-red-300 uppercase tracking-wider">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#fbbf24] animate-pulse" />
-                  ✓ {badge}
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Col 2: Quick Links (col-span-2) */}
@@ -454,17 +430,10 @@ export function Footer() {
             <p>
               © 2026 Southern Storm Shelters LLC. Design By StellR IT LLC{" "}
             </p>
-            <span className="hidden sm:inline text-white/20">|</span>
-            <div className="flex items-center gap-1.5 text-slate-400">
-              <ShieldCheck className="h-3.5 w-3.5 text-[#dc2626]" />
-              <span>FEMA P-320 &amp; ICC-500 Standards</span>
-            </div>
           </div>
 
           <div className="flex items-center gap-6 order-1 sm:order-2">
-            <p className="text-xs text-slate-400 font-semibold hidden sm:block">
-              ✓ Licensed • Insured • Bonded • 5+ Years Experience
-            </p>
+
             <motion.button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               whileHover={{ y: -3 }}

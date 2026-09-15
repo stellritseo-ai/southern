@@ -13,9 +13,6 @@ import {
   ArrowRight,
   Sparkles,
   Shield,
-  HardHat,
-  Building2,
-  Truck,
   AlertTriangle,
   Zap,
 } from "lucide-react";
@@ -39,45 +36,17 @@ export function Header() {
   const serviceLinks = [
     {
       to: "/services",
-      l: t("Underground Storm Shelters", "Refugios Subterráneos"),
-      desc: t("Engineered subterranean storm vaults for total severe weather safety", "Bóvedas subterráneas para máxima seguridad"),
+      l: t("In-Ground Storm Shelter", "Refugio Subterráneo"),
+      desc: t("Prefabricated steel vault installed by crane in your backyard — ready in as little as one day", "Bóveda de acero prefabricada instalada con grúa en su patio — lista en tan solo un día"),
       icon: Shield,
-      tag: "FEMA P-320",
+      tag: t("Most Popular", "Más Popular"),
     },
     {
       to: "/services",
-      l: t("Residential Storm Shelters", "Refugios Residenciales"),
-      desc: t("Custom turnkey home safe rooms engineered for Tennessee families", "Salas seguras familiares para hogares de Tennessee"),
+      l: t("Custom Built Storm Shelter", "Refugio de Construcción Personalizada"),
+      desc: t("Fully custom concrete storm shelter built to your exact specs, size, and amenities", "Refugio de concreto totalmente personalizado según sus especificaciones, tamaño y comodidades"),
       icon: Home,
-      tag: "99% Residential",
-    },
-    {
-      to: "/services",
-      l: t("Commercial Storm Shelters", "Refugios Comerciales"),
-      desc: t("High-capacity safe havens for businesses, job sites and facilities", "Refugios de gran capacidad para empresas y obras"),
-      icon: Building2,
-      tag: "Commercial",
-    },
-    {
-      to: "/services",
-      l: t("Professional Installation", "Instalación Profesional"),
-      desc: t("Heavy crane placement, laser leveling and high-strength ground anchoring", "Colocación con grúa, nivelación láser y anclaje"),
-      icon: HardHat,
-      tag: "Turnkey",
-    },
-    {
-      to: "/services",
-      l: t("Shelter Site Preparation", "Preparación de Terreno"),
-      desc: t("Precision backhoe excavation, watershed grading and soil evaluation", "Excavación de precisión y nivelación de agua"),
-      icon: Truck,
-      tag: "Site Prep",
-    },
-    {
-      to: "/services",
-      l: t("Shelter Upgrades & Hatches", "Mejoras y Escotillas"),
-      desc: t("Hydraulic gas-strut doors, secondary latches & emergency air venting", "Escotillas hidráulicas y ventilación de emergencia"),
-      icon: Sparkles,
-      tag: "Upgrades",
+      tag: t("Premium", "Premium"),
     },
   ];
 
@@ -136,7 +105,7 @@ export function Header() {
 
             <div className="hidden md:flex items-center gap-1.5 border-l border-white/15 pl-4 text-[11px] font-semibold text-slate-300">
               <ShieldCheck className="h-3.5 w-3.5 text-[#dc2626]" />
-              <span>Licensed • Insured • Bonded • FEMA P-320 &amp; ICC-500 Compliant</span>
+              <span>{t("Nashville & Middle Tennessee • 100-Mile Service Area", "Nashville y Middle Tennessee • Radio de 100 Millas")}</span>
             </div>
           </div>
 
@@ -195,7 +164,7 @@ export function Header() {
               <img
                 src={logoImg}
                 alt="Southern Storm Shelters LLC"
-                className="h-11 sm:h-13 w-auto max-w-[220px] sm:max-w-[260px] object-contain"
+                className="h-9 sm:h-11 w-auto max-w-[180px] sm:max-w-[220px] object-contain"
               />
             </Link>
 
@@ -226,7 +195,7 @@ export function Header() {
               <img
                 src={logoImg}
                 alt="Southern Storm Shelters LLC"
-                className="h-14 lg:h-16 xl:h-[70px] w-auto max-w-[260px] lg:max-w-[300px] xl:max-w-[340px] object-contain group-hover:scale-105 transition-transform duration-300"
+                className="h-11 lg:h-13 xl:h-14 w-auto max-w-[220px] lg:max-w-[260px] xl:max-w-[280px] object-contain group-hover:scale-105 transition-transform duration-300"
               />
             </Link>
 

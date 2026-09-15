@@ -1,9 +1,8 @@
 import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, Star, HardHat, Home, MapPin } from "lucide-react";
 
-import shelterInteriorImg from "@/assets/shelter-interior.jpg";
+import shelterInstallImg from "@/assets/gallery/shelterinstall.jpg";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
-import welcomeVideo from "@/assets/welcome.mp4";
 
 const TinySparkleIcon = () => (
   <svg className="w-3.5 h-3.5 text-[#dc2626] fill-[#dc2626] shrink-0" viewBox="0 0 24 24">
@@ -16,10 +15,10 @@ export function Welcome() {
 
   const promisePoints = [
     {
-      title: t("EF-5 Tornado Protection", "Protección contra Tornados EF-5"),
-      desc: t("Meets & exceeds FEMA P-320 & ICC-500 standards.", "Cumple con las normas FEMA P-320 e ICC-500."),
+      title: t("Rapid Same-Day Installation", "Instalación Rápida el Mismo Día"),
+      desc: t("Prefabricated shelters set in place by crane in a single day.", "Refugios prefabricados colocados con grúa en un solo día."),
       icon: ShieldCheck,
-      tag: "FEMA Certified",
+      tag: "Fast",
     },
     {
       title: t("Rapid 1-2 Day Installation", "Instalación Rápida en 1-2 Días"),
@@ -74,10 +73,10 @@ export function Welcome() {
             {/* Paragraphs */}
             <div className="space-y-3.5 text-slate-600 text-[14px] sm:text-base leading-relaxed font-normal">
               <p>
-                {t("When severe tornadoes and supercells threaten Middle Tennessee, every second counts. Southern Storm Shelters LLC specializes in professionally engineered and installed underground storm shelters designed to give your family an impenetrable sanctuary.", "Cuando tornados severos amenazan el centro de Tennessee, cada segundo cuenta. Southern Storm Shelters LLC se especializa en refugios subterráneos diseñados profesionalmente para brindar un santuario impenetrable a su familia.")}
+                {t("When severe tornadoes and supercells threaten Middle Tennessee, every second counts. Southern Storm Shelters LLC specializes in professionally installed storm shelters designed to give your family a safe place to ride out the worst storms.", "Cuando tornados severos amenazan el centro de Tennessee, cada segundo cuenta. Southern Storm Shelters LLC se especializa en refugios contra tormentas instalados profesionalmente para brindar un lugar seguro a su familia.")}
               </p>
               <p>
-                {t("With 5+ years of field experience and 100-mile service radius around Nashville, our certified installations meet strict FEMA P-320 guidelines to withstand 250+ MPH winds and extreme projectile impacts. We are fully licensed, insured, and bonded for your ultimate peace of mind.", "Con más de 5 años de experiencia y un radio de servicio de 100 millas alrededor de Nashville, nuestras instalaciones certificadas cumplen con las directrices FEMA P-320 para soportar vientos de más de 250 MPH. Contamos con licencia, seguro y fianza.")}
+                {t("With a 100-mile service area around Nashville, we install prefabricated in-ground shelters and build fully custom concrete shelters — serving families across Middle Tennessee quickly and professionally.", "Con un radio de servicio de 100 millas alrededor de Nashville, instalamos refugios subterráneos prefabricados y construimos refugios de concreto totalmente personalizados, sirviendo a familias en todo el centro de Tennessee.")}
               </p>
             </div>
 
@@ -148,27 +147,14 @@ export function Welcome() {
 
             <div className="relative w-full max-w-[400px] sm:max-w-[480px] lg:max-w-[500px] xl:max-w-[520px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-[3/4] min-h-[340px] sm:min-h-[460px] lg:min-h-[640px] xl:min-h-[680px] rounded-[24px] sm:rounded-[32px] border border-red-500/30 bg-[#0b0f15] p-2.5 sm:p-3.5 shadow-2xl overflow-hidden group">
 
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                poster={shelterInteriorImg}
+              <img
+                src={shelterInstallImg}
+                alt="Southern Storm Shelters installation jobsite"
                 className="w-full h-full object-cover rounded-[20px] sm:rounded-[26px] select-none transition-transform duration-700 group-hover:scale-105"
-              >
-                <source src={welcomeVideo} type="video/mp4" />
-              </video>
+                loading="lazy"
+              />
 
-              {/* Top Floating Glass Badge */}
-              <div className="absolute top-5 left-5 z-20 flex items-center gap-2 bg-[#0b0f15]/90 backdrop-blur-md border border-red-500/40 px-3.5 py-2 rounded-2xl shadow-md select-none">
-                <ShieldCheck className="h-4 w-4 text-[#dc2626]" />
-                <div className="flex flex-col text-left">
-                  <span className="text-[10px] font-black uppercase text-white">FEMA P-320 &amp; ICC-500</span>
-                  <span className="text-[9px] font-bold text-slate-300">Certified Life-Safety Vault</span>
-                </div>
-              </div>
-
-              {/* Bottom Floating Glass Badge */}
+              {/* Bottom Floating Glass Badge — Install photo */}
               <div className="absolute bottom-5 right-5 z-20 flex items-center gap-2 bg-[#0b0f15]/90 backdrop-blur-md border border-red-500/40 text-white px-4 py-2.5 rounded-2xl shadow-lg select-none">
                 <div className="flex text-amber-400">
                   <Star className="h-3.5 w-3.5 fill-current" />
@@ -177,7 +163,7 @@ export function Welcome() {
                   <Star className="h-3.5 w-3.5 fill-current" />
                   <Star className="h-3.5 w-3.5 fill-current" />
                 </div>
-                <span className="text-xs font-black text-white">5+ Years Experience</span>
+                <span className="text-xs font-black text-white">Nashville & Middle TN</span>
               </div>
 
             </div>
