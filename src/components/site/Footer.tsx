@@ -10,7 +10,7 @@ import {
   ChevronDown,
   Zap,
 } from "lucide-react";
-import logoImg from "@/assets/logo-mark.png";
+import logoImg from "@/assets/logo.png";
 import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/hooks/useLanguage";
 
@@ -132,15 +132,7 @@ export function Footer() {
           {/* Logo & Description */}
           <div className="mb-4">
             <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src={logoImg} alt="Southern Storm Shelters Logo" className="h-12 w-auto object-contain" />
-              <div className="flex flex-col text-left">
-                <span className="text-base font-black uppercase tracking-tight text-white leading-none">
-                  Southern
-                </span>
-                <span className="text-xs font-black uppercase tracking-widest text-[#dc2626] leading-none mt-1">
-                  Storm Shelters LLC
-                </span>
-              </div>
+              <img src={logoImg} alt="Southern Storm Shelters Logo" className="h-12 w-auto max-w-[220px] object-contain bg-white/10 rounded-lg p-2" />
             </Link>
 
             <p className="text-[13px] text-slate-300 leading-relaxed font-medium mb-4">
@@ -259,15 +251,7 @@ export function Footer() {
           {/* Col 1: Brand Info (col-span-3) */}
           <div className="lg:col-span-3 space-y-6">
             <Link to="/" className="flex items-center gap-3">
-              <img src={logoImg} alt="Southern Storm Shelters Logo" className="h-14 w-auto object-contain" />
-              <div className="flex flex-col text-left">
-                <span className="text-lg font-black uppercase tracking-tight text-white leading-none">
-                  Southern
-                </span>
-                <span className="text-xs font-black uppercase tracking-widest text-[#dc2626] leading-none mt-1">
-                  Storm Shelters LLC
-                </span>
-              </div>
+              <img src={logoImg} alt="Southern Storm Shelters Logo" className="h-14 w-auto max-w-[260px] object-contain bg-white/10 rounded-lg p-2" />
             </Link>
 
             <p className="text-sm text-slate-300 leading-relaxed max-w-sm font-medium">
