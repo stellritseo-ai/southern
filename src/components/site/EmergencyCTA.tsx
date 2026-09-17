@@ -72,9 +72,9 @@ export function EmergencyCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display font-black tracking-tight leading-[1.2] text-white max-w-2xl"
+              className="font-display font-black tracking-tight leading-[1.2] text-white max-w-3xl"
             >
-              <span className="block text-[36px]" style={{ fontSize: "36px" }}>
+              <span className="block text-[28px] sm:text-[32px] lg:text-[36px] xl:text-[40px] whitespace-normal lg:whitespace-nowrap">
                 {t("Underground Shelter Builds That Last.", "Construcciones de Refugios Subterráneos Duraderos.")}
               </span>
               <span
