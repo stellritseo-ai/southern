@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Services } from "@/components/site/Services";
-import { Process } from "@/components/site/Process";
+import { ShelterFeatures } from "@/components/site/ShelterFeatures";
 import { EmergencyCTA } from "@/components/site/EmergencyCTA";
 import { useLanguage } from "@/hooks/useLanguage";
 
@@ -141,7 +141,7 @@ function ServicesIndex() {
         subtitle={t("Licensed, insured, and bonded property care across Horn Lake and the 50-mile radius.", "Cuidado de propiedad licenciado y asegurado en Horn Lake y 50 millas a la redonda.")}
       />
       <Services />
-      <Process />
+      <ShelterFeatures />
       <EmergencyCTA />
     </>
   );

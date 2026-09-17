@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, Award, Check, Clock, MapPin, Phone, Star } from "lucide-react";
+import { ArrowRight, Hammer, Check, MapPin, Phone, HardHat } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -57,30 +57,28 @@ export function Hero() {
       <div className="mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pt-20 w-full flex justify-start">
         <div className="animate-fade-up text-white flex flex-col items-start text-left max-w-5xl w-full drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
 
-          {/* Eyebrow badge */}
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/40 bg-black/60 px-3.5 py-1.5 text-[11px] sm:text-xs font-semibold backdrop-blur-md shadow-md">
-            <span className="flex text-amber-400 gap-0.5">
-              {[...Array(5)].map((_, i) => <Star key={i} className="h-3 w-3 sm:h-3.5 sm:w-3.5 fill-current text-amber-400" />)}
-            </span>
-            <span className="text-red-300 font-bold">
-              {t("Nashville's Storm Shelter Experts", "Expertos en Refugios de Nashville")}
+          {/* Eyebrow badge — construction credibility */}
+          <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-black/60 px-4 py-1.5 text-[11px] sm:text-xs font-semibold backdrop-blur-md shadow-md">
+            <HardHat className="h-3.5 w-3.5 text-amber-400" />
+            <span className="text-amber-300 font-bold">
+              {t("Nashville's Underground Shelter Builders", "Constructores de Refugios Subterráneos en Nashville")}
             </span>
           </span>
 
           {/* Main Headline */}
           <h1 className="mt-4 sm:mt-5 font-display font-extrabold tracking-tight leading-[1.2] sm:leading-[1.25]">
             <span className="block text-[21px] sm:text-[28px] md:text-[34px] lg:text-[38px] whitespace-normal sm:whitespace-nowrap">
-              {t("Protect What Matters ", "Proteja Lo Que Más ")}
-              <span className="gradient-text-orange">{t("Most.", "Importa.")}</span>
+              {t("Custom-Built Storm Shelters,", "Refugios Personalizados,")}
             </span>
-            <span className="block text-[17px] sm:text-[25px] md:text-[31px] lg:text-[36px] whitespace-normal sm:whitespace-nowrap text-slate-200 mt-1 sm:mt-1.5">
-              {t("— Premium Custom Built Storm Shelters.", "— Refugios Personalizados de Alta Resistencia.")}
+            <span className="block text-[21px] sm:text-[28px] md:text-[34px] lg:text-[38px] whitespace-normal sm:whitespace-nowrap">
+              {t("Engineered to ", "Diseñados para ")}
+              <span className="gradient-text-orange">{t("Last.", "Durar.")}</span>
             </span>
           </h1>
 
           {/* Description */}
           <p className="max-w-2xl mt-3 mb-0 text-slate-200 text-[13px] sm:text-[15px] md:text-[17px] leading-relaxed font-normal">
-            {t("Protect your family, home, and future with professionally installed storm shelters from Southern Storm Shelters LLC. Choose from prefabricated in-ground shelters or a fully custom concrete build — serving Nashville and a 100-mile radius across Middle Tennessee.", "Proteja a su familia con refugios instalados profesionalmente por Southern Storm Shelters LLC. Elija entre refugios subterráneos prefabricados o un refugio de concreto totalmente personalizado.")}
+            {t("Southern Storm Shelters LLC builds and installs heavy-gauge steel and custom concrete underground storm shelters in Nashville, TN. Choose a prefabricated in-ground unit or a fully custom concrete build — both designed and installed to professional construction standards.", "Southern Storm Shelters LLC construye e instala refugios subterráneos de acero de alto calibre y hormigón personalizado en Nashville, TN.")}
           </p>
 
           {/* CTA Buttons */}
@@ -95,24 +93,32 @@ export function Hero() {
             </Button>
           </div>
 
-          {/* Trust Badges — Pixel-Perfect Single-Line Ribbon */}
+          {/* Trust Badges — Construction Credibility */}
           <div className="mt-7 pt-5 border-t border-white/10 w-full overflow-hidden">
             <div className="flex items-center gap-2 lg:gap-2.5 xl:gap-3 flex-nowrap overflow-x-auto sm:overflow-visible pb-1 sm:pb-0 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-              {/* 1. 100-Mile Service Area */}
+
+              {/* 1. Steel + Concrete Builds */}
+              <div className="group inline-flex items-center gap-1.5 lg:gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-amber-500/40 px-3 py-1.5 text-[11px] lg:text-[11.5px] font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none whitespace-nowrap shrink-0">
+                <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 shrink-0">
+                  <Check className="h-2 w-2 stroke-[3]" />
+                </span>
+                <Hammer className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                <span className="tracking-wide">
+                  <strong className="text-white font-bold">Steel</strong> {t("& Concrete Builds", "y Construcción de Concreto")}
+                </span>
+              </div>
+
+              {/* 2. Free Site Evaluation */}
               <div className="group inline-flex items-center gap-1.5 lg:gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-red-500/40 px-3 py-1.5 text-[11px] lg:text-[11.5px] font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none whitespace-nowrap shrink-0">
                 <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
                   <Check className="h-2 w-2 stroke-[3]" />
                 </span>
-                <MapPin className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
                 <span className="tracking-wide">
-                  <strong className="text-white font-bold">100-Mile</strong> {t("Service Area", "Área de Servicio")}
+                  {t("Free Site Evaluation", "Evaluación Gratuita del Sitio")}
                 </span>
               </div>
 
-
-
-
-              {/* 4. Nashville, TN */}
+              {/* 3. Nashville, TN */}
               <div className="group inline-flex items-center gap-1.5 lg:gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-red-500/40 px-3 py-1.5 text-[11px] lg:text-[11.5px] font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none whitespace-nowrap shrink-0">
                 <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
                   <Check className="h-2 w-2 stroke-[3]" />
@@ -122,6 +128,7 @@ export function Hero() {
                   <strong className="text-white font-bold">Nashville, TN</strong>
                 </span>
               </div>
+
             </div>
           </div>
 

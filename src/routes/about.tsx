@@ -3,7 +3,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHeader } from "@/components/site/PageHeader";
 import { AboutPageContent } from "@/components/site/AboutPageContent";
 import { WhyChooseUs } from "@/components/site/WhyChooseUs";
-import { Process } from "@/components/site/Process";
+import { ShelterFeatures } from "@/components/site/ShelterFeatures";
 import { EmergencyCTA } from "@/components/site/EmergencyCTA";
 import { useLanguage } from "@/hooks/useLanguage";
 
@@ -71,7 +71,7 @@ function AboutPage() {
       />
       <AboutPageContent />
       <WhyChooseUs />
-      <Process />
+      <ShelterFeatures />
       <EmergencyCTA />
     </SiteLayout>
   );

@@ -9,6 +9,7 @@ import { ContactIllustrationSection } from "@/components/site/ContactIllustratio
 import { ServiceArea } from "@/components/site/ServiceArea";
 import { GetInTouch } from "@/components/site/GetInTouch";
 import { EmergencyCTA } from "@/components/site/EmergencyCTA";
+import { ShelterFeatures } from "@/components/site/ShelterFeatures";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -172,6 +173,7 @@ function Index() {
       <Welcome />
       <Services />
       <EmergencyCTA />
+      <ShelterFeatures />
       <WhyChooseUs />
       <Projects isLanding={true} />
       <ContactIllustrationSection />

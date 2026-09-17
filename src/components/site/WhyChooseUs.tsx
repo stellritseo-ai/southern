@@ -19,28 +19,33 @@ import {
 const features = (t: (en: string, es: string) => string) => [
   {
     icon: ShieldCheck,
-    title: t("Proven Protection", "Protección Comprobada"),
-    desc: t("Expert craftsmanship in underground shelter excavation, leveling & anchoring.", "Experiencia comprobada en excavación, nivelación y anclaje de refugios."),
+    title: t("Quality-Grade Materials", "Materiales de Calidad"),
+    desc: t("Heavy 14-gauge corrugated steel with powder-coat finish. Every shelter is built to resist underground corrosion for decades.", "Acero corrugado de calibre 14 con acabado en polvo. Cada refugio está construido para resistir la corrosión subterránea durante décadas."),
   },
   {
     icon: MapPin,
     title: t("Nashville, TN", "Nashville, TN"),
-    desc: t("Locally owned and operated, serving the Nashville community.", "De propiedad local, sirviendo a la comunidad de Nashville."),
+    desc: t("Locally owned and operated. We know Middle Tennessee soil conditions, drainage, and code requirements better than anyone.", "De propiedad local. Conocemos las condiciones del suelo, drenaje y requisitos de código mejor que nadie."),
+  },
+  {
+    icon: HardHat,
+    title: t("Professional Crew & Equipment", "Personal Profesional y Equipamiento"),
+    desc: t("Our team operates heavy excavation and crane equipment. Every installation is handled by experienced construction professionals.", "Nuestro equipo opera equipos pesados de excavación y grúa. Cada instalación está a cargo de profesionales de la construcción con experiencia."),
   },
   {
     icon: Home,
-    title: t("99% Residential Focus", "99% Enfoque Residencial"),
-    desc: t("We specialize in keeping families safe with immediate backyard access.", "Nos especializamos en mantener a las familias seguras en sus patios."),
+    title: t("Residential Expertise", "Especialización Residencial"),
+    desc: t("We specialize in residential installs. Your yard, property lines, and landscaping are treated with care throughout the process.", "Nos especializamos en instalaciones residenciales. Su patio y paisajismo se tratan con cuidado durante todo el proceso."),
   },
   {
     icon: Building2,
-    title: t("Commercial Capabilities", "Capacidades Comerciales"),
-    desc: t("Heavy-duty multi-person safe rooms for job sites, schools & facilities.", "Refugios de gran capacidad para empresas, escuelas e instalaciones."),
+    title: t("Custom Concrete Builds", "Construcciones de Concreto Personalizadas"),
+    desc: t("Beyond prefab, we construct fully custom concrete underground shelters built to your exact size, layout, and spec.", "Además de los prefabricados, construimos refugios de concreto subterráneos totalmente personalizados."),
   },
   {
     icon: CheckCircle2,
-    title: t("Turnkey 1-2 Day Install", "Instalación en 1-2 Días"),
-    desc: t("From ground-breaking to lawn backfill, minimal disruption to your yard.", "Desde la excavación hasta el relleno del césped, mínima alteración."),
+    title: t("Site Evaluation Included", "Evaluación del Sitio Incluida"),
+    desc: t("Every project starts with a free site evaluation. We assess soil, slope, drainage, access, and recommend the best fit.", "Cada proyecto comienza con una evaluación gratuita del sitio. Evaluamos el suelo, la pendiente, el drenaje y el acceso."),
   },
 ];
 
@@ -84,9 +89,9 @@ export function WhyChooseUs() {
               className="text-slate-900 font-black tracking-tight leading-[1.18] max-w-2xl"
               style={{ fontSize: "clamp(24px, 5.5vw, 32px)", marginTop: "-7px", marginBottom: "10px" }}
             >
-              {t("Built on Experience. ", "Basado en Experiencia. ")}
+              {t("Built by a Construction Company. ", "Construido por una Empresa Constructora. ")}
               <span className="bg-gradient-to-r from-[#dc2626] to-[#b91c1c] bg-clip-text text-transparent">
-                {t("Focused on Protection.", "Enfocados en la Protección.")}
+                {t("Not Just a Dealer.", "No Solo un Distribuidor.")}
               </span>
             </h2>
 
@@ -95,7 +100,7 @@ export function WhyChooseUs() {
               className="text-slate-500 text-[14px] sm:text-[15px] leading-relaxed font-normal max-w-2xl"
               style={{ marginBottom: "10px" }}
             >
-              {t("Southern Storm Shelters LLC is a storm shelter company dedicated to defending Tennessee families and businesses against severe tornadoes.", "Southern Storm Shelters LLC es una empresa de refugios dedicada a defender a las familias y empresas de Tennessee contra tornados severos.")}
+              {t("Southern Storm Shelters LLC is a construction company — we show up with excavators, cranes, and a professional crew. We build and install using quality-grade materials and proper construction practices, not drop-ship and install.", "Southern Storm Shelters LLC es una empresa de construcción. Llegamos con excavadoras, grúas y un equipo profesional. Construimos e instalamos con materiales de calidad y prácticas de construcción adecuadas.")}
             </p>
 
             {/* Feature Grid */}

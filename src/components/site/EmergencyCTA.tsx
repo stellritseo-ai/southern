@@ -75,12 +75,12 @@ export function EmergencyCTA() {
               className="font-display font-black tracking-tight leading-[1.2] text-white max-w-2xl"
             >
               <span className="block text-[36px]" style={{ fontSize: "36px" }}>
-                {t("Don't Wait for the Next Severe Storm.", "No Espere a la Próxima Tormenta Severa.")}
+                {t("Underground Shelter Builds That Last.", "Construcciones de Refugios Subterráneos Duraderos.")}
               </span>
               <span
                 className="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-300 to-amber-300 text-[18px] sm:text-[24px] lg:text-[28px] leading-tight mb-2 lg:-mb-[14px]"
               >
-                {t("Protect Your Family With an Underground Shelter.", "Proteja a Su Familia con un Refugio Subterráneo.")}
+                {t("Steel Construction. Concrete Builds. Professional Crew.", "Construcción de Acero. Obras de Concreto. Personal Profesional.")}
               </span>
             </motion.h2>
 
@@ -92,7 +92,7 @@ export function EmergencyCTA() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-[13.5px] sm:text-base lg:text-lg text-slate-300 max-w-xl leading-relaxed font-normal"
             >
-              {t("Tornado sirens offer only minutes of warning. Give your family a safe, underground storm shelter just steps from your home. We offer prefabricated in-ground units and fully custom concrete shelters in Nashville, TN.", "Las sirenas de tornado ofrecen solo minutos de aviso. Brinde a su familia un refugio subterráneo seguro a pasos de su hogar. Ofrecemos unidades prefabricadas y refugios de concreto personalizados en Nashville, TN.")}
+              {t("We build with 14-gauge corrugated steel, galvanized anchor systems, and reinforced concrete — every shelter is engineered to hold up underground for decades. Get a free on-site evaluation to start your project.", "Construimos con acero corrugado de calibre 14, sistemas de anclaje galvanizados y concreto reforzado. Cada refugio está diseñado para durar décadas bajo tierra.")}
             </motion.p>
 
             {/* Feature Cards — Infinite Auto Scrolling Marquee */}

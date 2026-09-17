@@ -15,26 +15,26 @@ export function Welcome() {
 
   const promisePoints = [
     {
-      title: t("Rapid Same-Day Installation", "Instalación Rápida el Mismo Día"),
-      desc: t("Prefabricated shelters set in place by crane in a single day.", "Refugios prefabricados colocados con grúa en un solo día."),
+      title: t("Free On-Site Evaluation", "Evaluación Gratuita en el Sitio"),
+      desc: t("We assess your property, soil conditions, yard access, and drainage before recommending the right shelter.", "Evaluamos su propiedad, condiciones del suelo y acceso antes de recomendar el refugio adecuado."),
       icon: ShieldCheck,
-      tag: "Fast",
+      tag: "Step 1",
     },
     {
-      title: t("Rapid 1-2 Day Installation", "Instalación Rápida en 1-2 Días"),
-      desc: t("Complete excavation, crane placement & backfill.", "Excavación completa, colocación con grúa y relleno."),
+      title: t("Excavation & Crane Placement", "Excavación y Colocación con Grúa"),
+      desc: t("Our crew handles full excavation, crane delivery, precision leveling, and anchor installation — all in a single day for prefab units.", "Nuestro equipo realiza toda la excavación, entrega con grúa, nivelación y anclaje en un solo día."),
       icon: HardHat,
-      tag: "Turnkey",
+      tag: "Step 2",
     },
     {
       title: t("Immediate Backyard Access", "Acceso Inmediato en el Patio"),
-      desc: t("Steps away from your back door when alarms sound.", "A pasos de su puerta cuando suenen las alarmas."),
+      desc: t("Steps away from your back door. No long walk, no detour — immediate access when severe weather strikes.", "A pasos de su puerta trasera. Acceso inmediato cuando el clima severo golpea."),
       icon: Home,
-      tag: "Fast Entry",
+      tag: "Access",
     },
     {
       title: t("Nashville, TN", "Nashville, TN"),
-      desc: t("Locally owned and operated, serving the Nashville community.", "De propiedad local, sirviendo a la comunidad de Nashville."),
+      desc: t("Locally owned and operated, serving the Nashville community with professional construction expertise.", "De propiedad local, sirviendo a la comunidad de Nashville con experiencia en construcción profesional."),
       icon: MapPin,
       tag: "Local",
     },
@@ -56,7 +56,7 @@ export function Welcome() {
 
             {/* Eyebrow Badge */}
             <div className="inline-flex items-center gap-2 rounded-full bg-red-50 border border-red-200 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-[#dc2626] shadow-xs">
-              <TinySparkleIcon /> {t("Engineered Life Protection", "Protección Diseñada para Salvar Vidas")} <TinySparkleIcon />
+              <TinySparkleIcon /> {t("Underground Shelter Construction", "Construcción de Refugios Subterráneos")} <TinySparkleIcon />
             </div>
 
             {/* Main Headline */}
@@ -64,19 +64,19 @@ export function Welcome() {
               className="font-display font-extrabold leading-tight text-[#0b0f15] tracking-tight -mt-[14px] mb-[10px] text-[28px] sm:text-[36px] lg:text-[41px]"
               style={{ fontSize: "clamp(26px, 4vw, 41px)", marginTop: "-14px", marginBottom: "10px" }}
             >
-              {t("When the Storm Comes, ", "Cuando Llega la Tormenta, ")}
+              {t("Built Underground. ", "Construido bajo Tierra. ")}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
-                {t("Be Ready.", "Esté Preparado.")}
+                {t("Built to Last.", "Construido para Durar.")}
               </span>
             </h2>
 
             {/* Paragraphs */}
             <div className="space-y-3.5 text-slate-600 text-[14px] sm:text-base leading-relaxed font-normal">
               <p>
-                {t("When severe tornadoes and supercells threaten Middle Tennessee, every second counts. Southern Storm Shelters LLC specializes in professionally installed storm shelters designed to give your family a safe place to ride out the worst storms.", "Cuando tornados severos amenazan el centro de Tennessee, cada segundo cuenta. Southern Storm Shelters LLC se especializa en refugios contra tormentas instalados profesionalmente para brindar un lugar seguro a su familia.")}
+                {t("Southern Storm Shelters LLC is a construction company specializing in underground storm shelter builds for Nashville homeowners. We work with heavy equipment, professional crews, and quality-grade materials — not just shelter sales.", "Southern Storm Shelters LLC es una empresa de construcción especializada en refugios subterráneos para hogares de Nashville.")}
               </p>
               <p>
-                {t("Based in Nashville, TN, we install prefabricated in-ground shelters and build fully custom concrete shelters — serving families quickly and professionally.", "Ubicados en Nashville, TN, instalamos refugios subterráneos prefabricados y construimos refugios de concreto totalmente personalizados, sirviendo a las familias de manera rápida y profesional.")}
+                {t("Based in Nashville, TN, we install prefabricated in-ground shelters and build fully custom concrete shelters — serving families quickly and professionally.", "Ubicados en Nashville, TN, instalamos refugios subterráneos prefabricados y construimos refugios de concreto totalmente personalizados.")}
               </p>
             </div>
 

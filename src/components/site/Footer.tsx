@@ -90,7 +90,6 @@ export function Footer() {
     { label: t("Home", "Inicio"), href: "/" },
     { label: t("About Us", "Sobre Nosotros"), href: "/" },
     { label: t("Storm Shelters", "Refugios"), href: "/" },
-    { label: t("Service Area (100-Mi)", "Área de Servicio"), href: "/" },
     { label: t("Free Estimate", "Cotización Gratis"), href: "/" },
     { label: t("Gallery", "Galería"), href: "/" },
     { label: t("Contact", "Contacto"), href: "/contact" },
@@ -102,15 +101,8 @@ export function Footer() {
   ];
 
   const serviceAreaLinks = [
-    { label: "Nashville, TN (HQ)", href: "#" },
-    { label: "Franklin, TN", href: "#" },
-    { label: "Murfreesboro, TN", href: "#" },
-    { label: "Hendersonville, TN", href: "#" },
-    { label: "Brentwood, TN", href: "#" },
-    { label: "Clarksville, TN", href: "#" },
-    { label: "Columbia, TN", href: "#" },
-    { label: "Lebanon, TN", href: "#" },
-    { label: "All Service Areas (100-Mi)", href: "#" },
+    { label: "Nashville, TN", href: "#" },
+    { label: t("Get a Free Estimate", "Obtenga una Estimación Gratuita"), href: "#" },
   ];
 
   return (
@@ -137,8 +129,8 @@ export function Footer() {
 
             <p className="text-[13px] text-slate-300 leading-relaxed font-medium mb-4">
               {t(
-                "Underground storm shelter installation for homeowners and businesses across Nashville and a 100-mile service area throughout Middle Tennessee.",
-                "Instalación de refugios subterráneos para hogares y empresas en Nashville y un área de servicio de 100 millas en Middle Tennessee."
+                "Underground storm shelter construction and installation for Nashville, TN homeowners. Steel and concrete builds by a professional crew.",
+                "Construcción e instalación de refugios subterráneos para propietarios de Nashville, TN."
               )}
             </p>
 
@@ -256,8 +248,8 @@ export function Footer() {
 
             <p className="text-sm text-slate-300 leading-relaxed max-w-sm font-medium">
               {t(
-                "Engineered underground storm shelter installation for homeowners and businesses across Nashville and a 100-mile service radius throughout Middle Tennessee.",
-                "Instalación de refugios subterráneos diseñados para hogares y empresas en Nashville y un radio de 100 millas en Middle Tennessee."
+                "Underground storm shelter construction and installation in Nashville, TN. Steel-vault prefab units and custom concrete builds, installed by a professional crew.",
+                "Construcción e instalación de refugios subterráneos en Nashville, TN. Unidades prefabricadas de bóveda de acero y construcciones de concreto personalizadas."
               )}
             </p>
 
@@ -323,7 +315,7 @@ export function Footer() {
           {/* Col 4: Service Areas (col-span-2) */}
           <div className="lg:col-span-2">
             <h3 className="text-xs uppercase tracking-widest text-red-400 font-extrabold mb-6">
-              {t("Service Areas", "Áreas de Servicio")}
+              {t("Location", "Ubicación")}
             </h3>
             <ul className="space-y-2 text-xs font-semibold">
               {serviceAreaLinks.map(({ label, href }) => (
