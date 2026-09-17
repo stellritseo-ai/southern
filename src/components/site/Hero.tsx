@@ -3,8 +3,8 @@ import { ArrowRight, Award, Check, Clock, MapPin, Phone, Star } from "lucide-rea
 
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
-import heroImg1 from "@/assets/gallery/tornadoshelters6.jpg";
-import heroImg2 from "@/assets/gallery/2.png";
+import heroImg1 from "@/assets/gallery/Professional Installation.jpg";
+import heroImg2 from "@/assets/gallery/shelterinstall.jpg";
 
 const heroImages = [
   {
@@ -109,27 +109,17 @@ export function Hero() {
                 </span>
               </div>
 
-              {/* 2. 24/7 Availability */}
-              <div className="group inline-flex items-center gap-1.5 lg:gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-red-500/40 px-3 py-1.5 text-[11px] lg:text-[11.5px] font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none whitespace-nowrap shrink-0">
-                <span className="relative flex h-2 w-2 shrink-0 items-center justify-center">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <Clock className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
-                <span className="tracking-wide">
-                  <strong className="text-white font-bold">24/7</strong> {t("Availability", "Disponibilidad")}
-                </span>
-              </div>
 
 
-              {/* 4. Nashville & Middle TN */}
+
+              {/* 4. Nashville, TN */}
               <div className="group inline-flex items-center gap-1.5 lg:gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-red-500/40 px-3 py-1.5 text-[11px] lg:text-[11.5px] font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none whitespace-nowrap shrink-0">
                 <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
                   <Check className="h-2 w-2 stroke-[3]" />
                 </span>
                 <MapPin className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
                 <span className="tracking-wide">
-                  <strong className="text-white font-bold">Nashville</strong> {t("& Middle TN", "y Middle TN")}
+                  <strong className="text-white font-bold">Nashville, TN</strong>
                 </span>
               </div>
             </div>

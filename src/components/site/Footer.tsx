@@ -151,7 +151,7 @@ export function Footer() {
                 <Phone className="h-4 w-4 text-white animate-pulse" />
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-[10px] uppercase tracking-widest text-red-200 font-bold">24/7 Severe Weather Hotline</span>
+                <span className="text-[10px] uppercase tracking-widest text-red-200 font-bold">{t("Call Us Today", "Llámenos Hoy")}</span>
                 <span className="font-black text-white text-[15px] tracking-tight leading-tight">615-991-2361</span>
               </div>
             </a>
@@ -228,19 +228,19 @@ export function Footer() {
               <li>
                 <div className="flex items-center gap-2.5 text-slate-300">
                   <MapPin className="h-3.5 w-3.5 text-red-400 shrink-0" />
-                  <span>468 Craighead St, Nashville, TN 37204</span>
+                  <span>Nashville, TN</span>
                 </div>
               </li>
             </ul>
           </MobileCollapsibleSection>
 
-          <MobileCollapsibleSection title={t("Availability", "Disponibilidad")}>
+          <MobileCollapsibleSection title={t("Business Hours", "Horario de Atención")}>
             <div className="bg-black/60 border border-red-500/40 rounded-xl p-3 text-xs text-slate-300 leading-relaxed font-semibold space-y-1">
               <span className="text-[#fbbf24] font-black uppercase tracking-wider block mb-1 text-[10px] flex items-center gap-1.5">
-                <Zap className="w-3 h-3 fill-current" /> 24/7 Severe Weather Dispatch
+                <Clock className="w-3 h-3 fill-current" /> {t("Operating Hours", "Horario")}
               </span>
-              <p>Open 24 Hours / 7 Days a Week</p>
-              <p className="text-slate-400">100-Mile Radius Around Nashville, TN</p>
+              <p>Mon-Sat: 8:00 AM - 5:00 PM</p>
+              <p className="text-slate-400">Nashville, TN</p>
             </div>
           </MobileCollapsibleSection>
         </div>
@@ -355,7 +355,7 @@ export function Footer() {
                       <Phone className="h-3.5 w-3.5" />
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Phone 24/7</span>
+                      <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Phone</span>
                       <span className="font-semibold text-white tracking-tight text-xs">615-991-2361</span>
                     </div>
                   </a>
@@ -382,7 +382,7 @@ export function Footer() {
                     <div className="flex flex-col">
                       <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">{t("Address", "Dirección")}</span>
                       <span className="font-semibold text-white tracking-tight text-xs leading-snug">
-                        468 Craighead St, Nashville, TN 37204
+                        Nashville, TN
                       </span>
                     </div>
                   </div>
@@ -393,15 +393,12 @@ export function Footer() {
             {/* Hours card */}
             <div className="bg-black/60 border border-red-500/40 rounded-2xl p-4">
               <span className="text-[#fbbf24] font-black uppercase tracking-wider block mb-2 text-[10px] flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fbbf24] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#fbbf24]" />
-                </span>
-                24/7 Severe Weather Ready
+                <Clock className="w-3.5 h-3.5" />
+                {t("Business Hours", "Horario de Atención")}
               </span>
               <div className="text-xs text-slate-300 leading-relaxed font-semibold space-y-1">
-                <p>Open 24 Hours / 7 Days</p>
-                <p className="text-slate-400">100-Mile Middle TN Radius</p>
+                <p>Mon-Sat: 8:00 AM - 5:00 PM</p>
+                <p className="text-slate-400">Nashville, TN</p>
               </div>
             </div>
           </div>

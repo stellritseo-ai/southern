@@ -8,7 +8,6 @@ import { Projects } from "@/components/site/Projects";
 import { ContactIllustrationSection } from "@/components/site/ContactIllustrationSection";
 import { ServiceArea } from "@/components/site/ServiceArea";
 import { GetInTouch } from "@/components/site/GetInTouch";
-import { Process } from "@/components/site/Process";
 import { EmergencyCTA } from "@/components/site/EmergencyCTA";
 
 export const Route = createFileRoute("/")({
@@ -105,9 +104,9 @@ function Index() {
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        "opens": "00:00",
-        "closes": "23:59"
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "17:00"
       }
     ]
   };
@@ -173,7 +172,6 @@ function Index() {
       <Welcome />
       <Services />
       <EmergencyCTA />
-      <Process />
       <WhyChooseUs />
       <Projects isLanding={true} />
       <ContactIllustrationSection />

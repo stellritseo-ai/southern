@@ -12,7 +12,7 @@ import {
   Zap,
 } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
-import residentialShelterImg from "@/assets/residential-shelter.jpg";
+import residentialShelterImg from "@/assets/granger-inside-shelter.jpg";
 import logoImg from "@/assets/logo-mark.png";
 
 interface FAQItem {
@@ -57,8 +57,8 @@ const faqs: FAQItem[] = [
     id: "faq-6",
     q: "How do I request a free on-site estimate?",
     qEs: "¿Cómo solicito una estimación gratuita en el sitio?",
-    a: "You can call our 24/7 hotline directly at 615-991-2361 or submit an estimate request online. We evaluate your property, soil, access, and provide an upfront transparent quote.",
-    aEs: "Puede llamar a nuestra línea directa 24/7 al 615-991-2361 o enviar una solicitud en línea. Evaluamos su propiedad, suelo y brindamos una cotización transparente.",
+    a: "You can call us directly at 615-991-2361 or submit an estimate request online. We evaluate your property, soil, access, and provide an upfront transparent quote.",
+    aEs: "Puede llamarnos directamente al 615-991-2361 o enviar una solicitud en línea. Evaluamos su propiedad, suelo y brindamos una cotización transparente.",
   },
 ];
 

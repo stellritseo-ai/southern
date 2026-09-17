@@ -98,14 +98,14 @@ export function Header() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#fbbf24]"></span>
               </span>
               <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-[#fbbf24] flex items-center gap-1">
-                <Zap className="h-3 w-3 fill-current" />
-                {t("Emergency Ready 24/7", "Listo para Emergencias 24/7")}
+                <Clock className="h-3 w-3 fill-current" />
+                {t("Mon-Sat: 8:00 AM–5:00 PM", "Lun-Sáb: 8:00 AM–5:00 PM")}
               </span>
             </div>
 
             <div className="hidden md:flex items-center gap-1.5 border-l border-white/15 pl-4 text-[11px] font-semibold text-slate-300">
-              <ShieldCheck className="h-3.5 w-3.5 text-[#dc2626]" />
-              <span>{t("Nashville & Middle Tennessee • 100-Mile Service Area", "Nashville y Middle Tennessee • Radio de 100 Millas")}</span>
+              <MapPin className="h-3.5 w-3.5 text-[#dc2626]" />
+              <span>{t("Nashville, TN", "Nashville, TN")}</span>
             </div>
           </div>
 
@@ -113,7 +113,7 @@ export function Header() {
           <div className="flex items-center gap-4 text-xs shrink-0">
             <div className="hidden sm:flex items-center gap-1.5 text-slate-300 font-semibold text-[11px]">
               <Clock className="h-3.5 w-3.5 text-red-400" />
-              <span>Open 24/7 • 100-Mile Radius</span>
+              <span>Mon-Sat: 8:00 AM–5:00 PM</span>
             </div>
 
             <div className="flex items-center gap-1 bg-black/60 border border-red-500/40 rounded-full px-1.5 py-0.5">
@@ -284,7 +284,7 @@ export function Header() {
                                     {t("Prepare Before Severe Weather Threatens", "Prepárese Antes del Mal Clima")}
                                   </span>
                                   <span className="text-[10px] text-slate-300 font-semibold mt-0.5">
-                                    {t("On-site evaluations & turnkey installs across Nashville & 100-mile radius.", "Evaluaciones en el sitio e instalaciones en Nashville y 100 millas.")}
+                                    {t("On-site evaluations & turnkey installs in Nashville, TN.", "Evaluaciones en el sitio e instalaciones en Nashville, TN.")}
                                   </span>
                                 </div>
                               </div>
@@ -330,7 +330,7 @@ export function Header() {
                 </div>
                 <div className="flex flex-col text-left leading-none">
                   <span className="text-[9px] font-black uppercase tracking-wider text-red-200">
-                    {t("24/7 Hotline", "Línea 24/7")}
+                    {t("Call Us Today", "Llámenos Hoy")}
                   </span>
                   <span className="text-xs lg:text-sm font-black text-white mt-0.5 tracking-tight">
                     615-991-2361
@@ -431,7 +431,7 @@ export function Header() {
               </a>
               <div className="flex items-center gap-2.5">
                 <MapPin className="h-4 w-4 text-[#dc2626] shrink-0" />
-                <span>468 Craighead St, Nashville, TN 37204</span>
+                <span>Nashville, TN</span>
               </div>
             </div>
 

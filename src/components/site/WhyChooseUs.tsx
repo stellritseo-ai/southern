@@ -18,22 +18,15 @@ import {
 
 const features = (t: (en: string, es: string) => string) => [
   {
-    icon: Award,
-    title: t("5+ Years of Experience", "5+ Años de Experiencia"),
-    desc: t("Proven craftsmanship in underground shelter excavation, leveling & anchoring.", "Experiencia comprobada en excavación, nivelación y anclaje de refugios."),
-  },
-
-  {
-    icon: Clock,
-    title: t("24/7 Availability", "Disponible 24/7"),
-    desc: t("Severe weather never waits. Our consultation team is always reachable.", "El clima severo no espera. Nuestro equipo siempre está localizable."),
+    icon: ShieldCheck,
+    title: t("Proven Protection", "Protección Comprobada"),
+    desc: t("Expert craftsmanship in underground shelter excavation, leveling & anchoring.", "Experiencia comprobada en excavación, nivelación y anclaje de refugios."),
   },
   {
     icon: MapPin,
-    title: t("100-Mile Service Area", "Radio de 100 Millas"),
-    desc: t("Nashville, TN and all surrounding Middle Tennessee counties and towns.", "Nashville, TN y todos los condados y pueblos de Middle Tennessee."),
+    title: t("Nashville, TN", "Nashville, TN"),
+    desc: t("Locally owned and operated, serving the Nashville community.", "De propiedad local, sirviendo a la comunidad de Nashville."),
   },
-
   {
     icon: Home,
     title: t("99% Residential Focus", "99% Enfoque Residencial"),
@@ -49,12 +42,6 @@ const features = (t: (en: string, es: string) => string) => [
     title: t("Turnkey 1-2 Day Install", "Instalación en 1-2 Días"),
     desc: t("From ground-breaking to lawn backfill, minimal disruption to your yard.", "Desde la excavación hasta el relleno del césped, mínima alteración."),
   },
-];
-
-const trustStats = [
-  { value: "5+", label: "Years Exp." },
-  { value: "100mi", label: "Service Radius" },
-  { value: "24/7", label: "Availability" },
 ];
 
 export function WhyChooseUs() {
@@ -178,17 +165,7 @@ export function WhyChooseUs() {
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/85 via-[#0b0f15]/20 to-transparent pointer-events-none" />
 
-              {/* Trust Stats Bar at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-10">
-                <div className="bg-[#0b0f15]/85 backdrop-blur-md border border-red-500/30 rounded-2xl px-2 sm:px-4 py-2 sm:py-3 grid grid-cols-3 divide-x divide-white/15">
-                  {trustStats.map((s) => (
-                    <div key={s.label} className="flex flex-col items-center px-0.5 sm:px-2">
-                      <span className="text-red-400 font-black text-[12px] sm:text-[16px] leading-tight">{s.value}</span>
-                      <span className="text-white/80 text-[7.5px] sm:text-[9.5px] font-bold uppercase tracking-wide text-center leading-tight mt-0.5">{s.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+
 
               {/* Top-left badge */}
               <div className="absolute top-4 left-4 z-20 bg-[#dc2626] text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5">

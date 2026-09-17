@@ -131,15 +131,15 @@ export function Services() {
           <div className="flex items-center justify-center gap-2 sm:gap-3 p-1.5 sm:p-2 min-w-0 text-center">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0"><Phone className="w-4 h-4 sm:w-5 sm:h-5" /></div>
             <div className="flex flex-col text-center min-w-0">
-              <span className="text-[11px] sm:text-xs font-black text-slate-900 uppercase tracking-tight truncate">{t("24/7 Availability", "Disponible 24/7")}</span>
-              <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-500 truncate">{t("Always Ready to Help", "Siempre Listos para Ayudar")}</span>
+              <span className="text-[11px] sm:text-xs font-black text-slate-900 uppercase tracking-tight truncate">{t("Call Us Today", "Llámenos Hoy")}</span>
+              <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-500 truncate">{t("Mon-Sat: 8:00 AM-5:00 PM", "Lun-Sáb: 8:00 AM-5:00 PM")}</span>
             </div>
           </div>
           <div className="flex items-center justify-center gap-2 sm:gap-3 p-1.5 sm:p-2 min-w-0 col-span-2 md:col-span-1 text-center">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-red-50 text-[#dc2626] flex items-center justify-center shrink-0"><MapPin className="w-4 h-4 sm:w-5 sm:h-5" /></div>
             <div className="flex flex-col text-center min-w-0">
-              <span className="text-[11px] sm:text-xs font-black text-slate-900 uppercase tracking-tight truncate">{t("100-Mile Service Area", "Radio de 100 Millas")}</span>
-              <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-500 truncate">{t("Nashville & Middle Tennessee", "Nashville y Alrededores")}</span>
+              <span className="text-[11px] sm:text-xs font-black text-slate-900 uppercase tracking-tight truncate">{t("Nashville, TN", "Nashville, TN")}</span>
+              <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-500 truncate">{t("Local Installations", "Instalaciones Locales")}</span>
             </div>
           </div>
         </div>

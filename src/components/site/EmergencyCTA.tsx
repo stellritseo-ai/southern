@@ -10,13 +10,13 @@ export function EmergencyCTA() {
   const trustBadges = [
     {
       icon: Clock,
-      title: t("24/7 Availability", "Disponible 24/7"),
-      subtitle: t("Always Ready to Dispatch", "Siempre Listos"),
+      title: t("Business Hours", "Horario de Atención"),
+      subtitle: t("Mon-Sat: 8:00 AM-5:00 PM", "Lun-Sáb: 8:00 AM-5:00 PM"),
     },
     {
       icon: MapPin,
-      title: t("Nashville & Middle TN", "Nashville y Middle TN"),
-      subtitle: t("100-Mile Service Area", "Radio de 100 Millas"),
+      title: t("Nashville, TN", "Nashville, TN"),
+      subtitle: t("Local Installations", "Instalaciones Locales"),
     },
     {
       icon: ShieldCheck,
@@ -60,13 +60,9 @@ export function EmergencyCTA() {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 sm:gap-2.5 rounded-full bg-black/70 backdrop-blur-xl border border-red-500/50 px-3.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-black uppercase tracking-wider sm:tracking-widest text-red-400 shadow-lg max-w-full"
             >
-              <span className="relative flex h-2 sm:h-2.5 w-2 sm:w-2.5 shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-full w-full bg-red-500"></span>
-              </span>
               <span className="flex items-center gap-1.5 truncate">
-                <Zap className="w-3.5 h-3.5 fill-red-500 text-red-500 shrink-0" />
-                <span className="truncate">{t("Severe Weather Alert — Open 24/7", "Alerta de Clima Severo — Abierto 24/7")}</span>
+                <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                <span className="truncate">{t("Locally Owned and Operated", "De Propiedad Local")}</span>
               </span>
             </motion.div>
 
@@ -96,7 +92,7 @@ export function EmergencyCTA() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-[13.5px] sm:text-base lg:text-lg text-slate-300 max-w-xl leading-relaxed font-normal"
             >
-              {t("Tornado sirens offer only minutes of warning. Give your family a safe, underground storm shelter just steps from your home. We offer prefabricated in-ground units and fully custom concrete shelters across Nashville and a 100-mile service radius.", "Las sirenas de tornado ofrecen solo minutos de aviso. Brinde a su familia un refugio subterráneo seguro a pasos de su hogar. Ofrecemos unidades prefabricadas y refugios de concreto personalizados en Nashville y 100 millas a la redonda.")}
+              {t("Tornado sirens offer only minutes of warning. Give your family a safe, underground storm shelter just steps from your home. We offer prefabricated in-ground units and fully custom concrete shelters in Nashville, TN.", "Las sirenas de tornado ofrecen solo minutos de aviso. Brinde a su familia un refugio subterráneo seguro a pasos de su hogar. Ofrecemos unidades prefabricadas y refugios de concreto personalizados en Nashville, TN.")}
             </motion.p>
 
             {/* Feature Cards — Infinite Auto Scrolling Marquee */}
@@ -160,8 +156,7 @@ export function EmergencyCTA() {
                   </span>
                   <div className="flex flex-col min-w-0">
                     <span className="text-[9.5px] sm:text-[10px] uppercase tracking-wider sm:tracking-widest text-red-400 font-black flex items-center gap-1.5 truncate">
-                      <span className="h-2 w-2 rounded-full bg-red-400 animate-ping shrink-0" />
-                      <span className="truncate">{t("24/7 Shelter Hotline", "Línea Directa 24/7")}</span>
+                      <span className="truncate">{t("Call Us Today", "Llámenos Hoy")}</span>
                     </span>
                     <span className="text-[20px] sm:text-[24px] font-display font-black leading-tight tracking-tight mt-0.5 sm:mt-1 text-white whitespace-nowrap">
                       (615) 991-2361
@@ -192,7 +187,7 @@ export function EmergencyCTA() {
             {/* Micro-trust glass badge */}
             <div className="flex items-center gap-2 sm:gap-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-red-500/20 px-3.5 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs text-slate-300 w-full max-w-md justify-center shadow-md text-center">
               <MapPin className="h-4 w-4 text-red-400 shrink-0" />
-              <span className="font-semibold">{t("Proudly Serving Nashville & 100-Mile Radius (24/7)", "Sirviendo a Nashville y un Radio de 100 Millas (24/7)")}</span>
+              <span className="font-semibold">{t("Proudly Serving Nashville, TN", "Sirviendo a Nashville, TN")}</span>
             </div>
           </motion.div>
 

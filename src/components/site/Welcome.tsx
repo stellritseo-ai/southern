@@ -33,10 +33,10 @@ export function Welcome() {
       tag: "Fast Entry",
     },
     {
-      title: t("100-Mile Service Area", "Área de Cobertura de 100 Millas"),
-      desc: t("Serving Nashville & all surrounding Middle Tennessee counties.", "Sirviendo a Nashville y todos los condados cercanos."),
+      title: t("Nashville, TN", "Nashville, TN"),
+      desc: t("Locally owned and operated, serving the Nashville community.", "De propiedad local, sirviendo a la comunidad de Nashville."),
       icon: MapPin,
-      tag: "Middle TN",
+      tag: "Local",
     },
   ];
 
@@ -76,7 +76,7 @@ export function Welcome() {
                 {t("When severe tornadoes and supercells threaten Middle Tennessee, every second counts. Southern Storm Shelters LLC specializes in professionally installed storm shelters designed to give your family a safe place to ride out the worst storms.", "Cuando tornados severos amenazan el centro de Tennessee, cada segundo cuenta. Southern Storm Shelters LLC se especializa en refugios contra tormentas instalados profesionalmente para brindar un lugar seguro a su familia.")}
               </p>
               <p>
-                {t("With a 100-mile service area around Nashville, we install prefabricated in-ground shelters and build fully custom concrete shelters — serving families across Middle Tennessee quickly and professionally.", "Con un radio de servicio de 100 millas alrededor de Nashville, instalamos refugios subterráneos prefabricados y construimos refugios de concreto totalmente personalizados, sirviendo a familias en todo el centro de Tennessee.")}
+                {t("Based in Nashville, TN, we install prefabricated in-ground shelters and build fully custom concrete shelters — serving families quickly and professionally.", "Ubicados en Nashville, TN, instalamos refugios subterráneos prefabricados y construimos refugios de concreto totalmente personalizados, sirviendo a las familias de manera rápida y profesional.")}
               </p>
             </div>
 
@@ -163,7 +163,7 @@ export function Welcome() {
                   <Star className="h-3.5 w-3.5 fill-current" />
                   <Star className="h-3.5 w-3.5 fill-current" />
                 </div>
-                <span className="text-xs font-black text-white">Nashville & Middle TN</span>
+                <span className="text-xs font-black text-white">Nashville, TN</span>
               </div>
 
             </div>
