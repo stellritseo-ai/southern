@@ -35,12 +35,12 @@ export function EmergencyCTA() {
         <img
           src={grangerInstallImg}
           alt="Storm shelter installation"
-          className="h-full w-full object-cover scale-105 filter brightness-[0.3] contrast-110 select-none"
+          className="h-full w-full object-cover scale-105 filter brightness-50 contrast-110 select-none"
         />
 
         {/* Overlays for text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/90 via-[#0b0f15]/75 to-[#0b0f15]/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/90 via-transparent to-[#0b0f15]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/80 via-[#0b0f15]/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/80 via-transparent to-[#0b0f15]/40" />
 
         {/* Ambient Glowing Blobs */}
         <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 rounded-full bg-slate-400/10 blur-3xl pointer-events-none" />
