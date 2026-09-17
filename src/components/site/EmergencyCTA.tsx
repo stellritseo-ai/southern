@@ -27,7 +27,7 @@ export function EmergencyCTA() {
 
   return (
     <section
-      className="relative w-full overflow-hidden py-[50px] text-white bg-[#0b0f15] border-y border-red-500/30"
+      className="relative w-full overflow-hidden py-[50px] text-white bg-[#0b0f15] border-y border-slate-500/30"
       style={{ paddingTop: "50px", paddingBottom: "50px" }}
     >
       {/* Background Image */}
@@ -43,8 +43,8 @@ export function EmergencyCTA() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/90 via-transparent to-[#0b0f15]/60" />
 
         {/* Ambient Glowing Blobs */}
-        <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 rounded-full bg-[#dc2626]/20 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-10 w-96 h-96 rounded-full bg-red-600/15 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 rounded-full bg-slate-400/10 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-10 w-96 h-96 rounded-full bg-slate-500/10 blur-3xl pointer-events-none" />
       </div>
 
       <div className="relative z-10 mx-auto w-[92%] sm:w-[90%] max-w-7xl px-0 sm:px-4">
@@ -58,10 +58,10 @@ export function EmergencyCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 sm:gap-2.5 rounded-full bg-black/70 backdrop-blur-xl border border-red-500/50 px-3.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-black uppercase tracking-wider sm:tracking-widest text-red-400 shadow-lg max-w-full"
+              className="inline-flex items-center gap-2 sm:gap-2.5 rounded-full bg-black/70 backdrop-blur-xl border border-slate-500/50 px-3.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-black uppercase tracking-wider sm:tracking-widest text-slate-300 shadow-lg max-w-full"
             >
               <span className="flex items-center gap-1.5 truncate">
-                <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 <span className="truncate">{t("Locally Owned and Operated", "De Propiedad Local")}</span>
               </span>
             </motion.div>
@@ -78,7 +78,7 @@ export function EmergencyCTA() {
                 {t("Underground Shelter Builds That Last.", "Construcciones de Refugios Subterráneos Duraderos.")}
               </span>
               <span
-                className="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-300 to-amber-300 text-[18px] sm:text-[24px] lg:text-[28px] leading-tight mb-2 lg:-mb-[14px]"
+                className="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-white to-slate-400 text-[18px] sm:text-[24px] lg:text-[28px] leading-tight mb-2 lg:-mb-[14px]"
               >
                 {t("Steel Construction. Concrete Builds. Professional Crew.", "Construcción de Acero. Obras de Concreto. Personal Profesional.")}
               </span>
@@ -112,9 +112,9 @@ export function EmergencyCTA() {
                   return (
                     <div
                       key={idx}
-                      className="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-red-500/40 hover:bg-white/10 transition-all duration-300 shrink-0 select-none shadow-sm cursor-default"
+                      className="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-slate-500/40 hover:bg-white/10 transition-all duration-300 shrink-0 select-none shadow-sm cursor-default"
                     >
-                      <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-red-500/20 text-red-400 shrink-0 border border-red-500/30">
+                      <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-slate-500/20 text-slate-300 shrink-0 border border-slate-500/30">
                         <Icon className="h-4 w-4" />
                       </div>
                       <div className="flex flex-col text-left whitespace-nowrap">
@@ -144,18 +144,18 @@ export function EmergencyCTA() {
             {/* Primary Phone Action Card */}
             <div className="relative group w-full max-w-md">
               {/* Glowing Aura Effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#dc2626] via-red-500 to-[#b91c1c] rounded-[24px] sm:rounded-[28px] blur-md opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-slate-600 via-slate-400 to-slate-600 rounded-[24px] sm:rounded-[28px] blur-md opacity-30 group-hover:opacity-60 transition duration-500" />
 
               <a
                 href="tel:6159912361"
-                className="relative flex flex-col sm:flex-row items-center justify-between gap-3.5 sm:gap-4 rounded-[20px] sm:rounded-[24px] bg-[#0b0f15] border border-red-500/60 p-4 sm:p-6 lg:p-7 shadow-2xl hover:scale-[1.02] transition-all duration-300 w-full text-left cursor-pointer"
+                className="relative flex flex-col sm:flex-row items-center justify-between gap-3.5 sm:gap-4 rounded-[20px] sm:rounded-[24px] bg-[#0b0f15] border border-slate-500/60 p-4 sm:p-6 lg:p-7 shadow-2xl hover:scale-[1.02] transition-all duration-300 w-full text-left cursor-pointer"
               >
                 <div className="flex items-center gap-3.5 sm:gap-4 justify-start text-left w-full sm:w-auto">
-                  <span className="relative grid place-items-center h-12 w-12 sm:h-14 sm:w-14 rounded-xl sm:rounded-2xl bg-[#dc2626] border border-red-400/50 shrink-0 shadow-lg">
-                    <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-white animate-bounce" />
+                  <span className="relative grid place-items-center h-12 w-12 sm:h-14 sm:w-14 rounded-xl sm:rounded-2xl bg-amber-500 border border-amber-400/50 shrink-0 shadow-lg">
+                    <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-amber-950 animate-bounce" />
                   </span>
                   <div className="flex flex-col min-w-0">
-                    <span className="text-[9.5px] sm:text-[10px] uppercase tracking-wider sm:tracking-widest text-red-400 font-black flex items-center gap-1.5 truncate">
+                    <span className="text-[9.5px] sm:text-[10px] uppercase tracking-wider sm:tracking-widest text-slate-400 font-black flex items-center gap-1.5 truncate">
                       <span className="truncate">{t("Call Us Today", "Llámenos Hoy")}</span>
                     </span>
                     <span className="text-[20px] sm:text-[24px] font-display font-black leading-tight tracking-tight mt-0.5 sm:mt-1 text-white whitespace-nowrap">
@@ -165,7 +165,7 @@ export function EmergencyCTA() {
                 </div>
 
                 <div className="w-full sm:w-auto flex justify-end">
-                  <span className="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl bg-[#dc2626] text-white text-xs font-black uppercase tracking-wider shadow-md group-hover:bg-[#b91c1c] transition-colors">
+                  <span className="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl bg-amber-500 text-amber-950 text-xs font-black uppercase tracking-wider shadow-md group-hover:bg-amber-600 group-hover:text-amber-50 transition-colors">
                     {t("Call Now", "Llamar")}
                   </span>
                 </div>
@@ -185,8 +185,8 @@ export function EmergencyCTA() {
             </div>
 
             {/* Micro-trust glass badge */}
-            <div className="flex items-center gap-2 sm:gap-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-red-500/20 px-3.5 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs text-slate-300 w-full max-w-md justify-center shadow-md text-center">
-              <MapPin className="h-4 w-4 text-red-400 shrink-0" />
+            <div className="flex items-center gap-2 sm:gap-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-slate-500/20 px-3.5 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs text-slate-300 w-full max-w-md justify-center shadow-md text-center">
+              <MapPin className="h-4 w-4 text-emerald-400 shrink-0" />
               <span className="font-semibold">{t("Proudly Serving Nashville, TN", "Sirviendo a Nashville, TN")}</span>
             </div>
           </motion.div>
