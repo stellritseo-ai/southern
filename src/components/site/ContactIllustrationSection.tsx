@@ -96,7 +96,7 @@ export function ContactIllustrationSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest text-[#dc2626] shadow-sm"
+              className="inline-flex items-center gap-2 bg-slate-100 border border-slate-300 rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest text-slate-700 shadow-sm"
             >
               <HelpCircle className="w-3.5 h-3.5" />
               {t("Frequently Asked Questions", "Preguntas Frecuentes")}

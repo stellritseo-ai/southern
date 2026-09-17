@@ -60,9 +60,8 @@ export function WhyChooseUs() {
       style={{ paddingTop: "60px", paddingBottom: "60px" }}
     >
 
-      {/* Subtle background blobs */}
-      <div aria-hidden className="pointer-events-none absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-[#dc2626]/[0.04] blur-3xl" />
-      <div aria-hidden className="pointer-events-none absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full bg-red-600/[0.04] blur-3xl" />
+      {/* Subtle background */}
+      <div aria-hidden className="pointer-events-none absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-slate-400/[0.04] blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         <div className="grid gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-12 xl:gap-16 items-center">
@@ -75,11 +74,11 @@ export function WhyChooseUs() {
             transition={{ duration: 0.75, ease: "easeOut" }}
             className="flex flex-col order-2 lg:order-1 lg:col-span-7"
           >
-            {/* Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-[#dc2626] text-[10px] font-black uppercase tracking-widest mb-5 shadow-sm select-none">
+            {/* Eyebrow Badge — slate */}
+            <div className="inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full border border-slate-300 bg-slate-100 text-slate-700 text-[10px] font-black uppercase tracking-widest mb-5 shadow-sm select-none">
               <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#dc2626] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#dc2626]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-500 opacity-60" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-600" />
               </span>
               {t("Why Choose Us", "Por Qué Elegirnos")}
             </div>
@@ -114,13 +113,13 @@ export function WhyChooseUs() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.05 }}
-                    className="group flex items-start gap-3 p-3 rounded-xl hover:bg-red-50/60 border border-transparent hover:border-red-100 transition-all duration-250 cursor-default"
+                    className="group flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all duration-250 cursor-default"
                   >
-                    <span className="mt-0.5 shrink-0 p-1.5 rounded-lg bg-red-50 border border-red-200 group-hover:bg-[#dc2626] text-[#dc2626] group-hover:text-white transition-colors duration-250">
+                    <span className="mt-0.5 shrink-0 p-1.5 rounded-lg bg-slate-100 border border-slate-200 group-hover:bg-slate-800 text-slate-700 group-hover:text-white transition-colors duration-250">
                       <Icon className="w-3.5 h-3.5" />
                     </span>
                     <div className="min-w-0">
-                      <p className="text-[12.5px] font-extrabold text-slate-900 leading-tight mb-0.5 group-hover:text-[#dc2626] transition-colors duration-250">{f.title}</p>
+                      <p className="text-[12.5px] font-extrabold text-slate-900 leading-tight mb-0.5">{f.title}</p>
                       <p className="text-[11.5px] text-slate-500 leading-relaxed font-normal">{f.desc}</p>
                     </div>
                   </motion.div>
@@ -154,9 +153,8 @@ export function WhyChooseUs() {
             transition={{ duration: 0.75, ease: "easeOut" }}
             className="relative order-1 lg:order-2 lg:col-span-5 lg:sticky lg:top-[100px] w-full max-w-[460px] lg:max-w-none mx-auto"
           >
-            {/* Decorative glow rings */}
-            <div aria-hidden className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-[#dc2626]/15 via-transparent to-red-600/15 blur-xl pointer-events-none" />
-            <div aria-hidden className="absolute -inset-1 rounded-[32px] bg-gradient-to-tr from-[#dc2626]/20 to-red-500/20 blur-md pointer-events-none" />
+            {/* Decorative glow rings — slate */}
+            <div aria-hidden className="absolute -inset-4 rounded-[36px] bg-slate-200/30 blur-xl pointer-events-none" />
 
             {/* Visual image container */}
             <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_80px_-12px_rgba(0,0,0,0.25)] border-2 border-slate-100 group bg-[#0b0f15]">
@@ -172,8 +170,8 @@ export function WhyChooseUs() {
 
 
 
-              {/* Top-left badge */}
-              <div className="absolute top-4 left-4 z-20 bg-[#dc2626] text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+              {/* Top-left badge — slate */}
+              <div className="absolute top-4 left-4 z-20 bg-slate-900/90 backdrop-blur-sm text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
                 <Star className="w-3 h-3 fill-amber-300 text-amber-300" />
                 {t("Nashville's Premier Shelter Team", "Equipo Líder en Nashville")}
               </div>

@@ -51,7 +51,7 @@ export function Hero() {
 
       {/* Subtle atmospheric glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/3 h-80 w-80 rounded-full bg-[#dc2626]/10 blur-3xl animate-blob" />
+        <div className="absolute top-1/4 left-1/3 h-80 w-80 rounded-full bg-slate-400/10 blur-3xl animate-blob" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pt-20 w-full flex justify-start">
@@ -88,7 +88,7 @@ export function Hero() {
             </Button>
             <Button variant="heroOutline" size="xl" asChild className="w-full sm:w-auto justify-center border-white/40 bg-white/10 hover:bg-white/20 text-white backdrop-blur-md">
               <a href="tel:+16159912361">
-                <Phone className="h-4 w-4 text-red-400" /> (615) 991-2361
+                <Phone className="h-4 w-4 text-slate-300" /> (615) 991-2361
               </a>
             </Button>
           </div>
@@ -109,7 +109,7 @@ export function Hero() {
               </div>
 
               {/* 2. Free Site Evaluation */}
-              <div className="group inline-flex items-center gap-1.5 lg:gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-red-500/40 px-3 py-1.5 text-[11px] lg:text-[11.5px] font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none whitespace-nowrap shrink-0">
+              <div className="group inline-flex items-center gap-1.5 lg:gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-slate-500/40 px-3 py-1.5 text-[11px] lg:text-[11.5px] font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none whitespace-nowrap shrink-0">
                 <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
                   <Check className="h-2 w-2 stroke-[3]" />
                 </span>
@@ -119,11 +119,11 @@ export function Hero() {
               </div>
 
               {/* 3. Nashville, TN */}
-              <div className="group inline-flex items-center gap-1.5 lg:gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-red-500/40 px-3 py-1.5 text-[11px] lg:text-[11.5px] font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none whitespace-nowrap shrink-0">
+              <div className="group inline-flex items-center gap-1.5 lg:gap-2 rounded-full bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-slate-500/40 px-3 py-1.5 text-[11px] lg:text-[11.5px] font-semibold text-slate-200 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-0.5 select-none whitespace-nowrap shrink-0">
                 <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
                   <Check className="h-2 w-2 stroke-[3]" />
                 </span>
-                <MapPin className="h-3.5 w-3.5 text-red-400 shrink-0 group-hover:scale-110 transition-transform duration-200" />
+                <MapPin className="h-3.5 w-3.5 text-slate-300 shrink-0 group-hover:scale-110 transition-transform duration-200" />
                 <span className="tracking-wide">
                   <strong className="text-white font-bold">Nashville, TN</strong>
                 </span>
@@ -144,7 +144,7 @@ export function Hero() {
             aria-label={`Switch to slide ${idx + 1}`}
             className={`h-2 transition-all duration-300 rounded-full ${
               currentImageIndex === idx
-                ? "w-6 bg-red-500"
+                ? "w-6 bg-slate-300"
                 : "w-2 bg-white/40 hover:bg-white/70"
             }`}
           />

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
 
 const TinySparkleIcon = () => (
-  <svg className="w-3.5 h-3.5 text-[#dc2626] fill-[#dc2626] shrink-0" viewBox="0 0 24 24">
+  <svg className="w-3.5 h-3.5 text-slate-600 fill-slate-600 shrink-0" viewBox="0 0 24 24">
     <path d="M12 2l2.4 7.2L21.6 12l-7.2 2.4L12 21.6l-2.4-7.2L2.4 12l7.2-2.4z" />
   </svg>
 );
@@ -42,9 +42,8 @@ export function Welcome() {
 
   return (
     <section id="welcome" className="bg-white overflow-hidden py-12 sm:py-16 lg:py-24 border-b border-slate-100 relative">
-      {/* Ambient background decoration */}
-      <div className="absolute top-0 right-1/3 w-96 h-96 rounded-full bg-[#dc2626]/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-96 h-96 rounded-full bg-red-500/5 blur-3xl pointer-events-none" />
+      {/* Subtle background */}
+      <div className="absolute top-0 right-1/3 w-96 h-96 rounded-full bg-slate-400/5 blur-3xl pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full relative z-10">
 
@@ -54,8 +53,8 @@ export function Welcome() {
           {/* Left Column: Copy & Checklist */}
           <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6">
 
-            {/* Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-red-50 border border-red-200 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-[#dc2626] shadow-xs">
+            {/* Eyebrow Badge — slate */}
+            <div className="inline-flex items-center gap-2 rounded-full bg-slate-100 border border-slate-300 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-slate-700 shadow-xs">
               <TinySparkleIcon /> {t("Underground Shelter Construction", "Construcción de Refugios Subterráneos")} <TinySparkleIcon />
             </div>
 
@@ -80,9 +79,9 @@ export function Welcome() {
               </p>
             </div>
 
-            {/* Highlight Banner */}
-            <div className="w-full bg-gradient-to-r from-red-50 via-slate-50 to-transparent border-l-4 border-[#dc2626] p-4 rounded-r-2xl text-xs sm:text-sm font-semibold text-slate-800 flex items-center gap-3">
-              <ShieldCheck className="h-6 w-6 text-[#dc2626] shrink-0" />
+            {/* Highlight Banner — slate accent */}
+            <div className="w-full bg-slate-50 border-l-4 border-slate-400 p-4 rounded-r-2xl text-xs sm:text-sm font-semibold text-slate-800 flex items-center gap-3">
+              <ShieldCheck className="h-6 w-6 text-slate-600 shrink-0" />
               <span>{t("Approximately 99% of our work is dedicated to protecting residential family homes, with custom commercial shelter solutions also available.", "Aproximadamente el 99% de nuestro trabajo está dedicado a proteger hogares familiares residenciales, con soluciones comerciales también disponibles.")}</span>
             </div>
 
@@ -94,36 +93,30 @@ export function Welcome() {
                   return (
                     <div
                       key={item.title}
-                      className="group relative rounded-2xl p-3.5 sm:p-4 bg-gradient-to-br from-slate-50/90 via-white to-slate-50/50 border border-slate-200/90 hover:border-[#dc2626]/40 shadow-xs hover:shadow-[0_12px_28px_-8px_rgba(220,38,38,0.16)] transition-all duration-300 hover:-translate-y-1 overflow-hidden select-none"
+                      className="group relative rounded-2xl p-3.5 sm:p-4 bg-white border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 overflow-hidden select-none"
                     >
-                      {/* Ambient corner glow on hover */}
-                      <div className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-[#dc2626]/10 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
                       <div className="relative z-10 flex items-start gap-3">
-                        {/* Icon Jewel */}
-                        <div className="w-10 h-10 rounded-xl bg-red-50 group-hover:bg-[#dc2626] text-[#dc2626] group-hover:text-white border border-red-200/70 group-hover:border-[#dc2626] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 shadow-xs group-hover:shadow-md group-hover:shadow-red-600/30">
-                          <Icon className="h-5 w-5 transition-transform duration-300" />
+                        {/* Icon */}
+                        <div className="w-10 h-10 rounded-xl bg-slate-100 group-hover:bg-slate-800 text-slate-700 group-hover:text-white border border-slate-200 group-hover:border-slate-800 flex items-center justify-center shrink-0 transition-all duration-300">
+                          <Icon className="h-5 w-5" />
                         </div>
 
-                        {/* Text & Details */}
+                        {/* Text */}
                         <div className="flex flex-col text-left min-w-0 flex-1">
                           <div className="flex items-center justify-between gap-1 mb-0.5">
-                            <span className="text-[13px] sm:text-[13.5px] font-black text-[#0b0f15] group-hover:text-[#dc2626] transition-colors duration-200 leading-snug">
+                            <span className="text-[13px] sm:text-[13.5px] font-black text-slate-900 leading-snug">
                               {item.title}
                             </span>
-                            <span className="text-[9px] uppercase font-black tracking-wider text-slate-400 bg-white/90 border border-slate-200/80 px-1.5 py-0.5 rounded-full group-hover:border-red-200 group-hover:text-[#dc2626] group-hover:bg-red-50/80 transition-colors shrink-0">
+                            <span className="text-[9px] uppercase font-black tracking-wider text-slate-500 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded-full shrink-0">
                               {item.tag}
                             </span>
                           </div>
 
-                          <p className="text-[11.5px] sm:text-[12px] text-slate-500 group-hover:text-slate-700 leading-relaxed font-medium transition-colors">
+                          <p className="text-[11.5px] sm:text-[12px] text-slate-500 leading-relaxed font-medium">
                             {item.desc}
                           </p>
                         </div>
                       </div>
-
-                      {/* Bottom glowing underline accent on hover */}
-                      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#dc2626] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
                     </div>
                   );
                 })}
@@ -143,9 +136,9 @@ export function Welcome() {
           <div className="lg:col-span-5 relative w-full flex justify-center items-center max-w-md sm:max-w-lg lg:max-w-none mx-auto">
 
             {/* Soft Ambient Glow backdrop */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] sm:w-[480px] h-[500px] sm:h-[640px] rounded-full bg-[#dc2626]/15 blur-3xl -z-10 pointer-events-none animate-pulse" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] sm:w-[480px] h-[500px] sm:h-[640px] rounded-full bg-slate-300/10 blur-3xl -z-10 pointer-events-none" />
 
-            <div className="relative w-full max-w-[400px] sm:max-w-[480px] lg:max-w-[500px] xl:max-w-[520px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-[3/4] min-h-[340px] sm:min-h-[460px] lg:min-h-[640px] xl:min-h-[680px] rounded-[24px] sm:rounded-[32px] border border-red-500/30 bg-[#0b0f15] p-2.5 sm:p-3.5 shadow-2xl overflow-hidden group">
+            <div className="relative w-full max-w-[400px] sm:max-w-[480px] lg:max-w-[500px] xl:max-w-[520px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-[3/4] min-h-[340px] sm:min-h-[460px] lg:min-h-[640px] xl:min-h-[680px] rounded-[24px] sm:rounded-[32px] border border-slate-300 bg-[#0b0f15] p-2.5 sm:p-3.5 shadow-xl overflow-hidden group">
 
               <img
                 src={shelterInstallImg}
@@ -154,8 +147,8 @@ export function Welcome() {
                 loading="lazy"
               />
 
-              {/* Bottom Floating Glass Badge — Install photo */}
-              <div className="absolute bottom-5 right-5 z-20 flex items-center gap-2 bg-[#0b0f15]/90 backdrop-blur-md border border-red-500/40 text-white px-4 py-2.5 rounded-2xl shadow-lg select-none">
+              {/* Bottom Floating Glass Badge */}
+              <div className="absolute bottom-5 right-5 z-20 flex items-center gap-2 bg-[#0b0f15]/90 backdrop-blur-md border border-white/20 text-white px-4 py-2.5 rounded-2xl shadow-lg select-none">
                 <div className="flex text-amber-400">
                   <Star className="h-3.5 w-3.5 fill-current" />
                   <Star className="h-3.5 w-3.5 fill-current" />

@@ -57,11 +57,11 @@ function MobileCollapsibleSection({
         className="flex items-center justify-between w-full py-1 text-left cursor-pointer"
         aria-expanded={open}
       >
-        <span className="text-xs uppercase tracking-widest text-red-400 font-bold">
+        <span className="text-xs uppercase tracking-widest text-slate-400 font-bold">
           {title}
         </span>
         <ChevronDown
-          className={`h-4 w-4 text-red-400 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          className={`h-4 w-4 text-slate-400 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
         />
       </button>
 
@@ -106,7 +106,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative bg-[#0b0f15] text-white overflow-hidden border-t border-red-500/30">
+    <footer className="relative bg-[#0b0f15] text-white overflow-hidden border-t border-white/10">
       {/* Background patterns */}
       <div className="absolute inset-0 bg-grid opacity-[0.02] pointer-events-none" />
 
@@ -158,7 +158,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="grid place-items-center h-9 w-9 rounded-xl bg-slate-900/80 border border-red-500/30 text-red-300 hover:bg-[#dc2626] hover:text-white active:scale-95 transition-all shadow-sm"
+                  className="grid place-items-center h-9 w-9 rounded-xl bg-slate-900/80 border border-white/15 text-slate-300 hover:bg-slate-700 hover:text-white active:scale-95 transition-all shadow-sm"
                 >
                   <Icon />
                 </a>
@@ -265,7 +265,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="grid place-items-center h-9 w-9 rounded-xl bg-slate-900/90 border border-red-500/35 text-red-300 hover:bg-[#dc2626] hover:text-white transition-all shadow-sm"
+                  className="grid place-items-center h-9 w-9 rounded-xl bg-slate-900/90 border border-white/15 text-slate-300 hover:bg-slate-700 hover:text-white transition-all shadow-sm"
                 >
                   <Icon />
                 </motion.a>
@@ -276,7 +276,7 @@ export function Footer() {
 
           {/* Col 2: Quick Links (col-span-2) */}
           <div className="lg:col-span-2">
-            <h3 className="text-xs uppercase tracking-widest text-red-400 font-extrabold mb-6">
+            <h3 className="text-xs uppercase tracking-widest text-slate-400 font-extrabold mb-6">
               {t("Quick Links", "Enlaces Rápidos")}
             </h3>
             <ul className="space-y-2.5 text-sm font-semibold">
@@ -295,7 +295,7 @@ export function Footer() {
 
           {/* Col 3: Services (col-span-3) */}
           <div className="lg:col-span-3">
-            <h3 className="text-xs uppercase tracking-widest text-red-400 font-extrabold mb-6">
+            <h3 className="text-xs uppercase tracking-widest text-slate-400 font-extrabold mb-6">
               {t("Storm Shelters", "Refugios")}
             </h3>
             <ul className="space-y-2.5 text-sm font-semibold">
@@ -314,7 +314,7 @@ export function Footer() {
 
           {/* Col 4: Service Areas (col-span-2) */}
           <div className="lg:col-span-2">
-            <h3 className="text-xs uppercase tracking-widest text-red-400 font-extrabold mb-6">
+            <h3 className="text-xs uppercase tracking-widest text-slate-400 font-extrabold mb-6">
               {t("Location", "Ubicación")}
             </h3>
             <ul className="space-y-2 text-xs font-semibold">
@@ -334,7 +334,7 @@ export function Footer() {
           {/* Col 5: Contact & Hours (col-span-2) */}
           <div className="lg:col-span-2 space-y-5">
             <div>
-              <h3 className="text-xs uppercase tracking-widest text-red-400 font-extrabold mb-5">
+              <h3 className="text-xs uppercase tracking-widest text-slate-400 font-extrabold mb-5">
                 {t("Contact Us", "Contáctenos")}
               </h3>
               <ul className="space-y-3.5 text-sm">
@@ -343,7 +343,7 @@ export function Footer() {
                     href="tel:6159912361"
                     className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group"
                   >
-                    <div className="h-8 w-8 rounded-lg bg-red-950/60 border border-red-500/40 flex items-center justify-center text-red-400 group-hover:bg-[#dc2626] group-hover:text-white transition-all shrink-0">
+                    <div className="h-8 w-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center text-slate-300 group-hover:bg-slate-700 group-hover:text-white transition-all shrink-0">
                       <Phone className="h-3.5 w-3.5" />
                     </div>
                     <div className="flex flex-col">
@@ -357,7 +357,7 @@ export function Footer() {
                     href="mailto:admin@nashvillesiteworks.com"
                     className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group"
                   >
-                    <div className="h-8 w-8 rounded-lg bg-red-950/60 border border-red-500/40 flex items-center justify-center text-red-400 group-hover:bg-[#dc2626] group-hover:text-white transition-all shrink-0">
+                    <div className="h-8 w-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center text-slate-300 group-hover:bg-slate-700 group-hover:text-white transition-all shrink-0">
                       <Mail className="h-3.5 w-3.5" />
                     </div>
                     <div className="flex flex-col min-w-0">
@@ -368,7 +368,7 @@ export function Footer() {
                 </li>
                 <li>
                   <div className="flex items-center gap-3 text-slate-300">
-                    <div className="h-8 w-8 rounded-lg bg-red-950/60 border border-red-500/40 flex items-center justify-center text-red-400 shrink-0">
+                    <div className="h-8 w-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center text-slate-300 shrink-0">
                       <MapPin className="h-3.5 w-3.5" />
                     </div>
                     <div className="flex flex-col">
@@ -383,8 +383,8 @@ export function Footer() {
             </div>
 
             {/* Hours card */}
-            <div className="bg-black/60 border border-red-500/40 rounded-2xl p-4">
-              <span className="text-[#fbbf24] font-black uppercase tracking-wider block mb-2 text-[10px] flex items-center gap-2">
+            <div className="bg-slate-800/80 border border-white/10 rounded-2xl p-4">
+              <span className="text-slate-400 font-black uppercase tracking-wider block mb-2 text-[10px] flex items-center gap-2">
                 <Clock className="w-3.5 h-3.5" />
                 {t("Business Hours", "Horario de Atención")}
               </span>
