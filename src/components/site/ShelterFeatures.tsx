@@ -16,7 +16,7 @@ import {
   HardHat,
   Ruler,
 } from "lucide-react";
-import grangerHatchImg from "@/assets/granger-door-hatch.jpg";
+import grangerHatchImg from "@/assets/gallery/4.png";
 
 const specs = [
   {
