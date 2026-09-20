@@ -67,18 +67,21 @@ export function Hero() {
 
           {/* Main Headline */}
           <h1 className="mt-4 sm:mt-5 font-display font-extrabold tracking-tight leading-[1.2] sm:leading-[1.25]">
-            <span className="block text-[21px] sm:text-[28px] md:text-[34px] lg:text-[38px] whitespace-normal sm:whitespace-nowrap">
-              {t("Custom-Built Storm Shelters,", "Refugios Personalizados,")}
+            <span className="block text-[18px] sm:text-[24px] md:text-[28px] lg:text-[32px] text-amber-400 mb-2">
+              {t("America's Leading Storm Shelters", "Refugios Líderes en América")}
             </span>
-            <span className="block text-[21px] sm:text-[28px] md:text-[34px] lg:text-[38px] whitespace-normal sm:whitespace-nowrap">
-              {t("Engineered to ", "Diseñados para ")}
-              <span className="gradient-text-orange">{t("Last.", "Durar.")}</span>
+            <span className="block text-[24px] sm:text-[32px] md:text-[40px] lg:text-[46px] whitespace-normal sm:whitespace-nowrap leading-tight">
+              {t("Does Your Family Have a ", "Tiene su Familia un ")}
+            </span>
+            <span className="block text-[24px] sm:text-[32px] md:text-[40px] lg:text-[46px] whitespace-normal sm:whitespace-nowrap leading-tight">
+              {t("Safe Place to ", "Lugar Seguro para ")}
+              <span className="gradient-text-orange">{t("Take Shelter?", "Refugiarse?")}</span>
             </span>
           </h1>
 
           {/* Description */}
-          <p className="max-w-2xl mt-3 mb-0 text-slate-200 text-[13px] sm:text-[15px] md:text-[17px] leading-relaxed font-normal">
-            {t("Southern Storm Shelters LLC builds and installs heavy-gauge steel and custom concrete underground storm shelters in Nashville, TN. Choose a prefabricated in-ground unit or a fully custom concrete build — both designed and installed to professional construction standards.", "Southern Storm Shelters LLC construye e instala refugios subterráneos de acero de alto calibre y hormigón personalizado en Nashville, TN.")}
+          <p className="max-w-2xl mt-4 mb-0 text-slate-200 text-[14px] sm:text-[15px] md:text-[17px] leading-relaxed font-normal">
+            {t("Severe weather is notoriously unpredictable. The smartest thing you can do for your family is to be prepared. We build and install heavy-gauge steel and custom concrete underground shelters in Nashville, TN—engineered for a lifetime of near-absolute protection.", "El clima severo es notoriamente impredecible. Lo más inteligente que puede hacer por su familia es estar preparado. Construimos e instalamos refugios de acero de calibre grueso y de concreto en Nashville, TN, diseñados para toda una vida de protección.")}
           </p>
 
           {/* CTA Buttons */}

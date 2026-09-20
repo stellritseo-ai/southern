@@ -72,17 +72,17 @@ export function Welcome() {
             {/* Paragraphs */}
             <div className="space-y-3.5 text-slate-600 text-[14px] sm:text-base leading-relaxed font-normal">
               <p>
-                {t("Southern Storm Shelters LLC is a construction company specializing in underground storm shelter builds for Nashville homeowners. We work with heavy equipment, professional crews, and quality-grade materials — not just shelter sales.", "Southern Storm Shelters LLC es una empresa de construcción especializada en refugios subterráneos para hogares de Nashville.")}
+                {t("Southern Storm Shelters LLC builds underground storm shelters designed for a multi-generational lifespan. Featuring innovative design and industry-leading safety features, our shelters offer the ultimate protection for your family.", "Southern Storm Shelters LLC construye refugios subterráneos diseñados para una vida útil multigeneracional.")}
               </p>
               <p>
-                {t("Based in Nashville, TN, we install prefabricated in-ground shelters and build fully custom concrete shelters — serving families quickly and professionally.", "Ubicados en Nashville, TN, instalamos refugios subterráneos prefabricados y construimos refugios de concreto totalmente personalizados.")}
+                {t("Based in Nashville, TN, we expertly install prefabricated in-ground units and build fully custom concrete shelters with precision using proper excavation and heavy crane equipment.", "Ubicados en Nashville, TN, instalamos de manera experta unidades subterráneas prefabricadas y construimos refugios de concreto totalmente personalizados.")}
               </p>
             </div>
 
             {/* Highlight Banner — slate accent */}
             <div className="w-full bg-slate-50 border-l-4 border-slate-400 p-4 rounded-r-2xl text-xs sm:text-sm font-semibold text-slate-800 flex items-center gap-3">
               <ShieldCheck className="h-6 w-6 text-slate-600 shrink-0" />
-              <span>{t("Approximately 99% of our work is dedicated to protecting residential family homes, with custom commercial shelter solutions also available.", "Aproximadamente el 99% de nuestro trabajo está dedicado a proteger hogares familiares residenciales, con soluciones comerciales también disponibles.")}</span>
+              <span>{t("Our commitment to quality starts with construction and engineering features that exceed standard requirements, providing peace of mind for decades to come.", "Nuestro compromiso con la calidad comienza con características de construcción que superan los requisitos estándar.")}</span>
             </div>
 
             {/* Promise Points List — Premium Interactive Hover Cards */}

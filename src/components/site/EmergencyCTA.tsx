@@ -75,12 +75,12 @@ export function EmergencyCTA() {
               className="font-display font-black tracking-tight leading-[1.2] text-white max-w-3xl"
             >
               <span className="block text-[28px] sm:text-[32px] lg:text-[36px] xl:text-[40px] whitespace-normal lg:whitespace-nowrap">
-                {t("Underground Shelter Builds That Last.", "Construcciones de Refugios Subterráneos Duraderos.")}
+                {t("Where Will Your Family Go", "A Dónde Irá Su Familia")}
               </span>
               <span
                 className="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-white to-slate-400 text-[18px] sm:text-[24px] lg:text-[28px] leading-tight mb-2 lg:-mb-[14px]"
               >
-                {t("Steel Construction. Concrete Builds. Professional Crew.", "Construcción de Acero. Obras de Concreto. Personal Profesional.")}
+                {t("When Severe Weather Strikes?", "Cuando el Clima Severo Golpee?")}
               </span>
             </motion.h2>
 
@@ -92,7 +92,7 @@ export function EmergencyCTA() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-[13.5px] sm:text-base lg:text-lg text-slate-300 max-w-xl leading-relaxed font-normal"
             >
-              {t("We build with 14-gauge corrugated steel, galvanized anchor systems, and reinforced concrete — every shelter is engineered to hold up underground for decades. Get a free on-site evaluation to start your project.", "Construimos con acero corrugado de calibre 14, sistemas de anclaje galvanizados y concreto reforzado. Cada refugio está diseñado para durar décadas bajo tierra.")}
+              {t("Tornadoes and freak storms kill hundreds each year and are notoriously unpredictable. Don't wait for the warning sirens. Preparation should start before you ever request a quote. Ensure your family has near-absolute protection with our industry-leading underground shelters.", "Los tornados y las tormentas repentinas matan a cientos cada año y son notoriamente impredecibles. No espere a las sirenas de advertencia. La preparación debe comenzar antes de que solicite una cotización. Asegure a su familia con nuestros refugios.")}
             </motion.p>
 
             {/* Feature Cards — Infinite Auto Scrolling Marquee */}

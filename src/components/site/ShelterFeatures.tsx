@@ -12,32 +12,35 @@ import {
   CheckCircle2,
   ArrowRight,
   Phone,
+  ShieldAlert,
+  HardHat,
+  Ruler,
 } from "lucide-react";
 import grangerHatchImg from "@/assets/granger-door-hatch.jpg";
 
 const specs = [
   {
-    icon: ShieldCheck,
-    title: "14-Gauge Corrugated Steel",
-    desc: "Heavy-duty corrugated steel shell with reinforced structural ribs. Powder-coated finish provides long-term rust and corrosion resistance underground.",
-    tag: "Construction",
-  },
-  {
-    icon: Anchor,
-    title: "Auger Anchor System",
-    desc: "No concrete pad required. Our galvanized anchor strap and auger system locks the shelter directly into the earth — engineered to resist uplift forces.",
-    tag: "Installation",
-  },
-  {
-    icon: Lock,
-    title: "Spring-Loaded Interior Latch",
-    desc: "The spring-loaded interior latch cannot be opened from the outside during a weather event, ensuring your family stays secure until the all-clear.",
+    icon: ShieldAlert,
+    title: "Exceeds FEMA Standards",
+    desc: "Heavy-duty, multi-point locking security doors that exceed FEMA 320 and 361 specifications for near absolute protection against debris impact.",
     tag: "Safety",
   },
   {
-    icon: Users,
-    title: "Polyethylene Bench Seating",
-    desc: "Built-in bench seating made from high-density polyethylene — the same material used in bulletproof vests. Durable, moisture-resistant, and easy to clean.",
+    icon: HardHat,
+    title: "Lifetime Warranty",
+    desc: "Offering a limited lifetime warranty on the body of the unit against cracking, rusting, or rotting in the ground for generations of peace of mind.",
+    tag: "Warranty",
+  },
+  {
+    icon: Lock,
+    title: "Easiest Installation",
+    desc: "Our innovative designs and professional crane installation mean your shelter can be installed quickly and securely without disrupting your entire yard.",
+    tag: "Installation",
+  },
+  {
+    icon: Ruler,
+    title: "Multiple Ventilation Sources",
+    desc: "Featuring dual sources of air flow and comfortable seating so you can wait out inclement weather with your family in safety and security.",
     tag: "Interior",
   },
   {
@@ -71,6 +74,7 @@ const tagColors: Record<string, string> = {
   Installation: "bg-blue-50 text-blue-700 border-blue-200",
   Safety: "bg-slate-100 text-slate-700 border-slate-300",
   Interior: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  Warranty: "bg-amber-50 text-amber-700 border-amber-200",
   Ventilation: "bg-slate-100 text-slate-600 border-slate-300",
   Engineering: "bg-stone-100 text-stone-700 border-stone-300",
 };
