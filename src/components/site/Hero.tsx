@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
 import heroImgNew from "@/assets/gallery/2.png";
 import heroImg1 from "@/assets/gallery/Professional Installation.jpg";
-import heroImg2 from "@/assets/gallery/shelterinstall.jpg";
+import heroImg2 from "@/assets/gallery/5.png";
 
 const heroImages = [
   {
@@ -18,7 +18,7 @@ const heroImages = [
   },
   {
     src: heroImg2,
-    alt: "Underground storm shelter structure",
+    alt: "Heavy duty underground shelter",
   },
 ];
 
