@@ -3,10 +3,15 @@ import { ArrowRight, Hammer, Check, MapPin, Phone, HardHat } from "lucide-react"
 
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
+import heroImgNew from "@/assets/gallery/2.png";
 import heroImg1 from "@/assets/gallery/Professional Installation.jpg";
 import heroImg2 from "@/assets/gallery/shelterinstall.jpg";
 
 const heroImages = [
+  {
+    src: heroImgNew,
+    alt: "Underground storm shelter construction",
+  },
   {
     src: heroImg1,
     alt: "Tornado shelter installation",
