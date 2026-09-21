@@ -9,6 +9,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 
 function AboutPage() {
   const { t } = useLanguage();
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -17,13 +18,13 @@ function AboutPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.brownlawncarecleaningservicellc.com/"
+        "item": "https://www.southernstormsheltersllc.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "About Us",
-        "item": "https://www.brownlawncarecleaningservicellc.com/about"
+        "name": "About Southern Storm Shelters",
+        "item": "https://www.southernstormsheltersllc.com/about"
       }
     ]
   };
@@ -31,24 +32,20 @@ function AboutPage() {
   const aboutSchema = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "name": "About Brown Lawn Care & Cleaning Service, LLC",
-    "description": "Learn about Brown Lawn Care & Cleaning Service, LLC. Family-owned with 6 years in business as an LLC and 15+ years experience, serving Horn Lake, MS and a 50-mile radius.",
-    "url": "https://www.brownlawncarecleaningservicellc.com/about",
+    "name": "About Southern Storm Shelters LLC",
+    "description": "Southern Storm Shelters is a full-service construction company based in Nashville, TN, specializing in installing the industry's most advanced underground shelters—the Granger ISS—across a 100-mile radius.",
+    "url": "https://www.southernstormsheltersllc.com/about",
     "mainEntity": {
       "@type": "HomeAndConstructionBusiness",
-      "name": "Brown Lawn Care & Cleaning Service, LLC",
-      "founder": {
-        "@type": "Person",
-        "name": "Roy Lee Brown"
-      },
-      "telephone": "+16625711048",
-      "email": "royleebrown@ymail.com",
+      "name": "Southern Storm Shelters LLC",
+      "telephone": "+16159912361",
+      "email": "admin@nashvillesiteworks.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Alden Lake Dr W",
-        "addressLocality": "Horn Lake",
-        "addressRegion": "MS",
-        "postalCode": "38637",
+        "streetAddress": "468 Craighead St",
+        "addressLocality": "Nashville",
+        "addressRegion": "TN",
+        "postalCode": "37204",
         "addressCountry": "US"
       }
     }
@@ -65,13 +62,22 @@ function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
       />
       <PageHeader
-        eyebrow={t("Where Quality Meets Community", "Donde la Calidad Encuentra la Comunidad")}
-        title={t("About Brown Lawn Care & Cleaning Service, LLC", "Acerca de Brown Lawn Care & Cleaning Service, LLC")}
-        subtitle={t("Family owned & operated deeply rooted in Horn Lake, MS, serving a 50-mile radius across MS, TN, and AR.", "Empresa familiar con sede en Horn Lake, MS, sirviendo en un radio de 50 millas en MS, TN y AR.")}
+        eyebrow={t(
+          "About Southern Storm Shelters",
+          "Acerca de Southern Storm Shelters"
+        )}
+        title={t(
+          "America’s Leading Storm Shelters. Built Underground. Built to Last.",
+          "Los Refugios contra Tormentas Líderes de EE. UU. Construidos Bajo Tierra. Construidos para Durar."
+        )}
+        subtitle={t(
+          "As a full-service construction company based in Nashville, TN, we specialize in installing the industry’s most advanced underground shelters—the Granger ISS—across a 100-mile radius.",
+          "Como empresa de construcción integral con sede en Nashville, TN, nos especializamos en la instalación de los refugios subterráneos más avanzados de la industria —el Granger ISS— en un radio de 100 millas."
+        )}
       />
       <AboutPageContent />
-      <WhyChooseUs />
       <ShelterFeatures />
+      <WhyChooseUs />
       <EmergencyCTA />
     </SiteLayout>
   );
@@ -80,17 +86,29 @@ function AboutPage() {
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us | Brown Lawn Care & Cleaning Service LLC | Horn Lake MS" },
-      { name: "description", content: "Learn about Brown Lawn Care & Cleaning Service LLC. Family-owned by Roy Lee Brown with 15+ years experience serving Horn Lake, MS & 50-mile radius across MS, TN, and AR." },
-      { name: "keywords", content: "about brown lawn care, lawn care company horn lake ms, roy lee brown lawn care, licensed lawn care desoto county ms, landscaping contractor horn lake" },
-      { property: "og:title", content: "About Us | Brown Lawn Care & Cleaning Service LLC | Horn Lake MS" },
-      { property: "og:description", content: "Family-owned lawn care, landscaping, tree care, and cleaning services in Horn Lake, MS serving MS, TN, & AR." },
-      { property: "og:url", content: "https://www.brownlawncarecleaningservicellc.com/about" },
+      { title: "About Southern Storm Shelters | America's Leading Underground Shelters" },
+      {
+        name: "description",
+        content:
+          "Southern Storm Shelters is a full-service construction company in Nashville, TN, installing the Granger ISS underground shelter across a 100-mile radius. Patented reverse taper design, FEMA 320/361 compliant.",
+      },
+      {
+        name: "keywords",
+        content:
+          "about southern storm shelters, granger iss tornado shelter, underground storm shelters nashville tn, reverse taper storm shelter, tornado shelter installation middle tennessee",
+      },
+      { property: "og:title", content: "About Southern Storm Shelters | America's Leading Underground Shelters" },
+      {
+        property: "og:description",
+        content:
+          "America’s Leading Storm Shelters. Built Underground. Built to Last. Full-service construction company based in Nashville, TN.",
+      },
+      { property: "og:url", content: "https://www.southernstormsheltersllc.com/about" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "canonical", href: "https://www.brownlawncarecleaningservicellc.com/about" },
+      { rel: "canonical", href: "https://www.southernstormsheltersllc.com/about" },
     ],
   }),
   component: AboutPage,

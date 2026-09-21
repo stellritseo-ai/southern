@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { ArrowRight, Hammer, Check, MapPin, Phone, HardHat } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/hooks/useLanguage";
 import heroImgNew from "@/assets/gallery/2.png";
 import heroImg1 from "@/assets/gallery/Professional Installation.jpg";
@@ -91,8 +92,10 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <div className="mt-6 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 w-full sm:w-auto">
-            <Button variant="hero" size="xl" className="w-full sm:w-auto justify-center bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-lg btn-glow">
-              📋 {t("Get a Free Estimate", "Solicitar Estimación Gratis")} <ArrowRight className="h-4 w-4" />
+            <Button variant="hero" size="xl" asChild className="w-full sm:w-auto justify-center bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-lg btn-glow">
+              <Link to="/free-quote">
+                📋 {t("Get a Free Estimate", "Solicitar Estimación Gratis")} <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
             <Button variant="heroOutline" size="xl" asChild className="w-full sm:w-auto justify-center border-white/40 bg-white/10 hover:bg-white/20 text-white backdrop-blur-md">
               <a href="tel:+16159912361">

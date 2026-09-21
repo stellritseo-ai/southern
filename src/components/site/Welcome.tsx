@@ -2,6 +2,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, Star, HardHat, Home, M
 
 import shelterInstallImg from "@/assets/gallery/shelterinstall.jpg";
 import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/hooks/useLanguage";
 
 const TinySparkleIcon = () => (
@@ -125,8 +126,10 @@ export function Welcome() {
 
             {/* CTA Button */}
             <div className="pt-1">
-              <Button variant="hero" size="lg" className="font-bold rounded-full px-6 text-sm sm:text-base bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-md hover:shadow-lg transition-all duration-200">
-                {t("Learn More About Our Shelters", "Conozca Más Sobre Nuestros Refugios")} <ArrowRight className="ml-2 h-4 w-4 text-white" />
+              <Button variant="hero" size="lg" asChild className="font-bold rounded-full px-6 text-sm sm:text-base bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-md hover:shadow-lg transition-all duration-200">
+                <Link to="/about">
+                  {t("Learn More About Our Shelters", "Conozca Más Sobre Nuestros Refugios")} <ArrowRight className="ml-2 h-4 w-4 text-white" />
+                </Link>
               </Button>
             </div>
 

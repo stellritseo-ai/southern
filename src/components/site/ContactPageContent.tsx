@@ -10,25 +10,17 @@ import {
   CheckCircle2,
   ShieldCheck,
   Award,
-  Heart,
-  Globe,
-  AlertTriangle,
   ChevronDown,
-  Sparkles,
-  Facebook,
-  Instagram,
   HelpCircle,
   Building2,
   Home,
-  Tractor,
-  Scissors,
-  Trees,
-  Trash2,
-  Truck,
-  ArrowRight,
+  FileCheck,
+  HardHat,
+  Shield,
   Calendar,
-  CheckSquare,
-  BadgeCheck,
+  MessageSquare,
+  Check,
+  Compass,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -37,36 +29,20 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { useLanguage } from "@/hooks/useLanguage";
 import { addWebEmail } from "@/lib/leads-store";
-import bbbLogo from "@/assets/bbb.svg";
 
 export function ContactPageContent() {
   const { t } = useLanguage();
   const [submitting, setSubmitting] = useState(false);
-  const [propertyType, setPropertyType] = useState<"Residential" | "Commercial" | "Agricultural">("Residential");
-  const [timeline, setTimeline] = useState("Urgent (within 24-48 hours)");
-  const [selectedServices, setSelectedServices] = useState<string[]>([
-    "Lawn Mowing & Maintenance"
-  ]);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
-  const availableServices = [
-    t("Lawn Mowing & Maintenance", "Cortado de Césped y Mantenimiento"),
-    t("Landscaping & Design", "Paisajismo y Diseño"),
-    t("Tree & Brush Removal", "Remoción de Árboles y Maleza"),
-    t("Gravel & Dirt Work", "Trabajos de Grava y Tierra"),
-    t("Office & Commercial Cleaning", "Limpieza de Oficinas y Comercial"),
-    t("Residential & Warehouse Cleaning", "Limpieza Residencial y Galpones"),
-    t("Emergency Services", "Servicios de Emergencia"),
-    t("Other", "Otro"),
-  ];
-
-  const toggleService = (srv: string) => {
-    if (selectedServices.includes(srv)) {
-      setSelectedServices(selectedServices.filter((s) => s !== srv));
-    } else {
-      setSelectedServices([...selectedServices, srv]);
-    }
-  };
+  // Form State
+  const [preferredContact, setPreferredContact] = useState<"Phone Call" | "Email" | "Text Message">("Phone Call");
+  const [contactReason, setContactReason] = useState<string>("Request a Free Estimate");
+  const [shelterType, setShelterType] = useState<string>("In-Ground Prefabricated Storm Shelter");
+  const [propertyType, setPropertyType] = useState<string>("Residential – Existing Home");
+  const [referralSource, setReferralSource] = useState<string>("Google Search");
+  const [otherReferral, setOtherReferral] = useState<string>("");
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -76,343 +52,569 @@ export function ContactPageContent() {
     const name = (form.querySelector("#fullName") as HTMLInputElement)?.value || "";
     const phone = (form.querySelector("#phoneNumber") as HTMLInputElement)?.value || "";
     const email = (form.querySelector("#emailAddress") as HTMLInputElement)?.value || "";
-    const address = (form.querySelector("#addressCity") as HTMLInputElement)?.value || "";
-    const description = (form.querySelector("#jobDescription") as HTMLTextAreaElement)?.value || "";
+    const address = (form.querySelector("#propertyAddress") as HTMLInputElement)?.value || "";
+    const city = (form.querySelector("#city") as HTMLInputElement)?.value || "";
+    const state = (form.querySelector("#state") as HTMLInputElement)?.value || "TN";
+    const zip = (form.querySelector("#zipCode") as HTMLInputElement)?.value || "";
+    const message = (form.querySelector("#message") as HTMLTextAreaElement)?.value || "";
+
+    const fullReferral = referralSource === "Other" && otherReferral.trim() ? `Other (${otherReferral})` : referralSource;
+
+    const messagePayload = [
+      `=== CONTACT FORM INQUIRY ===`,
+      `Reason for Contact: ${contactReason}`,
+      `Preferred Contact: ${preferredContact}`,
+      address ? `Property Address: ${address}, ${city}, ${state} ${zip}` : "",
+      `Shelter Type of Interest: ${shelterType}`,
+      `Property Type: ${propertyType}`,
+      `Referral Source: ${fullReferral}`,
+      message ? `\nCustomer Message:\n${message}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
 
     try {
       await addWebEmail({
         name,
         phone,
         email,
-        service: selectedServices.join(", ") || "General Contact Inquiry",
-        message: `Property Type: ${propertyType}\nTimeline: ${timeline}\nAddress: ${address}\n\nDescription: ${description}`,
-        source: "Contact Page Quote Form"
+        service: `Contact Inquiry: ${contactReason}`,
+        message: messagePayload,
+        source: "Dedicated Contact Page",
       });
 
-      toast.success(t("We'll respond within 24 hours. For urgent needs, call (662) 571-1048.", "Responderemos dentro de 24 horas. Para urgencias, llame al (662) 571-1048."));
-      form.reset();
-      setSelectedServices(["Lawn Mowing & Maintenance"]);
+      setSubmitted(true);
+      toast.success(
+        t(
+          "Thank you for contacting Southern Storm Shelters! Our team will respond to your inquiry within 24 hours.",
+          "¡Gracias por contactar a Southern Storm Shelters! Nuestro equipo responderá a su consulta dentro de las 24 horas."
+        )
+      );
     } catch (err) {
-      console.error("Form submission error:", err);
-      toast.error(t("Submission failed. Please try calling (662) 571-1048.", "Error en el envío. Por favor intente llamar al (662) 571-1048."));
+      console.error("Contact form error:", err);
+      toast.error(
+        t(
+          "Submission error. Please call us directly at (615) 991-2381.",
+          "Error de envío. Por favor llámenos directamente al (615) 991-2381."
+        )
+      );
     } finally {
       setSubmitting(false);
     }
   };
 
-  const whyContactUsPoints = [
+  const contactChannels = [
     {
-      title: t("Licensed, Insured & Bonded", "Licenciado, Asegurado y Afianzado"),
-      desc: t("Your property is fully protected. We carry comprehensive liability coverage and bonding for your complete peace of mind.", "Su propiedad está totalmente protegida con seguro de responsabilidad y fianza."),
-      icon: ShieldCheck,
+      title: t("Phone", "Teléfono"),
+      value: "(615) 991-2381",
+      href: "tel:6159912381",
+      desc: t(
+        "Call us directly to speak with a member of our team. We're happy to answer questions, schedule a consultation, or provide guidance on the best shelter solution for your property.",
+        "Llámenos directamente para hablar con nuestro equipo. Con gusto respondemos preguntas, programamos consultas o le orientamos sobre la mejor solución para su terreno."
+      ),
+      hours: t("Monday–Friday: 8:00 AM – 5:00 PM\nSaturday: By Appointment\nSunday: Closed", "Lunes a Viernes: 8:00 AM – 5:00 PM\nSábado: Con Cita\nDomingo: Cerrado"),
+      icon: Phone,
+      action: t("Call Now", "Llamar Ahora"),
     },
     {
-      title: t("15+ Years Experience", "15+ Años de Experiencia"),
-      desc: t("With over a decade and a half in the industry, we have the knowledge and skill to handle projects of any size or complexity.", "Con más de 15 años en la industria, tenemos la habilidad para manejar cualquier proyecto."),
-      icon: Award,
+      title: t("Email", "Correo Electrónico"),
+      value: "admin@nashvillesiteworks.com",
+      href: "mailto:admin@nashvillesiteworks.com",
+      desc: t(
+        "Prefer to write? Send us an email with your questions, property details, or request for a quote. We'll respond within 24 hours.",
+        "¿Prefiere escribir? Envíenos un correo con sus preguntas, detalles de su terreno o solicitud de cotización. Responderemos en 24 horas."
+      ),
+      hours: t("Response Time: Within 24 Hours", "Tiempo de Respuesta: En 24 Horas"),
+      icon: Mail,
+      action: t("Send Email", "Enviar Correo"),
     },
     {
-      title: t("Family-Owned & Community-Focused", "Familia Local y Enfocados en la Comunidad"),
-      desc: t("We're a local family business, not a franchise. We're committed to the communities we serve and treat every client like a neighbor.", "Somos una empresa familiar local. Tratamos a cada cliente como a un vecino."),
-      icon: Heart,
+      title: t("Office Location", "Ubicación de Oficina"),
+      value: "2000 Meridian Blvd, Suite 200, Franklin, TN 37067",
+      desc: t(
+        "Note: This is our administrative office. All shelter installations are performed on-site at your property.",
+        "Nota: Esta es nuestra oficina administrativa. Todas las instalaciones de refugios se realizan directamente en su propiedad."
+      ),
+      hours: t("Monday–Friday: 8:00 AM – 5:00 PM", "Lunes a Viernes: 8:00 AM – 5:00 PM"),
+      icon: MapPin,
     },
     {
-      title: t("Punctual & Reliable", "Puntual y Confiable"),
-      desc: t("We show up when we say we will and complete the job to your satisfaction. Your time matters to us.", "Llegamos a tiempo y completamos el trabajo a su entera satisfacción."),
+      title: t("Service Area", "Área de Servicio"),
+      value: t("100-Mile Radius Across Tennessee", "Radio de 100 Millas en Tennessee"),
+      desc: t(
+        "We proudly serve Nashville, Franklin, Murfreesboro, and surrounding areas within a 100-mile radius across Tennessee. If you're unsure whether we serve your area, give us a call—we're happy to confirm.",
+        "Servimos con orgullo a Nashville, Franklin, Murfreesboro y áreas circundantes dentro de un radio de 100 millas en Tennessee. Llámenos si desea confirmar su área."
+      ),
+      hours: t("Nashville • Franklin • Murfreesboro • Middle TN", "Nashville • Franklin • Murfreesboro • Middle TN"),
+      icon: Compass,
+    },
+  ];
+
+  const whatHappensSteps = [
+    {
+      step: "01",
+      title: t("Step 1: Prompt Response", "Paso 1: Respuesta Inmediata"),
+      desc: t(
+        "Our team will respond to your inquiry within 24 hours during normal business hours.",
+        "Nuestro equipo responderá a su consulta dentro de las 24 horas durante el horario laboral."
+      ),
       icon: Clock,
     },
     {
-      title: t("Bilingual Service (English & Spanish)", "Servicio Bilingüe (Inglés y Español)"),
-      desc: t("We speak English and Spanish. No language barriers—just clear communication and exceptional service.", "Hablamos inglés y español sin barreras de idioma."),
-      icon: Globe,
+      step: "02",
+      title: t("Step 2: Personalized Consultation", "Paso 2: Consulta Personalizada"),
+      desc: t(
+        "We'll discuss your needs, answer your questions, and schedule a convenient time for a free site evaluation if needed.",
+        "Conversaremos sobre sus necesidades, responderemos sus preguntas y programaremos una evaluación gratuita en el sitio si es necesario."
+      ),
+      icon: MessageSquare,
     },
     {
-      title: t("100% Satisfaction Guarantee", "Garantía de Satisfacción del 100%"),
-      desc: t("We stand behind our work. If we missed something or you need an adjustment, we make it right immediately.", "Respaldamos nuestro trabajo. Si falta algo, lo solucionamos de inmediato."),
-      icon: BadgeCheck,
+      step: "03",
+      title: t("Step 3: Professional Site Evaluation", "Paso 3: Evaluación Profesional del Terreno"),
+      desc: t(
+        "Our construction experts will visit your property to assess soil conditions, drainage, access, and the optimal shelter location. This isn't a guess—it's an engineering-informed assessment.",
+        "Nuestros expertos en construcción visitarán su terreno para analizar el suelo, drenaje, acceso y la ubicación óptima. Es una evaluación con criterio de ingeniería."
+      ),
+      icon: HardHat,
+    },
+    {
+      step: "04",
+      title: t("Step 4: Transparent Quote", "Paso 4: Cotización Transparente"),
+      desc: t(
+        "You'll receive a detailed, no-obligation estimate that includes recommended shelter model, custom options, installation plan, warranty details, and total cost with no hidden fees.",
+        "Recibirá un presupuesto detallado y sin compromiso que incluye modelo recomendado, opciones personalizadas, plan de instalación, garantía y costo total sin cargos ocultos."
+      ),
+      icon: FileCheck,
+    },
+    {
+      step: "05",
+      title: t("Step 5: Professional Installation", "Paso 5: Instalación Profesional"),
+      desc: t(
+        "Once you're ready to proceed, our team handles everything—from excavation to final installation. Most installations take 4 hours or less.",
+        "Cuando decida avanzar, nuestro equipo se encarga de todo: excavación, colocación y acabado. La mayoría de las instalaciones toman 4 horas o menos."
+      ),
+      icon: ShieldCheck,
+    },
+  ];
+
+  const whyTrustUsPoints = [
+    {
+      title: t("We Are Builders, Not Just Dealers", "Somos Constructores, No Simples Distribuidores"),
+      desc: t(
+        "As a full-service construction company based in Nashville, TN, we handle the entire process—from site evaluation and heavy equipment excavation to final grading and installation. You never have to coordinate third-party contractors.",
+        "Como empresa de construcción integral en Nashville, TN, manejamos todo el proceso, desde la evaluación y excavación hasta la nivelación final. Nunca tendrá que coordinar contratistas externos."
+      ),
+      icon: HardHat,
+    },
+    {
+      title: t("Industry-Leading Products", "Productos Líderes en la Industria"),
+      desc: t(
+        "We install the Granger ISS, manufactured by Granger Plastics Company—an internationally recognized rotational molding leader with over 30 years of experience serving aerospace, medical, defense, and agricultural industries.",
+        "Instalamos el Granger ISS, fabricado por Granger Plastics Company, líder internacional en moldeo rotacional con más de 30 años de experiencia en sectores aeroespacial, médico, defensa y agrícola."
+      ),
+      icon: Shield,
+    },
+    {
+      title: t("Local Expertise", "Experiencia Local en Middle Tennessee"),
+      desc: t(
+        "We understand Middle Tennessee soil, water tables, and weather patterns. Our installations are tailored to the specific geological conditions of your property.",
+        "Entendemos la geología de Middle Tennessee, niveles de agua subterránea y patrones climáticos. Nuestras instalaciones se adaptan a las condiciones exactas de su propiedad."
+      ),
+      icon: MapPin,
+    },
+    {
+      title: t("Lifetime Peace of Mind", "Tranquilidad de Por Vida"),
+      desc: t(
+        "Every shelter we install is backed by a limited lifetime warranty on the body of the unit against cracking, rusting, rotting, or floating out of the ground. The door is also protected by a lifetime warranty.",
+        "Cada refugio cuenta con una garantía limitada de por vida en el cuerpo contra roturas, óxido, descomposición o flotación. La puerta también incluye garantía de por vida."
+      ),
+      icon: Award,
     },
   ];
 
   const faqs = [
     {
-      q: t("What is your response time for quotes?", "¿Cuál es su tiempo de respuesta para cotizaciones?"),
-      a: t("We respond to all online quote requests within 24 hours. For urgent inquiries or storm emergencies, call our main line at (662) 571-1048 for immediate assistance during business hours.", "Respondemos a todas las cotizaciones dentro de las 24 horas. Para emergencias, llame directamente."),
+      q: t("How quickly will I hear back after contacting you?", "¿Qué tan rápido recibiré respuesta después de contactarles?"),
+      a: t(
+        "We respond to all inquiries within 24 hours during normal business hours. If you call during business hours, you'll typically speak with someone immediately.",
+        "Respondemos a todas las consultas dentro de las 24 horas en días hábiles. Si llama durante el horario de atención, normalmente hablará con un especialista de inmediato."
+      ),
     },
     {
-      q: t("Do you offer free estimates?", "¿Ofrecen presupuestos gratuitos?"),
-      a: t("Yes! We provide 100% free, no-obligation quotes for all residential, commercial, and agricultural services. You will receive an upfront, itemized estimate with no hidden fees.", "¡Sí! Brindamos cotizaciones 100% gratuitas sin compromiso y sin cargos ocultos."),
+      q: t("Do you offer free estimates?", "¿Ofrecen estimaciones gratuitas?"),
+      a: t(
+        "Yes. Every estimate is free and no-obligation. We'll evaluate your property, discuss your needs, and provide a transparent quote with no hidden fees.",
+        "Sí. Cada presupuesto es 100% gratuito y sin compromiso. Evaluamos su terreno, analizamos sus requerimientos y entregamos una cotización transparente sin cargos ocultos."
+      ),
     },
     {
-      q: t("What is your emergency response time?", "¿Cuál es su tiempo de respuesta en emergencias?"),
-      a: t("We provide emergency dispatch during business hours. Response time depends on location and demand, but we strive to arrive as quickly as possible to secure your property and clear hazards.", "Brindamos despacho de emergencia en horario comercial para asegurar su propiedad rápidamente."),
+      q: t("What areas do you serve?", "¿Qué áreas cubren?"),
+      a: t(
+        "We proudly serve Nashville, Franklin, Murfreesboro, and surrounding areas within a 100-mile radius across Tennessee.",
+        "Servimos con orgullo a Nashville, Franklin, Murfreesboro y todas las áreas dentro de un radio de 100 millas en Tennessee."
+      ),
     },
     {
-      q: t("Can you provide service outside your listed 50-mile area?", "¿Pueden brindar servicios fuera de su área de 50 millas?"),
-      a: t("We primarily serve Horn Lake and a 50-mile radius across Mississippi, Tennessee, and Arkansas. However, we may be able to accommodate nearby locations depending on project size. Call us to discuss!", "Servimos principalmente 50 millas a la redonda, pero podemos coordinar según el tamaño del proyecto."),
+      q: t("How long does installation take?", "¿Cuánto tiempo tarda la instalación?"),
+      a: t(
+        "A standard installation of the Granger ISS generally takes 4 hours or less. The procedure is straightforward: dig a hole, position the unit, ensure the shelter is level, and backfill with the soil that was removed.",
+        "Una instalación estándar del Granger ISS generalmente toma 4 horas o menos: excavar, colocar la unidad, nivelar con precisión láser y rellenar con la tierra extraída."
+      ),
     },
     {
-      q: t("What forms of payment do you accept?", "¿Qué formas de pago aceptan?"),
-      a: t("We accept credit cards, checks, cash, and bank transfers. Details will be provided with your itemized estimate.", "Aceptamos tarjetas de crédito, cheques, efectivo y transferencias bancarias."),
+      q: t("Do you offer custom color options?", "¿Ofrecen opciones de colores personalizados?"),
+      a: t(
+        "Yes! Unlike most competing tornado shelters that look industrial and unsightly, the Granger ISS allows you to customize the door and vent colors to coordinate with your home or landscaping.",
+        "¡Sí! A diferencia de refugios convencionales que lucen antiestéticos, el Granger ISS le permite personalizar los colores de puerta y ventilación para coordinar con su vivienda o paisajismo."
+      ),
+    },
+    {
+      q: t("What warranty is included?", "¿Qué garantía está incluida?"),
+      a: t(
+        "The Granger ISS offers a limited lifetime warranty on the body of the unit against cracking, rusting, rotting, or floating out of the ground. The door is also protected by a lifetime warranty.",
+        "El Granger ISS ofrece garantía limitada de por vida en el cuerpo contra roturas, oxidación, descomposición o flotación. La puerta también está protegida de por vida."
+      ),
+    },
+    {
+      q: t("How many people can the shelter hold?", "¿A cuántas personas puede albergar el refugio?"),
+      a: t(
+        "The Granger ISS exceeds FEMA requirements for 6 adults, though several more can fit in an emergency. Molded-in circular seating allows occupants to sit comfortably with plenty of headroom.",
+        "El Granger ISS supera las especificaciones FEMA para 6 adultos, aunque caben más en una emergencia. Los asientos circulares moldeados brindan comodidad y amplio espacio superior."
+      ),
     },
   ];
 
   return (
-    <div className="bg-white text-[#111111] overflow-hidden">
+    <div className="bg-white text-slate-900 overflow-hidden selection:bg-red-600 selection:text-white">
 
-      {/* ── HERO BANNER SECTION ────────────────────────────────────────── */}
-      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-[#F7F7F7] via-white to-white border-b border-slate-100">
-        <div aria-hidden className="absolute top-0 right-1/4 w-96 h-96 bg-[#2E7D32]/5 rounded-full blur-3xl pointer-events-none" />
-        <div aria-hidden className="absolute bottom-0 left-10 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* ── SECTION 1: GET IN TOUCH CHANNELS ───────────────────────────── */}
+      <section className="relative py-16 sm:py-20 lg:py-24 border-b border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-50">
+        <div aria-hidden className="absolute top-0 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div aria-hidden className="absolute bottom-0 left-10 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D4AF37]/50 bg-[#1B5E20]/8 text-[#2E7D32] text-xs font-black uppercase tracking-widest mb-6 shadow-xs">
-            <Phone className="w-3.5 h-3.5 text-[#2E7D32]" />
-            <span>{t("We're Here to Help", "Estamos Aquí Para Ayudarle")}</span>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-widest mb-4">
+              <Phone className="w-3.5 h-3.5 text-red-600" />
+              <span>{t("Get in Touch", "Póngase en Contacto")}</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+              {t("Let's Talk About Protecting Your Family", "Hablemos de Proteger a Su Familia")}
+            </h2>
+
+            <p className="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed">
+              {t(
+                "Severe weather is notoriously unpredictable. The best and smartest thing you can do for yourself and your family is to be prepared. Reach out today—we respond to all inquiries within 24 hours.",
+                "El clima severo es impredecible. Lo mejor y más inteligente que puede hacer por usted y su familia es estar preparado. Contáctenos hoy mismo: respondemos a todas las consultas en 24 horas."
+              )}
+            </p>
           </div>
 
-          <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-black text-[#111111] tracking-tight leading-[1.15]">
-            {t("Contact ", "Contacto con ")}
-            <span className="bg-gradient-to-r from-[#2E7D32] to-[#1B5E20] bg-clip-text text-transparent">
-              {t("Brown Lawn Care & Cleaning Service", "Brown Lawn Care & Cleaning Service")}
-            </span>
-          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {contactChannels.map((ch) => {
+              const Icon = ch.icon;
+              return (
+                <div
+                  key={ch.title}
+                  className="rounded-3xl bg-white border border-slate-200 p-7 flex flex-col justify-between hover:border-red-500/40 hover:shadow-xl transition-all duration-300 shadow-xs group"
+                >
+                  <div>
+                    <div className="w-12 h-12 rounded-2xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center mb-5 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                      <Icon className="w-6 h-6" />
+                    </div>
 
-          <p className="mt-6 text-slate-700 text-base sm:text-lg leading-relaxed font-medium max-w-3xl mx-auto">
-            {t(
-              "Thank you for your interest in Brown Lawn Care & Cleaning Service. Whether you need routine lawn maintenance, emergency tree removal, commercial cleaning, or a complete landscape transformation, our family-owned team is ready to serve you. We're licensed, insured, bonded, and committed to delivering professional, reliable service with a personal touch.",
-              "Gracias por su interés en Brown Lawn Care & Cleaning Service. Ya sea que necesite mantenimiento de césped, remoción de árboles de emergencia, limpieza comercial o una transformación completa de paisajismo, nuestro equipo familiar está listo para servirle."
-            )}
-          </p>
+                    <div className="text-[11px] font-bold text-red-600 uppercase tracking-wider mb-1">
+                      {ch.title}
+                    </div>
 
-          <div className="mt-8 flex flex-wrap justify-center items-center gap-4">
-            <a
-              href="tel:6625711048"
-              className="bg-gradient-to-r from-[#2E7D32] to-[#1B5E20] hover:from-[#1B5E20] hover:to-[#2E7D32] text-[#FFD54F] text-xs font-black uppercase tracking-wider px-8 py-4 rounded-full border border-[#D4AF37]/50 shadow-md transition-all active:scale-95 flex items-center gap-2.5"
-            >
-              <Phone className="w-4 h-4 text-[#FFD54F] fill-current" />
-              <span>{t("Call (662) 571-1048", "Llamar (662) 571-1048")}</span>
-            </a>
-            <a
-              href="mailto:royleebrown@ymail.com"
-              className="bg-[#111111] hover:bg-[#222222] text-white text-xs font-black uppercase tracking-wider px-8 py-4 rounded-full shadow-md transition-all active:scale-95 flex items-center gap-2"
-            >
-              <Mail className="w-4 h-4 text-[#D4AF37]" />
-              <span>{t("Email Us Directly", "Enviar Correo Directo")}</span>
-            </a>
+                    {ch.href ? (
+                      <a
+                        href={ch.href}
+                        className="text-lg font-bold text-slate-900 hover:text-red-600 transition block mb-2"
+                      >
+                        {ch.value}
+                      </a>
+                    ) : (
+                      <div className="text-base font-bold text-slate-900 mb-2 leading-snug">
+                        {ch.value}
+                      </div>
+                    )}
+
+                    <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                      {ch.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-100 text-[11px] font-semibold text-slate-500 whitespace-pre-line">
+                    {ch.hours}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── CONTACT INFORMATION & GOOGLE MAP CARDS ─────────────────────── */}
-      <section className="py-16 sm:py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* ── SECTION 2: SEND US A MESSAGE (CONTACT FORM) ────────────────── */}
+      <section id="contact-form" className="py-16 sm:py-24 bg-white relative">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            {/* Contact Details Column */}
-            <div className="lg:col-span-1 space-y-6 text-left">
-              
-              {/* Phone Card */}
-              <div className="p-6 rounded-3xl bg-[#F7F7F7] border border-slate-200 shadow-xs hover:border-[#2E7D32] transition">
-                <div className="w-12 h-12 rounded-2xl bg-[#2E7D32] text-[#FFD54F] flex items-center justify-center mb-4 shadow-sm border border-[#D4AF37]/40">
-                  <Phone className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-black text-[#111111]">{t("Phone Information", "Información Telefónica")}</h3>
-                <p className="mt-1 text-sm font-black text-[#2E7D32]">{t("Main Line: (662) 571-1048", "Línea Principal: (662) 571-1048")}</p>
-
-                <div className="mt-4 pt-3 border-t border-slate-200/80 text-xs font-medium text-slate-700 space-y-1">
-                  <div className="font-extrabold text-[#111111] mb-1">{t("Business Hours:", "Horario de Atención:")}</div>
-                  <div>Monday–Friday: 10:00 AM – 7:00 PM</div>
-                  <div>Saturday: 3:00 PM – 8:00 PM</div>
-                  <div>Sunday: Closed</div>
-                </div>
-
-                <div className="mt-4 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs font-bold text-amber-900 flex items-start gap-2">
-                  <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                  <span>{t("Emergency Service available during business hours for storm damage & fallen trees.", "Servicio de emergencia disponible en horario comercial para tormentas.")}</span>
-                </div>
-              </div>
-
-              {/* Email Card */}
-              <div className="p-6 rounded-3xl bg-[#F7F7F7] border border-slate-200 shadow-xs hover:border-[#2E7D32] transition">
-                <div className="w-12 h-12 rounded-2xl bg-[#111111] text-[#FFD54F] flex items-center justify-center mb-4 shadow-sm border border-[#D4AF37]/40">
-                  <Mail className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-black text-[#111111]">{t("Email & Office", "Correo y Oficina")}</h3>
-                <p className="mt-1 text-sm font-black text-[#2E7D32]">royleebrown@ymail.com</p>
-                <p className="text-xs text-slate-600 font-medium mt-1">
-                  {t("We respond to all email inquiries within 24 hours.", "Respondemos a todas las consultas de correo en 24 horas.")}
-                </p>
-
-                <div className="mt-4 pt-3 border-t border-slate-200/80 text-xs text-slate-700">
-                  <div className="font-extrabold text-[#111111]">{t("Office Location:", "Ubicación de Oficina:")}</div>
-                  <div className="font-medium mt-0.5">Alden Lake Dr W, Horn Lake, MS</div>
-                </div>
-              </div>
-
-              {/* Social Media Card */}
-              <div className="p-6 rounded-3xl bg-[#F7F7F7] border border-slate-200 shadow-xs hover:border-[#2E7D32] transition">
-                <h3 className="text-base font-black text-[#111111] mb-3">{t("Connect On Social Media", "Conéctese en Redes Sociales")}</h3>
-                <p className="text-xs text-slate-600 font-medium mb-4">
-                  {t("Follow us for project photos, seasonal maintenance tips, and updates:", "Síganos para ver fotos de proyectos y consejos de temporada:")}
-                </p>
-                <div className="flex gap-3">
-                  <a
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 py-2.5 px-4 rounded-xl bg-white border border-slate-200 text-xs font-black text-[#111111] hover:border-[#2E7D32] hover:text-[#2E7D32] transition flex items-center justify-center gap-2 shadow-2xs"
-                  >
-                    <Facebook className="w-4 h-4 text-[#1877F2]" />
-                    <span>Facebook</span>
-                  </a>
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 py-2.5 px-4 rounded-xl bg-white border border-slate-200 text-xs font-black text-[#111111] hover:border-[#2E7D32] hover:text-[#2E7D32] transition flex items-center justify-center gap-2 shadow-2xs"
-                  >
-                    <Instagram className="w-4 h-4 text-[#E4405F]" />
-                    <span>Instagram</span>
-                  </a>
-                </div>
-              </div>
-
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-3">
+              <Calendar className="w-3.5 h-3.5 text-amber-700" />
+              <span>{t("24-Hour Turnaround", "Respuesta en 24 Horas")}</span>
             </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+              {t("Send Us a Message", "Envíenos un Mensaje")}
+            </h2>
+            <p className="mt-3 text-slate-600 text-sm sm:text-base">
+              {t(
+                "Fill out the form below and our team will contact you within 24 hours.",
+                "Complete el formulario a continuación y nuestro equipo se comunicará con usted dentro de las 24 horas."
+              )}
+            </p>
+          </div>
 
-            {/* Google Map & Interactive Quote Form Column */}
-            <div className="lg:col-span-2 space-y-8">
-              
-              {/* Map Container */}
-              <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-md h-72 relative group">
-                <iframe
-                  title="Brown Lawn Care Location Map"
-                  className="h-full w-full border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d104595.67493214!2d-90.0463!3d34.9545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87d581fb620023a9%3A0xd6e54522a76f2f27!2sHorn%20Lake%2C%20MS!5e0!3m2!1sen!2s!4v1782259191322!5m2!1sen!2s"
-                />
-              </div>
+          <div className="rounded-3xl border border-slate-200 bg-slate-50/70 p-6 sm:p-10 shadow-lg relative overflow-hidden">
 
-              {/* Comprehensive Quote Request Form */}
-              <div className="rounded-3xl border border-slate-200 bg-[#F7F7F7] p-6 sm:p-10 shadow-lg text-left">
-                <div className="mb-8">
-                  <span className="text-xs font-black uppercase tracking-widest text-[#2E7D32] bg-[#2E7D32]/10 px-3.5 py-1 rounded-full border border-[#2E7D32]/30">
-                    {t("Request A Free Quote", "Solicite Una Cotización Gratis")}
-                  </span>
-                  <h2 className="mt-3 text-2xl sm:text-3xl font-black text-[#111111] tracking-tight">
-                    {t("Online Quote Request Form", "Formulario de Solicitud de Cotización")}
-                  </h2>
-                  <p className="mt-2 text-xs sm:text-sm text-slate-600 font-medium">
-                    {t(
-                      "Fill out the form below, and we'll provide an honest, competitive quote within 24 hours. For urgent needs, call us directly at (662) 571-1048.",
-                      "Complete el formulario a continuación y le brindaremos una cotización honesta en 24 horas. Para emergencias, llame al (662) 571-1048."
-                    )}
-                  </p>
+            {submitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-12 px-4"
+              >
+                <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-600 flex items-center justify-center mx-auto mb-5 shadow-sm">
+                  <Check className="w-8 h-8" />
                 </div>
-
-                <form onSubmit={onSubmit} className="space-y-6">
-                  
-                  {/* Basic Inputs Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <Label htmlFor="fullName" className="text-xs font-black uppercase tracking-wider text-slate-700">
-                        {t("Full Name (required)", "Nombre Completo (requerido)")}
-                      </Label>
-                      <Input id="fullName" required placeholder="Roy Brown" className="mt-1.5 bg-white border-slate-300 h-11 text-sm font-semibold" />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="phoneNumber" className="text-xs font-black uppercase tracking-wider text-slate-700">
-                        {t("Phone Number (required)", "Número de Teléfono (requerido)")}
-                      </Label>
-                      <Input id="phoneNumber" type="tel" required placeholder="(662) 571-1048" className="mt-1.5 bg-white border-slate-300 h-11 text-sm font-semibold" />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="emailAddress" className="text-xs font-black uppercase tracking-wider text-slate-700">
-                        {t("Email Address (required)", "Correo Electrónico (requerido)")}
-                      </Label>
-                      <Input id="emailAddress" type="email" required placeholder="royleebrown@ymail.com" className="mt-1.5 bg-white border-slate-300 h-11 text-sm font-semibold" />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="addressCity" className="text-xs font-black uppercase tracking-wider text-slate-700">
-                        {t("Address / City (required)", "Dirección / Ciudad (requerido)")}
-                      </Label>
-                      <Input id="addressCity" required placeholder="Horn Lake, MS" className="mt-1.5 bg-white border-slate-300 h-11 text-sm font-semibold" />
-                    </div>
+                <h3 className="text-2xl font-bold text-slate-900">
+                  {t("Thank You for Contacting Southern Storm Shelters!", "¡Gracias por Contactar a Southern Storm Shelters!")}
+                </h3>
+                <p className="mt-3 text-slate-600 text-base max-w-lg mx-auto leading-relaxed">
+                  {t(
+                    "Our team has received your message and will respond to your inquiry within 24 hours.",
+                    "Nuestro equipo ha recibido su mensaje y responderá a su consulta dentro de las 24 horas."
+                  )}
+                </p>
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+                  <Button
+                    onClick={() => setSubmitted(false)}
+                    variant="outline"
+                    className="border-slate-300 text-slate-800 hover:bg-slate-100 rounded-xl"
+                  >
+                    {t("Send Another Message", "Enviar Otro Mensaje")}
+                  </Button>
+                  <a
+                    href="tel:6159912381"
+                    className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-2.5 rounded-xl transition shadow-lg shadow-red-600/20 text-sm"
+                  >
+                    <Phone className="w-4 h-4" />
+                    <span>{t("Call (615) 991-2381", "Llamar al (615) 991-2381")}</span>
+                  </a>
+                </div>
+              </motion.div>
+            ) : (
+              <form onSubmit={onSubmit} className="space-y-8 relative z-10">
+                
+                {/* 1. Contact Information */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
+                    <span className="w-7 h-7 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-xs">
+                      1
+                    </span>
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                      {t("Contact Information", "Información de Contacto")}
+                    </h3>
                   </div>
 
-                  {/* Property Type Radio Selector */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="fullName" className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                        {t("Full Name *", "Nombre Completo *")}
+                      </Label>
+                      <Input
+                        id="fullName"
+                        required
+                        placeholder={t("e.g. Michael Davis", "ej. Miguel Torres")}
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="phoneNumber" className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                        {t("Phone Number *", "Número de Teléfono *")}
+                      </Label>
+                      <Input
+                        id="phoneNumber"
+                        type="tel"
+                        required
+                        placeholder="(615) 000-0000"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="emailAddress" className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                        {t("Email Address *", "Correo Electrónico *")}
+                      </Label>
+                      <Input
+                        id="emailAddress"
+                        type="email"
+                        required
+                        placeholder="michael@example.com"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                      />
+                    </div>
+
+                    <div>
+                      <Label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                        {t("Preferred Contact Method", "Método de Contacto Preferido")}
+                      </Label>
+                      <div className="mt-1.5 grid grid-cols-3 gap-2">
+                        {(["Phone Call", "Email", "Text Message"] as const).map((method) => {
+                          const isSelected = preferredContact === method;
+                          return (
+                            <button
+                              type="button"
+                              key={method}
+                              onClick={() => setPreferredContact(method)}
+                              className={`py-2 px-1 text-center rounded-xl border text-xs font-bold transition cursor-pointer ${
+                                isSelected
+                                  ? "bg-red-600 text-white border-red-600 shadow-sm"
+                                  : "bg-white text-slate-700 border-slate-300 hover:border-slate-400"
+                              }`}
+                            >
+                              {t(
+                                method === "Phone Call" ? "Phone Call" : method === "Email" ? "Email" : "Text",
+                                method === "Phone Call" ? "Llamada" : method === "Email" ? "Correo" : "Texto"
+                              )}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. Property Information */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
+                    <span className="w-7 h-7 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-xs">
+                      2
+                    </span>
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                      {t("Property Information", "Información de la Propiedad")}
+                    </h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="sm:col-span-2">
+                      <Label htmlFor="propertyAddress" className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                        {t("Property Address", "Dirección de la Propiedad")}
+                      </Label>
+                      <Input
+                        id="propertyAddress"
+                        placeholder={t("123 Street Name", "Calle y Número")}
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="city" className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                        {t("City", "Ciudad")}
+                      </Label>
+                      <Input
+                        id="city"
+                        placeholder="Franklin"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <Label htmlFor="state" className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                          {t("State", "Estado")}
+                        </Label>
+                        <Input
+                          id="state"
+                          defaultValue="TN"
+                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl text-center font-bold"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="zipCode" className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                          {t("ZIP Code", "Código Postal")}
+                        </Label>
+                        <Input
+                          id="zipCode"
+                          placeholder="37067"
+                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. How Can We Help You? */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
+                    <span className="w-7 h-7 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-xs">
+                      3
+                    </span>
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                      {t("How Can We Help You?", "¿Cómo Podemos Ayudarle?")}
+                    </h3>
+                  </div>
+
+                  {/* Reason for Contact */}
                   <div>
-                    <Label className="text-xs font-black uppercase tracking-wider text-slate-700">
-                      {t("Property Type", "Tipo de Propiedad")}
+                    <Label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                      {t("Reason for Contact *", "Motivo del Contacto *")}
                     </Label>
-                    <div className="mt-2 grid grid-cols-3 gap-3">
-                      {(["Residential", "Commercial", "Agricultural"] as const).map((pt) => {
-                        const isSelected = propertyType === pt;
+                    <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                      {[
+                        "Request a Free Estimate",
+                        "Schedule a Site Evaluation",
+                        "General Question",
+                        "Warranty Support",
+                        "Commercial / Community Shelter Inquiry",
+                        "Other",
+                      ].map((reason) => {
+                        const isSelected = contactReason === reason;
                         return (
                           <button
                             type="button"
-                            key={pt}
-                            onClick={() => setPropertyType(pt)}
-                            className={`py-2.5 px-3 rounded-xl border text-xs font-extrabold transition cursor-pointer flex items-center justify-center gap-1.5 ${
+                            key={reason}
+                            onClick={() => setContactReason(reason)}
+                            className={`p-3 rounded-xl border text-left text-xs font-bold transition cursor-pointer flex items-center justify-between ${
                               isSelected
-                                ? "bg-[#2E7D32] text-[#FFD54F] border-[#D4AF37]/50 shadow-sm"
+                                ? "bg-red-600/10 border-red-600 text-red-700 shadow-2xs"
                                 : "bg-white text-slate-700 border-slate-300 hover:border-slate-400"
                             }`}
                           >
-                            {pt === "Residential" && <Home className="w-3.5 h-3.5" />}
-                            {pt === "Commercial" && <Building2 className="w-3.5 h-3.5" />}
-                            {pt === "Agricultural" && <Tractor className="w-3.5 h-3.5" />}
-                            <span>{pt}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Service Timeline Selector */}
-                  <div>
-                    <Label htmlFor="timeline" className="text-xs font-black uppercase tracking-wider text-slate-700">
-                      {t("How Soon Do You Need Service?", "¿Qué tan pronto necesita el servicio?")}
-                    </Label>
-                    <select
-                      id="timeline"
-                      value={timeline}
-                      onChange={(e) => setTimeline(e.target.value)}
-                      className="mt-1.5 w-full h-11 rounded-xl bg-white border border-slate-300 px-3 text-xs sm:text-sm font-extrabold text-[#111111] focus:ring-2 focus:ring-[#2E7D32]"
-                    >
-                      <option value="Urgent (within 24-48 hours)">Urgent (within 24-48 hours)</option>
-                      <option value="Within 1 Week">Within 1 Week</option>
-                      <option value="Within 2 Weeks">Within 2 Weeks</option>
-                      <option value="Flexible / Planning Ahead">Flexible / Planning Ahead</option>
-                    </select>
-                  </div>
-
-                  {/* Services Interested In Checkboxes */}
-                  <div>
-                    <Label className="text-xs font-black uppercase tracking-wider text-slate-700">
-                      {t("Services Interested In (Select all that apply)", "Servicios de Interés (Seleccione todos los que apliquen)")}
-                    </Label>
-                    <div className="mt-2.5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                      {availableServices.map((srv) => {
-                        const isChecked = selectedServices.includes(srv);
-                        return (
-                          <button
-                            type="button"
-                            key={srv}
-                            onClick={() => toggleService(srv)}
-                            className={`p-3 rounded-xl border text-xs font-bold text-left transition flex items-center justify-between cursor-pointer ${
-                              isChecked
-                                ? "bg-white border-[#2E7D32] text-[#2E7D32] shadow-2xs font-extrabold"
-                                : "bg-white/60 border-slate-200 text-slate-700 hover:border-slate-300"
-                            }`}
-                          >
-                            <span>{srv}</span>
-                            <div className={`w-4 h-4 rounded border flex items-center justify-center ${isChecked ? "bg-[#2E7D32] border-[#2E7D32] text-[#FFD54F]" : "border-slate-300"}`}>
-                              {isChecked && <CheckSquare className="w-3.5 h-3.5" />}
+                            <span>
+                              {t(
+                                reason,
+                                reason === "Request a Free Estimate"
+                                  ? "Solicitar Estimación Gratis"
+                                  : reason === "Schedule a Site Evaluation"
+                                  ? "Programar Evaluación del Terreno"
+                                  : reason === "General Question"
+                                  ? "Pregunta General"
+                                  : reason === "Warranty Support"
+                                  ? "Soporte de Garantía"
+                                  : reason === "Commercial / Community Shelter Inquiry"
+                                  ? "Consulta Comercial / Comunitaria"
+                                  : "Otro"
+                              )}
+                            </span>
+                            <div
+                              className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ml-2 ${
+                                isSelected ? "border-red-600 bg-red-600" : "border-slate-300"
+                              }`}
+                            >
+                              {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
                             </div>
                           </button>
                         );
@@ -420,277 +622,276 @@ export function ContactPageContent() {
                     </div>
                   </div>
 
-                  {/* Job Description Textarea */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    {/* Shelter Type of Interest */}
+                    <div>
+                      <Label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                        {t("Shelter Type of Interest", "Tipo de Refugio de Interés")}
+                      </Label>
+                      <select
+                        value={shelterType}
+                        onChange={(e) => setShelterType(e.target.value)}
+                        className="mt-1.5 w-full h-11 rounded-xl bg-white border border-slate-300 px-3 text-xs font-semibold text-slate-900 focus:border-red-600 focus:ring-red-600"
+                      >
+                        <option value="In-Ground Prefabricated Storm Shelter">In-Ground Prefabricated Storm Shelter</option>
+                        <option value="Custom Built Storm Shelter">Custom Built Storm Shelter</option>
+                        <option value="Commercial Safe Room">Commercial Safe Room</option>
+                        <option value="Not Sure – Please Advise">Not Sure – Please Advise</option>
+                      </select>
+                    </div>
+
+                    {/* Property Type */}
+                    <div>
+                      <Label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                        {t("Property Type", "Tipo de Propiedad")}
+                      </Label>
+                      <select
+                        value={propertyType}
+                        onChange={(e) => setPropertyType(e.target.value)}
+                        className="mt-1.5 w-full h-11 rounded-xl bg-white border border-slate-300 px-3 text-xs font-semibold text-slate-900 focus:border-red-600 focus:ring-red-600"
+                      >
+                        <option value="Residential – Existing Home">Residential – Existing Home</option>
+                        <option value="Residential – New Construction">Residential – New Construction</option>
+                        <option value="Commercial / Business">Commercial / Business</option>
+                        <option value="Community / Multi-Family">Community / Multi-Family</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 4. Your Message */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
+                    <span className="w-7 h-7 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-xs">
+                      4
+                    </span>
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                      {t("Your Message & Details", "Su Mensaje y Detalles")}
+                    </h3>
+                  </div>
+
                   <div>
-                    <Label htmlFor="jobDescription" className="text-xs font-black uppercase tracking-wider text-slate-700">
-                      {t("Brief Description of the Job", "Descripción Breve del Trabajo")}
+                    <Label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                      {t("Tell Us About Your Needs", "Cuéntenos Sobre Sus Necesidades")}
                     </Label>
                     <Textarea
-                      id="jobDescription"
+                      id="message"
                       rows={4}
                       placeholder={t(
-                        "Please describe your property, the services you're interested in, and any specific needs or concerns. The more detail you provide, the better we can serve you.",
-                        "Por favor describa su propiedad y las necesidades específicas de su trabajo."
+                        "Please provide details about your property, timeline, specific questions, or how we can assist you...",
+                        "Proporcione detalles sobre su propiedad, plazos o preguntas específicas..."
                       )}
-                      className="mt-1.5 bg-white border-slate-300 text-xs sm:text-sm font-medium"
+                      className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs rounded-xl focus:border-red-600 focus:ring-red-600"
                     />
                   </div>
 
-                  {/* Submit Button */}
+                  {/* How Did You Hear About Us */}
+                  <div>
+                    <Label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                      {t("How Did You Hear About Us?", "¿Cómo Nos Conoció?")}
+                    </Label>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {["Google Search", "Facebook", "Referral", "Drove By", "Other"].map((src) => {
+                        const isSelected = referralSource === src;
+                        return (
+                          <button
+                            type="button"
+                            key={src}
+                            onClick={() => setReferralSource(src)}
+                            className={`py-2 px-3.5 rounded-xl border text-xs font-bold transition cursor-pointer ${
+                              isSelected
+                                ? "bg-amber-500 text-slate-950 border-amber-500 font-extrabold shadow-sm"
+                                : "bg-white text-slate-700 border-slate-300 hover:border-slate-400"
+                            }`}
+                          >
+                            {t(
+                              src,
+                              src === "Google Search"
+                                ? "Búsqueda Google"
+                                : src === "Referral"
+                                ? "Recomendación"
+                                : src === "Drove By"
+                                ? "Pasé por ahí"
+                                : src === "Other"
+                                ? "Otro"
+                                : src
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {referralSource === "Other" && (
+                      <Input
+                        value={otherReferral}
+                        onChange={(e) => setOtherReferral(e.target.value)}
+                        placeholder={t("Please specify...", "Por favor especifique...")}
+                        className="mt-2 bg-white border-slate-300 text-slate-900 text-xs rounded-xl h-10 focus:border-red-600 focus:ring-red-600"
+                      />
+                    )}
+                  </div>
+                </div>
+
+                {/* Submit Button & Disclaimer */}
+                <div className="pt-4 border-t border-slate-200 space-y-4">
                   <Button
                     type="submit"
                     disabled={submitting}
-                    className="w-full h-14 bg-gradient-to-r from-[#2E7D32] to-[#1B5E20] hover:from-[#1B5E20] hover:to-[#2E7D32] text-[#FFD54F] text-xs sm:text-sm font-black uppercase tracking-wider rounded-2xl border border-[#D4AF37]/50 shadow-lg active:scale-98 transition flex items-center justify-center gap-2"
+                    className="w-full h-14 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white text-sm sm:text-base font-extrabold uppercase tracking-wider rounded-2xl shadow-lg shadow-red-600/20 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
                   >
                     {submitting ? (
-                      t("Submitting Request...", "Enviando Solicitud...")
+                      t("Sending Message...", "Enviando Mensaje...")
                     ) : (
                       <>
-                        <span>{t("Submit Quote Request →", "Enviar Solicitud de Cotización →")}</span>
-                        <Send className="w-4 h-4 text-[#FFD54F]" />
+                        <span>{t("SEND MESSAGE", "ENVIAR MENSAJE")}</span>
+                        <Send className="w-4 h-4 text-white" />
                       </>
                     )}
                   </Button>
 
-                  <p className="text-center text-xs font-semibold text-slate-500">
-                    {t("We'll respond within 24 hours. For urgent needs, call (662) 571-1048.", "Responderemos dentro de 24 horas. Para urgencias, llame al (662) 571-1048.")}
+                  <p className="text-center text-[11px] text-slate-500 leading-relaxed max-w-2xl mx-auto">
+                    {t(
+                      "By submitting this form, you agree to be contacted by Southern Storm Shelters regarding your inquiry. We respect your privacy and will never share your information with third parties.",
+                      "Al enviar este formulario, acepta ser contactado por Southern Storm Shelters sobre su consulta. Respetamos su privacidad y nunca compartiremos su información con terceros."
+                    )}
                   </p>
-                </form>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── EMERGENCY CONTACT BOX ─────────────────────────────────────── */}
-      <section className="py-12 bg-[#F7F7F7] border-y border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl bg-[#2E7D32] text-white p-8 sm:p-10 border border-[#D4AF37]/50 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 text-left relative overflow-hidden">
-            <div aria-hidden className="absolute -right-20 -top-20 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="space-y-3 relative z-10 max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-[#FFD54F] text-xs font-black uppercase tracking-widest border border-white/20">
-                <AlertTriangle className="w-4 h-4 text-[#FFD54F] animate-pulse" />
-                <span>{t("Rapid Emergency Service", "Servicio de Emergencia Rápido")}</span>
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-[#FFD54F] tracking-tight">
-                {t("Emergency Contact: (662) 571-1048", "Contacto de Emergencia: (662) 571-1048")}
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-100 font-semibold leading-relaxed">
-                {t("Available During Business Hours: Monday–Friday: 10:00 AM – 7:00 PM | Saturday: 3:00 PM – 8:00 PM", "Disponible en Horario Comercial: Lunes–Viernes: 10am–7pm | Sábado: 3pm–8pm")}
-              </p>
-
-              <div className="pt-2">
-                <div className="text-xs font-black uppercase tracking-wider text-[#FFD54F] mb-1.5">
-                  {t("What Qualifies as an Emergency?", "¿Qué se Considera una Emergencia?")}
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-bold text-slate-100">
-                  <div className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFD54F]" />{t("Fallen trees blocking driveways or access", "Árboles caídos bloqueando entradas o accesos")}</div>
-                  <div className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFD54F]" />{t("Storm damage to structures or roofs", "Daños por tormentas en estructuras o techos")}</div>
-                  <div className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFD54F]" />{t("Hazardous limbs threatening power lines", "Ramas peligrosas que amenazan líneas eléctricas")}</div>
-                  <div className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFD54F]" />{t("Urgent land or driveway clearing needs", "Necesidades urgentes de limpieza de terrenos")}</div>
-                </div>
-              </div>
-            </div>
 
-            <div className="relative z-10 shrink-0">
-              <a
-                href="tel:6625711048"
-                className="bg-[#111111] hover:bg-[#222222] text-[#FFD54F] text-xs font-black uppercase tracking-wider px-8 py-4 rounded-full border border-[#D4AF37]/50 shadow-xl transition active:scale-95 flex items-center justify-center gap-2.5 whitespace-nowrap"
-              >
-                <Phone className="w-4 h-4 fill-current text-[#FFD54F]" />
-                <span>{t("Call (662) 571-1048", "Llamar (662) 571-1048")}</span>
-              </a>
-            </div>
+              </form>
+            )}
+
           </div>
         </div>
       </section>
 
-      {/* ── SERVICE AREA RADIUS (MS, TN, AR) ──────────────────────────── */}
-      <section className="py-16 sm:py-24 bg-white">
+      {/* ── SECTION 3: WHAT HAPPENS AFTER YOU CONTACT US? (5 STEPS) ─────── */}
+      <section className="py-16 sm:py-24 bg-slate-50 border-y border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="text-xs font-black uppercase tracking-widest text-[#2E7D32] bg-[#2E7D32]/10 px-3.5 py-1 rounded-full border border-[#2E7D32]/30">
-              {t("Coverage Radius", "Radio de Cobertura")}
-            </span>
-            <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-black text-[#111111] tracking-tight">
-              {t("Service Area (50-Mile Radius from Horn Lake, MS)", "Área de Servicio (50 Millas desde Horn Lake, MS)")}
+          
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-widest mb-4">
+              <CheckCircle2 className="w-3.5 h-3.5 text-red-600" />
+              <span>{t("Transparent Communication", "Comunicación Transparente")}</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+              {t("What Happens After You Contact Us?", "¿Qué Sucede Después de Contactarnos?")}
             </h2>
-            <p className="mt-3 text-slate-600 text-sm sm:text-base font-medium">
+
+            <p className="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed">
               {t(
-                "Based in Horn Lake, MS, we proudly serve communities across Mississippi, Tennessee, and Arkansas:",
-                "Con sede en Horn Lake, MS, servimos con orgullo a comunidades en Mississippi, Tennessee y Arkansas:"
+                "We believe in transparent, professional communication. Here's what you can expect from our team:",
+                "Creemos en una comunicación transparente y profesional. Esto es lo que puede esperar de nuestro equipo:"
               )}
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-            <div className="p-6 rounded-3xl bg-[#F7F7F7] border border-slate-200 shadow-xs">
-              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-slate-300">
-                <MapPin className="w-5 h-5 text-[#2E7D32]" />
-                <h3 className="text-base font-black text-[#111111]">Mississippi</h3>
-              </div>
-              <p className="text-xs text-slate-700 font-semibold leading-relaxed">
-                Horn Lake, Southaven, Olive Branch, Hernando, Nesbit, Walls, Tunica, Senatobia, Batesville, Oxford, Lynchburg, Norfolk, Glover, Pleasant Hill, Cormorant, Bridgetown.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-3xl bg-[#F7F7F7] border border-slate-200 shadow-xs">
-              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-slate-300">
-                <MapPin className="w-5 h-5 text-[#2E7D32]" />
-                <h3 className="text-base font-black text-[#111111]">Tennessee</h3>
-              </div>
-              <p className="text-xs text-slate-700 font-semibold leading-relaxed">
-                Memphis, Germantown, Bartlett, Collierville, Arlington, Eads, Millington.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-3xl bg-[#F7F7F7] border border-slate-200 shadow-xs">
-              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-slate-300">
-                <MapPin className="w-5 h-5 text-[#2E7D32]" />
-                <h3 className="text-base font-black text-[#111111]">Arkansas</h3>
-              </div>
-              <p className="text-xs text-slate-700 font-semibold leading-relaxed">
-                West Memphis, Marion, and surrounding communities.
-              </p>
-            </div>
-          </div>
-
-          <p className="text-center text-xs font-bold text-slate-500 mt-6">
-            {t("Don't see your city? Give us a call at (662) 571-1048—we may still be able to serve you within our 50-mile radius.", "¿No ve su ciudad? Llámenos al (662) 571-1048, es posible que aún podamos servirle.")}
-          </p>
-        </div>
-      </section>
-
-      {/* ── WHY CONTACT US ────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-24 bg-[#F7F7F7] border-y border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="text-xs font-black uppercase tracking-widest text-[#2E7D32] bg-[#2E7D32]/10 px-3.5 py-1 rounded-full border border-[#2E7D32]/30">
-              {t("The Brown Advantage", "La Ventaja Brown")}
-            </span>
-            <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-black text-[#111111] tracking-tight">
-              {t("Why Contact Us?", "¿Por Qué Contactarnos?")}
-            </h2>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyContactUsPoints.map((item) => {
-              const Icon = item.icon;
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {whatHappensSteps.map((st) => {
+              const Icon = st.icon;
               return (
-                <div key={item.title} className="p-7 rounded-3xl bg-white border border-slate-200 hover:border-[#2E7D32] transition shadow-xs text-left">
-                  <div className="w-12 h-12 rounded-2xl bg-[#2E7D32] text-[#FFD54F] flex items-center justify-center mb-5 shadow-sm border border-[#D4AF37]/40">
-                    <Icon className="w-6 h-6" />
+                <div
+                  key={st.step}
+                  className="rounded-3xl bg-white border border-slate-200 p-6 flex flex-col justify-between hover:border-red-500/40 hover:shadow-lg transition-all duration-300 shadow-xs group"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-2xl font-black text-slate-300 group-hover:text-red-600 transition-colors">
+                        {st.step}
+                      </span>
+                      <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                    </div>
+
+                    <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
+                      {st.title}
+                    </h3>
+
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {st.desc}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-black text-[#111111]">{item.title}</h3>
-                  <p className="mt-2.5 text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
                 </div>
               );
             })}
           </div>
+
         </div>
       </section>
 
-      {/* ── WHAT TO EXPECT WHEN YOU CONTACT US ────────────────────────── */}
+      {/* ── SECTION 4: WHY HOMEOWNERS ACROSS TENNESSEE TRUST US ──────────── */}
       <section className="py-16 sm:py-24 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="text-xs font-black uppercase tracking-widest text-[#2E7D32] bg-[#2E7D32]/10 px-3.5 py-1 rounded-full border border-[#2E7D32]/30">
-              {t("Transparent Process", "Proceso Transparente")}
-            </span>
-            <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-black text-[#111111] tracking-tight">
-              {t("What to Expect When You Contact Us", "Qué Esperar Cuando Nos Contacta")}
+          
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-widest mb-4">
+              <ShieldCheck className="w-3.5 h-3.5 text-red-600" />
+              <span>{t("Tennessee's Trusted Builders", "Constructores de Confianza en Tennessee")}</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+              {t("Why Homeowners Across Tennessee Trust Us", "¿Por Qué los Propietarios en Tennessee Confían en Nosotros?")}
             </h2>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 text-left">
-            
-            {/* Routine Services Process Card */}
-            <div className="p-8 rounded-3xl bg-[#F7F7F7] border border-slate-200 shadow-md">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2E7D32]/10 text-[#2E7D32] text-xs font-black uppercase tracking-wider mb-4">
-                <Calendar className="w-4 h-4" />
-                <span>{t("For Routine Services (Lawn, Landscaping, Cleaning)", "Para Servicios Rutinarios (Césped, Jardinería, Limpieza)")}</span>
-              </div>
-              <h3 className="text-xl font-black text-[#111111] mb-4">
-                {t("Step-by-Step Routine Workflow", "Flujo de Trabajo Rutinario Paso a Paso")}
-              </h3>
-              <ul className="space-y-3.5">
-                {[
-                  t("We'll discuss your needs, property layout, and service preferences.", "Discutiremos sus necesidades, la distribución de su propiedad y sus preferencias."),
-                  t("We'll schedule a convenient time for an on-site assessment (if needed).", "Programaremos una hora conveniente para una evaluación en el lugar."),
-                  t("You'll receive an upfront, itemized quote with no hidden fees.", "Recibirá una cotización desglosada y por adelantado sin cargos ocultos."),
-                  t("We schedule your service at a time that works best for your routine.", "Programamos su servicio en el horario que mejor le convenga."),
-                  t("Our team arrives on time, completes the job professionally, and follows up.", "Nuestro equipo llega a tiempo, realiza el trabajo y hace un seguimiento."),
-                ].map((step, idx) => (
-                  <li key={step} className="flex items-start gap-3 text-xs sm:text-sm font-bold text-slate-800">
-                    <span className="w-6 h-6 rounded-full bg-[#2E7D32] text-[#FFD54F] flex items-center justify-center text-xs font-black shrink-0 mt-0.5">{idx + 1}</span>
-                    <span>{step}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Emergency Services Process Card */}
-            <div className="p-8 rounded-3xl bg-[#F7F7F7] border border-slate-200 shadow-md">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-900 text-xs font-black uppercase tracking-wider mb-4 border border-amber-500/30">
-                <AlertTriangle className="w-4 h-4 text-amber-600" />
-                <span>{t("For Emergency Services (Storm Damage, Fallen Trees)", "Para Emergencias (Tormentas, Árboles Caídos)")}</span>
-              </div>
-              <h3 className="text-xl font-black text-[#111111] mb-4">
-                {t("Rapid Emergency Protocol", "Protocolo de Emergencia Rápido")}
-              </h3>
-              <ul className="space-y-3.5">
-                {[
-                  t("Call our direct emergency line immediately: (662) 571-1048.", "Llame a nuestra línea directa de emergencia: (662) 571-1048."),
-                  t("Describe the immediate situation, address, and hazard level.", "Describa la situación inmediata, la dirección y el nivel de peligro."),
-                  t("Our crew is dispatched rapidly during business hours.", "Nuestro equipo se desplaza rápidamente durante el horario comercial."),
-                  t("We arrive on-site to secure your property and eliminate safety hazards.", "Llegamos al lugar para asegurar su propiedad y eliminar peligros."),
-                  t("We complete thorough debris cleanup, hauling, and final site inspection.", "Realizamos la limpieza completa de escombros, transporte e inspección."),
-                ].map((step, idx) => (
-                  <li key={step} className="flex items-start gap-3 text-xs sm:text-sm font-bold text-slate-800">
-                    <span className="w-6 h-6 rounded-full bg-[#111111] text-[#FFD54F] flex items-center justify-center text-xs font-black shrink-0 mt-0.5">{idx + 1}</span>
-                    <span>{step}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {whyTrustUsPoints.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="rounded-3xl bg-slate-50/70 border border-slate-200 p-8 hover:border-red-500/40 hover:shadow-xl transition-all duration-300 shadow-xs"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center mb-5">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              );
+            })}
           </div>
+
         </div>
       </section>
 
-      {/* ── FREQUENTLY ASKED CONTACT QUESTIONS ─────────────────────────── */}
-      <section className="py-16 sm:py-24 bg-[#F7F7F7] border-y border-slate-200">
+      {/* ── SECTION 5: FREQUENTLY ASKED QUESTIONS ──────────────────────── */}
+      <section className="py-16 sm:py-24 bg-slate-50 border-y border-slate-200">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <span className="text-xs font-black uppercase tracking-widest text-[#2E7D32] bg-[#2E7D32]/10 px-3.5 py-1 rounded-full border border-[#2E7D32]/30">
-              {t("Helpful Info", "Información Útil")}
-            </span>
-            <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-black text-[#111111] tracking-tight">
-              {t("Frequently Asked Contact Questions", "Preguntas Frecuentes de Contacto")}
+          
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-3">
+              <HelpCircle className="w-3.5 h-3.5 text-amber-700" />
+              <span>{t("Common Questions", "Preguntas Frecuentes")}</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+              {t("Frequently Asked Questions", "Preguntas Frecuentes")}
             </h2>
           </div>
 
-          <div className="mt-10 space-y-4">
+          <div className="space-y-4">
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
                 <div
-                  key={faq.q}
-                  className="rounded-2xl bg-white border border-slate-200 overflow-hidden transition shadow-2xs"
+                  key={idx}
+                  className="rounded-2xl border border-slate-200 bg-white overflow-hidden transition-colors shadow-2xs"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full text-left p-5 flex items-center justify-between gap-4 font-black text-sm sm:text-base text-[#111111] hover:text-[#2E7D32] transition-colors cursor-pointer"
+                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-slate-900 hover:text-red-600 transition cursor-pointer"
                   >
                     <span>{faq.q}</span>
-                    <ChevronDown className={`w-5 h-5 text-[#D4AF37] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown
+                      className={`w-5 h-5 text-red-600 shrink-0 transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
+
                   {isOpen && (
-                    <div className="px-5 pb-5 text-xs sm:text-sm text-slate-600 font-medium leading-relaxed border-t border-slate-100 pt-3">
+                    <div className="px-5 sm:px-6 pb-6 pt-1 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
                       {faq.a}
                     </div>
                   )}
@@ -698,50 +899,115 @@ export function ContactPageContent() {
               );
             })}
           </div>
+
         </div>
       </section>
 
-      {/* ── GET IN TOUCH FINAL CTA BANNER ─────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-[#2E7D32] text-white relative overflow-hidden">
-        <div aria-hidden className="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-        <div aria-hidden className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#FFD54F]/20 rounded-full blur-3xl pointer-events-none" />
+      {/* ── SECTION 6: CONTACT INFORMATION SUMMARY & CTA ───────────────── */}
+      <section className="py-16 sm:py-24 bg-white relative">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          
+          <div className="rounded-3xl bg-slate-50 border border-slate-200 p-8 sm:p-12 shadow-md">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <span className="text-xs font-bold uppercase tracking-widest text-red-700 bg-red-50 px-3.5 py-1 rounded-full border border-red-200">
+                {t("Contact Information Summary", "Resumen de Información de Contacto")}
+              </span>
+              <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold text-slate-900">
+                Southern Storm Shelters
+              </h3>
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">
+                {t("A Middle Tennessee Construction Company", "Empresa de Construcción de Middle Tennessee")}
+              </p>
+            </div>
 
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-black text-[#FFD54F] tracking-tight">
-            {t("Connect With Us Today", "Conéctese Con Nosotros Hoy")}
-          </h2>
-          <p className="mt-4 text-slate-100 text-sm sm:text-base font-semibold max-w-2xl mx-auto leading-relaxed">
-            {t(
-              "We're here to answer your questions, discuss your project, and provide the professional service you deserve. Contact us today, and let us show you why Brown Lawn Care & Cleaning Service is the trusted choice across Horn Lake and beyond.",
-              "Estamos aquí para responder sus preguntas y brindarle el servicio profesional que se merece. Contáctenos hoy mismo."
-            )}
-          </p>
+            {/* Structured Contact Table */}
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xs max-w-4xl mx-auto">
+              <table className="w-full text-left text-xs sm:text-sm border-collapse">
+                <tbody className="divide-y divide-slate-200">
+                  <tr className="hover:bg-slate-50/60 transition-colors">
+                    <td className="p-4 font-bold text-slate-500 w-1/3 sm:w-1/4">{t("Phone", "Teléfono")}</td>
+                    <td className="p-4 font-extrabold text-slate-900">
+                      <a href="tel:6159912381" className="text-red-600 hover:underline">
+                        (615) 991-2381
+                      </a>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-slate-50/60 transition-colors">
+                    <td className="p-4 font-bold text-slate-500">{t("Email", "Correo Electrónico")}</td>
+                    <td className="p-4 font-semibold text-slate-900">
+                      <a href="mailto:admin@nashvillesiteworks.com" className="text-red-600 hover:underline">
+                        admin@nashvillesiteworks.com
+                      </a>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-slate-50/60 transition-colors">
+                    <td className="p-4 font-bold text-slate-500">{t("Address", "Dirección")}</td>
+                    <td className="p-4 font-semibold text-slate-900">
+                      2000 Meridian Blvd, Suite 200, Franklin, TN 37067
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-slate-50/60 transition-colors">
+                    <td className="p-4 font-bold text-slate-500">{t("Hours", "Horario")}</td>
+                    <td className="p-4 font-semibold text-slate-900">
+                      {t(
+                        "Monday–Friday: 8:00 AM – 5:00 PM | Saturday: By Appointment | Sunday: Closed",
+                        "Lunes a Viernes: 8:00 AM – 5:00 PM | Sábado: Con Cita | Domingo: Cerrado"
+                      )}
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-slate-50/60 transition-colors">
+                    <td className="p-4 font-bold text-slate-500">{t("Service Area", "Área de Servicio")}</td>
+                    <td className="p-4 font-semibold text-slate-900">
+                      {t(
+                        "Nashville, Franklin, Murfreesboro, and surrounding areas within a 100-mile radius",
+                        "Nashville, Franklin, Murfreesboro y áreas circundantes dentro de un radio de 100 millas"
+                      )}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-          <div className="mt-8 flex flex-wrap justify-center items-center gap-4">
-            <a
-              href="tel:6625711048"
-              className="bg-[#111111] hover:bg-[#222222] text-[#FFD54F] text-xs font-black uppercase tracking-wider px-8 py-4 rounded-full border border-[#D4AF37]/50 shadow-xl transition active:scale-95 flex items-center gap-2.5"
-            >
-              <Phone className="w-4 h-4 text-[#FFD54F] fill-current" />
-              <span>{t("Call (662) 571-1048", "Llamar (662) 571-1048")}</span>
-            </a>
-            <a
-              href="mailto:royleebrown@ymail.com"
-              className="bg-white hover:bg-slate-100 text-[#111111] text-xs font-black uppercase tracking-wider px-8 py-4 rounded-full shadow-xl transition active:scale-95 flex items-center gap-2"
-            >
-              <Mail className="w-4 h-4 text-[#2E7D32]" />
-              <span>{t("Email royleebrown@ymail.com", "Enviar Correo A royleebrown@ymail.com")}</span>
-            </a>
+            {/* Ready to Get Started Callout */}
+            <div className="mt-12 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 text-white p-8 sm:p-10 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden">
+              <div aria-hidden className="absolute -right-10 -bottom-10 w-60 h-60 bg-red-600/20 rounded-full blur-3xl pointer-events-none" />
+
+              <h4 className="text-xl sm:text-2xl font-extrabold text-white mb-3">
+                {t("Ready to Get Started?", "¿Listo Para Comenzar?")}
+              </h4>
+              <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto mb-6 leading-relaxed">
+                {t(
+                  "Don't wait for the warning sirens. The best and smartest thing you can do for yourself and your family is to be prepared. Call us at (615) 991-2381 or fill out the form above to schedule your free consultation.",
+                  "No espere a que suenen las sirenas de alarma. Lo mejor que puede hacer por su familia es estar preparado. Llámenos al (615) 991-2381 o complete el formulario para programar su consulta."
+                )}
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <a
+                  href="tel:6159912381"
+                  className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-extrabold px-8 py-3.5 rounded-xl transition shadow-lg shadow-red-600/30 text-sm sm:text-base"
+                >
+                  <Phone className="w-4 h-4" />
+                  <span>{t("Call (615) 991-2381", "Llamar al (615) 991-2381")}</span>
+                </a>
+                <a
+                  href="#contact-form"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-7 py-3.5 rounded-xl transition border border-white/20 text-sm sm:text-base"
+                >
+                  <span>{t("Fill Out Form", "Completar Formulario")}</span>
+                </a>
+              </div>
+
+              <blockquote className="mt-8 border-t border-slate-700/80 pt-4 text-xs font-semibold italic text-slate-300">
+                {t(
+                  '"That\'s peace of mind, providing peace of mind for decades to come."',
+                  '"Eso es tranquilidad, brindando tranquilidad para las próximas décadas."'
+                )}
+              </blockquote>
+            </div>
+
           </div>
 
-          <div className="mt-12 pt-8 border-t border-white/20 text-xs font-bold text-slate-200 flex flex-col items-center gap-1">
-            <div className="text-[#FFD54F] font-black uppercase tracking-widest text-[11px]">
-              Brown Lawn Care & Cleaning Service, LLC — Family Owned & Operated • 6 Years in Business • 15+ Years Experience
-            </div>
-            <div className="text-slate-200 text-[10px]">
-              Licensed • Insured • Bonded • Bilingual Service (English & Spanish) • Office: Alden Lake Dr W, Horn Lake, MS
-            </div>
-          </div>
         </div>
       </section>
 

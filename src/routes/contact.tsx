@@ -15,13 +15,13 @@ function ContactPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.brownlawncarecleaningservicellc.com/"
+        "item": "https://www.southernstormshelters.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Contact Us",
-        "item": "https://www.brownlawncarecleaningservicellc.com/contact"
+        "item": "https://www.southernstormshelters.com/contact"
       }
     ]
   };
@@ -29,33 +29,32 @@ function ContactPage() {
   const contactSchema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "Contact Brown Lawn Care & Cleaning Service, LLC",
-    "url": "https://www.brownlawncarecleaningservicellc.com/contact",
+    "name": "Contact Southern Storm Shelters LLC",
+    "url": "https://www.southernstormshelters.com/contact",
     "mainEntity": {
-      "@type": "HomeAndConstructionBusiness",
-      "name": "Brown Lawn Care & Cleaning Service, LLC",
-      "telephone": "+16625711048",
-      "email": "royleebrown@ymail.com",
+      "@type": "LocalBusiness",
+      "name": "Southern Storm Shelters LLC",
+      "telephone": "+16159912381",
+      "email": "admin@nashvillesiteworks.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Alden Lake Dr W",
-        "addressLocality": "Horn Lake",
-        "addressRegion": "MS",
-        "postalCode": "38637",
+        "streetAddress": "2000 Meridian Blvd, Suite 200",
+        "addressLocality": "Franklin",
+        "addressRegion": "TN",
+        "postalCode": "37067",
         "addressCountry": "US"
       },
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "10:00",
-          "closes": "19:00"
+          "opens": "08:00",
+          "closes": "17:00"
         },
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Saturday"],
-          "opens": "15:00",
-          "closes": "20:00"
+          "description": "By Appointment"
         }
       ]
     }
@@ -72,9 +71,12 @@ function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
       />
       <PageHeader
-        eyebrow={t("Contact Us", "Contáctenos")}
-        title={t("Contact Brown Lawn Care & Cleaning Service", "Contacto con Brown Lawn Care & Cleaning Service")}
-        subtitle={t("We're here to help — request a free quote, call (662) 571-1048, or schedule emergency storm damage service.", "Estamos aquí para ayudarle — pida su cotización gratis o llame al (662) 571-1048.")}
+        eyebrow={t("Contact Southern Storm Shelters", "Contacto Southern Storm Shelters")}
+        title={t("Let's Talk About Protecting Your Family", "Hablemos de Proteger a Su Familia")}
+        subtitle={t(
+          "Severe weather is notoriously unpredictable. The best and smartest thing you can do for yourself and your family is to be prepared. Whether you have questions about underground shelter construction, need a site evaluation, or are ready to request a quote, our team is here to help.",
+          "El clima severo es impredecible. Lo mejor que puede hacer por usted y su familia es estar preparado. Ya sea que tenga preguntas sobre construcción de refugios, requiera una evaluación o desee cotizar, estamos aquí para ayudarle."
+        )}
       />
       <ContactPageContent />
       <Toaster />
@@ -85,17 +87,26 @@ function ContactPage() {
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us & Free Estimates | Brown Lawn Care & Cleaning Service LLC" },
-      { name: "description", content: "Contact Brown Lawn Care & Cleaning Service LLC in Horn Lake, MS. Call (662) 571-1048 for free quotes on lawn care, landscaping, tree removal, and commercial cleaning." },
-      { name: "keywords", content: "contact lawn care horn lake ms, brown lawn care phone number, free lawn care estimate horn lake ms, desoto county lawn service contact" },
-      { property: "og:title", content: "Contact Us & Free Estimates | Brown Lawn Care & Cleaning Service LLC" },
-      { property: "og:description", content: "Free lawn care, landscaping, tree removal, and commercial cleaning estimates within 24 hours. Call (662) 571-1048." },
-      { property: "og:url", content: "https://www.brownlawncarecleaningservicellc.com/contact" },
+      { title: "Contact Us | Southern Storm Shelters LLC | Franklin & Nashville, TN" },
+      {
+        name: "description",
+        content: "Get in touch with Southern Storm Shelters in Franklin, TN. Call (615) 991-2381 for consultations, site evaluations, and transparent underground shelter quotes across Middle Tennessee."
+      },
+      {
+        name: "keywords",
+        content: "contact storm shelters nashville, southern storm shelters phone number, underground shelter consultation franklin tn, storm shelter quote middle tennessee"
+      },
+      { property: "og:title", content: "Contact Us | Southern Storm Shelters LLC" },
+      {
+        property: "og:description",
+        content: "Let's talk about protecting your family. Reach out today—we respond to all inquiries within 24 hours."
+      },
+      { property: "og:url", content: "https://www.southernstormshelters.com/contact" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "canonical", href: "https://www.brownlawncarecleaningservicellc.com/contact" },
+      { rel: "canonical", href: "https://www.southernstormshelters.com/contact" },
     ],
   }),
   component: ContactPage,

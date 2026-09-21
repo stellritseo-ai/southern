@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Phone, Clock, ShieldCheck, CheckCircle2, AlertTriangle, Zap, ArrowRight, MapPin } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
 import grangerInstallImg from "@/assets/granger-install.jpg";
 
 export function EmergencyCTA() {
@@ -177,10 +178,13 @@ export function EmergencyCTA() {
               <Button
                 variant="outline"
                 size="xl"
+                asChild
                 className="w-full rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-slate-900 font-extrabold text-xs sm:text-sm py-3.5 sm:py-4 px-4 sm:px-8 shadow-lg whitespace-normal sm:whitespace-nowrap h-auto justify-center text-center flex items-center gap-2"
               >
-                <span>{t("Request a Free Estimate Online", "Solicitar Estimación en Línea")}</span>
-                <ArrowRight className="w-4 h-4 shrink-0" />
+                <Link to="/free-quote">
+                  <span>{t("Request a Free Estimate Online", "Solicitar Estimación en Línea")}</span>
+                  <ArrowRight className="w-4 h-4 shrink-0" />
+                </Link>
               </Button>
             </div>
 

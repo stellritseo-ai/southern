@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/hooks/useLanguage";
 import {
   ShieldCheck,
@@ -215,13 +216,13 @@ export function ShelterFeatures() {
               <Phone className="w-3.5 h-3.5" />
               {t("Call (615) 991-2361", "Llamar (615) 991-2361")}
             </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-700 text-white text-[11px] font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 hover:scale-[1.03]"
+            <Link
+              to="/free-quote"
+              className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-700 text-white text-[11px] font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 hover:scale-[1.03] cursor-pointer"
             >
               {t("Free Estimate", "Estimación Gratis")}
               <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </Link>
           </div>
         </motion.div>
 

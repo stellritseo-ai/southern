@@ -27,7 +27,9 @@ import { Route as ServicesResidentialWireHouseCleaningRouteImport } from './rout
 import { Route as ServicesOfficeCommercialCleaningRouteImport } from './routes/services/office-commercial-cleaning'
 import { Route as ServicesLawnMowingRouteImport } from './routes/services/lawn-mowing'
 import { Route as ServicesLandscapingRouteImport } from './routes/services/landscaping'
+import { Route as ServicesInGroundPrefabricatedStormSheltersRouteImport } from './routes/services/in-ground-prefabricated-storm-shelters'
 import { Route as ServicesGravelDirtWorkRouteImport } from './routes/services/gravel-dirt-work'
+import { Route as ServicesCustomBuiltStormSheltersRouteImport } from './routes/services/custom-built-storm-shelters'
 import { Route as ServiceAreasWestMemphisArRouteImport } from './routes/service-areas/west-memphis-ar'
 import { Route as ServiceAreasWallsMsRouteImport } from './routes/service-areas/walls-ms'
 import { Route as ServiceAreasSouthavenMsRouteImport } from './routes/service-areas/southaven-ms'
@@ -134,11 +136,23 @@ const ServicesLandscapingRoute = ServicesLandscapingRouteImport.update({
   path: '/landscaping',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesInGroundPrefabricatedStormSheltersRoute =
+  ServicesInGroundPrefabricatedStormSheltersRouteImport.update({
+    id: '/in-ground-prefabricated-storm-shelters',
+    path: '/in-ground-prefabricated-storm-shelters',
+    getParentRoute: () => ServicesRoute,
+  } as any)
 const ServicesGravelDirtWorkRoute = ServicesGravelDirtWorkRouteImport.update({
   id: '/gravel-dirt-work',
   path: '/gravel-dirt-work',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesCustomBuiltStormSheltersRoute =
+  ServicesCustomBuiltStormSheltersRouteImport.update({
+    id: '/custom-built-storm-shelters',
+    path: '/custom-built-storm-shelters',
+    getParentRoute: () => ServicesRoute,
+  } as any)
 const ServiceAreasWestMemphisArRoute =
   ServiceAreasWestMemphisArRouteImport.update({
     id: '/west-memphis-ar',
@@ -227,7 +241,9 @@ export interface FileRoutesByFullPath {
   '/service-areas/southaven-ms': typeof ServiceAreasSouthavenMsRoute
   '/service-areas/walls-ms': typeof ServiceAreasWallsMsRoute
   '/service-areas/west-memphis-ar': typeof ServiceAreasWestMemphisArRoute
+  '/services/custom-built-storm-shelters': typeof ServicesCustomBuiltStormSheltersRoute
   '/services/gravel-dirt-work': typeof ServicesGravelDirtWorkRoute
+  '/services/in-ground-prefabricated-storm-shelters': typeof ServicesInGroundPrefabricatedStormSheltersRoute
   '/services/landscaping': typeof ServicesLandscapingRoute
   '/services/lawn-mowing': typeof ServicesLawnMowingRoute
   '/services/office-commercial-cleaning': typeof ServicesOfficeCommercialCleaningRoute
@@ -258,7 +274,9 @@ export interface FileRoutesByTo {
   '/service-areas/southaven-ms': typeof ServiceAreasSouthavenMsRoute
   '/service-areas/walls-ms': typeof ServiceAreasWallsMsRoute
   '/service-areas/west-memphis-ar': typeof ServiceAreasWestMemphisArRoute
+  '/services/custom-built-storm-shelters': typeof ServicesCustomBuiltStormSheltersRoute
   '/services/gravel-dirt-work': typeof ServicesGravelDirtWorkRoute
+  '/services/in-ground-prefabricated-storm-shelters': typeof ServicesInGroundPrefabricatedStormSheltersRoute
   '/services/landscaping': typeof ServicesLandscapingRoute
   '/services/lawn-mowing': typeof ServicesLawnMowingRoute
   '/services/office-commercial-cleaning': typeof ServicesOfficeCommercialCleaningRoute
@@ -292,7 +310,9 @@ export interface FileRoutesById {
   '/service-areas/southaven-ms': typeof ServiceAreasSouthavenMsRoute
   '/service-areas/walls-ms': typeof ServiceAreasWallsMsRoute
   '/service-areas/west-memphis-ar': typeof ServiceAreasWestMemphisArRoute
+  '/services/custom-built-storm-shelters': typeof ServicesCustomBuiltStormSheltersRoute
   '/services/gravel-dirt-work': typeof ServicesGravelDirtWorkRoute
+  '/services/in-ground-prefabricated-storm-shelters': typeof ServicesInGroundPrefabricatedStormSheltersRoute
   '/services/landscaping': typeof ServicesLandscapingRoute
   '/services/lawn-mowing': typeof ServicesLawnMowingRoute
   '/services/office-commercial-cleaning': typeof ServicesOfficeCommercialCleaningRoute
@@ -327,7 +347,9 @@ export interface FileRouteTypes {
     | '/service-areas/southaven-ms'
     | '/service-areas/walls-ms'
     | '/service-areas/west-memphis-ar'
+    | '/services/custom-built-storm-shelters'
     | '/services/gravel-dirt-work'
+    | '/services/in-ground-prefabricated-storm-shelters'
     | '/services/landscaping'
     | '/services/lawn-mowing'
     | '/services/office-commercial-cleaning'
@@ -358,7 +380,9 @@ export interface FileRouteTypes {
     | '/service-areas/southaven-ms'
     | '/service-areas/walls-ms'
     | '/service-areas/west-memphis-ar'
+    | '/services/custom-built-storm-shelters'
     | '/services/gravel-dirt-work'
+    | '/services/in-ground-prefabricated-storm-shelters'
     | '/services/landscaping'
     | '/services/lawn-mowing'
     | '/services/office-commercial-cleaning'
@@ -391,7 +415,9 @@ export interface FileRouteTypes {
     | '/service-areas/southaven-ms'
     | '/service-areas/walls-ms'
     | '/service-areas/west-memphis-ar'
+    | '/services/custom-built-storm-shelters'
     | '/services/gravel-dirt-work'
+    | '/services/in-ground-prefabricated-storm-shelters'
     | '/services/landscaping'
     | '/services/lawn-mowing'
     | '/services/office-commercial-cleaning'
@@ -545,11 +571,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesLandscapingRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/in-ground-prefabricated-storm-shelters': {
+      id: '/services/in-ground-prefabricated-storm-shelters'
+      path: '/in-ground-prefabricated-storm-shelters'
+      fullPath: '/services/in-ground-prefabricated-storm-shelters'
+      preLoaderRoute: typeof ServicesInGroundPrefabricatedStormSheltersRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/gravel-dirt-work': {
       id: '/services/gravel-dirt-work'
       path: '/gravel-dirt-work'
       fullPath: '/services/gravel-dirt-work'
       preLoaderRoute: typeof ServicesGravelDirtWorkRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/custom-built-storm-shelters': {
+      id: '/services/custom-built-storm-shelters'
+      path: '/custom-built-storm-shelters'
+      fullPath: '/services/custom-built-storm-shelters'
+      preLoaderRoute: typeof ServicesCustomBuiltStormSheltersRouteImport
       parentRoute: typeof ServicesRoute
     }
     '/service-areas/west-memphis-ar': {
@@ -674,7 +714,9 @@ const ServiceAreasRouteWithChildren = ServiceAreasRoute._addFileChildren(
 )
 
 interface ServicesRouteChildren {
+  ServicesCustomBuiltStormSheltersRoute: typeof ServicesCustomBuiltStormSheltersRoute
   ServicesGravelDirtWorkRoute: typeof ServicesGravelDirtWorkRoute
+  ServicesInGroundPrefabricatedStormSheltersRoute: typeof ServicesInGroundPrefabricatedStormSheltersRoute
   ServicesLandscapingRoute: typeof ServicesLandscapingRoute
   ServicesLawnMowingRoute: typeof ServicesLawnMowingRoute
   ServicesOfficeCommercialCleaningRoute: typeof ServicesOfficeCommercialCleaningRoute
@@ -684,7 +726,10 @@ interface ServicesRouteChildren {
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesCustomBuiltStormSheltersRoute: ServicesCustomBuiltStormSheltersRoute,
   ServicesGravelDirtWorkRoute: ServicesGravelDirtWorkRoute,
+  ServicesInGroundPrefabricatedStormSheltersRoute:
+    ServicesInGroundPrefabricatedStormSheltersRoute,
   ServicesLandscapingRoute: ServicesLandscapingRoute,
   ServicesLawnMowingRoute: ServicesLawnMowingRoute,
   ServicesOfficeCommercialCleaningRoute: ServicesOfficeCommercialCleaningRoute,

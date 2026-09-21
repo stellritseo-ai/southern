@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import {
   ChevronDown,
   HelpCircle,
@@ -182,12 +183,13 @@ export function ContactIllustrationSection() {
 
             {/* Direct call bottom line */}
             <div className="pt-2 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
-              <div
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white border border-red-500/50 text-[11px] font-black uppercase tracking-widest rounded-full px-7 py-3.5 shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 w-full sm:w-auto cursor-default"
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white border border-red-500/50 text-[11px] font-black uppercase tracking-widest rounded-full px-7 py-3.5 shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 w-full sm:w-auto cursor-pointer"
               >
                 {t("Ask a Question", "Hacer una Pregunta")}
                 <ArrowRight className="h-4 w-4" />
-              </div>
+              </Link>
               <a
                 href="tel:6159912361"
                 className="inline-flex items-center gap-2 text-slate-800 text-[13px] font-extrabold hover:text-[#dc2626] transition-colors cursor-pointer"

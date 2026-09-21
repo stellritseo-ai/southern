@@ -490,13 +490,13 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
 
               {/* Bottom bar with Get a Quote button */}
               <div className="bg-white px-5 py-3.5 flex items-center justify-center shrink-0 border-t border-slate-100">
-                <a
-                  href="/free-quote"
+                <Link
+                  to="/free-quote"
                   onClick={closeLightbox}
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white text-xs sm:text-sm font-black uppercase tracking-wider px-6 py-2.5 rounded-full hover:scale-[1.03] active:scale-[0.98] transition-transform shadow-md cursor-pointer"
                 >
                   {t("Get a Quote", "Solicitar Cotización")} <ArrowRight className="h-3.5 w-3.5" />
-                </a>
+                </Link>
               </div>
             </motion.div>
           </motion.div>

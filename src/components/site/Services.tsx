@@ -13,6 +13,7 @@ import shelterCardImg1 from "@/assets/gallery/6.png";
 import grangerCustomImg from "@/assets/granger-shelter-unit.jpg";
 
 import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
 
@@ -24,8 +25,12 @@ function ServiceCard({ s }: {
 }) {
   const Icon = s.icon;
   const { t } = useLanguage();
+  const targetUrl = s.id === "inground-storm-shelter"
+    ? "/services/in-ground-prefabricated-storm-shelters"
+    : "/services/custom-built-storm-shelters";
+
   return (
-    <div className="group relative w-full min-h-[480px] sm:min-h-[560px] rounded-[32px] overflow-hidden bg-slate-950 border border-slate-200/80 hover:border-[#dc2626] shadow-xl hover:shadow-[0_22px_60px_rgba(220,38,38,0.3)] transition-all duration-500 cursor-default flex flex-col justify-end select-none">
+    <Link to={targetUrl} className="group relative w-full min-h-[480px] sm:min-h-[560px] rounded-[32px] overflow-hidden bg-slate-950 border border-slate-200/80 hover:border-[#dc2626] shadow-xl hover:shadow-[0_22px_60px_rgba(220,38,38,0.3)] transition-all duration-500 cursor-pointer flex flex-col justify-end select-none block">
       <img src={s.image} alt={s.title} className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" />
       <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(11, 15, 21, 0.98) 0%, rgba(11, 15, 21, 0.92) 36%, rgba(11, 15, 21, 0.45) 60%, rgba(11, 15, 21, 0.08) 80%, rgba(0, 0, 0, 0) 100%)" }} />
       <div className="absolute inset-0 rounded-[32px] border-2 border-transparent group-hover:border-slate-400/50 transition-colors duration-500 pointer-events-none" />
@@ -51,13 +56,13 @@ function ServiceCard({ s }: {
         <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out">
           <div className="overflow-hidden">
             <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-slate-300 text-xs font-black uppercase tracking-widest group/btn">
-              <span className="inline-flex items-center gap-1.5 group-hover/btn:underline">{t("Get a Free Quote", "Solicitar Cotizacion")}</span>
-              <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-slate-700 text-white flex items-center justify-center transition-all duration-300"><ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" /></div>
+              <span className="inline-flex items-center gap-1.5 group-hover/btn:underline">{t("View Shelter Details", "Ver Detalles del Refugio")}</span>
+              <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-[#dc2626] text-white flex items-center justify-center transition-all duration-300"><ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" /></div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -115,8 +120,10 @@ export function Services() {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto shrink-0">
-            <Button variant="hero" size="lg" className="font-bold rounded-full px-6 text-sm sm:text-base bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-md hover:shadow-lg transition-all duration-200 w-full sm:w-auto justify-center">
-              {t("Get a Free Quote", "Solicitar Cotizacion Gratis")}<ArrowRight className="w-4 h-4 ml-1 text-white" />
+            <Button variant="hero" size="lg" asChild className="font-bold rounded-full px-6 text-sm sm:text-base bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-md hover:shadow-lg transition-all duration-200 w-full sm:w-auto justify-center">
+              <Link to="/free-quote">
+                {t("Get a Free Quote", "Solicitar Cotizacion Gratis")}<ArrowRight className="w-4 h-4 ml-1 text-white" />
+              </Link>
             </Button>
           </div>
         </div>

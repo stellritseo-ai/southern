@@ -8,17 +8,17 @@ import { useLanguage } from "@/hooks/useLanguage";
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
-      { title: "Lawn Care & Cleaning Services | Brown Lawn Care & Cleaning Service LLC" },
-      { name: "description", content: "Full-service lawn mowing, landscape design, tree removal, gravel driveways, and commercial/residential cleaning in Horn Lake, MS & 50-mile radius across MS, TN, and AR." },
-      { name: "keywords", content: "lawn care services horn lake ms, property maintenance desoto county, commercial cleaning horn lake, landscaping services memphis" },
-      { property: "og:title", content: "Lawn Care & Cleaning Services | Brown Lawn Care & Cleaning Service LLC" },
-      { property: "og:description", content: "Full-service property care, lawn maintenance, landscaping, and cleaning solutions in Horn Lake, MS." },
-      { property: "og:url", content: "https://www.brownlawncarecleaningservicellc.com/services" },
+      { title: "Underground Storm Shelter Services | Southern Storm Shelters LLC" },
+      { name: "description", content: "Underground prefabricated tornado shelters and custom-built reinforced concrete storm shelters in Nashville, TN and 100-mile service radius across Middle Tennessee." },
+      { name: "keywords", content: "underground storm shelters nashville tn, prefabricated tornado shelters middle tennessee, custom built storm shelters, tornado safe rooms nashville" },
+      { property: "og:title", content: "Underground Storm Shelter Services | Southern Storm Shelters LLC" },
+      { property: "og:description", content: "Engineered underground storm shelters & custom safe rooms in Nashville, TN and Middle Tennessee." },
+      { property: "og:url", content: "https://www.southernstormsheltersllc.com/services" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "canonical", href: "https://www.brownlawncarecleaningservicellc.com/services" },
+      { rel: "canonical", href: "https://www.southernstormsheltersllc.com/services" },
     ],
   }),
   component: ServicesIndex,
@@ -34,13 +34,13 @@ function ServicesIndex() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.brownlawncarecleaningservicellc.com/"
+        "item": "https://www.southernstormsheltersllc.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://www.brownlawncarecleaningservicellc.com/services"
+        "item": "https://www.southernstormsheltersllc.com/services"
       }
     ]
   };
@@ -48,77 +48,52 @@ function ServicesIndex() {
   const serviceHubSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": "Property Maintenance and Cleaning Services",
+    "serviceType": "Underground Storm Shelter Construction & Installation",
     "provider": {
       "@type": "HomeAndConstructionBusiness",
-      "name": "Brown Lawn Care & Cleaning Service, LLC",
-      "telephone": "+16625711048",
+      "name": "Southern Storm Shelters LLC",
+      "telephone": "+16159912361",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Alden Lake Dr W",
-        "addressLocality": "Horn Lake",
-        "addressRegion": "MS",
-        "postalCode": "38637",
+        "streetAddress": "468 Craighead St",
+        "addressLocality": "Nashville",
+        "addressRegion": "TN",
+        "postalCode": "37204",
         "addressCountry": "US"
       }
     },
     "areaServed": [
-      { "@type": "City", "name": "Horn Lake, MS" },
-      { "@type": "City", "name": "Southaven, MS" },
-      { "@type": "City", "name": "Olive Branch, MS" },
-      { "@type": "City", "name": "Hernando, MS" },
-      { "@type": "City", "name": "Memphis, TN" }
+      { "@type": "City", "name": "Nashville, TN" },
+      { "@type": "City", "name": "Franklin, TN" },
+      { "@type": "City", "name": "Murfreesboro, TN" },
+      { "@type": "City", "name": "Hendersonville, TN" },
+      { "@type": "City", "name": "Brentwood, TN" },
+      { "@type": "City", "name": "Clarksville, TN" },
+      { "@type": "City", "name": "Columbia, TN" },
+      { "@type": "City", "name": "Gallatin, TN" },
+      { "@type": "City", "name": "Lebanon, TN" },
+      { "@type": "City", "name": "Mount Juliet, TN" },
+      { "@type": "City", "name": "Spring Hill, TN" },
+      { "@type": "City", "name": "Dickson, TN" }
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Full Property Services Catalog",
+      "name": "Storm Shelter Services Catalog",
       "itemListElement": [
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Lawn Mowing & Maintenance",
-            "url": "https://www.brownlawncarecleaningservicellc.com/services/lawn-mowing"
+            "name": "In-Ground Prefabricated Storm Shelters",
+            "url": "https://www.southernstormsheltersllc.com/services/in-ground-prefabricated-storm-shelters"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Landscaping & Design",
-            "url": "https://www.brownlawncarecleaningservicellc.com/services/landscaping"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Tree & Brush Removal",
-            "url": "https://www.brownlawncarecleaningservicellc.com/services/tree-brush-removal"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Gravel & Dirt Work",
-            "url": "https://www.brownlawncarecleaningservicellc.com/services/gravel-dirt-work"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Office & Commercial Cleaning",
-            "url": "https://www.brownlawncarecleaningservicellc.com/services/office-commercial-cleaning"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Residential & Warehouse Cleaning",
-            "url": "https://www.brownlawncarecleaningservicellc.com/services/residential-wire-house-cleaning"
+            "name": "Custom Built Storm Shelters",
+            "url": "https://www.southernstormsheltersllc.com/services/custom-built-storm-shelters"
           }
         }
       ]
@@ -136,9 +111,9 @@ function ServicesIndex() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceHubSchema) }}
       />
       <PageHeader
-        eyebrow={t("Services", "Servicios")}
-        title={t("What We Do — From Your Lawn to Your Office.", "Lo Que Hacemos — Desde Su Césped Hasta Su Oficina.")}
-        subtitle={t("Licensed, insured, and bonded property care across Horn Lake and the 50-mile radius.", "Cuidado de propiedad licenciado y asegurado en Horn Lake y 50 millas a la redonda.")}
+        eyebrow={t("Storm Shelter Services", "Servicios de Refugios contra Tormentas")}
+        title={t("Engineered Underground Protection for Your Family.", "Protección Subterránea Diseñada para Su Familia.")}
+        subtitle={t("Prefabricated in-ground units and custom-built reinforced concrete storm shelters across Nashville and Middle Tennessee.", "Unidades subterráneas prefabricadas y refugios de concreto reforzado en Nashville y Middle Tennessee.")}
       />
       <Services />
       <ShelterFeatures />

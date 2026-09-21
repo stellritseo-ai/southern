@@ -35,16 +35,16 @@ export function Header() {
 
   const serviceLinks = [
     {
-      to: "/services",
-      l: t("In-Ground Storm Shelter", "Refugio Subterráneo"),
-      desc: t("Prefabricated steel vault installed by crane in your backyard — ready in as little as one day", "Bóveda de acero prefabricada instalada con grúa en su patio — lista en tan solo un día"),
+      to: "/services/in-ground-prefabricated-storm-shelters",
+      l: t("In-Ground Prefabricated Storm Shelter", "Refugio Subterráneo Prefabricado"),
+      desc: t("Granger ISS underground shelter with patented reverse taper, 500+ yr lifespan, and lifetime warranty", "Refugio subterráneo Granger ISS con cono invertido patentado, vida útil de más de 500 años y garantía de por vida"),
       icon: Shield,
       tag: t("Most Popular", "Más Popular"),
     },
     {
-      to: "/services",
+      to: "/services/custom-built-storm-shelters",
       l: t("Custom Built Storm Shelter", "Refugio de Construcción Personalizada"),
-      desc: t("Fully custom concrete storm shelter built to your exact specs, size, and amenities", "Refugio de concreto totalmente personalizado según sus especificaciones, tamaño y comodidades"),
+      desc: t("Custom engineered storm shelters for homes, businesses, and communities — tailored to your property", "Refugios contra tormentas personalizados para hogares, empresas y comunidades"),
       icon: Home,
       tag: t("Premium", "Premium"),
     },
@@ -210,9 +210,10 @@ export function Header() {
                   if (item.to === "/services") {
                     return (
                       <div key={item.label} className="relative group/nav">
-                        <div
+                        <Link
+                          to="/services"
                           className={cn(
-                            "flex items-center gap-1 rounded-full px-2.5 lg:px-3 py-1 text-[13px] font-bold uppercase tracking-wider transition-colors whitespace-nowrap cursor-default",
+                            "flex items-center gap-1 rounded-full px-2.5 lg:px-3 py-1 text-[13px] font-bold uppercase tracking-wider transition-colors whitespace-nowrap cursor-pointer",
                             active
                               ? "text-[#dc2626] bg-red-50 border border-red-200"
                               : "text-[#0b0f15] hover:text-[#dc2626]"
@@ -221,7 +222,7 @@ export function Header() {
                         >
                           {t("Storm Shelters", "Refugios")}
                           <ChevronDown className="h-3.5 w-3.5 text-[#dc2626] group-hover/nav:rotate-180 transition-transform duration-200" />
-                        </div>
+                        </Link>
 
                         {/* ── PREMIUM PIXEL-PERFECT SUBMENU DROPDOWN ──────────────── */}
                         <div className="absolute left-1/2 -translate-x-1/2 top-full z-50 pt-3 opacity-0 invisible pointer-events-none group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:pointer-events-auto transition-all duration-300 transform group-hover/nav:translate-y-0 translate-y-2">
@@ -241,20 +242,22 @@ export function Header() {
                                   {t("Engineered Underground Safety Systems", "Sistemas de Seguridad Diseñados")}
                                 </span>
                               </div>
-                              <span
-                                className="text-[11px] font-extrabold uppercase text-[#dc2626] hover:text-[#b91c1c] tracking-wider transition-colors flex items-center gap-1 group/all"
+                              <Link
+                                to="/services"
+                                className="text-[11px] font-extrabold uppercase text-[#dc2626] hover:text-[#b91c1c] tracking-wider transition-colors flex items-center gap-1 group/all cursor-pointer"
                               >
                                 <span>{t("Explore All Shelters", "Ver Todos Los Refugios")}</span>
                                 <ArrowRight className="w-3.5 h-3.5 text-[#dc2626] group-hover/all:translate-x-1 transition-transform" />
-                              </span>
+                              </Link>
                             </div>
 
                             {/* 2-Column Pixel-Perfect Service Cards Grid */}
                             <div className="grid grid-cols-2 gap-3 relative z-10">
                               {serviceLinks.map((srv) => (
-                                <div
+                                <Link
                                   key={srv.l}
-                                  className="group/item flex items-start gap-3.5 rounded-2xl p-3 bg-slate-50 hover:bg-white border border-slate-200 hover:border-[#dc2626] hover:shadow-md transition-all duration-300 text-left relative overflow-hidden cursor-default"
+                                  to={srv.to}
+                                  className="group/item flex items-start gap-3.5 rounded-2xl p-3 bg-slate-50 hover:bg-white border border-slate-200 hover:border-[#dc2626] hover:shadow-md transition-all duration-300 text-left relative overflow-hidden cursor-pointer"
                                 >
                                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500/15 to-red-600/20 group-hover/item:from-[#dc2626] group-hover/item:to-[#b91c1c] border border-red-400/40 flex items-center justify-center text-[#dc2626] group-hover/item:text-white transition-all duration-300 shrink-0 shadow-xs group-hover/item:scale-105">
                                     <srv.icon className="h-5 w-5" />
@@ -269,7 +272,7 @@ export function Header() {
                                       {srv.desc}
                                     </span>
                                   </div>
-                                </div>
+                                </Link>
                               ))}
                             </div>
 
@@ -304,10 +307,11 @@ export function Header() {
                   }
 
                   return (
-                    <span
+                    <Link
                       key={item.label}
+                      to={item.to}
                       className={cn(
-                        "rounded-full px-2.5 lg:px-3 py-1 text-[13px] font-bold uppercase tracking-wider transition-colors whitespace-nowrap cursor-default",
+                        "rounded-full px-2.5 lg:px-3 py-1 text-[13px] font-bold uppercase tracking-wider transition-colors whitespace-nowrap cursor-pointer",
                         active
                           ? "text-[#dc2626] bg-red-50 border border-red-200"
                           : "text-[#0b0f15] hover:text-[#dc2626]"
@@ -315,7 +319,7 @@ export function Header() {
                       style={{ fontSize: "13px", fontWeight: 700, textTransform: "uppercase" }}
                     >
                       {item.label}
-                    </span>
+                    </Link>
                   );
                 })}
               </nav>
@@ -362,31 +366,43 @@ export function Header() {
               if (item.to === "/services") {
                 return (
                   <div key="services-mobile" className="space-y-1">
-                    <button
-                      onClick={() => setServicesOpen((v) => !v)}
-                      className="w-full flex items-center justify-between rounded-2xl px-4 py-3 text-[13px] font-bold uppercase tracking-wider text-[#0b0f15] hover:bg-slate-50 transition"
-                      style={{ fontSize: "13px", fontWeight: 700, textTransform: "uppercase" }}
-                    >
-                      <span>{t("Storm Shelters", "Refugios")}</span>
-                      <ChevronDown
-                        className={cn(
-                          "h-4 w-4 text-[#dc2626] transition-transform duration-300",
-                          servicesOpen && "rotate-180"
-                        )}
-                      />
-                    </button>
+                    <div className="w-full flex items-center justify-between rounded-2xl px-4 py-3 text-[13px] font-bold uppercase tracking-wider text-[#0b0f15] hover:bg-slate-50 transition">
+                      <Link
+                        to="/services"
+                        onClick={() => setOpen(false)}
+                        className="flex-1"
+                        style={{ fontSize: "13px", fontWeight: 700, textTransform: "uppercase" }}
+                      >
+                        {t("Storm Shelters", "Refugios")}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => setServicesOpen((v) => !v)}
+                        className="p-1 text-[#dc2626] cursor-pointer"
+                        aria-label="Toggle services submenu"
+                      >
+                        <ChevronDown
+                          className={cn(
+                            "h-4 w-4 text-[#dc2626] transition-transform duration-300",
+                            servicesOpen && "rotate-180"
+                          )}
+                        />
+                      </button>
+                    </div>
 
                     {servicesOpen && (
                       <div className="ml-4 pl-4 border-l-2 border-[#dc2626]/30 space-y-1.5 py-1">
                         {serviceLinks.map((srv) => (
-                          <div
+                          <Link
                             key={srv.l}
-                            className="flex items-center gap-2.5 py-2 px-2 rounded-xl text-[13px] font-bold text-[#0b0f15] hover:text-[#dc2626] hover:bg-slate-50 transition cursor-default"
+                            to={srv.to}
+                            onClick={() => setOpen(false)}
+                            className="flex items-center gap-2.5 py-2 px-2 rounded-xl text-[13px] font-bold text-[#0b0f15] hover:text-[#dc2626] hover:bg-slate-50 transition cursor-pointer"
                             style={{ fontSize: "13px", fontWeight: 700 }}
                           >
                             <srv.icon className="h-4 w-4 text-[#dc2626] shrink-0" />
                             <span>{srv.l}</span>
-                          </div>
+                          </Link>
                         ))}
                       </div>
                     )}
@@ -395,10 +411,12 @@ export function Header() {
               }
 
               return (
-                <span
+                <Link
                   key={item.label}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
                   className={cn(
-                    "rounded-2xl px-4 py-3 text-[13px] font-bold uppercase tracking-wider transition-colors cursor-default",
+                    "rounded-2xl px-4 py-3 text-[13px] font-bold uppercase tracking-wider transition-colors cursor-pointer block",
                     active
                       ? "bg-red-50 text-[#dc2626] border border-red-200"
                       : "text-[#0b0f15] hover:bg-slate-50"
@@ -406,7 +424,7 @@ export function Header() {
                   style={{ fontSize: "13px", fontWeight: 700, textTransform: "uppercase" }}
                 >
                   {item.label}
-                </span>
+                </Link>
               );
             })}
           </nav>

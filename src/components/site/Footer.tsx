@@ -88,21 +88,23 @@ export function Footer() {
 
   const quickLinks = [
     { label: t("Home", "Inicio"), href: "/" },
-    { label: t("About Us", "Sobre Nosotros"), href: "/" },
-    { label: t("Storm Shelters", "Refugios"), href: "/" },
-    { label: t("Free Estimate", "Cotización Gratis"), href: "/" },
-    { label: t("Gallery", "Galería"), href: "/" },
+    { label: t("About Us", "Sobre Nosotros"), href: "/about" },
+    { label: t("Storm Shelters", "Refugios"), href: "/services" },
+    { label: t("Free Estimate", "Cotización Gratis"), href: "/free-quote" },
+    { label: t("Gallery", "Galería"), href: "/projects" },
+    { label: t("Customer Reviews", "Reseñas de Clientes"), href: "/reviews" },
     { label: t("Contact", "Contacto"), href: "/contact" },
   ];
 
   const servicesLinks = [
-    { label: t("In-Ground Prefabricated Storm Shelters", "Refugios Subterráneos"), href: "#" },
-    { label: t("Custom Built Storm Shelters", "Refugios Personalizados"), href: "#" },
+    { label: t("In-Ground Prefabricated Storm Shelters", "Refugios Subterráneos"), href: "/services/in-ground-prefabricated-storm-shelters" },
+    { label: t("Custom Built Storm Shelters", "Refugios Personalizados"), href: "/services/custom-built-storm-shelters" },
   ];
 
   const serviceAreaLinks = [
-    { label: "Nashville, TN", href: "#" },
-    { label: t("Get a Free Estimate", "Obtenga una Estimación Gratuita"), href: "#" },
+    { label: "Nashville, TN (HQ)", href: "/contact" },
+    { label: t("Get a Free Estimate", "Obtenga una Estimación Gratuita"), href: "/free-quote" },
+    { label: t("View Installation Gallery", "Ver Galería de Instalaciones"), href: "/projects" },
   ];
 
   return (
@@ -171,9 +173,9 @@ export function Footer() {
             <ul className="space-y-2.5">
               {quickLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <span className="text-xs text-slate-300 font-semibold block cursor-default">
+                  <Link to={href} className="text-xs text-slate-300 hover:text-white font-semibold block transition-colors py-0.5">
                     {label}
-                  </span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -183,9 +185,9 @@ export function Footer() {
             <ul className="space-y-2.5">
               {servicesLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <span className="text-xs text-slate-300 font-semibold block cursor-default">
+                  <Link to={href} className="text-xs text-slate-300 hover:text-white font-semibold block transition-colors py-0.5">
                     {label}
-                  </span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -195,9 +197,9 @@ export function Footer() {
             <ul className="space-y-2.5">
               {serviceAreaLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <span className="text-xs text-slate-300 font-semibold block cursor-default">
+                  <Link to={href} className="text-xs text-slate-300 hover:text-white font-semibold block transition-colors py-0.5">
                     {label}
-                  </span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -282,12 +284,13 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm font-semibold">
               {quickLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <span
-                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2 group cursor-default"
+                  <Link
+                    to={href}
+                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2 group cursor-pointer"
                   >
                     <ArrowRight className="h-3 w-3 text-[#dc2626] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     <span>{label}</span>
-                  </span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -301,12 +304,13 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm font-semibold">
               {servicesLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <span
-                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2 group cursor-default"
+                  <Link
+                    to={href}
+                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2 group cursor-pointer"
                   >
                     <ArrowRight className="h-3 w-3 text-[#dc2626] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     <span>{label}</span>
-                  </span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -320,12 +324,13 @@ export function Footer() {
             <ul className="space-y-2 text-xs font-semibold">
               {serviceAreaLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <span
-                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-1.5 group cursor-default"
+                  <Link
+                    to={href}
+                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-1.5 group cursor-pointer"
                   >
                     <ArrowRight className="h-2.5 w-2.5 text-[#dc2626] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     <span className="truncate">{label}</span>
-                  </span>
+                  </Link>
                 </li>
               ))}
             </ul>
