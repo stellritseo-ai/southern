@@ -29,6 +29,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { useLanguage } from "@/hooks/useLanguage";
 import { addWebEmail } from "@/lib/leads-store";
+import { SITE_CONFIG } from "@/config/site-config";
 
 export function ContactPageContent() {
   const { t } = useLanguage();
@@ -94,8 +95,8 @@ export function ContactPageContent() {
       console.error("Contact form error:", err);
       toast.error(
         t(
-          "Submission error. Please call us directly at (615) 991-2381.",
-          "Error de envío. Por favor llámenos directamente al (615) 991-2381."
+          `Submission error. Please call us directly at ${SITE_CONFIG.phone}.`,
+          `Error de envío. Por favor llámenos directamente al ${SITE_CONFIG.phone}.`
         )
       );
     } finally {
@@ -106,20 +107,20 @@ export function ContactPageContent() {
   const contactChannels = [
     {
       title: t("Phone", "Teléfono"),
-      value: "(615) 991-2381",
-      href: "tel:6159912381",
+      value: SITE_CONFIG.phone,
+      href: `tel:${SITE_CONFIG.phoneRaw}`,
       desc: t(
         "Call us directly to speak with a member of our team. We're happy to answer questions, schedule a consultation, or provide guidance on the best shelter solution for your property.",
         "Llámenos directamente para hablar con nuestro equipo. Con gusto respondemos preguntas, programamos consultas o le orientamos sobre la mejor solución para su terreno."
       ),
-      hours: t("Monday–Friday: 8:00 AM – 5:00 PM\nSaturday: By Appointment\nSunday: Closed", "Lunes a Viernes: 8:00 AM – 5:00 PM\nSábado: Con Cita\nDomingo: Cerrado"),
+      hours: `${SITE_CONFIG.operatingHours.weekdays}\n${SITE_CONFIG.operatingHours.saturdays}\n${SITE_CONFIG.operatingHours.sundays}`,
       icon: Phone,
       action: t("Call Now", "Llamar Ahora"),
     },
     {
       title: t("Email", "Correo Electrónico"),
-      value: "admin@nashvillesiteworks.com",
-      href: "mailto:admin@nashvillesiteworks.com",
+      value: SITE_CONFIG.email,
+      href: `mailto:${SITE_CONFIG.email}`,
       desc: t(
         "Prefer to write? Send us an email with your questions, property details, or request for a quote. We'll respond within 24 hours.",
         "¿Prefiere escribir? Envíenos un correo con sus preguntas, detalles de su terreno o solicitud de cotización. Responderemos en 24 horas."
@@ -130,12 +131,12 @@ export function ContactPageContent() {
     },
     {
       title: t("Office Location", "Ubicación de Oficina"),
-      value: "2000 Meridian Blvd, Suite 200, Franklin, TN 37067",
+      value: "Nashville, TN",
       desc: t(
         "Note: This is our administrative office. All shelter installations are performed on-site at your property.",
         "Nota: Esta es nuestra oficina administrativa. Todas las instalaciones de refugios se realizan directamente en su propiedad."
       ),
-      hours: t("Monday–Friday: 8:00 AM – 5:00 PM", "Lunes a Viernes: 8:00 AM – 5:00 PM"),
+      hours: SITE_CONFIG.operatingHours.weekdays,
       icon: MapPin,
     },
     {
@@ -286,17 +287,17 @@ export function ContactPageContent() {
   ];
 
   return (
-    <div className="bg-white text-slate-900 overflow-hidden selection:bg-red-600 selection:text-white">
+    <div className="bg-white text-slate-900 overflow-hidden selection:bg-amber-600 selection:text-white">
 
       {/* ── SECTION 1: GET IN TOUCH CHANNELS ───────────────────────────── */}
       <section className="relative py-16 sm:py-20 lg:py-24 border-b border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-50">
-        <div aria-hidden className="absolute top-0 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
-        <div aria-hidden className="absolute bottom-0 left-10 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div aria-hidden className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div aria-hidden className="absolute bottom-0 left-10 w-96 h-96 bg-slate-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-widest mb-4">
-              <Phone className="w-3.5 h-3.5 text-red-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-4">
+              <Phone className="w-3.5 h-3.5 text-amber-600" />
               <span>{t("Get in Touch", "Póngase en Contacto")}</span>
             </div>
 
@@ -306,8 +307,8 @@ export function ContactPageContent() {
 
             <p className="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed">
               {t(
-                "Severe weather is notoriously unpredictable. The best and smartest thing you can do for yourself and your family is to be prepared. Reach out today—we respond to all inquiries within 24 hours.",
-                "El clima severo es impredecible. Lo mejor y más inteligente que puede hacer por usted y su familia es estar preparado. Contáctenos hoy mismo: respondemos a todas las consultas en 24 horas."
+                "Turnkey underground storm shelter installation across Nashville and Middle Tennessee. Speak directly with our project team—we respond to all inquiries promptly.",
+                "Instalación subterránea llave en mano en Nashville y Middle Tennessee. Hable directamente con nuestro equipo de proyectos: respondemos a todas las consultas con prontitud."
               )}
             </p>
           </div>
@@ -318,21 +319,21 @@ export function ContactPageContent() {
               return (
                 <div
                   key={ch.title}
-                  className="rounded-3xl bg-white border border-slate-200 p-7 flex flex-col justify-between hover:border-red-500/40 hover:shadow-xl transition-all duration-300 shadow-xs group"
+                  className="rounded-3xl bg-white border border-slate-200 p-7 flex flex-col justify-between hover:border-amber-500/40 hover:shadow-xl transition-all duration-300 shadow-xs group"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center mb-5 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                    <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mb-5 group-hover:bg-amber-600 group-hover:text-white transition-colors">
                       <Icon className="w-6 h-6" />
                     </div>
 
-                    <div className="text-[11px] font-bold text-red-600 uppercase tracking-wider mb-1">
+                    <div className="text-[11px] font-bold text-amber-700 uppercase tracking-wider mb-1">
                       {ch.title}
                     </div>
 
                     {ch.href ? (
                       <a
                         href={ch.href}
-                        className="text-lg font-bold text-slate-900 hover:text-red-600 transition block mb-2"
+                        className="text-lg font-bold text-slate-900 hover:text-amber-700 transition block mb-2"
                       >
                         {ch.value}
                       </a>
@@ -406,11 +407,11 @@ export function ContactPageContent() {
                     {t("Send Another Message", "Enviar Otro Mensaje")}
                   </Button>
                   <a
-                    href="tel:6159912381"
-                    className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-2.5 rounded-xl transition shadow-lg shadow-red-600/20 text-sm"
+                    href={`tel:${SITE_CONFIG.phoneRaw}`}
+                    className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-slate-950 font-bold px-6 py-2.5 rounded-xl transition shadow-lg shadow-amber-600/20 text-sm"
                   >
                     <Phone className="w-4 h-4" />
-                    <span>{t("Call (615) 991-2381", "Llamar al (615) 991-2381")}</span>
+                    <span>{t(`Call ${SITE_CONFIG.phone}`, `Llamar al ${SITE_CONFIG.phone}`)}</span>
                   </a>
                 </div>
               </motion.div>
@@ -420,7 +421,7 @@ export function ContactPageContent() {
                 {/* 1. Contact Information */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                    <span className="w-7 h-7 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-xs">
+                    <span className="w-7 h-7 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">
                       1
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900">
@@ -437,7 +438,7 @@ export function ContactPageContent() {
                         id="fullName"
                         required
                         placeholder={t("e.g. Michael Davis", "ej. Miguel Torres")}
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -450,7 +451,7 @@ export function ContactPageContent() {
                         type="tel"
                         required
                         placeholder="(615) 000-0000"
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -463,7 +464,7 @@ export function ContactPageContent() {
                         type="email"
                         required
                         placeholder="michael@example.com"
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -481,7 +482,7 @@ export function ContactPageContent() {
                               onClick={() => setPreferredContact(method)}
                               className={`py-2 px-1 text-center rounded-xl border text-xs font-bold transition cursor-pointer ${
                                 isSelected
-                                  ? "bg-red-600 text-white border-red-600 shadow-sm"
+                                  ? "bg-amber-600 text-white border-amber-600 shadow-sm"
                                   : "bg-white text-slate-700 border-slate-300 hover:border-slate-400"
                               }`}
                             >
@@ -500,7 +501,7 @@ export function ContactPageContent() {
                 {/* 2. Property Information */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                    <span className="w-7 h-7 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-xs">
+                    <span className="w-7 h-7 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">
                       2
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900">
@@ -516,7 +517,7 @@ export function ContactPageContent() {
                       <Input
                         id="propertyAddress"
                         placeholder={t("123 Street Name", "Calle y Número")}
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -527,7 +528,7 @@ export function ContactPageContent() {
                       <Input
                         id="city"
                         placeholder="Franklin"
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -539,7 +540,7 @@ export function ContactPageContent() {
                         <Input
                           id="state"
                           defaultValue="TN"
-                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl text-center font-bold"
+                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl text-center font-bold"
                         />
                       </div>
                       <div>
@@ -549,7 +550,7 @@ export function ContactPageContent() {
                         <Input
                           id="zipCode"
                           placeholder="37067"
-                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
                         />
                       </div>
                     </div>
@@ -559,7 +560,7 @@ export function ContactPageContent() {
                 {/* 3. How Can We Help You? */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                    <span className="w-7 h-7 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-xs">
+                    <span className="w-7 h-7 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">
                       3
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900">
@@ -589,7 +590,7 @@ export function ContactPageContent() {
                             onClick={() => setContactReason(reason)}
                             className={`p-3 rounded-xl border text-left text-xs font-bold transition cursor-pointer flex items-center justify-between ${
                               isSelected
-                                ? "bg-red-600/10 border-red-600 text-red-700 shadow-2xs"
+                                ? "bg-amber-500/10 border-amber-600 text-amber-800 shadow-2xs"
                                 : "bg-white text-slate-700 border-slate-300 hover:border-slate-400"
                             }`}
                           >
@@ -611,7 +612,7 @@ export function ContactPageContent() {
                             </span>
                             <div
                               className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ml-2 ${
-                                isSelected ? "border-red-600 bg-red-600" : "border-slate-300"
+                                isSelected ? "border-amber-600 bg-amber-600" : "border-slate-300"
                               }`}
                             >
                               {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
@@ -631,7 +632,7 @@ export function ContactPageContent() {
                       <select
                         value={shelterType}
                         onChange={(e) => setShelterType(e.target.value)}
-                        className="mt-1.5 w-full h-11 rounded-xl bg-white border border-slate-300 px-3 text-xs font-semibold text-slate-900 focus:border-red-600 focus:ring-red-600"
+                        className="mt-1.5 w-full h-11 rounded-xl bg-white border border-slate-300 px-3 text-xs font-semibold text-slate-900 focus:border-amber-600 focus:ring-amber-600"
                       >
                         <option value="In-Ground Prefabricated Storm Shelter">In-Ground Prefabricated Storm Shelter</option>
                         <option value="Custom Built Storm Shelter">Custom Built Storm Shelter</option>
@@ -648,7 +649,7 @@ export function ContactPageContent() {
                       <select
                         value={propertyType}
                         onChange={(e) => setPropertyType(e.target.value)}
-                        className="mt-1.5 w-full h-11 rounded-xl bg-white border border-slate-300 px-3 text-xs font-semibold text-slate-900 focus:border-red-600 focus:ring-red-600"
+                        className="mt-1.5 w-full h-11 rounded-xl bg-white border border-slate-300 px-3 text-xs font-semibold text-slate-900 focus:border-amber-600 focus:ring-amber-600"
                       >
                         <option value="Residential – Existing Home">Residential – Existing Home</option>
                         <option value="Residential – New Construction">Residential – New Construction</option>
@@ -662,7 +663,7 @@ export function ContactPageContent() {
                 {/* 4. Your Message */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                    <span className="w-7 h-7 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-xs">
+                    <span className="w-7 h-7 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">
                       4
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900">
@@ -681,7 +682,7 @@ export function ContactPageContent() {
                         "Please provide details about your property, timeline, specific questions, or how we can assist you...",
                         "Proporcione detalles sobre su propiedad, plazos o preguntas específicas..."
                       )}
-                      className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs rounded-xl focus:border-red-600 focus:ring-red-600"
+                      className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
                     />
                   </div>
 
@@ -725,7 +726,7 @@ export function ContactPageContent() {
                         value={otherReferral}
                         onChange={(e) => setOtherReferral(e.target.value)}
                         placeholder={t("Please specify...", "Por favor especifique...")}
-                        className="mt-2 bg-white border-slate-300 text-slate-900 text-xs rounded-xl h-10 focus:border-red-600 focus:ring-red-600"
+                        className="mt-2 bg-white border-slate-300 text-slate-900 text-xs rounded-xl h-10 focus:border-amber-600 focus:ring-amber-600"
                       />
                     )}
                   </div>
@@ -736,7 +737,7 @@ export function ContactPageContent() {
                   <Button
                     type="submit"
                     disabled={submitting}
-                    className="w-full h-14 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white text-sm sm:text-base font-extrabold uppercase tracking-wider rounded-2xl shadow-lg shadow-red-600/20 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                    className="w-full h-14 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-sm sm:text-base font-extrabold uppercase tracking-wider rounded-2xl shadow-lg shadow-amber-600/20 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
                   >
                     {submitting ? (
                       t("Sending Message...", "Enviando Mensaje...")
@@ -768,8 +769,8 @@ export function ContactPageContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-widest mb-4">
-              <CheckCircle2 className="w-3.5 h-3.5 text-red-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-4">
+              <CheckCircle2 className="w-3.5 h-3.5 text-amber-600" />
               <span>{t("Transparent Communication", "Comunicación Transparente")}</span>
             </div>
 
@@ -791,19 +792,19 @@ export function ContactPageContent() {
               return (
                 <div
                   key={st.step}
-                  className="rounded-3xl bg-white border border-slate-200 p-6 flex flex-col justify-between hover:border-red-500/40 hover:shadow-lg transition-all duration-300 shadow-xs group"
+                  className="rounded-3xl bg-white border border-slate-200 p-6 flex flex-col justify-between hover:border-amber-500/40 hover:shadow-lg transition-all duration-300 shadow-xs group"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-2xl font-black text-slate-300 group-hover:text-red-600 transition-colors">
+                      <span className="text-2xl font-black text-slate-300 group-hover:text-amber-600 transition-colors">
                         {st.step}
                       </span>
-                      <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center">
                         <Icon className="w-5 h-5" />
                       </div>
                     </div>
 
-                    <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
+                    <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">
                       {st.title}
                     </h3>
 
@@ -824,8 +825,8 @@ export function ContactPageContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-widest mb-4">
-              <ShieldCheck className="w-3.5 h-3.5 text-red-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-4">
+              <ShieldCheck className="w-3.5 h-3.5 text-amber-600" />
               <span>{t("Tennessee's Trusted Builders", "Constructores de Confianza en Tennessee")}</span>
             </div>
 
@@ -840,9 +841,9 @@ export function ContactPageContent() {
               return (
                 <div
                   key={item.title}
-                  className="rounded-3xl bg-slate-50/70 border border-slate-200 p-8 hover:border-red-500/40 hover:shadow-xl transition-all duration-300 shadow-xs"
+                  className="rounded-3xl bg-slate-50/70 border border-slate-200 p-8 hover:border-amber-500/40 hover:shadow-xl transition-all duration-300 shadow-xs"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center mb-5">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mb-5">
                     <Icon className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
@@ -880,12 +881,12 @@ export function ContactPageContent() {
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-slate-900 hover:text-red-600 transition cursor-pointer"
+                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-slate-900 hover:text-amber-700 transition cursor-pointer"
                   >
                     <span>{faq.q}</span>
                     <ChevronDown
-                      className={`w-5 h-5 text-red-600 shrink-0 transition-transform duration-300 ${
-                        isOpen ? "rotate-180" : ""
+                      className={`w-5 h-5 text-amber-600 shrink-0 transition-transform duration-300 ${
+                        isOpen ? "rotate-180 text-amber-700" : ""
                       }`}
                     />
                   </button>
@@ -909,7 +910,7 @@ export function ContactPageContent() {
           
           <div className="rounded-3xl bg-slate-50 border border-slate-200 p-8 sm:p-12 shadow-md">
             <div className="text-center max-w-3xl mx-auto mb-10">
-              <span className="text-xs font-bold uppercase tracking-widest text-red-700 bg-red-50 px-3.5 py-1 rounded-full border border-red-200">
+              <span className="text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-50 px-3.5 py-1 rounded-full border border-amber-200">
                 {t("Contact Information Summary", "Resumen de Información de Contacto")}
               </span>
               <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold text-slate-900">
@@ -927,30 +928,30 @@ export function ContactPageContent() {
                   <tr className="hover:bg-slate-50/60 transition-colors">
                     <td className="p-4 font-bold text-slate-500 w-1/3 sm:w-1/4">{t("Phone", "Teléfono")}</td>
                     <td className="p-4 font-extrabold text-slate-900">
-                      <a href="tel:6159912381" className="text-red-600 hover:underline">
-                        (615) 991-2381
+                      <a href={`tel:${SITE_CONFIG.phoneRaw}`} className="text-amber-700 hover:underline">
+                        {SITE_CONFIG.phone}
                       </a>
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50/60 transition-colors">
                     <td className="p-4 font-bold text-slate-500">{t("Email", "Correo Electrónico")}</td>
                     <td className="p-4 font-semibold text-slate-900">
-                      <a href="mailto:admin@nashvillesiteworks.com" className="text-red-600 hover:underline">
-                        admin@nashvillesiteworks.com
+                      <a href={`mailto:${SITE_CONFIG.email}`} className="text-amber-700 hover:underline">
+                        {SITE_CONFIG.email}
                       </a>
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50/60 transition-colors">
                     <td className="p-4 font-bold text-slate-500">{t("Address", "Dirección")}</td>
                     <td className="p-4 font-semibold text-slate-900">
-                      2000 Meridian Blvd, Suite 200, Franklin, TN 37067
+                      {SITE_CONFIG.address.full}
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50/60 transition-colors">
                     <td className="p-4 font-bold text-slate-500">{t("Hours", "Horario")}</td>
                     <td className="p-4 font-semibold text-slate-900">
                       {t(
-                        "Monday–Friday: 8:00 AM – 5:00 PM | Saturday: By Appointment | Sunday: Closed",
+                        SITE_CONFIG.operatingHours.scheduleText,
                         "Lunes a Viernes: 8:00 AM – 5:00 PM | Sábado: Con Cita | Domingo: Cerrado"
                       )}
                     </td>
@@ -970,25 +971,25 @@ export function ContactPageContent() {
 
             {/* Ready to Get Started Callout */}
             <div className="mt-12 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 text-white p-8 sm:p-10 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden">
-              <div aria-hidden className="absolute -right-10 -bottom-10 w-60 h-60 bg-red-600/20 rounded-full blur-3xl pointer-events-none" />
+              <div aria-hidden className="absolute -right-10 -bottom-10 w-60 h-60 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
 
               <h4 className="text-xl sm:text-2xl font-extrabold text-white mb-3">
                 {t("Ready to Get Started?", "¿Listo Para Comenzar?")}
               </h4>
               <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto mb-6 leading-relaxed">
                 {t(
-                  "Don't wait for the warning sirens. The best and smartest thing you can do for yourself and your family is to be prepared. Call us at (615) 991-2381 or fill out the form above to schedule your free consultation.",
-                  "No espere a que suenen las sirenas de alarma. Lo mejor que puede hacer por su familia es estar preparado. Llámenos al (615) 991-2381 o complete el formulario para programar su consulta."
+                  `Schedule a comprehensive site evaluation with our construction specialists. Call us at ${SITE_CONFIG.phone} or request a detailed installation estimate online.`,
+                  `Programe una evaluación detallada del terreno con nuestros especialistas en construcción. Llámenos al ${SITE_CONFIG.phone} o solicite un presupuesto en línea.`
                 )}
               </p>
 
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <a
-                  href="tel:6159912381"
-                  className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-extrabold px-8 py-3.5 rounded-xl transition shadow-lg shadow-red-600/30 text-sm sm:text-base"
+                  href={`tel:${SITE_CONFIG.phoneRaw}`}
+                  className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-slate-950 font-extrabold px-8 py-3.5 rounded-xl transition shadow-lg shadow-amber-600/30 text-sm sm:text-base"
                 >
                   <Phone className="w-4 h-4" />
-                  <span>{t("Call (615) 991-2381", "Llamar al (615) 991-2381")}</span>
+                  <span>{t(`Call ${SITE_CONFIG.phone}`, `Llamar al ${SITE_CONFIG.phone}`)}</span>
                 </a>
                 <a
                   href="#contact-form"

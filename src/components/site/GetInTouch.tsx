@@ -1,20 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { addWebEmail } from "@/lib/leads-store";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  ArrowRight,
-  CheckCircle2,
-  ShieldCheck,
-  Zap,
-} from "lucide-react";
+import { Phone, Mail, MapPin, Clock, ShieldCheck, CheckCircle2, ArrowRight, Sparkles, HardHat } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { addWebEmail } from "@/lib/leads-store";
+import { SITE_CONFIG } from "@/config/site-config";
 
 const TinySparkleIcon = () => (
-  <svg className="w-3.5 h-3.5 text-[#dc2626] fill-[#dc2626] shrink-0" viewBox="0 0 24 24">
+  <svg className="w-3.5 h-3.5 text-amber-500 fill-amber-500 shrink-0" viewBox="0 0 24 24">
     <path d="M12 2l2.4 7.2L21.6 12l-7.2 2.4L12 21.6l-2.4-7.2L2.4 12l7.2-2.4z" />
   </svg>
 );
@@ -60,12 +52,12 @@ export function GetInTouch() {
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-30 pointer-events-none" />
       <div className="mx-auto w-[90%] max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="inline-flex items-center gap-2 bg-red-50 border border-red-200 text-[#dc2626] rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-5">
+          <span className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-700 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-5">
             <TinySparkleIcon /> {t("Request a Free Estimate", "Solicitar Estimación Gratis")} <TinySparkleIcon />
           </span>
           <h2 className="text-[19px] sm:text-[24px] lg:text-[30px] font-extrabold text-[#0F172A] leading-tight mt-0 sm:mt-[-10px] mb-[5px] tracking-tight sm:whitespace-nowrap">
             {t("Get Your Free, ", "Obtenga Su ")}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
+            <span className="gradient-text-construction">
               {t("No-Obligation Estimate", "Estimación Sin Compromiso")}
             </span>
           </h2>
@@ -92,15 +84,15 @@ export function GetInTouch() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 150, damping: 20 }}
-            className="lg:col-span-5 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0b0f15] via-[#111722] to-[#1f0a0c] text-white p-6 sm:p-8 lg:p-10 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-red-500/30"
+            className="lg:col-span-5 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0b0f15] via-[#111722] to-[#1e293b] text-white p-6 sm:p-8 lg:p-10 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-slate-700"
           >
             <div className="absolute inset-0 bg-grid opacity-10 mix-blend-overlay pointer-events-none" />
-            <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-red-600/15 blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
 
             <div className="relative">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-6 border border-red-500/40 text-red-300">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#fbbf24] animate-pulse" />
-                Nashville Office &amp; 100-Mile Dispatch
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-6 border border-amber-500/40 text-amber-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                Nashville Office &amp; 100-Mile Radius
               </span>
               <h3 className="text-2xl font-display font-black uppercase tracking-wider text-white">
                 Contact Info
@@ -112,34 +104,34 @@ export function GetInTouch() {
               <ul className="mt-8 space-y-6">
                 <Item
                   icon={Phone}
-                  label="Direct Phone & 24/7 Hotline"
-                  value="615-991-2361"
-                  href="tel:6159912361"
+                  label="Direct Office Phone"
+                  value={SITE_CONFIG.phone}
+                  href={`tel:${SITE_CONFIG.phoneRaw}`}
                   isCall
                 />
                 <Item
                   icon={Mail}
                   label="Direct Email"
-                  value="admin@nashvillesiteworks.com"
-                  href="mailto:admin@nashvillesiteworks.com"
+                  value={SITE_CONFIG.email}
+                  href={`mailto:${SITE_CONFIG.email}`}
                 />
                 <Item
                   icon={MapPin}
                   label="Office Address"
-                  value="468 Craighead St, Nashville, TN 37204"
+                  value={SITE_CONFIG.address}
                 />
                 <Item
                   icon={Clock}
                   label="Business Hours"
-                  value="Open 24/7 / 365 Days — Immediate Dispatch Available"
+                  value={SITE_CONFIG.operatingHours.scheduleText}
                 />
               </ul>
             </div>
 
             <div className="relative mt-10 pt-6 border-t border-white/15 flex items-center gap-3">
-              <ShieldCheck className="h-5 w-5 text-[#dc2626] shrink-0" />
+              <ShieldCheck className="h-5 w-5 text-amber-400 shrink-0" />
               <span className="text-[10px] uppercase font-bold tracking-wider text-slate-300">
-                Licensed • Insured • Bonded • FEMA P-320 Compliant
+                {SITE_CONFIG.licenseNotice}
               </span>
             </div>
           </motion.div>
@@ -160,8 +152,8 @@ export function GetInTouch() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   className="grid place-items-center text-center py-16"
                 >
-                  <div className="grid place-items-center h-16 w-16 rounded-full bg-red-50 text-[#dc2626] mb-5 shadow-sm">
-                    <CheckCircle2 className="h-8 w-8 text-[#dc2626]" />
+                  <div className="grid place-items-center h-16 w-16 rounded-full bg-amber-50 text-amber-600 mb-5 shadow-sm">
+                    <CheckCircle2 className="h-8 w-8 text-amber-600" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-[#0F172A] uppercase tracking-wider">
                     Estimate Request Received
@@ -208,7 +200,7 @@ export function GetInTouch() {
                       <select
                         name="projectType"
                         required
-                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all cursor-pointer"
+                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-amber-500/10 focus:border-amber-600 focus:bg-white transition-all cursor-pointer"
                       >
                         <option value="Residential Underground Shelter">Residential Underground Shelter</option>
                         <option value="Commercial Storm Shelter">Commercial Storm Shelter</option>
@@ -219,13 +211,13 @@ export function GetInTouch() {
                     </div>
 
                     <div>
-                      <Label>Timeline / Urgency</Label>
+                      <Label>Timeline / Project Phase</Label>
                       <select
                         name="timeframe"
                         required
-                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all cursor-pointer"
+                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-amber-500/10 focus:border-amber-600 focus:bg-white transition-all cursor-pointer"
                       >
-                        <option value="Immediate / Urgent">Immediate / Urgent (Storm Season)</option>
+                        <option value="As Soon As Possible">As Soon As Possible</option>
                         <option value="Within 1-2 weeks">Within 1-2 weeks</option>
                         <option value="Within 30 days">Within 30 days</option>
                         <option value="Planning / Future project">Planning / Future project</option>
@@ -238,7 +230,7 @@ export function GetInTouch() {
                         name="message"
                         rows={3}
                         placeholder="Describe your yard access, property grade, family capacity needs, or any specific requirements..."
-                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all resize-none"
+                        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-amber-500/10 focus:border-amber-600 focus:bg-white transition-all resize-none"
                       />
                     </div>
                   </div>
@@ -248,13 +240,13 @@ export function GetInTouch() {
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={submitting}
-                    className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white border border-red-500/50 px-6 py-4 text-xs font-black uppercase tracking-wider shadow-md hover:brightness-110 cursor-pointer transition-all duration-300 disabled:opacity-75"
+                    className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white border border-amber-500/50 px-6 py-4 text-xs font-black uppercase tracking-wider shadow-md hover:brightness-110 cursor-pointer transition-all duration-300 disabled:opacity-75"
                   >
                     <span>{submitting ? "Submitting..." : "Request a Free Estimate →"}</span>
                   </motion.button>
 
                   <p className="text-center text-[11px] text-slate-500 font-semibold">
-                    We respond promptly. For urgent assistance or weather emergencies, call 615-991-2361.
+                    We respond promptly during business hours. For immediate assistance, call {SITE_CONFIG.phone}.
                   </p>
                 </form>
               )}
@@ -285,7 +277,7 @@ function Item({
         whileHover={{ scale: 1.05 }}
         className={`grid place-items-center h-10 w-10 rounded-xl text-white shrink-0 transition-all duration-300 ${
           isCall 
-            ? "bg-[#dc2626] text-white border border-red-400/40 shadow-sm" 
+            ? "bg-amber-600 text-white border border-amber-400/40 shadow-sm" 
             : "bg-white/10 border border-white/10 hover:bg-white/15"
         }`}
       >
@@ -343,7 +335,7 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-[#dc2626] focus:bg-white transition-all"
+        className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-amber-500/10 focus:border-amber-600 focus:bg-white transition-all"
       />
     </div>
   );

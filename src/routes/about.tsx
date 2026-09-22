@@ -6,6 +6,7 @@ import { WhyChooseUs } from "@/components/site/WhyChooseUs";
 import { ShelterFeatures } from "@/components/site/ShelterFeatures";
 import { EmergencyCTA } from "@/components/site/EmergencyCTA";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SITE_CONFIG } from "@/config/site-config";
 
 function AboutPage() {
   const { t } = useLanguage();
@@ -38,8 +39,8 @@ function AboutPage() {
     "mainEntity": {
       "@type": "HomeAndConstructionBusiness",
       "name": "Southern Storm Shelters LLC",
-      "telephone": "+16159912361",
-      "email": "admin@nashvillesiteworks.com",
+      "telephone": SITE_CONFIG.phoneRaw,
+      "email": SITE_CONFIG.email,
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "468 Craighead St",

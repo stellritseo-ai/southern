@@ -587,15 +587,15 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
     // ── /api/settings ──
     if (pathname === "/api/settings") {
       const defaultSettings = {
-        alertEmail: "admin@nashvillesiteworks.com",
+        alertEmail: "info@southernstormshelters.com",
         officePhone: "615-991-2361",
-        smsTemplate: "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you during the {Time} to discuss your {Type} installation.",
+        smsTemplate: "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you to discuss your {Type} installation.",
         emailAlert: true,
         smsAlert: true,
         maintenanceMode: false,
-        weekdays: "Open 24/7",
-        saturdays: "Open 24/7",
-        sundays: "Open 24/7 (Emergency Response)"
+        weekdays: "Monday–Friday: 8:00 AM – 5:00 PM",
+        saturdays: "Saturday: By Appointment",
+        sundays: "Sunday: Closed"
       };
 
       if (method === "GET") {

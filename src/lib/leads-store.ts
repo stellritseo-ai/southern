@@ -966,18 +966,18 @@ export const getSiteSettings = async (): Promise<SiteSettings> => {
     return await apiCall<SiteSettings>("/api/settings?t=" + Date.now(), "GET");
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage settings:", err);
-    let email = getStorageItem("shelter_settings_alertEmail", "admin@nashvillesiteworks.com");
+    let email = getStorageItem("shelter_settings_alertEmail", "info@southernstormshelters.com");
     let phone = getStorageItem("shelter_settings_officePhone", "615-991-2361");
     return {
       alertEmail: email,
       officePhone: phone,
-      smsTemplate: getStorageItem("shelter_settings_smsTemplate", "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you during the {Time} to discuss your {Type} installation."),
+      smsTemplate: getStorageItem("shelter_settings_smsTemplate", "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you to discuss your {Type} installation."),
       emailAlert: getStorageItem("shelter_settings_emailAlert", "true") === "true",
       smsAlert: getStorageItem("shelter_settings_smsAlert", "true") === "true",
       maintenanceMode: getStorageItem("shelter_settings_maintenanceMode", "false") === "true",
-      weekdays: getStorageItem("shelter_settings_weekdays", "Open 24/7"),
-      saturdays: getStorageItem("shelter_settings_saturdays", "Open 24/7"),
-      sundays: getStorageItem("shelter_settings_sundays", "Open 24/7 (Emergency Response)")
+      weekdays: getStorageItem("shelter_settings_weekdays", "Monday–Friday: 8:00 AM – 5:00 PM"),
+      saturdays: getStorageItem("shelter_settings_saturdays", "Saturday: By Appointment"),
+      sundays: getStorageItem("shelter_settings_sundays", "Sunday: Closed")
     };
   }
 };

@@ -1,50 +1,50 @@
 import { motion } from "framer-motion";
-
-import { Phone, Clock, ShieldCheck, CheckCircle2, AlertTriangle, Zap, ArrowRight, MapPin } from "lucide-react";
+import { Phone, Clock, ShieldCheck, CheckCircle2, ArrowRight, MapPin, HardHat, Wrench } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
+import { SITE_CONFIG } from "@/config/site-config";
 import grangerInstallImg from "@/assets/granger-install.jpg";
 
 export function EmergencyCTA() {
   const { t } = useLanguage();
   const trustBadges = [
     {
-      icon: Clock,
-      title: t("Business Hours", "Horario de Atención"),
-      subtitle: t("Mon-Sat: 8:00 AM-5:00 PM", "Lun-Sáb: 8:00 AM-5:00 PM"),
+      icon: HardHat,
+      title: t("Turnkey Construction", "Construcción Llave en Mano"),
+      subtitle: t("Excavation to Backfill", "Excavación y Relleno"),
+    },
+    {
+      icon: Wrench,
+      title: t("Precision Crane Placement", "Colocación con Grúa"),
+      subtitle: t("Single-Day Turnkey Installs", "Instalación en un Solo Día"),
     },
     {
       icon: MapPin,
-      title: t("Nashville, TN", "Nashville, TN"),
-      subtitle: t("Local Installations", "Instalaciones Locales"),
-    },
-    {
-      icon: ShieldCheck,
-      title: t("Professional Installation", "Instalación Profesional"),
-      subtitle: t("In-Ground & Custom Built", "Subterráneo y Personalizado"),
+      title: t("Nashville & Middle TN", "Nashville y Middle TN"),
+      subtitle: t("Local Crew & Equipment", "Personal y Equipos Locales"),
     },
   ];
 
   return (
     <section
-      className="relative w-full overflow-hidden py-[50px] text-white bg-[#0b0f15] border-y border-slate-500/30"
-      style={{ paddingTop: "50px", paddingBottom: "50px" }}
+      className="relative w-full overflow-hidden py-[50px] text-white bg-[#0b0f15] border-y border-slate-800"
+      style={{ paddingTop: "56px", paddingBottom: "56px" }}
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
         <img
           src={grangerInstallImg}
-          alt="Storm shelter installation"
-          className="h-full w-full object-cover scale-105 filter brightness-50 contrast-110 select-none"
+          alt="Storm shelter installation and excavation"
+          className="h-full w-full object-cover scale-105 filter brightness-40 contrast-115 select-none"
         />
 
         {/* Overlays for text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/80 via-[#0b0f15]/50 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/80 via-transparent to-[#0b0f15]/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/90 via-[#0b0f15]/65 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/90 via-transparent to-[#0b0f15]/50" />
 
         {/* Ambient Glowing Blobs */}
-        <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 rounded-full bg-slate-400/10 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-10 w-96 h-96 rounded-full bg-slate-500/10 blur-3xl pointer-events-none" />
       </div>
 
@@ -53,17 +53,17 @@ export function EmergencyCTA() {
 
           {/* Left Content Column */}
           <div className="lg:col-span-7 space-y-5 sm:space-y-6 text-left w-full min-w-0 max-w-full">
-            {/* Eyebrow Live Badge */}
+            {/* Eyebrow Construction Badge */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 sm:gap-2.5 rounded-full bg-black/70 backdrop-blur-xl border border-slate-500/50 px-3.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-black uppercase tracking-wider sm:tracking-widest text-slate-300 shadow-lg max-w-full"
+              className="inline-flex items-center gap-2 sm:gap-2.5 rounded-full bg-black/70 backdrop-blur-xl border border-amber-500/40 px-3.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-black uppercase tracking-wider sm:tracking-widest text-amber-300 shadow-lg max-w-full"
             >
               <span className="flex items-center gap-1.5 truncate">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span className="truncate">{t("Locally Owned and Operated", "De Propiedad Local")}</span>
+                <HardHat className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span className="truncate">{t("Master Construction & Site Specialists", "Especialistas en Construcción")}</span>
               </span>
             </motion.div>
 
@@ -76,12 +76,12 @@ export function EmergencyCTA() {
               className="font-display font-black tracking-tight leading-[1.2] text-white max-w-3xl"
             >
               <span className="block text-[28px] sm:text-[32px] lg:text-[36px] xl:text-[40px] whitespace-normal lg:whitespace-nowrap">
-                {t("Where Will Your Family Go", "A Dónde Irá Su Familia")}
+                {t("Built for Protection.", "Construido para Proteger.")}
               </span>
               <span
-                className="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-white to-slate-400 text-[18px] sm:text-[24px] lg:text-[28px] leading-tight mb-2 lg:-mb-[14px]"
+                className="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-[18px] sm:text-[24px] lg:text-[28px] leading-tight mb-2 lg:-mb-[14px]"
               >
-                {t("When Severe Weather Strikes?", "Cuando el Clima Severo Golpee?")}
+                {t("Engineered by Local Craftsmen.", "Diseñado por Artesanos Locales.")}
               </span>
             </motion.h2>
 
@@ -91,9 +91,12 @@ export function EmergencyCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[13.5px] sm:text-base lg:text-lg text-slate-300 max-w-xl leading-relaxed font-normal"
+              className="text-[13.5px] sm:text-base lg:text-lg text-slate-200 max-w-xl leading-relaxed font-normal"
             >
-              {t("Tornadoes and freak storms kill hundreds each year and are notoriously unpredictable. Don't wait for the warning sirens. Preparation should start before you ever request a quote. Ensure your family has near-absolute protection with our industry-leading underground shelters.", "Los tornados y las tormentas repentinas matan a cientos cada año y son notoriamente impredecibles. No espere a las sirenas de advertencia. La preparación debe comenzar antes de que solicite una cotización. Asegure a su familia con nuestros refugios.")}
+              {t(
+                "Proper underground shelter installation requires specialized excavation equipment, accurate soil and slope assessment, and precision crane placement. Our experienced Nashville construction crew manages every phase from initial yard grading to clean, turn-key backfill.",
+                "La instalación adecuada de un refugio subterráneo requiere maquinaria especializada, análisis del terreno y colocación precisa con grúa. Nuestro equipo maneja cada fase con excelencia."
+              )}
             </motion.p>
 
             {/* Feature Cards — Infinite Auto Scrolling Marquee */}
@@ -113,9 +116,9 @@ export function EmergencyCTA() {
                   return (
                     <div
                       key={idx}
-                      className="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-slate-500/40 hover:bg-white/10 transition-all duration-300 shrink-0 select-none shadow-sm cursor-default"
+                      className="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-amber-500/40 hover:bg-white/10 transition-all duration-300 shrink-0 select-none shadow-sm cursor-default"
                     >
-                      <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-slate-500/20 text-slate-300 shrink-0 border border-slate-500/30">
+                      <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-amber-500/20 text-amber-300 shrink-0 border border-amber-500/30">
                         <Icon className="h-4 w-4" />
                       </div>
                       <div className="flex flex-col text-left whitespace-nowrap">
@@ -145,28 +148,28 @@ export function EmergencyCTA() {
             {/* Primary Phone Action Card */}
             <div className="relative group w-full max-w-md">
               {/* Glowing Aura Effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-slate-600 via-slate-400 to-slate-600 rounded-[24px] sm:rounded-[28px] blur-md opacity-30 group-hover:opacity-60 transition duration-500" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-700 rounded-[24px] sm:rounded-[28px] blur-md opacity-25 group-hover:opacity-50 transition duration-500" />
 
               <a
-                href="tel:6159912361"
-                className="relative flex flex-col sm:flex-row items-center justify-between gap-3.5 sm:gap-4 rounded-[20px] sm:rounded-[24px] bg-[#0b0f15] border border-slate-500/60 p-4 sm:p-6 lg:p-7 shadow-2xl hover:scale-[1.02] transition-all duration-300 w-full text-left cursor-pointer"
+                href={`tel:${SITE_CONFIG.phoneRaw}`}
+                className="relative flex flex-col sm:flex-row items-center justify-between gap-3.5 sm:gap-4 rounded-[20px] sm:rounded-[24px] bg-[#0b0f15] border border-slate-700 p-4 sm:p-6 lg:p-7 shadow-2xl hover:scale-[1.02] transition-all duration-300 w-full text-left cursor-pointer"
               >
                 <div className="flex items-center gap-3.5 sm:gap-4 justify-start text-left w-full sm:w-auto">
                   <span className="relative grid place-items-center h-12 w-12 sm:h-14 sm:w-14 rounded-xl sm:rounded-2xl bg-amber-500 border border-amber-400/50 shrink-0 shadow-lg">
-                    <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-amber-950 animate-bounce" />
+                    <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-slate-950" />
                   </span>
                   <div className="flex flex-col min-w-0">
-                    <span className="text-[9.5px] sm:text-[10px] uppercase tracking-wider sm:tracking-widest text-slate-400 font-black flex items-center gap-1.5 truncate">
-                      <span className="truncate">{t("Call Us Today", "Llámenos Hoy")}</span>
+                    <span className="text-[9.5px] sm:text-[10px] uppercase tracking-wider sm:tracking-widest text-amber-300 font-bold flex items-center gap-1.5 truncate">
+                      <span className="truncate">{t("Direct Project Line", "Línea Directa")}</span>
                     </span>
                     <span className="text-[20px] sm:text-[24px] font-display font-black leading-tight tracking-tight mt-0.5 sm:mt-1 text-white whitespace-nowrap">
-                      (615) 991-2361
+                      {SITE_CONFIG.phone}
                     </span>
                   </div>
                 </div>
 
                 <div className="w-full sm:w-auto flex justify-end">
-                  <span className="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl bg-amber-500 text-amber-950 text-xs font-black uppercase tracking-wider shadow-md group-hover:bg-amber-600 group-hover:text-amber-50 transition-colors">
+                  <span className="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl bg-amber-500 text-slate-950 text-xs font-black uppercase tracking-wider shadow-md group-hover:bg-amber-400 transition-colors">
                     {t("Call Now", "Llamar")}
                   </span>
                 </div>
@@ -182,16 +185,16 @@ export function EmergencyCTA() {
                 className="w-full rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-slate-900 font-extrabold text-xs sm:text-sm py-3.5 sm:py-4 px-4 sm:px-8 shadow-lg whitespace-normal sm:whitespace-nowrap h-auto justify-center text-center flex items-center gap-2"
               >
                 <Link to="/free-quote">
-                  <span>{t("Request a Free Estimate Online", "Solicitar Estimación en Línea")}</span>
+                  <span>{t("Schedule On-Site Property Evaluation", "Programar Evaluación en el Sitio")}</span>
                   <ArrowRight className="w-4 h-4 shrink-0" />
                 </Link>
               </Button>
             </div>
 
             {/* Micro-trust glass badge */}
-            <div className="flex items-center gap-2 sm:gap-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-slate-500/20 px-3.5 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs text-slate-300 w-full max-w-md justify-center shadow-md text-center">
-              <MapPin className="h-4 w-4 text-emerald-400 shrink-0" />
-              <span className="font-semibold">{t("Proudly Serving Nashville, TN", "Sirviendo a Nashville, TN")}</span>
+            <div className="flex items-center gap-2 sm:gap-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-slate-700/60 px-3.5 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs text-slate-300 w-full max-w-md justify-center shadow-md text-center">
+              <ShieldCheck className="h-4 w-4 text-amber-400 shrink-0" />
+              <span className="font-semibold">{t("Middle Tennessee's Trusted Shelter Builders", "Constructores de Confianza en Tennessee")}</span>
             </div>
           </motion.div>
 

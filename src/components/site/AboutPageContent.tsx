@@ -15,6 +15,7 @@ import {
   Star,
   ArrowRight,
   FileCheck,
+  HardHat,
   AlertTriangle,
   Search,
   Wrench,
@@ -164,27 +165,27 @@ export function AboutPageContent() {
 
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-6 text-left">
-              <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider text-[#DC2626]">
-                <AlertTriangle className="w-4 h-4 text-[#DC2626]" />
-                {t("Where Will Your Family Go?", "¿A Dónde Irá Su Familia?")}
+              <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider text-amber-800">
+                <HardHat className="w-4 h-4 text-amber-600" />
+                {t("Engineered Underground Protection", "Protección Subterránea Diseñada")}
               </div>
 
               <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-black tracking-tight text-[#0B0F15] leading-[1.22]">
-                {t("Severe Weather is Notoriously Unpredictable.", "El Clima Severo es Notoriamente Impredecible.")}{" "}
-                <span className="text-[#DC2626]">
-                  {t("The Smartest Thing is to Be Prepared.", "Lo Más Inteligente es Estar Preparado.")}
+                {t("Built for Middle Tennessee Storm Seasons.", "Construido para las Temporadas de Tormentas en Middle Tennessee.")}{" "}
+                <span className="text-amber-600">
+                  {t("Precision Excavation & Installation.", "Excavación e Instalación de Precisión.")}
                 </span>
               </h2>
 
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
                 {t(
-                  "We have elaborate warning systems and extensive media coverage, yet hundreds are still killed each year, with thousands more injured and property loss routinely in the billions. The smartest thing you can do for your family is to be prepared.",
-                  "Tenemos sistemas de alerta avanzados y amplia cobertura mediática, pero cientos mueren cada año, miles resultan heridos y las pérdidas materiales suman miles de millones. Lo más inteligente para su familia es estar preparado."
+                  "Middle Tennessee weather demands serious, permanent underground protection. As a specialized construction and excavation firm, Southern Storm Shelters installs proven rotationally molded storm shelters engineered for extreme weather resilience.",
+                  "El clima de Middle Tennessee exige una protección subterránea seria y permanente. Como empresa especializada en construcción y excavación, Southern Storm Shelters instala refugios moldeados por rotación probados y diseñados para resistir condiciones climáticas extremas."
                 )}
               </p>
 
-              <div className="p-6 rounded-2xl bg-slate-50 border-l-4 border-[#DC2626] border border-slate-200 shadow-sm space-y-3">
-                <div className="text-xs font-black uppercase tracking-wider text-[#DC2626]">
+              <div className="p-6 rounded-2xl bg-slate-50 border-l-4 border-amber-600 border border-slate-200 shadow-sm space-y-3">
+                <div className="text-xs font-black uppercase tracking-wider text-amber-800">
                   {t("Engineering Peace of Mind", "Ingeniería de Paz Mental")}
                 </div>
                 <p className="text-slate-800 text-base sm:text-lg font-bold leading-relaxed">
@@ -201,13 +202,13 @@ export function AboutPageContent() {
               {/* Quick Metrics Bar */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
                 <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                  <div className="text-2xl font-black text-[#DC2626]">100 mi</div>
+                  <div className="text-2xl font-black text-amber-600">100 mi</div>
                   <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mt-0.5">
                     {t("Service Radius", "Radio de Servicio")}
                   </div>
                 </div>
                 <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                  <div className="text-2xl font-black text-[#DC2626]">5+ Yrs</div>
+                  <div className="text-2xl font-black text-amber-600">5+ Yrs</div>
                   <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mt-0.5">
                     {t("Construction Exp", "Exp en Construcción")}
                   </div>
@@ -253,7 +254,7 @@ export function AboutPageContent() {
 
               {/* Floating Badge */}
               <div className="hidden sm:flex absolute -bottom-5 -left-5 bg-white p-4 rounded-2xl shadow-xl border border-slate-200 items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center text-[#DC2626]">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600">
                   <Tv className="w-5 h-5" />
                 </div>
                 <div>
@@ -287,7 +288,7 @@ export function AboutPageContent() {
               </div>
 
               <div className="mt-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-left">
-                <div className="flex items-center gap-2 text-[#DC2626] font-black text-xs uppercase tracking-wider">
+                <div className="flex items-center gap-2 text-amber-700 font-black text-xs uppercase tracking-wider">
                   <Shield className="w-4 h-4" />
                   {t("Patented Reverse Taper Design", "Diseño Cónico Invertido Patentado")}
                 </div>
@@ -302,7 +303,7 @@ export function AboutPageContent() {
 
             {/* Right Content */}
             <div className="lg:col-span-7 order-1 lg:order-2 space-y-6 text-left">
-              <span className="text-xs font-black uppercase tracking-widest text-[#DC2626] bg-red-500/10 px-3.5 py-1.5 rounded-full border border-red-500/20">
+              <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/20">
                 {t("Why Granger ISS?", "¿Por Qué Granger ISS?")}
               </span>
 
@@ -328,7 +329,7 @@ export function AboutPageContent() {
               <div className="grid sm:grid-cols-2 gap-4 pt-2">
                 <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-xs">
                   <div className="flex items-center gap-2 text-slate-900 font-black text-sm mb-1">
-                    <CheckCircle2 className="w-4 h-4 text-[#DC2626]" />
+                    <CheckCircle2 className="w-4 h-4 text-amber-600" />
                     {t("Will Never Float Out", "Nunca Flotará")}
                   </div>
                   <p className="text-slate-600 text-xs leading-relaxed">
@@ -341,7 +342,7 @@ export function AboutPageContent() {
 
                 <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-xs">
                   <div className="flex items-center gap-2 text-slate-900 font-black text-sm mb-1">
-                    <CheckCircle2 className="w-4 h-4 text-[#DC2626]" />
+                    <CheckCircle2 className="w-4 h-4 text-amber-600" />
                     {t("Limited Lifetime Warranty", "Garantía Limitada de por Vida")}
                   </div>
                   <p className="text-slate-600 text-xs leading-relaxed">
@@ -362,7 +363,7 @@ export function AboutPageContent() {
       <section className="py-16 sm:py-24 bg-white border-b border-slate-200/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-xs font-black uppercase tracking-widest text-[#DC2626] bg-red-500/10 px-3.5 py-1.5 rounded-full border border-red-500/20">
+            <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/20">
               {t("Engineered Beyond Standards", "Diseñado Más Allá de las Normas")}
             </span>
             <h2 className="mt-3 font-display text-2xl sm:text-3xl lg:text-[34px] font-black text-[#0B0F15] tracking-tight leading-[1.22]">
@@ -382,14 +383,14 @@ export function AboutPageContent() {
               return (
                 <div
                   key={idx}
-                  className="bg-slate-50 hover:bg-white p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-red-500/30 transition-all duration-300 flex flex-col justify-between text-left group"
+                  className="bg-slate-50 hover:bg-white p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-amber-500/30 transition-all duration-300 flex flex-col justify-between text-left group"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
-                      <div className="w-12 h-12 rounded-2xl bg-red-500/10 group-hover:bg-[#DC2626] group-hover:text-white text-[#DC2626] flex items-center justify-center transition-colors duration-300">
+                      <div className="w-12 h-12 rounded-2xl bg-amber-500/10 group-hover:bg-amber-600 group-hover:text-white text-amber-700 flex items-center justify-center transition-colors duration-300">
                         <Icon className="w-6 h-6" />
                       </div>
-                      <span className="text-[11px] font-black uppercase tracking-wider text-[#DC2626] bg-red-500/10 px-3 py-1 rounded-full">
+                      <span className="text-[11px] font-black uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
                         {feat.badge}
                       </span>
                     </div>
@@ -404,7 +405,7 @@ export function AboutPageContent() {
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-slate-200/70 flex items-center gap-2 text-xs font-bold text-slate-500">
-                    <CheckCircle2 className="w-4 h-4 text-[#DC2626]" />
+                    <CheckCircle2 className="w-4 h-4 text-amber-600" />
                     <span>{feat.highlight}</span>
                   </div>
                 </div>
@@ -417,7 +418,7 @@ export function AboutPageContent() {
       {/* ── SECTION 4: EASIEST INSTALLATION & PROFESSIONAL EXECUTION ── */}
       <section className="py-16 sm:py-24 bg-[#0B0F15] text-white relative overflow-hidden">
         {/* Ambient background glows */}
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-red-600/10 blur-[130px] pointer-events-none" />
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-amber-600/10 blur-[130px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-amber-500/10 blur-[130px] pointer-events-none" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -515,7 +516,7 @@ export function AboutPageContent() {
               </div>
 
               <div className="mt-4 bg-slate-50 p-5 rounded-2xl border border-slate-200 text-left">
-                <div className="text-xs font-black uppercase tracking-wider text-[#DC2626]">
+                <div className="text-xs font-black uppercase tracking-wider text-amber-700">
                   {t("Blends with Your Landscaping", "Combina con Su Paisajismo")}
                 </div>
                 <p className="text-xs text-slate-600 mt-1 leading-relaxed font-medium">
@@ -529,7 +530,7 @@ export function AboutPageContent() {
 
             {/* Right Content */}
             <div className="lg:col-span-7 space-y-6 text-left">
-              <span className="text-xs font-black uppercase tracking-widest text-[#DC2626] bg-red-500/10 px-3.5 py-1.5 rounded-full border border-red-500/20">
+              <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/20">
                 {t("Architectural Integration", "Integración Arquitectónica")}
               </span>
 
@@ -552,7 +553,7 @@ export function AboutPageContent() {
                   t("Adds tangible resale value to your Tennessee property", "Añade valor de reventa tangible a su propiedad en Tennessee"),
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 text-sm text-slate-800 font-semibold">
-                    <CheckCircle2 className="w-5 h-5 text-[#DC2626] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -567,7 +568,7 @@ export function AboutPageContent() {
       <section className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200/80 text-center">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="space-y-4">
-            <span className="text-xs font-black uppercase tracking-widest text-[#DC2626] bg-red-500/10 px-4 py-1.5 rounded-full border border-red-500/20">
+            <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-4 py-1.5 rounded-full border border-amber-500/20">
               {t("Our Commitment to Tennessee", "Nuestro Compromiso con Tennessee")}
             </span>
 
@@ -589,10 +590,10 @@ export function AboutPageContent() {
               )}
             </p>
 
-            <p className="text-xl sm:text-2xl font-black text-[#DC2626] pt-2">
+            <p className="text-xl sm:text-2xl font-black text-amber-700 pt-2">
               {t(
-                "Don’t wait for the warning sirens. Unleash yourself, relax yourself, and rest assured.",
-                "No espere a que suenen las sirenas de advertencia. Libérese, relájese y descanse tranquilo."
+                "Engineered for generational protection. Built by Middle Tennessee craftsmen.",
+                "Diseñado para una protección generacional. Construido por artesanos de Middle Tennessee."
               )}
             </p>
           </div>
@@ -601,7 +602,7 @@ export function AboutPageContent() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Link
               to="/free-quote"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#DC2626] hover:bg-[#B91C1C] text-white font-black text-sm uppercase tracking-wider px-8 py-4 rounded-xl shadow-lg transition-all active:scale-95 cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-slate-950 font-black text-sm uppercase tracking-wider px-8 py-4 rounded-xl shadow-lg shadow-amber-600/20 transition-all active:scale-95 cursor-pointer"
             >
               <span>{t("Request a Free Estimate", "Solicitar Estimación Gratuita")}</span>
               <ArrowRight className="w-4 h-4" />
@@ -618,8 +619,8 @@ export function AboutPageContent() {
 
           <div className="text-xs text-slate-400 font-semibold pt-4">
             {t(
-              "Southern Storm Shelters LLC · Licensed, Insured & Bonded · Nashville, TN",
-              "Southern Storm Shelters LLC · Licenciado, Asegurado y Afianzado · Nashville, TN"
+              "Southern Storm Shelters LLC · Fully Insured Installation Crews · Nashville, TN",
+              "Southern Storm Shelters LLC · Cuadrillas de Instalación Totalmente Aseguradas · Nashville, TN"
             )}
           </div>
         </div>

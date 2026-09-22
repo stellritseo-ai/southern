@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/site/PageHeader";
 import { ReviewsPageContent } from "@/components/site/ReviewsPageContent";
 import { Toaster } from "@/components/ui/sonner";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SITE_CONFIG } from "@/config/site-config";
 
 function ReviewsPage() {
   const { t } = useLanguage();
@@ -30,8 +31,8 @@ function ReviewsPage() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Southern Storm Shelters LLC",
-    "telephone": "+16159912381",
-    "email": "admin@nashvillesiteworks.com",
+    "telephone": SITE_CONFIG.phoneRaw,
+    "email": SITE_CONFIG.email,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "2000 Meridian Blvd, Suite 200",

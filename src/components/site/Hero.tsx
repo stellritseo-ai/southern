@@ -4,6 +4,7 @@ import { ArrowRight, Hammer, Check, MapPin, Phone, HardHat } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SITE_CONFIG } from "@/config/site-config";
 import heroImgNew from "@/assets/gallery/2.png";
 import heroImg1 from "@/assets/gallery/Professional Installation.jpg";
 import heroImg2 from "@/assets/gallery/5.png";
@@ -57,7 +58,7 @@ export function Hero() {
 
       {/* Subtle atmospheric glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/3 h-80 w-80 rounded-full bg-slate-400/10 blur-3xl animate-blob" />
+        <div className="absolute top-1/4 left-1/3 h-80 w-80 rounded-full bg-amber-500/10 blur-3xl animate-blob" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pt-20 w-full flex justify-start">
@@ -73,33 +74,36 @@ export function Hero() {
 
           {/* Main Headline */}
           <h1 className="mt-4 sm:mt-5 font-display font-extrabold tracking-tight leading-[1.2] sm:leading-[1.25]">
-            <span className="block text-[18px] sm:text-[24px] md:text-[28px] lg:text-[32px] text-amber-400 mb-2">
-              {t("America's Leading Storm Shelters", "Refugios Líderes en América")}
+            <span className="block text-[18px] sm:text-[24px] md:text-[28px] lg:text-[32px] text-amber-400 mb-2 font-black">
+              {t("Turnkey Underground Storm Shelters", "Refugios Subterráneos Llave en Mano")}
             </span>
             <span className="block text-[24px] sm:text-[32px] md:text-[40px] lg:text-[46px] whitespace-normal sm:whitespace-nowrap leading-tight">
-              {t("Does Your Family Have a ", "Tiene su Familia un ")}
+              {t("Engineered Underground Shelters. ", "Refugios Subterráneos Diseñados. ")}
             </span>
             <span className="block text-[24px] sm:text-[32px] md:text-[40px] lg:text-[46px] whitespace-normal sm:whitespace-nowrap leading-tight">
-              {t("Safe Place to ", "Lugar Seguro para ")}
-              <span className="gradient-text-orange">{t("Take Shelter?", "Refugiarse?")}</span>
+              {t("Built to Protect ", "Construidos para Proteger ")}
+              <span className="gradient-text-construction">{t("Generations.", "Generaciones.")}</span>
             </span>
           </h1>
 
           {/* Description */}
           <p className="max-w-2xl mt-4 mb-0 text-slate-200 text-[14px] sm:text-[15px] md:text-[17px] leading-relaxed font-normal">
-            {t("Severe weather is notoriously unpredictable. The smartest thing you can do for your family is to be prepared. We build and install heavy-gauge steel and custom concrete underground shelters in Nashville, TN—engineered for a lifetime of near-absolute protection.", "El clima severo es notoriamente impredecible. Lo más inteligente que puede hacer por su familia es estar preparado. Construimos e instalamos refugios de acero de calibre grueso y de concreto en Nashville, TN, diseñados para toda una vida de protección.")}
+            {t(
+              "Southern Storm Shelters LLC specializes in precision site excavation, crane placement, and engineered residential storm shelters across Nashville and Middle Tennessee. From on-site soil evaluation to clean backfill, our experienced construction crew delivers permanent protection with zero guesswork.",
+              "Southern Storm Shelters LLC se especializa en excavación de precisión, colocación con grúa y refugios residenciales en Nashville y Middle Tennessee. Desde la evaluación del suelo hasta el acabado llave en mano."
+            )}
           </p>
 
           {/* CTA Buttons */}
           <div className="mt-6 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 w-full sm:w-auto">
-            <Button variant="hero" size="xl" asChild className="w-full sm:w-auto justify-center bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-lg btn-glow">
+            <Button variant="hero" size="xl" asChild className="w-full sm:w-auto justify-center bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black shadow-lg btn-glow border border-amber-400/50">
               <Link to="/free-quote">
-                📋 {t("Get a Free Estimate", "Solicitar Estimación Gratis")} <ArrowRight className="h-4 w-4" />
+                📋 {t("Request On-Site Evaluation", "Solicitar Evaluación en el Sitio")} <ArrowRight className="h-4 w-4 ml-1" />
               </Link>
             </Button>
-            <Button variant="heroOutline" size="xl" asChild className="w-full sm:w-auto justify-center border-white/40 bg-white/10 hover:bg-white/20 text-white backdrop-blur-md">
-              <a href="tel:+16159912361">
-                <Phone className="h-4 w-4 text-slate-300" /> (615) 991-2361
+            <Button variant="heroOutline" size="xl" asChild className="w-full sm:w-auto justify-center border-white/30 bg-black/40 hover:bg-white/10 text-white backdrop-blur-md">
+              <a href={`tel:${SITE_CONFIG.phoneRaw}`}>
+                <Phone className="h-4 w-4 text-amber-400" /> {SITE_CONFIG.phone}
               </a>
             </Button>
           </div>

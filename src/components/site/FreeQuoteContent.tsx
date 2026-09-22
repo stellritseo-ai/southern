@@ -36,6 +36,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { useLanguage } from "@/hooks/useLanguage";
 import { addWebEmail } from "@/lib/leads-store";
+import { SITE_CONFIG } from "@/config/site-config";
 
 export function FreeQuoteContent() {
   const { t } = useLanguage();
@@ -241,17 +242,17 @@ export function FreeQuoteContent() {
   ];
 
   return (
-    <div className="bg-white text-slate-900 overflow-hidden selection:bg-red-600 selection:text-white">
+    <div className="bg-white text-slate-900 overflow-hidden selection:bg-amber-600 selection:text-white">
 
       {/* ── SECTION 1: WHAT TO EXPECT FROM YOUR FREE ESTIMATE ─────────────── */}
       <section className="relative py-16 sm:py-20 lg:py-24 border-b border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-50">
-        <div aria-hidden className="absolute top-0 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
-        <div aria-hidden className="absolute bottom-0 left-10 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div aria-hidden className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div aria-hidden className="absolute bottom-0 left-10 w-96 h-96 bg-slate-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-widest mb-4">
-              <Calculator className="w-3.5 h-3.5 text-red-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-4">
+              <Calculator className="w-3.5 h-3.5 text-amber-600" />
               <span>{t("Transparent & Comprehensive", "Transparente y Completo")}</span>
             </div>
 
@@ -261,8 +262,8 @@ export function FreeQuoteContent() {
 
             <p className="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed">
               {t(
-                "We don't just hand you a number. We provide a complete assessment based on your specific property and needs. Severe weather is notoriously unpredictable—the smartest thing you can do for your family is to be prepared.",
-                "No solo le damos un número. Brindamos una evaluación completa basada en su propiedad y necesidades específicas. El clima severo es impredecible: lo más inteligente para su familia es estar preparado."
+                "We don't just hand you a number. We provide a complete site assessment based on your specific property and soil conditions. Turnkey underground shelter installation with clear scope and pricing.",
+                "No solo le damos un número. Brindamos una evaluación completa del terreno basada en su propiedad y condiciones del suelo. Instalación subterránea llave en mano con alcance y precios transparentes."
               )}
             </p>
           </div>
@@ -273,19 +274,19 @@ export function FreeQuoteContent() {
               return (
                 <div
                   key={pillar.step}
-                  className="rounded-3xl bg-white border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-red-500/40 hover:shadow-xl transition-all duration-300 relative group shadow-xs"
+                  className="rounded-3xl bg-white border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-amber-500/40 hover:shadow-xl transition-all duration-300 relative group shadow-xs"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
-                      <span className="text-3xl font-black text-slate-200 group-hover:text-red-600 transition-colors">
+                      <span className="text-3xl font-black text-slate-200 group-hover:text-amber-600 transition-colors">
                         {pillar.step}
                       </span>
-                      <div className="w-12 h-12 rounded-2xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center shadow-xs">
+                      <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center shadow-xs">
                         <Icon className="w-6 h-6" />
                       </div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-amber-700 transition-colors">
                       {pillar.title}
                     </h3>
                     <p className="text-xs font-semibold text-slate-500 mb-4">{pillar.subtitle}</p>
@@ -293,7 +294,7 @@ export function FreeQuoteContent() {
                     <ul className="space-y-3">
                       {pillar.points.map((pt, i) => (
                         <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                          <CheckCircle2 className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
                           <span>{pt}</span>
                         </li>
                       ))}
@@ -363,11 +364,11 @@ export function FreeQuoteContent() {
                     {t("Submit Another Request", "Enviar Otra Solicitud")}
                   </Button>
                   <a
-                    href="tel:6159912381"
-                    className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-2.5 rounded-xl transition shadow-lg shadow-red-600/20 text-sm"
+                    href={`tel:${SITE_CONFIG.phoneRaw}`}
+                    className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-bold px-6 py-2.5 rounded-xl transition shadow-lg shadow-amber-600/20 text-sm"
                   >
                     <Phone className="w-4 h-4" />
-                    <span>{t("Call (615) 991-2381 Now", "Llamar al (615) 991-2381")}</span>
+                    <span>{t(`Call ${SITE_CONFIG.phone} Now`, `Llamar al ${SITE_CONFIG.phone}`)}</span>
                   </a>
                 </div>
               </motion.div>
@@ -377,7 +378,7 @@ export function FreeQuoteContent() {
                 {/* 1. Contact Information */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                    <span className="w-7 h-7 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-xs">
+                    <span className="w-7 h-7 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">
                       1
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900">
@@ -394,7 +395,7 @@ export function FreeQuoteContent() {
                         id="fullName"
                         required
                         placeholder={t("e.g. John Miller", "ej. Juan Pérez")}
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -407,7 +408,7 @@ export function FreeQuoteContent() {
                         type="tel"
                         required
                         placeholder="(615) 000-0000"
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -420,7 +421,7 @@ export function FreeQuoteContent() {
                         type="email"
                         required
                         placeholder="john@example.com"
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -438,7 +439,7 @@ export function FreeQuoteContent() {
                               onClick={() => setPreferredContact(method)}
                               className={`py-2 px-1 text-center rounded-xl border text-xs font-bold transition cursor-pointer ${
                                 isSelected
-                                  ? "bg-red-600 text-white border-red-600 shadow-sm"
+                                  ? "bg-amber-600 text-white border-amber-600 shadow-sm"
                                   : "bg-white text-slate-700 border-slate-300 hover:border-slate-400"
                               }`}
                             >
@@ -457,7 +458,7 @@ export function FreeQuoteContent() {
                 {/* 2. Property Information */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                    <span className="w-7 h-7 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-xs">
+                    <span className="w-7 h-7 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">
                       2
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900">
@@ -474,7 +475,7 @@ export function FreeQuoteContent() {
                         id="propertyAddress"
                         required
                         placeholder={t("123 Street Name", "Calle y Número")}
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -486,7 +487,7 @@ export function FreeQuoteContent() {
                         id="city"
                         required
                         placeholder="Nashville"
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -499,7 +500,7 @@ export function FreeQuoteContent() {
                           id="state"
                           required
                           defaultValue="TN"
-                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl text-center font-bold"
+                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl text-center font-bold"
                         />
                       </div>
                       <div>
@@ -510,7 +511,7 @@ export function FreeQuoteContent() {
                           id="zipCode"
                           required
                           placeholder="37201"
-                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:ring-red-600 h-11 text-sm rounded-xl"
+                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
                         />
                       </div>
                     </div>
@@ -520,7 +521,7 @@ export function FreeQuoteContent() {
                 {/* 3. Additional Information */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                    <span className="w-7 h-7 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-xs">
+                    <span className="w-7 h-7 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">
                       3
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900">
@@ -540,7 +541,7 @@ export function FreeQuoteContent() {
                           "Yard slope, gate access width, buried utilities, underground sprinkler systems, patio or yard placement...",
                           "Pendiente del patio, ancho de portón, rociadores, servicios subterráneos..."
                         )}
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs rounded-xl focus:border-red-600 focus:ring-red-600"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
                       />
                     </div>
 
@@ -555,7 +556,7 @@ export function FreeQuoteContent() {
                           "Custom color preferences, timing requirements, commercial safety specifications...",
                           "Preferencias de color, fechas específicas, requerimientos comerciales..."
                         )}
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs rounded-xl focus:border-red-600 focus:ring-red-600"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
                       />
                     </div>
                   </div>
@@ -600,7 +601,7 @@ export function FreeQuoteContent() {
                         value={otherReferral}
                         onChange={(e) => setOtherReferral(e.target.value)}
                         placeholder={t("Please specify...", "Por favor especifique...")}
-                        className="mt-2 bg-white border-slate-300 text-slate-900 text-xs rounded-xl h-10 focus:border-red-600 focus:ring-red-600"
+                        className="mt-2 bg-white border-slate-300 text-slate-900 text-xs rounded-xl h-10 focus:border-amber-600 focus:ring-amber-600"
                       />
                     )}
                   </div>
@@ -637,7 +638,7 @@ export function FreeQuoteContent() {
                             <button
                               type="button"
                               onClick={() => removeFile(idx)}
-                              className="text-slate-400 hover:text-red-600 transition"
+                              className="text-slate-400 hover:text-amber-600 transition"
                             >
                               <X className="w-3.5 h-3.5" />
                             </button>
@@ -653,7 +654,7 @@ export function FreeQuoteContent() {
                   <Button
                     type="submit"
                     disabled={submitting}
-                    className="w-full h-14 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white text-sm sm:text-base font-extrabold uppercase tracking-wider rounded-2xl shadow-lg shadow-red-600/20 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                    className="w-full h-14 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-sm sm:text-base font-extrabold uppercase tracking-wider rounded-2xl shadow-lg shadow-amber-600/20 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
                   >
                     {submitting ? (
                       t("Submitting Request...", "Enviando Solicitud...")
@@ -681,7 +682,7 @@ export function FreeQuoteContent() {
           {/* Quick Contact Box: Prefer to Call? */}
           <div className="mt-10 rounded-3xl bg-slate-900 text-white border border-slate-800 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-600/20 text-red-400 text-xs font-bold uppercase tracking-widest mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-600/20 text-amber-400 text-xs font-bold uppercase tracking-widest mb-2">
                 <Phone className="w-3 h-3" />
                 <span>{t("Prefer to Call?", "¿Prefiere Llamar Directamente?")}</span>
               </div>
@@ -689,18 +690,15 @@ export function FreeQuoteContent() {
                 {t("We're happy to answer your questions directly.", "Con gusto respondemos sus preguntas de inmediato.")}
               </h3>
               <p className="mt-1 text-xs text-slate-400">
-                {t(
-                  "Hours: Monday–Friday: 8:00 AM – 5:00 PM | Saturday: By Appointment",
-                  "Horario: Lunes a Viernes: 8:00 AM – 5:00 PM | Sábado: Con Cita Previa"
-                )}
+                {SITE_CONFIG.operatingHours.scheduleText}
               </p>
             </div>
             <a
-              href="tel:6159912381"
-              className="inline-flex items-center gap-2.5 bg-red-600 hover:bg-red-700 text-white font-black px-7 py-3.5 rounded-2xl transition shadow-lg shadow-red-600/30 text-base shrink-0"
+              href={`tel:${SITE_CONFIG.phoneRaw}`}
+              className="inline-flex items-center gap-2.5 bg-amber-600 hover:bg-amber-700 text-white font-black px-7 py-3.5 rounded-2xl transition shadow-lg shadow-amber-600/30 text-base shrink-0"
             >
               <Phone className="w-5 h-5" />
-              <span>(615) 991-2381</span>
+              <span>{SITE_CONFIG.phone}</span>
             </a>
           </div>
 
@@ -712,8 +710,8 @@ export function FreeQuoteContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-widest mb-4">
-              <ShieldCheck className="w-3.5 h-3.5 text-red-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-4">
+              <ShieldCheck className="w-3.5 h-3.5 text-amber-600" />
               <span>{t("Construction Professionals", "Profesionales de la Construcción")}</span>
             </div>
 
@@ -731,9 +729,9 @@ export function FreeQuoteContent() {
               return (
                 <div
                   key={item.title}
-                  className="rounded-3xl bg-white border border-slate-200 p-8 hover:border-red-500/40 hover:shadow-xl transition-all duration-300 shadow-xs"
+                  className="rounded-3xl bg-white border border-slate-200 p-8 hover:border-amber-500/40 hover:shadow-xl transition-all duration-300 shadow-xs"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center mb-5">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mb-5">
                     <Icon className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
@@ -771,11 +769,11 @@ export function FreeQuoteContent() {
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-slate-900 hover:text-red-600 transition cursor-pointer"
+                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-slate-900 hover:text-amber-700 transition cursor-pointer"
                   >
                     <span>{faq.q}</span>
                     <ChevronDown
-                      className={`w-5 h-5 text-red-600 shrink-0 transition-transform duration-300 ${
+                      className={`w-5 h-5 text-amber-600 shrink-0 transition-transform duration-300 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                     />
@@ -816,59 +814,59 @@ export function FreeQuoteContent() {
                   )}
                 </p>
 
-                <blockquote className="mt-6 border-l-2 border-red-600 pl-4 text-sm font-semibold italic text-slate-700">
+                <blockquote className="mt-6 border-l-2 border-amber-500 pl-4 text-sm font-semibold italic text-slate-700">
                   {t(
-                    '"That\'s peace of mind, providing peace of mind for decades to come."',
-                    '"Eso es tranquilidad, brindando tranquilidad para las próximas décadas."'
+                    '"Engineered storm protection with professional crane placement and turnkey excavation."',
+                    '"Protección certificada contra tormentas con colocación profesional mediante grúa y excavación integral."'
                   )}
                 </blockquote>
               </div>
 
               <div className="space-y-4 rounded-2xl bg-slate-50 border border-slate-200 p-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">{t("Phone", "Teléfono")}</div>
-                    <a href="tel:6159912381" className="text-sm font-bold text-slate-900 hover:text-red-600 transition">
-                      (615) 991-2381
+                    <a href={`tel:${SITE_CONFIG.phoneRaw}`} className="text-sm font-bold text-slate-900 hover:text-amber-700 transition">
+                      {SITE_CONFIG.phone}
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">{t("Email", "Correo")}</div>
-                    <a href="mailto:admin@nashvillesiteworks.com" className="text-sm font-bold text-slate-900 hover:text-red-600 transition">
-                      admin@nashvillesiteworks.com
+                    <a href={`mailto:${SITE_CONFIG.email}`} className="text-sm font-bold text-slate-900 hover:text-amber-700 transition">
+                      {SITE_CONFIG.email}
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">{t("Address", "Dirección")}</div>
                     <div className="text-sm font-semibold text-slate-900">
-                      2000 Meridian Blvd, Suite 200, Franklin, TN 37067
+                      Nashville, TN
                     </div>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center shrink-0">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">{t("Operating Hours", "Horario de Atención")}</div>
                     <div className="text-sm font-semibold text-slate-900">
-                      {t("Monday–Friday: 8:00 AM – 5:00 PM | Saturday: By Appointment", "Lunes a Viernes: 8:00 AM – 5:00 PM | Sábado: Con Cita")}
+                      {SITE_CONFIG.operatingHours.scheduleText}
                     </div>
                   </div>
                 </div>

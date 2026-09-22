@@ -6,6 +6,7 @@ import { createChatSession, sendChatMessage, getChatSessionById, ChatMessage } f
 import { toast } from "sonner";
 import logoImg from "@/assets/logo-mark.png";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SITE_CONFIG } from "@/config/site-config";
 
 export function FloatingChat() {
   const { t } = useLanguage();
@@ -138,17 +139,17 @@ export function FloatingChat() {
             className="pointer-events-auto mb-4 w-[290px] sm:w-[350px] bg-white border border-slate-200 rounded-3xl shadow-[0_20px_50px_-12px_rgba(15,23,42,0.25)] overflow-hidden flex flex-col"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#0b0f15] via-[#111722] to-[#1e0a0d] p-4 text-white flex justify-between items-center border-b border-red-500/40">
+            <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-4 text-white flex justify-between items-center border-b border-amber-500/30">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center select-none overflow-hidden p-1 border-2 border-red-500 shadow-md">
+                  <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center select-none overflow-hidden p-1 border-2 border-amber-500 shadow-md">
                     <img src={logoImg} alt="Southern Storm Shelters Logo" className="w-full h-full object-contain" />
                   </div>
-                  <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-[#fbbf24] border-2 border-[#0b0f15] animate-pulse" />
+                  <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-amber-400 border-2 border-slate-900" />
                 </div>
                 <div className="flex flex-col text-left">
                   <span className="font-extrabold text-sm tracking-wide text-white">Storm Shelter Support</span>
-                  <span className="text-[10px] text-red-300 font-bold uppercase tracking-wider">Online · Nashville 100-Mile Dispatch</span>
+                  <span className="text-[10px] text-amber-300 font-bold uppercase tracking-wider">Project Consultation · Nashville & 100-Mi Radius</span>
                 </div>
               </div>
               <div className="flex items-center gap-1.5">
@@ -174,7 +175,7 @@ export function FloatingChat() {
             <div className="flex-1 p-4 h-[260px] overflow-y-auto bg-slate-50/50 flex flex-col gap-3">
               {/* Default Welcome Message */}
               <div className="flex gap-2.5 items-start">
-                <div className="w-7 h-7 rounded-xl bg-white flex items-center justify-center select-none shrink-0 overflow-hidden p-0.5 border border-red-200 shadow-sm">
+                <div className="w-7 h-7 rounded-xl bg-white flex items-center justify-center select-none shrink-0 overflow-hidden p-0.5 border border-slate-200 shadow-sm">
                   <img src={logoImg} alt="Southern Logo" className="w-full h-full object-contain" />
                 </div>
                 <div className="bg-white border border-slate-200/80 rounded-2xl rounded-tl-none p-3 shadow-sm text-left max-w-[82%]">
@@ -196,11 +197,11 @@ export function FloatingChat() {
                     className={`flex gap-2.5 items-start ${isAdmin ? "" : "flex-row-reverse"}`}
                   >
                     {isAdmin ? (
-                      <div className="w-7 h-7 rounded-xl bg-white flex items-center justify-center select-none shrink-0 overflow-hidden p-0.5 border border-red-200 shadow-sm">
+                      <div className="w-7 h-7 rounded-xl bg-white flex items-center justify-center select-none shrink-0 overflow-hidden p-0.5 border border-slate-200 shadow-sm">
                         <img src={logoImg} alt="Southern Logo" className="w-full h-full object-contain" />
                       </div>
                     ) : (
-                      <div className="w-7 h-7 rounded-full bg-[#dc2626] border border-red-400 flex items-center justify-center select-none shrink-0 text-[10px] font-black text-white capitalize">
+                      <div className="w-7 h-7 rounded-full bg-amber-600 border border-amber-500 flex items-center justify-center select-none shrink-0 text-[10px] font-black text-white capitalize">
                         {name.charAt(0) || "V"}
                       </div>
                     )}
@@ -208,7 +209,7 @@ export function FloatingChat() {
                       className={`rounded-2xl p-3 shadow-sm text-left max-w-[80%] border ${
                         isAdmin
                           ? "bg-white border-slate-200 text-slate-800 rounded-tl-none"
-                          : "bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white border-[#dc2626] rounded-tr-none"
+                          : "bg-gradient-to-r from-amber-600 to-amber-700 text-white border-amber-600 rounded-tr-none"
                       }`}
                     >
                       <p className="text-xs font-semibold leading-relaxed whitespace-pre-wrap">{msg.text}</p>
@@ -223,15 +224,16 @@ export function FloatingChat() {
             <div className="px-4 pb-4 pt-2 border-t border-slate-100 bg-white flex flex-col gap-2">
               {!sessionId && (
                 <>
-                  <div className="text-[10px] font-black uppercase text-slate-400 tracking-wider text-left pl-1">
-                    Direct Contact 24/7
+                  <div className="flex items-center justify-between text-[10px] font-black uppercase text-slate-400 tracking-wider pl-1">
+                    <span>Direct Project Line</span>
+                    <span className="text-amber-700 font-semibold">{SITE_CONFIG.operatingHours.shortBadge}</span>
                   </div>
                   <div className="grid grid-cols-1 gap-2">
                     <a
-                      href="tel:6159912361"
-                      className="flex items-center justify-center gap-2 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl py-2 px-2 text-xs font-extrabold text-[#dc2626] transition"
+                      href={`tel:${SITE_CONFIG.phoneRaw}`}
+                      className="flex items-center justify-center gap-2 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl py-2 px-2 text-xs font-extrabold text-amber-900 transition"
                     >
-                      <Phone className="h-3.5 w-3.5 text-[#dc2626] shrink-0" /> Call 615-991-2361
+                      <Phone className="h-3.5 w-3.5 text-amber-700 shrink-0" /> Call {SITE_CONFIG.phone}
                     </a>
                   </div>
                 </>
@@ -245,7 +247,7 @@ export function FloatingChat() {
                     placeholder="Your Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-base sm:text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-[#dc2626] transition"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-base sm:text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
                   />
                 )}
                 <div className="relative flex items-center">
@@ -255,12 +257,12 @@ export function FloatingChat() {
                     placeholder="Type a message..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50/50 pl-3 pr-10 py-2 text-base sm:text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-[#dc2626] transition"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50/50 pl-3 pr-10 py-2 text-base sm:text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
                   />
                   <button
                     type="submit"
                     disabled={isSubmitting || !message.trim() || (!sessionId && !name.trim())}
-                    className="absolute right-1.5 p-1.5 rounded-lg text-white bg-[#dc2626] hover:bg-[#b91c1c] transition disabled:opacity-50 cursor-pointer shadow-sm"
+                    className="absolute right-1.5 p-1.5 rounded-lg text-white bg-amber-600 hover:bg-amber-700 transition disabled:opacity-50 cursor-pointer shadow-sm"
                   >
                     <Send className="h-3 w-3" />
                   </button>
@@ -277,9 +279,9 @@ export function FloatingChat() {
         whileTap={{ scale: 0.94 }}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Open Chat"
-        className="pointer-events-auto relative h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-gradient-to-br from-[#dc2626] via-[#b91c1c] to-[#0b0f15] text-white flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 focus:outline-none select-none cursor-pointer overflow-hidden p-1 border-2 border-red-400"
+        className="pointer-events-auto relative h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-gradient-to-br from-amber-500 via-amber-600 to-slate-900 text-white flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 focus:outline-none select-none cursor-pointer overflow-hidden p-1 border-2 border-amber-400"
       >
-        <span className="absolute inset-0 rounded-full bg-red-600 opacity-40 animate-ping -z-10" />
+        <span className="absolute inset-0 rounded-full bg-amber-500 opacity-30 animate-ping -z-10" />
         {isOpen ? (
           <X className="h-7 w-7 text-white" />
         ) : (

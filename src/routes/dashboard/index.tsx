@@ -105,6 +105,7 @@ import {
   DashboardNotification
 } from "@/lib/leads-store";
 import { toast } from "sonner";
+import { SITE_CONFIG } from "@/config/site-config";
 import logo from "@/assets/logo.png";
 
 const formatChatTime = (timestamp: string) => {
@@ -221,15 +222,15 @@ function DashboardPage() {
   const [isViewingEmail, setIsViewingEmail] = useState(false);
 
   // Portal & Site Config States
-  const [alertEmail, setAlertEmail] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_alertEmail") : null) || "admin@nashvillesiteworks.com");
-  const [officePhone, setOfficePhone] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_officePhone") : null) || "615-991-2361");
+  const [alertEmail, setAlertEmail] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_alertEmail") : null) || SITE_CONFIG.email);
+  const [officePhone, setOfficePhone] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_officePhone") : null) || SITE_CONFIG.phone);
   const [smsTemplate, setSmsTemplate] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_smsTemplate") : null) || "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you to discuss your {Type} project.");
   const [emailAlert, setEmailAlert] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_emailAlert") !== "false" : true));
   const [smsAlert, setSmsAlert] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_smsAlert") !== "false" : true));
   const [maintenanceMode, setMaintenanceMode] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_maintenanceMode") === "true" : false));
-  const [weekdays, setWeekdays] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_weekdays") : null) || "Open 24/7 (Emergency Dispatch Available)");
-  const [saturdays, setSaturdays] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_saturdays") : null) || "Open 24/7 (Emergency Dispatch Available)");
-  const [sundays, setSundays] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_sundays") : null) || "Open 24/7 (Emergency Dispatch Available)");
+  const [weekdays, setWeekdays] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_weekdays") : null) || SITE_CONFIG.operatingHours.weekdays);
+  const [saturdays, setSaturdays] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_saturdays") : null) || SITE_CONFIG.operatingHours.saturdays);
+  const [sundays, setSundays] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("electrical_settings_sundays") : null) || SITE_CONFIG.operatingHours.sundays);
 
   const [confirmConfig, setConfirmConfig] = useState<{
     title: string;
@@ -459,10 +460,10 @@ function DashboardPage() {
     const instPct = total > 0 ? Math.round((installation / total) * 100) : 10;
 
     return [
-      { label: "Underground Vault", val: `${underPct}%`, pct: underPct, color: "bg-[#dc2626]" },
-      { label: "Residential Shelter", val: `${resPct}%`, pct: resPct, color: "bg-[#dc2626]/80" },
-      { label: "Commercial Safe Room", val: `${commPct}%`, pct: commPct, color: "bg-[#dc2626]/60" },
-      { label: "Crane Installation", val: `${instPct}%`, pct: instPct, color: "bg-[#dc2626]/40" }
+      { label: "Underground Vault", val: `${underPct}%`, pct: underPct, color: "bg-amber-600" },
+      { label: "Residential Shelter", val: `${resPct}%`, pct: resPct, color: "bg-amber-500" },
+      { label: "Commercial Safe Room", val: `${commPct}%`, pct: commPct, color: "bg-amber-400" },
+      { label: "Crane Installation", val: `${instPct}%`, pct: instPct, color: "bg-amber-300" }
     ];
   }, [leads]);
 
@@ -919,7 +920,7 @@ function DashboardPage() {
               <img src={logo} alt="Southern Storm Shelters LLC" className="h-10 w-auto object-contain" />
               <div className="flex flex-col text-left">
                 <span className="text-xs font-black uppercase tracking-tight text-slate-900 leading-tight">Southern</span>
-                <span className="text-[10px] font-black uppercase tracking-wider text-[#dc2626] leading-tight">Storm Shelters</span>
+                <span className="text-[10px] font-black uppercase tracking-wider text-amber-600 leading-tight">Storm Shelters</span>
               </div>
             </div>
           </div>
@@ -1653,7 +1654,7 @@ function DashboardPage() {
 
                       {rev.replyText && (
                         <div className="mt-3 bg-slate-50 border border-slate-100 rounded-xl p-3.5 text-sm leading-relaxed text-slate-700">
-                          <span className="font-black text-xs uppercase tracking-wider text-[#dc2626] block mb-0.5">Southern Storm Shelters Response</span>
+                          <span className="font-black text-xs uppercase tracking-wider text-amber-700 block mb-0.5">Southern Storm Shelters Response</span>
                           "{rev.replyText}"
                         </div>
                       )}

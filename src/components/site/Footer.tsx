@@ -13,6 +13,7 @@ import {
 import logoImg from "@/assets/logo.png";
 import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SITE_CONFIG } from "@/config/site-config";
 
 const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -113,8 +114,8 @@ export function Footer() {
       <div className="absolute inset-0 bg-grid opacity-[0.02] pointer-events-none" />
 
       {/* Decorative Blur Blobs */}
-      <div className="absolute -top-40 left-1/4 w-[400px] h-[400px] bg-red-600/10 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: "8s" }} />
-      <div className="absolute -bottom-40 right-10 w-[350px] h-[350px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: "10s" }} />
+      <div className="absolute -top-40 left-1/4 w-[400px] h-[400px] bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 right-10 w-[350px] h-[350px] bg-slate-700/20 rounded-full blur-3xl pointer-events-none" />
 
       <div
         className="relative mx-auto w-[90%] max-w-7xl pt-10 sm:pt-14 lg:pt-20 pb-[30px] z-10 text-left"
@@ -131,22 +132,22 @@ export function Footer() {
 
             <p className="text-[13px] text-slate-300 leading-relaxed font-medium mb-4">
               {t(
-                "Underground storm shelter construction and installation for Nashville, TN homeowners. Steel and concrete builds by a professional crew.",
+                "Underground storm shelter construction and turnkey installation for Nashville, TN and Middle Tennessee homeowners. Precision excavation and engineered safety.",
                 "Construcción e instalación de refugios subterráneos para propietarios de Nashville, TN."
               )}
             </p>
 
             {/* Phone CTA */}
             <a
-              href="tel:6159912361"
-              className="flex items-center gap-3 w-full bg-gradient-to-r from-[#dc2626] to-[#b91c1c] border border-red-500/50 rounded-2xl px-4 py-3 mb-4 shadow-lg"
+              href={`tel:${SITE_CONFIG.phoneRaw}`}
+              className="flex items-center gap-3 w-full bg-gradient-to-r from-amber-600 to-amber-700 border border-amber-500/50 rounded-2xl px-4 py-3 mb-4 shadow-lg"
             >
               <div className="h-9 w-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
-                <Phone className="h-4 w-4 text-white animate-pulse" />
+                <Phone className="h-4 w-4 text-white" />
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-[10px] uppercase tracking-widest text-red-200 font-bold">{t("Call Us Today", "Llámenos Hoy")}</span>
-                <span className="font-black text-white text-[15px] tracking-tight leading-tight">615-991-2361</span>
+                <span className="text-[10px] uppercase tracking-widest text-amber-200 font-bold">{t("Direct Project Line", "Llámenos Hoy")}</span>
+                <span className="font-black text-white text-[15px] tracking-tight leading-tight">{SITE_CONFIG.phone}</span>
               </div>
             </a>
 
@@ -208,33 +209,34 @@ export function Footer() {
           <MobileCollapsibleSection title={t("Contact Info", "Contacto")}>
             <ul className="space-y-3 text-xs">
               <li>
-                <a href="tel:6159912361" className="flex items-center gap-2.5 text-slate-300">
-                  <Phone className="h-3.5 w-3.5 text-red-400 shrink-0" />
-                  <span>615-991-2361</span>
+                <a href={`tel:${SITE_CONFIG.phoneRaw}`} className="flex items-center gap-2.5 text-slate-300">
+                  <Phone className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                  <span>{SITE_CONFIG.phone}</span>
                 </a>
               </li>
               <li>
-                <a href="mailto:admin@nashvillesiteworks.com" className="flex items-center gap-2.5 text-slate-300 break-all">
-                  <Mail className="h-3.5 w-3.5 text-red-400 shrink-0" />
-                  <span>admin@nashvillesiteworks.com</span>
+                <a href={`mailto:${SITE_CONFIG.email}`} className="flex items-center gap-2.5 text-slate-300 break-all">
+                  <Mail className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                  <span>{SITE_CONFIG.email}</span>
                 </a>
               </li>
               <li>
                 <div className="flex items-center gap-2.5 text-slate-300">
-                  <MapPin className="h-3.5 w-3.5 text-red-400 shrink-0" />
-                  <span>Nashville, TN</span>
+                  <MapPin className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                  <span>Nashville, TN & 100-Mile Radius</span>
                 </div>
               </li>
             </ul>
           </MobileCollapsibleSection>
 
           <MobileCollapsibleSection title={t("Business Hours", "Horario de Atención")}>
-            <div className="bg-black/60 border border-red-500/40 rounded-xl p-3 text-xs text-slate-300 leading-relaxed font-semibold space-y-1">
-              <span className="text-[#fbbf24] font-black uppercase tracking-wider block mb-1 text-[10px] flex items-center gap-1.5">
+            <div className="bg-black/60 border border-amber-500/30 rounded-xl p-3 text-xs text-slate-300 leading-relaxed font-semibold space-y-1">
+              <span className="text-amber-400 font-black uppercase tracking-wider block mb-1 text-[10px] flex items-center gap-1.5">
                 <Clock className="w-3 h-3 fill-current" /> {t("Operating Hours", "Horario")}
               </span>
-              <p>Mon-Sat: 8:00 AM - 5:00 PM</p>
-              <p className="text-slate-400">Nashville, TN</p>
+              <p>{SITE_CONFIG.operatingHours.weekdays}</p>
+              <p>{SITE_CONFIG.operatingHours.saturdays}</p>
+              <p className="text-slate-400">{SITE_CONFIG.operatingHours.sundays}</p>
             </div>
           </MobileCollapsibleSection>
         </div>
@@ -250,7 +252,7 @@ export function Footer() {
 
             <p className="text-sm text-slate-300 leading-relaxed max-w-sm font-medium">
               {t(
-                "Underground storm shelter construction and installation in Nashville, TN. Steel-vault prefab units and custom concrete builds, installed by a professional crew.",
+                "Underground storm shelter construction and installation in Nashville, TN. Engineered prefabricated units and custom concrete underground shelters built by experienced local tradesmen.",
                 "Construcción e instalación de refugios subterráneos en Nashville, TN. Unidades prefabricadas de bóveda de acero y construcciones de concreto personalizadas."
               )}
             </p>
@@ -288,7 +290,7 @@ export function Footer() {
                     to={href}
                     className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2 group cursor-pointer"
                   >
-                    <ArrowRight className="h-3 w-3 text-[#dc2626] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                    <ArrowRight className="h-3 w-3 text-amber-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     <span>{label}</span>
                   </Link>
                 </li>
@@ -308,7 +310,7 @@ export function Footer() {
                     to={href}
                     className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2 group cursor-pointer"
                   >
-                    <ArrowRight className="h-3 w-3 text-[#dc2626] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                    <ArrowRight className="h-3 w-3 text-amber-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     <span>{label}</span>
                   </Link>
                 </li>
@@ -328,7 +330,7 @@ export function Footer() {
                     to={href}
                     className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-1.5 group cursor-pointer"
                   >
-                    <ArrowRight className="h-2.5 w-2.5 text-[#dc2626] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                    <ArrowRight className="h-2.5 w-2.5 text-amber-500 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     <span className="truncate">{label}</span>
                   </Link>
                 </li>
@@ -345,41 +347,41 @@ export function Footer() {
               <ul className="space-y-3.5 text-sm">
                 <li>
                   <a
-                    href="tel:6159912361"
+                    href={`tel:${SITE_CONFIG.phoneRaw}`}
                     className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group"
                   >
                     <div className="h-8 w-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center text-slate-300 group-hover:bg-slate-700 group-hover:text-white transition-all shrink-0">
-                      <Phone className="h-3.5 w-3.5" />
+                      <Phone className="h-3.5 w-3.5 text-amber-400" />
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Phone</span>
-                      <span className="font-semibold text-white tracking-tight text-xs">615-991-2361</span>
+                      <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Direct Line</span>
+                      <span className="font-semibold text-white tracking-tight text-xs">{SITE_CONFIG.phone}</span>
                     </div>
                   </a>
                 </li>
                 <li>
                   <a
-                    href="mailto:admin@nashvillesiteworks.com"
+                    href={`mailto:${SITE_CONFIG.email}`}
                     className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group"
                   >
                     <div className="h-8 w-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center text-slate-300 group-hover:bg-slate-700 group-hover:text-white transition-all shrink-0">
-                      <Mail className="h-3.5 w-3.5" />
+                      <Mail className="h-3.5 w-3.5 text-amber-400" />
                     </div>
                     <div className="flex flex-col min-w-0">
                       <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Email</span>
-                      <span className="font-semibold text-white tracking-tight text-xs truncate">admin@nashvillesiteworks.com</span>
+                      <span className="font-semibold text-white tracking-tight text-xs truncate">{SITE_CONFIG.email}</span>
                     </div>
                   </a>
                 </li>
                 <li>
                   <div className="flex items-center gap-3 text-slate-300">
                     <div className="h-8 w-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center text-slate-300 shrink-0">
-                      <MapPin className="h-3.5 w-3.5" />
+                      <MapPin className="h-3.5 w-3.5 text-amber-400" />
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">{t("Address", "Dirección")}</span>
+                      <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">{t("Region", "Región")}</span>
                       <span className="font-semibold text-white tracking-tight text-xs leading-snug">
-                        Nashville, TN
+                        Nashville & 100-Mi Radius
                       </span>
                     </div>
                   </div>
@@ -389,13 +391,14 @@ export function Footer() {
 
             {/* Hours card */}
             <div className="bg-slate-800/80 border border-white/10 rounded-2xl p-4">
-              <span className="text-slate-400 font-black uppercase tracking-wider block mb-2 text-[10px] flex items-center gap-2">
+              <span className="text-amber-400 font-black uppercase tracking-wider block mb-2 text-[10px] flex items-center gap-2">
                 <Clock className="w-3.5 h-3.5" />
                 {t("Business Hours", "Horario de Atención")}
               </span>
               <div className="text-xs text-slate-300 leading-relaxed font-semibold space-y-1">
-                <p>Mon-Sat: 8:00 AM - 5:00 PM</p>
-                <p className="text-slate-400">Nashville, TN</p>
+                <p>{SITE_CONFIG.operatingHours.weekdays}</p>
+                <p>{SITE_CONFIG.operatingHours.saturdays}</p>
+                <p className="text-slate-400">{SITE_CONFIG.operatingHours.sundays}</p>
               </div>
             </div>
           </div>
@@ -419,7 +422,7 @@ export function Footer() {
               className="text-xs text-slate-300 hover:text-white transition-colors font-bold flex items-center gap-2 cursor-pointer select-none"
             >
               <span>{t("Back to Top", "Volver Arriba")}</span>
-              <ArrowRight className="h-4 w-4 -rotate-90 text-red-400" />
+              <ArrowRight className="h-4 w-4 -rotate-90 text-amber-400" />
             </motion.button>
           </div>
         </div>

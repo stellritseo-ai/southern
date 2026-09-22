@@ -116,7 +116,7 @@ export function ContactIllustrationSection() {
                 style={{ marginTop: "-18px", marginBottom: "5px" }}
               >
                 {t("Got Questions? ", "¿Tiene Preguntas? ")}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d97706] to-[#b45309]">
                   {t("We Have Clear Answers.", "Tenemos Respuestas Claras.")}
                 </span>
               </h2>
@@ -140,8 +140,8 @@ export function ContactIllustrationSection() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.35, delay: idx * 0.05 }}
                     className={`rounded-xl border transition-all duration-300 overflow-hidden ${isOpen
-                      ? "bg-red-50/30 border-[#dc2626]/40 shadow-xs"
-                      : "bg-white border-slate-200 hover:border-red-300 hover:shadow-xs"
+                      ? "bg-amber-50/30 border-amber-500/40 shadow-xs"
+                      : "bg-white border-slate-200 hover:border-amber-300 hover:shadow-xs"
                       }`}
                   >
                     <button
@@ -150,13 +150,13 @@ export function ContactIllustrationSection() {
                       aria-expanded={isOpen}
                     >
                       <span className="font-extrabold text-[13.5px] sm:text-[14.5px] text-slate-900 leading-snug flex items-center gap-2.5">
-                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors duration-300 ${isOpen ? "bg-[#dc2626]" : "bg-slate-300"
+                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors duration-300 ${isOpen ? "bg-amber-500" : "bg-slate-300"
                           }`} />
                         {t(faq.q, faq.qEs)}
                       </span>
                       <div className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen
-                        ? "bg-[#dc2626] text-white rotate-180 shadow-xs"
-                        : "bg-slate-100 text-slate-500 group-hover:bg-red-50"
+                        ? "bg-amber-500 text-white rotate-180 shadow-xs"
+                        : "bg-slate-100 text-slate-500 group-hover:bg-amber-50"
                         }`}>
                         <ChevronDown className="w-3.5 h-3.5" />
                       </div>
@@ -170,7 +170,7 @@ export function ContactIllustrationSection() {
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.28, ease: "easeInOut" }}
                         >
-                          <div className="px-4 pb-3 pt-0 text-slate-600 font-medium text-[12.5px] sm:text-[13px] leading-relaxed border-t border-red-100 mt-0.5 pt-2.5">
+                          <div className="px-4 pb-3 pt-0 text-slate-600 font-medium text-[12.5px] sm:text-[13px] leading-relaxed border-t border-amber-100 mt-0.5 pt-2.5">
                             {t(faq.a, faq.aEs)}
                           </div>
                         </motion.div>
@@ -185,16 +185,16 @@ export function ContactIllustrationSection() {
             <div className="pt-2 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white border border-red-500/50 text-[11px] font-black uppercase tracking-widest rounded-full px-7 py-3.5 shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 w-full sm:w-auto cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 text-white border border-amber-500/50 text-[11px] font-black uppercase tracking-widest rounded-full px-7 py-3.5 shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 w-full sm:w-auto cursor-pointer"
               >
                 {t("Ask a Question", "Hacer una Pregunta")}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
                 href="tel:6159912361"
-                className="inline-flex items-center gap-2 text-slate-800 text-[13px] font-extrabold hover:text-[#dc2626] transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 text-slate-800 text-[13px] font-extrabold hover:text-amber-600 transition-colors cursor-pointer"
               >
-                <Phone className="h-4 w-4 text-[#dc2626]" />
+                <Phone className="h-4 w-4 text-amber-600" />
                 {t("Call (615) 991-2361", "Llamar (615) 991-2361")}
               </a>
             </div>
@@ -204,7 +204,7 @@ export function ContactIllustrationSection() {
           {/* ── RIGHT COLUMN: Section Image Showcase (col-span-5) ─ */}
           <div className="lg:col-span-5 relative w-full lg:sticky lg:top-[120px] self-start mt-8 lg:mt-0">
             {/* Outer ambient glow */}
-            <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-red-600/15 via-transparent to-amber-500/15 blur-xl pointer-events-none" />
+            <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-amber-500/15 via-transparent to-slate-700/15 blur-xl pointer-events-none" />
 
             <motion.div
               initial={{ opacity: 0, scale: 0.94, y: 20 }}
@@ -229,13 +229,13 @@ export function ContactIllustrationSection() {
                   <img src={logoImg} alt="Southern Storm Shelters Logo" className="w-6 h-6 object-contain" />
                   <div className="text-left">
                     <p className="text-[11px] font-black text-white leading-none tracking-tight">Southern Storm Shelters</p>
-                    <p className="text-[9px] font-bold text-red-400 leading-none mt-0.5">LLC · Nashville, TN</p>
+                    <p className="text-[9px] font-bold text-amber-400 leading-none mt-0.5">LLC · Nashville, TN</p>
                   </div>
                 </div>
 
                 <a
                   href="tel:6159912361"
-                  className="inline-flex items-center gap-1.5 bg-[#dc2626] border border-red-400/50 text-white text-[10px] font-black uppercase tracking-wider px-3.5 py-2 rounded-2xl shadow-lg hover:scale-105 transition-transform"
+                  className="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-600 to-amber-700 border border-amber-500/50 text-white text-[10px] font-black uppercase tracking-wider px-3.5 py-2 rounded-2xl shadow-lg hover:scale-105 transition-transform"
                 >
                   <Phone className="w-3 h-3 fill-current" />
                   <span>(615) 991-2361</span>
@@ -246,7 +246,7 @@ export function ContactIllustrationSection() {
               <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-white/40 rounded-2xl p-4 shadow-2xl text-left z-20">
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-[9px] uppercase tracking-widest text-[#dc2626] font-black block">
+                    <span className="text-[9px] uppercase tracking-widest text-amber-600 font-black block">
                       {t("Nashville, TN", "Nashville, TN")}
                     </span>
                     <p className="text-xs sm:text-sm font-extrabold text-slate-900 mt-0.5">
@@ -255,7 +255,7 @@ export function ContactIllustrationSection() {
                   </div>
                   <a
                     href="tel:6159912361"
-                    className="shrink-0 w-9 h-9 rounded-full bg-[#0F172A] text-white flex items-center justify-center border border-white/20 shadow-md hover:bg-[#dc2626] transition-colors"
+                    className="shrink-0 w-9 h-9 rounded-full bg-[#0F172A] text-white flex items-center justify-center border border-white/20 shadow-md hover:bg-amber-600 transition-colors"
                   >
                     <ArrowRight className="w-4 h-4" />
                   </a>

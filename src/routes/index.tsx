@@ -10,6 +10,7 @@ import { ServiceArea } from "@/components/site/ServiceArea";
 import { GetInTouch } from "@/components/site/GetInTouch";
 import { EmergencyCTA } from "@/components/site/EmergencyCTA";
 import { ShelterFeatures } from "@/components/site/ShelterFeatures";
+import { SITE_CONFIG } from "@/config/site-config";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -50,8 +51,8 @@ function Index() {
     "image": "https://www.southernstormsheltersllc.com/assets/logo.png",
     "@id": "https://www.southernstormsheltersllc.com/#organization",
     "url": "https://www.southernstormsheltersllc.com",
-    "telephone": "+16159912361",
-    "email": "admin@nashvillesiteworks.com",
+    "telephone": SITE_CONFIG.phoneRaw,
+    "email": SITE_CONFIG.email,
     "priceRange": "$$$",
     "address": {
       "@type": "PostalAddress",

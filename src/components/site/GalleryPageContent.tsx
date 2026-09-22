@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SITE_CONFIG } from "@/config/site-config";
 
 // All 21 authentic gallery assets from assets/gallery/
 import g1 from "@/assets/gallery/1.png";
@@ -265,7 +266,7 @@ export function GalleryPageContent() {
   }, [selectedImageIndex, showNext, showPrev]);
 
   return (
-    <div className="bg-white text-slate-900 overflow-hidden selection:bg-red-600 selection:text-white">
+    <div className="bg-white text-slate-900 overflow-hidden selection:bg-amber-600 selection:text-white">
 
       {/* ── SECTION 1: KEY TECHNICAL HIGHLIGHTS BANNER ─────────────────── */}
       <section className="relative py-8 bg-slate-900 text-white border-b border-slate-800">
@@ -296,8 +297,8 @@ export function GalleryPageContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-widest mb-3">
-              <Camera className="w-3.5 h-3.5 text-red-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-3">
+              <Camera className="w-3.5 h-3.5 text-amber-600" />
               <span>{t("Verified Project Portfolio", "Portafolio de Proyectos Verificados")}</span>
             </div>
 
@@ -324,7 +325,7 @@ export function GalleryPageContent() {
                   onClick={() => setActiveCategory(cat.id)}
                   className={`px-5 py-2.5 rounded-full text-xs font-bold transition cursor-pointer ${
                     isSelected
-                      ? "bg-red-600 text-white shadow-md shadow-red-600/20"
+                      ? "bg-amber-600 text-white shadow-md shadow-amber-600/20"
                       : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                   }`}
                 >
@@ -346,7 +347,7 @@ export function GalleryPageContent() {
                   transition={{ duration: 0.25 }}
                   key={item.title}
                   onClick={() => openLightbox(idx)}
-                  className="group rounded-3xl bg-slate-900 border border-slate-200 overflow-hidden shadow-xs hover:shadow-xl hover:border-red-500/40 transition-all duration-300 cursor-pointer"
+                  className="group rounded-3xl bg-slate-900 border border-slate-200 overflow-hidden shadow-xs hover:shadow-xl hover:border-amber-500/40 transition-all duration-300 cursor-pointer"
                 >
                   <div className="relative aspect-4/3 overflow-hidden bg-slate-900">
                     <img
@@ -359,7 +360,7 @@ export function GalleryPageContent() {
                     {/* Hover Overlay */}
                     <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="w-12 h-12 rounded-full bg-white/90 text-slate-900 flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
-                        <ZoomIn className="w-5 h-5 text-red-600" />
+                        <ZoomIn className="w-5 h-5 text-amber-600" />
                       </div>
                     </div>
                   </div>
@@ -375,42 +376,42 @@ export function GalleryPageContent() {
       <section className="py-16 sm:py-24 bg-slate-50 border-t border-slate-200 relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
-          <div className="rounded-3xl bg-gradient-to-r from-red-600 via-red-600 to-amber-600 text-white p-8 sm:p-14 text-center max-w-5xl mx-auto shadow-2xl relative overflow-hidden">
-            <div aria-hidden className="absolute -right-20 -top-20 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-8 sm:p-14 text-center max-w-5xl mx-auto shadow-2xl relative overflow-hidden border border-amber-500/30">
+            <div aria-hidden className="absolute -right-20 -top-20 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
             <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-4">
-              {t("Ready to See a Shelter on Your Property?", "¿Listo Para Instalar un Refugio en Su Terreno?")}
+              {t("Ready to See an Engineered Shelter on Your Property?", "¿Listo Para Instalar un Refugio en Su Terreno?")}
             </h2>
 
             <p className="text-white/90 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed font-medium">
               {t(
-                "Don't wait for the warning sirens. We evaluate your soil conditions, slope, drainage, and equipment access to deliver an upfront, itemized quote within 24 hours.",
-                "No espere a que suenen las sirenas. Evaluamos el suelo, pendiente, drenaje y acceso de maquinaria para brindarle un presupuesto detallado en 24 horas."
+                "Precision underground shelter construction. We evaluate your soil conditions, slope, drainage, and equipment access to deliver an upfront, itemized proposal.",
+                "Construcción subterránea de precisión. Evaluamos el suelo, pendiente, drenaje y acceso de maquinaria para brindarle un presupuesto detallado."
               )}
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 to="/free-quote"
-                className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-900 font-extrabold px-8 py-4 rounded-2xl shadow-xl transition text-sm sm:text-base"
+                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold px-8 py-4 rounded-2xl shadow-xl transition text-sm sm:text-base"
               >
                 <span>{t("Request a Free Estimate", "Solicitar Estimación Gratis")}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               
               <a
-                href="tel:6159912381"
+                href={`tel:${SITE_CONFIG.phoneRaw}`}
                 className="inline-flex items-center gap-2 bg-slate-950/80 hover:bg-slate-950 text-white font-extrabold px-8 py-4 rounded-2xl border border-white/20 transition text-sm sm:text-base"
               >
-                <Phone className="w-4 h-4" />
-                <span>(615) 991-2381</span>
+                <Phone className="w-4 h-4 text-amber-400" />
+                <span>{SITE_CONFIG.phone}</span>
               </a>
             </div>
 
             <blockquote className="mt-8 border-t border-white/20 pt-4 text-xs font-semibold italic text-white/80">
               {t(
-                '"That\'s peace of mind, providing peace of mind for decades to come."',
-                '"Eso es tranquilidad, brindando tranquilidad para las próximas décadas."'
+                '"Turnkey underground construction that provides security and peace of mind for decades to come."',
+                '"Construcción subterránea llave en mano que brinda seguridad y tranquilidad para las próximas décadas."'
               )}
             </blockquote>
           </div>
@@ -424,7 +425,7 @@ export function GalleryPageContent() {
           <div className="rounded-3xl bg-slate-50 border border-slate-200 p-8 sm:p-12 shadow-md max-w-4xl mx-auto">
             
             <div className="text-center mb-8">
-              <span className="text-xs font-bold uppercase tracking-widest text-red-700 bg-red-50 px-3.5 py-1 rounded-full border border-red-200">
+              <span className="text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-50 px-3.5 py-1 rounded-full border border-amber-200">
                 {t("Contact Information Summary", "Resumen de Contacto")}
               </span>
               <h3 className="mt-3 text-2xl sm:text-3xl font-extrabold text-slate-900">
@@ -441,32 +442,29 @@ export function GalleryPageContent() {
                   <tr className="hover:bg-slate-50 transition-colors">
                     <td className="p-4 font-bold text-slate-500 w-1/3 sm:w-1/4">{t("Phone", "Teléfono")}</td>
                     <td className="p-4 font-extrabold text-slate-900">
-                      <a href="tel:6159912381" className="text-red-600 hover:underline">
-                        (615) 991-2381
+                      <a href={`tel:${SITE_CONFIG.phoneRaw}`} className="text-amber-700 hover:underline">
+                        {SITE_CONFIG.phone}
                       </a>
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50 transition-colors">
                     <td className="p-4 font-bold text-slate-500">{t("Email", "Correo Electrónico")}</td>
                     <td className="p-4 font-semibold text-slate-900">
-                      <a href="mailto:admin@nashvillesiteworks.com" className="text-red-600 hover:underline">
-                        admin@nashvillesiteworks.com
+                      <a href={`mailto:${SITE_CONFIG.email}`} className="text-amber-700 hover:underline">
+                        {SITE_CONFIG.email}
                       </a>
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50 transition-colors">
                     <td className="p-4 font-bold text-slate-500">{t("Address", "Dirección")}</td>
                     <td className="p-4 font-semibold text-slate-900">
-                      2000 Meridian Blvd, Suite 200, Franklin, TN 37067
+                      Nashville, TN
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50 transition-colors">
                     <td className="p-4 font-bold text-slate-500">{t("Hours", "Horario")}</td>
                     <td className="p-4 font-semibold text-slate-900">
-                      {t(
-                        "Monday–Friday: 8:00 AM – 5:00 PM | Saturday: By Appointment | Sunday: Closed",
-                        "Lunes a Viernes: 8:00 AM – 5:00 PM | Sábado: Con Cita | Domingo: Cerrado"
-                      )}
+                      {SITE_CONFIG.operatingHours.scheduleText}
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50 transition-colors">
@@ -494,7 +492,7 @@ export function GalleryPageContent() {
             {/* Close button */}
             <button
               onClick={closeLightbox}
-              className="absolute -top-12 right-0 sm:right-2 text-white hover:text-red-400 transition p-2 cursor-pointer"
+              className="absolute -top-12 right-0 sm:right-2 text-white hover:text-amber-400 transition p-2 cursor-pointer"
             >
               <X className="w-6 h-6" />
             </button>
@@ -502,14 +500,14 @@ export function GalleryPageContent() {
             {/* Navigation Buttons */}
             <button
               onClick={showPrev}
-              className="absolute left-2 sm:-left-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-red-600 transition cursor-pointer z-10"
+              className="absolute left-2 sm:-left-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-amber-600 transition cursor-pointer z-10"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
 
             <button
               onClick={showNext}
-              className="absolute right-2 sm:-right-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-red-600 transition cursor-pointer z-10"
+              className="absolute right-2 sm:-right-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-amber-600 transition cursor-pointer z-10"
             >
               <ChevronRight className="w-6 h-6" />
             </button>

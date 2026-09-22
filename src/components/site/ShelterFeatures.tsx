@@ -21,9 +21,9 @@ import grangerHatchImg from "@/assets/gallery/4.png";
 
 const specs = [
   {
-    icon: ShieldAlert,
-    title: "Exceeds FEMA Standards",
-    desc: "Heavy-duty, multi-point locking security doors that exceed FEMA 320 and 361 specifications for near absolute protection against debris impact.",
+    icon: ShieldCheck,
+    title: "Engineered Impact Standards",
+    desc: "Heavy-duty, multi-point locking doors built to meet and exceed rigorous FEMA 320/361 missile impact criteria against extreme storm forces.",
     tag: "Safety",
   },
   {
@@ -89,7 +89,7 @@ export function ShelterFeatures() {
       className="relative py-16 sm:py-20 lg:py-28 bg-[#F8FAFC] border-b border-slate-200/60 overflow-hidden"
     >
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f015_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f015_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-slate-400/6 blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-amber-500/5 blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
@@ -113,7 +113,7 @@ export function ShelterFeatures() {
               style={{ fontSize: "clamp(26px, 4.5vw, 40px)", marginTop: "-8px", marginBottom: "12px" }}
             >
               {t("Built to Construction Standards.", " ")}
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
+              <span className="block gradient-text-construction">
                 {t("Every Detail Engineered for Safety.", "Cada Detalle Diseñado para la Seguridad.")}
               </span>
             </h2>
@@ -211,7 +211,7 @@ export function ShelterFeatures() {
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
             <a
               href="tel:6159912361"
-              className="inline-flex items-center gap-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white text-[11px] font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97]"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-[11px] font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97]"
             >
               <Phone className="w-3.5 h-3.5" />
               {t("Call (615) 991-2361", "Llamar (615) 991-2361")}

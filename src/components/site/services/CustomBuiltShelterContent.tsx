@@ -223,14 +223,14 @@ export function CustomBuiltShelterContent() {
 
             {/* Left Column: Copy */}
             <div className="lg:col-span-7 space-y-5 text-left">
-              <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider text-[#DC2626]">
-                <ShieldCheck className="w-4 h-4 text-[#DC2626]" />
+              <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider text-amber-800">
+                <ShieldCheck className="w-4 h-4 text-amber-600" />
                 {t("Tailored Engineering · Zero Compromise", "Ingeniería a Medida · Cero Concesiones")}
               </div>
 
               <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-black tracking-tight text-[#0B0F15] leading-[1.22]">
                 {t("Engineered to Your Specifications.", "Diseñado Según Sus Especificaciones.")}{" "}
-                <span className="text-[#DC2626]">
+                <span className="text-amber-600">
                   {t("Built for Your Property.", "Construido para Su Propiedad.")}
                 </span>
               </h2>
@@ -252,13 +252,13 @@ export function CustomBuiltShelterContent() {
               {/* Quick Trust Highlights */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
                 <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
-                  <div className="text-xl sm:text-2xl font-black text-[#DC2626]">FEMA</div>
+                  <div className="text-xl sm:text-2xl font-black text-amber-600">FEMA</div>
                   <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mt-0.5">
                     320 & 361 Exceeded
                   </div>
                 </div>
                 <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
-                  <div className="text-xl sm:text-2xl font-black text-[#DC2626]">30+ Yrs</div>
+                  <div className="text-xl sm:text-2xl font-black text-amber-600">30+ Yrs</div>
                   <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mt-0.5">
                     {t("Manufacturing", "Manufactura")}
                   </div>
@@ -308,7 +308,7 @@ export function CustomBuiltShelterContent() {
       <section className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-black uppercase tracking-widest text-[#DC2626] bg-red-500/10 px-3.5 py-1.5 rounded-full border border-red-500/20">
+            <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/20">
               {t("Builders, Not Just Dealers", "Constructores, No Simples Vendedores")}
             </span>
             <h2 className="mt-3 font-display text-2xl sm:text-3xl lg:text-[34px] font-black text-[#0B0F15] tracking-tight leading-[1.22]">
@@ -328,11 +328,11 @@ export function CustomBuiltShelterContent() {
               return (
                 <div
                   key={idx}
-                  className="bg-white p-6 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-red-500/30 transition-all duration-300 flex flex-col justify-between text-left"
+                  className="bg-white p-6 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-amber-500/30 transition-all duration-300 flex flex-col justify-between text-left"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-11 h-11 rounded-2xl bg-red-500/10 text-[#DC2626] flex items-center justify-center">
+                      <div className="w-11 h-11 rounded-2xl bg-amber-500/10 text-amber-700 flex items-center justify-center">
                         <Icon className="w-5 h-5" />
                       </div>
                       <span className="text-xs font-black text-slate-400 font-display">
@@ -363,7 +363,7 @@ export function CustomBuiltShelterContent() {
             <div className="bg-gradient-to-br from-[#0B0F15] to-[#1A2230] p-6 sm:p-7 rounded-3xl text-white shadow-lg flex flex-col justify-between text-left">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-11 h-11 rounded-2xl bg-[#DC2626]/20 text-[#FBBF24] flex items-center justify-center border border-[#DC2626]/30">
+                  <div className="w-11 h-11 rounded-2xl bg-amber-600/20 text-[#FBBF24] flex items-center justify-center border border-amber-600/30">
                     <Palette className="w-5 h-5" />
                   </div>
                   <span className="text-xs font-black text-[#FBBF24] uppercase tracking-wider">
@@ -401,7 +401,7 @@ export function CustomBuiltShelterContent() {
                   <button
                     onClick={() => setSelectedColor("custom")}
                     className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                      selectedColor === "custom" ? "bg-[#DC2626] text-white shadow-sm" : "bg-white/10 hover:bg-white/20 text-slate-200"
+                      selectedColor === "custom" ? "bg-amber-600 text-slate-950 font-bold shadow-sm" : "bg-white/10 hover:bg-white/20 text-slate-200"
                     }`}
                   >
                     🎨 {t("Custom Match", "Personalizado")}
@@ -421,7 +421,7 @@ export function CustomBuiltShelterContent() {
       <section className="py-14 sm:py-20 bg-white border-b border-slate-200/80">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-black uppercase tracking-widest text-[#DC2626] bg-red-500/10 px-3.5 py-1.5 rounded-full border border-red-500/20">
+            <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/20">
               {t("Custom Without Compromise", "Personalización Sin Concesiones")}
             </span>
             <h2 className="mt-3 font-display text-2xl sm:text-3xl lg:text-[34px] font-black text-[#0B0F15] tracking-tight leading-[1.22]">
@@ -448,10 +448,10 @@ export function CustomBuiltShelterContent() {
                   key={idx}
                   className={`grid grid-cols-1 md:grid-cols-12 py-4 px-6 text-left items-center gap-2 md:gap-4 transition-colors ${
                     idx % 2 === 0 ? "bg-white" : "bg-slate-50/70"
-                  } hover:bg-red-50/40`}
+                  } hover:bg-amber-50/40`}
                 >
                   <div className="md:col-span-5 font-bold text-sm text-[#0B0F15] flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#DC2626] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-amber-600 shrink-0" />
                     <span>{row.feature}</span>
                   </div>
                   <div className="md:col-span-7 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
@@ -468,7 +468,7 @@ export function CustomBuiltShelterContent() {
       <section className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-black uppercase tracking-widest text-[#DC2626] bg-red-500/10 px-3.5 py-1.5 rounded-full border border-red-500/20">
+            <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/20">
               {t("Consultation to Completion", "De la Consulta a la Entrega")}
             </span>
             <h2 className="mt-3 font-display text-2xl sm:text-3xl lg:text-[34px] font-black text-[#0B0F15] tracking-tight leading-[1.22]">
@@ -489,7 +489,7 @@ export function CustomBuiltShelterContent() {
                 className="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm text-left flex flex-col justify-between"
               >
                 <div>
-                  <div className="text-3xl font-black text-[#DC2626]/25 mb-2 font-display">
+                  <div className="text-3xl font-black text-amber-600/25 mb-2 font-display">
                     {step.step}
                   </div>
                   <h3 className="font-display text-base font-black text-[#0B0F15] mb-2">
@@ -566,7 +566,7 @@ export function CustomBuiltShelterContent() {
             </div>
             <Link
               to="/free-quote"
-              className="bg-[#DC2626] hover:bg-[#B91C1C] text-white font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all shadow-lg whitespace-nowrap"
+              className="bg-amber-600 hover:bg-amber-700 text-slate-950 font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all shadow-lg whitespace-nowrap"
             >
               {t("Request Custom Quote", "Solicitar Cotización Personalizada")}
             </Link>
@@ -577,7 +577,7 @@ export function CustomBuiltShelterContent() {
       {/* ── SECTION 6: READY TO DESIGN YOUR CUSTOM SHELTER? (CTA) ── */}
       <section className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200/80 text-center">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
-          <span className="text-xs font-black uppercase tracking-widest text-[#DC2626] bg-red-500/10 px-4 py-1.5 rounded-full border border-red-500/20">
+          <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-4 py-1.5 rounded-full border border-amber-500/20">
             {t("Ready to Design Your Custom Storm Shelter?", "¿Listo para Diseñar Su Refugio Personalizado?")}
           </span>
 
@@ -595,7 +595,7 @@ export function CustomBuiltShelterContent() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3">
             <Link
               to="/free-quote"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#DC2626] hover:bg-[#B91C1C] text-white font-black text-sm uppercase tracking-wider px-8 py-4 rounded-xl shadow-lg transition-all active:scale-95 cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-slate-950 font-black text-sm uppercase tracking-wider px-8 py-4 rounded-xl shadow-lg shadow-amber-600/20 transition-all active:scale-95 cursor-pointer"
             >
               <span>{t("Request a Free Estimate", "Solicitar Estimación Gratuita")}</span>
               <ArrowRight className="w-4 h-4" />

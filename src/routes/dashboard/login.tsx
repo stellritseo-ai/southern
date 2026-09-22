@@ -70,7 +70,7 @@ function LoginPage() {
   if (checkingSession) {
     return (
       <div className="min-h-screen bg-[#0B0F15] flex items-center justify-center">
-        <div className="h-7 w-7 rounded-full border-2 border-[#dc2626] border-t-transparent animate-spin"></div>
+        <div className="h-7 w-7 rounded-full border-2 border-amber-500 border-t-transparent animate-spin"></div>
       </div>
     );
   }
@@ -78,7 +78,7 @@ function LoginPage() {
   return (
     <div className="min-h-screen bg-[#0B0F15] flex items-center justify-center px-4 relative overflow-hidden font-sans">
       {/* Subtle Background Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-amber-500/8 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Top Bar with Return Link */}
@@ -92,14 +92,14 @@ function LoginPage() {
       </div>
 
       <div
-        className="w-full max-w-md bg-gradient-to-b from-[#111722]/95 to-[#0B0F15]/98 backdrop-blur-md border border-red-500/20 rounded-3xl shadow-[0_16px_50px_0_rgba(0,0,0,0.6)] p-8 sm:p-10 flex flex-col items-center text-center relative z-10 hover:border-red-500/40 transition-all duration-300"
+        className="w-full max-w-md bg-gradient-to-b from-[#111722]/95 to-[#0B0F15]/98 backdrop-blur-md border border-amber-500/20 rounded-3xl shadow-[0_16px_50px_0_rgba(0,0,0,0.6)] p-8 sm:p-10 flex flex-col items-center text-center relative z-10 hover:border-amber-500/40 transition-all duration-300"
       >
         {/* Logo and Branding */}
         <div className="flex flex-col items-center gap-2 mb-8">
           <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center p-2 mb-2 shadow-inner">
             <img src={logo} alt="Southern Storm Shelters Logo" className="w-full h-full object-contain" />
           </div>
-          <h2 className="text-xs font-black uppercase tracking-[0.2em] text-[#dc2626] select-none">
+          <h2 className="text-xs font-black uppercase tracking-[0.2em] text-amber-400 select-none">
             Southern Storm Shelters LLC
           </h2>
           <h1 className="text-2xl font-black text-white tracking-tight mt-0.5">
@@ -134,7 +134,7 @@ function LoginPage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="admin"
-                className="w-full bg-white/[0.03] border border-white/10 rounded-xl py-3 pl-10 pr-4 text-xs text-white placeholder-white/20 focus:border-[#dc2626] focus:ring-2 focus:ring-[#dc2626]/20 focus:outline-none transition-all duration-300"
+                className="w-full bg-white/[0.03] border border-white/10 rounded-xl py-3 pl-10 pr-4 text-xs text-white placeholder-white/20 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all duration-300"
               />
               <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
             </div>
@@ -152,7 +152,7 @@ function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full bg-white/[0.03] border border-white/10 rounded-xl py-3 pl-10 pr-4 text-xs text-white placeholder-white/20 focus:border-[#dc2626] focus:ring-2 focus:ring-[#dc2626]/20 focus:outline-none transition-all duration-300"
+                className="w-full bg-white/[0.03] border border-white/10 rounded-xl py-3 pl-10 pr-4 text-xs text-white placeholder-white/20 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all duration-300"
               />
               <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
             </div>
@@ -161,8 +161,8 @@ function LoginPage() {
           {/* Credentials helper hint */}
           <div className="flex items-center justify-between px-1 pt-1 text-[11px] text-slate-500">
             <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#dc2626]" />
-              FEMA P-320 Compliant Console
+              <ShieldCheck className="w-3.5 h-3.5 text-amber-500" />
+              Secure Admin Console
             </span>
             <span className="text-[10px] text-slate-500">
               Default: <code className="text-slate-300 font-mono">admin / admin123</code>
@@ -173,7 +173,7 @@ function LoginPage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-gradient-to-r from-[#dc2626] to-[#b91c1c] hover:from-[#b91c1c] hover:to-[#dc2626] text-white text-xs font-bold uppercase tracking-widest py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-red-600/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] select-none cursor-pointer flex items-center justify-center gap-2 group disabled:opacity-75 disabled:pointer-events-none mt-2"
+            className="w-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-xs font-bold uppercase tracking-widest py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-amber-600/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] select-none cursor-pointer flex items-center justify-center gap-2 group disabled:opacity-75 disabled:pointer-events-none mt-2"
           >
             {isSubmitting ? (
               <span className="flex items-center gap-2">

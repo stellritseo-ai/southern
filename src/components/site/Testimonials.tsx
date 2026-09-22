@@ -39,7 +39,7 @@ interface Review {
 }
 
 const avatarColors = [
-  "#dc2626", "#b91c1c", "#111722", "#0b0f15", "#d97706", "#475569", "#991b1b",
+  "#d97706", "#b45309", "#111722", "#0b0f15", "#f59e0b", "#475569", "#92400e",
 ];
 
 function StarRating({ count }: { count: number }) {
@@ -62,7 +62,7 @@ function TestimonialCard({ review, isGrid = false }: { review: Review; isGrid?: 
   return (
     <div className={cn(
       "relative bg-white border border-slate-200/80 rounded-2xl p-5 sm:p-6 flex flex-col gap-3.5 group transition-all duration-300 text-left",
-      "shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_36px_-6px_rgba(220,38,38,0.14)] hover:border-[#dc2626]/40 hover:-translate-y-1",
+      "shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_36px_-6px_rgba(217,119,6,0.14)] hover:border-[#d97706]/40 hover:-translate-y-1",
       isGrid ? "w-full" : "flex-shrink-0 w-[285px] sm:w-[360px] lg:w-[380px] mx-2 sm:mx-3"
     )}>
 
@@ -88,7 +88,7 @@ function TestimonialCard({ review, isGrid = false }: { review: Review; isGrid?: 
 
       {/* Quote watermark + review text */}
       <div className="relative flex-1">
-        <Quote className="absolute -top-1.5 -left-1 w-6 h-6 text-[#dc2626]/12 fill-[#dc2626]/12 pointer-events-none" />
+        <Quote className="absolute -top-1.5 -left-1 w-6 h-6 text-[#d97706]/12 fill-[#d97706]/12 pointer-events-none" />
         <p className="text-slate-700 text-[13.5px] sm:text-[14px] leading-relaxed font-normal pl-4 flex-1">
           "{review.text}"
         </p>
@@ -97,7 +97,7 @@ function TestimonialCard({ review, isGrid = false }: { review: Review; isGrid?: 
       {/* Service tag only */}
       <div className="flex flex-wrap items-center gap-2 pt-0.5">
         {review.service && (
-          <span className="self-start inline-flex items-center bg-red-50/90 border border-red-200 text-[#dc2626] text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
+          <span className="self-start inline-flex items-center bg-amber-50/90 border border-amber-200 text-amber-700 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
             {review.service}
           </span>
         )}
@@ -105,9 +105,9 @@ function TestimonialCard({ review, isGrid = false }: { review: Review; isGrid?: 
 
       {/* Business owner reply */}
       {review.replyText && (
-        <div className="bg-slate-50 border-l-2 border-[#dc2626] p-2.5 sm:p-3 rounded-r-xl text-xs space-y-1">
+        <div className="bg-slate-50 border-l-2 border-amber-500 p-2.5 sm:p-3 rounded-r-xl text-xs space-y-1">
           <div className="flex items-center justify-between">
-            <span className="font-extrabold text-[#dc2626] text-[10px] uppercase tracking-wider">
+            <span className="font-extrabold text-amber-700 text-[10px] uppercase tracking-wider">
               Southern Storm Shelters (Owner)
             </span>
             <span className="text-[10px] text-slate-400 font-medium">Response</span>
@@ -282,8 +282,8 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
     },
     {
       text: t(
-        "From our first call to their 24/7 hotline to the day the crane lowered our vault into place, Southern Storm Shelters showed why they are the leaders in Tennessee storm protection.",
-        "Desde nuestra primera llamada a su línea directa 24/7 hasta el día en que la grúa colocó nuestra bóveda, demostraron por qué son los líderes en protección contra tormentas en Tennessee."
+        "From our first call to their project line to the day the crane lowered our vault into place, Southern Storm Shelters showed why they are the leaders in Tennessee storm protection.",
+        "Desde nuestra primera llamada a su línea de proyectos hasta el día en que la grúa colocó nuestra bóveda, demostraron por qué son los líderes en protección contra tormentas en Tennessee."
       ),
       name: "Michael C.",
       role: t("Homeowner · Columbia, TN", "Propietario · Columbia, TN"),
@@ -308,7 +308,7 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
     >
 
       {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-red-600/8 blur-[120px]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-amber-500/8 blur-[120px]" />
       <div className="pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[300px] rounded-full bg-amber-500/8 blur-[100px]" />
 
       {/* Subtle radial grid */}
@@ -316,7 +316,7 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
-          backgroundImage: "radial-gradient(circle, #dc2626 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, #d97706 1px, transparent 1px)",
           backgroundSize: "30px 30px",
         }}
       />
@@ -334,12 +334,12 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
           <span>⭐</span>
           <span>{t("Customer Stories", "Historias de Clientes")}</span>
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-          <span className="text-[#dc2626] font-extrabold tracking-normal">Nashville, TN</span>
+          <span className="text-amber-600 font-extrabold tracking-normal">Nashville, TN</span>
         </div>
 
         <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-black text-slate-900 tracking-tight leading-tight mt-0 sm:mt-[-4px] mb-3">
           {t("Trusted to Protect ", "De Confianza para Proteger ")}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] via-red-600 to-[#b91c1c]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d97706] via-amber-500 to-[#b45309]">
             {t("What Matters Most", "Lo Que Más Importa")}
           </span>
         </h2>

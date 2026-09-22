@@ -65,7 +65,7 @@ export function Welcome() {
               style={{ fontSize: "clamp(26px, 4vw, 41px)", marginTop: "-14px", marginBottom: "10px" }}
             >
               {t("Built Underground. ", "Construido bajo Tierra. ")}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
+              <span className="gradient-text-construction">
                 {t("Built to Last.", "Construido para Durar.")}
               </span>
             </h2>
@@ -80,9 +80,9 @@ export function Welcome() {
               </p>
             </div>
 
-            {/* Highlight Banner — slate accent */}
-            <div className="w-full bg-slate-50 border-l-4 border-slate-400 p-4 rounded-r-2xl text-xs sm:text-sm font-semibold text-slate-800 flex items-center gap-3">
-              <ShieldCheck className="h-6 w-6 text-slate-600 shrink-0" />
+            {/* Highlight Banner — amber accent */}
+            <div className="w-full bg-slate-50 border-l-4 border-amber-500 p-4 rounded-r-2xl text-xs sm:text-sm font-semibold text-slate-800 flex items-center gap-3">
+              <ShieldCheck className="h-6 w-6 text-amber-600 shrink-0" />
               <span>{t("Our commitment to quality starts with construction and engineering features that exceed standard requirements, providing peace of mind for decades to come.", "Nuestro compromiso con la calidad comienza con características de construcción que superan los requisitos estándar.")}</span>
             </div>
 
@@ -98,22 +98,19 @@ export function Welcome() {
                     >
                       <div className="relative z-10 flex items-start gap-3">
                         {/* Icon */}
-                        <div className="w-10 h-10 rounded-xl bg-slate-100 group-hover:bg-slate-800 text-slate-700 group-hover:text-white border border-slate-200 group-hover:border-slate-800 flex items-center justify-center shrink-0 transition-all duration-300">
-                          <Icon className="h-5 w-5" />
+                        <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 shrink-0 border border-amber-500/20 group-hover:scale-110 transition-transform">
+                          <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                         </div>
-
-                        {/* Text */}
-                        <div className="flex flex-col text-left min-w-0 flex-1">
-                          <div className="flex items-center justify-between gap-1 mb-0.5">
-                            <span className="text-[13px] sm:text-[13.5px] font-black text-slate-900 leading-snug">
+                        <div className="flex flex-col min-w-0">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">
                               {item.title}
                             </span>
-                            <span className="text-[9px] uppercase font-black tracking-wider text-slate-500 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded-full shrink-0">
+                            <span className="text-[9px] font-black uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-full shrink-0">
                               {item.tag}
                             </span>
                           </div>
-
-                          <p className="text-[11.5px] sm:text-[12px] text-slate-500 leading-relaxed font-medium">
+                          <p className="text-[11px] sm:text-xs text-slate-500 font-normal leading-relaxed mt-1">
                             {item.desc}
                           </p>
                         </div>
@@ -126,7 +123,7 @@ export function Welcome() {
 
             {/* CTA Button */}
             <div className="pt-1">
-              <Button variant="hero" size="lg" asChild className="font-bold rounded-full px-6 text-sm sm:text-base bg-[#dc2626] hover:bg-[#b91c1c] text-white shadow-md hover:shadow-lg transition-all duration-200">
+              <Button variant="hero" size="lg" asChild className="font-bold rounded-full px-6 text-sm sm:text-base bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white shadow-md hover:shadow-lg transition-all duration-200">
                 <Link to="/about">
                   {t("Learn More About Our Shelters", "Conozca Más Sobre Nuestros Refugios")} <ArrowRight className="ml-2 h-4 w-4 text-white" />
                 </Link>

@@ -284,7 +284,7 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
-          backgroundImage: "radial-gradient(circle, #dc2626 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, #d97706 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
@@ -301,7 +301,7 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
             className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12"
           >
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 bg-white border border-red-200 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-[#dc2626] mb-5 shadow-sm">
+              <div className="inline-flex items-center gap-2 bg-white border border-amber-200 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-amber-700 mb-5 shadow-sm">
                 <Camera className="w-3.5 h-3.5" />
                 {t("Our Shelter Gallery", "Nuestra Galería de Refugios")}
               </div>
@@ -311,7 +311,7 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
                 style={{ fontSize: "38px", marginTop: "-8px", marginBottom: "10px" }}
               >
                 {t("See Our Work — ", "Vea Nuestro Trabajo — ")}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] to-[#b91c1c]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d97706] to-[#b45309]">
                   {t("Real Protection in Action.", "Protección Real en Acción.")}
                 </span>
               </h2>
@@ -322,7 +322,7 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
 
             <Link
               to="/free-quote"
-              className="inline-flex items-center gap-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white text-[11px] font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 shadow-lg hover:scale-[1.03] active:scale-[0.97] shrink-0 self-start lg:self-auto cursor-pointer"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-[11px] font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 shadow-lg hover:scale-[1.03] active:scale-[0.97] shrink-0 self-start lg:self-auto cursor-pointer"
             >
               {t("Get Free Estimate", "Solicitar Estimación")} <ArrowRight className="h-4 w-4" />
             </Link>
@@ -339,8 +339,8 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
             className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10"
           >
             <div>
-              <div className="inline-flex items-center gap-2 bg-white border border-red-200 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-[#dc2626] mb-4 shadow-sm">
-                <Star className="w-3.5 h-3.5 fill-[#dc2626]" />
+              <div className="inline-flex items-center gap-2 bg-white border border-amber-200 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-amber-700 mb-4 shadow-sm">
+                <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
                 {t("Our Work Gallery", "Nuestra Galería")}
               </div>
               <h2 className="text-slate-900 font-black text-[26px] sm:text-[32px] leading-tight tracking-tight">
@@ -399,7 +399,7 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
 
                 {/* Subtle Hover Overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-all duration-300 flex items-center justify-center">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/85 border border-white/40 text-[#dc2626] opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 shadow-md backdrop-blur-xs">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/85 border border-white/40 text-amber-600 opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 shadow-md backdrop-blur-xs">
                     <ZoomIn className="h-5 w-5" />
                   </div>
                 </div>
@@ -414,10 +414,10 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
             <button
               type="button"
               onClick={() => setShowAll((prev) => !prev)}
-              className="group inline-flex items-center gap-2.5 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/90 hover:border-[#dc2626] text-xs sm:text-sm font-black uppercase tracking-wider px-8 py-3.5 rounded-full shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+              className="group inline-flex items-center gap-2.5 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/90 hover:border-amber-500 text-xs sm:text-sm font-black uppercase tracking-wider px-8 py-3.5 rounded-full shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
             >
               <span>{showAll ? t("Show Less", "Ver Menos") : t("View More", "Ver Más")}</span>
-              <div className="w-6 h-6 rounded-full bg-red-50 text-[#dc2626] group-hover:bg-[#dc2626] group-hover:text-white flex items-center justify-center transition-colors">
+              <div className="w-6 h-6 rounded-full bg-amber-50 text-amber-600 group-hover:bg-amber-600 group-hover:text-white flex items-center justify-center transition-colors">
                 <ArrowRight className={cn("w-3.5 h-3.5 transition-transform", showAll ? "-rotate-90" : "rotate-90")} />
               </div>
             </button>
@@ -493,7 +493,7 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
                 <Link
                   to="/free-quote"
                   onClick={closeLightbox}
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] text-white text-xs sm:text-sm font-black uppercase tracking-wider px-6 py-2.5 rounded-full hover:scale-[1.03] active:scale-[0.98] transition-transform shadow-md cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 text-white text-xs sm:text-sm font-black uppercase tracking-wider px-6 py-2.5 rounded-full hover:scale-[1.03] active:scale-[0.98] transition-transform shadow-md cursor-pointer"
                 >
                   {t("Get a Quote", "Solicitar Cotización")} <ArrowRight className="h-3.5 w-3.5" />
                 </Link>

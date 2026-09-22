@@ -27,6 +27,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { useLanguage } from "@/hooks/useLanguage";
 import { addWebEmail } from "@/lib/leads-store";
+import { SITE_CONFIG } from "@/config/site-config";
 
 export function ReviewsPageContent() {
   const { t } = useLanguage();
@@ -245,12 +246,12 @@ export function ReviewsPageContent() {
   };
 
   return (
-    <div className="bg-white text-slate-900 overflow-hidden selection:bg-red-600 selection:text-white">
+    <div className="bg-white text-slate-900 overflow-hidden selection:bg-amber-600 selection:text-white">
 
       {/* ── SECTION 1: WHY OUR CUSTOMERS CHOOSE US ─────────────────────── */}
       <section className="relative py-16 sm:py-20 lg:py-24 border-b border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-50">
-        <div aria-hidden className="absolute top-0 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
-        <div aria-hidden className="absolute bottom-0 left-10 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div aria-hidden className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div aria-hidden className="absolute bottom-0 left-10 w-96 h-96 bg-slate-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-14">
@@ -277,14 +278,14 @@ export function ReviewsPageContent() {
               return (
                 <div
                   key={item.title}
-                  className="rounded-3xl bg-white border border-slate-200 p-7 flex flex-col justify-between hover:border-red-500/40 hover:shadow-xl transition-all duration-300 shadow-xs group"
+                  className="rounded-3xl bg-white border border-slate-200 p-7 flex flex-col justify-between hover:border-amber-500/40 hover:shadow-xl transition-all duration-300 shadow-xs group"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center mb-5 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                    <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mb-5 group-hover:bg-amber-600 group-hover:text-white transition-colors">
                       <Icon className="w-6 h-6" />
                     </div>
 
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-amber-700 transition-colors">
                       {item.title}
                     </h3>
 
@@ -304,8 +305,8 @@ export function ReviewsPageContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-widest mb-3">
-              <Quote className="w-3.5 h-3.5 text-red-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-3">
+              <Quote className="w-3.5 h-3.5 text-amber-600" />
               <span>{t("Verified Testimonials", "Testimonios Verificados")}</span>
             </div>
 
@@ -325,7 +326,7 @@ export function ReviewsPageContent() {
             {reviewsList.map((rev, idx) => (
               <div
                 key={idx}
-                className="rounded-3xl bg-slate-50/70 border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-red-500/40 hover:shadow-lg transition-all duration-300 shadow-xs relative"
+                className="rounded-3xl bg-slate-50/70 border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-amber-500/40 hover:shadow-lg transition-all duration-300 shadow-xs relative"
               >
                 <div>
                   {/* Stars */}
@@ -351,8 +352,8 @@ export function ReviewsPageContent() {
                   <div className="text-xs font-extrabold text-slate-900">
                     — {rev.name}, <span className="text-slate-500 font-semibold">{rev.location}</span>
                   </div>
-                  <div className="text-[11px] font-bold text-red-600 flex items-center gap-1.5 mt-0.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-red-600 shrink-0" />
+                  <div className="text-[11px] font-bold text-amber-700 flex items-center gap-1.5 mt-0.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-600 shrink-0" />
                     <span>{t("Installed", "Instalado")}: {rev.installed}</span>
                   </div>
                 </div>
@@ -361,8 +362,8 @@ export function ReviewsPageContent() {
           </div>
 
           {/* Share Your Experience Callout */}
-          <div className="mt-14 rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 text-white p-8 sm:p-12 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden">
-            <div aria-hidden className="absolute -right-10 -bottom-10 w-60 h-60 bg-red-600/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="mt-14 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-8 sm:p-12 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden border border-amber-500/20">
+            <div aria-hidden className="absolute -right-10 -bottom-10 w-60 h-60 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
 
             <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-3">
               {t("Share Your Experience", "Comparta Su Experiencia")}
@@ -378,14 +379,14 @@ export function ReviewsPageContent() {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Button
                 onClick={() => setModalOpen(true)}
-                className="bg-red-600 hover:bg-red-700 text-white font-extrabold px-8 py-3.5 rounded-xl shadow-lg shadow-red-600/30 text-sm cursor-pointer"
+                className="bg-amber-600 hover:bg-amber-700 text-white font-extrabold px-8 py-3.5 rounded-xl shadow-lg shadow-amber-600/30 text-sm cursor-pointer"
               >
                 <MessageSquarePlus className="w-4 h-4 mr-2" />
                 <span>{t("LEAVE A REVIEW", "DEJAR UNA RESEÑA")}</span>
               </Button>
               
               <a
-                href="mailto:admin@nashvillesiteworks.com"
+                href={`mailto:${SITE_CONFIG.email}`}
                 className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3 rounded-xl border border-white/20 text-sm transition"
               >
                 <Mail className="w-4 h-4" />
@@ -449,42 +450,42 @@ export function ReviewsPageContent() {
       <section className="py-16 sm:py-24 bg-white relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
-          <div className="rounded-3xl bg-gradient-to-r from-red-600 via-red-600 to-amber-600 text-white p-8 sm:p-14 text-center max-w-5xl mx-auto shadow-2xl relative overflow-hidden">
-            <div aria-hidden className="absolute -right-20 -top-20 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-8 sm:p-14 text-center max-w-5xl mx-auto shadow-2xl relative overflow-hidden border border-amber-500/30">
+            <div aria-hidden className="absolute -right-20 -top-20 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
             <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-4">
-              {t("Ready to Join Our Family of Satisfied Customers?", "¿Listo Para Unirse a Nuestra Familia de Clientes Satisfechos?")}
+              {t("Ready to Work With Nashville's Underground Shelter Builders?", "¿Listo Para Trabajar Con Constructores de Refugios de Confianza?")}
             </h2>
 
             <p className="text-white/90 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed font-medium">
               {t(
-                "Don't wait for the warning sirens. The best and smartest thing you can do for yourself and your family is to be prepared. Contact us today to schedule your free consultation and site evaluation.",
-                "No espere a que suenen las sirenas. Lo más inteligente para su familia es estar preparado. Contáctenos hoy para programar su consulta y evaluación gratuita en el terreno."
+                "Prepare your property with precision underground protection. Built by experienced tradesmen with turnkey excavation and heavy crane setting. Contact us today for a site evaluation.",
+                "Prepare su propiedad con protección subterránea de precisión. Construido por expertos con excavación integral y grúas de servicio pesado. Contáctenos hoy para una evaluación en el terreno."
               )}
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 to="/free-quote"
-                className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-900 font-extrabold px-8 py-4 rounded-2xl shadow-xl transition text-sm sm:text-base"
+                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold px-8 py-4 rounded-2xl shadow-xl transition text-sm sm:text-base"
               >
                 <span>{t("Request a Free Estimate", "Solicitar Estimación Gratis")}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               
               <a
-                href="tel:6159912381"
+                href={`tel:${SITE_CONFIG.phoneRaw}`}
                 className="inline-flex items-center gap-2 bg-slate-950/80 hover:bg-slate-950 text-white font-extrabold px-8 py-4 rounded-2xl border border-white/20 transition text-sm sm:text-base"
               >
-                <Phone className="w-4 h-4" />
-                <span>(615) 991-2381</span>
+                <Phone className="w-4 h-4 text-amber-400" />
+                <span>{SITE_CONFIG.phone}</span>
               </a>
             </div>
 
             <blockquote className="mt-8 border-t border-white/20 pt-4 text-xs font-semibold italic text-white/80">
               {t(
-                '"That\'s peace of mind, providing peace of mind for decades to come."',
-                '"Eso es tranquilidad, brindando tranquilidad para las próximas décadas."'
+                '"Turnkey underground construction that provides security and peace of mind for decades to come."',
+                '"Construcción subterránea llave en mano que brinda seguridad y tranquilidad para las próximas décadas."'
               )}
             </blockquote>
           </div>
@@ -498,7 +499,7 @@ export function ReviewsPageContent() {
           <div className="rounded-3xl bg-white border border-slate-200 p-8 sm:p-12 shadow-md max-w-4xl mx-auto">
             
             <div className="text-center mb-8">
-              <span className="text-xs font-bold uppercase tracking-widest text-red-700 bg-red-50 px-3.5 py-1 rounded-full border border-red-200">
+              <span className="text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-50 px-3.5 py-1 rounded-full border border-amber-200">
                 {t("Contact Information Summary", "Resumen de Contacto")}
               </span>
               <h3 className="mt-3 text-2xl sm:text-3xl font-extrabold text-slate-900">
@@ -515,32 +516,29 @@ export function ReviewsPageContent() {
                   <tr className="hover:bg-white transition-colors">
                     <td className="p-4 font-bold text-slate-500 w-1/3 sm:w-1/4">{t("Phone", "Teléfono")}</td>
                     <td className="p-4 font-extrabold text-slate-900">
-                      <a href="tel:6159912381" className="text-red-600 hover:underline">
-                        (615) 991-2381
+                      <a href={`tel:${SITE_CONFIG.phoneRaw}`} className="text-amber-700 hover:underline">
+                        {SITE_CONFIG.phone}
                       </a>
                     </td>
                   </tr>
                   <tr className="hover:bg-white transition-colors">
                     <td className="p-4 font-bold text-slate-500">{t("Email", "Correo Electrónico")}</td>
                     <td className="p-4 font-semibold text-slate-900">
-                      <a href="mailto:admin@nashvillesiteworks.com" className="text-red-600 hover:underline">
-                        admin@nashvillesiteworks.com
+                      <a href={`mailto:${SITE_CONFIG.email}`} className="text-amber-700 hover:underline">
+                        {SITE_CONFIG.email}
                       </a>
                     </td>
                   </tr>
                   <tr className="hover:bg-white transition-colors">
                     <td className="p-4 font-bold text-slate-500">{t("Address", "Dirección")}</td>
                     <td className="p-4 font-semibold text-slate-900">
-                      2000 Meridian Blvd, Suite 200, Franklin, TN 37067
+                      Nashville, TN
                     </td>
                   </tr>
                   <tr className="hover:bg-white transition-colors">
                     <td className="p-4 font-bold text-slate-500">{t("Hours", "Horario")}</td>
                     <td className="p-4 font-semibold text-slate-900">
-                      {t(
-                        "Monday–Friday: 8:00 AM – 5:00 PM | Saturday: By Appointment | Sunday: Closed",
-                        "Lunes a Viernes: 8:00 AM – 5:00 PM | Sábado: Con Cita | Domingo: Cerrado"
-                      )}
+                      {SITE_CONFIG.operatingHours.scheduleText}
                     </td>
                   </tr>
                   <tr className="hover:bg-white transition-colors">
@@ -594,7 +592,7 @@ export function ReviewsPageContent() {
                   id="reviewerName"
                   required
                   placeholder={t("e.g. John Miller", "ej. Juan Pérez")}
-                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-red-600 focus:ring-red-600"
+                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
                 />
               </div>
 
@@ -606,7 +604,7 @@ export function ReviewsPageContent() {
                   id="reviewerCity"
                   required
                   placeholder="Franklin, TN"
-                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-red-600 focus:ring-red-600"
+                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
                 />
               </div>
 
@@ -651,7 +649,7 @@ export function ReviewsPageContent() {
                     "Tell us about the installation, customer service, and how you feel about your shelter...",
                     "Cuéntenos sobre la instalación, atención al cliente y su refugio..."
                   )}
-                  className="mt-1 bg-white border-slate-300 text-slate-900 text-xs rounded-xl focus:border-red-600 focus:ring-red-600"
+                  className="mt-1 bg-white border-slate-300 text-slate-900 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
                 />
               </div>
 
@@ -661,7 +659,7 @@ export function ReviewsPageContent() {
                   id="permission"
                   required
                   defaultChecked
-                  className="mt-0.5 rounded border-slate-300 text-red-600 focus:ring-red-600"
+                  className="mt-0.5 rounded border-slate-300 text-amber-600 focus:ring-amber-600"
                 />
                 <label htmlFor="permission" className="text-[11px] text-slate-600 leading-tight">
                   {t(
@@ -674,7 +672,7 @@ export function ReviewsPageContent() {
               <Button
                 type="submit"
                 disabled={submitting}
-                className="w-full h-12 bg-red-600 hover:bg-red-700 text-white font-extrabold uppercase tracking-wider rounded-xl shadow-lg shadow-red-600/20 text-xs mt-2 cursor-pointer"
+                className="w-full h-12 bg-amber-600 hover:bg-amber-700 text-white font-extrabold uppercase tracking-wider rounded-xl shadow-lg shadow-amber-600/20 text-xs mt-2 cursor-pointer"
               >
                 {submitting ? t("Submitting...", "Enviando...") : t("SUBMIT REVIEW", "PUBLICAR RESEÑA")}
               </Button>
