@@ -43,10 +43,8 @@ function AboutPage() {
       "email": SITE_CONFIG.email,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "468 Craighead St",
         "addressLocality": "Nashville",
         "addressRegion": "TN",
-        "postalCode": "37204",
         "addressCountry": "US"
       }
     }

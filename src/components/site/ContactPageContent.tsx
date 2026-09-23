@@ -79,6 +79,8 @@ export function ContactPageContent() {
         name,
         phone,
         email,
+        address: address ? `${address}, ${city}, ${state} ${zip}` : undefined,
+        projectType: shelterType,
         service: `Contact Inquiry: ${contactReason}`,
         message: messagePayload,
         source: "Dedicated Contact Page",
@@ -361,7 +363,7 @@ export function ContactPageContent() {
       {/* ── SECTION 2: SEND US A MESSAGE (CONTACT FORM) ────────────────── */}
       <section id="contact-form" className="py-16 sm:py-24 bg-white relative">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-2xl mx-auto mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-3">
               <Calendar className="w-3.5 h-3.5 text-amber-700" />
@@ -417,7 +419,7 @@ export function ContactPageContent() {
               </motion.div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-8 relative z-10">
-                
+
                 {/* 1. Contact Information */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
@@ -480,11 +482,10 @@ export function ContactPageContent() {
                               type="button"
                               key={method}
                               onClick={() => setPreferredContact(method)}
-                              className={`py-2 px-1 text-center rounded-xl border text-xs font-bold transition cursor-pointer ${
-                                isSelected
+                              className={`py-2 px-1 text-center rounded-xl border text-xs font-bold transition cursor-pointer ${isSelected
                                   ? "bg-amber-600 text-white border-amber-600 shadow-sm"
                                   : "bg-white text-slate-700 border-slate-300 hover:border-slate-400"
-                              }`}
+                                }`}
                             >
                               {t(
                                 method === "Phone Call" ? "Phone Call" : method === "Email" ? "Email" : "Text",
@@ -588,11 +589,10 @@ export function ContactPageContent() {
                             type="button"
                             key={reason}
                             onClick={() => setContactReason(reason)}
-                            className={`p-3 rounded-xl border text-left text-xs font-bold transition cursor-pointer flex items-center justify-between ${
-                              isSelected
+                            className={`p-3 rounded-xl border text-left text-xs font-bold transition cursor-pointer flex items-center justify-between ${isSelected
                                 ? "bg-amber-500/10 border-amber-600 text-amber-800 shadow-2xs"
                                 : "bg-white text-slate-700 border-slate-300 hover:border-slate-400"
-                            }`}
+                              }`}
                           >
                             <span>
                               {t(
@@ -600,20 +600,19 @@ export function ContactPageContent() {
                                 reason === "Request a Free Estimate"
                                   ? "Solicitar Estimación Gratis"
                                   : reason === "Schedule a Site Evaluation"
-                                  ? "Programar Evaluación del Terreno"
-                                  : reason === "General Question"
-                                  ? "Pregunta General"
-                                  : reason === "Warranty Support"
-                                  ? "Soporte de Garantía"
-                                  : reason === "Commercial / Community Shelter Inquiry"
-                                  ? "Consulta Comercial / Comunitaria"
-                                  : "Otro"
+                                    ? "Programar Evaluación del Terreno"
+                                    : reason === "General Question"
+                                      ? "Pregunta General"
+                                      : reason === "Warranty Support"
+                                        ? "Soporte de Garantía"
+                                        : reason === "Commercial / Community Shelter Inquiry"
+                                          ? "Consulta Comercial / Comunitaria"
+                                          : "Otro"
                               )}
                             </span>
                             <div
-                              className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ml-2 ${
-                                isSelected ? "border-amber-600 bg-amber-600" : "border-slate-300"
-                              }`}
+                              className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ml-2 ${isSelected ? "border-amber-600 bg-amber-600" : "border-slate-300"
+                                }`}
                             >
                               {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
                             </div>
@@ -699,23 +698,22 @@ export function ContactPageContent() {
                             type="button"
                             key={src}
                             onClick={() => setReferralSource(src)}
-                            className={`py-2 px-3.5 rounded-xl border text-xs font-bold transition cursor-pointer ${
-                              isSelected
+                            className={`py-2 px-3.5 rounded-xl border text-xs font-bold transition cursor-pointer ${isSelected
                                 ? "bg-amber-500 text-slate-950 border-amber-500 font-extrabold shadow-sm"
                                 : "bg-white text-slate-700 border-slate-300 hover:border-slate-400"
-                            }`}
+                              }`}
                           >
                             {t(
                               src,
                               src === "Google Search"
                                 ? "Búsqueda Google"
                                 : src === "Referral"
-                                ? "Recomendación"
-                                : src === "Drove By"
-                                ? "Pasé por ahí"
-                                : src === "Other"
-                                ? "Otro"
-                                : src
+                                  ? "Recomendación"
+                                  : src === "Drove By"
+                                    ? "Pasé por ahí"
+                                    : src === "Other"
+                                      ? "Otro"
+                                      : src
                             )}
                           </button>
                         );
@@ -767,7 +765,7 @@ export function ContactPageContent() {
       {/* ── SECTION 3: WHAT HAPPENS AFTER YOU CONTACT US? (5 STEPS) ─────── */}
       <section className="py-16 sm:py-24 bg-slate-50 border-y border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-4">
               <CheckCircle2 className="w-3.5 h-3.5 text-amber-600" />
@@ -823,7 +821,7 @@ export function ContactPageContent() {
       {/* ── SECTION 4: WHY HOMEOWNERS ACROSS TENNESSEE TRUST US ──────────── */}
       <section className="py-16 sm:py-24 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-4">
               <ShieldCheck className="w-3.5 h-3.5 text-amber-600" />
@@ -859,7 +857,7 @@ export function ContactPageContent() {
       {/* ── SECTION 5: FREQUENTLY ASKED QUESTIONS ──────────────────────── */}
       <section className="py-16 sm:py-24 bg-slate-50 border-y border-slate-200">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-3">
               <HelpCircle className="w-3.5 h-3.5 text-amber-700" />
@@ -885,9 +883,8 @@ export function ContactPageContent() {
                   >
                     <span>{faq.q}</span>
                     <ChevronDown
-                      className={`w-5 h-5 text-amber-600 shrink-0 transition-transform duration-300 ${
-                        isOpen ? "rotate-180 text-amber-700" : ""
-                      }`}
+                      className={`w-5 h-5 text-amber-600 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-amber-700" : ""
+                        }`}
                     />
                   </button>
 
@@ -907,7 +904,7 @@ export function ContactPageContent() {
       {/* ── SECTION 6: CONTACT INFORMATION SUMMARY & CTA ───────────────── */}
       <section className="py-16 sm:py-24 bg-white relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          
+
           <div className="rounded-3xl bg-slate-50 border border-slate-200 p-8 sm:p-12 shadow-md">
             <div className="text-center max-w-3xl mx-auto mb-10">
               <span className="text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-50 px-3.5 py-1 rounded-full border border-amber-200">
@@ -944,7 +941,7 @@ export function ContactPageContent() {
                   <tr className="hover:bg-slate-50/60 transition-colors">
                     <td className="p-4 font-bold text-slate-500">{t("Address", "Dirección")}</td>
                     <td className="p-4 font-semibold text-slate-900">
-                      {SITE_CONFIG.address.full}
+                      {SITE_CONFIG.address}
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50/60 transition-colors">

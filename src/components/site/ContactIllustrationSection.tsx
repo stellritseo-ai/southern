@@ -81,7 +81,7 @@ export function ContactIllustrationSection() {
       {/* ── Background Decorations ──────────────────────── */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:28px_28px] opacity-60" />
-        <div className="absolute -top-40 right-0 w-[560px] h-[560px] rounded-full bg-red-600/8 blur-[130px]" />
+        <div className="absolute -top-40 right-0 w-[560px] h-[560px] rounded-full bg-amber-500/6 blur-[130px]" />
         <div className="absolute bottom-0 -left-24 w-[500px] h-[500px] rounded-full bg-amber-500/8 blur-[120px]" />
       </div>
 

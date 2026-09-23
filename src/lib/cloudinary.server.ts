@@ -21,7 +21,7 @@ function ensureConfigured() {
   configured = true;
 }
 
-export async function uploadToCloudinary(fileStr: string, folder = "electrical") {
+export async function uploadToCloudinary(fileStr: string, folder = "shelters") {
   ensureConfigured();
   const result = await cloudinary.uploader.upload(fileStr, {
     folder,
@@ -35,7 +35,7 @@ export async function deleteFromCloudinary(url: string) {
   const parts = url.split("/");
   const fileName = parts[parts.length - 1];
   const publicId = fileName.split(".")[0];
-  const folderIndex = parts.indexOf("electrical");
+  const folderIndex = parts.indexOf("shelters") !== -1 ? parts.indexOf("shelters") : parts.indexOf("electrical");
   const id = folderIndex !== -1 ? parts.slice(folderIndex).join("/").split(".")[0] : publicId;
   await cloudinary.uploader.destroy(id);
 }

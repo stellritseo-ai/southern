@@ -9,6 +9,7 @@ import {
   dbDeleteReview,
   dbGetWebEmails,
   dbAddWebEmail,
+  dbUpdateWebEmail,
   dbDeleteWebEmail,
   dbGetChatSessions,
   dbSaveChatSession,
@@ -26,7 +27,8 @@ import {
   dbAddNotification,
   dbMarkNotificationRead,
   dbMarkAllNotificationsRead,
-  dbClearAllNotifications
+  dbClearAllNotifications,
+  dbCheckHealth
 } from "./db.server.js";
 
 import {
@@ -64,6 +66,11 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
   const method = request.method;
 
   try {
+    // ── /api/health ──
+    if (pathname === "/api/health") {
+      const health = await dbCheckHealth();
+      return jsonResponse(health);
+    }
     // ── /api/leads ──
     if (pathname === "/api/leads") {
       if (method === "GET") {
@@ -79,35 +86,41 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
             createdAt: new Date().toISOString()
           };
           const saved = await dbAddLead(newLead);
-          
-          // Send notification email via Zoho SMTP
-          try {
-            await sendZohoNotification({
-              name: newLead.name,
-              email: newLead.email,
-              phone: newLead.phone,
-              service: newLead.projectType || "Custom Lead",
-              message: `Address: ${newLead.address || "Not provided"}\n\nDescription: ${newLead.description || "No description"}`,
-              source: "Admin Custom Lead",
-              details: newLead
-            });
-          } catch (err) {
-            console.error("Lead email dispatch error:", err);
+
+          // Asynchronously dispatch notification email via Zoho SMTP in background
+          queueMicrotask(async () => {
+            try {
+              await sendZohoNotification({
+                name: newLead.name,
+                email: newLead.email,
+                phone: newLead.phone,
+                service: newLead.projectType || "Custom Lead",
+                message: `Address: ${newLead.address || "Not provided"}\n\nDescription: ${newLead.description || "No description"}`,
+                source: "Admin Custom Lead",
+                details: newLead
+              });
+            } catch (err) {
+              console.error("Lead email dispatch error:", err);
+            }
+          });
+
+          const io = (global as any).io;
+          if (io) {
+            io.emit("new-lead", saved);
+            dbGetLeads(INITIAL_LEADS).then((allLeads) => io.emit("leads-updated", allLeads)).catch(() => {});
           }
 
           return jsonResponse(saved);
         } else {
-          let estimatedValue = 2500;
+          let estimatedValue = 8500;
           switch (body.leadData.projectType) {
-            case "panel-upgrades": estimatedValue = 3500; break;
-            case "ev-charger": estimatedValue = 1200; break;
-            case "generator": estimatedValue = 14500; break;
-            case "commercial": estimatedValue = 32000; break;
-            case "residential": estimatedValue = 2500; break;
-            case "industrial": estimatedValue = 54000; break;
-            case "emergency": estimatedValue = 450; break;
-            case "wiring-rewiring": estimatedValue = 8500; break;
-            case "security-systems": estimatedValue = 6500; break;
+            case "underground": estimatedValue = 10500; break;
+            case "garage-unit": estimatedValue = 9200; break;
+            case "backyard": estimatedValue = 9800; break;
+            case "commercial": estimatedValue = 34000; break;
+            case "above-ground": estimatedValue = 8500; break;
+            case "safe-room": estimatedValue = 12500; break;
+            case "community": estimatedValue = 48000; break;
           }
           const newLead = {
             ...body.leadData,
@@ -119,20 +132,28 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
           };
           const saved = await dbAddLead(newLead);
 
-          // Send notification email via Zoho SMTP
-          try {
-            await sendZohoNotification({
-              name: newLead.name,
-              email: newLead.email,
-              phone: newLead.phone,
-              service: newLead.projectType,
-              message: `Address: ${newLead.address || "Not provided"}\nPreferred Contact Time: ${newLead.contactTime || "Anytime"}\n\nDescription: ${newLead.description || "No description"}`,
-              source: "Website Lead Form",
-              details: newLead
-            });
-          } catch (err) {
-            console.error("Lead email dispatch error:", err);
+          const io = (global as any).io;
+          if (io) {
+            io.emit("new-lead", saved);
+            dbGetLeads(INITIAL_LEADS).then((allLeads) => io.emit("leads-updated", allLeads)).catch(() => {});
           }
+
+          // Asynchronously dispatch notification email via Zoho SMTP in background
+          queueMicrotask(async () => {
+            try {
+              await sendZohoNotification({
+                name: newLead.name,
+                email: newLead.email,
+                phone: newLead.phone,
+                service: newLead.projectType,
+                message: `Address: ${newLead.address || "Not provided"}\nPreferred Contact Time: ${newLead.contactTime || "Anytime"}\n\nDescription: ${newLead.description || "No description"}`,
+                source: "Website Lead Form",
+                details: newLead
+              });
+            } catch (err) {
+              console.error("Lead email dispatch error:", err);
+            }
+          });
 
           return jsonResponse(saved);
         }
@@ -140,11 +161,20 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
       if (method === "PUT") {
         const body = await request.json();
         const updated = await dbUpdateLead(body.id, body.updates);
+        const io = (global as any).io;
+        if (io) {
+          io.emit("leads-updated", updated);
+        }
         return jsonResponse(updated);
       }
       if (method === "DELETE") {
         const body = await request.json();
         const updated = await dbDeleteLead(body.id);
+        const io = (global as any).io;
+        if (io) {
+          io.emit("leads-updated", updated);
+          io.emit("lead-deleted", body.id);
+        }
         return jsonResponse(updated);
       }
     }
@@ -184,39 +214,73 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
         const body = await request.json();
         const photos: string[] = [];
         if (body.newReviewPhoto) {
-          const url = await uploadToCloudinary(body.newReviewPhoto, "electrical/reviews");
+          const url = await uploadToCloudinary(body.newReviewPhoto, "shelters/reviews");
           photos.push(url);
+        } else if (body.photos && Array.isArray(body.photos)) {
+          photos.push(...body.photos);
         }
         const newReview = {
-          title: body.title,
-          text: body.text,
-          author: body.author,
-          location: body.location,
-          rating: body.rating,
           id: "review-" + Math.random().toString(36).substr(2, 9),
-          featured: true,
+          title: body.title || "Engineered Storm Shelter Installation",
+          text: body.text || "",
+          author: body.author || "Satisfied Homeowner",
+          location: body.location || "Nashville, TN",
+          installed: body.installed || "Granger ISS In-Ground Shelter",
+          rating: Number(body.rating) || 5,
+          featured: body.featured !== undefined ? body.featured : true,
+          verified: body.verified !== undefined ? body.verified : true,
           createdAt: new Date().toISOString(),
           photos
         };
         const saved = await dbAddReview(newReview);
+        const allReviews = await dbGetReviews(INITIAL_REVIEWS);
+
+        const io = (global as any).io;
+        if (io) {
+          io.emit("reviews-updated", allReviews);
+          io.emit("new-review", saved);
+        }
         return jsonResponse(saved);
       }
       if (method === "PUT") {
         const body = await request.json();
+        let updated: any[] = [];
         if (body.action === "reply") {
-          const updated = await dbUpdateReview(body.id, { replyText: body.replyText });
-          return jsonResponse(updated);
+          updated = await dbUpdateReview(body.id, { replyText: body.replyText, reply: body.replyText });
         } else if (body.action === "featured") {
           const db = await getDb();
           const review = await db.collection("reviews").findOne({ id: body.id });
           const featured = review ? !review.featured : false;
-          const updated = await dbUpdateReview(body.id, { featured });
-          return jsonResponse(updated);
+          updated = await dbUpdateReview(body.id, { featured });
+        } else if (body.action === "verify") {
+          const db = await getDb();
+          const review = await db.collection("reviews").findOne({ id: body.id });
+          const verified = review ? !review.verified : true;
+          updated = await dbUpdateReview(body.id, { verified });
         }
+        const io = (global as any).io;
+        if (io) {
+          io.emit("reviews-updated", updated);
+        }
+        return jsonResponse(updated);
       }
       if (method === "DELETE") {
-        const body = await request.json();
-        const updated = await dbDeleteReview(body.id);
+        let id = url.searchParams.get("id");
+        if (!id) {
+          try {
+            const body = await request.json();
+            id = body.id;
+          } catch { }
+        }
+        if (!id) {
+          return jsonResponse({ error: "Missing review ID" }, 400);
+        }
+        const updated = await dbDeleteReview(id);
+        const io = (global as any).io;
+        if (io) {
+          io.emit("reviews-updated", updated);
+          io.emit("review-deleted", id);
+        }
         return jsonResponse(updated);
       }
     }
@@ -232,57 +296,78 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
         const newEmail = {
           ...body.emailData,
           id: "email-" + Math.random().toString(36).substr(2, 9),
+          status: body.emailData?.status || "new",
           createdAt: new Date().toISOString()
         };
         const saved = await dbAddWebEmail(newEmail);
 
-        // Send email notification to eva@stellrit.com via Zoho SMTP (awaited to prevent early termination)
-        try {
-          const emailResult = await sendZohoNotification({
-            name: newEmail.name,
-            email: newEmail.email,
-            phone: newEmail.phone,
-            service: newEmail.service,
-            message: newEmail.message,
-            source: newEmail.source || "Website Contact Form",
-            details: newEmail
-          });
-          console.log("📨 Zoho SMTP email dispatch status:", emailResult);
-        } catch (err) {
-          console.error("Failed to send Zoho email notification:", err);
+        const io = (global as any).io;
+        // Broadcast the new web email immediately to open dashboards
+        if (io) {
+          io.emit("new-web-email", saved);
         }
 
-        // Add a dashboard notification for the new form submission
-        try {
-          const notification = await dbAddNotification({
-            type: "form_submission",
-            title: "New Form Submission",
-            message: `Submission from ${newEmail.name} for ${newEmail.service || "General Inquiry"}`,
-            link: "/dashboard?tab=emails",
-            metadata: {
+        // Asynchronously dispatch dashboard notification and Zoho email in background (non-blocking)
+        queueMicrotask(async () => {
+          // 1. Dashboard notification
+          try {
+            const notification = await dbAddNotification({
+              type: "form_submission",
+              title: "New Form Submission",
+              message: `Submission from ${newEmail.name} for ${newEmail.service || "General Inquiry"}`,
+              link: "/dashboard?tab=emails",
+              metadata: {
+                name: newEmail.name,
+                email: newEmail.email,
+                phone: newEmail.phone,
+                service: newEmail.service,
+                message: newEmail.message,
+                source: newEmail.source
+              }
+            });
+
+            if (io) {
+              io.emit("new-notification", notification);
+            }
+          } catch (err) {
+            console.error("Failed to create form submission notification:", err);
+          }
+
+          // 2. Zoho SMTP email notification
+          try {
+            const emailResult = await sendZohoNotification({
               name: newEmail.name,
               email: newEmail.email,
               phone: newEmail.phone,
               service: newEmail.service,
               message: newEmail.message,
-              source: newEmail.source
-            }
-          });
-
-          // Broadcast the notification via Socket.io
-          const io = (global as any).io;
-          if (io) {
-            io.emit("new-notification", notification);
+              source: newEmail.source || "Website Contact Form",
+              details: newEmail
+            });
+            console.log("📨 Zoho SMTP email dispatch status:", emailResult);
+          } catch (err) {
+            console.error("Failed to send Zoho email notification:", err);
           }
-        } catch (err) {
-          console.error("Failed to create form submission notification:", err);
-        }
+        });
 
         return jsonResponse(saved);
+      }
+      if (method === "PATCH" || method === "PUT") {
+        const body = await request.json();
+        const updated = await dbUpdateWebEmail(body.id, body.updates);
+        const io = (global as any).io;
+        if (io) {
+          io.emit("web-email-updated", { id: body.id, updates: body.updates });
+        }
+        return jsonResponse(updated);
       }
       if (method === "DELETE") {
         const body = await request.json();
         const updated = await dbDeleteWebEmail(body.id);
+        const io = (global as any).io;
+        if (io) {
+          io.emit("web-email-deleted", body.id);
+        }
         return jsonResponse(updated);
       }
     }
@@ -324,6 +409,10 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
           await db.collection("chat_sessions").deleteOne({ id });
           const docs = await db.collection("chat_sessions").find({}).toArray();
           const mapped = docs.map(d => ({ ...d, id: d.id || String(d._id), _id: undefined }));
+          const io = (global as any).io;
+          if (io) {
+            io.emit("chat-session-deleted", id);
+          }
           return jsonResponse(mapped);
         }
         return jsonResponse({ error: "Missing ID" }, 400);
@@ -344,6 +433,11 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
           };
           await dbSaveChatSession(newSession);
 
+          const io = (global as any).io;
+          if (io) {
+            io.emit("session-created", newSession);
+          }
+
           // Save a dashboard notification for the new chat session
           try {
             const notification = await dbAddNotification({
@@ -361,7 +455,6 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
             });
 
             // Broadcast the notification via Socket.io
-            const io = (global as any).io;
             if (io) {
               io.emit("new-notification", notification);
             }
@@ -393,27 +486,36 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
           };
           await dbSaveChatSession(updatedSession);
 
-          // If this is the first client message, send an email notification to eva@stellrit.com via Zoho SMTP
+          // Broadcast real-time message and updated session to all connected sockets and room
+          const io = (global as any).io;
+          if (io) {
+            io.to(body.sessionId).emit("message", newMsg);
+            io.emit("new-chat-message", { ...newMsg, sessionId: body.sessionId });
+            io.emit("chat-session-updated", updatedSession);
+          }
+
+          // If this is the first client message, asynchronously send an email notification via Zoho SMTP in background
           if (isFirstMessage && body.sender === "client") {
-            try {
-              console.log("📨 Sending chat notification via Zoho SMTP to eva@stellrit.com...");
-              const chatRes = await sendZohoNotification({
-                name: session.clientName || "Chat Visitor",
-                email: session.clientEmail,
-                phone: session.clientPhone,
-                service: `Live Chat (${session.clientCity || "Horn Lake"})`,
-                message: body.text,
-                source: "Website Live Chat Widget",
-                details: {
-                  "Session ID": session.id,
-                  "Client City": session.clientCity || "Horn Lake",
-                  "Sent At": newMsg.timestamp
-                }
-              });
-              console.log("📨 Chat notification status:", chatRes);
-            } catch (err) {
-              console.error("❌ Failed to send chat notification via Zoho SMTP:", err);
-            }
+            queueMicrotask(async () => {
+              try {
+                const chatRes = await sendZohoNotification({
+                  name: session.clientName || "Chat Visitor",
+                  email: session.clientEmail,
+                  phone: session.clientPhone,
+                  service: `Live Chat (${session.clientCity || "Nashville"})`,
+                  message: body.text,
+                  source: "Website Live Chat Widget",
+                  details: {
+                    "Session ID": session.id,
+                    "Client City": session.clientCity || "Nashville",
+                    "Sent At": newMsg.timestamp
+                  }
+                });
+                console.log("📨 Chat notification status:", chatRes);
+              } catch (err) {
+                console.error("❌ Failed to send chat notification via Zoho SMTP:", err);
+              }
+            });
           }
 
           return jsonResponse(updatedSession);
@@ -431,80 +533,34 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
     // ── /api/gallery ──
     if (pathname === "/api/gallery") {
       if (method === "GET") {
-        const photos = await dbGetGalleryPhotos([
-          {
-            id: "photo-1",
-            url: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7",
-            category: "residential",
-            title: "Under-Garage Reinforced Storm Vault",
-            location: "Franklin, TN",
-            tag: "In-Ground Shelter",
-            uploadedAt: new Date().toISOString()
-          },
-          {
-            id: "photo-2",
-            url: "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f",
-            category: "commercial",
-            title: "Commercial Steel Safe Room (FEMA P-361)",
-            location: "Nashville, TN",
-            tag: "FEMA Rated",
-            uploadedAt: new Date().toISOString()
-          },
-          {
-            id: "photo-3",
-            url: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
-            category: "residential",
-            title: "Precast Concrete Backyard Vault",
-            location: "Murfreesboro, TN",
-            tag: "Concrete Vault",
-            uploadedAt: new Date().toISOString()
-          },
-          {
-            id: "photo-4",
-            url: "https://images.unsplash.com/photo-1513694203232-719a280e022f",
-            category: "residential",
-            title: "Above-Ground Impact Panic Room",
-            location: "Brentwood, TN",
-            tag: "Above Ground",
-            uploadedAt: new Date().toISOString()
-          },
-          {
-            id: "photo-5",
-            url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758",
-            category: "commercial",
-            title: "Industrial Facility Personnel Shelter",
-            location: "Lebanon, TN",
-            tag: "Commercial Vault",
-            uploadedAt: new Date().toISOString()
-          },
-          {
-            id: "photo-6",
-            url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd",
-            category: "residential",
-            title: "Heavy Crane Shelter Placement",
-            location: "Hendersonville, TN",
-            tag: "Crane Placement",
-            uploadedAt: new Date().toISOString()
-          }
-        ]);
+        const photos = await dbGetGalleryPhotos([]);
         return jsonResponse(photos);
       }
       if (method === "POST") {
         const body = await request.json();
-        let url = body.url;
-        if (!url && body.base64Photo) {
-          url = await uploadToCloudinary(body.base64Photo, "shelters/gallery");
+        let photoUrl = body.url;
+        if (!photoUrl && body.base64Photo) {
+          photoUrl = await uploadToCloudinary(body.base64Photo, "shelters/gallery");
         }
-        if (!url) {
+        if (!photoUrl) {
           return jsonResponse({ error: "Missing image content or URL" }, 400);
         }
         const newPhoto = {
           id: "photo-" + Math.random().toString(36).substr(2, 9),
-          url,
+          url: photoUrl,
           category: body.category || "residential",
+          title: body.title || "Engineered Storm Shelter Installation",
+          location: body.location || "Nashville, TN",
+          tag: body.tag || "In-Ground Vault",
+          featured: body.featured !== undefined ? body.featured : true,
           uploadedAt: new Date().toISOString()
         };
         const updated = await dbAddGalleryPhoto(newPhoto);
+        const io = (global as any).io;
+        if (io) {
+          io.emit("gallery-updated", updated);
+          io.emit("new-gallery-photo", newPhoto);
+        }
         return jsonResponse(updated);
       }
       if (method === "DELETE") {
@@ -513,7 +569,7 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
           try {
             const body = await request.json();
             id = body.id;
-          } catch {}
+          } catch { }
         }
         if (!id) {
           return jsonResponse({ error: "Missing image ID" }, 400);
@@ -528,6 +584,11 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
           }
         }
         const updated = await dbRemoveGalleryPhoto(id);
+        const io = (global as any).io;
+        if (io) {
+          io.emit("gallery-updated", updated);
+          io.emit("gallery-photo-deleted", id);
+        }
         return jsonResponse(updated);
       }
     }
@@ -536,7 +597,13 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
     if (pathname === "/api/users") {
       if (method === "GET") {
         const users = await dbGetPortalUsers(DEFAULT_ADMIN);
-        const mapped = users.map(u => ({ id: u.id, username: u.username, role: u.role }));
+        const mapped = users.map(u => ({
+          id: u.id,
+          username: u.username,
+          name: u.name || u.username,
+          role: u.role,
+          createdAt: u.createdAt || "2026-01-01T00:00:00.000Z"
+        }));
         return jsonResponse(mapped);
       }
       if (method === "POST") {
@@ -547,25 +614,37 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
           if (user) {
             const isValid = await verifyPassword(body.password, user.password);
             if (isValid) {
-              return jsonResponse({ success: true, user: { id: user.id, username: user.username, role: user.role } });
+              return jsonResponse({
+                success: true,
+                user: { id: user.id, username: user.username, name: user.name || user.username, role: user.role }
+              });
             }
           }
           return jsonResponse({ error: "Invalid username or password" }, 401);
         }
         if (body.action === "create") {
           const accounts = await dbGetPortalUsers(DEFAULT_ADMIN);
-          if (accounts.some(a => a.username.toLowerCase() === body.username.toLowerCase())) {
+          if (accounts.some(a => a.username.toLowerCase() === body.username.toLowerCase().trim())) {
             return jsonResponse({ error: "Username already exists" }, 400);
           }
           const hashedPassword = await hashPassword(body.password);
           const newUser = {
-            id: "admin-" + Math.random().toString(36).substr(2, 9),
-            username: body.username,
+            id: "staff-" + Math.random().toString(36).substr(2, 9),
+            username: body.username.trim(),
+            name: body.name ? body.name.trim() : body.username.trim(),
             password: hashedPassword,
-            role: body.role
+            role: body.role || "dispatcher",
+            createdAt: new Date().toISOString()
           };
           await dbAddPortalUser(newUser);
-          return jsonResponse({ success: true, id: newUser.id, username: newUser.username, role: newUser.role });
+          return jsonResponse({
+            success: true,
+            id: newUser.id,
+            username: newUser.username,
+            name: newUser.name,
+            role: newUser.role,
+            createdAt: newUser.createdAt
+          });
         }
         if (body.action === "delete") {
           await dbDeletePortalUser(body.userId);
@@ -573,13 +652,25 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
         }
         if (body.action === "update") {
           const updates: any = {};
-          if (body.username) updates.username = body.username;
+          if (body.username) updates.username = body.username.trim();
+          if (body.name) updates.name = body.name.trim();
+          if (body.role) updates.role = body.role;
           if (body.password) {
             updates.password = await hashPassword(body.password);
           }
           const users = await dbUpdatePortalUser(body.userId, updates);
           const updatedUser = users.find(u => u.id === body.userId);
-          return jsonResponse({ success: true, username: updatedUser ? updatedUser.username : (body.username || "") });
+          return jsonResponse({
+            success: true,
+            username: updatedUser ? updatedUser.username : (body.username || ""),
+            user: updatedUser ? {
+              id: updatedUser.id,
+              username: updatedUser.username,
+              name: updatedUser.name,
+              role: updatedUser.role,
+              createdAt: updatedUser.createdAt
+            } : null
+          });
         }
       }
     }
@@ -587,15 +678,24 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
     // ── /api/settings ──
     if (pathname === "/api/settings") {
       const defaultSettings = {
+        companyName: "Southern Storm Shelters LLC",
+        tagline: "Tennessee’s Premier Engineered Underground Storm Shelters & Safe Rooms",
         alertEmail: "info@southernstormshelters.com",
-        officePhone: "615-991-2361",
+        officePhone: "(615) 991-2361",
+        officePhoneRaw: "+16159912361",
+        officeAddress: "Nashville, TN",
+        serviceRadius: "Nashville, TN & 100-Mile Radius",
+        licenseNotice: "Fully Insured Professional Installation Crews • Engineered Storm Protection",
+        weekdays: "Monday–Friday: 8:00 AM – 5:00 PM",
+        saturdays: "Saturday: By Appointment",
+        sundays: "Sunday: Closed",
+        shortBadge: "Mon–Sat: 8:00 AM – 5:00 PM",
         smsTemplate: "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you to discuss your {Type} installation.",
         emailAlert: true,
         smsAlert: true,
         maintenanceMode: false,
-        weekdays: "Monday–Friday: 8:00 AM – 5:00 PM",
-        saturdays: "Saturday: By Appointment",
-        sundays: "Sunday: Closed"
+        maintenanceTitle: "Scheduled System Maintenance Underway",
+        maintenanceMessage: "We are currently performing scheduled maintenance to upgrade our shelter estimating and dispatch systems. Emergency shelter installations and property evaluations remain fully operational."
       };
 
       if (method === "GET") {
@@ -624,7 +724,7 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
 
       // Build the string to sign
       const paramsToSign = `folder=${folder}&timestamp=${timestamp}`;
-      
+
       const { createHash } = await import("crypto");
       const signature = createHash("sha1").update(paramsToSign + apiSecret).digest("hex");
 
@@ -676,7 +776,7 @@ export async function handleNodeApiRequest(req: any, res: any) {
       if (Array.isArray(val)) {
         val.forEach(v => webHeaders.append(key, v));
       } else {
-        webHeaders.set(key, val);
+        webHeaders.set(key, String(val));
       }
     }
   });

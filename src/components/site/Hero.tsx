@@ -44,11 +44,13 @@ export function Hero() {
             key={index}
             src={image.src}
             alt={image.alt}
-            className={`absolute inset-0 h-full w-full object-cover object-center transition-all duration-1000 ease-in-out ${
-              currentImageIndex === index
+            loading={index === 0 ? "eager" : "lazy"}
+            fetchPriority={index === 0 ? "high" : "low"}
+            decoding={index === 0 ? "sync" : "async"}
+            className={`absolute inset-0 h-full w-full object-cover object-center transition-all duration-1000 ease-in-out ${currentImageIndex === index
                 ? "opacity-100 scale-100"
                 : "opacity-0 scale-105 pointer-events-none"
-            }`}
+              }`}
           />
         ))}
         {/* Lightened, balanced gradient overlays to maximize image visibility */}
@@ -157,11 +159,10 @@ export function Hero() {
             key={idx}
             onClick={() => setCurrentImageIndex(idx)}
             aria-label={`Switch to slide ${idx + 1}`}
-            className={`h-2 transition-all duration-300 rounded-full ${
-              currentImageIndex === idx
+            className={`h-2 transition-all duration-300 rounded-full ${currentImageIndex === idx
                 ? "w-6 bg-slate-300"
                 : "w-2 bg-white/40 hover:bg-white/70"
-            }`}
+              }`}
           />
         ))}
       </div>

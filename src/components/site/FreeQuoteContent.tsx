@@ -96,7 +96,10 @@ export function FreeQuoteContent() {
         name,
         phone,
         email,
-        service: "Free Estimate Request",
+        address: `${address}, ${city}, ${state} ${zip}`,
+        projectType: "In-Ground Granger ISS Shelter",
+        timeframe: "Flexible / As soon as possible",
+        service: "Free Site Evaluation & Estimate",
         message: messagePayload,
         source: "Dedicated Free Quote Page",
       });

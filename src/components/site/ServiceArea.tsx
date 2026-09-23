@@ -98,13 +98,12 @@ export function ServiceArea() {
                     onMouseLeave={() => setHoveredArea(null)}
                     whileHover={{ scale: 1.04, y: -1 }}
                     transition={{ duration: 0.15 }}
-                    className={`flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider rounded-xl py-1.5 px-3 cursor-pointer border transition-all duration-200 ${
-                      isActive
+                    className={`flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider rounded-xl py-1.5 px-3 cursor-pointer border transition-all duration-200 ${isActive
                         ? "bg-amber-600 border-amber-600 text-white shadow-md"
                         : a.primary
-                        ? "bg-amber-50 border-amber-300 text-amber-800"
-                        : "text-slate-600 bg-slate-50 border-slate-200 hover:bg-amber-50 hover:border-amber-300 hover:text-amber-800"
-                    }`}
+                          ? "bg-amber-50 border-amber-300 text-amber-800"
+                          : "text-slate-600 bg-slate-50 border-slate-200 hover:bg-amber-50 hover:border-amber-300 hover:text-amber-800"
+                      }`}
                   >
                     <MapPin className="h-3 w-3 shrink-0" />
                     {a.name}
@@ -153,7 +152,7 @@ export function ServiceArea() {
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden bg-slate-950 border border-slate-800 shadow-xl">
               {/* Google Maps background */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.5762822490137!2d-86.77133032409769!3d36.126307772447014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886465dbc934b523%3A0xcf58613bce26b274!2s468%20Craighead%20St%2C%20Nashville%2C%20TN%2037204%2C%20USA!5e1!3m2!1sen!2snp!4v1790103022571!5m2!1sen!2snp"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103094.27533814886!2d-86.85233159999999!3d36.1626638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8864ec3213eb903d%3A0x7d3fb9d0a1e9daa0!2sNashville%2C%20TN!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus"
                 className="absolute inset-0 w-full h-full border-0 pointer-events-none"
                 allowFullScreen
                 loading="lazy"
@@ -241,32 +240,27 @@ function Pin({
       <div className="flex flex-col items-center gap-1.5">
         {/* Hotspot */}
         <div className="relative flex h-8 w-8 items-center justify-center">
-          <span className={`animate-ping absolute inline-flex rounded-full opacity-60 transition-all duration-300 ${
-            active ? "h-7 w-7 bg-amber-400 scale-125" : primary ? "h-6 w-6 bg-amber-400" : "h-5 w-5 bg-amber-400"
-          }`} />
-          <span className={`relative inline-flex rounded-full items-center justify-center shadow-lg transition-all duration-300 ${
-            primary ? "h-5 w-5" : "h-4 w-4"
-          } ${
-            active
+          <span className={`animate-ping absolute inline-flex rounded-full opacity-60 transition-all duration-300 ${active ? "h-7 w-7 bg-amber-400 scale-125" : primary ? "h-6 w-6 bg-amber-400" : "h-5 w-5 bg-amber-400"
+            }`} />
+          <span className={`relative inline-flex rounded-full items-center justify-center shadow-lg transition-all duration-300 ${primary ? "h-5 w-5" : "h-4 w-4"
+            } ${active
               ? "bg-amber-500 scale-125 shadow-[0_0_14px_rgba(217,119,6,0.8)]"
               : primary
-              ? "bg-amber-500 shadow-[0_0_10px_rgba(217,119,6,0.6)]"
-              : "bg-gradient-to-br from-amber-500 to-amber-700"
-          }`}>
+                ? "bg-amber-500 shadow-[0_0_10px_rgba(217,119,6,0.6)]"
+                : "bg-gradient-to-br from-amber-500 to-amber-700"
+            }`}>
             <span className={`rounded-full bg-white ${primary ? "h-2 w-2" : "h-1.5 w-1.5"}`} />
           </span>
         </div>
 
         {/* Label */}
-        <span className={`px-2.5 py-0.5 rounded-lg backdrop-blur-sm border transition-all duration-300 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap shadow-sm ${
-          primary || active ? "inline-block" : "hidden sm:inline-block"
-        } ${
-          active
+        <span className={`px-2.5 py-0.5 rounded-lg backdrop-blur-sm border transition-all duration-300 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap shadow-sm ${primary || active ? "inline-block" : "hidden sm:inline-block"
+          } ${active
             ? "bg-amber-600 border-amber-500 text-white scale-105 shadow-md"
             : primary
-            ? "bg-amber-600/90 border-amber-400 text-white"
-            : "bg-[#0c1324]/85 border-slate-700/80 text-white group-hover:bg-amber-600 group-hover:border-amber-400 group-hover:text-white"
-        }`}>
+              ? "bg-amber-600/90 border-amber-400 text-white"
+              : "bg-[#0c1324]/85 border-slate-700/80 text-white group-hover:bg-amber-600 group-hover:border-amber-400 group-hover:text-white"
+          }`}>
           {label}
         </span>
       </div>

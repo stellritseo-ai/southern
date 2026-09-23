@@ -34,8 +34,11 @@ export function GetInTouch() {
         name,
         phone,
         email,
-        service: `Project: ${projectType} | Timeframe: ${timeframe} | Address: ${address}`,
-        message: msg,
+        address,
+        projectType,
+        timeframe,
+        service: projectType ? `${projectType} (${timeframe})` : "Underground Storm Shelter",
+        message: msg ? `${msg}\n\nSite Address: ${address}\nTarget Timeframe: ${timeframe}` : `Site Address: ${address}\nTarget Timeframe: ${timeframe}`,
         source: "Landing Free Estimate Form"
       });
 
@@ -191,7 +194,7 @@ export function GetInTouch() {
                     <Field
                       label="Address or ZIP Code *"
                       name="address"
-                      placeholder="Nashville, TN 37204"
+                      placeholder="Nashville, TN"
                       required
                     />
 
@@ -275,11 +278,10 @@ function Item({
     <div className="flex items-start gap-4">
       <motion.div
         whileHover={{ scale: 1.05 }}
-        className={`grid place-items-center h-10 w-10 rounded-xl text-white shrink-0 transition-all duration-300 ${
-          isCall 
-            ? "bg-amber-600 text-white border border-amber-400/40 shadow-sm" 
+        className={`grid place-items-center h-10 w-10 rounded-xl text-white shrink-0 transition-all duration-300 ${isCall
+            ? "bg-amber-600 text-white border border-amber-400/40 shadow-sm"
             : "bg-white/10 border border-white/10 hover:bg-white/15"
-        }`}
+          }`}
       >
         <Icon className="h-5 w-5 text-white" />
       </motion.div>

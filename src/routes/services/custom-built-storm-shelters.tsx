@@ -46,10 +46,8 @@ function CustomBuiltPage() {
       "telephone": "+16159912361",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "468 Craighead St",
         "addressLocality": "Nashville",
         "addressRegion": "TN",
-        "postalCode": "37204",
         "addressCountry": "US"
       }
     },

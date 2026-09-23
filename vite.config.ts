@@ -18,7 +18,7 @@ export default defineConfig({
       inline: ["mongodb", "cloudinary"],
       traceInclude: ["mongodb", "cloudinary"],
     },
-  },
+  } as any,
   vite: {
     server: {
       port: 8081,

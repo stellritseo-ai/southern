@@ -10,7 +10,7 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async ({ request }) => {
-        const host = request.headers.get("host") || "www.brownlawncarecleaningservicellc.com";
+        const host = request.headers.get("host") || "www.southernstormsheltersllc.com";
         const proto = request.headers.get("x-forwarded-proto") || "https";
         const BASE_URL = `${proto}://${host}`;
 
@@ -18,28 +18,11 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "", changefreq: "weekly", priority: "1.0" },
           { path: "/about", changefreq: "monthly", priority: "0.8" },
           { path: "/services", changefreq: "weekly", priority: "0.9" },
-          { path: "/services/lawn-mowing", changefreq: "weekly", priority: "0.9" },
-          { path: "/services/landscaping", changefreq: "weekly", priority: "0.9" },
-          { path: "/services/tree-brush-removal", changefreq: "weekly", priority: "0.9" },
-          { path: "/services/gravel-dirt-work", changefreq: "monthly", priority: "0.8" },
-          { path: "/services/office-commercial-cleaning", changefreq: "weekly", priority: "0.9" },
-          { path: "/services/residential-wire-house-cleaning", changefreq: "weekly", priority: "0.9" },
-          { path: "/service-areas", changefreq: "weekly", priority: "0.9" },
-          { path: "/service-areas/horn-lake-ms", changefreq: "weekly", priority: "0.9" },
-          { path: "/service-areas/southaven-ms", changefreq: "weekly", priority: "0.9" },
-          { path: "/service-areas/olive-branch-ms", changefreq: "weekly", priority: "0.9" },
-          { path: "/service-areas/hernando-ms", changefreq: "weekly", priority: "0.8" },
-          { path: "/service-areas/walls-ms", changefreq: "monthly", priority: "0.8" },
-          { path: "/service-areas/nesbit-ms", changefreq: "monthly", priority: "0.8" },
-          { path: "/service-areas/memphis-tn", changefreq: "weekly", priority: "0.9" },
-          { path: "/service-areas/collierville-tn", changefreq: "monthly", priority: "0.8" },
-          { path: "/service-areas/germantown-tn", changefreq: "monthly", priority: "0.8" },
-          { path: "/service-areas/cordova-tn", changefreq: "monthly", priority: "0.8" },
-          { path: "/service-areas/west-memphis-ar", changefreq: "monthly", priority: "0.8" },
+          { path: "/services/in-ground-prefabricated-storm-shelters", changefreq: "weekly", priority: "0.9" },
+          { path: "/services/custom-built-storm-shelters", changefreq: "weekly", priority: "0.9" },
           { path: "/free-quote", changefreq: "weekly", priority: "0.9" },
           { path: "/projects", changefreq: "monthly", priority: "0.8" },
           { path: "/reviews", changefreq: "monthly", priority: "0.8" },
-          { path: "/careers", changefreq: "monthly", priority: "0.7" },
           { path: "/contact", changefreq: "monthly", priority: "0.8" },
         ];
 

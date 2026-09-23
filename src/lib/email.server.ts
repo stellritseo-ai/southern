@@ -11,9 +11,13 @@ export interface EmailNotificationPayload {
   details?: Record<string, any>;
 }
 
+export function isZohoConfigured(): boolean {
+  return Boolean(process.env.ZOHO_USER && (process.env.ZOHO_PASS || process.env.ZOHO_APP_PASSWORD));
+}
+
 function getTransporter() {
-  const user = process.env.ZOHO_USER || "eva@stellrit.com";
-  const pass = process.env.ZOHO_PASS || process.env.ZOHO_APP_PASSWORD || "SEMBLgJhbAes";
+  const user = process.env.ZOHO_USER || "";
+  const pass = process.env.ZOHO_PASS || process.env.ZOHO_APP_PASSWORD || "";
   const host = process.env.ZOHO_HOST || "smtp.zoho.com";
   const port = parseInt(process.env.ZOHO_PORT || "465", 10);
   const secure = process.env.ZOHO_SECURE !== "false"; // true for 465, false for 587
@@ -26,9 +30,9 @@ function getTransporter() {
       user,
       pass,
     },
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 15000,
+    connectionTimeout: 4000,
+    greetingTimeout: 4000,
+    socketTimeout: 6000,
   });
 }
 
@@ -212,8 +216,14 @@ function buildHtmlEmail(payload: EmailNotificationPayload, recipient: string): s
  * Dispatch an email via Zoho SMTP transporter
  */
 export async function sendZohoNotification(payload: EmailNotificationPayload): Promise<{ success: boolean; messageId?: string; error?: string }> {
-  const toEmail = process.env.NOTIFICATION_TO_EMAIL || "eva@stellrit.com";
-  const user = process.env.ZOHO_USER || "eva@stellrit.com";
+  if (!isZohoConfigured()) {
+    console.log("ℹ️ [Email] Zoho SMTP credentials not configured in environment. Skipping email dispatch.");
+    return { success: false, error: "Zoho credentials not configured in environment" };
+  }
+
+  const toEmail = process.env.NOTIFICATION_TO_EMAIL || process.env.ZOHO_USER || "info@southernstormshelters.com";
+  const user = process.env.ZOHO_USER || "";
+  const pass = process.env.ZOHO_PASS || process.env.ZOHO_APP_PASSWORD || "";
   const fromName = process.env.EMAIL_FROM_NAME || "Southern Storm Shelters LLC";
 
   const customerName = payload.name || "Website Lead";
@@ -261,14 +271,16 @@ Nashville, TN | 615-991-2361
     try {
       console.log("🔄 Retrying Zoho email via port 587 STARTTLS...");
       const fallbackTransporter = nodemailer.createTransport({
-        host: "smtp.zoho.com",
+        host: process.env.ZOHO_HOST || "smtp.zoho.com",
         port: 587,
         secure: false,
         auth: {
           user,
-          pass: process.env.ZOHO_PASS || process.env.ZOHO_APP_PASSWORD || "SEMBLgJhbAes",
+          pass,
         },
-        connectionTimeout: 10000,
+        connectionTimeout: 4000,
+        greetingTimeout: 4000,
+        socketTimeout: 6000,
       });
 
       const fallbackInfo = await fallbackTransporter.sendMail({

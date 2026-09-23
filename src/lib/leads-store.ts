@@ -20,9 +20,12 @@ export interface Review {
   text: string;
   author: string;
   location: string;
+  installed?: string;
   rating: number;
   featured: boolean;
+  verified?: boolean;
   replyText?: string;
+  reply?: string;
   createdAt: string;
   photos?: string[];
 }
@@ -35,6 +38,11 @@ export interface WebEmail {
   service?: string;
   message?: string;
   source?: string;
+  address?: string;
+  projectType?: string;
+  timeframe?: string;
+  status?: "new" | "contacted" | "converted" | "archived";
+  notes?: string;
   createdAt: string;
 }
 
@@ -60,13 +68,20 @@ export interface ChatSession {
 export interface PortalUser {
   id: string;
   username: string;
-  role: string;
+  name?: string;
+  role: "admin" | "dispatcher" | "sales" | "manager" | "field" | string;
+  createdAt?: string;
+  lastLogin?: string;
 }
 
 export interface GalleryPhoto {
   id: string;
   url: string;
+  title?: string;
   category?: string;
+  location?: string;
+  tag?: string;
+  featured?: boolean;
   uploadedAt: string;
 }
 
@@ -105,7 +120,7 @@ export const INITIAL_LEADS: Lead[] = [
     phone: "(615) 555-4421",
     address: "9405 Concord Rd, Brentwood, TN 37027",
     projectType: "residential",
-    description: "Wanting an on-site estimate to install a FEMA P-320 compliant underground shelter. Yard has moderate clay soil.",
+    description: "Wanting an on-site estimate to install a precision engineered in-ground storm shelter. Yard has moderate clay soil.",
     contactTime: "evening",
     status: "proposal_sent",
     estimatedValue: 12500,
@@ -129,7 +144,7 @@ export const INITIAL_LEADS: Lead[] = [
     name: "Amanda Carter",
     email: "amanda.carter@comcast.net",
     phone: "(615) 555-1284",
-    address: "1282 Craighead St, Nashville, TN 37204",
+    address: "Nashville, TN",
     projectType: "commercial",
     description: "Commercial facility tornado shelter build-out. Need engineered safe room for 25 employees with dual emergency exit latches.",
     contactTime: "morning",
@@ -157,43 +172,123 @@ export const INITIAL_LEADS: Lead[] = [
 export const INITIAL_REVIEWS: Review[] = [
   {
     id: "review-1",
-    title: "Complete Peace of Mind During Tornado Season!",
-    text: "Southern Storm Shelters installed our underground storm vault in Franklin, TN. From excavation to crane placement and backfilling, the entire job was completed in one day. Outstanding craftsmanship and FEMA P-320 certification.",
-    author: "Marcus H.",
+    author: "Michael R.",
     location: "Franklin, TN",
+    installed: "Granger ISS In-Ground Shelter",
+    title: "Finally, a company that actually knows how to install a shelter.",
+    text: "We got quotes from three different companies. Two of them were just dealers who subcontracted the work. Southern Storm Shelters was different—they showed up with their own equipment, evaluated our soil, and explained exactly what they were doing. The installation took less than four hours, and the site was left spotless. You can tell they're construction professionals, not just salespeople.",
     rating: 5,
     featured: true,
-    createdAt: "2026-05-01T12:00:00Z"
+    verified: true,
+    createdAt: "2026-05-10T14:30:00Z"
   },
   {
     id: "review-2",
-    title: "Heavy-Duty Hydraulic Hatch & Airtight Seal",
-    text: "Fast, honest, and competitive quote for our Murfreesboro backyard shelter. The gas-strut hatch is effortless to lift, the interior is clean and secure, and our family feels completely protected. Highly recommend!",
-    author: "David K.",
+    author: "Sarah & David T.",
     location: "Murfreesboro, TN",
+    installed: "Granger ISS In-Ground Shelter",
+    title: "Peace of mind for our family of six.",
+    text: "With three kids and aging parents living with us, we needed a shelter that was easy to access for everyone. The articulating handrails and molded-in seating were game-changers. Even my father, who has mobility issues, can get in and out without difficulty. The team at Southern Storm Shelters was patient, professional, and answered every question we had. We finally feel prepared.",
     rating: 5,
     featured: true,
-    createdAt: "2026-05-02T12:00:00Z"
+    verified: true,
+    createdAt: "2026-05-12T09:15:00Z"
   },
   {
     id: "review-3",
-    title: "Commercial Safe Room Done Right",
-    text: "Outstanding service. The team engineered and installed our commercial storm shelter seamlessly. They took care of everything from permitting to heavy crane logistics. Exceptional project management.",
-    author: "Brian T.",
+    author: "James K.",
     location: "Nashville, TN",
+    installed: "Granger ISS Custom Color Door",
+    title: "The installation was flawless.",
+    text: "I'm a contractor myself, so I'm particular about workmanship. Southern Storm Shelters exceeded my expectations. They understood drainage, soil conditions, and proper backfill. The reverse taper design meant no concrete anchoring was needed, which saved us money. The door color matches our landscaping perfectly. Highly recommend.",
     rating: 5,
     featured: true,
-    createdAt: "2026-05-03T12:00:00Z"
+    verified: true,
+    createdAt: "2026-05-14T11:45:00Z"
   },
   {
     id: "review-4",
-    title: "Laser-Guided Excavation With Zero Lawn Mess",
-    text: "We were quoted for an 8-person underground vault and they stuck to the quote exactly. No hidden charges. The crew was professional, courteous, and cleaned up every square foot before leaving.",
-    author: "Elena R.",
-    location: "Hendersonville, TN",
+    author: "Emily W.",
+    location: "Brentwood, TN",
+    installed: "Granger ISS During New Construction",
+    title: "They handled everything from start to finish.",
+    text: "We were building a new home and wanted the shelter installed during construction. Southern Storm Shelters coordinated with our builder, scheduled the excavation perfectly, and integrated the shelter seamlessly into our plans. No hassle, no delays. The LED light inside is a nice touch, too.",
     rating: 5,
     featured: true,
-    createdAt: "2026-05-04T12:00:00Z"
+    verified: true,
+    createdAt: "2026-05-16T16:20:00Z"
+  },
+  {
+    id: "review-5",
+    author: "Robert & Linda M.",
+    location: "Spring Hill, TN",
+    installed: "Granger ISS In-Ground Shelter",
+    title: "Worth every penny for the peace of mind.",
+    text: "After the tornado warnings we had last spring, we decided we couldn't wait any longer. Southern Storm Shelters responded to our inquiry within 24 hours and scheduled a site evaluation that same week. The quote was transparent with no hidden fees. The installation was quick, and the lifetime warranty sealed the deal. We sleep better at night now.",
+    rating: 5,
+    featured: true,
+    verified: true,
+    createdAt: "2026-05-18T10:00:00Z"
+  },
+  {
+    id: "review-6",
+    author: "Angela P.",
+    location: "Columbia, TN",
+    installed: "Granger ISS In-Ground Shelter",
+    title: "Professional, punctual, and knowledgeable.",
+    text: "From the first phone call to the final walkthrough, the team at Southern Storm Shelters was professional and courteous. They explained the FEMA 320 and FEMA 361 testing, showed us the triple locking system, and made sure we understood how to operate everything. The gas-assisted shocks make opening the heavy door easy. We couldn't be happier.",
+    rating: 5,
+    featured: true,
+    verified: true,
+    createdAt: "2026-05-20T13:10:00Z"
+  },
+  {
+    id: "review-7",
+    author: "Thomas H.",
+    location: "Hendersonville, TN",
+    installed: "Granger ISS In-Ground Shelter",
+    title: "They truly care about their customers.",
+    text: "What impressed me most was the follow-up. A few weeks after installation, they called to make sure everything was working properly and that we had no questions. That level of customer service is rare these days. I've already recommended them to two neighbors.",
+    rating: 5,
+    featured: true,
+    verified: true,
+    createdAt: "2026-05-22T15:40:00Z"
+  },
+  {
+    id: "review-8",
+    author: "Karen & Steve B.",
+    location: "Gallatin, TN",
+    installed: "Granger ISS In-Ground Shelter",
+    title: "The best investment we've made for our home.",
+    text: "We considered an above-ground safe room, but after talking with Southern Storm Shelters, we realized an underground shelter was the better option for our property. The double-wall foam-filled construction keeps it dry and comfortable. The molded-in seating means we can wait out a storm in relative comfort. Installation was fast, and the team was fantastic.",
+    rating: 5,
+    featured: true,
+    verified: true,
+    createdAt: "2026-05-25T11:00:00Z"
+  },
+  {
+    id: "review-9",
+    author: "Daniel F.",
+    location: "Mount Juliet, TN",
+    installed: "Granger ISS In-Ground Shelter",
+    title: "Impressed with their construction expertise.",
+    text: "I watched the entire installation. These guys know what they're doing. They checked for buried utilities, assessed drainage, and made sure the shelter was perfectly level before backfilling. The reverse taper design is brilliant—no concrete needed, no risk of floating. This is how it should be done.",
+    rating: 5,
+    featured: true,
+    verified: true,
+    createdAt: "2026-05-28T08:50:00Z"
+  },
+  {
+    id: "review-10",
+    author: "Patricia L.",
+    location: "Nolensville, TN",
+    installed: "Granger ISS Custom Green Door",
+    title: "From quote to installation in under two weeks.",
+    text: "We were on a tight timeline before storm season. Southern Storm Shelters moved quickly without cutting corners. The estimate was detailed and fair, the scheduling was easy, and the installation was completed in a single morning. The custom green door blends right into our lawn. You can barely tell it's there—until you need it.",
+    rating: 5,
+    featured: true,
+    verified: true,
+    createdAt: "2026-06-01T14:15:00Z"
   }
 ];
 
@@ -217,7 +312,11 @@ const DEFAULT_ADMIN = { id: "admin-1", username: "admin", role: "admin", passwor
 // ── LOCAL STORAGE FALLBACK HELPERS ──
 const getStorageItem = <T>(key: string, defaultValue: T): T => {
   if (typeof window === "undefined") return defaultValue;
-  const stored = localStorage.getItem(key);
+  let stored = localStorage.getItem(key);
+  if (!stored && key.startsWith("shelter-")) {
+    const legacy = localStorage.getItem(key.replace("shelter-", "electrical-"));
+    if (legacy) stored = legacy;
+  }
   if (!stored) {
     localStorage.setItem(key, JSON.stringify(defaultValue));
     return defaultValue;
@@ -247,7 +346,7 @@ async function apiCall<T>(url: string, method: string, body?: any): Promise<T> {
 
   // Attach session token if logged in
   if (typeof window !== "undefined") {
-    const token = localStorage.getItem("electrical-session-token");
+    const token = localStorage.getItem("shelter-session-token") || localStorage.getItem("electrical-session-token");
     if (token) {
       headers["Authorization"] = `Bearer ${token}`;
     }
@@ -417,33 +516,33 @@ export const removeLeadPhoto = async (leadId: string, photoIndex: number): Promi
 export const getReviews = async (): Promise<Review[]> => {
   try {
     const reviews = await apiCall<Review[]>("/api/reviews", "GET");
-    setStorageItem("electrical-reviews", reviews);
+    setStorageItem("shelter-reviews", reviews);
     return reviews;
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage reviews:", err);
-    return getStorageItem<Review[]>("electrical-reviews", INITIAL_REVIEWS);
+    return getStorageItem<Review[]>("shelter-reviews", INITIAL_REVIEWS);
   }
 };
 
-export const addReview = async (reviewData: Omit<Review, "id" | "featured" | "createdAt"> & { newReviewPhoto?: string }): Promise<Review> => {
+export const addReview = async (reviewData: Omit<Review, "id" | "createdAt"> & { newReviewPhoto?: string; featured?: boolean }): Promise<Review> => {
   try {
     return await apiCall<Review>("/api/reviews", "POST", reviewData);
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage:", err);
     const reviews = await getReviews();
-    const photos: string[] = [];
+    const photos: string[] = reviewData.photos ? [...reviewData.photos] : [];
     if (reviewData.newReviewPhoto) {
       photos.push(reviewData.newReviewPhoto);
     }
     const newReview: Review = {
       ...reviewData,
       id: "review-" + Math.random().toString(36).substr(2, 9),
-      featured: true,
+      featured: reviewData.featured !== undefined ? reviewData.featured : true,
       createdAt: new Date().toISOString(),
       photos
     };
     reviews.unshift(newReview);
-    setStorageItem("electrical-reviews", reviews);
+    setStorageItem("shelter-reviews", reviews);
     return newReview;
   }
 };
@@ -455,7 +554,7 @@ export const toggleReviewFeatured = async (id: string): Promise<Review[]> => {
     console.warn("MongoDB offline, falling back to local storage:", err);
     const reviews = await getReviews();
     const updated = reviews.map(r => r.id === id ? { ...r, featured: !r.featured } : r);
-    setStorageItem("electrical-reviews", updated);
+    setStorageItem("shelter-reviews", updated);
     return updated;
   }
 };
@@ -467,7 +566,7 @@ export const replyToReview = async (id: string, replyText: string): Promise<Revi
     console.warn("MongoDB offline, falling back to local storage:", err);
     const reviews = await getReviews();
     const updated = reviews.map(r => r.id === id ? { ...r, replyText } : r);
-    setStorageItem("electrical-reviews", updated);
+    setStorageItem("shelter-reviews", updated);
     return updated;
   }
 };
@@ -479,7 +578,7 @@ export const deleteReview = async (id: string): Promise<Review[]> => {
     console.warn("MongoDB offline, falling back to local storage:", err);
     const reviews = await getReviews();
     const updated = reviews.filter(r => r.id !== id);
-    setStorageItem("electrical-reviews", updated);
+    setStorageItem("shelter-reviews", updated);
     return updated;
   }
 };
@@ -488,12 +587,12 @@ export const deleteReview = async (id: string): Promise<Review[]> => {
 export const getChatSessions = async (): Promise<ChatSession[]> => {
   try {
     const chats = await apiCall<ChatSession[]>("/api/chats?t=" + Date.now(), "GET");
-    const sorted = chats.sort((a, b) => new Date(b.lastMessageTime).getTime() - new Date(a.lastMessageTime).getTime());
-    setStorageItem("electrical-chats", sorted);
+    const sorted = (chats || []).sort((a, b) => new Date(b.lastMessageTime).getTime() - new Date(a.lastMessageTime).getTime());
+    setStorageItem("shelter-chats", sorted);
     return sorted;
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage chats:", err);
-    const chats = getStorageItem<ChatSession[]>("electrical-chats", INITIAL_CHATS);
+    const chats = getStorageItem<ChatSession[]>("shelter-chats", getStorageItem<ChatSession[]>("electrical-chats", INITIAL_CHATS));
     return chats.sort((a, b) => new Date(b.lastMessageTime).getTime() - new Date(a.lastMessageTime).getTime());
   }
 };
@@ -505,7 +604,7 @@ export const getChatSessionById = async (sessionId: string): Promise<ChatSession
 
 export const createChatSession = async (
   clientName: string,
-  clientCity: string = "Miami",
+  clientCity: string = "Nashville",
   clientEmail?: string,
   clientPhone?: string
 ): Promise<ChatSession> => {
@@ -526,7 +625,7 @@ export const createChatSession = async (
       messages: []
     };
     chats.push(newSession);
-    setStorageItem("electrical-chats", chats);
+    setStorageItem("shelter-chats", chats);
     return newSession;
   }
 };
@@ -557,7 +656,7 @@ export const sendChatMessage = async (sessionId: string, sender: "client" | "adm
       }
       return c;
     });
-    setStorageItem("electrical-chats", updatedChats);
+    setStorageItem("shelter-chats", updatedChats);
     return updatedSession;
   }
 };
@@ -569,7 +668,7 @@ export const markChatAsRead = async (sessionId: string): Promise<ChatSession[]> 
     console.warn("MongoDB offline, falling back to local storage:", err);
     const chats = await getChatSessions();
     const updated = chats.map(c => c.id === sessionId ? { ...c, unread: false } : c);
-    setStorageItem("electrical-chats", updated);
+    setStorageItem("shelter-chats", updated);
     return updated;
   }
 };
@@ -577,13 +676,13 @@ export const markChatAsRead = async (sessionId: string): Promise<ChatSession[]> 
 export const deleteChatSession = async (id: string): Promise<ChatSession[]> => {
   try {
     const chats = await apiCall<ChatSession[]>("/api/chats?id=" + id, "DELETE");
-    setStorageItem("electrical-chats", chats);
+    setStorageItem("shelter-chats", chats);
     return chats;
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage:", err);
     const chats = await getChatSessions();
     const filtered = chats.filter(c => c.id !== id);
-    setStorageItem("electrical-chats", filtered);
+    setStorageItem("shelter-chats", filtered);
     return filtered;
   }
 };
@@ -592,62 +691,130 @@ export const deleteChatSession = async (id: string): Promise<ChatSession[]> => {
 export const getWebEmails = async (): Promise<WebEmail[]> => {
   try {
     const emails = await apiCall<WebEmail[]>("/api/emails", "GET");
-    const sorted = emails.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-    setStorageItem("electrical-emails", sorted);
+    const normalized = (emails || []).map((e) => ({
+      ...e,
+      status: e.status || "new",
+    }));
+    const sorted = normalized.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    setStorageItem("shelter-web-emails", sorted);
     return sorted;
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage emails:", err);
-    const emails = getStorageItem<WebEmail[]>("electrical-emails", INITIAL_EMAILS);
-    return emails.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    const emails = getStorageItem<WebEmail[]>("shelter-web-emails", INITIAL_EMAILS);
+    const normalized = (emails || []).map((e) => ({
+      ...e,
+      status: e.status || "new",
+    }));
+    return normalized.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }
 };
 
 export const addWebEmail = async (emailData: Omit<WebEmail, "id" | "createdAt">): Promise<WebEmail> => {
   try {
-    return await apiCall<WebEmail>("/api/emails", "POST", { emailData });
+    const payload = {
+      ...emailData,
+      status: emailData.status || "new",
+    };
+    return await apiCall<WebEmail>("/api/emails", "POST", { emailData: payload });
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage:", err);
     const emails = await getWebEmails();
     const newEmail: WebEmail = {
       ...emailData,
       id: "email-" + Math.random().toString(36).substr(2, 9),
+      status: emailData.status || "new",
       createdAt: new Date().toISOString()
     };
     emails.unshift(newEmail);
-    setStorageItem("electrical-emails", emails);
+    setStorageItem("shelter-web-emails", emails);
     return newEmail;
+  }
+};
+
+export const updateWebEmail = async (id: string, updates: Partial<WebEmail>): Promise<WebEmail[]> => {
+  try {
+    const list = await apiCall<WebEmail[]>("/api/emails", "PATCH", { id, updates });
+    const normalized = (list || []).map((e) => ({
+      ...e,
+      status: e.status || "new",
+    }));
+    setStorageItem("shelter-web-emails", normalized);
+    return normalized;
+  } catch (err) {
+    console.warn("MongoDB offline, updating email in local storage:", err);
+    const emails = await getWebEmails();
+    const updated = emails.map(e => (e.id === id ? { ...e, ...updates } : e));
+    setStorageItem("shelter-web-emails", updated);
+    return updated;
   }
 };
 
 export const deleteWebEmail = async (id: string): Promise<WebEmail[]> => {
   try {
-    return await apiCall<WebEmail[]>("/api/emails", "DELETE", { id });
+    const list = await apiCall<WebEmail[]>("/api/emails", "DELETE", { id });
+    setStorageItem("shelter-web-emails", list);
+    return list;
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage:", err);
     const emails = await getWebEmails();
     const filtered = emails.filter(e => e.id !== id);
-    setStorageItem("electrical-emails", filtered);
+    setStorageItem("shelter-web-emails", filtered);
     return filtered;
   }
+};
+
+export const convertInquiryToLead = async (inquiry: WebEmail): Promise<{ lead: Lead; emails: WebEmail[] }> => {
+  // Determine commercial vs residential
+  const isComm =
+    inquiry.service?.toLowerCase().includes("commercial") ||
+    inquiry.projectType?.toLowerCase().includes("commercial") ||
+    inquiry.message?.toLowerCase().includes("commercial") ||
+    inquiry.message?.toLowerCase().includes("business");
+
+  const newLead = await addLead({
+    name: inquiry.name,
+    email: inquiry.email,
+    phone: inquiry.phone || "",
+    address: inquiry.address || "Nashville, TN",
+    projectType: (isComm ? "commercial" : "residential") as any,
+    description: inquiry.message || `Website inquiry for ${inquiry.service || "Storm Shelter Installation"}`,
+    contactTime: "morning",
+    notes: `Converted from Web Inquiry (${inquiry.source || "Website Form"}).\nOriginal Timestamp: ${new Date(inquiry.createdAt).toLocaleString()}${inquiry.notes ? "\nInquiry Internal Notes: " + inquiry.notes : ""}`
+  });
+
+  const updatedEmails = await updateWebEmail(inquiry.id, {
+    status: "converted",
+    notes: `${inquiry.notes ? inquiry.notes + "\n" : ""}Converted to CRM Lead on ${new Date().toLocaleDateString()}.`
+  });
+
+  return { lead: newLead, emails: updatedEmails };
 };
 
 // ── GALLERY PHOTOS ──
 export const getGalleryPhotos = async (): Promise<GalleryPhoto[]> => {
   try {
     const photos = await apiCall<GalleryPhoto[]>("/api/gallery", "GET");
-    setStorageItem("electrical-gallery-photos", photos);
-    return photos;
+    const cleanPhotos = (photos || []).filter(
+      (p) => p.url && !p.url.includes("unsplash.com") && !p.url.includes("localhost")
+    );
+    setStorageItem("shelter-gallery-photos", cleanPhotos);
+    return cleanPhotos;
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage gallery:", err);
-    return getStorageItem<GalleryPhoto[]>("electrical-gallery-photos", [
-      { id: "photo-1", url: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e", uploadedAt: new Date().toISOString() }
-    ]);
+    const cached = getStorageItem<GalleryPhoto[]>("shelter-gallery-photos", []);
+    return (cached || []).filter(
+      (p) => p.url && !p.url.includes("unsplash.com") && !p.url.includes("localhost")
+    );
   }
 };
 
-export const uploadGalleryPhoto = async (fileOrBase64: string | File, category?: string): Promise<GalleryPhoto[]> => {
+export const uploadGalleryPhoto = async (
+  fileOrBase64: string | File,
+  category?: string,
+  meta?: { title?: string; location?: string; tag?: string; featured?: boolean }
+): Promise<GalleryPhoto[]> => {
   try {
-    const folder = `electrical/${category && category !== "all" ? category : "gallery"}`;
+    const folder = "shelters/gallery";
 
     // Step 1: Get a signed upload token from the server
     const signRes = await apiCall<{ signature: string; timestamp: number; apiKey: string; cloudName: string; folder: string }>(
@@ -681,30 +848,51 @@ export const uploadGalleryPhoto = async (fileOrBase64: string | File, category?:
     const secureUrl: string = uploadData.secure_url;
 
     // Step 4: Save the URL to our database
-    return await apiCall<GalleryPhoto[]>("/api/gallery", "POST", { url: secureUrl, category });
+    const updatedPhotos = await apiCall<GalleryPhoto[]>("/api/gallery", "POST", {
+      url: secureUrl,
+      category: category || "general",
+      title: meta?.title,
+      location: meta?.location,
+      tag: meta?.tag,
+      featured: meta?.featured ?? true,
+    });
+    const cleanUpdated = (updatedPhotos || []).filter(
+      (p) => p.url && !p.url.includes("unsplash.com") && !p.url.includes("localhost")
+    );
+    setStorageItem("shelter-gallery-photos", cleanUpdated);
+    return cleanUpdated;
   } catch (err) {
     console.warn("Gallery upload failed, falling back to local storage:", err);
     const photos = await getGalleryPhotos();
     const newPhoto: GalleryPhoto = {
       id: "photo-" + Math.random().toString(36).substr(2, 9),
       url: typeof fileOrBase64 === "string" ? fileOrBase64 : URL.createObjectURL(fileOrBase64),
-      category: category || "residential",
+      category: category || "general",
+      title: meta?.title,
+      location: meta?.location,
+      tag: meta?.tag,
+      featured: meta?.featured ?? true,
       uploadedAt: new Date().toISOString()
     };
     photos.unshift(newPhoto);
-    setStorageItem("electrical-gallery-photos", photos);
+    setStorageItem("shelter-gallery-photos", photos);
     return photos;
   }
 };
 
 export const removeGalleryPhoto = async (id: string): Promise<GalleryPhoto[]> => {
   try {
-    return await apiCall<GalleryPhoto[]>(`/api/gallery?id=${id}`, "DELETE");
+    const updated = await apiCall<GalleryPhoto[]>(`/api/gallery?id=${id}`, "DELETE");
+    const cleanUpdated = (updated || []).filter(
+      (p) => p.url && !p.url.includes("unsplash.com") && !p.url.includes("localhost")
+    );
+    setStorageItem("shelter-gallery-photos", cleanUpdated);
+    return cleanUpdated;
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage:", err);
     const photos = await getGalleryPhotos();
-    const filtered = photos.filter(p => p.id !== id);
-    setStorageItem("electrical-gallery-photos", filtered);
+    const filtered = photos.filter((p) => p.id !== id);
+    setStorageItem("shelter-gallery-photos", filtered);
     return filtered;
   }
 };
@@ -715,6 +903,8 @@ export const loginAdmin = async (username: string, password: string): Promise<{ 
     const res = await apiCall<{ success: boolean; user: any }>("/api/users", "POST", { action: "login", username, password });
     if (res.success && typeof window !== "undefined") {
       const token = "token-" + res.user.id + "-" + Math.random().toString(36).substr(2, 9);
+      localStorage.setItem("shelter-session-token", token);
+      localStorage.setItem("shelter-session-user", JSON.stringify(res.user));
       localStorage.setItem("electrical-session-token", token);
       localStorage.setItem("electrical-session-user", JSON.stringify(res.user));
       return { success: true, token };
@@ -722,10 +912,12 @@ export const loginAdmin = async (username: string, password: string): Promise<{ 
     throw new Error("Invalid credentials");
   } catch (err) {
     console.warn("MongoDB offline, checking local storage accounts:", err);
-    const accounts = getStorageItem<any[]>("electrical-admin-accounts", [DEFAULT_ADMIN]);
+    const accounts = getStorageItem<any[]>("shelter-admin-accounts", [DEFAULT_ADMIN]);
     const user = accounts.find(a => a.username.toLowerCase() === username.toLowerCase() && a.password === password);
     if (user) {
       const token = "token-" + user.id + "-" + Math.random().toString(36).substr(2, 9);
+      localStorage.setItem("shelter-session-token", token);
+      localStorage.setItem("shelter-session-user", JSON.stringify({ id: user.id, username: user.username, role: user.role }));
       localStorage.setItem("electrical-session-token", token);
       localStorage.setItem("electrical-session-user", JSON.stringify({ id: user.id, username: user.username, role: user.role }));
       return { success: true, token };
@@ -736,8 +928,8 @@ export const loginAdmin = async (username: string, password: string): Promise<{ 
 
 export const verifyAdminToken = async (token: string): Promise<{ valid: boolean; id?: string; username?: string; role?: string }> => {
   if (typeof window === "undefined") return { valid: false };
-  const activeToken = localStorage.getItem("electrical-session-token");
-  const storedUser = localStorage.getItem("electrical-session-user");
+  const activeToken = localStorage.getItem("shelter-session-token") || localStorage.getItem("electrical-session-token");
+  const storedUser = localStorage.getItem("shelter-session-user") || localStorage.getItem("electrical-session-user");
   if (activeToken === token && storedUser) {
     const u = JSON.parse(storedUser);
     return { valid: true, id: u.id, username: u.username, role: u.role };
@@ -750,29 +942,37 @@ export const getPortalUsers = async (): Promise<PortalUser[]> => {
     return await apiCall<PortalUser[]>("/api/users", "GET");
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage:", err);
-    const accounts = getStorageItem<any[]>("electrical-admin-accounts", [DEFAULT_ADMIN]);
-    return accounts.map(a => ({ id: a.id, username: a.username, role: a.role }));
+    const accounts = getStorageItem<any[]>("shelter-admin-accounts", [DEFAULT_ADMIN]);
+    return accounts.map(a => ({
+      id: a.id,
+      username: a.username,
+      name: a.name || a.username,
+      role: a.role,
+      createdAt: a.createdAt || "2026-01-01T00:00:00.000Z"
+    }));
   }
 };
 
-export const createPortalUser = async (username: string, password: string, role: string): Promise<{ success: boolean; id: string; username: string; role: string }> => {
+export const createPortalUser = async (username: string, password: string, role: string, name?: string): Promise<{ success: boolean; id: string; username: string; name?: string; role: string; createdAt?: string }> => {
   try {
-    return await apiCall<{ success: boolean; id: string; username: string; role: string }>("/api/users", "POST", { action: "create", username, password, role });
+    return await apiCall<{ success: boolean; id: string; username: string; name?: string; role: string; createdAt?: string }>("/api/users", "POST", { action: "create", username, password, role, name });
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage:", err);
-    const accounts = getStorageItem<any[]>("electrical-admin-accounts", [DEFAULT_ADMIN]);
+    const accounts = getStorageItem<any[]>("shelter-admin-accounts", [DEFAULT_ADMIN]);
     if (accounts.some(a => a.username.toLowerCase() === username.toLowerCase())) {
       throw new Error("Username already exists.");
     }
     const newUser = {
-      id: "admin-" + Math.random().toString(36).substr(2, 9),
+      id: "staff-" + Math.random().toString(36).substr(2, 9),
       username,
+      name: name || username,
       password,
-      role
+      role,
+      createdAt: new Date().toISOString()
     };
     accounts.push(newUser);
-    setStorageItem("electrical-admin-accounts", accounts);
-    return { success: true, id: newUser.id, username: newUser.username, role: newUser.role };
+    setStorageItem("shelter-admin-accounts", accounts);
+    return { success: true, id: newUser.id, username: newUser.username, name: newUser.name, role: newUser.role, createdAt: newUser.createdAt };
   }
 };
 
@@ -781,22 +981,25 @@ export const deletePortalUser = async (userId: string): Promise<{ success: boole
     return await apiCall<{ success: boolean }>("/api/users", "POST", { action: "delete", userId });
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage:", err);
-    const accounts = getStorageItem<any[]>("electrical-admin-accounts", [DEFAULT_ADMIN]);
+    const accounts = getStorageItem<any[]>("shelter-admin-accounts", [DEFAULT_ADMIN]);
     const filtered = accounts.filter(a => a.id !== userId);
-    setStorageItem("electrical-admin-accounts", filtered);
+    setStorageItem("shelter-admin-accounts", filtered);
     return { success: true };
   }
 };
 
-export const updateUserCredentials = async (userId: string, username?: string, password?: string): Promise<{ success: boolean; username: string }> => {
+export const updateUserCredentials = async (userId: string, username?: string, password?: string, role?: string, name?: string): Promise<{ success: boolean; username: string }> => {
   try {
-    const res = await apiCall<{ success: boolean; username: string }>("/api/users", "POST", { action: "update", userId, username, password });
+    const res = await apiCall<{ success: boolean; username: string; user?: any }>("/api/users", "POST", { action: "update", userId, username, password, role, name });
     if (res.success && typeof window !== "undefined") {
-      const storedUser = localStorage.getItem("electrical-session-user");
+      const storedUser = localStorage.getItem("shelter-session-user") || localStorage.getItem("electrical-session-user");
       if (storedUser) {
         const u = JSON.parse(storedUser);
         if (u.id === userId) {
-          u.username = res.username;
+          if (username) u.username = username;
+          if (name) u.name = name;
+          if (role) u.role = role;
+          localStorage.setItem("shelter-session-user", JSON.stringify(u));
           localStorage.setItem("electrical-session-user", JSON.stringify(u));
         }
       }
@@ -804,7 +1007,7 @@ export const updateUserCredentials = async (userId: string, username?: string, p
     return res;
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage:", err);
-    const accounts = getStorageItem<any[]>("electrical-admin-accounts", [DEFAULT_ADMIN]);
+    const accounts = getStorageItem<any[]>("shelter-admin-accounts", [DEFAULT_ADMIN]);
     let updatedUsername = "";
     const updated = accounts.map(a => {
       if (a.id === userId) {
@@ -812,18 +1015,23 @@ export const updateUserCredentials = async (userId: string, username?: string, p
         return {
           ...a,
           username: username || a.username,
+          name: name || a.name || a.username,
+          role: role || a.role,
           password: password || a.password
         };
       }
       return a;
     });
-    setStorageItem("electrical-admin-accounts", updated);
+    setStorageItem("shelter-admin-accounts", updated);
 
-    const storedUser = localStorage.getItem("electrical-session-user");
+    const storedUser = localStorage.getItem("shelter-session-user") || localStorage.getItem("electrical-session-user");
     if (storedUser) {
       const u = JSON.parse(storedUser);
       if (u.id === userId) {
-        u.username = updatedUsername;
+        if (username) u.username = updatedUsername;
+        if (name) u.name = name;
+        if (role) u.role = role;
+        localStorage.setItem("shelter-session-user", JSON.stringify(u));
         localStorage.setItem("electrical-session-user", JSON.stringify(u));
       }
     }
@@ -831,17 +1039,21 @@ export const updateUserCredentials = async (userId: string, username?: string, p
   }
 };
 
+export const updatePortalUserRole = async (userId: string, role: string): Promise<{ success: boolean }> => {
+  return await updateUserCredentials(userId, undefined, undefined, role);
+};
+
 // Analytics calculator helper
 export const getAnalyticsData = (leads: Lead[], reviews: Review[]) => {
   const totalValue = leads.reduce((acc, curr) => curr.status !== "lost" ? acc + curr.estimatedValue : acc, 0);
   const activeCount = leads.filter(l => ["contacted", "consultation_scheduled", "proposal_sent"].includes(l.status)).length;
-  
+
   const wonLeads = leads.filter(l => l.status === "won");
   const lostLeads = leads.filter(l => l.status === "lost");
   const wonValue = wonLeads.reduce((acc, curr) => acc + curr.estimatedValue, 0);
   const totalClosed = wonLeads.length + lostLeads.length;
   const winRate = totalClosed > 0 ? Math.round((wonLeads.length / totalClosed) * 100) : 0;
-  
+
   const averageValue = leads.length > 0 ? Math.round(leads.reduce((acc, curr) => acc + curr.estimatedValue, 0) / leads.length) : 0;
 
   // 1. Project type distribution
@@ -894,10 +1106,10 @@ export const getAnalyticsData = (leads: Lead[], reviews: Review[]) => {
   leads.forEach(l => {
     const addressStr = l.address || "";
     const parts = addressStr.split(",");
-    let city = "Miami";
+    let city = "Nashville";
     if (parts.length >= 2) {
       const cityPart = parts[parts.length - 2].trim();
-      city = cityPart || "Miami";
+      city = cityPart || "Nashville";
     }
     cityCounts[city] = (cityCounts[city] || 0) + 1;
   });
@@ -931,12 +1143,21 @@ export const getAnalyticsData = (leads: Lead[], reviews: Review[]) => {
 
   const timelineChart = Object.entries(monthlyData).map(([month, data]) => ({
     name: month,
+    month: month,
     leads: data.count,
     revenue: data.value
   }));
 
+  const totalPipelineValue = leads
+    .filter(l => ["new", "contacted", "consultation_scheduled", "proposal_sent"].includes(l.status))
+    .reduce((acc, curr) => acc + curr.estimatedValue, 0);
+
+  const monthlyRevenue = timelineChart.reduce((acc, curr) => acc + curr.revenue, 0);
+
   return {
     totalValue,
+    totalPipelineValue,
+    monthlyRevenue,
     activeCount,
     winRate,
     wonValue,
@@ -950,45 +1171,73 @@ export const getAnalyticsData = (leads: Lead[], reviews: Review[]) => {
 };
 
 export interface SiteSettings {
+  companyName: string;
+  tagline: string;
   alertEmail: string;
   officePhone: string;
+  officePhoneRaw: string;
+  officeAddress: string;
+  serviceRadius: string;
+  licenseNotice: string;
+  weekdays: string;
+  saturdays: string;
+  sundays: string;
+  shortBadge: string;
   smsTemplate: string;
   emailAlert: boolean;
   smsAlert: boolean;
   maintenanceMode: boolean;
-  weekdays: string;
-  saturdays: string;
-  sundays: string;
+  maintenanceTitle: string;
+  maintenanceMessage: string;
 }
 
 export const getSiteSettings = async (): Promise<SiteSettings> => {
   try {
-    return await apiCall<SiteSettings>("/api/settings?t=" + Date.now(), "GET");
+    const data = await apiCall<SiteSettings>("/api/settings?t=" + Date.now(), "GET");
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.setItem("site_settings_cache", JSON.stringify(data));
+      } catch { }
+    }
+    return data;
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage settings:", err);
-    let email = getStorageItem("shelter_settings_alertEmail", "info@southernstormshelters.com");
-    let phone = getStorageItem("shelter_settings_officePhone", "615-991-2361");
     return {
-      alertEmail: email,
-      officePhone: phone,
-      smsTemplate: getStorageItem("shelter_settings_smsTemplate", "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you to discuss your {Type} installation."),
-      emailAlert: getStorageItem("shelter_settings_emailAlert", "true") === "true",
-      smsAlert: getStorageItem("shelter_settings_smsAlert", "true") === "true",
-      maintenanceMode: getStorageItem("shelter_settings_maintenanceMode", "false") === "true",
+      companyName: getStorageItem("shelter_settings_companyName", "Southern Storm Shelters LLC"),
+      tagline: getStorageItem("shelter_settings_tagline", "Tennessee’s Premier Engineered Underground Storm Shelters & Safe Rooms"),
+      alertEmail: getStorageItem("shelter_settings_alertEmail", "info@southernstormshelters.com"),
+      officePhone: getStorageItem("shelter_settings_officePhone", "(615) 991-2361"),
+      officePhoneRaw: getStorageItem("shelter_settings_officePhoneRaw", "+16159912361"),
+      officeAddress: getStorageItem("shelter_settings_officeAddress", "Nashville, TN"),
+      serviceRadius: getStorageItem("shelter_settings_serviceRadius", "Nashville, TN & 100-Mile Radius"),
+      licenseNotice: getStorageItem("shelter_settings_licenseNotice", "Fully Insured Professional Installation Crews • Engineered Storm Protection"),
       weekdays: getStorageItem("shelter_settings_weekdays", "Monday–Friday: 8:00 AM – 5:00 PM"),
       saturdays: getStorageItem("shelter_settings_saturdays", "Saturday: By Appointment"),
-      sundays: getStorageItem("shelter_settings_sundays", "Sunday: Closed")
+      sundays: getStorageItem("shelter_settings_sundays", "Sunday: Closed"),
+      shortBadge: getStorageItem("shelter_settings_shortBadge", "Mon–Sat: 8:00 AM – 5:00 PM"),
+      smsTemplate: getStorageItem("shelter_settings_smsTemplate", "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you to discuss your {Type} installation."),
+      emailAlert: String(getStorageItem("shelter_settings_emailAlert", "true")) === "true",
+      smsAlert: String(getStorageItem("shelter_settings_smsAlert", "true")) === "true",
+      maintenanceMode: String(getStorageItem("shelter_settings_maintenanceMode", "false")) === "true",
+      maintenanceTitle: getStorageItem("shelter_settings_maintenanceTitle", "Scheduled System Maintenance Underway"),
+      maintenanceMessage: getStorageItem("shelter_settings_maintenanceMessage", "We are currently performing scheduled maintenance to upgrade our shelter estimating and dispatch systems. Emergency shelter installations and property evaluations remain fully operational.")
     };
   }
 };
 
 export const saveSiteSettings = async (settings: Partial<SiteSettings>): Promise<SiteSettings> => {
   try {
-    return await apiCall<SiteSettings>("/api/settings", "POST", settings);
+    const saved = await apiCall<SiteSettings>("/api/settings", "POST", settings);
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.setItem("site_settings_cache", JSON.stringify(saved));
+      } catch { }
+    }
+    return saved;
   } catch (err) {
     console.warn("MongoDB offline, saving to local storage settings:", err);
     Object.entries(settings).forEach(([key, val]) => {
-      setStorageItem("electrical_settings_" + key, String(val));
+      setStorageItem("shelter_settings_" + key, String(val));
     });
     return getSiteSettings();
   }
@@ -1041,4 +1290,25 @@ export const clearAllNotifications = async (): Promise<DashboardNotification[]> 
     return [];
   }
 };
+
+export interface DatabaseHealthInfo {
+  status: "connected" | "error";
+  dbName: string;
+  collections: Record<string, number>;
+  pingMs: number;
+}
+
+export const checkDatabaseHealth = async (): Promise<DatabaseHealthInfo> => {
+  try {
+    return await apiCall<DatabaseHealthInfo>("/api/health?t=" + Date.now(), "GET");
+  } catch (err: any) {
+    return {
+      status: "error",
+      dbName: "disconnected",
+      collections: {},
+      pingMs: 0
+    };
+  }
+};
+
 

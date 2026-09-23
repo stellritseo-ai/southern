@@ -1,240 +1,72 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, ArrowRight, Sparkles, Shield, HardHat, Building2, Home, X, ZoomIn, Camera, Star } from "lucide-react";
-
-import g1 from "@/assets/gallery/1.png";
-import g2 from "@/assets/gallery/2.png";
-import g3 from "@/assets/gallery/3.png";
-import g4 from "@/assets/gallery/4.png";
-import g5 from "@/assets/gallery/5.png";
-import g6 from "@/assets/gallery/6.png";
-import g7 from "@/assets/gallery/7.png";
-import g8 from "@/assets/gallery/8.png";
-import g9 from "@/assets/gallery/9.png";
-import g10 from "@/assets/gallery/10.png";
-import g12 from "@/assets/gallery/12.png";
-import gShelterInstall from "@/assets/gallery/shelterinstall.jpg";
-import gTornadoShelters6 from "@/assets/gallery/tornadoshelters6.jpg";
-import gShelter5 from "@/assets/gallery/shelter5.jpg";
-import gProInstall from "@/assets/gallery/Professional Installation.jpg";
-import gGrangerPrepared from "@/assets/gallery/GrangerISSforPreparedSpared-e1741714349365.jpg";
-import gInsideShelter from "@/assets/gallery/InsideofShelter-scaled-r4ebojreuj4ns9cra8kvsdflptcw5p2mja6hh7h24g.jpg";
-import gImg0118 from "@/assets/gallery/IMG_0118-scaled-r4ebojreuj48ftcjj6kje1k3ffiqpa38l623yhkuf4.jpg";
-import gImg0137 from "@/assets/gallery/IMG_0137-scaled-r4ebojrkbvjcrsnwjnowdzrmtrncu4qwzlzsen983c.jpg";
-import gImg0181 from "@/assets/gallery/IMG_0181-scaled-r4ebojreuj4io40op7wrnlh3mcquc82tvwt0yyubk0.jpg";
-
+import { MapPin, ArrowRight, Shield, HardHat, Building2, Home, X, ZoomIn, Camera, Star, Sparkles, Image as ImageIcon } from "lucide-react";
+import { getGalleryPhotos, GalleryPhoto } from "@/lib/leads-store";
+import { io } from "socket.io-client";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Link } from "@tanstack/react-router";
 
 export function Projects({ isLanding = false }: { isLanding?: boolean }) {
   const { t } = useLanguage();
+  const [photos, setPhotos] = useState<GalleryPhoto[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const fallbackAll = [
-    {
-      img: gTornadoShelters6,
-      title: t("Underground Safe Room Placement", "Colocación de Refugio Subterráneo"),
-      cat: "Underground",
-      loc: "Nashville, TN",
-      year: "2024",
-      tag: t("Underground Vault", "Bóveda Subterránea"),
-      featured: true,
-    },
-    {
-      img: g2,
-      title: t("Precision Excavation & Shelter Set", "Excavación de Precisión e Instalación"),
-      cat: "Installation",
-      loc: "Franklin, TN",
-      year: "2024",
-      tag: t("Backyard Placement", "Colocación en Patio"),
-      featured: true,
-    },
-    {
-      img: g6,
-      title: t("In-Ground Prefabricated Shelter", "Refugio Subterráneo Prefabricado"),
-      cat: "Underground",
-      loc: "Murfreesboro, TN",
-      year: "2024",
-      tag: t("In-Ground Shelter", "Refugio Subterráneo"),
-      featured: true,
-    },
-    {
-      img: gShelterInstall,
-      title: t("Turnkey Backyard Crane Placement", "Colocación con Grúa en Patio"),
-      cat: "Installation",
-      loc: "Hendersonville, TN",
-      year: "2024",
-      tag: t("Crane Placement", "Colocación con Grúa"),
-      featured: true,
-    },
-    {
-      img: g1,
-      title: t("Steel Safe Room Structure", "Estructura de Sala Segura de Acero"),
-      cat: "Residential",
-      loc: "Brentwood, TN",
-      year: "2024",
-      tag: t("Family Safe Haven", "Refugio Familiar"),
-      featured: false,
-    },
-    {
-      img: g3,
-      title: t("Multi-Point Security Hatch Door", "Puerta de Escotilla de Seguridad"),
-      cat: "Underground",
-      loc: "Lebanon, TN",
-      year: "2024",
-      tag: t("Watertight Hatch", "Escotilla Hermética"),
-      featured: false,
-    },
-    {
-      img: g4,
-      title: t("Reinforced Shelter Interior Chamber", "Cámara Interior Reforzada"),
-      cat: "Underground",
-      loc: "Mount Juliet, TN",
-      year: "2024",
-      tag: t("Interior Vault", "Interior de Bóveda"),
-      featured: false,
-    },
-    {
-      img: g5,
-      title: t("Heavy-Duty Jobsite Installation", "Instalación de Gran Capacidad"),
-      cat: "Installation",
-      loc: "Spring Hill, TN",
-      year: "2024",
-      tag: t("Jobsite Setup", "Preparación del Terreno"),
-      featured: false,
-    },
-    {
-      img: g7,
-      title: t("Underground Modular Storm Shelter", "Refugio Modular Subterráneo"),
-      cat: "Underground",
-      loc: "Columbia, TN",
-      year: "2024",
-      tag: t("Modular Safe Room", "Sala Segura Modular"),
-      featured: true,
-    },
-    {
-      img: g8,
-      title: t("Engineered Shelter Shell Assembly", "Ensamblaje de Carcasa de Refugio"),
-      cat: "Residential",
-      loc: "Gallatin, TN",
-      year: "2024",
-      tag: t("Engineered Shell", "Carcasa Diseñada"),
-      featured: false,
-    },
-    {
-      img: g9,
-      title: t("Backyard Excavation & Anchoring", "Excavación y Anclaje en Patio"),
-      cat: "Installation",
-      loc: "Smyrna, TN",
-      year: "2024",
-      tag: t("Ground Anchoring", "Anclaje al Terreno"),
-      featured: false,
-    },
-    {
-      img: g10,
-      title: t("Safe Entry Access System", "Sistema de Acceso Seguro"),
-      cat: "Residential",
-      loc: "Clarksville, TN",
-      year: "2024",
-      tag: t("Entry Access", "Acceso Seguro"),
-      featured: false,
-    },
-    {
-      img: g12,
-      title: t("Heavy Equipment Rigging & Set", "Maniobra y Colocación con Equipo Pesado"),
-      cat: "Installation",
-      loc: "Dickson, TN",
-      year: "2024",
-      tag: t("Heavy Rigging", "Maniobra Pesada"),
-      featured: true,
-    },
-    {
-      img: gProInstall,
-      title: t("Professional Jobsite Installation", "Instalación Profesional en Terreno"),
-      cat: "Installation",
-      loc: "Nashville, TN",
-      year: "2024",
-      tag: t("Professional Install", "Instalación Profesional"),
-      featured: false,
-    },
-    {
-      img: gShelter5,
-      title: t("Residential Flush-Ground Shelter", "Refugio a Nivel del Césped"),
-      cat: "Residential",
-      loc: "Franklin, TN",
-      year: "2024",
-      tag: t("Flush Ground", "Al Nivel del Suelo"),
-      featured: true,
-    },
-    {
-      img: gInsideShelter,
-      title: t("Interior Molded Seating & Stairs", "Asientos Moldeados y Escalones Interiores"),
-      cat: "Underground",
-      loc: "Murfreesboro, TN",
-      year: "2024",
-      tag: t("Interior Comfort", "Comodidad Interior"),
-      featured: false,
-    },
-    {
-      img: gGrangerPrepared,
-      title: t("Turnkey In-Ground Shelter Unit", "Unidad Subterránea Llave en Mano"),
-      cat: "Underground",
-      loc: "Brentwood, TN",
-      year: "2024",
-      tag: t("Prefabricated Vault", "Bóveda Prefabricada"),
-      featured: false,
-    },
-    {
-      img: gImg0118,
-      title: t("Site Preparation & Leveling", "Nivelación y Preparación del Sitio"),
-      cat: "Installation",
-      loc: "Hendersonville, TN",
-      year: "2024",
-      tag: t("Site Prep", "Preparación de Terreno"),
-      featured: false,
-    },
-    {
-      img: gImg0137,
-      title: t("Safe Ground Hatch Installation", "Instalación de Escotilla a Nivel de Tierra"),
-      cat: "Residential",
-      loc: "Lebanon, TN",
-      year: "2024",
-      tag: t("Ground Hatch", "Escotilla de Suelo"),
-      featured: false,
-    },
-    {
-      img: gImg0181,
-      title: t("Underground Entryway & Latching", "Entrada y Cerraduras Subterráneas"),
-      cat: "Underground",
-      loc: "Mount Juliet, TN",
-      year: "2024",
-      tag: t("Secure Latching", "Cerradura de Seguridad"),
-      featured: false,
-    },
-  ];
+  // Fetch photos dynamically from MongoDB via API & sync via Socket.IO
+  useEffect(() => {
+    let mounted = true;
 
-  const all = fallbackAll;
-
-  const catLabels: Record<string, string> = {
-    All: t("All Shelters", "Todos los Refugios"),
-    Residential: t("Residential", "Residencial"),
-    Installation: t("Installation & Prep", "Instalación y Terreno"),
-    Underground: t("Underground Vaults", "Bóvedas Subterráneas"),
-  };
-
-  const dynamicCats = useMemo(() => {
-    const categories = new Set<string>();
-    categories.add("All");
-    all.forEach((p) => {
-      if (p.cat) categories.add(p.cat);
+    getGalleryPhotos().then((items) => {
+      if (mounted) {
+        setPhotos(items || []);
+        setLoading(false);
+      }
     });
-    return Array.from(categories);
-  }, [all]);
 
-  const [active, setActive] = useState<string>("All");
+    const socket = io({
+      transports: ["websocket", "polling"],
+      autoConnect: true
+    });
+
+    socket.on("gallery-updated", (updated: GalleryPhoto[]) => {
+      if (mounted) setPhotos(updated || []);
+    });
+
+    socket.on("new-gallery-photo", (newPhoto: GalleryPhoto) => {
+      if (mounted) {
+        setPhotos((prev) => [newPhoto, ...prev.filter((p) => p.id !== newPhoto.id)]);
+      }
+    });
+
+    socket.on("gallery-photo-deleted", (deletedId: string) => {
+      if (mounted) {
+        setPhotos((prev) => prev.filter((p) => p.id !== deletedId));
+      }
+    });
+
+    return () => {
+      mounted = false;
+      socket.disconnect();
+    };
+  }, []);
+
+  const all = useMemo(() => {
+    return photos
+      .filter((p) => p.url && !p.url.includes("unsplash.com") && !p.url.includes("localhost"))
+      .map((p) => ({
+        id: p.id,
+        img: p.url,
+        title: p.title || t("Engineered Shelter Installation", "Instalación de Refugio"),
+        cat: p.category ? p.category.charAt(0).toUpperCase() + p.category.slice(1).toLowerCase() : "Underground",
+        loc: p.location || "Nashville, TN",
+        year: new Date(p.uploadedAt || Date.now()).getFullYear().toString(),
+        tag: p.tag || "Underground Vault",
+        featured: p.featured ?? true,
+      }));
+  }, [photos, t]);
+
   const [showAll, setShowAll] = useState<boolean>(false);
-  const items = active === "All" ? all : all.filter((p) => p.cat === active);
-  const displayItems = isLanding && !showAll ? items.slice(0, 8) : items;
+  const displayItems = isLanding && !showAll ? all.slice(0, 8) : all;
 
   // Lightbox state
   const [lightbox, setLightbox] = useState<null | (typeof all)[number]>(null);
@@ -252,12 +84,14 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
   }, []);
 
   const prevPhoto = useCallback(() => {
+    if (displayItems.length === 0) return;
     const newIdx = (lightboxIdx - 1 + displayItems.length) % displayItems.length;
     setLightboxIdx(newIdx);
     setLightbox(displayItems[newIdx]);
   }, [lightboxIdx, displayItems]);
 
   const nextPhoto = useCallback(() => {
+    if (displayItems.length === 0) return;
     const newIdx = (lightboxIdx + 1) % displayItems.length;
     setLightboxIdx(newIdx);
     setLightbox(displayItems[newIdx]);
@@ -278,7 +112,6 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
 
   return (
     <section id="projects" className="relative bg-[#F8FAFC] py-16 sm:py-20 overflow-hidden">
-
       {/* Background texture */}
       <div
         aria-hidden
@@ -290,7 +123,6 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
       />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
-
         {/* ── Section Header ──────────────────────────── */}
         {!isLanding && (
           <motion.div
@@ -316,7 +148,10 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
                 </span>
               </h2>
               <p className="text-slate-500 text-[15px] leading-relaxed font-normal max-w-xl">
-                {t("Every installation represents a family safeguarded. Browse our recent underground storm shelter installations across Nashville and Middle Tennessee.", "Cada instalación representa una familia protegida. Explore nuestras instalaciones recientes en Nashville y Middle Tennessee.")}
+                {t(
+                  "Every installation represents a family safeguarded. Browse our recent underground storm shelter installations across Nashville and Middle Tennessee.",
+                  "Cada instalación representa una familia protegida. Explore nuestras instalaciones recientes en Nashville y Middle Tennessee."
+                )}
               </p>
             </div>
 
@@ -356,60 +191,96 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
           </motion.div>
         )}
 
-        {/* ── Projects Grid ───────────────────────────── */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className={isLanding
-              ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4"
-              : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-            }
-          >
-            {displayItems.map((p, idx) => (
-              <motion.article
-                key={idx}
-                initial={{ opacity: 0, scale: 0.96 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: idx * 0.04 }}
-                onClick={() => openLightbox(p, idx)}
-                className={cn(
-                  "group relative overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-zoom-in",
-                  isLanding
-                    ? "aspect-[4/3] w-full"
-                    : p.featured ? "sm:col-span-1 lg:row-span-2" : ""
-                )}
-              >
-                {/* Image */}
-                <div className={cn(
-                  "overflow-hidden w-full h-full",
-                  isLanding ? "h-full" : p.featured ? "h-[420px] lg:h-full lg:min-h-[520px]" : "h-[250px] sm:h-[270px]"
-                )}>
-                  <img
-                    src={p.img}
-                    alt={p.title}
-                    className="w-full h-full object-cover group-hover:scale-[1.07] transition-transform duration-700 ease-out"
-                    loading={idx < 5 ? "eager" : "lazy"}
-                  />
-                </div>
-
-                {/* Subtle Hover Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-all duration-300 flex items-center justify-center">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/85 border border-white/40 text-amber-600 opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 shadow-md backdrop-blur-xs">
-                    <ZoomIn className="h-5 w-5" />
-                  </div>
-                </div>
-              </motion.article>
+        {/* ── Loading Skeleton ───────────────────────── */}
+        {loading && (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 animate-pulse">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+              <div key={i} className="aspect-[4/3] bg-slate-200 rounded-2xl" />
             ))}
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        )}
+
+        {/* ── Empty State ────────────────────────────── */}
+        {!loading && displayItems.length === 0 && (
+          <div className="text-center py-16 px-6 bg-white border border-slate-200/80 rounded-3xl max-w-xl mx-auto shadow-sm">
+            <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-4 border border-amber-200">
+              <ImageIcon className="w-7 h-7" />
+            </div>
+            <h3 className="text-lg font-black text-slate-900 mb-2">Live Cloudinary Gallery Connected</h3>
+            <p className="text-xs text-slate-500 leading-relaxed max-w-md mx-auto mb-6">
+              New project installations uploaded through the Admin Dashboard sync directly with Cloudinary and will instantly display here in real time.
+            </p>
+            <Link
+              to="/free-quote"
+              className="inline-flex items-center gap-2 bg-slate-900 text-white text-xs font-bold px-5 py-2.5 rounded-full hover:bg-slate-800 transition cursor-pointer"
+            >
+              {t("Request Installation Consultation", "Solicitar Consulta")} <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        )}
+
+        {/* ── Projects Grid ───────────────────────────── */}
+        {!loading && displayItems.length > 0 && (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key="gallery-grid"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className={
+                isLanding
+                  ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4"
+                  : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+              }
+            >
+              {displayItems.map((p, idx) => (
+                <motion.article
+                  key={p.id || idx}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: idx * 0.04 }}
+                  onClick={() => openLightbox(p, idx)}
+                  className={cn(
+                    "group relative overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-zoom-in",
+                    isLanding ? "aspect-[4/3] w-full" : p.featured ? "sm:col-span-1 lg:row-span-2" : ""
+                  )}
+                >
+                  {/* Image */}
+                  <div
+                    className={cn(
+                      "overflow-hidden w-full h-full",
+                      isLanding ? "h-full" : p.featured ? "h-[420px] lg:h-full lg:min-h-[520px]" : "h-[250px] sm:h-[270px]"
+                    )}
+                  >
+                    <img
+                      src={p.img}
+                      alt={p.title}
+                      className="w-full h-full object-cover group-hover:scale-[1.07] transition-transform duration-700 ease-out"
+                      loading={idx < 5 ? "eager" : "lazy"}
+                    />
+                  </div>
+
+                  {/* Subtle Hover Overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-all duration-300 flex items-center justify-center p-3">
+                    <div className="flex flex-col items-center justify-center gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 text-center">
+                      <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/90 border border-white/40 text-amber-600 shadow-md backdrop-blur-xs">
+                        <ZoomIn className="h-5 w-5" />
+                      </div>
+                      <span className="text-[11px] font-bold text-white drop-shadow-md truncate max-w-[90%]">
+                        {p.title}
+                      </span>
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        )}
 
         {/* ── View More Button ── */}
-        {isLanding && items.length > 8 && (
+        {isLanding && all.length > 8 && (
           <div className="mt-8 sm:mt-12 flex justify-center">
             <button
               type="button"
@@ -423,7 +294,6 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
             </button>
           </div>
         )}
-
       </div>
 
       {/* ── Lightbox Modal ──────────────────────────────── */}
@@ -452,27 +322,31 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
               {/* Close button */}
               <button
                 onClick={closeLightbox}
-                className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition hover:scale-110"
+                className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition hover:scale-110 cursor-pointer"
                 aria-label="Close"
               >
                 <X className="h-5 w-5" />
               </button>
 
               {/* Prev / Next arrows */}
-              <button
-                onClick={prevPhoto}
-                className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition hover:scale-110"
-                aria-label="Previous"
-              >
-                <ArrowRight className="h-4 w-4 rotate-180" />
-              </button>
-              <button
-                onClick={nextPhoto}
-                className="absolute right-14 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition hover:scale-110"
-                aria-label="Next"
-              >
-                <ArrowRight className="h-4 w-4" />
-              </button>
+              {displayItems.length > 1 && (
+                <>
+                  <button
+                    onClick={prevPhoto}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition hover:scale-110 cursor-pointer"
+                    aria-label="Previous"
+                  >
+                    <ArrowRight className="h-4 w-4 rotate-180" />
+                  </button>
+                  <button
+                    onClick={nextPhoto}
+                    className="absolute right-14 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition hover:scale-110 cursor-pointer"
+                    aria-label="Next"
+                  >
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </>
+              )}
 
               {/* Photo counter */}
               <div className="absolute top-4 left-4 z-30 bg-black/50 backdrop-blur-sm border border-white/20 text-white text-[11px] font-bold px-3 py-1.5 rounded-full">
@@ -480,7 +354,7 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
               </div>
 
               {/* Full image */}
-              <div className="relative flex-1 overflow-hidden bg-black">
+              <div className="relative flex-1 overflow-hidden bg-black flex items-center justify-center min-h-[300px]">
                 <img
                   src={lightbox.img}
                   alt={lightbox.title}
@@ -488,8 +362,12 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
                 />
               </div>
 
-              {/* Bottom bar with Get a Quote button */}
-              <div className="bg-white px-5 py-3.5 flex items-center justify-center shrink-0 border-t border-slate-100">
+              {/* Bottom bar with Info & CTA */}
+              <div className="bg-white px-5 py-3.5 flex items-center justify-between shrink-0 border-t border-slate-100">
+                <div className="flex flex-col text-left">
+                  <span className="text-xs font-bold text-slate-900">{lightbox.title}</span>
+                  <span className="text-[10px] text-amber-700 font-medium">{lightbox.loc} · {lightbox.tag}</span>
+                </div>
                 <Link
                   to="/free-quote"
                   onClick={closeLightbox}
@@ -502,7 +380,6 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
           </motion.div>
         )}
       </AnimatePresence>
-
     </section>
   );
 }

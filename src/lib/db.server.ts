@@ -1,28 +1,90 @@
 import { MongoClient, ObjectId } from "mongodb";
 import { hashPassword } from "./crypto.server.js";
 
-const DB_NAME = "electrical";
+// Native Node env loader fallback if run without --env-file
+if (typeof process !== "undefined" && typeof (process as any).loadEnvFile === "function") {
+  try {
+    (process as any).loadEnvFile();
+  } catch {
+    // env already loaded or file missing
+  }
+}
+
+const DB_NAME = process.env.MONGODB_DB_NAME || "southern";
 
 let client: MongoClient | null = null;
+let migrationChecked = false;
+
+async function ensureDbMigrated(connectedClient: MongoClient, targetDbName: string) {
+  if (migrationChecked || targetDbName === "electrical") return;
+  migrationChecked = true;
+  try {
+    const targetDb = connectedClient.db(targetDbName);
+    const targetLeadsCount = await targetDb.collection("leads").countDocuments().catch(() => 0);
+    if (targetLeadsCount === 0) {
+      const oldDb = connectedClient.db("electrical");
+      const oldLeadsCount = await oldDb.collection("leads").countDocuments().catch(() => 0);
+      if (oldLeadsCount > 0) {
+        console.log(`Migrating collections from legacy "electrical" to "${targetDbName}"...`);
+        const collections = ["leads", "reviews", "web_emails", "chat_sessions", "gallery_photos", "settings", "portal_users", "notifications"];
+        for (const col of collections) {
+          const docs = await oldDb.collection(col).find({}).toArray().catch(() => []);
+          if (docs.length > 0) {
+            await targetDb.collection(col).insertMany(docs).catch(() => { });
+          }
+        }
+        console.log(`Migration to "${targetDbName}" completed.`);
+      }
+    }
+  } catch (err) {
+    console.warn("Migration check skipped:", err);
+  }
+}
 
 async function getClient(): Promise<MongoClient> {
   if (!client) {
+    if (typeof process !== "undefined" && typeof (process as any).loadEnvFile === "function") {
+      try {
+        (process as any).loadEnvFile();
+      } catch { }
+    }
     const uri = process.env.MONGODB_URI;
     if (!uri) {
       throw new Error("MONGODB_URI environment variable is missing!");
     }
     const newClient = new MongoClient(uri, {
-      connectTimeoutMS: 5000,
-      socketTimeoutMS: 15000,
+      // Faster cold-start: don't wait forever for a sleeping Atlas cluster
+      serverSelectionTimeoutMS: 8000,
+      connectTimeoutMS: 8000,
+      socketTimeoutMS: 20000,
+      // Connection pool: keep alive so subsequent requests are instant
+      maxPoolSize: 10,
+      minPoolSize: 1,
+      maxIdleTimeMS: 60000,
+      // Heartbeat every 10s to detect dropped connections early
+      heartbeatFrequencyMS: 10000,
+      // Retry on first network hiccup
+      retryWrites: true,
+      retryReads: true,
+      // Faster DNS: avoid re-resolving SRV on every operation
+      family: 4,
     });
     await newClient.connect();
     client = newClient;
+
+    // Pre-warm the connection pool with a lightweight ping
+    // so the very first real API request doesn't pay the handshake cost
+    newClient.db("admin").command({ ping: 1 }).catch(() => { });
   }
   return client;
 }
 
 export async function getDb() {
   const connectedClient = await getClient();
+  // Run migration in the background — never blocks the first request
+  if (!migrationChecked) {
+    setImmediate(() => ensureDbMigrated(connectedClient, DB_NAME));
+  }
   return connectedClient.db(DB_NAME);
 }
 
@@ -46,14 +108,11 @@ export async function dbGetLeads(initialSeeds: any[]): Promise<any[]> {
     return initialSeeds;
   }
 
-  // Clean up any legacy localhost photos from leads
-  const allLeads = await leadsCol.find({}).toArray();
-  for (const lead of allLeads) {
-    if (lead.photos && lead.photos.some((p: string) => p.includes("localhost"))) {
-      const cleanedPhotos = lead.photos.filter((p: string) => !p.includes("localhost"));
-      await leadsCol.updateOne({ _id: lead._id }, { $set: { photos: cleanedPhotos } });
-    }
-  }
+  // Remove localhost photo URLs in a single batched operation (not N+1 loops)
+  await leadsCol.updateMany(
+    { photos: { $elemMatch: { $regex: "localhost" } } },
+    [{ $set: { photos: { $filter: { input: "$photos", as: "p", cond: { $not: { $regexMatch: { input: "$$p", regex: "localhost" } } } } } } }]
+  );
 
   const docs = await leadsCol.find({}).toArray();
   return docs.map(mapDoc);
@@ -69,14 +128,14 @@ export async function dbAddLead(lead: any): Promise<any> {
 export async function dbUpdateLead(id: string, updates: any): Promise<any[] | null> {
   const db = await getDb();
   const leadsCol = db.collection("leads");
-  
+
   let res = await leadsCol.updateOne({ id }, { $set: updates });
   if (res.matchedCount === 0) {
     if (ObjectId.isValid(id)) {
       await leadsCol.updateOne({ _id: new ObjectId(id) }, { $set: updates });
     }
   }
-  
+
   const docs = await leadsCol.find({}).toArray();
   return docs.map(mapDoc);
 }
@@ -84,14 +143,14 @@ export async function dbUpdateLead(id: string, updates: any): Promise<any[] | nu
 export async function dbDeleteLead(id: string): Promise<any[]> {
   const db = await getDb();
   const leadsCol = db.collection("leads");
-  
+
   let res = await leadsCol.deleteOne({ id });
   if (res.deletedCount === 0) {
     if (ObjectId.isValid(id)) {
       await leadsCol.deleteOne({ _id: new ObjectId(id) });
     }
   }
-  
+
   const docs = await leadsCol.find({}).toArray();
   return docs.map(mapDoc);
 }
@@ -100,13 +159,30 @@ export async function dbDeleteLead(id: string): Promise<any[]> {
 export async function dbGetReviews(initialSeeds: any[]): Promise<any[]> {
   const db = await getDb();
   const reviewsCol = db.collection("reviews");
-  
+
+  // Purge legacy dummy reviews from electrical/old template
+  await reviewsCol.deleteMany({
+    $or: [
+      { author: { $in: ["Marcus H.", "David K.", "Brian T.", "Elena R."] } },
+      {
+        title: {
+          $in: [
+            "Complete Peace of Mind During Tornado Season!",
+            "Heavy-Duty Hydraulic Hatch & Airtight Seal",
+            "Commercial Safe Room Done Right",
+            "Laser-Guided Excavation With Zero Lawn Mess"
+          ]
+        }
+      }
+    ]
+  });
+
   if (initialSeeds && initialSeeds.length > 0) {
     for (const seed of initialSeeds) {
       const exists = await reviewsCol.findOne({
         $or: [
           { id: seed.id },
-          { title: seed.title, author: seed.author }
+          { author: seed.author, title: seed.title }
         ]
       });
       if (!exists) {
@@ -115,16 +191,13 @@ export async function dbGetReviews(initialSeeds: any[]): Promise<any[]> {
     }
   }
 
-  // Clean up any legacy localhost photos from reviews
-  const allReviews = await reviewsCol.find({}).toArray();
-  for (const rev of allReviews) {
-    if (rev.photos && rev.photos.some((p: string) => p.includes("localhost"))) {
-      const cleanedPhotos = rev.photos.filter((p: string) => !p.includes("localhost"));
-      await reviewsCol.updateOne({ _id: rev._id }, { $set: { photos: cleanedPhotos } });
-    }
-  }
+  // Remove localhost photo URLs in a single batched operation
+  await reviewsCol.updateMany(
+    { photos: { $elemMatch: { $regex: "localhost" } } },
+    [{ $set: { photos: { $filter: { input: "$photos", as: "p", cond: { $not: { $regexMatch: { input: "$$p", regex: "localhost" } } } } } } }]
+  );
 
-  const docs = await reviewsCol.find({}).toArray();
+  const docs = await reviewsCol.find({}).sort({ createdAt: -1 }).toArray();
   return docs.map(mapDoc);
 }
 
@@ -138,14 +211,14 @@ export async function dbAddReview(review: any): Promise<any> {
 export async function dbUpdateReview(id: string, updates: any): Promise<any[]> {
   const db = await getDb();
   const reviewsCol = db.collection("reviews");
-  
+
   let res = await reviewsCol.updateOne({ id }, { $set: updates });
   if (res.matchedCount === 0) {
     if (ObjectId.isValid(id)) {
       await reviewsCol.updateOne({ _id: new ObjectId(id) }, { $set: updates });
     }
   }
-  
+
   const docs = await reviewsCol.find({}).toArray();
   return docs.map(mapDoc);
 }
@@ -186,15 +259,32 @@ export async function dbAddWebEmail(email: any): Promise<any> {
 export async function dbDeleteWebEmail(id: string): Promise<any[]> {
   const db = await getDb();
   const emailsCol = db.collection("web_emails");
-  
+
   let res = await emailsCol.deleteOne({ id });
   if (res.deletedCount === 0) {
     if (ObjectId.isValid(id)) {
       await emailsCol.deleteOne({ _id: new ObjectId(id) });
     }
   }
-  
-  const docs = await emailsCol.find({}).toArray();
+
+  const docs = await emailsCol.find({}).sort({ createdAt: -1 }).toArray();
+  return docs.map(mapDoc);
+}
+
+export async function dbUpdateWebEmail(id: string, updates: any): Promise<any[]> {
+  const db = await getDb();
+  const emailsCol = db.collection("web_emails");
+
+  const cleanUpdates = { ...updates };
+  delete cleanUpdates._id;
+  delete cleanUpdates.id;
+
+  let res = await emailsCol.updateOne({ id }, { $set: cleanUpdates });
+  if (res.matchedCount === 0 && ObjectId.isValid(id)) {
+    await emailsCol.updateOne({ _id: new ObjectId(id) }, { $set: cleanUpdates });
+  }
+
+  const docs = await emailsCol.find({}).sort({ createdAt: -1 }).toArray();
   return docs.map(mapDoc);
 }
 
@@ -218,26 +308,19 @@ export async function dbSaveChatSession(session: any): Promise<void> {
 }
 
 // ── GALLERY PHOTOS ──
-export async function dbGetGalleryPhotos(initialSeeds: any[]): Promise<any[]> {
+export async function dbGetGalleryPhotos(initialSeeds: any[] = []): Promise<any[]> {
   const db = await getDb();
   const galleryCol = db.collection("gallery_photos");
 
-  // Clean up any legacy localhost photos from gallery
-  await galleryCol.deleteMany({ url: { $regex: "localhost" } });
+  // Clean up any legacy unsplash or localhost photos from gallery
+  await galleryCol.deleteMany({
+    $or: [
+      { url: { $regex: "unsplash\\.com" } },
+      { url: { $regex: "localhost" } },
+      { url: { $regex: "127\\.0\\.0\\.1" } }
+    ]
+  });
 
-  const count = await galleryCol.countDocuments();
-  
-  // Force re-seeding if we only have the old 1-photo seed
-  const hasOnlyOldSeed = count === 1 && (await galleryCol.findOne({ id: "photo-1" }))?.url === "https://images.unsplash.com/photo-1621905251189-08b45d6a269e";
-  if (hasOnlyOldSeed) {
-    await galleryCol.deleteMany({});
-  }
-
-  const updatedCount = await galleryCol.countDocuments();
-  if (updatedCount === 0 && initialSeeds.length > 0) {
-    await galleryCol.insertMany(initialSeeds);
-    return initialSeeds;
-  }
   const docs = await galleryCol.find({}).toArray();
   return docs.map(mapDoc);
 }
@@ -253,14 +336,14 @@ export async function dbAddGalleryPhoto(photo: any): Promise<any[]> {
 export async function dbRemoveGalleryPhoto(id: string): Promise<any[]> {
   const db = await getDb();
   const galleryCol = db.collection("gallery_photos");
-  
+
   let res = await galleryCol.deleteOne({ id });
   if (res.deletedCount === 0) {
     if (ObjectId.isValid(id)) {
       await galleryCol.deleteOne({ _id: new ObjectId(id) });
     }
   }
-  
+
   const docs = await galleryCol.find({}).toArray();
   return docs.map(mapDoc);
 }
@@ -304,7 +387,7 @@ export async function dbAddPortalUser(user: any): Promise<void> {
 export async function dbDeletePortalUser(userId: string): Promise<void> {
   const db = await getDb();
   const accountsCol = db.collection("portal_users");
-  
+
   let res = await accountsCol.deleteOne({ id: userId });
   if (res.deletedCount === 0) {
     if (ObjectId.isValid(userId)) {
@@ -316,14 +399,14 @@ export async function dbDeletePortalUser(userId: string): Promise<void> {
 export async function dbUpdatePortalUser(userId: string, updates: any): Promise<any[]> {
   const db = await getDb();
   const accountsCol = db.collection("portal_users");
-  
+
   let res = await accountsCol.updateOne({ id: userId }, { $set: updates });
   if (res.matchedCount === 0) {
     if (ObjectId.isValid(userId)) {
       await accountsCol.updateOne({ _id: new ObjectId(userId) }, { $set: updates });
     }
   }
-  
+
   const docs = await accountsCol.find({}).toArray();
   return docs.map(mapDoc);
 }
@@ -338,31 +421,58 @@ export async function dbGetSettings(defaultSettings: any): Promise<any> {
     await settingsCol.insertOne(seeded);
     return seeded;
   }
-  
+
   // Auto-correct legacy database values if present
   let needsUpdate = false;
   const updates: any = {};
-  if (doc.alertEmail === "revitalizerealestate@gmail.com") {
+  if (doc.alertEmail === "revitalizerealestate@gmail.com" || doc.alertEmail === "eva@stellrit.com") {
     doc.alertEmail = defaultSettings.alertEmail;
     updates.alertEmail = defaultSettings.alertEmail;
     needsUpdate = true;
   }
-  if (doc.officePhone === "(813) 323-0291") {
+  if (doc.officePhone === "(813) 323-0291" || doc.officePhone === "(786) 307-5933") {
     doc.officePhone = defaultSettings.officePhone;
     updates.officePhone = defaultSettings.officePhone;
     needsUpdate = true;
   }
+  if (!doc.smsTemplate || doc.smsTemplate.includes("Electrical") || doc.smsTemplate.includes("electrician")) {
+    doc.smsTemplate = defaultSettings.smsTemplate;
+    updates.smsTemplate = defaultSettings.smsTemplate;
+    needsUpdate = true;
+  }
+  if (doc.sundays && doc.sundays.includes("Emergency 24/7")) {
+    doc.sundays = defaultSettings.sundays;
+    updates.sundays = defaultSettings.sundays;
+    needsUpdate = true;
+  }
+  if (doc.officeAddress && doc.officeAddress.includes("Craighead")) {
+    doc.officeAddress = defaultSettings.officeAddress;
+    updates.officeAddress = defaultSettings.officeAddress;
+    needsUpdate = true;
+  }
+
+  // Populate any missing fields from defaultSettings
+  for (const [key, value] of Object.entries(defaultSettings)) {
+    if (doc[key] === undefined || doc[key] === null) {
+      doc[key] = value;
+      updates[key] = value;
+      needsUpdate = true;
+    }
+  }
+
   if (needsUpdate) {
     await settingsCol.updateOne({ id: "site_config" }, { $set: updates });
   }
 
-  return mapDoc(doc);
+  return mapDoc({ ...defaultSettings, ...doc, ...updates });
 }
 
 export async function dbSaveSettings(settings: any): Promise<any> {
   const db = await getDb();
   const settingsCol = db.collection("settings");
-  await settingsCol.updateOne({ id: "site_config" }, { $set: settings }, { upsert: true });
+  const cleanSettings = { ...settings, id: "site_config" };
+  delete cleanSettings._id;
+  await settingsCol.updateOne({ id: "site_config" }, { $set: cleanSettings }, { upsert: true });
   const doc = await settingsCol.findOne({ id: "site_config" });
   return mapDoc(doc);
 }
@@ -415,4 +525,42 @@ export async function dbClearAllNotifications(): Promise<any[]> {
   await notificationsCol.deleteMany({});
   return [];
 }
+
+// ── DATABASE HEALTH CHECK ──
+export async function dbCheckHealth(): Promise<{ status: "connected" | "error"; dbName: string; collections: Record<string, number>; pingMs: number }> {
+  const start = Date.now();
+  try {
+    const db = await getDb();
+    // Run ping and all collection counts in parallel for fastest response
+    const [, leadsCount, reviewsCount, emailsCount, chatsCount, galleryCount] = await Promise.all([
+      db.command({ ping: 1 }),
+      db.collection("leads").countDocuments().catch(() => 0),
+      db.collection("reviews").countDocuments().catch(() => 0),
+      db.collection("web_emails").countDocuments().catch(() => 0),
+      db.collection("chat_sessions").countDocuments().catch(() => 0),
+      db.collection("gallery_photos").countDocuments().catch(() => 0),
+    ]);
+    const pingMs = Date.now() - start;
+    return {
+      status: "connected",
+      dbName: db.databaseName,
+      collections: {
+        leads: leadsCount,
+        reviews: reviewsCount,
+        webEmails: emailsCount,
+        chats: chatsCount,
+        gallery: galleryCount
+      },
+      pingMs
+    };
+  } catch (err: any) {
+    return {
+      status: "error",
+      dbName: DB_NAME,
+      collections: {},
+      pingMs: Date.now() - start
+    };
+  }
+}
+
 

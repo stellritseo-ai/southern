@@ -76,9 +76,9 @@ export function Services() {
       title: t("In-Ground Prefabricated Storm Shelter", "Refugio Subterráneo Prefabricado"),
       categoryLabel: t("Most Popular", "Mas Popular"),
       badge: t("Our #1 Seller", "Mas Vendido"),
-      desc: t("Our prefabricated in-ground shelters feature heavy-duty locking doors that exceed FEMA 320 and FEMA 361 debris impact standards. Backed by a limited lifetime warranty against rusting or rotting, with multiple sources of ventilation and molded seating.", "Nuestros refugios prefabricados cuentan con puertas de alta resistencia que superan los estándares de FEMA."),
+      desc: t("Our prefabricated in-ground shelters feature heavy-duty locking doors engineered to meet and exceed rigorous industry safety standards. Backed by a limited lifetime warranty against rusting or rotting, with multiple sources of ventilation and molded seating.", "Nuestros refugios prefabricados cuentan con puertas de alta resistencia con estándares de seguridad rigurosos. Garantía de por vida contra óxido y pudrición."),
       features: [
-        t("Exceeds FEMA 320 & 361 impact standards", "Supera los estándares de impacto de FEMA"),
+        t("Engineered to exceed debris impact safety standards", "Diseñado para superar estándares de impacto"),
         t("Lifetime warranty against rust and rot", "Garantía de por vida contra óxido y pudrición"),
         t("Quick 3 to 4 hour installation by crane", "Instalación rápida por grúa en 3 a 4 horas"),
         t("Heavy-duty multi-point locking door", "Puerta de seguridad con cierre multipunto"),

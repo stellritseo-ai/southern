@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
@@ -26,7 +26,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { useLanguage } from "@/hooks/useLanguage";
-import { addWebEmail } from "@/lib/leads-store";
+import { getReviews, addReview, Review } from "@/lib/leads-store";
+import { io } from "socket.io-client";
 import { SITE_CONFIG } from "@/config/site-config";
 
 export function ReviewsPageContent() {
@@ -35,119 +36,47 @@ export function ReviewsPageContent() {
   const [submitting, setSubmitting] = useState(false);
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState<number | null>(null);
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const reviewsList = [
-    {
-      name: "Michael R.",
-      location: "Franklin, TN",
-      installed: t("Granger ISS In-Ground Shelter", "Refugio Subterráneo Granger ISS"),
-      headline: t("Finally, a company that actually knows how to install a shelter.", "Por fin, una empresa que realmente sabe cómo instalar un refugio."),
-      review: t(
-        "We got quotes from three different companies. Two of them were just dealers who subcontracted the work. Southern Storm Shelters was different—they showed up with their own equipment, evaluated our soil, and explained exactly what they were doing. The installation took less than four hours, and the site was left spotless. You can tell they're construction professionals, not just salespeople.",
-        "Pedimos cotizaciones a tres empresas diferentes. Dos eran simples distribuidores que subcontrataban el trabajo. Southern Storm Shelters fue diferente: llegaron con su propia maquinaria, evaluaron nuestro suelo y nos explicaron todo con detalle. La instalación tomó menos de cuatro horas y dejaron el lugar impecable. Se nota que son profesionales de la construcción, no simples vendedores."
-      ),
-      stars: 5,
-    },
-    {
-      name: "Sarah & David T.",
-      location: "Murfreesboro, TN",
-      installed: t("Granger ISS In-Ground Shelter", "Refugio Subterráneo Granger ISS"),
-      headline: t("Peace of mind for our family of six.", "Tranquilidad para nuestra familia de seis."),
-      review: t(
-        "With three kids and aging parents living with us, we needed a shelter that was easy to access for everyone. The articulating handrails and molded-in seating were game-changers. Even my father, who has mobility issues, can get in and out without difficulty. The team at Southern Storm Shelters was patient, professional, and answered every question we had. We finally feel prepared.",
-        "Con tres niños y padres mayores viviendo con nosotros, necesitábamos un refugio de fácil acceso para todos. Los pasamanos articulados y los asientos moldeados marcaron la diferencia. Incluso mi padre, que tiene problemas de movilidad, puede entrar y salir sin dificultad. El equipo fue paciente, profesional y respondió todas nuestras dudas."
-      ),
-      stars: 5,
-    },
-    {
-      name: "James K.",
-      location: "Nashville, TN",
-      installed: t("Granger ISS Custom Color Door", "Puerta de Color Personalizado Granger ISS"),
-      headline: t("The installation was flawless.", "La instalación fue impecable."),
-      review: t(
-        "I'm a contractor myself, so I'm particular about workmanship. Southern Storm Shelters exceeded my expectations. They understood drainage, soil conditions, and proper backfill. The reverse taper design meant no concrete anchoring was needed, which saved us money. The door color matches our landscaping perfectly. Highly recommend.",
-        "Soy contratista, así que soy muy exigente con la mano de obra. Southern Storm Shelters superó mis expectativas. Entendieron el drenaje, el suelo y el relleno adecuado. El diseño cónico inverso evitó anclajes de concreto innecesarios, lo que nos ahorró dinero. El color de la puerta combina perfecto con el jardín."
-      ),
-      stars: 5,
-    },
-    {
-      name: "Emily W.",
-      location: "Brentwood, TN",
-      installed: t("Granger ISS During New Construction", "Granger ISS Durante Nueva Construcción"),
-      headline: t("They handled everything from start to finish.", "Manejaron todo de principio a fin."),
-      review: t(
-        "We were building a new home and wanted the shelter installed during construction. Southern Storm Shelters coordinated with our builder, scheduled the excavation perfectly, and integrated the shelter seamlessly into our plans. No hassle, no delays. The LED light inside is a nice touch, too.",
-        "Estábamos construyendo una casa nueva y queríamos el refugio instalado durante la obra. Coordinaron perfectamente con nuestro constructor, programaron la excavación y lo integraron sin problemas. Cero complicaciones y sin retrasos. La luz LED interior también es un gran detalle."
-      ),
-      stars: 5,
-    },
-    {
-      name: "Robert & Linda M.",
-      location: "Spring Hill, TN",
-      installed: t("Granger ISS In-Ground Shelter", "Refugio Subterráneo Granger ISS"),
-      headline: t("Worth every penny for the peace of mind.", "Vale cada centavo por la tranquilidad."),
-      review: t(
-        "After the tornado warnings we had last spring, we decided we couldn't wait any longer. Southern Storm Shelters responded to our inquiry within 24 hours and scheduled a site evaluation that same week. The quote was transparent with no hidden fees. The installation was quick, and the lifetime warranty sealed the deal. We sleep better at night now.",
-        "Después de las alertas de tornado de la primavera pasada, decidimos no esperar más. Respondieron en 24 horas y programaron la visita esa misma semana. La cotización fue clara y sin sorpresas. La instalación fue rápida y la garantía de por vida nos dio total seguridad. Ahora dormimos tranquilos."
-      ),
-      stars: 5,
-    },
-    {
-      name: "Angela P.",
-      location: "Columbia, TN",
-      installed: t("Granger ISS In-Ground Shelter", "Refugio Subterráneo Granger ISS"),
-      headline: t("Professional, punctual, and knowledgeable.", "Profesionales, puntuales y con gran conocimiento."),
-      review: t(
-        "From the first phone call to the final walkthrough, the team at Southern Storm Shelters was professional and courteous. They explained the FEMA 320 and FEMA 361 testing, showed us the triple locking system, and made sure we understood how to operate everything. The gas-assisted shocks make opening the heavy door easy. We couldn't be happier.",
-        "Desde la primera llamada hasta la revisión final, el equipo fue profesional y cortés. Nos explicaron las pruebas FEMA 320 y 361, nos enseñaron el sistema de triple cerrojo y cómo operar todo. Los amortiguadores a gas hacen que abrir la puerta pesada sea sumamente fácil."
-      ),
-      stars: 5,
-    },
-    {
-      name: "Thomas H.",
-      location: "Hendersonville, TN",
-      installed: t("Granger ISS In-Ground Shelter", "Refugio Subterráneo Granger ISS"),
-      headline: t("They truly care about their customers.", "Realmente se preocupan por sus clientes."),
-      review: t(
-        "What impressed me most was the follow-up. A few weeks after installation, they called to make sure everything was working properly and that we had no questions. That level of customer service is rare these days. I've already recommended them to two neighbors.",
-        "Lo que más me impresionó fue el seguimiento posterior. Semanas después de la instalación, nos llamaron para verificar que todo estuviera en orden y que no tuviéramos dudas. Ese nivel de atención al cliente es poco común hoy en día. Ya los he recomendado a dos vecinos."
-      ),
-      stars: 5,
-    },
-    {
-      name: "Karen & Steve B.",
-      location: "Gallatin, TN",
-      installed: t("Granger ISS In-Ground Shelter", "Refugio Subterráneo Granger ISS"),
-      headline: t("The best investment we've made for our home.", "La mejor inversión que hemos hecho en nuestro hogar."),
-      review: t(
-        "We considered an above-ground safe room, but after talking with Southern Storm Shelters, we realized an underground shelter was the better option for our property. The double-wall foam-filled construction keeps it dry and comfortable. The molded-in seating means we can wait out a storm in relative comfort. Installation was fast, and the team was fantastic.",
-        "Consideramos un cuarto seguro sobre el suelo, pero al hablar con ellos nos dimos cuenta de que el refugio subterráneo era superior para nuestro terreno. La construcción de doble pared con espuma lo mantiene seco y cómodo. Los asientos moldeados permiten esperar la tormenta con comodidad."
-      ),
-      stars: 5,
-    },
-    {
-      name: "Daniel F.",
-      location: "Mount Juliet, TN",
-      installed: t("Granger ISS In-Ground Shelter", "Refugio Subterráneo Granger ISS"),
-      headline: t("Impressed with their construction expertise.", "Impresionado con su experiencia en construcción."),
-      review: t(
-        "I watched the entire installation. These guys know what they're doing. They checked for buried utilities, assessed drainage, and made sure the shelter was perfectly level before backfilling. The reverse taper design is brilliant—no concrete needed, no risk of floating. This is how it should be done.",
-        "Observé toda la instalación. Estos muchachos realmente saben lo que hacen. Verificaron tuberías y cables subterráneos, evaluaron el drenaje y nivelaron el refugio con precisión antes de rellenar. El diseño cónico invertido es brillante: sin concreto y sin riesgo de flotación."
-      ),
-      stars: 5,
-    },
-    {
-      name: "Patricia L.",
-      location: "Nolensville, TN",
-      installed: t("Granger ISS Custom Green Door", "Puerta Verde Personalizada Granger ISS"),
-      headline: t("From quote to installation in under two weeks.", "De la cotización a la instalación en menos de dos semanas."),
-      review: t(
-        "We were on a tight timeline before storm season. Southern Storm Shelters moved quickly without cutting corners. The estimate was detailed and fair, the scheduling was easy, and the installation was completed in a single morning. The custom green door blends right into our lawn. You can barely tell it's there—until you need it.",
-        "Teníamos poco tiempo antes de la temporada de tormentas. Avanzaron rápido sin recortar calidad. El presupuesto fue detallado y justo, la coordinación sencilla y la instalación se completó en una sola mañana. La puerta verde personalizada se camufla con el césped. Apenas se nota, hasta que la necesitas."
-      ),
-      stars: 5,
-    },
-  ];
+  // Real-time synchronization with MongoDB Atlas via Socket.IO
+  useEffect(() => {
+    let mounted = true;
+
+    getReviews().then((items) => {
+      if (mounted) {
+        setReviews(items || []);
+        setLoading(false);
+      }
+    });
+
+    const socket = io({
+      transports: ["websocket", "polling"],
+      autoConnect: true,
+    });
+
+    socket.on("reviews-updated", (updated: Review[]) => {
+      if (mounted) setReviews(updated || []);
+    });
+
+    socket.on("new-review", (newReview: Review) => {
+      if (mounted) {
+        setReviews((prev) => [newReview, ...prev.filter((r) => r.id !== newReview.id)]);
+      }
+    });
+
+    socket.on("review-deleted", (deletedId: string) => {
+      if (mounted) {
+        setReviews((prev) => prev.filter((r) => r.id !== deletedId));
+      }
+    });
+
+    return () => {
+      mounted = false;
+      socket.disconnect();
+    };
+  }, []);
+
 
   const whyChooseUsPoints = [
     {
@@ -218,22 +147,26 @@ export function ReviewsPageContent() {
     const form = e.currentTarget;
     const name = (form.querySelector("#reviewerName") as HTMLInputElement)?.value || "";
     const city = (form.querySelector("#reviewerCity") as HTMLInputElement)?.value || "";
+    const installed = (form.querySelector("#reviewerInstalled") as HTMLInputElement)?.value || "Granger ISS In-Ground Shelter";
+    const headline = (form.querySelector("#reviewerHeadline") as HTMLInputElement)?.value || "Exceptional Service & Peace of Mind";
     const text = (form.querySelector("#reviewerText") as HTMLTextAreaElement)?.value || "";
 
     try {
-      await addWebEmail({
-        name,
-        phone: "N/A (Review Submission)",
-        email: "reviews@southernstormshelters.com",
-        service: "Customer Review Submission",
-        message: `Customer Review from ${name} (${city}):\nRating: ${rating} Stars\n\nReview:\n${text}`,
-        source: "Reviews Page Modal",
+      await addReview({
+        author: name,
+        location: city || "Nashville, TN",
+        installed,
+        title: headline,
+        text,
+        rating,
+        featured: true,
+        verified: true,
       });
 
       toast.success(
         t(
-          "Thank you for sharing your experience! Your review has been submitted for verification.",
-          "¡Gracias por compartir su experiencia! Su reseña ha sido enviada para verificación."
+          "Thank you for sharing your experience! Your review is now live.",
+          "¡Gracias por compartir su experiencia! Su reseña ya está publicada."
         )
       );
       setModalOpen(false);
@@ -300,7 +233,7 @@ export function ReviewsPageContent() {
         </div>
       </section>
 
-      {/* ── SECTION 2: 10 CUSTOMER REVIEWS (GRID) ───────────────────────── */}
+      {/* ── SECTION 2: VERIFIED CUSTOMER REVIEWS (DYNAMIC GRID) ──────────── */}
       <section className="py-16 sm:py-24 bg-white relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
@@ -322,44 +255,87 @@ export function ReviewsPageContent() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {reviewsList.map((rev, idx) => (
-              <div
-                key={idx}
-                className="rounded-3xl bg-slate-50/70 border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-amber-500/40 hover:shadow-lg transition-all duration-300 shadow-xs relative"
-              >
-                <div>
-                  {/* Stars */}
-                  <div className="flex items-center gap-1 mb-4 text-amber-500">
-                    {[...Array(rev.stars)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
+          {/* Loading Skeleton */}
+          {loading && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="h-64 rounded-3xl bg-slate-100 border border-slate-200" />
+              ))}
+            </div>
+          )}
 
-                  {/* Headline */}
-                  <h3 className="text-base sm:text-lg font-extrabold text-slate-900 mb-3 leading-snug">
-                    "{rev.headline}"
-                  </h3>
+          {/* Dynamic Reviews Grid */}
+          {!loading && reviews.filter((r) => r.featured !== false).length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {reviews
+                .filter((r) => r.featured !== false)
+                .map((rev) => (
+                  <div
+                    key={rev.id}
+                    className="rounded-3xl bg-slate-50/70 border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-amber-500/40 hover:shadow-lg transition-all duration-300 shadow-xs relative"
+                  >
+                    <div>
+                      {/* Stars */}
+                      <div className="flex items-center gap-1 mb-4 text-amber-500">
+                        {[...Array(rev.rating || 5)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                        ))}
+                      </div>
 
-                  {/* Review Text */}
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
-                    "{rev.review}"
-                  </p>
-                </div>
+                      {/* Headline */}
+                      <h3 className="text-base sm:text-lg font-extrabold text-slate-900 mb-3 leading-snug">
+                        "{rev.title}"
+                      </h3>
 
-                {/* Reviewer Metadata */}
-                <div className="pt-4 border-t border-slate-200/80 flex flex-col gap-1">
-                  <div className="text-xs font-extrabold text-slate-900">
-                    — {rev.name}, <span className="text-slate-500 font-semibold">{rev.location}</span>
+                      {/* Review Text */}
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                        "{rev.text}"
+                      </p>
+
+                      {/* Owner Reply if present */}
+                      {(rev.reply || rev.replyText) && (
+                        <div className="mb-4 p-3.5 bg-amber-50/80 border-l-2 border-amber-600 rounded-r-2xl text-xs">
+                          <span className="font-bold text-amber-950 block text-[10px] uppercase tracking-wider">
+                            {t("Southern Storm Shelters Response:", "Respuesta de Southern Storm Shelters:")}
+                          </span>
+                          <p className="text-slate-700 mt-1 italic leading-relaxed">
+                            {rev.reply || rev.replyText}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Reviewer Metadata */}
+                    <div className="pt-4 border-t border-slate-200/80 flex flex-col gap-1">
+                      <div className="text-xs font-extrabold text-slate-900 flex items-center justify-between">
+                        <span>— {rev.author}, <span className="text-slate-500 font-semibold">{rev.location || "Nashville, TN"}</span></span>
+                        <span className="text-[10px] text-slate-400 font-normal">
+                          {new Date(rev.createdAt).toLocaleDateString()}
+                        </span>
+                      </div>
+                      <div className="text-[11px] font-bold text-amber-700 flex items-center gap-1.5 mt-0.5">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                        <span>{t("Installed", "Instalado")}: {rev.installed || "Granger ISS In-Ground Shelter"}</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-[11px] font-bold text-amber-700 flex items-center gap-1.5 mt-0.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-                    <span>{t("Installed", "Instalado")}: {rev.installed}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                ))}
+            </div>
+          )}
+
+          {/* Empty State */}
+          {!loading && reviews.filter((r) => r.featured !== false).length === 0 && (
+            <div className="text-center py-16 px-6 bg-slate-50 border border-slate-200 rounded-3xl max-w-lg mx-auto">
+              <Star className="w-10 h-10 text-amber-500 fill-amber-500 mx-auto mb-3" />
+              <h3 className="text-lg font-bold text-slate-900 mb-1">{t("No reviews yet", "Sin reseñas aún")}</h3>
+              <p className="text-xs text-slate-500 mb-5">
+                {t("Be the first to share your experience with Southern Storm Shelters.", "Sea el primero en compartir su experiencia con Southern Storm Shelters.")}
+              </p>
+              <Button onClick={() => setModalOpen(true)} className="bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl text-xs">
+                {t("Leave a Review", "Dejar una Reseña")}
+              </Button>
+            </div>
+          )}
 
           {/* Share Your Experience Callout */}
           <div className="mt-14 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-8 sm:p-12 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden border border-amber-500/20">
@@ -403,7 +379,7 @@ export function ReviewsPageContent() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-red-700 bg-red-50 px-3.5 py-1 rounded-full border border-red-200">
+            <span className="text-xs font-bold uppercase tracking-widest text-amber-700 bg-amber-50 px-3.5 py-1 rounded-full border border-amber-200">
               {t("Why Reviews Matter", "¿Por Qué Importan las Reseñas?")}
             </span>
 
@@ -431,7 +407,7 @@ export function ReviewsPageContent() {
                 {valueMatrix.map((row, idx) => (
                   <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-slate-50/70"}>
                     <td className="p-4 sm:p-5 font-bold text-slate-900 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-red-600 shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-amber-600 shrink-0" />
                       <span>{row.value}</span>
                     </td>
                     <td className="p-4 sm:p-5 text-slate-700 font-medium leading-relaxed">
@@ -604,6 +580,31 @@ export function ReviewsPageContent() {
                   id="reviewerCity"
                   required
                   placeholder="Franklin, TN"
+                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="reviewerInstalled" className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                  {t("Shelter Model Installed *", "Modelo de Refugio Instalado *")}
+                </Label>
+                <Input
+                  id="reviewerInstalled"
+                  required
+                  placeholder="e.g. Granger ISS In-Ground Shelter"
+                  defaultValue="Granger ISS In-Ground Shelter"
+                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="reviewerHeadline" className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                  {t("Headline / Title *", "Título / Resumen *")}
+                </Label>
+                <Input
+                  id="reviewerHeadline"
+                  required
+                  placeholder={t("e.g. Flawless installation & great team!", "ej. ¡Instalación impecable y gran equipo!")}
                   className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
                 />
               </div>

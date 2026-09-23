@@ -508,7 +508,7 @@ export function CustomBuiltShelterContent() {
       {/* ── SECTION 5: WHY CHOOSE SOUTHERN STORM SHELTERS ── */}
       <section className="py-14 sm:py-20 bg-[#0B0F15] text-white relative overflow-hidden">
         {/* Subtle background glow */}
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-red-600/10 blur-[130px] pointer-events-none" />
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-slate-600/10 blur-[130px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-amber-500/10 blur-[130px] pointer-events-none" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

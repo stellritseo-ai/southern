@@ -159,9 +159,6 @@ export function EmergencyCTA() {
                     <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-slate-950" />
                   </span>
                   <div className="flex flex-col min-w-0">
-                    <span className="text-[9.5px] sm:text-[10px] uppercase tracking-wider sm:tracking-widest text-amber-300 font-bold flex items-center gap-1.5 truncate">
-                      <span className="truncate">{t("Direct Project Line", "Línea Directa")}</span>
-                    </span>
                     <span className="text-[20px] sm:text-[24px] font-display font-black leading-tight tracking-tight mt-0.5 sm:mt-1 text-white whitespace-nowrap">
                       {SITE_CONFIG.phone}
                     </span>
