@@ -229,7 +229,7 @@ export function ContactIllustrationSection() {
                   <img src={logoImg} alt="Southern Storm Shelters Logo" className="w-6 h-6 object-contain" />
                   <div className="text-left">
                     <p className="text-[11px] font-black text-white leading-none tracking-tight">Southern Storm Shelters</p>
-                    <p className="text-[9px] font-bold text-amber-400 leading-none mt-0.5">LLC · Nashville, TN</p>
+                    <p className="text-[9px] font-bold text-amber-400 leading-none mt-0.5">Nashville, TN</p>
                   </div>
                 </div>
 

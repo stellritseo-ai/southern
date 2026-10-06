@@ -19,7 +19,9 @@ export const SITE_CONFIG = {
 
 export function applySettingsToSiteConfig(settings: any) {
   if (!settings) return;
-  if (settings.companyName) SITE_CONFIG.name = settings.companyName;
+  if (settings.companyName) {
+    SITE_CONFIG.name = settings.companyName.replace(/\s+LLC\.?$/i, "");
+  }
   if (settings.tagline) SITE_CONFIG.tagline = settings.tagline;
   if (settings.officePhone) {
     SITE_CONFIG.phone = settings.officePhone;

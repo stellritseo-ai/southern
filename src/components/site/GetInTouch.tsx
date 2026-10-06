@@ -144,7 +144,7 @@ export function GetInTouch() {
               </span>
 
               <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-white mb-2">
-                {SITE_CONFIG.name}
+                Southern Storm Shelters
               </h3>
               <p className="text-sm text-slate-300 font-medium leading-relaxed mb-8">
                 {t(
