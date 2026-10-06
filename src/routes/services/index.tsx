@@ -8,10 +8,10 @@ import { useLanguage } from "@/hooks/useLanguage";
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
-      { title: "Underground Storm Shelter Services | Southern Storm Shelters LLC" },
+      { title: "Underground Storm Shelter Services | Southern Storm Shelters" },
       { name: "description", content: "Underground prefabricated tornado shelters and custom-built reinforced concrete storm shelters in Nashville, TN and 100-mile service radius across Middle Tennessee." },
       { name: "keywords", content: "underground storm shelters nashville tn, prefabricated tornado shelters middle tennessee, custom built storm shelters, tornado safe rooms nashville" },
-      { property: "og:title", content: "Underground Storm Shelter Services | Southern Storm Shelters LLC" },
+      { property: "og:title", content: "Underground Storm Shelter Services | Southern Storm Shelters" },
       { property: "og:description", content: "Engineered underground storm shelters & custom safe rooms in Nashville, TN and Middle Tennessee." },
       { property: "og:url", content: "https://www.southernstormsheltersllc.com/services" },
       { property: "og:type", content: "website" },
@@ -51,7 +51,7 @@ function ServicesIndex() {
     "serviceType": "Underground Storm Shelter Construction & Installation",
     "provider": {
       "@type": "HomeAndConstructionBusiness",
-      "name": "Southern Storm Shelters LLC",
+      "name": "Southern Storm Shelters",
       "telephone": "+16159912361",
       "address": {
         "@type": "PostalAddress",

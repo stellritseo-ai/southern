@@ -32,7 +32,7 @@ function FreeQuotePage() {
     "name": "Storm Shelter Installation & Free Estimates",
     "provider": {
       "@type": "LocalBusiness",
-      "name": "Southern Storm Shelters LLC",
+      "name": "Southern Storm Shelters",
       "telephone": "+16159912381",
       "address": {
         "@type": "PostalAddress",
@@ -74,7 +74,7 @@ function FreeQuotePage() {
 export const Route = createFileRoute("/free-quote")({
   head: () => ({
     meta: [
-      { title: "Request a Free Estimate | Southern Storm Shelters LLC" },
+      { title: "Request a Free Estimate | Southern Storm Shelters" },
       {
         name: "description",
         content: "Get your free, no-obligation storm shelter estimate within 24 hours. Comprehensive site evaluations and upfront pricing for Granger ISS underground shelters and custom safe rooms across Middle Tennessee."
@@ -83,7 +83,7 @@ export const Route = createFileRoute("/free-quote")({
         name: "keywords",
         content: "free storm shelter estimate, tornado shelter quote nashville, granger iss cost franklin tn, underground shelter price middle tennessee, custom safe room quote"
       },
-      { property: "og:title", content: "Request a Free Estimate | Southern Storm Shelters LLC" },
+      { property: "og:title", content: "Request a Free Estimate | Southern Storm Shelters" },
       {
         property: "og:description",
         content: "Transparent, comprehensive storm shelter estimates within 24 hours. Honest guidance from Middle Tennessee construction experts."

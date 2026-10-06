@@ -128,25 +128,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#0f172a" },
-      { title: "Southern Storm Shelters LLC | Nashville, TN" },
+      { title: "Southern Storm Shelters | Nashville, TN" },
       { name: "description", content: "Underground storm shelter construction and turnkey installation in Nashville, TN and Middle Tennessee. Precision excavation and engineered safety." },
       { name: "keywords", content: "storm shelters nashville tn, underground storm shelters, tornado shelters tennessee, safe rooms franklin tn, murfreesboro storm shelter, residential storm shelter" },
       { name: "robots", content: "index, follow" },
-      { name: "author", content: "Southern Storm Shelters LLC" },
+      { name: "author", content: "Southern Storm Shelters" },
       { name: "geo.region", content: "US-TN" },
       { name: "geo.placename", content: "Nashville, TN" },
       { name: "geo.position", content: "36.1627;-86.7816" },
       { name: "ICBM", content: "36.1627, -86.7816" },
-      { property: "og:title", content: "Southern Storm Shelters LLC | Nashville, TN" },
+      { property: "og:title", content: "Southern Storm Shelters | Nashville, TN" },
       { property: "og:description", content: "Underground storm shelter construction and turnkey installation in Nashville, TN and Middle Tennessee." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://www.southernstormshelters.com" },
       { property: "og:image", content: "https://www.southernstormshelters.com/favicon.png" },
-      { property: "og:site_name", content: "Southern Storm Shelters LLC" },
+      { property: "og:site_name", content: "Southern Storm Shelters" },
       { property: "og:locale", content: "en_US" },
       { property: "og:locale:alternate", content: "es_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Southern Storm Shelters LLC | Nashville, TN" },
+      { name: "twitter:title", content: "Southern Storm Shelters | Nashville, TN" },
       { name: "twitter:description", content: "Underground storm shelter construction and turnkey installation in Nashville, TN and Middle Tennessee." },
       { name: "twitter:image", content: "https://www.southernstormshelters.com/favicon.png" },
     ],
@@ -157,7 +157,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "manifest", href: "/manifest.json" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" },
       {
         rel: "stylesheet",
         href: appCss,
@@ -248,7 +248,7 @@ function RootComponent() {
         window.removeEventListener("site_config_changed", handleConfigChange);
       }
     };
-  }, [location.pathname]);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

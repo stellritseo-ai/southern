@@ -1,5 +1,5 @@
 export const SITE_CONFIG = {
-  name: "Southern Storm Shelters LLC",
+  name: "Southern Storm Shelters",
   tagline: "Tennessee’s Premier Engineered Underground Storm Shelters & Safe Rooms",
   phone: "(615) 991-2361",
   phoneRaw: "+16159912361",

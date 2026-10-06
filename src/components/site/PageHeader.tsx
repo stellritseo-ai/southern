@@ -13,7 +13,7 @@ export function PageHeader({
   backgroundImage?: string;
 }) {
   return (
-    <section className="relative isolate overflow-hidden bg-[#0B0F15] pt-28 sm:pt-36 pb-20 sm:pb-28 text-white">
+    <section className="relative isolate overflow-hidden bg-[#0B0F15] pt-12 sm:pt-16 pb-16 sm:pb-20 text-white">
       {/* Background Banner Image */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <img

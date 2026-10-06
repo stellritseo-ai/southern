@@ -42,7 +42,7 @@ function CustomBuiltPage() {
     "description": "Custom-built storm shelters and safe rooms engineered to your exact specifications for homes, businesses, and communities in Nashville, TN and Middle Tennessee. Powered by Granger ISS.",
     "provider": {
       "@type": "HomeAndConstructionBusiness",
-      "name": "Southern Storm Shelters LLC",
+      "name": "Southern Storm Shelters",
       "telephone": "+16159912361",
       "address": {
         "@type": "PostalAddress",
@@ -100,7 +100,7 @@ export const Route = createFileRoute(
     meta: [
       {
         title:
-          "Custom Built Storm Shelters | Southern Storm Shelters LLC",
+          "Custom Built Storm Shelters | Southern Storm Shelters",
       },
       {
         name: "description",
@@ -115,7 +115,7 @@ export const Route = createFileRoute(
       {
         property: "og:title",
         content:
-          "Custom Built Storm Shelters | Southern Storm Shelters LLC",
+          "Custom Built Storm Shelters | Southern Storm Shelters",
       },
       {
         property: "og:description",

@@ -41,7 +41,14 @@ async function ensureDbMigrated(connectedClient: MongoClient, targetDbName: stri
   }
 }
 
+let lastConnectError: { time: number; error: Error } | null = null;
+const CONNECT_COOLDOWN_MS = 30000; // Wait 30s before retrying failed connection
+
 async function getClient(): Promise<MongoClient> {
+  if (lastConnectError && Date.now() - lastConnectError.time < CONNECT_COOLDOWN_MS) {
+    throw lastConnectError.error;
+  }
+
   if (!client) {
     if (typeof process !== "undefined" && typeof (process as any).loadEnvFile === "function") {
       try {
@@ -54,9 +61,9 @@ async function getClient(): Promise<MongoClient> {
     }
     const newClient = new MongoClient(uri, {
       // Faster cold-start: don't wait forever for a sleeping Atlas cluster
-      serverSelectionTimeoutMS: 8000,
-      connectTimeoutMS: 8000,
-      socketTimeoutMS: 20000,
+      serverSelectionTimeoutMS: 4000,
+      connectTimeoutMS: 4000,
+      socketTimeoutMS: 15000,
       // Connection pool: keep alive so subsequent requests are instant
       maxPoolSize: 10,
       minPoolSize: 1,
@@ -66,15 +73,20 @@ async function getClient(): Promise<MongoClient> {
       // Retry on first network hiccup
       retryWrites: true,
       retryReads: true,
-      // Faster DNS: avoid re-resolving SRV on every operation
       family: 4,
     });
-    await newClient.connect();
-    client = newClient;
 
-    // Pre-warm the connection pool with a lightweight ping
-    // so the very first real API request doesn't pay the handshake cost
-    newClient.db("admin").command({ ping: 1 }).catch(() => { });
+    try {
+      await newClient.connect();
+      client = newClient;
+      lastConnectError = null;
+
+      // Pre-warm the connection pool with a lightweight ping
+      newClient.db("admin").command({ ping: 1 }).catch(() => { });
+    } catch (err: any) {
+      lastConnectError = { time: Date.now(), error: err };
+      throw err;
+    }
   }
   return client;
 }

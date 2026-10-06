@@ -163,7 +163,7 @@ export function GalleryPageContent() {
               <span>{t("Verified Project Portfolio", "Portafolio de Proyectos Verificados")}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t("Real Installations. Real Protection.", "Instalaciones Reales. Protección Real.")}
             </h2>
 

@@ -1,162 +1,319 @@
+import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
+import { useLanguage } from "@/hooks/useLanguage";
+import { SITE_CONFIG } from "@/config/site-config";
 import {
   ArrowRight,
   Shield,
   Hammer,
-  CheckCircle2,
-  Phone,
-  Sparkles,
-  MapPin,
-  Clock,
+  Layers,
+  Droplets,
+  Building2,
+  Shovel,
   HardHat,
+  Grid3X3,
+  Phone,
 } from "lucide-react";
 
 import shelterCardImg1 from "@/assets/gallery/6.png";
 import grangerCustomImg from "@/assets/granger-shelter-unit.jpg";
+import grangerYardImg from "@/assets/granger-shelter-yard.jpg";
+import grangerHatchImg from "@/assets/gallery/4.png";
+import shelterInstallImg from "@/assets/gallery/shelterinstall.jpg";
+import heroImg2 from "@/assets/gallery/5.png";
+import heroImg1 from "@/assets/gallery/2.png";
+import grangerInstallImg from "@/assets/granger-install.jpg";
 
-import { motion } from "framer-motion";
-import { Link } from "@tanstack/react-router";
-import { useLanguage } from "@/hooks/useLanguage";
-import { Button } from "@/components/ui/button";
-import { SITE_CONFIG } from "@/config/site-config";
-
-function ServiceCard({ s }: {
-  s: {
-    id: string; icon: any; title: string; categoryLabel: string;
-    badge?: string; desc: string; features: string[]; image: string;
-  };
-}) {
-  const Icon = s.icon;
-  const { t } = useLanguage();
-  const targetUrl = s.id === "inground-storm-shelter"
-    ? "/services/in-ground-prefabricated-storm-shelters"
-    : "/services/custom-built-storm-shelters";
-
-  return (
-    <Link to={targetUrl} className="group relative w-full min-h-[480px] sm:min-h-[560px] rounded-[32px] overflow-hidden bg-slate-950 border border-slate-200/80 hover:border-amber-500 shadow-xl hover:shadow-[0_22px_60px_rgba(217,119,6,0.22)] transition-all duration-500 cursor-pointer flex flex-col justify-end select-none block">
-      <img src={s.image} alt={s.title} className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" />
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(11, 15, 21, 0.98) 0%, rgba(11, 15, 21, 0.92) 36%, rgba(11, 15, 21, 0.45) 60%, rgba(11, 15, 21, 0.08) 80%, rgba(0, 0, 0, 0) 100%)" }} />
-      <div className="absolute inset-0 rounded-[32px] border-2 border-transparent group-hover:border-amber-500/40 transition-colors duration-500 pointer-events-none" />
-      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20 pointer-events-none">
-        <div className="w-11 h-11 rounded-2xl bg-[#0b0f15]/90 backdrop-blur-md border border-slate-500/40 text-amber-400 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300"><Icon className="h-5 w-5" /></div>
-        <span className="bg-black/80 backdrop-blur-md border border-slate-500/30 text-slate-300 text-[10px] font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-md">{s.categoryLabel}</span>
-      </div>
-      {s.badge && (
-        <div className="absolute top-[68px] left-4 z-20 pointer-events-none">
-          <span className="inline-flex items-center gap-1.5 bg-amber-500 text-slate-950 text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-lg">⭐ {s.badge}</span>
-        </div>
-      )}
-      <div className="relative z-20 p-6 sm:p-8 flex flex-col justify-end transition-transform duration-500 group-hover:-translate-y-1">
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight tracking-tight group-hover:text-amber-300 transition-colors duration-300">{s.title}</h3>
-        <p className="text-sm sm:text-base text-slate-300 leading-relaxed mt-3 font-normal line-clamp-3 group-hover:line-clamp-none transition-all duration-300">{s.desc}</p>
-        <div className="mt-5 pt-4 border-t border-white/15 space-y-2.5">
-          {s.features.map((feat) => (
-            <div key={feat} className="flex items-center gap-2.5 text-sm font-bold text-slate-200">
-              <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" /><span>{feat}</span>
-            </div>
-          ))}
-        </div>
-        <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out">
-          <div className="overflow-hidden">
-            <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-slate-300 text-xs font-black uppercase tracking-widest group/btn">
-              <span className="inline-flex items-center gap-1.5 group-hover/btn:underline">{t("View Shelter Details", "Ver Detalles del Refugio")}</span>
-              <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-amber-600 text-white flex items-center justify-center transition-all duration-300"><ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" /></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
+const servicesData = [
+  {
+    id: "inground",
+    icon: Shovel,
+    titleEn: "In-Ground Prefab Shelters",
+    titleEs: "Refugios Prefabricados Subterráneos",
+    tagEn: "FEMA 320/361 Rated",
+    tagEs: "Certificado FEMA",
+    descEn:
+      "Underground composite & steel units engineered for maximum tornado impact resistance and lifetime leakproof seal.",
+    descEs:
+      "Unidades subterráneas diseñadas para máxima resistencia a tornados y sellado de por vida.",
+    href: "/services/in-ground-prefabricated-storm-shelters",
+    img: shelterCardImg1,
+  },
+  {
+    id: "custom",
+    icon: Hammer,
+    titleEn: "Custom Built Concrete Shelters",
+    titleEs: "Refugios de Concreto a Medida",
+    tagEn: "Heavy Construction",
+    tagEs: "Construcción Pesada",
+    descEn:
+      "Reinforced 5,000+ PSI concrete storm shelters custom-poured to fit your exact residential or commercial footprint.",
+    descEs:
+      "Refugios de concreto reforzado de más de 5,000 PSI adaptados a la huella de su propiedad.",
+    href: "/services/custom-built-storm-shelters",
+    img: grangerCustomImg,
+  },
+  {
+    id: "excavation",
+    icon: HardHat,
+    titleEn: "Excavation & Precision Site Prep",
+    titleEs: "Excavación y Preparación de Terreno",
+    tagEn: "Laser-Guided Grade",
+    tagEs: "Nivelación Láser",
+    descEn:
+      "Full-service ground excavation, rock fracturing, and laser-guided grading for zero-settling foundation.",
+    descEs:
+      "Excavación integral de terreno y nivelación guiada por láser para una base sólida.",
+    href: "/free-quote",
+    img: shelterInstallImg,
+  },
+  {
+    id: "crane",
+    icon: Building2,
+    titleEn: "Crane Rigging & Placement",
+    titleEs: "Colocación con Grúa y Maniobras",
+    tagEn: "Zero-Yard-Damage",
+    tagEs: "Cero Daño al Jardín",
+    descEn:
+      "Certified boom crane operators placing multi-ton shelters cleanly over existing fences and tight suburban lots.",
+    descEs:
+      "Operadores certificados de grúa colocando refugios sobre cercas y patios difíciles.",
+    href: "/free-quote",
+    img: grangerInstallImg,
+  },
+  {
+    id: "drainage",
+    icon: Droplets,
+    titleEn: "Hydrostatic Drainage & Anchors",
+    titleEs: "Drenaje Hidrostático y Anclaje",
+    tagEn: "Waterproof Seal",
+    tagEs: "Sellado Impermeable",
+    descEn:
+      "French drains, anti-buoyancy engineered anchors, and sealed backfill transitions against Middle TN clay.",
+    descEs:
+      "Drenajes franceses, anclas anti-flotación y relleno sellado contra arcilla de Tennessee.",
+    href: "/free-quote",
+    img: grangerYardImg,
+  },
+  {
+    id: "concrete",
+    icon: Layers,
+    titleEn: "Impact Slabs & Foundation Walls",
+    titleEs: "Losas de Impacto y Muros",
+    tagEn: "Structural Strength",
+    tagEs: "Fuerza Estructural",
+    descEn:
+      "Rebar-reinforced retaining collars and concrete anchoring slabs designed to resist extreme hydrostatic load.",
+    descEs:
+      "Collares de retención y losas de anclaje de concreto diseñadas para carga hidrostática.",
+    href: "/free-quote",
+    img: heroImg2,
+  },
+  {
+    id: "safe-rooms",
+    icon: Shield,
+    titleEn: "Above-Ground Armor Safe Rooms",
+    titleEs: "Cuartos Seguros Sobre Suelo",
+    tagEn: "EF5 Rated Armor",
+    tagEs: "Blindaje Grado EF5",
+    descEn:
+      "Steel-armored safe rooms bolted with high-tensile epoxy anchors to existing concrete slabs for instant indoor safety.",
+    descEs:
+      "Cuartos seguros de acero blindado anclados a losas de concreto para acceso inmediato en casa.",
+    href: "/free-quote",
+    img: grangerHatchImg,
+  },
+  {
+    id: "hardscape",
+    icon: Grid3X3,
+    titleEn: "Shelter Access & Landscape Finish",
+    titleEs: "Accesorios y Acabado de Jardinería",
+    tagEn: "Turnkey Restoration",
+    tagEs: "Restauración Total",
+    descEn:
+      "Gas-spring assisted lightweight hatch lids, dual solar ventilation turbines, and complete yard turf restoration.",
+    descEs:
+      "Tapas asistidas por pistones, ventilación solar y restauración completa del césped.",
+    href: "/free-quote",
+    img: heroImg1,
+  },
+];
 
 export function Services() {
   const { t } = useLanguage();
-  const services = [
-    {
-      id: "inground-storm-shelter", icon: Shield,
-      title: t("In-Ground Prefabricated Storm Shelter", "Refugio Subterráneo Prefabricado"),
-      categoryLabel: t("Most Popular", "Mas Popular"),
-      badge: t("Our #1 Seller", "Mas Vendido"),
-      desc: t("Our prefabricated in-ground shelters feature heavy-duty locking doors engineered to meet and exceed rigorous industry safety standards. Backed by a limited lifetime warranty against rusting or rotting, with multiple sources of ventilation and molded seating.", "Nuestros refugios prefabricados cuentan con puertas de alta resistencia con estándares de seguridad rigurosos. Garantía de por vida contra óxido y pudrición."),
-      features: [
-        t("Engineered to exceed debris impact safety standards", "Diseñado para superar estándares de impacto"),
-        t("Lifetime warranty against rust and rot", "Garantía de por vida contra óxido y pudrición"),
-        t("Quick 3 to 4 hour installation by crane", "Instalación rápida por grúa en 3 a 4 horas"),
-        t("Heavy-duty multi-point locking door", "Puerta de seguridad con cierre multipunto"),
-      ],
-      image: shelterCardImg1,
-    },
-    {
-      id: "custom-built-storm-shelter", icon: Hammer,
-      title: t("Custom Built Storm Shelter", "Refugio de Construccion Personalizada"),
-      categoryLabel: t("Premium", "Premium"),
-      badge: undefined,
-      desc: t("Double reinforced concrete construction for the ultimate in underground protection. Custom-built on your property by our professional crew with premium features like articulating handrails, custom ventilation, and seating.", "Construcción de doble concreto reforzado para lo último en protección subterránea."),
-      features: [
-        t("Reinforced concrete construction — custom thickness", "Construcción de concreto reforzado"),
-        t("Choose your size, entry configuration & depth", "Elija tamaño, configuración y profundidad"),
-        t("Articulating handrails & comfortable seating", "Pasamanos articulados y asientos cómodos"),
-        t("Dual sources of air flow and ventilation", "Múltiples fuentes de ventilación"),
-      ],
-      image: grangerCustomImg,
-    },
-  ];
 
   return (
-    <section id="services" className="bg-[#F8FAFC] py-12 sm:py-16 lg:py-24 overflow-hidden border-y border-slate-200/60 relative">
-      <div className="absolute top-1/4 left-0 w-[600px] h-[600px] rounded-full bg-slate-400/5 blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-10 right-0 w-[600px] h-[600px] rounded-full bg-slate-400/5 blur-3xl pointer-events-none -z-10" />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-10">
-          <div className="max-w-3xl lg:max-w-4xl text-left space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full bg-slate-100 border border-slate-300 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-slate-700">
-              <HardHat className="w-3.5 h-3.5 text-amber-600" />
-              {t("Engineered Underground Construction", "Construcción Subterránea")}
-            </div>
-            <h2 className="font-display text-[20px] sm:text-[26px] md:text-[30px] lg:text-[34px] font-black text-slate-900 tracking-tight leading-tight -mt-[10px] mb-[7px] whitespace-normal sm:whitespace-nowrap" style={{ marginTop: "-10px", marginBottom: "7px" }}>
-              {t("Built for Protection, ", "Construido para Proteger, ")}
-              <span className="gradient-text-construction">{t("Designed Around You.", "Disenado para Usted.")}</span>
-            </h2>
-            <p className="text-slate-600 text-[14px] sm:text-base lg:text-lg leading-relaxed font-normal max-w-2xl">
-              {t("Whether you want a prefabricated in-ground shelter installed in a day, or a fully custom concrete shelter with premium amenities — we build both across Nashville and Middle Tennessee.", "Ya sea un refugio subterraneo prefabricado o un refugio de concreto personalizado — construimos ambos en Nashville y Middle Tennessee.")}
-            </p>
+    <section
+      id="services"
+      className="relative bg-[#070b12] py-[60px] overflow-hidden isolate"
+      style={{ paddingTop: "60px", paddingBottom: "60px" }}
+    >
+      {/* Ambient Lighting & Atmosphere */}
+      <div
+        aria-hidden="true"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-amber-500/[0.04] rounded-full blur-[120px] pointer-events-none"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute bottom-10 right-10 w-[500px] h-[300px] bg-sky-500/[0.03] rounded-full blur-[100px] pointer-events-none"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, #ffffff 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-5xl mx-auto mb-14 sm:mb-16">
+          {/* Eyebrow Status Ribbon */}
+          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-amber-400 mb-4 shadow-[0_0_20px_rgba(245,158,11,0.12)]">
+            <Shield className="w-3.5 h-3.5 text-amber-400" />
+            <span>
+              {t(
+                "Turnkey Protection Services",
+                "Servicios de Protección Llave en Mano",
+              )}
+            </span>
           </div>
-          <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto shrink-0">
-            <Button variant="hero" size="lg" asChild className="font-bold rounded-full px-6 text-sm sm:text-base bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white shadow-md hover:shadow-lg transition-all duration-200 w-full sm:w-auto justify-center">
-              <Link to="/free-quote">
-                {t("Get a Free Quote", "Solicitar Cotizacion Gratis")}<ArrowRight className="w-4 h-4 ml-1 text-white" />
-              </Link>
-            </Button>
+
+          {/* Section Title */}
+          <h2
+            className="font-display font-bold tracking-tight capitalize text-white drop-shadow-md text-[24px] sm:text-[32px] lg:text-[40px] whitespace-normal lg:whitespace-nowrap"
+            style={{
+              fontWeight: 700,
+              textTransform: "capitalize",
+            }}
+          >
+            {t(
+              "Engineered Underground & Safe Room Solutions",
+              "Soluciones de Refugios Subterráneos y Seguros",
+            )}
+          </h2>
+
+          {/* Decorative Divider */}
+          <div className="flex items-center justify-center gap-3 my-4">
+            <div className="h-px w-10 bg-white/20" />
+            <div className="h-1.5 w-6 bg-gradient-to-r from-amber-500 to-amber-400 rounded-full shadow-[0_0_8px_#f59e0b]" />
+            <div className="h-px w-10 bg-white/20" />
           </div>
+
+          {/* Subtitle */}
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal max-w-2xl mx-auto mb-6 sm:mb-8 lg:-mb-[35px]">
+            {t(
+              "Every shelter project is executed by licensed Middle Tennessee construction specialists — from precision excavation and crane placement to anchoring and final lawn restoration.",
+              "Cada proyecto es ejecutado por especialistas de Tennessee — desde la excavación y grúa hasta el anclaje y restauración final.",
+            )}
+          </p>
         </div>
-        <div className="-mt-[20px] relative z-20 grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 px-3 sm:px-5 py-[5px] rounded-2xl sm:rounded-3xl bg-white border border-slate-200/90 shadow-md mb-10 sm:mb-12">
-          <div className="flex items-center justify-center gap-2 sm:gap-3 p-1.5 sm:p-2 min-w-0 text-center">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200/60"><Clock className="w-4 h-4 sm:w-5 sm:h-5" /></div>
-            <div className="flex flex-col text-center min-w-0">
-              <span className="text-[11px] sm:text-xs font-black text-slate-900 uppercase tracking-tight truncate">{t("Same-Day Install", "Instalacion el Mismo Dia")}</span>
-              <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-500 truncate">{t("In-Ground Prefab Units", "Unidades Prefabricadas")}</span>
-            </div>
-          </div>
-          <div className="flex items-center justify-center gap-2 sm:gap-3 p-1.5 sm:p-2 min-w-0 text-center">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200/60"><Phone className="w-4 h-4 sm:w-5 sm:h-5" /></div>
-            <div className="flex flex-col text-center min-w-0">
-              <span className="text-[11px] sm:text-xs font-black text-slate-900 uppercase tracking-tight truncate">{t("Office Line", "Línea de Oficina")}</span>
-              <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-500 truncate">{t(SITE_CONFIG.operatingHours.shortBadge, "Lun-Sáb: 8:00 AM-5:00 PM")}</span>
-            </div>
-          </div>
-          <div className="flex items-center justify-center gap-2 sm:gap-3 p-1.5 sm:p-2 min-w-0 col-span-2 md:col-span-1 text-center">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200/60"><MapPin className="w-4 h-4 sm:w-5 sm:h-5" /></div>
-            <div className="flex flex-col text-center min-w-0">
-              <span className="text-[11px] sm:text-xs font-black text-slate-900 uppercase tracking-tight truncate">{t("Nashville, TN", "Nashville, TN")}</span>
-              <span className="text-[9.5px] sm:text-[11px] font-bold text-slate-500 truncate">{t("Local Installations", "Instalaciones Locales")}</span>
-            </div>
-          </div>
+
+        {/* 8 Pixel-Perfect Service Cards in a 4-Column Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+          {servicesData.map((service, idx) => {
+            const Icon = service.icon;
+            return (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: idx * 0.05 }}
+                className="h-full"
+              >
+                <Link
+                  to={service.href}
+                  className="group relative flex flex-col justify-between h-full min-h-[380px] rounded-3xl overflow-hidden border border-white/[0.12] hover:border-amber-400/60 bg-[#080d16]/40 hover:bg-[#080d16]/20 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_50px_-10px_rgba(0,0,0,0.85),0_0_30px_rgba(245,158,11,0.22)] cursor-pointer"
+                >
+                  {/* Background Photo with Depth Overlay - Highly Visible */}
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <img
+                      src={service.img}
+                      alt={t(service.titleEn, service.titleEs)}
+                      className="w-full h-full object-cover opacity-70 group-hover:opacity-95 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#070b12] via-[#070b12]/50 to-black/15 group-hover:via-[#070b12]/35 transition-colors duration-500" />
+                  </div>
+
+                  {/* Top Rim Specular Hairline */}
+                  <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-amber-400/60 transition-colors pointer-events-none" />
+
+                  {/* Card Top Row: Icon */}
+                  <div className="relative z-10 p-5 sm:p-6 flex items-start justify-end">
+                    <div className="w-11 h-11 rounded-2xl bg-black/45 backdrop-blur-md border border-white/20 group-hover:bg-amber-500 group-hover:border-amber-400 group-hover:text-slate-950 text-amber-400 flex items-center justify-center transition-all duration-300 shadow-md group-hover:scale-105 shrink-0">
+                      <Icon className="w-5 h-5 transition-transform duration-300 group-hover:rotate-3" />
+                    </div>
+                  </div>
+
+                  {/* Card Footer: Anchored to Bottom of Card */}
+                  <div className="relative z-10 mt-auto p-5 sm:p-6 bg-gradient-to-t from-[#060a12] via-[#060a12]/95 to-[#060a12]/75 backdrop-blur-md border-t border-white/[0.08] group-hover:border-amber-400/30 transition-all duration-300">
+                    <h3
+                      className="font-display text-white group-hover:text-amber-300 transition-colors leading-snug drop-shadow-md capitalize"
+                      style={{
+                        fontSize: "20px",
+                        textTransform: "capitalize",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {t(service.titleEn, service.titleEs)}
+                    </h3>
+
+                    <p className="text-xs text-slate-200/90 font-normal leading-relaxed line-clamp-2 mt-2 drop-shadow-sm">
+                      {t(service.descEn, service.descEs)}
+                    </p>
+
+                    {/* Action Link Footer - Smoothly reveals on hover with grid expansion */}
+                    <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out">
+                      <div className="overflow-hidden">
+                        <div className="h-px w-full bg-gradient-to-r from-transparent via-amber-400/40 to-transparent my-3" />
+                        <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-amber-400 group-hover:text-amber-300 pt-0.5">
+                          <span className="flex items-center gap-1.5 font-bold tracking-wider">
+                            {t("Learn More", "Ver Detalles")}
+                          </span>
+                          <div className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-400/50 group-hover:bg-amber-500 group-hover:text-slate-950 group-hover:border-amber-400 flex items-center justify-center transition-all duration-300 shadow-[0_0_12px_rgba(245,158,11,0.25)]">
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom Active Glow Accent Bar */}
+                  <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-full" />
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-          {services.map((s, idx) => (
-            <motion.div key={s.id} initial={{ opacity: 0, y: 20, scale: 0.97 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.1 }}>
-              <ServiceCard s={s} />
-            </motion.div>
-          ))}
+
+        {/* Bottom Action Bar */}
+        <div className="mt-14 sm:mt-18 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+          <Link
+            to="/services"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 font-black text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_4px_20px_rgba(217,119,6,0.35)] hover:shadow-[0_8px_30px_rgba(217,119,6,0.55)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group cursor-pointer"
+          >
+            <span>
+              {t(
+                "Explore All Shelter Specifications",
+                "Explorar Todas las Especificaciones",
+              )}
+            </span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+
+          <a
+            href={`tel:${SITE_CONFIG.phoneRaw}`}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 hover:border-amber-400/40 text-white hover:text-amber-300 text-xs font-black uppercase tracking-widest px-8 py-4 rounded-xl backdrop-blur-md transition-all duration-300 group"
+          >
+            <Phone className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
+            <span>
+              {SITE_CONFIG.phone} • {t("Direct Project Line", "Línea Directa")}
+            </span>
+          </a>
         </div>
       </div>
     </section>

@@ -30,11 +30,11 @@ function ContactPage() {
   const contactSchema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "Contact Southern Storm Shelters LLC",
+    "name": "Contact Southern Storm Shelters",
     "url": "https://www.southernstormshelters.com/contact",
     "mainEntity": {
       "@type": "LocalBusiness",
-      "name": "Southern Storm Shelters LLC",
+      "name": "Southern Storm Shelters",
       "telephone": SITE_CONFIG.phoneRaw,
       "email": SITE_CONFIG.email,
       "address": {
@@ -88,7 +88,7 @@ function ContactPage() {
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us | Southern Storm Shelters LLC | Franklin & Nashville, TN" },
+      { title: "Contact Us | Southern Storm Shelters | Franklin & Nashville, TN" },
       {
         name: "description",
         content: "Get in touch with Southern Storm Shelters in Franklin, TN. Call (615) 991-2381 for consultations, site evaluations, and transparent underground shelter quotes across Middle Tennessee."
@@ -97,7 +97,7 @@ export const Route = createFileRoute("/contact")({
         name: "keywords",
         content: "contact storm shelters nashville, southern storm shelters phone number, underground shelter consultation franklin tn, storm shelter quote middle tennessee"
       },
-      { property: "og:title", content: "Contact Us | Southern Storm Shelters LLC" },
+      { property: "og:title", content: "Contact Us | Southern Storm Shelters" },
       {
         property: "og:description",
         content: "Let's talk about protecting your family. Reach out today—we respond to all inquiries within 24 hours."

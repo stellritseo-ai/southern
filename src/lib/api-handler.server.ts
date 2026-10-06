@@ -678,7 +678,7 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
     // ── /api/settings ──
     if (pathname === "/api/settings") {
       const defaultSettings = {
-        companyName: "Southern Storm Shelters LLC",
+        companyName: "Southern Storm Shelters",
         tagline: "Tennessee’s Premier Engineered Underground Storm Shelters & Safe Rooms",
         alertEmail: "info@southernstormshelters.com",
         officePhone: "(615) 991-2361",
@@ -690,7 +690,7 @@ export async function handleApiRequest(request: Request): Promise<Response | nul
         saturdays: "Saturday: By Appointment",
         sundays: "Sunday: Closed",
         shortBadge: "Mon–Sat: 8:00 AM – 5:00 PM",
-        smsTemplate: "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you to discuss your {Type} installation.",
+        smsTemplate: "Hi {Name}, thank you for contacting Southern Storm Shelters! A storm shelter specialist will contact you to discuss your {Type} installation.",
         emailAlert: true,
         smsAlert: true,
         maintenanceMode: false,

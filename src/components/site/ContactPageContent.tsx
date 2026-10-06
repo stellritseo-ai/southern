@@ -303,7 +303,7 @@ export function ContactPageContent() {
               <span>{t("Get in Touch", "Póngase en Contacto")}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t("Let's Talk About Protecting Your Family", "Hablemos de Proteger a Su Familia")}
             </h2>
 
@@ -369,7 +369,7 @@ export function ContactPageContent() {
               <Calendar className="w-3.5 h-3.5 text-amber-700" />
               <span>{t("24-Hour Turnaround", "Respuesta en 24 Horas")}</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t("Send Us a Message", "Envíenos un Mensaje")}
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
@@ -772,7 +772,7 @@ export function ContactPageContent() {
               <span>{t("Transparent Communication", "Comunicación Transparente")}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t("What Happens After You Contact Us?", "¿Qué Sucede Después de Contactarnos?")}
             </h2>
 
@@ -828,7 +828,7 @@ export function ContactPageContent() {
               <span>{t("Tennessee's Trusted Builders", "Constructores de Confianza en Tennessee")}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t("Why Homeowners Across Tennessee Trust Us", "¿Por Qué los Propietarios en Tennessee Confían en Nosotros?")}
             </h2>
           </div>
@@ -864,7 +864,7 @@ export function ContactPageContent() {
               <span>{t("Common Questions", "Preguntas Frecuentes")}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t("Frequently Asked Questions", "Preguntas Frecuentes")}
             </h2>
           </div>

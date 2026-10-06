@@ -42,7 +42,7 @@ function InGroundPrefabricatedPage() {
     "description": "Professional installation of the Granger ISS In-Ground Prefabricated Storm Shelter in Nashville, TN & 100-mile radius. Patented reverse taper design, FEMA 320/361 compliant, 500+ year lifespan, and lifetime warranty not to float.",
     "provider": {
       "@type": "HomeAndConstructionBusiness",
-      "name": "Southern Storm Shelters LLC",
+      "name": "Southern Storm Shelters",
       "telephone": "+16159912361",
       "address": {
         "@type": "PostalAddress",
@@ -100,7 +100,7 @@ export const Route = createFileRoute(
     meta: [
       {
         title:
-          "In-Ground Prefabricated Storm Shelters | Southern Storm Shelters LLC",
+          "In-Ground Prefabricated Storm Shelters | Southern Storm Shelters",
       },
       {
         name: "description",
@@ -115,7 +115,7 @@ export const Route = createFileRoute(
       {
         property: "og:title",
         content:
-          "In-Ground Prefabricated Storm Shelters | Southern Storm Shelters LLC",
+          "In-Ground Prefabricated Storm Shelters | Southern Storm Shelters",
       },
       {
         property: "og:description",

@@ -33,7 +33,7 @@ function ProjectsPage() {
     "description": "Authentic jobsite photos of Granger ISS in-ground storm shelter installations, crane placements, and safe rooms across Middle Tennessee.",
     "provider": {
       "@type": "LocalBusiness",
-      "name": "Southern Storm Shelters LLC",
+      "name": "Southern Storm Shelters",
       "telephone": "+16159912381",
       "address": {
         "@type": "PostalAddress",
@@ -73,7 +73,7 @@ function ProjectsPage() {
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Project Gallery | Southern Storm Shelters LLC | Nashville & Franklin, TN" },
+      { title: "Project Gallery | Southern Storm Shelters | Nashville & Franklin, TN" },
       {
         name: "description",
         content: "Explore our photo gallery of Granger ISS in-ground storm shelter installations, crane placements, custom color doors, and completed residential safe rooms across Middle Tennessee."
@@ -82,7 +82,7 @@ export const Route = createFileRoute("/projects")({
         name: "keywords",
         content: "storm shelter photos nashville, granger iss installation gallery, underground tornado shelter photos franklin tn, safe room gallery middle tennessee"
       },
-      { property: "og:title", content: "Project Gallery | Southern Storm Shelters LLC" },
+      { property: "og:title", content: "Project Gallery | Southern Storm Shelters" },
       {
         property: "og:description",
         content: "Real Installations. Real Protection. Browse authentic jobsite photos of Granger ISS storm shelter installations across Middle Tennessee."

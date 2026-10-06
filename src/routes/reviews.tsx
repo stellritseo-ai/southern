@@ -30,7 +30,7 @@ function ReviewsPage() {
   const reviewsSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Southern Storm Shelters LLC",
+    "name": "Southern Storm Shelters",
     "telephone": SITE_CONFIG.phoneRaw,
     "email": SITE_CONFIG.email,
     "address": {
@@ -77,16 +77,16 @@ function ReviewsPage() {
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
-      { title: "Customer Reviews & Testimonials | Southern Storm Shelters LLC" },
+      { title: "Customer Reviews & Testimonials | Southern Storm Shelters" },
       {
         name: "description",
-        content: "Read verified 5-star customer reviews for Southern Storm Shelters LLC. Trusted underground Granger ISS storm shelter installations in Nashville, Franklin, Murfreesboro, and Middle Tennessee."
+        content: "Read verified 5-star customer reviews for Southern Storm Shelters. Trusted underground Granger ISS storm shelter installations in Nashville, Franklin, Murfreesboro, and Middle Tennessee."
       },
       {
         name: "keywords",
         content: "southern storm shelters reviews, granger iss reviews franklin tn, tornado shelter testimonials nashville, underground storm shelter customer ratings"
       },
-      { property: "og:title", content: "Customer Reviews & Testimonials | Southern Storm Shelters LLC" },
+      { property: "og:title", content: "Customer Reviews & Testimonials | Southern Storm Shelters" },
       {
         property: "og:description",
         content: "Real Results. Real Protection. Real Peace of Mind. Read verified customer reviews from homeowners across Middle Tennessee."

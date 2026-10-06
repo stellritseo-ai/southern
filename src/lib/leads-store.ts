@@ -85,7 +85,7 @@ export interface GalleryPhoto {
   uploadedAt: string;
 }
 
-// ── INITIAL PRE-SEEDS CUSTOMIZED FOR NASHVILLE / SOUTHERN STORM SHELTERS LLC ──
+// ── INITIAL PRE-SEEDS CUSTOMIZED FOR NASHVILLE / SOUTHERN STORM SHELTERS ──
 export const INITIAL_LEADS: Lead[] = [
   {
     id: "lead-1",
@@ -1203,7 +1203,7 @@ export const getSiteSettings = async (): Promise<SiteSettings> => {
   } catch (err) {
     console.warn("MongoDB offline, falling back to local storage settings:", err);
     return {
-      companyName: getStorageItem("shelter_settings_companyName", "Southern Storm Shelters LLC"),
+      companyName: getStorageItem("shelter_settings_companyName", "Southern Storm Shelters"),
       tagline: getStorageItem("shelter_settings_tagline", "Tennessee’s Premier Engineered Underground Storm Shelters & Safe Rooms"),
       alertEmail: getStorageItem("shelter_settings_alertEmail", "info@southernstormshelters.com"),
       officePhone: getStorageItem("shelter_settings_officePhone", "(615) 991-2361"),
@@ -1215,7 +1215,7 @@ export const getSiteSettings = async (): Promise<SiteSettings> => {
       saturdays: getStorageItem("shelter_settings_saturdays", "Saturday: By Appointment"),
       sundays: getStorageItem("shelter_settings_sundays", "Sunday: Closed"),
       shortBadge: getStorageItem("shelter_settings_shortBadge", "Mon–Sat: 8:00 AM – 5:00 PM"),
-      smsTemplate: getStorageItem("shelter_settings_smsTemplate", "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you to discuss your {Type} installation."),
+      smsTemplate: getStorageItem("shelter_settings_smsTemplate", "Hi {Name}, thank you for contacting Southern Storm Shelters! A storm shelter specialist will contact you to discuss your {Type} installation."),
       emailAlert: String(getStorageItem("shelter_settings_emailAlert", "true")) === "true",
       smsAlert: String(getStorageItem("shelter_settings_smsAlert", "true")) === "true",
       maintenanceMode: String(getStorageItem("shelter_settings_maintenanceMode", "false")) === "true",

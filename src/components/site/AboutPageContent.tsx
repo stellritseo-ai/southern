@@ -244,7 +244,7 @@ export function AboutPageContent() {
                     {t("Full-Service Construction Company", "Empresa de Construcción Integral")}
                   </div>
                   <div className="text-sm font-bold text-slate-200 mt-1">
-                    Southern Storm Shelters LLC · Nashville, TN
+                    Southern Storm Shelters · Nashville, TN
                   </div>
                   <div className="text-xs text-slate-400 mt-0.5">
                     {t("Crane placement, site excavation & turnkey installation", "Colocación con grúa, excavación e instalación llave en mano")}
@@ -619,8 +619,8 @@ export function AboutPageContent() {
 
           <div className="text-xs text-slate-400 font-semibold pt-4">
             {t(
-              "Southern Storm Shelters LLC · Fully Insured Installation Crews · Nashville, TN",
-              "Southern Storm Shelters LLC · Cuadrillas de Instalación Totalmente Aseguradas · Nashville, TN"
+              "Southern Storm Shelters · Fully Insured Installation Crews · Nashville, TN",
+              "Southern Storm Shelters · Cuadrillas de Instalación Totalmente Aseguradas · Nashville, TN"
             )}
           </div>
         </div>

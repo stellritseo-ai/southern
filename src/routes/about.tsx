@@ -33,12 +33,12 @@ function AboutPage() {
   const aboutSchema = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "name": "About Southern Storm Shelters LLC",
+    "name": "About Southern Storm Shelters",
     "description": "Southern Storm Shelters is a full-service construction company based in Nashville, TN, specializing in installing the industry's most advanced underground shelters—the Granger ISS—across a 100-mile radius.",
     "url": "https://www.southernstormsheltersllc.com/about",
     "mainEntity": {
       "@type": "HomeAndConstructionBusiness",
-      "name": "Southern Storm Shelters LLC",
+      "name": "Southern Storm Shelters",
       "telephone": SITE_CONFIG.phoneRaw,
       "email": SITE_CONFIG.email,
       "address": {

@@ -166,7 +166,7 @@ export function FloatingChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="pointer-events-auto mb-4 w-[310px] sm:w-[360px] h-[520px] max-h-[calc(100vh-100px)] bg-white border border-slate-200 rounded-3xl shadow-[0_20px_50px_-12px_rgba(15,23,42,0.25)] overflow-hidden flex flex-col"
+            className="pointer-events-auto mb-4 w-[calc(100vw-2rem)] max-w-[360px] h-[520px] max-h-[calc(100vh-100px)] bg-white border border-slate-200 rounded-3xl shadow-[0_20px_50px_-12px_rgba(15,23,42,0.25)] overflow-hidden flex flex-col"
           >
             {/* Header */}
             <div className="shrink-0 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-4 text-white flex justify-between items-center border-b border-amber-500/30">
@@ -211,8 +211,8 @@ export function FloatingChat() {
                 <div className="bg-white border border-slate-200/80 rounded-2xl rounded-tl-none p-3 shadow-sm text-left max-w-[82%]">
                   <p className="text-xs text-slate-800 font-semibold leading-relaxed">
                     {t(
-                      "Hi! Welcome to Southern Storm Shelters LLC. We protect families across Nashville, TN and a 100-mile radius with engineered underground shelters. How can we help you today?",
-                      "¡Hola! Bienvenido a Southern Storm Shelters LLC. Protegemos a las familias en Nashville, TN y un radio de 100 millas con refugios subterráneos certificados. ¿Cómo podemos ayudarle hoy?"
+                      "Hi! Welcome to Southern Storm Shelters. We protect families across Nashville, TN and a 100-mile radius with engineered underground shelters. How can we help you today?",
+                      "¡Hola! Bienvenido a Southern Storm Shelters. Protegemos a las familias en Nashville, TN y un radio de 100 millas con refugios subterráneos certificados. ¿Cómo podemos ayudarle hoy?"
                     )}
                   </p>
                 </div>

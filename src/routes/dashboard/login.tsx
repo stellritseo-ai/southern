@@ -25,8 +25,8 @@ import shelterImg from "@/assets/granger-install.jpg";
 export const Route = createFileRoute("/dashboard/login")({
   head: () => ({
     meta: [
-      { title: "Admin Portal Access | Southern Storm Shelters LLC" },
-      { name: "description", content: "Authenticate to access Southern Storm Shelters LLC business console." },
+      { title: "Admin Portal Access | Southern Storm Shelters" },
+      { name: "description", content: "Authenticate to access Southern Storm Shelters business console." },
       { name: "robots", content: "noindex, nofollow" }
     ],
   }),
@@ -117,7 +117,7 @@ function LoginPage() {
           <div className="inline-block bg-white/95 rounded-2xl p-3 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] mb-6">
             <img 
               src={logoImg} 
-              alt="Southern Storm Shelters LLC" 
+              alt="Southern Storm Shelters" 
               className="h-10 xl:h-12 w-auto object-contain"
             />
           </div>
@@ -216,7 +216,7 @@ function LoginPage() {
             <div className="bg-white rounded-2xl p-2.5 border border-slate-200 shadow-sm mb-3">
               <img 
                 src={logoImg} 
-                alt="Southern Storm Shelters LLC" 
+                alt="Southern Storm Shelters" 
                 className="h-10 w-auto object-contain"
               />
             </div>
@@ -384,7 +384,7 @@ function LoginPage() {
 
         {/* Footer */}
         <div className="w-full text-center text-xs text-slate-400 font-medium">
-          © {new Date().getFullYear()} Southern Storm Shelters LLC · All rights reserved.
+          © {new Date().getFullYear()} Southern Storm Shelters · All rights reserved.
         </div>
       </div>
     </div>

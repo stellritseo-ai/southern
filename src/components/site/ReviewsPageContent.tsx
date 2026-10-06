@@ -193,7 +193,7 @@ export function ReviewsPageContent() {
               <span>{t("5-Star Reputation", "Reputación 5 Estrellas")}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t("Why Our Customers Choose Southern Storm Shelters", "¿Por Qué Nuestros Clientes Eligen Southern Storm Shelters?")}
             </h2>
 
@@ -243,7 +243,7 @@ export function ReviewsPageContent() {
               <span>{t("Verified Testimonials", "Testimonios Verificados")}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t("What Our Customers Are Saying", "Lo Que Dicen Nuestros Clientes")}
             </h2>
 
@@ -383,7 +383,7 @@ export function ReviewsPageContent() {
               {t("Why Reviews Matter", "¿Por Qué Importan las Reseñas?")}
             </span>
 
-            <h2 className="mt-4 text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="mt-4 font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t("Transparency & Peace of Mind", "Transparencia y Tranquilidad")}
             </h2>
 

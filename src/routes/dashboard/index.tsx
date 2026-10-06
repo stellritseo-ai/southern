@@ -224,7 +224,7 @@ const formatChatTime = (timestamp: string) => {
 export const Route = createFileRoute("/dashboard/")({
   head: () => ({
     meta: [
-      { title: "Operations Console | Southern Storm Shelters LLC" },
+      { title: "Operations Console | Southern Storm Shelters" },
       { name: "description", content: "Executive operations and project management dashboard." },
       { name: "robots", content: "noindex, nofollow" }
     ],
@@ -359,7 +359,7 @@ function DashboardPage() {
   const [serviceRadius, setServiceRadius] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("shelter_settings_serviceRadius") : null) || SITE_CONFIG.serviceRadius);
   const [licenseNotice, setLicenseNotice] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("shelter_settings_licenseNotice") : null) || SITE_CONFIG.licenseNotice);
   const [shortBadge, setShortBadge] = useState(() => (typeof window !== "undefined" ? localStorage.getItem("shelter_settings_shortBadge") : null) || SITE_CONFIG.operatingHours.shortBadge);
-  const [smsTemplate, setSmsTemplate] = useState(() => (typeof window !== "undefined" ? (localStorage.getItem("shelter_settings_smsTemplate") || localStorage.getItem("electrical_settings_smsTemplate")) : null) || "Hi {Name}, thank you for contacting Southern Storm Shelters LLC! A storm shelter specialist will contact you to discuss your {Type} installation.");
+  const [smsTemplate, setSmsTemplate] = useState(() => (typeof window !== "undefined" ? (localStorage.getItem("shelter_settings_smsTemplate") || localStorage.getItem("electrical_settings_smsTemplate")) : null) || "Hi {Name}, thank you for contacting Southern Storm Shelters! A storm shelter specialist will contact you to discuss your {Type} installation.");
   const [emailAlert, setEmailAlert] = useState(() => (typeof window !== "undefined" ? (localStorage.getItem("shelter_settings_emailAlert") || localStorage.getItem("electrical_settings_emailAlert")) !== "false" : true));
   const [smsAlert, setSmsAlert] = useState(() => (typeof window !== "undefined" ? (localStorage.getItem("shelter_settings_smsAlert") || localStorage.getItem("electrical_settings_smsAlert")) !== "false" : true));
   const [maintenanceMode, setMaintenanceMode] = useState(() => (typeof window !== "undefined" ? (localStorage.getItem("shelter_settings_maintenanceMode") || localStorage.getItem("electrical_settings_maintenanceMode")) === "true" : false));
@@ -4450,7 +4450,7 @@ function DashboardPage() {
                       type="text"
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
-                      placeholder="Southern Storm Shelters LLC"
+                      placeholder="Southern Storm Shelters"
                       className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
                     />
                   </div>
@@ -4736,7 +4736,7 @@ function DashboardPage() {
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
                   />
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-[11px] text-slate-400">
-                    <span>Preview sample: "Hi John Doe, thank you for contacting Southern Storm Shelters LLC! A specialist will contact you..."</span>
+                    <span>Preview sample: "Hi John Doe, thank you for contacting Southern Storm Shelters! A specialist will contact you..."</span>
                     <span className="shrink-0">{smsTemplate.length} characters</span>
                   </div>
                 </div>
@@ -4764,7 +4764,7 @@ function DashboardPage() {
                     onClick={() => {
                       triggerConfirm({
                         title: "Reset Settings to Extracted Defaults?",
-                        message: "This will restore phone, email, hours, and addresses to the baseline Southern Storm Shelters LLC configuration.",
+                        message: "This will restore phone, email, hours, and addresses to the baseline Southern Storm Shelters configuration.",
                         confirmText: "Reset Defaults",
                         onConfirm: () => {
                           setCompanyName(SITE_CONFIG.name);

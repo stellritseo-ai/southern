@@ -1,71 +1,47 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  ArrowRight,
-  ShieldCheck,
-  Clock,
-  ChevronDown,
-  Zap,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { Phone, Mail, MapPin, Clock, ArrowRight, ChevronDown } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 import { Link } from "@tanstack/react-router";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SITE_CONFIG } from "@/config/site-config";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
   </svg>
 );
-
-const HomeIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+const NextdoorIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
     <polyline points="9 22 9 12 15 12 15 22" />
   </svg>
 );
-
-const MapMarkerIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
     <circle cx="12" cy="10" r="3" />
   </svg>
 );
 
 const socials = [
-  { icon: FacebookIcon, href: "https://www.facebook.com", label: "Facebook" },
-  { icon: HomeIcon, href: "https://nextdoor.com", label: "Nextdoor" },
-  { icon: MapMarkerIcon, href: "https://www.google.com/business", label: "Google Business Profile" },
+  { Icon: FacebookIcon, href: "https://www.facebook.com", label: "Facebook" },
+  { Icon: NextdoorIcon, href: "https://nextdoor.com", label: "Nextdoor" },
+  { Icon: GoogleIcon, href: "https://www.google.com/business", label: "Google" },
 ];
 
-/** Collapsible section exclusively for mobile view */
-function MobileCollapsibleSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+function MobileAccordion({ title, children }: { title: string; children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
-
   return (
-    <div className="border-b border-white/10 py-3">
+    <div className="border-b border-white/10">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center justify-between w-full py-1 text-left cursor-pointer"
-        aria-expanded={open}
+        className="flex items-center justify-between w-full py-4 text-left cursor-pointer"
       >
-        <span className="text-xs uppercase tracking-widest text-slate-400 font-bold">
-          {title}
-        </span>
-        <ChevronDown
-          className={`h-4 w-4 text-slate-400 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
-        />
+        <span className="text-[11px] font-black uppercase tracking-widest text-slate-400">{title}</span>
+        <ChevronDown className={`h-4 w-4 text-slate-500 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
       </button>
-
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
@@ -73,10 +49,10 @@ function MobileCollapsibleSection({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
+            transition={{ duration: 0.22, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="pt-3 pb-1">{children}</div>
+            <div className="pb-4">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -89,340 +65,270 @@ export function Footer() {
 
   const quickLinks = [
     { label: t("Home", "Inicio"), href: "/" },
-    { label: t("About Us", "Sobre Nosotros"), href: "/about" },
+    { label: t("About Us", "Nosotros"), href: "/about" },
     { label: t("Storm Shelters", "Refugios"), href: "/services" },
-    { label: t("Free Estimate", "Cotización Gratis"), href: "/free-quote" },
+    { label: t("Free Estimate", "Cotización"), href: "/free-quote" },
     { label: t("Gallery", "Galería"), href: "/projects" },
-    { label: t("Customer Reviews", "Reseñas de Clientes"), href: "/reviews" },
+    { label: t("Reviews", "Reseñas"), href: "/reviews" },
     { label: t("Contact", "Contacto"), href: "/contact" },
   ];
 
   const servicesLinks = [
-    { label: t("In-Ground Prefabricated Storm Shelters", "Refugios Subterráneos"), href: "/services/in-ground-prefabricated-storm-shelters" },
-    { label: t("Custom Built Storm Shelters", "Refugios Personalizados"), href: "/services/custom-built-storm-shelters" },
+    { label: t("In-Ground Prefab Shelter", "Refugio Prefabricado"), href: "/services/in-ground-prefabricated-storm-shelters" },
+    { label: t("Custom Built Shelter", "Refugio Personalizado"), href: "/services/custom-built-storm-shelters" },
+    { label: t("Free Site Evaluation", "Evaluación Gratuita"), href: "/free-quote" },
   ];
 
-  const serviceAreaLinks = [
-    { label: "Nashville, TN (HQ)", href: "/contact" },
-    { label: t("Get a Free Estimate", "Obtenga una Estimación Gratuita"), href: "/free-quote" },
-    { label: t("View Installation Gallery", "Ver Galería de Instalaciones"), href: "/projects" },
+  const areaLinks = [
+    { label: "Nashville, TN", href: "/contact" },
+    { label: "Franklin", href: "/contact" },
+    { label: "Murfreesboro", href: "/contact" },
+    { label: "Brentwood", href: "/contact" },
+    { label: "Clarksville", href: "/contact" },
+    { label: "Hendersonville", href: "/contact" },
   ];
+
+  const linkCls = "text-slate-400 hover:text-white transition-colors duration-200 text-sm font-medium flex items-center gap-1.5 group py-0.5";
+  const arrowCls = "w-3 h-3 text-amber-500 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0";
+  const colHeadCls = "text-[11px] font-black uppercase tracking-widest text-slate-500 mb-5";
 
   return (
-    <footer className="relative bg-[#0b0f15] text-white overflow-hidden border-t border-white/10">
-      {/* Background patterns */}
-      <div className="absolute inset-0 bg-grid opacity-[0.02] pointer-events-none" />
+    <footer className="relative bg-[#0b0f15] text-white overflow-hidden">
+      {/* Top amber gradient line */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
 
-      {/* Decorative Blur Blobs */}
-      <div className="absolute -top-40 left-1/4 w-[400px] h-[400px] bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 right-10 w-[350px] h-[350px] bg-slate-700/20 rounded-full blur-3xl pointer-events-none" />
-
+      {/* Subtle dot grid */}
       <div
-        className="relative mx-auto w-[90%] max-w-7xl pt-10 sm:pt-14 lg:pt-20 pb-[30px] z-10 text-left"
-        style={{ paddingBottom: "30px" }}
-      >
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "32px 32px" }}
+      />
 
-        {/* ── MOBILE VERSION ────────────────────────── */}
-        <div className="block lg:hidden">
-          {/* Logo & Description */}
-          <div className="mb-4">
-            <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src={logoImg} alt="Southern Storm Shelters Logo" className="h-12 w-auto max-w-[220px] object-contain bg-white/10 rounded-lg p-2" />
+      {/* Glow blobs */}
+      <div className="absolute -top-32 left-1/4 w-80 h-80 bg-amber-600/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-slate-700/15 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 sm:pt-16 lg:pt-20">
+
+        {/* ── DESKTOP LAYOUT ── */}
+        <div className="hidden lg:grid lg:grid-cols-12 gap-10 xl:gap-16 pb-14">
+
+          {/* Col 1 — Brand (4 cols) */}
+          <div className="lg:col-span-4 flex flex-col gap-6">
+            <Link to="/" aria-label="Southern Storm Shelters">
+              <img
+                src={logoImg}
+                alt="Southern Storm Shelters"
+                className="h-12 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
+              />
             </Link>
 
-            <p className="text-[13px] text-slate-300 leading-relaxed font-medium mb-4">
+            <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
               {t(
-                "Underground storm shelter construction and turnkey installation for Nashville, TN and Middle Tennessee homeowners. Precision excavation and engineered safety.",
-                "Construcción e instalación de refugios subterráneos para propietarios de Nashville, TN."
-              )}
-            </p>
-
-            {/* Phone CTA */}
-            <a
-              href={`tel:${SITE_CONFIG.phoneRaw}`}
-              className="flex items-center gap-3 w-full bg-gradient-to-r from-amber-600 to-amber-700 border border-amber-500/50 rounded-2xl px-4 py-3 mb-4 shadow-lg"
-            >
-              <div className="h-9 w-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
-                <Phone className="h-4 w-4 text-white" />
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="text-[10px] uppercase tracking-widest text-amber-200 font-bold">{t("Direct Project Line", "Llámenos Hoy")}</span>
-                <span className="font-black text-white text-[15px] tracking-tight leading-tight">{SITE_CONFIG.phone}</span>
-              </div>
-            </a>
-
-            {/* Socials */}
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-xs font-bold text-slate-400">{t("Connect With Us:", "Conéctese Con Nosotros:")}</span>
-              {socials.map(({ icon: Icon, href, label }, i) => (
-                <a
-                  key={i}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="grid place-items-center h-9 w-9 rounded-xl bg-slate-900/80 border border-white/15 text-slate-300 hover:bg-slate-700 hover:text-white active:scale-95 transition-all shadow-sm"
-                >
-                  <Icon />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile Collapsible Sections */}
-          <MobileCollapsibleSection title={t("Quick Links", "Enlaces Rápidos")}>
-            <ul className="space-y-2.5">
-              {quickLinks.map(({ label, href }) => (
-                <li key={label}>
-                  <Link to={href} className="text-xs text-slate-300 hover:text-white font-semibold block transition-colors py-0.5">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </MobileCollapsibleSection>
-
-          <MobileCollapsibleSection title={t("Storm Shelters", "Refugios")}>
-            <ul className="space-y-2.5">
-              {servicesLinks.map(({ label, href }) => (
-                <li key={label}>
-                  <Link to={href} className="text-xs text-slate-300 hover:text-white font-semibold block transition-colors py-0.5">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </MobileCollapsibleSection>
-
-          <MobileCollapsibleSection title={t("Service Areas", "Áreas de Servicio")}>
-            <ul className="space-y-2.5">
-              {serviceAreaLinks.map(({ label, href }) => (
-                <li key={label}>
-                  <Link to={href} className="text-xs text-slate-300 hover:text-white font-semibold block transition-colors py-0.5">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </MobileCollapsibleSection>
-
-          <MobileCollapsibleSection title={t("Contact Info", "Contacto")}>
-            <ul className="space-y-3 text-xs">
-              <li>
-                <a href={`tel:${SITE_CONFIG.phoneRaw}`} className="flex items-center gap-2.5 text-slate-300">
-                  <Phone className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                  <span>{SITE_CONFIG.phone}</span>
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${SITE_CONFIG.email}`} className="flex items-center gap-2.5 text-slate-300 break-all">
-                  <Mail className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                  <span>{SITE_CONFIG.email}</span>
-                </a>
-              </li>
-              <li>
-                <div className="flex items-center gap-2.5 text-slate-300">
-                  <MapPin className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                  <span>Nashville, TN & 100-Mile Radius</span>
-                </div>
-              </li>
-            </ul>
-          </MobileCollapsibleSection>
-
-          <MobileCollapsibleSection title={t("Business Hours", "Horario de Atención")}>
-            <div className="bg-black/60 border border-amber-500/30 rounded-xl p-3 text-xs text-slate-300 leading-relaxed font-semibold space-y-1">
-              <span className="text-amber-400 font-black uppercase tracking-wider block mb-1 text-[10px] flex items-center gap-1.5">
-                <Clock className="w-3 h-3 fill-current" /> {t("Operating Hours", "Horario")}
-              </span>
-              <p>{SITE_CONFIG.operatingHours.weekdays}</p>
-              <p>{SITE_CONFIG.operatingHours.saturdays}</p>
-              <p className="text-slate-400">{SITE_CONFIG.operatingHours.sundays}</p>
-            </div>
-          </MobileCollapsibleSection>
-        </div>
-
-        {/* ── DESKTOP VERSION ──────────────── */}
-        <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start">
-
-          {/* Col 1: Brand Info (col-span-3) */}
-          <div className="lg:col-span-3 space-y-6">
-            <Link to="/" className="flex items-center gap-3">
-              <img src={logoImg} alt="Southern Storm Shelters Logo" className="h-14 w-auto max-w-[260px] object-contain bg-white/10 rounded-lg p-2" />
-            </Link>
-
-            <p className="text-sm text-slate-300 leading-relaxed max-w-sm font-medium">
-              {t(
-                "Underground storm shelter construction and installation in Nashville, TN. Engineered prefabricated units and custom concrete underground shelters built by experienced local tradesmen.",
-                "Construcción e instalación de refugios subterráneos en Nashville, TN. Unidades prefabricadas de bóveda de acero y construcciones de concreto personalizadas."
+                "Underground storm shelter construction and turnkey installation for Nashville and Middle Tennessee homeowners. Precision excavation — engineered safety.",
+                "Construcción e instalación llave en mano de refugios subterráneos en Nashville y Middle Tennessee."
               )}
             </p>
 
             {/* Socials */}
-            <div className="flex items-center gap-3">
-              <span className="text-xs font-bold text-slate-400">{t("Connect:", "Conectar:")}</span>
-              {socials.map(({ icon: Icon, href, label }, i) => (
+            <div className="flex items-center gap-2">
+              {socials.map(({ Icon, href, label }) => (
                 <motion.a
-                  key={i}
-                  whileHover={{ y: -3, scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="grid place-items-center h-9 w-9 rounded-xl bg-slate-900/90 border border-white/15 text-slate-300 hover:bg-slate-700 hover:text-white transition-all shadow-sm"
+                  whileHover={{ y: -3, scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/40 hover:bg-amber-500/10 transition-colors duration-300"
                 >
                   <Icon />
                 </motion.a>
               ))}
             </div>
 
+            {/* Phone CTA */}
+            <a
+              href={`tel:${SITE_CONFIG.phoneRaw}`}
+              className="group inline-flex flex-col gap-0.5 border-t border-white/10 pt-5"
+            >
+              <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-amber-400 transition-colors">
+                {t("Call Direct", "Llamar Directo")}
+              </span>
+              <span className="font-display font-black text-2xl tracking-tight text-white group-hover:text-amber-400 transition-colors">
+                {SITE_CONFIG.phone}
+              </span>
+            </a>
           </div>
 
-          {/* Col 2: Quick Links (col-span-2) */}
+          {/* Col 2 — Quick Links (2 cols) */}
           <div className="lg:col-span-2">
-            <h3 className="text-xs uppercase tracking-widest text-slate-400 font-extrabold mb-6">
-              {t("Quick Links", "Enlaces Rápidos")}
-            </h3>
-            <ul className="space-y-2.5 text-sm font-semibold">
+            <p className={colHeadCls}>{t("Quick Links", "Navegación")}</p>
+            <ul className="space-y-2">
               {quickLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <Link
-                    to={href}
-                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2 group cursor-pointer"
-                  >
-                    <ArrowRight className="h-3 w-3 text-amber-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
-                    <span>{label}</span>
+                  <Link to={href} className={linkCls}>
+                    <ArrowRight className={arrowCls} />
+                    {label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Col 3: Services (col-span-3) */}
+          {/* Col 3 — Services (3 cols) */}
           <div className="lg:col-span-3">
-            <h3 className="text-xs uppercase tracking-widest text-slate-400 font-extrabold mb-6">
-              {t("Storm Shelters", "Refugios")}
-            </h3>
-            <ul className="space-y-2.5 text-sm font-semibold">
+            <p className={colHeadCls}>{t("Our Shelters", "Nuestros Refugios")}</p>
+            <ul className="space-y-2">
               {servicesLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <Link
-                    to={href}
-                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-2 group cursor-pointer"
-                  >
-                    <ArrowRight className="h-3 w-3 text-amber-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
-                    <span>{label}</span>
+                  <Link to={href} className={linkCls}>
+                    <ArrowRight className={arrowCls} />
+                    {label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
 
-          {/* Col 4: Service Areas (col-span-2) */}
-          <div className="lg:col-span-2">
-            <h3 className="text-xs uppercase tracking-widest text-slate-400 font-extrabold mb-6">
-              {t("Location", "Ubicación")}
-            </h3>
-            <ul className="space-y-2 text-xs font-semibold">
-              {serviceAreaLinks.map(({ label, href }) => (
+            <p className={`${colHeadCls} mt-8`}>{t("Service Areas", "Áreas de Servicio")}</p>
+            <ul className="space-y-1.5">
+              {areaLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <Link
-                    to={href}
-                    className="text-slate-300 hover:text-white transition-colors inline-flex items-center gap-1.5 group cursor-pointer"
-                  >
-                    <ArrowRight className="h-2.5 w-2.5 text-amber-500 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
-                    <span className="truncate">{label}</span>
+                  <Link to={href} className={linkCls}>
+                    <ArrowRight className={arrowCls} />
+                    {label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Col 5: Contact & Hours (col-span-2) */}
-          <div className="lg:col-span-2 space-y-5">
-            <div>
-              <h3 className="text-xs uppercase tracking-widest text-slate-400 font-extrabold mb-5">
-                {t("Contact Us", "Contáctenos")}
-              </h3>
-              <ul className="space-y-3.5 text-sm">
-                <li>
-                  <a
-                    href={`tel:${SITE_CONFIG.phoneRaw}`}
-                    className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group"
-                  >
-                    <div className="h-8 w-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center text-slate-300 group-hover:bg-slate-700 group-hover:text-white transition-all shrink-0">
-                      <Phone className="h-3.5 w-3.5 text-amber-400" />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Direct Line</span>
-                      <span className="font-semibold text-white tracking-tight text-xs">{SITE_CONFIG.phone}</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={`mailto:${SITE_CONFIG.email}`}
-                    className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group"
-                  >
-                    <div className="h-8 w-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center text-slate-300 group-hover:bg-slate-700 group-hover:text-white transition-all shrink-0">
-                      <Mail className="h-3.5 w-3.5 text-amber-400" />
-                    </div>
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Email</span>
-                      <span className="font-semibold text-white tracking-tight text-xs truncate">{SITE_CONFIG.email}</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <div className="flex items-center gap-3 text-slate-300">
-                    <div className="h-8 w-8 rounded-lg bg-slate-800 border border-white/10 flex items-center justify-center text-slate-300 shrink-0">
-                      <MapPin className="h-3.5 w-3.5 text-amber-400" />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">{t("Region", "Región")}</span>
-                      <span className="font-semibold text-white tracking-tight text-xs leading-snug">
-                        Nashville & 100-Mi Radius
-                      </span>
-                    </div>
+          {/* Col 4 — Contact + Hours (3 cols) */}
+          <div className="lg:col-span-3 space-y-5">
+            <p className={colHeadCls}>{t("Contact", "Contacto")}</p>
+
+            <ul className="space-y-3.5">
+              {[
+                { icon: Phone, label: t("Call", "Llamar"), value: SITE_CONFIG.phone, href: `tel:${SITE_CONFIG.phoneRaw}` },
+                { icon: Mail, label: t("Email", "Email"), value: SITE_CONFIG.email, href: `mailto:${SITE_CONFIG.email}` },
+                { icon: MapPin, label: t("Area", "Área"), value: "Nashville, TN · 100-Mile Radius", href: null },
+              ].map(({ icon: Icon, label, value, href }) => (
+                <li key={label} className="flex items-start gap-3 group">
+                  <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-amber-500/15 group-hover:border-amber-500/30 transition-all duration-300">
+                    <Icon className="w-3.5 h-3.5 text-amber-400" />
+                  </div>
+                  <div className="min-w-0 pt-0.5">
+                    <div className="text-[9px] font-black uppercase tracking-widest text-slate-500 mb-0.5">{label}</div>
+                    {href ? (
+                      <a href={href} className="text-sm text-slate-300 hover:text-white transition-colors font-medium truncate block">{value}</a>
+                    ) : (
+                      <div className="text-sm text-slate-300 font-medium leading-snug">{value}</div>
+                    )}
                   </div>
                 </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
 
             {/* Hours card */}
-            <div className="bg-slate-800/80 border border-white/10 rounded-2xl p-4">
-              <span className="text-amber-400 font-black uppercase tracking-wider block mb-2 text-[10px] flex items-center gap-2">
+            <div className="bg-white/[0.03] border border-white/10 rounded-xl p-4 mt-2">
+              <div className="flex items-center gap-1.5 text-amber-400 text-[10px] font-black uppercase tracking-widest mb-3">
                 <Clock className="w-3.5 h-3.5" />
-                {t("Business Hours", "Horario de Atención")}
-              </span>
-              <div className="text-xs text-slate-300 leading-relaxed font-semibold space-y-1">
+                {t("Business Hours", "Horario")}
+              </div>
+              <div className="space-y-1 text-xs text-slate-400 font-medium leading-relaxed">
                 <p>{SITE_CONFIG.operatingHours.weekdays}</p>
                 <p>{SITE_CONFIG.operatingHours.saturdays}</p>
-                <p className="text-slate-400">{SITE_CONFIG.operatingHours.sundays}</p>
+                <p className="text-slate-600">{SITE_CONFIG.operatingHours.sundays}</p>
               </div>
             </div>
           </div>
-
         </div>
 
-        {/* ── BOTTOM BAR ───────────────────────────────────────── */}
-        <div className="mt-10 sm:mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-3 order-2 sm:order-1 text-xs text-slate-400 font-semibold">
-            <p>
-              © 2026 Southern Storm Shelters LLC. Design By StellR IT LLC{" "}
+        {/* ── MOBILE LAYOUT ── */}
+        <div className="lg:hidden pb-6">
+          {/* Brand block */}
+          <div className="mb-8">
+            <Link to="/" className="block mb-5">
+              <img src={logoImg} alt="Southern Storm Shelters" className="h-10 w-auto object-contain brightness-0 invert opacity-90" />
+            </Link>
+            <p className="text-slate-400 text-sm leading-relaxed mb-5">
+              {t(
+                "Underground storm shelter construction and installation in Nashville and Middle Tennessee.",
+                "Construcción e instalación de refugios subterráneos en Nashville y Middle Tennessee."
+              )}
             </p>
+            <a
+              href={`tel:${SITE_CONFIG.phoneRaw}`}
+              className="flex items-center gap-3 bg-amber-500 hover:bg-amber-400 rounded-xl px-4 py-3 mb-4 transition-colors"
+            >
+              <Phone className="h-4 w-4 text-[#0b0f15]" />
+              <span className="font-black text-[#0b0f15] text-sm tracking-tight">{SITE_CONFIG.phone}</span>
+            </a>
+            <div className="flex items-center gap-2">
+              {socials.map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/40 transition-all"
+                >
+                  <Icon />
+                </a>
+              ))}
+            </div>
           </div>
 
-          <div className="flex items-center gap-6 order-1 sm:order-2">
+          {/* Mobile accordions */}
+          <MobileAccordion title={t("Quick Links", "Navegación")}>
+            <ul className="space-y-2.5">
+              {quickLinks.map(({ label, href }) => (
+                <li key={label}>
+                  <Link to={href} className="text-sm text-slate-400 hover:text-white transition-colors font-medium block">{label}</Link>
+                </li>
+              ))}
+            </ul>
+          </MobileAccordion>
 
+          <MobileAccordion title={t("Our Shelters", "Refugios")}>
+            <ul className="space-y-2.5">
+              {servicesLinks.map(({ label, href }) => (
+                <li key={label}>
+                  <Link to={href} className="text-sm text-slate-400 hover:text-white transition-colors font-medium block">{label}</Link>
+                </li>
+              ))}
+            </ul>
+          </MobileAccordion>
+
+          <MobileAccordion title={t("Contact", "Contacto")}>
+            <ul className="space-y-3">
+              <li><a href={`tel:${SITE_CONFIG.phoneRaw}`} className="flex items-center gap-2.5 text-sm text-slate-400 hover:text-white transition-colors"><Phone className="h-3.5 w-3.5 text-amber-400 shrink-0" />{SITE_CONFIG.phone}</a></li>
+              <li><a href={`mailto:${SITE_CONFIG.email}`} className="flex items-center gap-2.5 text-sm text-slate-400 hover:text-white transition-colors break-all"><Mail className="h-3.5 w-3.5 text-amber-400 shrink-0" />{SITE_CONFIG.email}</a></li>
+              <li><div className="flex items-center gap-2.5 text-sm text-slate-400"><MapPin className="h-3.5 w-3.5 text-amber-400 shrink-0" />Nashville, TN · 100-Mile Radius</div></li>
+            </ul>
+          </MobileAccordion>
+        </div>
+
+        {/* ── BOTTOM BAR ── */}
+        <div className="border-t border-white/10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+          <p className="text-xs text-slate-500 font-medium">
+            © {new Date().getFullYear()} Southern Storm Shelters · Design by{" "}
+            <a href="https://stellrit.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">StellR IT LLC</a>
+          </p>
+          <div className="flex items-center gap-4 text-xs text-slate-500">
+            <Link to="/contact" className="hover:text-slate-300 transition-colors font-medium">{t("Privacy Policy", "Política de Privacidad")}</Link>
+            <span className="text-white/20">·</span>
+            <Link to="/contact" className="hover:text-slate-300 transition-colors font-medium">{t("Terms of Service", "Términos de Servicio")}</Link>
+            <span className="text-white/20">·</span>
             <motion.button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              whileHover={{ y: -3 }}
+              whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="text-xs text-slate-300 hover:text-white transition-colors font-bold flex items-center gap-2 cursor-pointer select-none"
+              className="text-slate-400 hover:text-white transition-colors font-bold flex items-center gap-1 cursor-pointer select-none"
             >
-              <span>{t("Back to Top", "Volver Arriba")}</span>
-              <ArrowRight className="h-4 w-4 -rotate-90 text-amber-400" />
+              {t("Top", "Inicio")}
+              <ArrowRight className="h-3.5 w-3.5 -rotate-90 text-amber-400" />
             </motion.button>
           </div>
         </div>

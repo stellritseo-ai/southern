@@ -1,78 +1,235 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, ArrowRight, Shield, HardHat, Building2, Home, X, ZoomIn, Camera, Star, Sparkles, Image as ImageIcon } from "lucide-react";
-import { getGalleryPhotos, GalleryPhoto } from "@/lib/leads-store";
-import { io } from "socket.io-client";
+import {
+  MapPin,
+  ArrowRight,
+  HardHat,
+  X,
+  ZoomIn,
+  Camera,
+  Star,
+  Sparkles,
+  ShieldCheck,
+  ChevronLeft,
+  ChevronRight,
+  Phone,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Link } from "@tanstack/react-router";
+import { SITE_CONFIG } from "@/config/site-config";
+
+// ── Jobsite Gallery Assets (All 13 images from src/assets/gallery1) ──────────
+import g1 from "@/assets/gallery1/1.png";
+import g2 from "@/assets/gallery1/2.png";
+import g3 from "@/assets/gallery1/3.png";
+import g4 from "@/assets/gallery1/4.png";
+import g5 from "@/assets/gallery1/5.png";
+import g6 from "@/assets/gallery1/6.png";
+import g7 from "@/assets/gallery1/7.png";
+import g8 from "@/assets/gallery1/11.png";
+import g9 from "@/assets/gallery1/IMG_0118-scaled-r4ebojreuj48ftcjj6kje1k3ffiqpa38l623yhkuf4.jpg";
+import g10 from "@/assets/gallery1/IMG_0137-scaled-r4ebojrkbvjcrsnwjnowdzrmtrncu4qwzlzsen983c.jpg";
+import g11 from "@/assets/gallery1/Professional Installation.jpg";
+import g12 from "@/assets/gallery1/shelter5.jpg";
+import g13 from "@/assets/gallery1/tornadoshelters6.jpg";
+
+interface ProjectItem {
+  id: string;
+  img: string;
+  title: string;
+  cat: string;
+  loc: string;
+  year: string;
+  tag: string;
+  featured?: boolean;
+}
 
 export function Projects({ isLanding = false }: { isLanding?: boolean }) {
   const { t } = useLanguage();
-  const [photos, setPhotos] = useState<GalleryPhoto[]>([]);
-  const [loading, setLoading] = useState(true);
 
-  // Fetch photos dynamically from MongoDB via API & sync via Socket.IO
-  useEffect(() => {
-    let mounted = true;
+  const allProjects: ProjectItem[] = useMemo(
+    () => [
+      {
+        id: "proj-1",
+        img: g1,
+        title: t(
+          "Granger ISS In-Ground Vault Installation",
+          "Instalación de Refugio Subterráneo Granger ISS"
+        ),
+        cat: "In-Ground Shelters",
+        loc: "Franklin, TN",
+        year: "2024",
+        tag: t("In-Ground Vault", "Refugio Subterráneo"),
+        featured: true,
+      },
+      {
+        id: "proj-2",
+        img: g2,
+        title: t(
+          "Laser-Guided Grade & Compaction Backfill",
+          "Nivelación Láser y Relleno Compactado"
+        ),
+        cat: "Excavation & Prep",
+        loc: "Brentwood, TN",
+        year: "2024",
+        tag: t("Soil Compaction", "Compactación"),
+        featured: false,
+      },
+      {
+        id: "proj-3",
+        img: g3,
+        title: t(
+          "Hydraulic Rock Excavation & Site Trenching",
+          "Excavación Hidráulica en Roca y Zanjas"
+        ),
+        cat: "Excavation & Prep",
+        loc: "Murfreesboro, TN",
+        year: "2024",
+        tag: t("Heavy Excavation", "Excavación Pesada"),
+        featured: true,
+      },
+      {
+        id: "proj-4",
+        img: g4,
+        title: t(
+          "Emergency Top Escape Hatch & Gas Shock Struts",
+          "Tapa de Escape Superior y Pistones de Gas"
+        ),
+        cat: "Safety Engineering",
+        loc: "Spring Hill, TN",
+        year: "2024",
+        tag: t("Emergency Egress", "Escape de Emergencia"),
+        featured: false,
+      },
+      {
+        id: "proj-5",
+        img: g5,
+        title: t(
+          "Double-Wall Polyethylene Molded Seating Vault",
+          "Bóveda de Doble Pared con Asientos Moldeados"
+        ),
+        cat: "In-Ground Shelters",
+        loc: "Hendersonville, TN",
+        year: "2024",
+        tag: t("Interior Comfort", "Interior Confortable"),
+        featured: true,
+      },
+      {
+        id: "proj-6",
+        img: g6,
+        title: t(
+          "Multi-Point Security Locking Storm Door",
+          "Puerta de Seguridad con Cierre Multipunto"
+        ),
+        cat: "Safety Engineering",
+        loc: "Gallatin, TN",
+        year: "2024",
+        tag: t("FEMA 320/361 Door", "Puerta Certificada FEMA"),
+        featured: false,
+      },
+      {
+        id: "proj-7",
+        img: g7,
+        title: t(
+          "Turnkey Yard Restoration & Clean Lawn Finish",
+          "Restauración Llave en Mano y Acabado de Césped"
+        ),
+        cat: "Excavation & Prep",
+        loc: "Mount Juliet, TN",
+        year: "2024",
+        tag: t("Clean Lawn Finish", "Acabado Impecable"),
+        featured: false,
+      },
+      {
+        id: "proj-8",
+        img: g8,
+        title: t(
+          "In-Ground Storm Shelter with Articulating Handrails",
+          "Refugio Subterráneo con Pasamanos Articulados"
+        ),
+        cat: "In-Ground Shelters",
+        loc: "Columbia, TN",
+        year: "2024",
+        tag: t("Safe Entry", "Entrada Segura"),
+        featured: true,
+      },
+      {
+        id: "proj-9",
+        img: g9,
+        title: t(
+          "Precision Crane Rigging Over Backyard Fencing",
+          "Maniobra de Grúa de Precisión Sobre Cercas"
+        ),
+        cat: "Crane Installation",
+        loc: "Nolensville, TN",
+        year: "2024",
+        tag: t("Crane Rigging", "Maniobra con Grúa"),
+        featured: false,
+      },
+      {
+        id: "proj-10",
+        img: g10,
+        title: t(
+          "Single-Day Turnkey Crane Placement & Leveling",
+          "Colocación y Nivelación con Grúa en un Solo Día"
+        ),
+        cat: "Crane Installation",
+        loc: "Lebanon, TN",
+        year: "2024",
+        tag: t("Single-Day Placement", "Colocación en 1 Día"),
+        featured: true,
+      },
+      {
+        id: "proj-11",
+        img: g11,
+        title: t(
+          "Heavy Track Crane Rigging & Placement Crew",
+          "Personal Especializado y Grúa de Oruga"
+        ),
+        cat: "Crane Installation",
+        loc: "Clarksville, TN",
+        year: "2024",
+        tag: t("Pro Crew", "Cuadrilla Especializada"),
+        featured: false,
+      },
+      {
+        id: "proj-12",
+        img: g12,
+        title: t(
+          "Complete Residential Installation Ready for Storm Season",
+          "Instalación Residencial Lista para Tormentas"
+        ),
+        cat: "In-Ground Shelters",
+        loc: "Nashville, TN",
+        year: "2024",
+        tag: t("Storm Ready", "Listo para Tormentas"),
+        featured: true,
+      },
+      {
+        id: "proj-13",
+        img: g13,
+        title: t(
+          "Heavy Structural Steel Engineered Storm Vault",
+          "Bóveda de Acero Estructural de Alta Resistencia"
+        ),
+        cat: "Safety Engineering",
+        loc: "Dickson, TN",
+        year: "2024",
+        tag: t("EF5 Armor", "Protección EF5"),
+        featured: false,
+      },
+    ],
+    [t]
+  );
 
-    getGalleryPhotos().then((items) => {
-      if (mounted) {
-        setPhotos(items || []);
-        setLoading(false);
-      }
-    });
+  const displayItems = useMemo(() => allProjects.slice(0, 8), [allProjects]);
 
-    const socket = io({
-      transports: ["websocket", "polling"],
-      autoConnect: true
-    });
-
-    socket.on("gallery-updated", (updated: GalleryPhoto[]) => {
-      if (mounted) setPhotos(updated || []);
-    });
-
-    socket.on("new-gallery-photo", (newPhoto: GalleryPhoto) => {
-      if (mounted) {
-        setPhotos((prev) => [newPhoto, ...prev.filter((p) => p.id !== newPhoto.id)]);
-      }
-    });
-
-    socket.on("gallery-photo-deleted", (deletedId: string) => {
-      if (mounted) {
-        setPhotos((prev) => prev.filter((p) => p.id !== deletedId));
-      }
-    });
-
-    return () => {
-      mounted = false;
-      socket.disconnect();
-    };
-  }, []);
-
-  const all = useMemo(() => {
-    return photos
-      .filter((p) => p.url && !p.url.includes("unsplash.com") && !p.url.includes("localhost"))
-      .map((p) => ({
-        id: p.id,
-        img: p.url,
-        title: p.title || t("Engineered Shelter Installation", "Instalación de Refugio"),
-        cat: p.category ? p.category.charAt(0).toUpperCase() + p.category.slice(1).toLowerCase() : "Underground",
-        loc: p.location || "Nashville, TN",
-        year: new Date(p.uploadedAt || Date.now()).getFullYear().toString(),
-        tag: p.tag || "Underground Vault",
-        featured: p.featured ?? true,
-      }));
-  }, [photos, t]);
-
-  const [showAll, setShowAll] = useState<boolean>(false);
-  const displayItems = isLanding && !showAll ? all.slice(0, 8) : all;
-
-  // Lightbox state
-  const [lightbox, setLightbox] = useState<null | (typeof all)[number]>(null);
+  // Lightbox Modal state
+  const [lightbox, setLightbox] = useState<null | ProjectItem>(null);
   const [lightboxIdx, setLightboxIdx] = useState<number>(0);
 
-  const openLightbox = useCallback((p: (typeof all)[number], idx: number) => {
+  const openLightbox = useCallback((p: ProjectItem, idx: number) => {
     setLightbox(p);
     setLightboxIdx(idx);
     document.body.style.overflow = "hidden";
@@ -85,7 +242,8 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
 
   const prevPhoto = useCallback(() => {
     if (displayItems.length === 0) return;
-    const newIdx = (lightboxIdx - 1 + displayItems.length) % displayItems.length;
+    const newIdx =
+      (lightboxIdx - 1 + displayItems.length) % displayItems.length;
     setLightboxIdx(newIdx);
     setLightbox(displayItems[newIdx]);
   }, [lightboxIdx, displayItems]);
@@ -97,7 +255,7 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
     setLightbox(displayItems[newIdx]);
   }, [lightboxIdx, displayItems]);
 
-  // ESC + Arrow keys
+  // Keyboard navigation for Lightbox
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeLightbox();
@@ -108,273 +266,242 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [closeLightbox, prevPhoto, nextPhoto]);
 
-  useEffect(() => () => { document.body.style.overflow = ""; }, []);
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
 
   return (
-    <section id="projects" className="relative bg-[#F8FAFC] py-16 sm:py-20 overflow-hidden">
-      {/* Background texture */}
+    <section
+      id="projects"
+      className="relative bg-[#070b12] text-white py-[60px] overflow-hidden border-y border-white/10 isolate"
+      style={{ paddingTop: "60px", paddingBottom: "60px" }}
+    >
+      {/* Specular Edge Hairline */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+
+      {/* Atmospheric Ambient Glows */}
       <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[750px] h-[350px] bg-amber-500/[0.045] rounded-full blur-[140px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-10 right-10 w-[500px] h-[350px] bg-sky-500/[0.03] rounded-full blur-[120px]"
+      />
+
+      {/* Architectural Dot Matrix Texture */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: "radial-gradient(circle, #d97706 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
+          backgroundImage:
+            "radial-gradient(circle, #ffffff 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
         }}
       />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         {/* ── Section Header ──────────────────────────── */}
-        {!isLanding && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12"
-          >
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 bg-white border border-amber-200 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-amber-700 mb-5 shadow-sm">
-                <Camera className="w-3.5 h-3.5" />
-                {t("Our Shelter Gallery", "Nuestra Galería de Refugios")}
-              </div>
-
-              <h2
-                className="text-slate-900 tracking-tight leading-[1.1] font-black"
-                style={{ fontSize: "38px", marginTop: "-8px", marginBottom: "10px" }}
-              >
-                {t("See Our Work — ", "Vea Nuestro Trabajo — ")}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d97706] to-[#b45309]">
-                  {t("Real Protection in Action.", "Protección Real en Acción.")}
-                </span>
-              </h2>
-              <p className="text-slate-500 text-[15px] leading-relaxed font-normal max-w-xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-10"
+        >
+          <div className="max-w-2xl">
+            {/* Eyebrow Ribbon */}
+            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-widest text-amber-300 mb-4 shadow-[0_0_20px_rgba(245,158,11,0.12)]">
+              <Camera className="w-3.5 h-3.5 text-amber-400" />
+              <span>
                 {t(
-                  "Every installation represents a family safeguarded. Browse our recent underground storm shelter installations across Nashville and Middle Tennessee.",
-                  "Cada instalación representa una familia protegida. Explore nuestras instalaciones recientes en Nashville y Middle Tennessee."
+                  "Verified Jobsite Gallery",
+                  "Galería de Obras Verificadas"
                 )}
-              </p>
+              </span>
             </div>
 
-            <Link
-              to="/free-quote"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-[11px] font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 shadow-lg hover:scale-[1.03] active:scale-[0.97] shrink-0 self-start lg:self-auto cursor-pointer"
+            {/* Headline */}
+            <h2
+              className="font-display tracking-tight text-white leading-tight drop-shadow-md text-[26px] sm:text-[32px] lg:text-[40px]"
+              style={{
+                marginTop: "-7px",
+                marginBottom: "5px",
+                fontWeight: 700,
+              }}
             >
-              {t("Get Free Estimate", "Solicitar Estimación")} <ArrowRight className="h-4 w-4" />
-            </Link>
-          </motion.div>
-        )}
+              {t("Engineered Installations Across ", "Instalaciones en ")}
+              <span className="bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 bg-clip-text text-transparent">
+                {t("Middle Tennessee", "Middle Tennessee")}
+              </span>
+            </h2>
 
-        {/* Landing mini header */}
-        {isLanding && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10"
-          >
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white border border-amber-200 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-amber-700 mb-4 shadow-sm">
-                <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-                {t("Our Work Gallery", "Nuestra Galería")}
-              </div>
-              <h2 className="text-slate-900 font-black text-[26px] sm:text-[32px] leading-tight tracking-tight">
-                {t("Real Results, Real Protection.", "Resultados Reales, Protección Real.")}
-              </h2>
-            </div>
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 bg-[#0b0f15] hover:bg-[#111722] text-white text-[11px] font-black uppercase tracking-widest rounded-full px-6 py-3 transition-all duration-200 shadow-md hover:scale-[1.02] shrink-0 self-start sm:self-auto cursor-pointer"
-            >
-              {t("View Full Gallery", "Ver Galería Completa")} <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </motion.div>
-        )}
-
-        {/* ── Loading Skeleton ───────────────────────── */}
-        {loading && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 animate-pulse">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="aspect-[4/3] bg-slate-200 rounded-2xl" />
-            ))}
-          </div>
-        )}
-
-        {/* ── Empty State ────────────────────────────── */}
-        {!loading && displayItems.length === 0 && (
-          <div className="text-center py-16 px-6 bg-white border border-slate-200/80 rounded-3xl max-w-xl mx-auto shadow-sm">
-            <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-4 border border-amber-200">
-              <ImageIcon className="w-7 h-7" />
-            </div>
-            <h3 className="text-lg font-black text-slate-900 mb-2">Live Cloudinary Gallery Connected</h3>
-            <p className="text-xs text-slate-500 leading-relaxed max-w-md mx-auto mb-6">
-              New project installations uploaded through the Admin Dashboard sync directly with Cloudinary and will instantly display here in real time.
+            {/* Subtitle */}
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
+              {t(
+                "Every project showcases laser grading, heavy crane placement, and clean yard restoration. Explore authentic photos from homes across Nashville, Franklin, Brentwood, and beyond.",
+                "Cada proyecto muestra nivelación láser, grúa pesada y restauración limpia del césped. Vea fotos reales en Nashville, Franklin, Brentwood y más."
+              )}
             </p>
+          </div>
+
+          {/* Header Action Button */}
+          <div className="flex items-center gap-3 shrink-0">
             <Link
               to="/free-quote"
-              className="inline-flex items-center gap-2 bg-slate-900 text-white text-xs font-bold px-5 py-2.5 rounded-full hover:bg-slate-800 transition cursor-pointer"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 font-black text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl shadow-[0_4px_20px_rgba(217,119,6,0.35)] hover:shadow-[0_8px_30px_rgba(217,119,6,0.55)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group"
             >
-              {t("Request Installation Consultation", "Solicitar Consulta")} <ArrowRight className="w-3.5 h-3.5" />
+              <span>
+                {t("Request On-Site Estimate", "Solicitar Estimación")}
+              </span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-        )}
+        </motion.div>
 
-        {/* ── Projects Grid ───────────────────────────── */}
-        {!loading && displayItems.length > 0 && (
-          <AnimatePresence mode="wait">
-            <motion.div
-              key="gallery-grid"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className={
-                isLanding
-                  ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4"
-                  : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-              }
+        {/* ── Gallery Grid (2 Rows of 4 Images) ───────── */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3.5 sm:gap-4.5">
+          {displayItems.map((p, idx) => (
+            <motion.article
+              key={p.id}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: idx * 0.03 }}
+              onClick={() => openLightbox(p, idx)}
+              className="group relative overflow-hidden rounded-2xl bg-[#0e1624] border border-white/10 hover:border-amber-400/50 shadow-md hover:shadow-[0_16px_36px_rgba(0,0,0,0.7),0_0_22px_rgba(245,158,11,0.18)] transition-all duration-500 cursor-zoom-in aspect-[4/3] w-full"
             >
-              {displayItems.map((p, idx) => (
-                <motion.article
-                  key={p.id || idx}
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: idx * 0.04 }}
-                  onClick={() => openLightbox(p, idx)}
-                  className={cn(
-                    "group relative overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-zoom-in",
-                    isLanding ? "aspect-[4/3] w-full" : p.featured ? "sm:col-span-1 lg:row-span-2" : ""
-                  )}
-                >
-                  {/* Image */}
-                  <div
-                    className={cn(
-                      "overflow-hidden w-full h-full",
-                      isLanding ? "h-full" : p.featured ? "h-[420px] lg:h-full lg:min-h-[520px]" : "h-[250px] sm:h-[270px]"
-                    )}
-                  >
-                    <img
-                      src={p.img}
-                      alt={p.title}
-                      className="w-full h-full object-cover group-hover:scale-[1.07] transition-transform duration-700 ease-out"
-                      loading={idx < 5 ? "eager" : "lazy"}
-                    />
-                  </div>
+              {/* Top Specular Rim Line */}
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover:via-amber-400/50 transition-colors pointer-events-none z-20" />
 
-                  {/* Subtle Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-all duration-300 flex items-center justify-center p-3">
-                    <div className="flex flex-col items-center justify-center gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 text-center">
-                      <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/90 border border-white/40 text-amber-600 shadow-md backdrop-blur-xs">
-                        <ZoomIn className="h-5 w-5" />
-                      </div>
-                      <span className="text-[11px] font-bold text-white drop-shadow-md truncate max-w-[90%]">
-                        {p.title}
-                      </span>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        )}
-
-        {/* ── View More Button ── */}
-        {isLanding && all.length > 8 && (
-          <div className="mt-8 sm:mt-12 flex justify-center">
-            <button
-              type="button"
-              onClick={() => setShowAll((prev) => !prev)}
-              className="group inline-flex items-center gap-2.5 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/90 hover:border-amber-500 text-xs sm:text-sm font-black uppercase tracking-wider px-8 py-3.5 rounded-full shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
-            >
-              <span>{showAll ? t("Show Less", "Ver Menos") : t("View More", "Ver Más")}</span>
-              <div className="w-6 h-6 rounded-full bg-amber-50 text-amber-600 group-hover:bg-amber-600 group-hover:text-white flex items-center justify-center transition-colors">
-                <ArrowRight className={cn("w-3.5 h-3.5 transition-transform", showAll ? "-rotate-90" : "rotate-90")} />
+              {/* Main Photo */}
+              <div className="overflow-hidden w-full h-full bg-slate-950">
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  loading={idx < 4 ? "eager" : "lazy"}
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                />
               </div>
-            </button>
+
+              {/* Center Hover Zoom Icon Pill */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-all duration-300 flex items-center justify-center pointer-events-none z-10">
+                <div className="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/25 text-amber-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100 shadow-md">
+                  <ZoomIn className="w-5 h-5" />
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        {/* ── Bottom Trust & Navigation Bar ───────────── */}
+        <div className="mt-10 sm:mt-12 pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-5 text-xs text-slate-300">
+            <div className="flex items-center gap-2">
+              <Star className="w-4 h-4 fill-amber-400 text-amber-400 shrink-0" />
+              <span className="font-bold text-white">
+                100% Genuine Jobsite Photos
+              </span>
+            </div>
+            <span className="text-white/20 hidden sm:inline">•</span>
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>FEMA 320/361 Tested Specs</span>
+            </div>
+            <span className="text-white/20 hidden sm:inline">•</span>
+            <div className="flex items-center gap-2">
+              <HardHat className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>Own Equipment & Operators</span>
+            </div>
           </div>
-        )}
+
+          <div className="flex items-center gap-3">
+            <a
+              href={`tel:${SITE_CONFIG.phoneRaw}`}
+              className="inline-flex items-center gap-2 text-xs font-bold text-slate-300 hover:text-white px-4 py-2.5 rounded-xl transition"
+            >
+              <Phone className="w-3.5 h-3.5 text-amber-400" />
+              <span>{SITE_CONFIG.phone}</span>
+            </a>
+            <Link
+              to="/free-quote"
+              className="inline-flex items-center gap-2 bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 hover:border-amber-400/40 text-white hover:text-amber-300 text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-xl transition backdrop-blur-md"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span>{t("Free Estimate", "Cotización")}</span>
+            </Link>
+          </div>
+        </div>
       </div>
 
-      {/* ── Lightbox Modal ──────────────────────────────── */}
+      {/* ── Fullscreen Lightbox Modal ─────────────────── */}
       <AnimatePresence>
         {lightbox && (
           <motion.div
-            className="fixed inset-0 z-[999] flex items-center justify-center p-4 sm:p-8"
+            className="fixed inset-0 z-[999] flex items-center justify-center p-3 sm:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={closeLightbox}
           >
-            {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/88 backdrop-blur-md" />
+            {/* Dark Blur Backdrop */}
+            <div className="absolute inset-0 bg-black/92 backdrop-blur-xl" />
 
-            {/* Modal */}
+            {/* Modal Dialog Card */}
             <motion.div
-              className="relative z-10 w-full max-w-5xl max-h-[90vh] flex flex-col rounded-3xl overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.6)]"
-              initial={{ scale: 0.88, opacity: 0 }}
+              className="relative z-10 w-full max-w-5xl max-h-[92vh] flex flex-col rounded-3xl overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.85)] border border-white/15 bg-[#0b1019]"
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close button */}
+              {/* Close Button */}
               <button
                 onClick={closeLightbox}
-                className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition hover:scale-110 cursor-pointer"
+                className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/90 hover:border-amber-400/60 transition hover:scale-110 cursor-pointer shadow-lg"
                 aria-label="Close"
               >
                 <X className="h-5 w-5" />
               </button>
 
-              {/* Prev / Next arrows */}
-              {displayItems.length > 1 && (
-                <>
-                  <button
-                    onClick={prevPhoto}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition hover:scale-110 cursor-pointer"
-                    aria-label="Previous"
-                  >
-                    <ArrowRight className="h-4 w-4 rotate-180" />
-                  </button>
-                  <button
-                    onClick={nextPhoto}
-                    className="absolute right-14 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition hover:scale-110 cursor-pointer"
-                    aria-label="Next"
-                  >
-                    <ArrowRight className="h-4 w-4" />
-                  </button>
-                </>
-              )}
+              {/* Prev Arrow */}
+              <button
+                onClick={prevPhoto}
+                className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/90 hover:border-amber-400/60 transition hover:scale-110 cursor-pointer shadow-lg"
+                aria-label="Previous"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
 
-              {/* Photo counter */}
-              <div className="absolute top-4 left-4 z-30 bg-black/50 backdrop-blur-sm border border-white/20 text-white text-[11px] font-bold px-3 py-1.5 rounded-full">
-                {lightboxIdx + 1} / {displayItems.length}
+              {/* Next Arrow */}
+              <button
+                onClick={nextPhoto}
+                className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/90 hover:border-amber-400/60 transition hover:scale-110 cursor-pointer shadow-lg"
+                aria-label="Next"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+
+              {/* Photo Index Counter */}
+              <div className="absolute top-4 left-4 z-30 bg-black/60 backdrop-blur-md border border-white/20 text-white text-xs font-extrabold px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+                <Camera className="w-3.5 h-3.5 text-amber-400" />
+                <span>
+                  {lightboxIdx + 1} / {displayItems.length}
+                </span>
               </div>
 
-              {/* Full image */}
-              <div className="relative flex-1 overflow-hidden bg-black flex items-center justify-center min-h-[300px]">
+              {/* Image Container (Pure Full Viewport Image) */}
+              <div className="relative flex-1 overflow-hidden bg-black flex items-center justify-center min-h-[350px] p-2 sm:p-4">
                 <img
                   src={lightbox.img}
                   alt={lightbox.title}
-                  className="w-full h-full object-contain max-h-[75vh]"
+                  className="w-full h-full object-contain max-h-[82vh] rounded-xl select-none"
                 />
-              </div>
-
-              {/* Bottom bar with Info & CTA */}
-              <div className="bg-white px-5 py-3.5 flex items-center justify-between shrink-0 border-t border-slate-100">
-                <div className="flex flex-col text-left">
-                  <span className="text-xs font-bold text-slate-900">{lightbox.title}</span>
-                  <span className="text-[10px] text-amber-700 font-medium">{lightbox.loc} · {lightbox.tag}</span>
-                </div>
-                <Link
-                  to="/free-quote"
-                  onClick={closeLightbox}
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 text-white text-xs sm:text-sm font-black uppercase tracking-wider px-6 py-2.5 rounded-full hover:scale-[1.03] active:scale-[0.98] transition-transform shadow-md cursor-pointer"
-                >
-                  {t("Get a Quote", "Solicitar Cotización")} <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
               </div>
             </motion.div>
           </motion.div>

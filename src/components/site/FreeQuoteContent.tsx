@@ -259,7 +259,7 @@ export function FreeQuoteContent() {
               <span>{t("Transparent & Comprehensive", "Transparente y Completo")}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t("What to Expect from Your Free Estimate", "Qué Esperar de Su Estimación Gratuita")}
             </h2>
 
@@ -327,7 +327,7 @@ export function FreeQuoteContent() {
               <Calendar className="w-3.5 h-3.5 text-amber-700" />
               <span>{t("24-Hour Fast Response", "Respuesta Rápida en 24 Horas")}</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t("Request Your Free Estimate", "Solicite Su Estimación Gratuita")}
             </h2>
             <p className="mt-3 text-slate-600 text-sm sm:text-base">
@@ -718,7 +718,7 @@ export function FreeQuoteContent() {
               <span>{t("Construction Professionals", "Profesionales de la Construcción")}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t(
                 "Why Request Your Estimate from Southern Storm Shelters?",
                 "¿Por Qué Solicitar Su Estimación Con Southern Storm Shelters?"
@@ -757,7 +757,7 @@ export function FreeQuoteContent() {
               <span>{t("Common Inquiries", "Preguntas Frecuentes")}</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
               {t("Frequently Asked Questions", "Preguntas Frecuentes")}
             </h2>
           </div>
@@ -807,7 +807,7 @@ export function FreeQuoteContent() {
                 </span>
                 
                 <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold text-slate-900">
-                  Southern Storm Shelters LLC
+                  Southern Storm Shelters
                 </h3>
                 
                 <p className="mt-3 text-slate-600 text-sm leading-relaxed">

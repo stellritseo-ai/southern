@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Clock, ShieldCheck, CheckCircle2, ArrowRight, MapPin, HardHat, Wrench } from "lucide-react";
+import { Phone, ShieldCheck, ArrowRight, HardHat, Wrench, MapPin } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
@@ -20,6 +20,11 @@ export function EmergencyCTA() {
       subtitle: t("Single-Day Turnkey Installs", "Instalación en un Solo Día"),
     },
     {
+      icon: ShieldCheck,
+      title: t("FEMA 320/361 Compliant", "Normas FEMA 320/361"),
+      subtitle: t("Engineered Life Safety", "Seguridad Diseñada"),
+    },
+    {
       icon: MapPin,
       title: t("Nashville & Middle TN", "Nashville y Middle TN"),
       subtitle: t("Local Crew & Equipment", "Personal y Equipos Locales"),
@@ -27,59 +32,57 @@ export function EmergencyCTA() {
   ];
 
   return (
-    <section
-      className="relative w-full overflow-hidden py-[50px] text-white bg-[#0b0f15] border-y border-slate-800"
-      style={{ paddingTop: "56px", paddingBottom: "56px" }}
-    >
+    <section className="relative w-full overflow-hidden text-white bg-[#0b0f15] border-y border-white/10 py-12 sm:py-16 lg:py-20">
+
       {/* Background Image */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
         <img
           src={grangerInstallImg}
-          alt="Storm shelter installation and excavation"
-          className="h-full w-full object-cover scale-105 filter brightness-40 contrast-115 select-none"
+          alt="Storm shelter installation"
+          className="h-full w-full object-cover brightness-[0.25] contrast-110 select-none"
         />
-
-        {/* Overlays for text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/90 via-[#0b0f15]/65 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/95 via-[#0b0f15]/70 to-[#0b0f15]/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/90 via-transparent to-[#0b0f15]/50" />
-
-        {/* Ambient Glowing Blobs */}
-        <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-10 w-96 h-96 rounded-full bg-slate-500/10 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 rounded-full bg-amber-500/8 blur-3xl pointer-events-none" />
       </div>
 
-      <div className="relative z-10 mx-auto w-[92%] sm:w-[90%] max-w-7xl px-0 sm:px-4">
-        <div className="grid gap-8 sm:gap-12 lg:grid-cols-12 lg:gap-16 items-center w-full min-w-0">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16 items-center">
 
-          {/* Left Content Column */}
-          <div className="lg:col-span-7 space-y-5 sm:space-y-6 text-left w-full min-w-0 max-w-full">
-            {/* Eyebrow Construction Badge */}
+          {/* Left Content */}
+          <div className="lg:col-span-7 space-y-6">
+            {/* Eyebrow */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 sm:gap-2.5 rounded-full bg-black/70 backdrop-blur-xl border border-amber-500/40 px-3.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-black uppercase tracking-wider sm:tracking-widest text-amber-300 shadow-lg max-w-full"
+              className="inline-flex items-center gap-2 rounded-full bg-black/60 backdrop-blur-xl border border-amber-500/40 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-amber-300"
             >
-              <span className="flex items-center gap-1.5 truncate">
-                <HardHat className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                <span className="truncate">{t("Master Construction & Site Specialists", "Especialistas en Construcción")}</span>
-              </span>
+              <HardHat className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              {t("Master Construction & Site Specialists", "Especialistas en Construcción")}
             </motion.div>
 
-            {/* Main Headline */}
+            {/* Headline */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display font-black tracking-tight leading-[1.2] text-white max-w-3xl"
+              className="font-display font-bold tracking-tight text-white text-[28px] sm:text-[38px] lg:text-[48px] leading-[1.12] lg:leading-[46px]"
+              style={{
+                fontWeight: 700,
+                marginTop: "-8px",
+                marginBottom: "10px",
+              }}
             >
-              <span className="block text-[28px] sm:text-[32px] lg:text-[36px] xl:text-[40px] whitespace-normal lg:whitespace-nowrap">
-                {t("Built for Protection.", "Construido para Proteger.")}
-              </span>
+              {t("Built for Protection.", "Construido para Proteger.")}
+              <br />
               <span
-                className="block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-[18px] sm:text-[24px] lg:text-[28px] leading-tight mb-2 lg:-mb-[14px]"
+                className="gradient-text-construction text-[25px] sm:text-[34px] lg:text-[43px] leading-[1.12] lg:leading-[46px]"
+                style={{
+                  fontWeight: 700,
+                }}
               >
                 {t("Engineered by Local Craftsmen.", "Diseñado por Artesanos Locales.")}
               </span>
@@ -89,46 +92,41 @@ export function EmergencyCTA() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[13.5px] sm:text-base lg:text-lg text-slate-200 max-w-xl leading-relaxed font-normal"
+              className="text-slate-300 text-sm sm:text-base lg:text-lg max-w-xl leading-relaxed font-normal"
             >
               {t(
                 "Proper underground shelter installation requires specialized excavation equipment, accurate soil and slope assessment, and precision crane placement. Our experienced Nashville construction crew manages every phase from initial yard grading to clean, turn-key backfill.",
-                "La instalación adecuada de un refugio subterráneo requiere maquinaria especializada, análisis del terreno y colocación precisa con grúa. Nuestro equipo maneja cada fase con excelencia."
+                "La instalación adecuada de un refugio subterráneo requiere maquinaria especializada, análisis del terreno y colocación precisa con grúa."
               )}
             </motion.p>
 
-            {/* Feature Cards — Infinite Auto Scrolling Marquee */}
+            {/* Feature Cards Grid (All blocks 100% visible on mobile and desktop) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative w-full min-w-0 max-w-full overflow-hidden pt-1 sm:pt-2 [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 pt-2 w-full max-w-xl"
             >
-              <div
-                className="flex w-max gap-3.5 animate-marquee hover:[animation-play-state:paused]"
-                style={{ animation: "marquee 22s linear infinite" }}
-              >
-                {[...trustBadges, ...trustBadges].map((badge, idx) => {
-                  const Icon = badge.icon;
-                  return (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-amber-500/40 hover:bg-white/10 transition-all duration-300 shrink-0 select-none shadow-sm cursor-default"
-                    >
-                      <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-amber-500/20 text-amber-300 shrink-0 border border-amber-500/30">
-                        <Icon className="h-4 w-4" />
-                      </div>
-                      <div className="flex flex-col text-left whitespace-nowrap">
-                        <span className="text-[11px] sm:text-xs font-extrabold text-white leading-tight">{badge.title}</span>
-                        <span className="text-[10px] sm:text-[11px] text-slate-400 font-medium leading-tight mt-0.5">{badge.subtitle}</span>
-                      </div>
+              {trustBadges.map((badge, idx) => {
+                const Icon = badge.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-amber-500/40 transition-colors shadow-sm"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-300 shrink-0">
+                      <Icon className="h-4 w-4" />
                     </div>
-                  );
-                })}
-              </div>
+                    <div className="flex flex-col text-left min-w-0">
+                      <span className="text-xs font-extrabold text-white leading-tight">{badge.title}</span>
+                      <span className="text-[11px] text-slate-400 font-medium leading-tight mt-0.5">{badge.subtitle}</span>
+                    </div>
+                  </div>
+                );
+              })}
             </motion.div>
           </div>
 
@@ -136,65 +134,51 @@ export function EmergencyCTA() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{
-              type: "spring",
-              stiffness: 100,
-              damping: 15,
-              delay: 0.2,
-            }}
-            className="lg:col-span-5 flex flex-col items-center gap-4 sm:gap-5 w-full min-w-0 max-w-md mx-auto lg:mx-0"
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.2 }}
+            className="lg:col-span-5 flex flex-col items-center gap-4 w-full max-w-md mx-auto lg:mx-0"
           >
-            {/* Primary Phone Action Card */}
-            <div className="relative group w-full max-w-md">
-              {/* Glowing Aura Effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-700 rounded-[24px] sm:rounded-[28px] blur-md opacity-25 group-hover:opacity-50 transition duration-500" />
-
+            {/* Phone CTA card */}
+            <div className="relative group w-full">
+              <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-700 rounded-[22px] blur-md opacity-25 group-hover:opacity-50 transition duration-500" />
               <a
                 href={`tel:${SITE_CONFIG.phoneRaw}`}
-                className="relative flex flex-col sm:flex-row items-center justify-between gap-3.5 sm:gap-4 rounded-[20px] sm:rounded-[24px] bg-[#0b0f15] border border-slate-700 p-4 sm:p-6 lg:p-7 shadow-2xl hover:scale-[1.02] transition-all duration-300 w-full text-left cursor-pointer"
+                className="relative flex items-center justify-between gap-3 sm:gap-4 rounded-[18px] bg-[#0b0f15] border border-slate-700 p-4 sm:p-6 shadow-2xl hover:scale-[1.02] transition-all duration-300 w-full cursor-pointer"
               >
-                <div className="flex items-center gap-3.5 sm:gap-4 justify-start text-left w-full sm:w-auto">
-                  <span className="relative grid place-items-center h-12 w-12 sm:h-14 sm:w-14 rounded-xl sm:rounded-2xl bg-amber-500 border border-amber-400/50 shrink-0 shadow-lg">
-                    <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-slate-950" />
+                <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                  <span className="grid place-items-center h-11 w-11 sm:h-12 sm:w-12 rounded-xl sm:rounded-2xl bg-amber-500 shrink-0">
+                    <Phone className="h-5 w-5 text-slate-950" />
                   </span>
-                  <div className="flex flex-col min-w-0">
-                    <span className="text-[20px] sm:text-[24px] font-display font-black leading-tight tracking-tight mt-0.5 sm:mt-1 text-white whitespace-nowrap">
-                      {SITE_CONFIG.phone}
-                    </span>
+                  <div className="min-w-0">
+                    <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest truncate">{t("Call Us Direct", "Llámenos")}</div>
+                    <div className="text-white font-black text-lg sm:text-2xl tracking-tight whitespace-nowrap">{SITE_CONFIG.phone}</div>
                   </div>
                 </div>
-
-                <div className="w-full sm:w-auto flex justify-end">
-                  <span className="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl bg-amber-500 text-slate-950 text-xs font-black uppercase tracking-wider shadow-md group-hover:bg-amber-400 transition-colors">
-                    {t("Call Now", "Llamar")}
-                  </span>
-                </div>
+                <span className="px-3.5 sm:px-4 py-2 rounded-xl bg-amber-500 text-slate-950 text-xs font-black uppercase tracking-wider shrink-0 group-hover:bg-amber-400 transition-colors">
+                  {t("Call", "Llamar")}
+                </span>
               </a>
             </div>
 
-            {/* Secondary Request Online CTA */}
-            <div className="w-full max-w-md">
-              <Button
-                variant="outline"
-                size="xl"
-                asChild
-                className="w-full rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-slate-900 font-extrabold text-xs sm:text-sm py-3.5 sm:py-4 px-4 sm:px-8 shadow-lg whitespace-normal sm:whitespace-nowrap h-auto justify-center text-center flex items-center gap-2"
-              >
-                <Link to="/free-quote">
-                  <span>{t("Schedule On-Site Property Evaluation", "Programar Evaluación en el Sitio")}</span>
-                  <ArrowRight className="w-4 h-4 shrink-0" />
-                </Link>
-              </Button>
-            </div>
+            {/* Online estimate CTA */}
+            <Button
+              variant="outline"
+              size="xl"
+              asChild
+              className="w-full rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-slate-900 font-extrabold text-xs sm:text-sm py-3.5 sm:py-4 px-4 sm:px-8 shadow-lg h-auto flex items-center justify-center gap-2"
+            >
+              <Link to="/free-quote">
+                <span>{t("Schedule On-Site Evaluation", "Programar Evaluación en el Sitio")}</span>
+                <ArrowRight className="w-4 h-4 shrink-0" />
+              </Link>
+            </Button>
 
-            {/* Micro-trust glass badge */}
-            <div className="flex items-center gap-2 sm:gap-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-slate-700/60 px-3.5 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs text-slate-300 w-full max-w-md justify-center shadow-md text-center">
+            {/* Micro-trust badge */}
+            <div className="flex items-center gap-2 rounded-2xl bg-black/60 backdrop-blur-md border border-slate-700/60 px-4 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs text-slate-300 w-full justify-center shadow-md text-center">
               <ShieldCheck className="h-4 w-4 text-amber-400 shrink-0" />
               <span className="font-semibold">{t("Middle Tennessee's Trusted Shelter Builders", "Constructores de Confianza en Tennessee")}</span>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

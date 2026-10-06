@@ -9,10 +9,10 @@ import { SITE_CONFIG } from "@/config/site-config";
 const Services = lazy(() => import("@/components/site/Services").then((m) => ({ default: m.Services })));
 const EmergencyCTA = lazy(() => import("@/components/site/EmergencyCTA").then((m) => ({ default: m.EmergencyCTA })));
 const ShelterFeatures = lazy(() => import("@/components/site/ShelterFeatures").then((m) => ({ default: m.ShelterFeatures })));
+const Testimonials = lazy(() => import("@/components/site/Testimonials").then((m) => ({ default: m.Testimonials })));
 const WhyChooseUs = lazy(() => import("@/components/site/WhyChooseUs").then((m) => ({ default: m.WhyChooseUs })));
 const Projects = lazy(() => import("@/components/site/Projects").then((m) => ({ default: m.Projects })));
-const ContactIllustrationSection = lazy(() => import("@/components/site/ContactIllustrationSection").then((m) => ({ default: m.ContactIllustrationSection })));
-const ServiceArea = lazy(() => import("@/components/site/ServiceArea").then((m) => ({ default: m.ServiceArea })));
+// const ServiceArea = lazy(() => import("@/components/site/ServiceArea").then((m) => ({ default: m.ServiceArea })));
 const GetInTouch = lazy(() => import("@/components/site/GetInTouch").then((m) => ({ default: m.GetInTouch })));
 
 // Lightweight section fallback — keeps layout stable while chunk loads
@@ -23,7 +23,7 @@ function SectionSkeleton() {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Storm Shelters Nashville TN | Southern Storm Shelters LLC" },
+      { title: "Storm Shelters Nashville TN | Southern Storm Shelters" },
       {
         name: "description",
         content:
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
         content:
           "storm shelters nashville tn, underground storm shelters nashville, storm shelter installation nashville, underground tornado shelters nashville, residential storm shelters nashville, tornado shelters nashville tn, storm shelter company nashville, custom storm shelters nashville",
       },
-      { property: "og:title", content: "Storm Shelters Nashville TN | Southern Storm Shelters LLC" },
+      { property: "og:title", content: "Storm Shelters Nashville TN | Southern Storm Shelters" },
       {
         property: "og:description",
         content:
@@ -55,7 +55,7 @@ function Index() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
-    "name": "Southern Storm Shelters LLC",
+    "name": "Southern Storm Shelters",
     "image": "https://www.southernstormsheltersllc.com/assets/logo.png",
     "@id": "https://www.southernstormsheltersllc.com/#organization",
     "url": "https://www.southernstormsheltersllc.com",
@@ -153,7 +153,7 @@ function Index() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Southern Storm Shelters LLC",
+    "name": "Southern Storm Shelters",
     "url": "https://www.southernstormsheltersllc.com",
     "potentialAction": {
       "@type": "SearchAction",
@@ -177,15 +177,18 @@ function Index() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <Hero />
-      <Welcome />
       <Suspense fallback={<SectionSkeleton />}>
         <Services />
       </Suspense>
+      <Welcome />
       <Suspense fallback={<SectionSkeleton />}>
         <EmergencyCTA />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <ShelterFeatures />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        {/* <Testimonials /> */}
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <WhyChooseUs />
@@ -194,14 +197,11 @@ function Index() {
         <Projects isLanding={true} />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
-        <ContactIllustrationSection />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <ServiceArea />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
         <GetInTouch />
       </Suspense>
+      {/* <Suspense fallback={<SectionSkeleton />}>
+        <ServiceArea />
+      </Suspense> */}
     </SiteLayout>
   );
 }

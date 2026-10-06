@@ -85,8 +85,12 @@ export function WhyChooseUs() {
 
             {/* Headline */}
             <h2
-              className="text-slate-900 font-black tracking-tight leading-[1.18] max-w-2xl"
-              style={{ fontSize: "clamp(24px, 5.5vw, 32px)", marginTop: "-7px", marginBottom: "10px" }}
+              className="font-display tracking-[-0.02em] text-[#0b0f15] max-w-2xl text-[26px] sm:text-[32px] lg:text-[39px] leading-[1.15] lg:leading-[45px]"
+              style={{
+                fontWeight: 700,
+                marginTop: "-7px",
+                marginBottom: "10px",
+              }}
             >
               {t("Built by a Construction Company. ", "Construido por una Empresa Constructora. ")}
               <span className="gradient-text-construction">
@@ -96,10 +100,10 @@ export function WhyChooseUs() {
 
             {/* Subtext */}
             <p
-              className="text-slate-500 text-[14px] sm:text-[15px] leading-relaxed font-normal max-w-2xl"
-              style={{ marginBottom: "10px" }}
+              className="text-[14px] sm:text-[15px] leading-relaxed max-w-2xl"
+              style={{ color: "#000", fontWeight: 500, marginBottom: "10px" }}
             >
-              {t("Southern Storm Shelters LLC is a construction company — we show up with excavators, cranes, and a professional crew. We build and install using quality-grade materials and proper construction practices, not drop-ship and install.", "Southern Storm Shelters LLC es una empresa de construcción. Llegamos con excavadoras, grúas y un equipo profesional. Construimos e instalamos con materiales de calidad y prácticas de construcción adecuadas.")}
+              {t("Southern Storm Shelters is a construction company — we show up with excavators, cranes, and a professional crew. We build and install using quality-grade materials and proper construction practices, not drop-ship and install.", "Southern Storm Shelters es una empresa de construcción. Llegamos con excavadoras, grúas y un equipo profesional. Construimos e instalamos con materiales de calidad y prácticas de construcción adecuadas.")}
             </p>
 
             {/* Feature Grid */}

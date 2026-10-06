@@ -110,7 +110,7 @@ function buildHtmlEmail(payload: EmailNotificationPayload, recipient: string): s
                       ⚡ New Storm Shelter Lead
                     </span>
                     <h1 style="color: #ffffff; font-size: 22px; font-weight: 800; margin: 6px 0 2px 0; letter-spacing: -0.5px;">
-                      Southern Storm Shelters LLC
+                      Southern Storm Shelters
                     </h1>
                     <p style="color: #cbd5e1; font-size: 13px; margin: 0;">
                       Nashville, TN &bull; 615-991-2361 &bull; Delivered to ${recipient}
@@ -196,7 +196,7 @@ function buildHtmlEmail(payload: EmailNotificationPayload, recipient: string): s
           <tr>
             <td style="background-color: #0F172A; padding: 20px 24px; text-align: center; border-top: 1px solid #e2e8f0;">
               <p style="margin: 0; font-size: 12px; color: #94a3b8;">
-                This notification was sent automatically from <strong style="color: #F59E0B;">Southern Storm Shelters LLC</strong>.
+                This notification was sent automatically from <strong style="color: #F59E0B;">Southern Storm Shelters</strong>.
               </p>
               <p style="margin: 4px 0 0 0; font-size: 11px; color: #64748b;">
                 Serving Nashville, TN &amp; a 100-Mile Radius &bull; Fully Insured Installation Crews
@@ -224,15 +224,15 @@ export async function sendZohoNotification(payload: EmailNotificationPayload): P
   const toEmail = process.env.NOTIFICATION_TO_EMAIL || process.env.ZOHO_USER || "info@southernstormshelters.com";
   const user = process.env.ZOHO_USER || "";
   const pass = process.env.ZOHO_PASS || process.env.ZOHO_APP_PASSWORD || "";
-  const fromName = process.env.EMAIL_FROM_NAME || "Southern Storm Shelters LLC";
+  const fromName = process.env.EMAIL_FROM_NAME || "Southern Storm Shelters";
 
   const customerName = payload.name || "Website Lead";
   const source = payload.source || "Website Form";
-  const subject = payload.subject || `New Lead from ${customerName} (${source}) - Southern Storm Shelters LLC`;
+  const subject = payload.subject || `New Lead from ${customerName} (${source}) - Southern Storm Shelters`;
 
   const html = buildHtmlEmail(payload, toEmail);
   const text = `
-NEW WEBSITE SUBMISSION - SOUTHERN STORM SHELTERS LLC
+NEW WEBSITE SUBMISSION - SOUTHERN STORM SHELTERS
 ============================================================
 Source: ${source}
 Date: ${new Date().toLocaleString()}
@@ -246,7 +246,7 @@ Message:
 ${payload.message || "No message content"}
 
 ------------------------------------------------------------
-Southern Storm Shelters LLC
+Southern Storm Shelters
 Nashville, TN | 615-991-2361
   `.trim();
 
