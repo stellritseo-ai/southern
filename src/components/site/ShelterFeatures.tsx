@@ -59,7 +59,7 @@ export function ShelterFeatures() {
             <h2
               className="font-display font-extrabold tracking-tight text-[#0b0f15] leading-tight text-[24px] sm:text-[30px] lg:text-[37px]"
               style={{
-                fontWeight: 800,
+                fontWeight: 700,
                 marginTop: "-8px",
                 marginBottom: "12px",
               }}
@@ -70,7 +70,7 @@ export function ShelterFeatures() {
               <span
                 className="block gradient-text-construction text-[24px] sm:text-[30px] lg:text-[37px]"
                 style={{
-                  fontWeight: 800,
+                  fontWeight: 700,
                 }}
               >
                 {t("Every Detail Engineered for Safety.", "Cada Detalle Diseñado para la Seguridad.")}

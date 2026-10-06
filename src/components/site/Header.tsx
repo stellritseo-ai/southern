@@ -308,6 +308,7 @@ export function Header() {
                           ? "text-amber-400 bg-amber-500/[0.08] shadow-[inset_0_0_0_1px_rgba(245,158,11,0.25)]"
                           : "text-slate-300 hover:text-white hover:bg-white/[0.06]",
                       )}
+                      style={{ fontWeight: 700 }}
                     >
                       <span>{item.label}</span>
                       <ChevronDown
@@ -456,6 +457,7 @@ export function Header() {
                       ? "text-amber-400 bg-amber-500/[0.08] shadow-[inset_0_0_0_1px_rgba(245,158,11,0.25)]"
                       : "text-slate-300 hover:text-white hover:bg-white/[0.06]",
                   )}
+                  style={{ fontWeight: 700 }}
                 >
                   {item.label}
                   {active && (
