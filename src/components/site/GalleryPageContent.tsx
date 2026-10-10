@@ -121,31 +121,31 @@ export function GalleryPageContent() {
   }, [selectedImageIndex, showNext, showPrev]);
 
   return (
-    <div className="bg-white text-slate-900 overflow-hidden selection:bg-amber-600 selection:text-white">
+    <div className="bg-white text-slate-900 overflow-hidden selection:bg-black selection:text-white">
       {/* ── SECTION 1: KEY TECHNICAL HIGHLIGHTS BANNER ─────────────────── */}
       <section className="relative py-8 bg-slate-900 text-white border-b border-slate-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="p-3">
-              <div className="text-2xl sm:text-3xl font-black text-amber-400">4 Hours</div>
+              <div className="text-2xl sm:text-3xl font-black text-white">4 Hours</div>
               <div className="text-xs font-semibold text-slate-300 mt-0.5">
                 {t("Turnkey Installation", "Instalación Llave en Mano")}
               </div>
             </div>
             <div className="p-3 border-l border-slate-800">
-              <div className="text-2xl sm:text-3xl font-black text-amber-400">500+ Yrs</div>
+              <div className="text-2xl sm:text-3xl font-black text-white">500+ Yrs</div>
               <div className="text-xs font-semibold text-slate-300 mt-0.5">
                 {t("Polyethylene Lifespan", "Vida Útil del Polietileno")}
               </div>
             </div>
             <div className="p-3 border-l border-slate-800">
-              <div className="text-2xl sm:text-3xl font-black text-amber-400">100%</div>
+              <div className="text-2xl sm:text-3xl font-black text-white">100%</div>
               <div className="text-xs font-semibold text-slate-300 mt-0.5">
                 {t("Guaranteed Not to Float", "Garantizado Que No Flota")}
               </div>
             </div>
             <div className="p-3 border-l border-slate-800">
-              <div className="text-2xl sm:text-3xl font-black text-amber-400">100 Miles</div>
+              <div className="text-2xl sm:text-3xl font-black text-white">100 Miles</div>
               <div className="text-xs font-semibold text-slate-300 mt-0.5">
                 {t("Service Radius Across TN", "Radio de Servicio en TN")}
               </div>
@@ -158,8 +158,8 @@ export function GalleryPageContent() {
       <section className="py-16 sm:py-24 bg-white relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-3">
-              <Camera className="w-3.5 h-3.5 text-amber-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-100 text-slate-900 text-xs font-bold uppercase tracking-widest mb-3">
+              <Camera className="w-3.5 h-3.5 text-slate-900" />
               <span>{t("Verified Project Portfolio", "Portafolio de Proyectos Verificados")}</span>
             </div>
 
@@ -187,7 +187,7 @@ export function GalleryPageContent() {
           {/* Empty State */}
           {!loading && filteredItems.length === 0 && (
             <div className="text-center py-20 px-6 bg-slate-50 border border-slate-200/80 rounded-3xl max-w-xl mx-auto shadow-sm">
-              <div className="w-16 h-16 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-4 border border-amber-200">
+              <div className="w-16 h-16 rounded-2xl bg-slate-100 text-slate-900 flex items-center justify-center mx-auto mb-4 border border-slate-200">
                 <ImageIcon className="w-8 h-8" />
               </div>
               <h3 className="text-lg font-black text-slate-900 mb-2">Live Cloudinary Gallery Connected</h3>
@@ -216,7 +216,7 @@ export function GalleryPageContent() {
                     transition={{ duration: 0.25 }}
                     key={item.id || idx}
                     onClick={() => openLightbox(idx)}
-                    className="group rounded-3xl bg-slate-900 border border-slate-200 overflow-hidden shadow-xs hover:shadow-xl hover:border-amber-500/40 transition-all duration-300 cursor-pointer"
+                    className="group rounded-3xl bg-slate-900 border border-slate-200 overflow-hidden shadow-xs hover:shadow-xl hover:border-white/40 transition-all duration-300 cursor-pointer"
                   >
                     <div className="relative aspect-4/3 overflow-hidden bg-slate-900">
                       <img
@@ -229,13 +229,13 @@ export function GalleryPageContent() {
                       {/* Hover Overlay */}
                       <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
                         <div className="flex flex-col items-center justify-center gap-2 text-center">
-                          <div className="w-12 h-12 rounded-full bg-white/95 text-slate-900 flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
-                            <ZoomIn className="w-5 h-5 text-amber-600" />
+                          <div className="w-12 h-12 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+                            <ZoomIn className="w-5 h-5 text-black" />
                           </div>
                           <span className="text-xs font-bold text-white drop-shadow-md">
                             {item.title}
                           </span>
-                          <span className="text-[10px] text-amber-300 font-medium">
+                          <span className="text-[10px] text-slate-300 font-medium">
                             {item.location} · {item.tag}
                           </span>
                         </div>
@@ -252,10 +252,10 @@ export function GalleryPageContent() {
       {/* ── SECTION 3: READY TO PROTECT YOUR FAMILY CTA ─────────────────── */}
       <section className="py-16 sm:py-24 bg-slate-50 border-t border-slate-200 relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-8 sm:p-14 text-center max-w-5xl mx-auto shadow-2xl relative overflow-hidden border border-amber-500/30">
+          <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-8 sm:p-14 text-center max-w-5xl mx-auto shadow-2xl relative overflow-hidden border border-white/10">
             <div
               aria-hidden
-              className="absolute -right-20 -top-20 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"
+              className="absolute -right-20 -top-20 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none"
             />
 
             <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-4">
@@ -275,7 +275,7 @@ export function GalleryPageContent() {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 to="/free-quote"
-                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold px-8 py-4 rounded-2xl shadow-xl transition text-sm sm:text-base cursor-pointer"
+                className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-black font-extrabold px-8 py-4 rounded-2xl shadow-xl transition text-sm sm:text-base cursor-pointer"
               >
                 <span>{t("Request a Free Estimate", "Solicitar Estimación Gratis")}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -284,7 +284,7 @@ export function GalleryPageContent() {
                 href={`tel:${SITE_CONFIG.phoneRaw}`}
                 className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-8 py-4 rounded-2xl transition text-sm sm:text-base cursor-pointer"
               >
-                <Phone className="w-4 h-4 text-amber-400" />
+                <Phone className="w-4 h-4 text-white" />
                 <span>Call {SITE_CONFIG.phone}</span>
               </a>
             </div>
@@ -347,14 +347,14 @@ export function GalleryPageContent() {
               {/* Image Details Bar */}
               <div className="p-6 bg-slate-950 border-t border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-bold uppercase tracking-wider mb-1">
+                  <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/10 text-white text-[10px] font-bold uppercase tracking-wider mb-1">
                     {filteredItems[selectedImageIndex].tag}
                   </div>
                   <h3 className="text-base sm:text-lg font-bold text-white">
                     {filteredItems[selectedImageIndex].title}
                   </h3>
                   <p className="text-xs text-slate-400 mt-1 flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                    <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                     <span>{filteredItems[selectedImageIndex].location}</span>
                   </p>
                 </div>
@@ -366,7 +366,7 @@ export function GalleryPageContent() {
                   <Link
                     to="/free-quote"
                     onClick={closeLightbox}
-                    className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition shadow-sm"
+                    className="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-black text-xs font-extrabold transition shadow-sm"
                   >
                     {t("Request Estimate", "Solicitar Estimación")}
                   </Link>

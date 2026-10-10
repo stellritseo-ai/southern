@@ -28,8 +28,8 @@ export function PageHeader({
 
       {/* Ambient glow blobs */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/3 left-1/4 h-72 w-72 rounded-full bg-[#F59E0B]/10 blur-3xl" />
-        <div className="absolute top-1/4 right-1/4 h-56 w-56 rounded-full bg-[#FBBF24]/10 blur-3xl" />
+        <div className="absolute top-1/3 left-1/4 h-72 w-72 rounded-full bg-white/[0.03] blur-3xl" />
+        <div className="absolute top-1/4 right-1/4 h-56 w-56 rounded-full bg-white/[0.02] blur-3xl" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-48 w-96 rounded-full bg-slate-700/20 blur-3xl" />
       </div>
 
@@ -38,7 +38,7 @@ export function PageHeader({
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 opacity-[0.03]"
         style={{
-          backgroundImage: "radial-gradient(circle, #FFD54F 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
@@ -50,8 +50,8 @@ export function PageHeader({
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           {eyebrow && (
-            <div className="inline-flex items-center gap-2 bg-white/8 border border-[#FFD54F]/20 backdrop-blur-sm rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest text-[#FFD54F] mb-7">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD54F] animate-pulse" />
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest text-white mb-7">
+              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               {eyebrow}
             </div>
           )}
@@ -75,7 +75,7 @@ export function PageHeader({
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="mt-12 mx-auto h-px w-32 bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent"
+          className="mt-12 mx-auto h-px w-32 bg-gradient-to-r from-transparent via-white/30 to-transparent"
         />
       </div>
     </section>

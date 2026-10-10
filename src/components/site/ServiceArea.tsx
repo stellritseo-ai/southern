@@ -39,7 +39,7 @@ export function ServiceArea() {
       {/* Background decorations */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:26px_26px] opacity-60" />
-        <div className="absolute -top-40 left-0 w-[500px] h-[500px] rounded-full bg-amber-500/5 blur-[120px]" />
+        <div className="absolute -top-40 left-0 w-[500px] h-[500px] rounded-full bg-white/[0.02] blur-[120px]" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-slate-500/5 blur-[100px]" />
       </div>
 
@@ -55,7 +55,7 @@ export function ServiceArea() {
             className="text-left space-y-6"
           >
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-700 rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-300 text-slate-800 rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest shadow-sm">
               <Navigation className="w-3.5 h-3.5" />
               {t("Service Area", "Área de Servicio")}
             </div>
@@ -81,7 +81,7 @@ export function ServiceArea() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
               {statCards.map((s) => (
                 <div key={s.label} className="flex flex-col items-center p-2.5 sm:p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
-                  <span className="text-amber-700 font-black text-[17px] sm:text-[18px] leading-tight">{s.value}</span>
+                  <span className="text-slate-900 font-black text-[17px] sm:text-[18px] leading-tight">{s.value}</span>
                   <span className="text-slate-500 text-[9px] font-bold uppercase tracking-wide mt-0.5 leading-tight">{s.label}</span>
                 </div>
               ))}
@@ -99,16 +99,16 @@ export function ServiceArea() {
                     whileHover={{ scale: 1.04, y: -1 }}
                     transition={{ duration: 0.15 }}
                     className={`flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider rounded-xl py-1.5 px-3 cursor-pointer border transition-all duration-200 ${isActive
-                        ? "bg-amber-600 border-amber-600 text-white shadow-md"
+                        ? "bg-slate-950 border-slate-950 text-white shadow-md"
                         : a.primary
-                          ? "bg-amber-50 border-amber-300 text-amber-800"
-                          : "text-slate-600 bg-slate-50 border-slate-200 hover:bg-amber-50 hover:border-amber-300 hover:text-amber-800"
+                          ? "bg-slate-100 border-slate-300 text-slate-900"
+                          : "text-slate-600 bg-slate-50 border-slate-200 hover:bg-slate-100 hover:border-slate-400 hover:text-slate-900"
                       }`}
                   >
                     <MapPin className="h-3 w-3 shrink-0" />
                     {a.name}
                     {a.primary && !isActive && (
-                      <span className="ml-0.5 text-[8px] font-black bg-amber-600 text-white px-1.5 py-0.5 rounded-full">HQ</span>
+                      <span className="ml-0.5 text-[8px] font-black bg-black text-white px-1.5 py-0.5 rounded-full">HQ</span>
                     )}
                   </motion.div>
                 );
@@ -119,8 +119,8 @@ export function ServiceArea() {
             <div className="relative group max-w-lg w-full">
               <div className="relative flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
                 <div className="flex items-start gap-3">
-                  <div className="shrink-0 w-8 h-8 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center mt-0.5">
-                    <CheckCircle2 className="w-4 h-4 text-amber-600" />
+                  <div className="shrink-0 w-8 h-8 rounded-xl bg-slate-100 border border-slate-300 flex items-center justify-center mt-0.5">
+                    <CheckCircle2 className="w-4 h-4 text-black" />
                   </div>
                   <p className="text-[12.5px] font-bold text-slate-700 leading-relaxed">
                     {t(
@@ -131,7 +131,7 @@ export function ServiceArea() {
                 </div>
                 <a
                   href={`tel:${SITE_CONFIG.phoneRaw}`}
-                  className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white border border-amber-500/40 text-[10px] font-black uppercase tracking-wider px-3.5 py-2.5 sm:py-2 rounded-xl transition-all duration-200 hover:scale-[1.04] shadow-md cursor-pointer"
+                  className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-1.5 bg-slate-950 hover:bg-slate-900 text-white border border-slate-800 text-[10px] font-black uppercase tracking-wider px-3.5 py-2.5 sm:py-2 rounded-xl transition-all duration-200 hover:scale-[1.04] shadow-md cursor-pointer"
                 >
                   <Phone className="h-3.5 w-3.5" />
                   {t("Call", "Llamar")}
@@ -166,9 +166,9 @@ export function ServiceArea() {
 
               {/* Concentric radius rings */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[3]">
-                <div className="w-[85%] h-[85%] rounded-full border border-amber-500/20" />
-                <div className="w-[55%] h-[55%] rounded-full border border-amber-500/25" />
-                <div className="w-[28%] h-[28%] rounded-full border border-amber-500/35" />
+                <div className="w-[85%] h-[85%] rounded-full border border-white/15" />
+                <div className="w-[55%] h-[55%] rounded-full border border-white/20" />
+                <div className="w-[28%] h-[28%] rounded-full border border-white/30" />
               </div>
 
               {/* Pins */}
@@ -191,15 +191,15 @@ export function ServiceArea() {
                   Nashville HQ · 100-Mile Radius
                 </div>
                 <div className="font-bold text-[13px] text-white mt-0.5 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-amber-400" />
+                  <span className="w-2 h-2 rounded-full bg-white" />
                   Middle Tennessee Coverage
                 </div>
               </div>
 
               {/* Live badge — top right */}
               <div className="absolute top-4 right-4 bg-slate-950/85 border border-slate-700 backdrop-blur-md text-white rounded-full px-3 py-1.5 select-none z-20 flex items-center gap-1.5 shadow-md">
-                <span className="flex h-2 w-2 rounded-full bg-amber-400" />
-                <span className="text-[10px] font-bold uppercase tracking-wider text-amber-300">
+                <span className="flex h-2 w-2 rounded-full bg-white" />
+                <span className="text-[10px] font-bold uppercase tracking-wider text-white">
                   Regional Construction Crews
                 </span>
               </div>
@@ -240,26 +240,26 @@ function Pin({
       <div className="flex flex-col items-center gap-1.5">
         {/* Hotspot */}
         <div className="relative flex h-8 w-8 items-center justify-center">
-          <span className={`animate-ping absolute inline-flex rounded-full opacity-60 transition-all duration-300 ${active ? "h-7 w-7 bg-amber-400 scale-125" : primary ? "h-6 w-6 bg-amber-400" : "h-5 w-5 bg-amber-400"
+          <span className={`animate-ping absolute inline-flex rounded-full opacity-60 transition-all duration-300 ${active ? "h-7 w-7 bg-white scale-125" : primary ? "h-6 w-6 bg-white" : "h-5 w-5 bg-white"
             }`} />
           <span className={`relative inline-flex rounded-full items-center justify-center shadow-lg transition-all duration-300 ${primary ? "h-5 w-5" : "h-4 w-4"
             } ${active
-              ? "bg-amber-500 scale-125 shadow-[0_0_14px_rgba(217,119,6,0.8)]"
+              ? "bg-white scale-125 shadow-[0_0_14px_rgba(255,255,255,0.8)]"
               : primary
-                ? "bg-amber-500 shadow-[0_0_10px_rgba(217,119,6,0.6)]"
-                : "bg-gradient-to-br from-amber-500 to-amber-700"
+                ? "bg-white shadow-[0_0_10px_rgba(255,255,255,0.6)]"
+                : "bg-white"
             }`}>
-            <span className={`rounded-full bg-white ${primary ? "h-2 w-2" : "h-1.5 w-1.5"}`} />
+            <span className={`rounded-full bg-black ${primary ? "h-2 w-2" : "h-1.5 w-1.5"}`} />
           </span>
         </div>
 
         {/* Label */}
         <span className={`px-2.5 py-0.5 rounded-lg backdrop-blur-sm border transition-all duration-300 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap shadow-sm ${primary || active ? "inline-block" : "hidden sm:inline-block"
           } ${active
-            ? "bg-amber-600 border-amber-500 text-white scale-105 shadow-md"
+            ? "bg-white border-white text-black scale-105 shadow-md"
             : primary
-              ? "bg-amber-600/90 border-amber-400 text-white"
-              : "bg-[#0c1324]/85 border-slate-700/80 text-white group-hover:bg-amber-600 group-hover:border-amber-400 group-hover:text-white"
+              ? "bg-white/95 border-white text-black"
+              : "bg-[#0c1324]/85 border-slate-700/80 text-white group-hover:bg-white group-hover:border-white group-hover:text-black"
           }`}>
           {label}
         </span>

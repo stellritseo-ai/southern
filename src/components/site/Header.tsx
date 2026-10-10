@@ -178,7 +178,7 @@ export function Header() {
           <div className="flex items-center gap-3 sm:gap-5 text-slate-300">
             {/* Radius Badge */}
             <div className="flex items-center gap-1.5 font-medium tracking-tight">
-              <MapPin className="h-3 w-3 text-amber-400 shrink-0" />
+              <MapPin className="h-3 w-3 text-white shrink-0" />
               <span className="hidden sm:inline text-slate-300 text-[11px] font-semibold">
                 {SITE_CONFIG.serviceRadius}
               </span>
@@ -206,7 +206,7 @@ export function Header() {
           <div className="flex items-center gap-4 sm:gap-5">
             {/* Accreditation highlight */}
             <div className="hidden xl:flex items-center gap-1.5 text-[11px] font-semibold text-slate-300">
-              <ShieldCheck className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+              <ShieldCheck className="h-3.5 w-3.5 text-white shrink-0" />
               <span>
                 {t("FEMA Compliant Engineering", "Ingeniería Conforme a FEMA")}
               </span>
@@ -219,7 +219,7 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Southern Storm Shelters on Facebook"
-                className="w-6 h-6 rounded-md bg-white/[0.06] hover:bg-amber-500/20 border border-white/10 hover:border-amber-400/40 flex items-center justify-center text-slate-300 hover:text-amber-400 transition-all duration-200"
+                className="w-6 h-6 rounded-md bg-white/[0.06] hover:bg-white/15 border border-white/10 hover:border-white/30 flex items-center justify-center text-slate-300 hover:text-white transition-all duration-200"
               >
                 <FacebookIcon className="w-3.5 h-3.5" />
               </a>
@@ -228,7 +228,7 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Southern Storm Shelters on Instagram"
-                className="w-6 h-6 rounded-md bg-white/[0.06] hover:bg-amber-500/20 border border-white/10 hover:border-amber-400/40 flex items-center justify-center text-slate-300 hover:text-amber-400 transition-all duration-200"
+                className="w-6 h-6 rounded-md bg-white/[0.06] hover:bg-white/15 border border-white/10 hover:border-white/30 flex items-center justify-center text-slate-300 hover:text-white transition-all duration-200"
               >
                 <InstagramIcon className="w-3.5 h-3.5" />
               </a>
@@ -237,7 +237,7 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Southern Storm Shelters on Google"
-                className="w-6 h-6 rounded-md bg-white/[0.06] hover:bg-amber-500/20 border border-white/10 hover:border-amber-400/40 flex items-center justify-center text-slate-300 hover:text-amber-400 transition-all duration-200"
+                className="w-6 h-6 rounded-md bg-white/[0.06] hover:bg-white/15 border border-white/10 hover:border-white/30 flex items-center justify-center text-slate-300 hover:text-white transition-all duration-200"
               >
                 <GoogleIcon className="w-3.5 h-3.5" />
               </a>
@@ -258,8 +258,8 @@ export function Header() {
             : "py-3.5 sm:py-4 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.6)]",
         )}
       >
-        {/* Subtle ambient amber top highlight glow */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent pointer-events-none" />
+        {/* Subtle ambient silver top highlight glow */}
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           {/* Brand Logo */}
@@ -267,7 +267,7 @@ export function Header() {
             <Link
               to="/"
               aria-label="Southern Storm Shelters - Home"
-              className="group flex items-center outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg p-0.5"
+              className="group flex items-center outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg p-0.5"
             >
               <img
                 src={logoImg}
@@ -305,7 +305,7 @@ export function Header() {
                       className={cn(
                         "relative flex items-center gap-1.5 px-3 lg:px-3.5 py-2 rounded-xl text-[12.5px] font-bold uppercase tracking-[0.06em] transition-all duration-200 cursor-pointer font-display",
                         active
-                          ? "text-amber-400 bg-amber-500/[0.08] shadow-[inset_0_0_0_1px_rgba(245,158,11,0.25)]"
+                          ? "text-white bg-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)]"
                           : "text-slate-300 hover:text-white hover:bg-white/[0.06]",
                       )}
                       style={{ fontWeight: 700 }}
@@ -313,12 +313,12 @@ export function Header() {
                       <span>{item.label}</span>
                       <ChevronDown
                         className={cn(
-                          "h-3.5 w-3.5 text-amber-400/80 transition-transform duration-300",
-                          desktopDropdownOpen && "rotate-180 text-amber-400",
+                          "h-3.5 w-3.5 text-zinc-400 transition-transform duration-300",
+                          desktopDropdownOpen && "rotate-180 text-white",
                         )}
                       />
                       {active && (
-                        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_#f59e0b]" />
+                        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
                       )}
                     </Link>
 
@@ -335,7 +335,7 @@ export function Header() {
                         {/* Header Bar */}
                         <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 mb-4">
                           <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 rounded-md bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                            <div className="w-6 h-6 rounded-md bg-white/10 border border-white/20 flex items-center justify-center text-white">
                               <Shield className="w-3.5 h-3.5" />
                             </div>
                             <span className="text-[11px] font-black uppercase tracking-widest text-slate-200">
@@ -344,13 +344,13 @@ export function Header() {
                                 "Sistemas de Refugios",
                               )}
                             </span>
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-[9px] font-extrabold uppercase tracking-wider text-amber-300">
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-[9px] font-extrabold uppercase tracking-wider text-white">
                               FEMA 320/361
                             </span>
                           </div>
                           <Link
                             to="/services"
-                            className="group/link flex items-center gap-1 text-[11px] font-extrabold text-amber-400 hover:text-amber-300 uppercase tracking-wider transition-colors"
+                            className="group/link flex items-center gap-1 text-[11px] font-extrabold text-white hover:text-zinc-300 uppercase tracking-wider transition-colors"
                           >
                             <span>{t("All Services", "Ver Todos")}</span>
                             <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
@@ -365,19 +365,19 @@ export function Header() {
                               <Link
                                 key={srv.to}
                                 to={srv.to}
-                                className="group/item flex flex-col justify-between rounded-xl p-4 bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08] hover:border-amber-500/50 transition-all duration-200 cursor-pointer relative overflow-hidden"
+                                className="group/item flex flex-col justify-between rounded-xl p-4 bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08] hover:border-white/30 transition-all duration-200 cursor-pointer relative overflow-hidden"
                               >
                                 <div>
                                   {/* Card Header */}
                                   <div className="flex items-center justify-between gap-2 mb-2.5">
-                                    <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 group-hover/item:bg-amber-500 group-hover/item:text-slate-950 transition-all duration-200 shadow-sm">
+                                    <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white shrink-0 group-hover/item:bg-white group-hover/item:text-black transition-all duration-200 shadow-sm">
                                       <IconComponent className="h-4.5 w-4.5" />
                                     </div>
                                     <span
                                       className={cn(
                                         "text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md",
                                         srv.tagHighlight
-                                          ? "bg-amber-500/20 text-amber-300 border border-amber-500/40"
+                                          ? "bg-white/15 text-white border border-white/30"
                                           : "bg-white/10 text-slate-300 border border-white/15",
                                       )}
                                     >
@@ -386,7 +386,7 @@ export function Header() {
                                   </div>
 
                                   {/* Title & Description */}
-                                  <h4 className="text-[13px] font-black text-white group-hover/item:text-amber-400 transition-colors uppercase font-display leading-snug mb-1">
+                                  <h4 className="text-[13px] font-black text-white group-hover/item:text-zinc-200 transition-colors uppercase font-display leading-snug mb-1">
                                     {srv.l}
                                   </h4>
                                   <p className="text-[11px] text-slate-400 leading-relaxed mb-3 line-clamp-2">
@@ -401,7 +401,7 @@ export function Header() {
                                       key={i}
                                       className="flex items-center gap-1 text-slate-300"
                                     >
-                                      <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
+                                      <CheckCircle2 className="w-3 h-3 text-white shrink-0" />
                                       {feat}
                                     </span>
                                   ))}
@@ -412,9 +412,9 @@ export function Header() {
                         </div>
 
                         {/* Dropdown Bottom Banner CTA */}
-                        <div className="rounded-xl bg-gradient-to-r from-amber-500/15 via-amber-500/10 to-transparent border border-amber-500/30 p-3.5 flex items-center justify-between gap-3">
+                        <div className="rounded-xl bg-gradient-to-r from-white/[0.08] via-white/[0.04] to-transparent border border-white/15 p-3.5 flex items-center justify-between gap-3">
                           <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+                            <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white shrink-0">
                               <Calendar className="w-4 h-4" />
                             </div>
                             <div>
@@ -435,7 +435,7 @@ export function Header() {
 
                           <a
                             href={`tel:${SITE_CONFIG.phoneRaw}`}
-                            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider transition-colors shrink-0 shadow-sm"
+                            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white hover:bg-neutral-200 text-black text-xs font-black uppercase tracking-wider transition-colors shrink-0 shadow-sm"
                           >
                             <Phone className="w-3.5 h-3.5 fill-current" />
                             <span>{SITE_CONFIG.phone}</span>
@@ -454,14 +454,14 @@ export function Header() {
                   className={cn(
                     "relative px-3 lg:px-3.5 py-2 rounded-xl text-[12.5px] font-bold uppercase tracking-[0.06em] transition-all duration-200 cursor-pointer font-display",
                     active
-                      ? "text-amber-400 bg-amber-500/[0.08] shadow-[inset_0_0_0_1px_rgba(245,158,11,0.25)]"
+                      ? "text-white bg-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)]"
                       : "text-slate-300 hover:text-white hover:bg-white/[0.06]",
                   )}
                   style={{ fontWeight: 700 }}
                 >
                   {item.label}
                   {active && (
-                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_#f59e0b]" />
+                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
                   )}
                 </Link>
               );
@@ -472,19 +472,19 @@ export function Header() {
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
 
 
-            {/* High-Conversion Primary Phone CTA Button */}
+            {/* High-Conversion Primary Phone CTA Button - Premium Monochrome */}
             <a
               href={`tel:${SITE_CONFIG.phoneRaw}`}
               aria-label={`Call Southern Storm Shelters at ${SITE_CONFIG.phone}`}
-              className="group/call relative inline-flex items-center gap-2 px-3.5 sm:px-4 lg:px-4.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider shadow-[0_4px_16px_rgba(217,119,6,0.35)] hover:shadow-[0_6px_24px_rgba(217,119,6,0.5)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              className="group/call relative inline-flex items-center gap-2 px-3.5 sm:px-4 lg:px-4.5 py-2 rounded-xl bg-white hover:bg-neutral-100 text-black font-black text-xs uppercase tracking-wider shadow-[0_4px_16px_rgba(255,255,255,0.18)] hover:shadow-[0_6px_24px_rgba(255,255,255,0.3)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
             >
               <span className="flex h-5 w-5 items-center justify-center rounded-lg bg-black/10 group-hover/call:rotate-12 transition-transform duration-200">
-                <Phone className="h-3.5 w-3.5 fill-current shrink-0" />
+                <Phone className="h-3.5 w-3.5 fill-current shrink-0 text-black" />
               </span>
-              <span className="hidden lg:inline font-bold tracking-tight">
+              <span className="hidden lg:inline font-bold tracking-tight text-black">
                 {SITE_CONFIG.phone}
               </span>
-              <span className="inline lg:hidden font-bold">
+              <span className="inline lg:hidden font-bold text-black">
                 {t("Call", "Llamar")}
               </span>
             </a>
@@ -500,9 +500,9 @@ export function Header() {
               className="md:hidden flex items-center justify-center h-9 w-9 rounded-xl border border-white/15 bg-white/[0.08] text-white hover:bg-white/[0.15] transition-all active:scale-95 cursor-pointer"
             >
               {mobileOpen ? (
-                <X className="h-5 w-5 text-amber-400" />
+                <X className="h-5 w-5 text-white" />
               ) : (
-                <Menu className="h-5 w-5" />
+                <Menu className="h-5 w-5 text-white" />
               )}
             </button>
           </div>
@@ -524,7 +524,7 @@ export function Header() {
             to="/"
             onClick={() => setMobileOpen(false)}
             aria-label="Southern Storm Shelters - Home"
-            className="flex items-center outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg p-0.5"
+            className="flex items-center outline-none focus-visible:ring-2 focus-visible:ring-black rounded-lg p-0.5"
           >
             <img
               src={logoImg}
@@ -557,7 +557,7 @@ export function Header() {
                 {t("Nashville Dispatch Team", "Equipo de Despacho")}
               </span>
             </div>
-            <span className="text-[11px] font-extrabold text-amber-700 bg-amber-500/10 px-2.5 py-0.5 rounded-md border border-amber-500/20">
+            <span className="text-[11px] font-extrabold text-slate-900 bg-slate-100 px-2.5 py-0.5 rounded-md border border-slate-300">
               {t(SITE_CONFIG.operatingHours.shortBadge, "Lun-Sáb: 8AM-5PM")}
             </span>
           </div>
@@ -576,7 +576,7 @@ export function Header() {
                       className={cn(
                         "flex items-center justify-between rounded-xl px-4 py-3 transition-colors",
                         active
-                          ? "bg-amber-500/10 text-amber-700 border-l-4 border-amber-500"
+                          ? "bg-slate-900 text-white border-l-4 border-black"
                           : "text-slate-800 hover:bg-slate-50",
                       )}
                     >
@@ -594,7 +594,7 @@ export function Header() {
                       <button
                         type="button"
                         onClick={() => setMobileServicesOpen((v) => !v)}
-                        className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-amber-600 transition-colors cursor-pointer border border-slate-200"
+                        className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 transition-colors cursor-pointer border border-slate-200"
                         aria-label="Toggle shelters sub-menu"
                       >
                         <ChevronDown
@@ -607,7 +607,7 @@ export function Header() {
                     </div>
 
                     {mobileServicesOpen && (
-                      <div className="ml-2 pl-3 border-l-2 border-amber-500/40 space-y-2.5 py-2 animate-in slide-in-from-top-2 duration-200">
+                      <div className="ml-2 pl-3 border-l-2 border-slate-300 space-y-2.5 py-2 animate-in slide-in-from-top-2 duration-200">
                         {serviceLinks.map((srv) => {
                           const IconComp = srv.icon;
                           return (
@@ -615,9 +615,9 @@ export function Header() {
                               key={srv.to}
                               to={srv.to}
                               onClick={() => setMobileOpen(false)}
-                              className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 hover:bg-amber-50/60 border border-slate-200 hover:border-amber-400/50 transition-colors"
+                              className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-slate-300 transition-colors"
                             >
-                              <div className="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-600 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5">
+                              <div className="w-8 h-8 rounded-lg bg-slate-900 text-white border border-slate-800 flex items-center justify-center shrink-0 mt-0.5">
                                 <IconComp className="h-4 w-4" />
                               </div>
                               <div className="min-w-0 flex-1">
@@ -648,8 +648,8 @@ export function Header() {
                   className={cn(
                     "flex items-center justify-between rounded-xl px-4 py-3 text-[14px] font-bold uppercase tracking-wider font-display transition-colors cursor-pointer",
                     active
-                      ? "bg-amber-500/10 text-amber-700 border-l-4 border-amber-500"
-                      : "text-slate-800 hover:text-amber-600 hover:bg-slate-50",
+                      ? "bg-slate-900 text-white border-l-4 border-black"
+                      : "text-slate-800 hover:text-black hover:bg-slate-50",
                   )}
                   style={{ fontWeight: 700 }}
                 >
@@ -665,7 +665,7 @@ export function Header() {
             {/* Call Button */}
             <a
               href={`tel:${SITE_CONFIG.phoneRaw}`}
-              className="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 py-3.5 text-sm font-black uppercase tracking-wider shadow-md shadow-amber-500/25 transition-all active:scale-[0.98]"
+              className="flex items-center justify-center gap-3 rounded-xl bg-black hover:bg-neutral-800 text-white py-3.5 text-sm font-black uppercase tracking-wider shadow-md transition-all active:scale-[0.98]"
             >
               <Phone className="h-4 w-4 fill-current shrink-0" />
               <span>
@@ -676,10 +676,10 @@ export function Header() {
             {/* Email & Location Card */}
             <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs text-slate-600">
               <div className="flex items-center gap-2 truncate">
-                <Mail className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                <Mail className="w-3.5 h-3.5 text-slate-900 shrink-0" />
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
-                  className="hover:text-amber-700 font-semibold transition-colors truncate text-slate-800"
+                  className="hover:text-black font-semibold transition-colors truncate text-slate-800"
                 >
                   {SITE_CONFIG.email}
                 </a>
@@ -699,7 +699,7 @@ export function Header() {
                   className={cn(
                     "flex-1 py-2 rounded-lg text-xs font-black uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-1.5",
                     language === lang
-                      ? "bg-amber-500 text-slate-950 shadow-sm"
+                      ? "bg-black text-white shadow-sm"
                       : "text-slate-600 hover:text-slate-900",
                   )}
                 >

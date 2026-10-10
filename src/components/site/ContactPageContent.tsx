@@ -289,17 +289,17 @@ export function ContactPageContent() {
   ];
 
   return (
-    <div className="bg-white text-slate-900 overflow-hidden selection:bg-amber-600 selection:text-white">
+    <div className="bg-white text-slate-900 overflow-hidden selection:bg-black selection:text-white">
 
       {/* ── SECTION 1: GET IN TOUCH CHANNELS ───────────────────────────── */}
       <section className="relative py-16 sm:py-20 lg:py-24 border-b border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-50">
-        <div aria-hidden className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div aria-hidden className="absolute top-0 right-1/4 w-96 h-96 bg-black/[0.02] rounded-full blur-3xl pointer-events-none" />
         <div aria-hidden className="absolute bottom-0 left-10 w-96 h-96 bg-slate-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-4">
-              <Phone className="w-3.5 h-3.5 text-amber-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-100 text-slate-900 text-xs font-bold uppercase tracking-widest mb-4">
+              <Phone className="w-3.5 h-3.5 text-slate-900" />
               <span>{t("Get in Touch", "Póngase en Contacto")}</span>
             </div>
 
@@ -321,21 +321,21 @@ export function ContactPageContent() {
               return (
                 <div
                   key={ch.title}
-                  className="rounded-3xl bg-white border border-slate-200 p-7 flex flex-col justify-between hover:border-amber-500/40 hover:shadow-xl transition-all duration-300 shadow-xs group"
+                  className="rounded-3xl bg-white border border-slate-200 p-7 flex flex-col justify-between hover:border-black/30 hover:shadow-xl transition-all duration-300 shadow-xs group"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mb-5 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                    <div className="w-12 h-12 rounded-2xl bg-slate-100 border border-slate-200 text-slate-900 flex items-center justify-center mb-5 group-hover:bg-black group-hover:text-white transition-colors">
                       <Icon className="w-6 h-6" />
                     </div>
 
-                    <div className="text-[11px] font-bold text-amber-700 uppercase tracking-wider mb-1">
+                    <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
                       {ch.title}
                     </div>
 
                     {ch.href ? (
                       <a
                         href={ch.href}
-                        className="text-lg font-bold text-slate-900 hover:text-amber-700 transition block mb-2"
+                        className="text-lg font-bold text-slate-900 hover:text-black transition block mb-2"
                       >
                         {ch.value}
                       </a>
@@ -365,8 +365,8 @@ export function ContactPageContent() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
 
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-3">
-              <Calendar className="w-3.5 h-3.5 text-amber-700" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-100 text-slate-900 text-xs font-bold uppercase tracking-widest mb-3">
+              <Calendar className="w-3.5 h-3.5 text-slate-900" />
               <span>{t("24-Hour Turnaround", "Respuesta en 24 Horas")}</span>
             </div>
             <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-slate-900 tracking-tight leading-[1.22]">
@@ -410,7 +410,7 @@ export function ContactPageContent() {
                   </Button>
                   <a
                     href={`tel:${SITE_CONFIG.phoneRaw}`}
-                    className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-slate-950 font-bold px-6 py-2.5 rounded-xl transition shadow-lg shadow-amber-600/20 text-sm"
+                    className="inline-flex items-center gap-2 bg-black hover:bg-zinc-800 text-white font-bold px-6 py-2.5 rounded-xl transition shadow-md shadow-black/20 text-sm"
                   >
                     <Phone className="w-4 h-4" />
                     <span>{t(`Call ${SITE_CONFIG.phone}`, `Llamar al ${SITE_CONFIG.phone}`)}</span>
@@ -423,7 +423,7 @@ export function ContactPageContent() {
                 {/* 1. Contact Information */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                    <span className="w-7 h-7 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">
+                    <span className="w-7 h-7 rounded-full bg-black text-white font-bold flex items-center justify-center text-xs">
                       1
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900">
@@ -440,7 +440,7 @@ export function ContactPageContent() {
                         id="fullName"
                         required
                         placeholder={t("e.g. Michael Davis", "ej. Miguel Torres")}
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-black focus:ring-black/10 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -453,7 +453,7 @@ export function ContactPageContent() {
                         type="tel"
                         required
                         placeholder="(615) 000-0000"
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-black focus:ring-black/10 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -466,7 +466,7 @@ export function ContactPageContent() {
                         type="email"
                         required
                         placeholder="michael@example.com"
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-black focus:ring-black/10 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -483,7 +483,7 @@ export function ContactPageContent() {
                               key={method}
                               onClick={() => setPreferredContact(method)}
                               className={`py-2 px-1 text-center rounded-xl border text-xs font-bold transition cursor-pointer ${isSelected
-                                  ? "bg-amber-600 text-white border-amber-600 shadow-sm"
+                                  ? "bg-black text-white border-black shadow-sm"
                                   : "bg-white text-slate-700 border-slate-300 hover:border-slate-400"
                                 }`}
                             >
@@ -502,7 +502,7 @@ export function ContactPageContent() {
                 {/* 2. Property Information */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                    <span className="w-7 h-7 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">
+                    <span className="w-7 h-7 rounded-full bg-black text-white font-bold flex items-center justify-center text-xs">
                       2
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900">
@@ -518,7 +518,7 @@ export function ContactPageContent() {
                       <Input
                         id="propertyAddress"
                         placeholder={t("123 Street Name", "Calle y Número")}
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-black focus:ring-black/10 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -529,7 +529,7 @@ export function ContactPageContent() {
                       <Input
                         id="city"
                         placeholder="Franklin"
-                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
+                        className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-black focus:ring-black/10 h-11 text-sm rounded-xl"
                       />
                     </div>
 
@@ -541,7 +541,7 @@ export function ContactPageContent() {
                         <Input
                           id="state"
                           defaultValue="TN"
-                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl text-center font-bold"
+                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-black focus:ring-black/10 h-11 text-sm rounded-xl text-center font-bold"
                         />
                       </div>
                       <div>
@@ -551,7 +551,7 @@ export function ContactPageContent() {
                         <Input
                           id="zipCode"
                           placeholder="37067"
-                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-amber-600 focus:ring-amber-600 h-11 text-sm rounded-xl"
+                          className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-black focus:ring-black/10 h-11 text-sm rounded-xl"
                         />
                       </div>
                     </div>
@@ -561,7 +561,7 @@ export function ContactPageContent() {
                 {/* 3. How Can We Help You? */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                    <span className="w-7 h-7 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">
+                    <span className="w-7 h-7 rounded-full bg-black text-white font-bold flex items-center justify-center text-xs">
                       3
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900">
@@ -590,7 +590,7 @@ export function ContactPageContent() {
                             key={reason}
                             onClick={() => setContactReason(reason)}
                             className={`p-3 rounded-xl border text-left text-xs font-bold transition cursor-pointer flex items-center justify-between ${isSelected
-                                ? "bg-amber-500/10 border-amber-600 text-amber-800 shadow-2xs"
+                                ? "bg-black text-white border-black shadow-2xs"
                                 : "bg-white text-slate-700 border-slate-300 hover:border-slate-400"
                               }`}
                           >
@@ -611,10 +611,10 @@ export function ContactPageContent() {
                               )}
                             </span>
                             <div
-                              className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ml-2 ${isSelected ? "border-amber-600 bg-amber-600" : "border-slate-300"
+                              className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ml-2 ${isSelected ? "border-white bg-white" : "border-slate-300"
                                 }`}
                             >
-                              {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                              {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-black" />}
                             </div>
                           </button>
                         );
@@ -631,7 +631,7 @@ export function ContactPageContent() {
                       <select
                         value={shelterType}
                         onChange={(e) => setShelterType(e.target.value)}
-                        className="mt-1.5 w-full h-11 rounded-xl bg-white border border-slate-300 px-3 text-xs font-semibold text-slate-900 focus:border-amber-600 focus:ring-amber-600"
+                        className="mt-1.5 w-full h-11 rounded-xl bg-white border border-slate-300 px-3 text-xs font-semibold text-slate-900 focus:border-black focus:ring-black/10"
                       >
                         <option value="In-Ground Prefabricated Storm Shelter">In-Ground Prefabricated Storm Shelter</option>
                         <option value="Custom Built Storm Shelter">Custom Built Storm Shelter</option>
@@ -648,7 +648,7 @@ export function ContactPageContent() {
                       <select
                         value={propertyType}
                         onChange={(e) => setPropertyType(e.target.value)}
-                        className="mt-1.5 w-full h-11 rounded-xl bg-white border border-slate-300 px-3 text-xs font-semibold text-slate-900 focus:border-amber-600 focus:ring-amber-600"
+                        className="mt-1.5 w-full h-11 rounded-xl bg-white border border-slate-300 px-3 text-xs font-semibold text-slate-900 focus:border-black focus:ring-black/10"
                       >
                         <option value="Residential – Existing Home">Residential – Existing Home</option>
                         <option value="Residential – New Construction">Residential – New Construction</option>
@@ -662,7 +662,7 @@ export function ContactPageContent() {
                 {/* 4. Your Message */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                    <span className="w-7 h-7 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">
+                    <span className="w-7 h-7 rounded-full bg-black text-white font-bold flex items-center justify-center text-xs">
                       4
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900">
@@ -681,7 +681,7 @@ export function ContactPageContent() {
                         "Please provide details about your property, timeline, specific questions, or how we can assist you...",
                         "Proporcione detalles sobre su propiedad, plazos o preguntas específicas..."
                       )}
-                      className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
+                      className="mt-1.5 bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs rounded-xl focus:border-black focus:ring-black/10"
                     />
                   </div>
 
@@ -699,7 +699,7 @@ export function ContactPageContent() {
                             key={src}
                             onClick={() => setReferralSource(src)}
                             className={`py-2 px-3.5 rounded-xl border text-xs font-bold transition cursor-pointer ${isSelected
-                                ? "bg-amber-500 text-slate-950 border-amber-500 font-extrabold shadow-sm"
+                                ? "bg-black text-white border-black font-extrabold shadow-sm"
                                 : "bg-white text-slate-700 border-slate-300 hover:border-slate-400"
                               }`}
                           >
@@ -724,7 +724,7 @@ export function ContactPageContent() {
                         value={otherReferral}
                         onChange={(e) => setOtherReferral(e.target.value)}
                         placeholder={t("Please specify...", "Por favor especifique...")}
-                        className="mt-2 bg-white border-slate-300 text-slate-900 text-xs rounded-xl h-10 focus:border-amber-600 focus:ring-amber-600"
+                        className="mt-2 bg-white border-slate-300 text-slate-900 text-xs rounded-xl h-10 focus:border-black focus:ring-black/10"
                       />
                     )}
                   </div>
@@ -735,7 +735,7 @@ export function ContactPageContent() {
                   <Button
                     type="submit"
                     disabled={submitting}
-                    className="w-full h-14 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-sm sm:text-base font-extrabold uppercase tracking-wider rounded-2xl shadow-lg shadow-amber-600/20 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                    className="w-full h-14 bg-black hover:bg-zinc-800 text-white text-sm sm:text-base font-extrabold uppercase tracking-wider rounded-2xl shadow-lg shadow-black/20 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
                   >
                     {submitting ? (
                       t("Sending Message...", "Enviando Mensaje...")
@@ -767,8 +767,8 @@ export function ContactPageContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-4">
-              <CheckCircle2 className="w-3.5 h-3.5 text-amber-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-100 text-slate-900 text-xs font-bold uppercase tracking-widest mb-4">
+              <CheckCircle2 className="w-3.5 h-3.5 text-slate-900" />
               <span>{t("Transparent Communication", "Comunicación Transparente")}</span>
             </div>
 
@@ -790,19 +790,19 @@ export function ContactPageContent() {
               return (
                 <div
                   key={st.step}
-                  className="rounded-3xl bg-white border border-slate-200 p-6 flex flex-col justify-between hover:border-amber-500/40 hover:shadow-lg transition-all duration-300 shadow-xs group"
+                  className="rounded-3xl bg-white border border-slate-200 p-6 flex flex-col justify-between hover:border-black/30 hover:shadow-lg transition-all duration-300 shadow-xs group"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-2xl font-black text-slate-300 group-hover:text-amber-600 transition-colors">
+                      <span className="text-2xl font-black text-slate-300 group-hover:text-black transition-colors">
                         {st.step}
                       </span>
-                      <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-900 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors">
                         <Icon className="w-5 h-5" />
                       </div>
                     </div>
 
-                    <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">
+                    <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-black transition-colors">
                       {st.title}
                     </h3>
 
@@ -823,8 +823,8 @@ export function ContactPageContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-4">
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-100 text-slate-900 text-xs font-bold uppercase tracking-widest mb-4">
+              <ShieldCheck className="w-3.5 h-3.5 text-slate-900" />
               <span>{t("Tennessee's Trusted Builders", "Constructores de Confianza en Tennessee")}</span>
             </div>
 
@@ -839,9 +839,9 @@ export function ContactPageContent() {
               return (
                 <div
                   key={item.title}
-                  className="rounded-3xl bg-slate-50/70 border border-slate-200 p-8 hover:border-amber-500/40 hover:shadow-xl transition-all duration-300 shadow-xs"
+                  className="rounded-3xl bg-slate-50/70 border border-slate-200 p-8 hover:border-black/30 hover:shadow-xl transition-all duration-300 shadow-xs"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mb-5">
+                  <div className="w-12 h-12 rounded-2xl bg-slate-100 border border-slate-200 text-slate-900 flex items-center justify-center mb-5">
                     <Icon className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
@@ -859,8 +859,8 @@ export function ContactPageContent() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
 
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-3">
-              <HelpCircle className="w-3.5 h-3.5 text-amber-700" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-100 text-slate-900 text-xs font-bold uppercase tracking-widest mb-3">
+              <HelpCircle className="w-3.5 h-3.5 text-slate-900" />
               <span>{t("Common Questions", "Preguntas Frecuentes")}</span>
             </div>
 
@@ -879,11 +879,11 @@ export function ContactPageContent() {
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-slate-900 hover:text-amber-700 transition cursor-pointer"
+                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-slate-900 hover:text-black transition cursor-pointer"
                   >
                     <span>{faq.q}</span>
                     <ChevronDown
-                      className={`w-5 h-5 text-amber-600 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-amber-700" : ""
+                      className={`w-5 h-5 text-slate-700 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-black" : ""
                         }`}
                     />
                   </button>
@@ -907,7 +907,7 @@ export function ContactPageContent() {
 
           <div className="rounded-3xl bg-slate-50 border border-slate-200 p-8 sm:p-12 shadow-md">
             <div className="text-center max-w-3xl mx-auto mb-10">
-              <span className="text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-50 px-3.5 py-1 rounded-full border border-amber-200">
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-900 bg-slate-100 px-3.5 py-1 rounded-full border border-slate-200">
                 {t("Contact Information Summary", "Resumen de Información de Contacto")}
               </span>
               <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold text-slate-900">
@@ -925,7 +925,7 @@ export function ContactPageContent() {
                   <tr className="hover:bg-slate-50/60 transition-colors">
                     <td className="p-4 font-bold text-slate-500 w-1/3 sm:w-1/4">{t("Phone", "Teléfono")}</td>
                     <td className="p-4 font-extrabold text-slate-900">
-                      <a href={`tel:${SITE_CONFIG.phoneRaw}`} className="text-amber-700 hover:underline">
+                      <a href={`tel:${SITE_CONFIG.phoneRaw}`} className="text-slate-900 hover:underline">
                         {SITE_CONFIG.phone}
                       </a>
                     </td>
@@ -933,7 +933,7 @@ export function ContactPageContent() {
                   <tr className="hover:bg-slate-50/60 transition-colors">
                     <td className="p-4 font-bold text-slate-500">{t("Email", "Correo Electrónico")}</td>
                     <td className="p-4 font-semibold text-slate-900">
-                      <a href={`mailto:${SITE_CONFIG.email}`} className="text-amber-700 hover:underline">
+                      <a href={`mailto:${SITE_CONFIG.email}`} className="text-slate-900 hover:underline">
                         {SITE_CONFIG.email}
                       </a>
                     </td>
@@ -967,8 +967,8 @@ export function ContactPageContent() {
             </div>
 
             {/* Ready to Get Started Callout */}
-            <div className="mt-12 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 text-white p-8 sm:p-10 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden">
-              <div aria-hidden className="absolute -right-10 -bottom-10 w-60 h-60 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="mt-12 rounded-2xl bg-gradient-to-r from-black to-zinc-900 text-white p-8 sm:p-10 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden">
+              <div aria-hidden className="absolute -right-10 -bottom-10 w-60 h-60 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
               <h4 className="text-xl sm:text-2xl font-extrabold text-white mb-3">
                 {t("Ready to Get Started?", "¿Listo Para Comenzar?")}
@@ -983,7 +983,7 @@ export function ContactPageContent() {
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <a
                   href={`tel:${SITE_CONFIG.phoneRaw}`}
-                  className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-slate-950 font-extrabold px-8 py-3.5 rounded-xl transition shadow-lg shadow-amber-600/30 text-sm sm:text-base"
+                  className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-black font-extrabold px-8 py-3.5 rounded-xl transition shadow-lg shadow-black/30 text-sm sm:text-base"
                 >
                   <Phone className="w-4 h-4" />
                   <span>{t(`Call ${SITE_CONFIG.phone}`, `Llamar al ${SITE_CONFIG.phone}`)}</span>

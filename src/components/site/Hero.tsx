@@ -132,17 +132,17 @@ export function Hero() {
           {/* ── HEADLINE & SOCIAL PROOF BLOCK ── */}
           <div className="max-w-4xl mb-8 sm:mb-10">
             {/* Eyebrow Status Ribbon */}
-            <div className="mt-8 sm:mt-16 lg:mt-[180px] inline-flex flex-wrap items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/10 backdrop-blur-md shadow-[0_0_20px_rgba(217,119,6,0.15)] mb-5 sm:mb-6">
+            <div className="mt-8 sm:mt-16 lg:mt-[180px] inline-flex flex-wrap items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/10 backdrop-blur-md shadow-[0_0_20px_rgba(0,0,0,0.4)] mb-5 sm:mb-6">
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className="w-3.5 h-3.5 fill-amber-400 text-amber-400"
+                    className="w-3.5 h-3.5 fill-white text-white"
                   />
                 ))}
               </div>
               <span className="h-3 w-px bg-white/20 hidden sm:block" />
-              <span className="text-amber-300 text-xs font-bold uppercase tracking-wider">
+              <span className="text-white text-xs font-bold uppercase tracking-wider">
                 {t(
                   "Nashville's #1 Underground Shelter Builders",
                   "Constructores #1 en Nashville",
@@ -155,7 +155,7 @@ export function Hero() {
               <span className="block text-[30px] xs:text-[34px] sm:text-[56px] leading-[1.08]">
                 {t("Engineered Shelters.", "Refugios Diseñados.")}
               </span>
-              <span className="block text-[30px] xs:text-[34px] sm:text-[56px] leading-[1.08] gradient-text-construction drop-shadow-[0_4px_20px_rgba(217,119,6,0.35)]">
+              <span className="block text-[30px] xs:text-[34px] sm:text-[56px] leading-[1.08] text-zinc-300 drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]">
                 {t("Built to Protect.", "Construidos para Proteger.")}
               </span>
             </h1>
@@ -188,7 +188,7 @@ export function Hero() {
                   key={idx}
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 bg-white/[0.04] border border-white/[0.08] px-3 py-1 rounded-lg backdrop-blur-sm"
                 >
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
                   {badge}
                 </span>
               ))}
@@ -225,8 +225,8 @@ export function Hero() {
 
               {submitted ? (
                 <div className="relative z-10 flex flex-col items-center justify-center py-12 sm:py-16 text-center gap-4 my-auto">
-                  <div className="w-16 h-16 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 shadow-[0_0_30px_rgba(217,119,6,0.3)]">
-                    <ShieldCheck className="w-8 h-8" />
+                  <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/25 flex items-center justify-center text-white shadow-[0_0_30px_rgba(255,255,255,0.15)]">
+                    <ShieldCheck className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-white font-black text-xl uppercase tracking-wider font-display">
                     {t("Estimate Request Received!", "¡Solicitud Recibida!")}
@@ -246,7 +246,7 @@ export function Hero() {
                     </span>
                     <a
                       href={`tel:${SITE_CONFIG.phoneRaw}`}
-                      className="inline-flex items-center gap-2 text-xs font-black text-amber-400 hover:text-amber-300 uppercase tracking-wider"
+                      className="inline-flex items-center gap-2 text-xs font-black text-white hover:text-zinc-200 uppercase tracking-wider"
                     >
                       <Phone className="w-3.5 h-3.5" />
                       {SITE_CONFIG.phone}
@@ -256,8 +256,8 @@ export function Hero() {
               ) : (
                 <div className="relative z-10 flex flex-col justify-between flex-1">
                   <div className="mb-5 sm:mb-6">
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.12] backdrop-blur-xl border border-white/25 text-[11px] font-bold uppercase tracking-wider text-amber-300 mb-3 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]">
-                      <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.12] backdrop-blur-xl border border-white/25 text-[11px] font-bold uppercase tracking-wider text-white mb-3 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]">
+                      <Sparkles className="w-3.5 h-3.5 text-white" />
                       <span>{t("Free On-Site Estimate", "Cotización Gratuita")}</span>
                     </div>
                     <h2 className="text-white font-black text-2xl sm:text-3xl uppercase tracking-tight font-display drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
@@ -275,7 +275,7 @@ export function Hero() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
                       {/* Full Name */}
                       <div className="relative group/field">
-                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-white/50 group-focus-within/field:text-amber-300 transition-colors">
+                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-white/50 group-focus-within/field:text-white transition-colors">
                           <User className="h-4 w-4" />
                         </div>
                         <input
@@ -283,13 +283,13 @@ export function Hero() {
                           type="text"
                           required
                           placeholder={t("Full Name *", "Nombre Completo *")}
-                          className="w-full bg-black/25 hover:bg-black/35 focus:bg-black/45 backdrop-blur-xl border border-white/[0.15] hover:border-white/25 focus:border-amber-400 rounded-2xl pl-10 pr-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/45 focus:outline-none focus:ring-4 focus:ring-amber-400/20 transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]"
+                          className="w-full bg-black/35 hover:bg-black/45 focus:bg-black/60 backdrop-blur-xl border border-white/[0.15] hover:border-white/25 focus:border-white rounded-2xl pl-10 pr-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/45 focus:outline-none focus:ring-4 focus:ring-white/20 transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]"
                         />
                       </div>
 
                       {/* Phone Number */}
                       <div className="relative group/field">
-                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-white/50 group-focus-within/field:text-amber-300 transition-colors">
+                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-white/50 group-focus-within/field:text-white transition-colors">
                           <Phone className="h-4 w-4" />
                         </div>
                         <input
@@ -300,14 +300,14 @@ export function Hero() {
                             "Phone Number *",
                             "Número de Teléfono *",
                           )}
-                          className="w-full bg-black/25 hover:bg-black/35 focus:bg-black/45 backdrop-blur-xl border border-white/[0.15] hover:border-white/25 focus:border-amber-400 rounded-2xl pl-10 pr-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/45 focus:outline-none focus:ring-4 focus:ring-amber-400/20 transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]"
+                          className="w-full bg-black/35 hover:bg-black/45 focus:bg-black/60 backdrop-blur-xl border border-white/[0.15] hover:border-white/25 focus:border-white rounded-2xl pl-10 pr-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/45 focus:outline-none focus:ring-4 focus:ring-white/20 transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]"
                         />
                       </div>
                     </div>
 
                     {/* Email Address */}
                     <div className="relative group/field">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-white/50 group-focus-within/field:text-amber-300 transition-colors">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-white/50 group-focus-within/field:text-white transition-colors">
                         <Mail className="h-4 w-4" />
                       </div>
                       <input
@@ -315,13 +315,13 @@ export function Hero() {
                         type="email"
                         required
                         placeholder={t("Email Address *", "Correo Electrónico *")}
-                        className="w-full bg-black/25 hover:bg-black/35 focus:bg-black/45 backdrop-blur-xl border border-white/[0.15] hover:border-white/25 focus:border-amber-400 rounded-2xl pl-10 pr-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/45 focus:outline-none focus:ring-4 focus:ring-amber-400/20 transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]"
+                        className="w-full bg-black/35 hover:bg-black/45 focus:bg-black/60 backdrop-blur-xl border border-white/[0.15] hover:border-white/25 focus:border-white rounded-2xl pl-10 pr-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/45 focus:outline-none focus:ring-4 focus:ring-white/20 transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]"
                       />
                     </div>
 
                     {/* Address / Location */}
                     <div className="relative group/field">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-white/50 group-focus-within/field:text-amber-300 transition-colors">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-white/50 group-focus-within/field:text-white transition-colors">
                         <MapPin className="h-4 w-4" />
                       </div>
                       <input
@@ -332,18 +332,17 @@ export function Hero() {
                           "Property Address / Nashville Area ZIP *",
                           "Dirección de Propiedad / ZIP *",
                         )}
-                        className="w-full bg-black/25 hover:bg-black/35 focus:bg-black/45 backdrop-blur-xl border border-white/[0.15] hover:border-white/25 focus:border-amber-400 rounded-2xl pl-10 pr-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/45 focus:outline-none focus:ring-4 focus:ring-amber-400/20 transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]"
+                        className="w-full bg-black/35 hover:bg-black/45 focus:bg-black/60 backdrop-blur-xl border border-white/[0.15] hover:border-white/25 focus:border-white rounded-2xl pl-10 pr-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-white/45 focus:outline-none focus:ring-4 focus:ring-white/20 transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]"
                       />
                     </div>
 
-                    {/* Submit Button */}
+                    {/* Submit Button - Crisp Luxury White Button */}
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="w-full group/btn relative inline-flex items-center justify-center gap-2 mt-2 bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600 hover:brightness-105 active:scale-[0.985] text-slate-950 font-black text-xs uppercase tracking-widest py-4 px-6 rounded-2xl shadow-[0_8px_25px_-5px_rgba(245,158,11,0.5),inset_0_1px_1.5px_rgba(255,255,255,0.7),inset_0_-1px_1px_rgba(0,0,0,0.2)] transition-all duration-200 disabled:opacity-60 cursor-pointer overflow-hidden"
+                      className="w-full group/btn relative inline-flex items-center justify-center gap-2 mt-2 bg-white hover:bg-neutral-100 active:scale-[0.985] text-black font-black text-xs uppercase tracking-widest py-4 px-6 rounded-2xl shadow-[0_8px_25px_-5px_rgba(255,255,255,0.25)] transition-all duration-200 disabled:opacity-60 cursor-pointer overflow-hidden"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent h-1/2 pointer-events-none rounded-t-2xl" />
-                      <span className="font-display font-black tracking-wider text-[13px] relative z-10">
+                      <span className="font-display font-black tracking-wider text-[13px] relative z-10 text-black">
                         {submitting
                           ? t("Submitting Request...", "Enviando...")
                           : t(
@@ -351,12 +350,12 @@ export function Hero() {
                             "Obtener Cotización Gratis",
                           )}
                       </span>
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform relative z-10" />
+                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform relative z-10 text-black" />
                     </button>
 
                     {/* Trust Micro-Footer */}
                     <div className="flex items-center justify-center gap-2 text-[11px] text-white/70 pt-1.5 font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
-                      <Lock className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <Lock className="w-3.5 h-3.5 text-white shrink-0" />
                       <span>
                         {t(
                           "100% Confidential • No high-pressure sales",
@@ -372,15 +371,15 @@ export function Hero() {
             {/* RIGHT: Process Highlights + Direct Line + Trust Cards (6 cols on large) */}
             <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-between gap-4 sm:gap-5">
               {/* Turnkey Engineering Process Box */}
-              <div className="bg-gradient-to-b from-[#0e1626]/95 via-[#090e18]/95 to-[#05080f]/98 backdrop-blur-md border border-white/[0.14] hover:border-white/[0.22] transition-colors rounded-3xl p-6 sm:p-7 shadow-[0_16px_40px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)] relative overflow-hidden group">
+              <div className="bg-gradient-to-b from-[#0e1626]/95 via-[#090e18]/95 to-[#05080f]/98 backdrop-blur-md border border-white/[0.14] hover:border-white/[0.25] transition-colors rounded-3xl p-6 sm:p-7 shadow-[0_16px_40px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)] relative overflow-hidden group">
                 {/* Top subtle highlight hairline */}
-                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent pointer-events-none" />
+                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
 
-                <div className="flex items-center gap-2.5 text-xs font-black uppercase tracking-wider text-amber-400 mb-3">
-                  <div className="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
-                    <HardHat className="w-4 h-4 text-amber-400" />
+                <div className="flex items-center gap-2.5 text-xs font-black uppercase tracking-wider text-white mb-3">
+                  <div className="w-8 h-8 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white shrink-0 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                    <HardHat className="w-4 h-4 text-white" />
                   </div>
-                  <span className="font-display font-bold text-sm tracking-wider">
+                  <span className="font-display font-bold text-sm tracking-wider text-white">
                     {t(
                       "Complete Turnkey Installation",
                       "Instalación Integral Llave en Mano",
@@ -396,7 +395,7 @@ export function Hero() {
 
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 text-xs font-black uppercase tracking-wider group/link transition-colors py-1"
+                  className="inline-flex items-center gap-2 text-white hover:text-zinc-300 text-xs font-black uppercase tracking-wider group/link transition-colors py-1"
                 >
                   <span>
                     {t(
@@ -412,21 +411,21 @@ export function Hero() {
               <a
                 href={`tel:${SITE_CONFIG.phoneRaw}`}
                 aria-label={`Call Southern Storm Shelters directly at ${SITE_CONFIG.phone}`}
-                className="group/call flex items-center justify-between gap-4 rounded-3xl p-5 sm:p-6 border border-amber-500/40 hover:border-amber-400 bg-gradient-to-r from-amber-500/15 via-[#0e1626]/95 to-[#070b14]/98 backdrop-blur-md shadow-[0_16px_40px_rgba(0,0,0,0.7),0_0_30px_rgba(245,158,11,0.1),inset_0_1px_0_rgba(255,255,255,0.1)] transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_40px_rgba(245,158,11,0.22)] hover:-translate-y-0.5 active:translate-y-0"
+                className="group/call flex items-center justify-between gap-4 rounded-3xl p-5 sm:p-6 border border-white/20 hover:border-white/40 bg-gradient-to-r from-white/[0.08] via-[#0e1626]/95 to-[#070b14]/98 backdrop-blur-md shadow-[0_16px_40px_rgba(0,0,0,0.7),0_0_30px_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.1)] transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.85)] hover:-translate-y-0.5 active:translate-y-0"
               >
                 <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(245,158,11,0.4)] group-hover/call:scale-105 group-hover/call:shadow-[0_0_30px_rgba(245,158,11,0.6)] transition-all">
-                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white text-black flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(255,255,255,0.25)] group-hover/call:scale-105 transition-all">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 fill-current text-black" />
                   </div>
                   <div className="min-w-0">
-                    <div className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-amber-400 flex items-center gap-2 mb-0.5">
+                    <div className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-zinc-300 flex items-center gap-2 mb-0.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
                       {t(
                         "Direct Project Line • Priority Dispatch",
                         "Línea Directa de Proyecto",
                       )}
                     </div>
-                    <div className="text-white font-black text-xl sm:text-2xl lg:text-3xl tracking-tight leading-tight group-hover/call:text-amber-300 transition-colors truncate font-display drop-shadow-sm">
+                    <div className="text-white font-black text-xl sm:text-2xl lg:text-3xl tracking-tight leading-tight group-hover/call:text-zinc-200 transition-colors truncate font-display drop-shadow-sm">
                       {SITE_CONFIG.phone}
                     </div>
                     <div className="text-xs text-slate-400 font-medium mt-0.5">
@@ -437,7 +436,7 @@ export function Hero() {
                     </div>
                   </div>
                 </div>
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white/[0.06] border border-white/10 group-hover/call:bg-amber-400 group-hover/call:text-slate-950 group-hover/call:border-amber-400 flex items-center justify-center text-amber-400 transition-all shrink-0 shadow-sm">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white/[0.08] border border-white/15 group-hover/call:bg-white group-hover/call:text-black group-hover/call:border-white flex items-center justify-center text-white transition-all shrink-0 shadow-sm">
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover/call:translate-x-0.5 transition-transform" />
                 </div>
               </a>
@@ -465,10 +464,10 @@ export function Hero() {
                   return (
                     <div
                       key={badge.label}
-                      className="bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/[0.1] hover:border-amber-400/40 rounded-2xl p-2.5 sm:p-4 text-center flex flex-col items-center justify-center gap-1 sm:gap-1.5 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)] hover:bg-white/[0.08] transition-all duration-200 group"
+                      className="bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/[0.1] hover:border-white/30 rounded-2xl p-2.5 sm:p-4 text-center flex flex-col items-center justify-center gap-1 sm:gap-1.5 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)] hover:bg-white/[0.08] transition-all duration-200 group"
                     >
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-110 group-hover:border-amber-500/40 transition-all shadow-[0_0_10px_rgba(245,158,11,0.15)]">
-                        <IconCmp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white group-hover:scale-110 group-hover:border-white/40 transition-all shadow-[0_0_10px_rgba(255,255,255,0.1)]">
+                        <IconCmp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                       </div>
                       <div className="text-white text-[11px] sm:text-[13px] font-bold leading-tight mt-0.5">
                         {badge.label}
@@ -497,7 +496,7 @@ export function Hero() {
                 onClick={() => setCurrentImageIndex(idx)}
                 aria-label={`Switch to hero background slide ${idx + 1}`}
                 className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer ${currentImageIndex === idx
-                  ? "w-6 bg-amber-400 shadow-[0_0_8px_#f59e0b]"
+                  ? "w-6 bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"
                   : "w-2 bg-white/30 hover:bg-white/60"
                   }`}
               />

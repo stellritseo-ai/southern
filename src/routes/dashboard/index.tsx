@@ -155,14 +155,14 @@ import logo from "@/assets/logo.png";
 const ROLE_CONFIG: Record<string, { title: string; badge: string; border: string; desc: string }> = {
   admin: {
     title: "Administrator",
-    badge: "bg-slate-900 text-amber-400 border border-slate-700",
+    badge: "bg-slate-900 text-white border border-slate-700",
     border: "border-slate-800",
     desc: "Full root console access, staff management, financial telemetry & settings"
   },
   dispatcher: {
     title: "Operations Dispatcher",
-    badge: "bg-amber-50 text-amber-800 border border-amber-200/80",
-    border: "border-amber-300",
+    badge: "bg-slate-50 text-slate-800 border border-slate-200",
+    border: "border-slate-300",
     desc: "Customer communication, live chats, consultation bookings & web inquiries"
   },
   sales: {
@@ -194,7 +194,7 @@ const calculatePasswordStrength = (pass: string) => {
   if (/[^A-Za-z0-9]/.test(pass)) score += 1;
 
   if (score <= 1) return { score: 1, label: "Weak", color: "bg-rose-500", text: "text-rose-600", width: "25%" };
-  if (score === 2) return { score: 2, label: "Fair", color: "bg-amber-500", text: "text-amber-600", width: "50%" };
+  if (score === 2) return { score: 2, label: "Fair", color: "bg-slate-500", text: "text-slate-900", width: "50%" };
   if (score === 3) return { score: 3, label: "Strong", color: "bg-emerald-500", text: "text-emerald-600", width: "75%" };
   return { score: 4, label: "Fortified", color: "bg-indigo-600", text: "text-indigo-600", width: "100%" };
 };
@@ -240,7 +240,7 @@ const CustomChartTooltip = ({ active, payload, label }: any) => {
         <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">{label}</p>
         {payload.map((p: any, idx: number) => (
           <p key={idx} className="font-semibold text-slate-800 flex items-center gap-1.5 mt-0.5">
-            <span className="w-2 h-2 rounded-full inline-block" style={{ backgroundColor: p.stroke || p.fill || "#D97706" }} />
+            <span className="w-2 h-2 rounded-full inline-block" style={{ backgroundColor: p.stroke || p.fill || "#0F172A" }} />
             <span className="text-slate-500">{p.name}:</span>
             <span className="font-bold text-slate-900">{typeof p.value === "number" ? `$${p.value.toLocaleString()}` : p.value}</span>
           </p>
@@ -878,13 +878,13 @@ function DashboardPage() {
 
     // Project types breakdown
     const typeDefs: Record<string, { name: string; count: number; value: number; color: string }> = {
-      underground: { name: "In-Ground Vault (ISS)", count: 0, value: 0, color: "#D97706" },
+      underground: { name: "In-Ground Vault (ISS)", count: 0, value: 0, color: "#0F172A" },
       residential: { name: "Residential Prefab", count: 0, value: 0, color: "#0284C7" },
       installation: { name: "Turnkey Installation", count: 0, value: 0, color: "#059669" },
       commercial: { name: "Commercial Safe Room", count: 0, value: 0, color: "#7C3AED" },
-      "garage-unit": { name: "Garage Flush Mount", count: 0, value: 0, color: "#EA580C" },
+      "garage-unit": { name: "Garage Flush Mount", count: 0, value: 0, color: "#334155" },
       "safe-room": { name: "Reinforced Vault", count: 0, value: 0, color: "#475569" },
-      upgrades: { name: "Hatch & Vent Upgrades", count: 0, value: 0, color: "#F59E0B" }
+      upgrades: { name: "Hatch & Vent Upgrades", count: 0, value: 0, color: "#64748B" }
     };
 
     activeLeads.forEach((l) => {
@@ -907,7 +907,7 @@ function DashboardPage() {
         cities: "Nashville, Belle Meade, Antioch",
         count: activeLeads.filter(l => (l.address || "").toLowerCase().includes("nashville") || (l.address || "").toLowerCase().includes("davidson")).length || Math.max(1, Math.round(activeLeads.length * 0.38)),
         percentage: 38,
-        color: "bg-amber-600"
+        color: "bg-slate-900"
       },
       {
         county: "Williamson County",
@@ -1586,7 +1586,7 @@ function DashboardPage() {
   if (isAuthenticated === null) {
     return (
       <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center gap-3 font-sans">
-        <div className="h-8 w-8 rounded-full border-2 border-amber-600 border-t-transparent animate-spin" />
+        <div className="h-8 w-8 rounded-full border-2 border-slate-900 border-t-transparent animate-spin" />
         <p className="text-xs font-bold text-slate-500 tracking-wider uppercase">Authenticating console session...</p>
       </div>
     );
@@ -1596,7 +1596,7 @@ function DashboardPage() {
   const unreadNotifsCount = notifications.filter(n => !n.read).length;
 
   return (
-    <div className="min-h-screen bg-[#F4F6FA] flex font-sans text-slate-900 antialiased selection:bg-amber-100 selection:text-amber-900">
+    <div className="min-h-screen bg-[#F4F6FA] flex font-sans text-slate-900 antialiased selection:bg-slate-200 selection:text-slate-900">
 
 
       {/* ── LEFT SIDEBAR NAVIGATION ─────────────────────────────── */}
@@ -1612,7 +1612,7 @@ function DashboardPage() {
               <span className="text-[11px] font-black uppercase tracking-tight text-slate-900 leading-tight truncate">
                 Southern Storm Shelters
               </span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 leading-tight">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-900 leading-tight">
                 Operations Console
               </span>
             </div>
@@ -1626,11 +1626,11 @@ function DashboardPage() {
               onClick={() => setShowDbHealthPopover(!showDbHealthPopover)}
               className={`w-full inline-flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] font-semibold transition-all cursor-pointer border ${dbHealth?.status === "connected"
                 ? "bg-emerald-50 text-emerald-800 border-emerald-200/80 hover:bg-emerald-100/60"
-                : "bg-amber-50 text-amber-800 border-amber-200/80 hover:bg-amber-100/60"
+                : "bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100"
                 }`}
               title="Database status"
             >
-              <span className={`w-2 h-2 rounded-full shrink-0 ${dbHealth?.status === "connected" ? "bg-emerald-500 animate-pulse" : "bg-amber-500"}`} />
+              <span className={`w-2 h-2 rounded-full shrink-0 ${dbHealth?.status === "connected" ? "bg-emerald-500 animate-pulse" : "bg-slate-500"}`} />
               <span className="font-mono truncate">
                 {dbHealth?.status === "connected"
                   ? `Atlas · ${dbHealth.dbName ? dbHealth.dbName.charAt(0).toUpperCase() + dbHealth.dbName.slice(1) : "Southern"}`
@@ -1647,7 +1647,7 @@ function DashboardPage() {
                 <div className="absolute left-0 top-full mt-2 w-64 bg-white rounded-2xl border border-slate-200 shadow-xl p-4 z-50 animate-in fade-in duration-150">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
                     <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
-                      <Database className="w-3.5 h-3.5 text-amber-600" />
+                      <Database className="w-3.5 h-3.5 text-slate-900" />
                       <span>MongoDB Atlas</span>
                     </div>
                     <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800">
@@ -1703,7 +1703,7 @@ function DashboardPage() {
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                   }`}
               >
-                <Icon className={`w-4 h-4 shrink-0 ${isActive ? "text-amber-400" : "text-slate-400"}`} />
+                <Icon className={`w-4 h-4 shrink-0 ${isActive ? "text-white" : "text-slate-400"}`} />
                 <span className="flex-1 text-left">{tab.label}</span>
                 {tab.count !== undefined && (
                   <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold ${isActive ? "bg-white/15 text-white" : "bg-slate-100 text-slate-500"
@@ -1738,7 +1738,7 @@ function DashboardPage() {
               <span className="text-xs font-bold text-slate-900 leading-tight truncate">
                 {currentUser?.username || "Admin"}
               </span>
-              <span className="text-[10px] text-amber-700 font-bold uppercase tracking-wider leading-tight">
+              <span className="text-[10px] text-slate-800 font-bold uppercase tracking-wider leading-tight">
                 {currentUser?.role || "Administrator"}
               </span>
             </div>
@@ -1792,9 +1792,9 @@ function DashboardPage() {
                 <div className={`w-full inline-flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] font-semibold border ${
                   dbHealth?.status === "connected"
                     ? "bg-emerald-50 text-emerald-800 border-emerald-200/80"
-                    : "bg-amber-50 text-amber-800 border-amber-200/80"
+                    : "bg-slate-50 text-slate-800 border-slate-200"
                 }`}>
-                  <span className={`w-2 h-2 rounded-full shrink-0 ${dbHealth?.status === "connected" ? "bg-emerald-500 animate-pulse" : "bg-amber-500"}`} />
+                  <span className={`w-2 h-2 rounded-full shrink-0 ${dbHealth?.status === "connected" ? "bg-emerald-500 animate-pulse" : "bg-slate-500"}`} />
                   <span className="font-mono truncate">
                     Atlas {dbHealth?.status === "connected" ? "Cluster0 Online" : "Connecting"}
                   </span>
@@ -1832,7 +1832,7 @@ function DashboardPage() {
                           : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                       }`}
                     >
-                      <Icon className={`w-4 h-4 shrink-0 ${isActive ? "text-amber-400" : "text-slate-400"}`} />
+                      <Icon className={`w-4 h-4 shrink-0 ${isActive ? "text-white" : "text-slate-400"}`} />
                       <span className="flex-1 text-left">{tab.label}</span>
                       {tab.count !== undefined && (
                         <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold ${
@@ -1868,7 +1868,7 @@ function DashboardPage() {
                     <span className="text-xs font-bold text-slate-900 leading-tight truncate">
                       {currentUser?.username || "Admin"}
                     </span>
-                    <span className="text-[9px] text-amber-700 font-bold uppercase tracking-wider leading-tight">
+                    <span className="text-[9px] text-slate-800 font-bold uppercase tracking-wider leading-tight">
                       {currentUser?.role || "Administrator"}
                     </span>
                   </div>
@@ -1914,7 +1914,7 @@ function DashboardPage() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search leads, phone, email..."
-                  className="w-full h-9 bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 rounded-xl pl-8 sm:pl-9 pr-7 sm:pr-4 text-xs text-slate-900 placeholder:text-slate-400 transition-all font-medium outline-none"
+                  className="w-full h-9 bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 rounded-xl pl-8 sm:pl-9 pr-7 sm:pr-4 text-xs text-slate-900 placeholder:text-slate-400 transition-all font-medium outline-none"
                 />
                 <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                 {searchTerm && (
@@ -1933,7 +1933,7 @@ function DashboardPage() {
               {/* New Lead Button */}
               <button
                 onClick={() => setIsAddingLead(true)}
-                className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-xs font-bold uppercase tracking-wider shadow-sm hover:shadow transition-all duration-200 cursor-pointer active:scale-95"
+                className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-black hover:bg-zinc-800 text-white text-xs font-bold uppercase tracking-wider shadow-sm hover:shadow transition-all duration-200 cursor-pointer active:scale-95"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">New Lead</span>
@@ -1960,7 +1960,7 @@ function DashboardPage() {
                         <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
                           Notifications ({unreadNotifsCount})
                         </span>
-                        <div className="flex gap-2 text-[10px] font-bold text-amber-700">
+                        <div className="flex gap-2 text-[10px] font-bold text-slate-800">
                           {notifications.length > 0 && (
                             <>
                               <button
@@ -1998,9 +1998,9 @@ function DashboardPage() {
                             return (
                               <div
                                 key={n.id}
-                                className={`p-3.5 flex gap-3 transition-colors hover:bg-slate-50 ${!n.read ? "bg-amber-50/25" : ""}`}
+                                className={`p-3.5 flex gap-3 transition-colors hover:bg-slate-50 ${!n.read ? "bg-slate-50/80" : ""}`}
                               >
-                                <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
+                                <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-800 flex items-center justify-center shrink-0">
                                   <Icon className="w-4 h-4" />
                                 </div>
                                 <div className="flex-1 min-w-0">
@@ -2060,7 +2060,7 @@ function DashboardPage() {
                     className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold whitespace-nowrap transition-all cursor-pointer ${isActive ? "bg-slate-900 text-white shadow-2xs" : "text-slate-500 hover:bg-slate-100 hover:text-slate-800"
                       }`}
                   >
-                    <Icon className={`w-3.5 h-3.5 ${isActive ? "text-amber-400" : ""}`} />
+                    <Icon className={`w-3.5 h-3.5 ${isActive ? "text-white" : ""}`} />
                     {tab.label}
                     {tab.pulse && <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />}
                   </button>
@@ -2081,7 +2081,7 @@ function DashboardPage() {
               {/* 1. EXECUTIVE COMMAND BAR & DATABASE TELEMETRY */}
               <div className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full xl:w-auto">
-                  <div className="w-10 h-10 rounded-2xl bg-slate-900 border border-slate-800 text-amber-400 flex items-center justify-center shrink-0 shadow-sm">
+                  <div className="w-10 h-10 rounded-2xl bg-slate-900 border border-slate-800 text-white flex items-center justify-center shrink-0 shadow-sm">
                     <Activity className="w-5 h-5" />
                   </div>
                   <div>
@@ -2098,7 +2098,7 @@ function DashboardPage() {
                       <span>Nashville, Franklin & Middle Tennessee Dispatch</span>
                       <span>·</span>
                       <span className="flex items-center gap-1 text-slate-600 font-mono text-[10px]">
-                        <Database className="w-3 h-3 text-amber-600" />
+                        <Database className="w-3 h-3 text-slate-900" />
                         <span>MongoDB Atlas: {dbHealth?.status === "connected" ? "Cluster0 Online" : "Online"} ({dbHealth?.pingMs || 18}ms)</span>
                       </span>
                       <span>·</span>
@@ -2140,7 +2140,7 @@ function DashboardPage() {
                     title="Re-sync data from MongoDB Atlas cluster"
                     className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-700 text-xs font-semibold border border-slate-200/80 transition cursor-pointer disabled:opacity-50"
                   >
-                    <RefreshCw className={`w-3.5 h-3.5 text-slate-500 ${isRefreshingTelemetry ? "animate-spin text-amber-600" : ""}`} />
+                    <RefreshCw className={`w-3.5 h-3.5 text-slate-500 ${isRefreshingTelemetry ? "animate-spin text-slate-900" : ""}`} />
                     <span className="hidden sm:inline">Sync DB</span>
                   </button>
 
@@ -2157,7 +2157,7 @@ function DashboardPage() {
                   {/* Quick Add Lead */}
                   <button
                     onClick={() => setIsAddingLead(true)}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-xs font-bold uppercase tracking-wider transition shadow-xs hover:shadow-md cursor-pointer shrink-0"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-black hover:bg-zinc-800 text-white text-xs font-bold uppercase tracking-wider transition shadow-xs hover:shadow-md cursor-pointer shrink-0"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Quick Quote</span>
@@ -2171,7 +2171,7 @@ function DashboardPage() {
                 <div className="bg-white border border-slate-200/90 rounded-2xl p-3.5 sm:p-4.5 shadow-xs hover:shadow-md transition-all group">
                   <div className="flex items-center justify-between text-slate-400 mb-2">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Pipeline Value</span>
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-50 text-amber-700 border border-amber-200/60 flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-slate-50 text-slate-800 border border-slate-200 flex items-center justify-center group-hover:scale-105 transition-transform">
                       <DollarSign className="w-4 h-4" />
                     </div>
                   </div>
@@ -2201,7 +2201,7 @@ function DashboardPage() {
                 >
                   <div className="flex items-center justify-between text-slate-400 mb-2">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Active Pipeline</span>
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-slate-900 text-amber-400 border border-slate-800 flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-slate-900 text-white border border-slate-800 flex items-center justify-center group-hover:scale-105 transition-transform">
                       <Briefcase className="w-4 h-4" />
                     </div>
                   </div>
@@ -2211,8 +2211,8 @@ function DashboardPage() {
                   </div>
                   <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] mt-2 flex-wrap">
                     {overviewMetrics.newLeadsCount > 0 ? (
-                      <span className="text-amber-700 font-bold bg-amber-50 border border-amber-200/80 px-1.5 py-0.5 rounded text-[10px] flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                      <span className="text-slate-800 font-bold bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded text-[10px] flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-500 animate-pulse" />
                         {overviewMetrics.newLeadsCount} New Action
                       </span>
                     ) : (
@@ -2252,22 +2252,22 @@ function DashboardPage() {
                 >
                   <div className="flex items-center justify-between text-slate-400 mb-2">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Trust Index</span>
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-50 text-amber-700 border border-amber-200/60 flex items-center justify-center group-hover:scale-105 transition-transform">
-                      <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-slate-50 text-slate-800 border border-slate-200 flex items-center justify-center group-hover:scale-105 transition-transform">
+                      <Star className="w-4 h-4 fill-slate-900 text-slate-900" />
                     </div>
                   </div>
                   <div className="text-lg sm:text-xl font-black text-slate-900 font-mono tracking-tight flex items-baseline gap-1.5">
                     <span>5.0</span>
-                    <div className="flex items-center text-amber-500">
+                    <div className="flex items-center text-slate-900">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-2.5 h-2.5 fill-amber-500" />
+                        <Star key={i} className="w-2.5 h-2.5 fill-slate-900" />
                       ))}
                     </div>
                   </div>
                   <div className="text-[10px] text-slate-500 mt-2">
                     {reviews.length} Verified Homeowners
                   </div>
-                  <div className="text-[10px] text-amber-700 font-bold mt-2 flex items-center justify-between">
+                  <div className="text-[10px] text-slate-800 font-bold mt-2 flex items-center justify-between">
                     <span>100% 5-Star Rating</span>
                     <ChevronRight className="w-3 h-3 text-slate-400 group-hover:translate-x-0.5 transition-transform" />
                   </div>
@@ -2334,7 +2334,7 @@ function DashboardPage() {
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
                       <div>
                         <div className="flex items-center gap-2">
-                          <BarChart3 className="w-4 h-4 text-amber-600" />
+                          <BarChart3 className="w-4 h-4 text-slate-900" />
                           <h3 className="text-sm font-extrabold text-slate-900 tracking-tight">
                             Installation & Revenue Trajectory
                           </h3>
@@ -2375,9 +2375,9 @@ function DashboardPage() {
                         {overviewChartMetric === "revenue" ? (
                           <AreaChart data={overviewMetrics.chartData}>
                             <defs>
-                              <linearGradient id="amberGradientHigh" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#D97706" stopOpacity={0.35} />
-                                <stop offset="95%" stopColor="#D97706" stopOpacity={0.0} />
+                              <linearGradient id="monochromeGradientHigh" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#0F172A" stopOpacity={0.35} />
+                                <stop offset="95%" stopColor="#0F172A" stopOpacity={0.0} />
                               </linearGradient>
                             </defs>
                             <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" vertical={false} />
@@ -2394,10 +2394,10 @@ function DashboardPage() {
                               type="monotone"
                               dataKey="revenue"
                               name="Contract Value"
-                              stroke="#D97706"
+                              stroke="#0F172A"
                               strokeWidth={2.5}
                               fillOpacity={1}
-                              fill="url(#amberGradientHigh)"
+                              fill="url(#monochromeGradientHigh)"
                             />
                           </AreaChart>
                         ) : (
@@ -2432,7 +2432,7 @@ function DashboardPage() {
                     </div>
                     <div className="p-2.5 sm:p-2 bg-slate-50/80 rounded-xl">
                       <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Total Season Target</p>
-                      <p className="text-xs font-bold text-amber-700 font-mono mt-0.5">
+                      <p className="text-xs font-bold text-slate-800 font-mono mt-0.5">
                         ${overviewMetrics.totalPipeline.toLocaleString()}
                       </p>
                     </div>
@@ -2449,7 +2449,7 @@ function DashboardPage() {
                     <div className="flex items-center justify-between mb-4">
                       <div>
                         <div className="flex items-center gap-2">
-                          <PieChartIcon className="w-4 h-4 text-amber-600" />
+                          <PieChartIcon className="w-4 h-4 text-slate-900" />
                           <h3 className="text-sm font-extrabold text-slate-900 tracking-tight">
                             Shelter Architecture
                           </h3>
@@ -2508,7 +2508,7 @@ function DashboardPage() {
                     <span>Precision Polyethylene & Steel</span>
                     <button
                       onClick={() => setActiveTab("leads")}
-                      className="text-amber-700 hover:underline font-bold flex items-center gap-1 cursor-pointer"
+                      className="text-slate-800 hover:underline font-bold flex items-center gap-1 cursor-pointer"
                     >
                       <span>Filter Pipeline</span>
                       <ChevronRight className="w-3.5 h-3.5" />
@@ -2522,7 +2522,7 @@ function DashboardPage() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-5">
                   <div>
                     <div className="flex items-center gap-2">
-                      <Compass className="w-4 h-4 text-amber-600" />
+                      <Compass className="w-4 h-4 text-slate-900" />
                       <h3 className="text-sm font-extrabold text-slate-900 tracking-tight">
                         Pipeline Conversion Funnel
                       </h3>
@@ -2545,8 +2545,8 @@ function DashboardPage() {
                       count: overviewMetrics.newLeadsCount,
                       value: filteredOverviewLeads.filter(l => l.status === "new").reduce((a, b) => a + (b.estimatedValue || 0), 0),
                       desc: "Initial web & phone intake",
-                      border: "border-amber-300 hover:border-amber-500 bg-amber-50/40",
-                      badge: "bg-amber-100 text-amber-800"
+                      border: "border-slate-300 hover:border-slate-900 bg-slate-50",
+                      badge: "bg-slate-100 text-slate-800"
                     },
                     {
                       id: "contacted" as const,
@@ -2600,14 +2600,14 @@ function DashboardPage() {
                           {stage.count} {stage.count === 1 ? "lead" : "leads"}
                         </span>
                       </div>
-                      <h4 className="text-xs font-extrabold text-slate-900 group-hover:text-amber-700 transition-colors">
+                      <h4 className="text-xs font-extrabold text-slate-900 group-hover:text-slate-800 transition-colors">
                         {stage.title}
                       </h4>
                       <div className="text-sm font-black font-mono text-slate-800 mt-1">
                         ${stage.value.toLocaleString()}
                       </div>
                       <p className="text-[10px] text-slate-500 mt-1 line-clamp-1">{stage.desc}</p>
-                      <div className="mt-2 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[10px] font-bold text-slate-400 group-hover:text-amber-700">
+                      <div className="mt-2 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[10px] font-bold text-slate-400 group-hover:text-slate-800">
                         <span>Inspect Leads</span>
                         <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                       </div>
@@ -2621,7 +2621,7 @@ function DashboardPage() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-5">
                   <div>
                     <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-amber-600" />
+                      <MapPin className="w-4 h-4 text-slate-900" />
                       <h3 className="text-sm font-extrabold text-slate-900 tracking-tight">
                         Middle Tennessee Regional Dispatch Corridor
                       </h3>
@@ -2640,7 +2640,7 @@ function DashboardPage() {
                     <div key={idx} className="p-3.5 bg-slate-50 rounded-xl border border-slate-200/70">
                       <div className="flex items-center justify-between text-xs font-bold mb-1">
                         <span className="text-slate-900 truncate">{county.county}</span>
-                        <span className="text-amber-700 font-mono text-[11px] shrink-0">{county.count} leads</span>
+                        <span className="text-slate-800 font-mono text-[11px] shrink-0">{county.count} leads</span>
                       </div>
                       <p className="text-[10px] text-slate-500 line-clamp-1 mb-2">{county.cities}</p>
                       <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
@@ -2666,7 +2666,7 @@ function DashboardPage() {
                     <div className="flex items-center justify-between mb-4">
                       <div>
                         <div className="flex items-center gap-2">
-                          <Briefcase className="w-4 h-4 text-amber-600" />
+                          <Briefcase className="w-4 h-4 text-slate-900" />
                           <h3 className="text-sm font-extrabold text-slate-900 tracking-tight">
                             Priority Inquiries & Quotes
                           </h3>
@@ -2677,7 +2677,7 @@ function DashboardPage() {
                       </div>
                       <button
                         onClick={() => setActiveTab("leads")}
-                        className="text-xs text-amber-700 hover:underline font-bold flex items-center gap-1 cursor-pointer"
+                        className="text-xs text-slate-800 hover:underline font-bold flex items-center gap-1 cursor-pointer"
                       >
                         <span>View All ({leads.length})</span>
                         <ChevronRight className="w-3.5 h-3.5" />
@@ -2689,7 +2689,7 @@ function DashboardPage() {
                       {leads.slice(0, 5).map((l) => (
                         <div key={l.id} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-left">
                           <div className="flex items-center gap-3 min-w-0">
-                            <div className="w-9 h-9 rounded-xl bg-slate-900 text-amber-400 flex items-center justify-center text-xs font-black shrink-0 border border-slate-800">
+                            <div className="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center text-xs font-black shrink-0 border border-slate-800">
                               {l.name.charAt(0).toUpperCase()}
                             </div>
                             <div className="min-w-0">
@@ -2704,7 +2704,7 @@ function DashboardPage() {
                                 {l.phone && (
                                   <a
                                     href={`tel:${l.phone}`}
-                                    className="inline-flex items-center gap-1 text-[10px] text-slate-500 hover:text-amber-700 font-mono"
+                                    className="inline-flex items-center gap-1 text-[10px] text-slate-500 hover:text-slate-800 font-mono"
                                   >
                                     <Phone className="w-2.5 h-2.5" />
                                     <span>{l.phone}</span>
@@ -2713,7 +2713,7 @@ function DashboardPage() {
                                 {l.email && (
                                   <a
                                     href={`mailto:${l.email}`}
-                                    className="inline-flex items-center gap-1 text-[10px] text-slate-500 hover:text-amber-700 truncate max-w-[140px]"
+                                    className="inline-flex items-center gap-1 text-[10px] text-slate-500 hover:text-slate-800 truncate max-w-[140px]"
                                   >
                                     <Mail className="w-2.5 h-2.5" />
                                     <span className="truncate">{l.email}</span>
@@ -2732,7 +2732,7 @@ function DashboardPage() {
                             <select
                               value={l.status}
                               onChange={(e) => handleStatusChange(l.id, e.target.value as any)}
-                              className="text-[10px] font-bold uppercase tracking-wider bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg px-2 py-0.5 text-slate-700 outline-none cursor-pointer focus:border-amber-500"
+                              className="text-[10px] font-bold uppercase tracking-wider bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg px-2 py-0.5 text-slate-700 outline-none cursor-pointer focus:border-slate-900"
                             >
                               <option value="new">New</option>
                               <option value="contacted">Contacted</option>
@@ -2744,7 +2744,7 @@ function DashboardPage() {
 
                             <button
                               onClick={() => handleOpenEditLead(l)}
-                              className="text-[10px] text-slate-400 hover:text-amber-700 font-bold transition-colors cursor-pointer"
+                              className="text-[10px] text-slate-400 hover:text-slate-800 font-bold transition-colors cursor-pointer"
                             >
                               Edit Details
                             </button>
@@ -2758,7 +2758,7 @@ function DashboardPage() {
                     <span className="text-[11px] text-slate-400 font-medium">Auto-saves to database</span>
                     <button
                       onClick={() => setIsAddingLead(true)}
-                      className="text-xs font-bold text-amber-700 hover:underline flex items-center gap-1 cursor-pointer"
+                      className="text-xs font-bold text-slate-800 hover:underline flex items-center gap-1 cursor-pointer"
                     >
                       <Plus className="w-3.5 h-3.5" />
                       <span>Create Custom Lead</span>
@@ -2836,7 +2836,7 @@ function DashboardPage() {
                                   {email.createdAt ? new Date(email.createdAt).toLocaleDateString() : ""}
                                 </span>
                               </div>
-                              <p className="text-[11px] font-semibold text-amber-700 line-clamp-1">
+                              <p className="text-[11px] font-semibold text-slate-800 line-clamp-1">
                                 {email.service || "Storm Shelter Inquiry"}
                               </p>
                               <p className="text-[11px] text-slate-500 line-clamp-2 mt-0.5">
@@ -2856,7 +2856,7 @@ function DashboardPage() {
                                       setSelectedEmail(email);
                                       setIsViewingEmail(true);
                                     }}
-                                    className="text-[10px] font-bold text-amber-700 hover:underline cursor-pointer"
+                                    className="text-[10px] font-bold text-slate-800 hover:underline cursor-pointer"
                                   >
                                     View Inquiry
                                   </button>
@@ -2875,9 +2875,9 @@ function DashboardPage() {
                           <div key={r.id} className="py-3 text-left">
                             <div className="flex items-center justify-between mb-1">
                               <span className="text-xs font-bold text-slate-900">{r.author}</span>
-                              <div className="flex items-center gap-0.5 text-amber-500">
+                              <div className="flex items-center gap-0.5 text-slate-900">
                                 {[...Array(r.rating || 5)].map((_, i) => (
-                                  <Star key={i} className="w-3 h-3 fill-amber-500 text-amber-500" />
+                                  <Star key={i} className="w-3 h-3 fill-slate-900 text-slate-900" />
                                 ))}
                               </div>
                             </div>
@@ -2888,7 +2888,7 @@ function DashboardPage() {
                               <button
                                 onClick={() => handleToggleFeatured(r.id)}
                                 className={`font-bold transition-colors cursor-pointer ${
-                                  r.featured ? "text-amber-700" : "text-slate-400 hover:text-slate-700"
+                                  r.featured ? "text-slate-800" : "text-slate-400 hover:text-slate-700"
                                 }`}
                               >
                                 {r.featured ? "★ Featured" : "Feature on Site"}
@@ -2960,7 +2960,7 @@ function DashboardPage() {
                     <span>Dispatch Operations</span>
                     <button
                       onClick={() => setActiveTab(overviewFeedTab === "reviews" ? "reviews" : "emails")}
-                      className="text-amber-700 hover:underline font-bold flex items-center gap-1 cursor-pointer"
+                      className="text-slate-800 hover:underline font-bold flex items-center gap-1 cursor-pointer"
                     >
                       <span>Full Management</span>
                       <ChevronRight className="w-3.5 h-3.5" />
@@ -2985,7 +2985,7 @@ function DashboardPage() {
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       placeholder="Search by customer, phone, address..."
-                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-4 text-xs font-medium text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10"
+                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-4 text-xs font-medium text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
                     />
                     <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                   </div>
@@ -2995,7 +2995,7 @@ function DashboardPage() {
                     <select
                       value={statusFilter}
                       onChange={(e) => setStatusFilter(e.target.value)}
-                      className="h-10 bg-slate-50 border border-slate-200 rounded-xl px-2.5 sm:px-3 text-xs font-semibold text-slate-700 outline-none cursor-pointer focus:border-amber-500 truncate"
+                      className="h-10 bg-slate-50 border border-slate-200 rounded-xl px-2.5 sm:px-3 text-xs font-semibold text-slate-700 outline-none cursor-pointer focus:border-slate-900 truncate"
                     >
                       <option value="all">All Stages</option>
                       <option value="new">New Inquiries</option>
@@ -3009,7 +3009,7 @@ function DashboardPage() {
                     <select
                       value={typeFilter}
                       onChange={(e) => setTypeFilter(e.target.value)}
-                      className="h-10 bg-slate-50 border border-slate-200 rounded-xl px-2.5 sm:px-3 text-xs font-semibold text-slate-700 outline-none cursor-pointer focus:border-amber-500 truncate"
+                      className="h-10 bg-slate-50 border border-slate-200 rounded-xl px-2.5 sm:px-3 text-xs font-semibold text-slate-700 outline-none cursor-pointer focus:border-slate-900 truncate"
                     >
                       <option value="all">All Types</option>
                       <option value="residential">Residential</option>
@@ -3027,7 +3027,7 @@ function DashboardPage() {
                   </span>
                   <button
                     onClick={() => setIsAddingLead(true)}
-                    className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold uppercase tracking-wider transition cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-900 text-white text-xs font-bold uppercase tracking-wider transition cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Add Lead</span>
@@ -3072,7 +3072,7 @@ function DashboardPage() {
                             <td className="py-3.5 px-4">
                               <div className="flex flex-col gap-0.5">
                                 {l.phone && (
-                                  <a href={`tel:${l.phone}`} className="text-amber-700 hover:underline flex items-center gap-1 font-semibold">
+                                  <a href={`tel:${l.phone}`} className="text-slate-800 hover:underline flex items-center gap-1 font-semibold">
                                     <Phone className="w-3 h-3" />
                                     <span>{l.phone}</span>
                                   </a>
@@ -3100,7 +3100,7 @@ function DashboardPage() {
                                 className={`px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider cursor-pointer border outline-none ${l.status === "won"
                                   ? "bg-emerald-50 text-emerald-800 border-emerald-200"
                                   : l.status === "new"
-                                    ? "bg-amber-50 text-amber-800 border-amber-200"
+                                    ? "bg-slate-50 text-slate-800 border-slate-200"
                                     : l.status === "consultation_scheduled"
                                       ? "bg-blue-50 text-blue-800 border-blue-200"
                                       : "bg-slate-100 text-slate-700 border-slate-200"
@@ -3150,7 +3150,7 @@ function DashboardPage() {
                       <div key={l.id} className="p-4 space-y-3 hover:bg-slate-50/60 transition-colors text-left">
                         <div className="flex items-start justify-between gap-2">
                           <div className="flex items-center gap-2.5 min-w-0">
-                            <div className="w-9 h-9 rounded-xl bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs shrink-0 border border-slate-800">
+                            <div className="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-xs shrink-0 border border-slate-800">
                               {l.name.charAt(0).toUpperCase()}
                             </div>
                             <div className="min-w-0">
@@ -3173,9 +3173,9 @@ function DashboardPage() {
                           {l.phone && (
                             <a
                               href={`tel:${l.phone}`}
-                              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 text-xs font-semibold border border-amber-200/60"
+                              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 text-slate-800 text-xs font-semibold border border-slate-200"
                             >
-                              <Phone className="w-3 h-3 text-amber-600" />
+                              <Phone className="w-3 h-3 text-slate-900" />
                               <span>{l.phone}</span>
                             </a>
                           )}
@@ -3201,7 +3201,7 @@ function DashboardPage() {
                                 l.status === "won"
                                   ? "bg-emerald-50 text-emerald-800 border-emerald-200"
                                   : l.status === "new"
-                                    ? "bg-amber-50 text-amber-800 border-amber-200"
+                                    ? "bg-slate-50 text-slate-800 border-slate-200"
                                     : l.status === "consultation_scheduled"
                                       ? "bg-blue-50 text-blue-800 border-blue-200"
                                       : "bg-slate-100 text-slate-700 border-slate-200"
@@ -3258,7 +3258,7 @@ function DashboardPage() {
                       </span>
                     </div>
                     <p className="text-xs text-slate-500 mt-1 max-w-2xl">
-                      Manage, approve, feature, and reply to customer storm shelter reviews. Reviews sync in real time with MongoDB Atlas and appear on <a href="/reviews" target="_blank" className="text-amber-700 font-semibold underline">/reviews</a>.
+                      Manage, approve, feature, and reply to customer storm shelter reviews. Reviews sync in real time with MongoDB Atlas and appear on <a href="/reviews" target="_blank" className="text-slate-800 font-semibold underline">/reviews</a>.
                     </p>
                   </div>
                   <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto">
@@ -3273,7 +3273,7 @@ function DashboardPage() {
                     </a>
                     <button
                       onClick={() => setIsAddingReview(true)}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-xs font-bold uppercase tracking-wider transition shadow-sm cursor-pointer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-black hover:bg-zinc-800 text-white text-xs font-bold uppercase tracking-wider transition shadow-sm cursor-pointer"
                     >
                       <Plus className="w-3.5 h-3.5" />
                       <span>Add New Review</span>
@@ -3295,9 +3295,9 @@ function DashboardPage() {
                   </div>
                   <div className="p-3 bg-slate-50/70 rounded-xl border border-slate-100">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Average Rating</span>
-                    <div className="text-base font-extrabold text-amber-500 flex items-center gap-1 mt-0.5">
+                    <div className="text-base font-extrabold text-slate-900 flex items-center gap-1 mt-0.5">
                       <span>5.0</span>
-                      <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                      <Star className="w-3.5 h-3.5 fill-white text-white" />
                     </div>
                   </div>
                   <div className="p-3 bg-slate-50/70 rounded-xl border border-slate-100">
@@ -3345,7 +3345,7 @@ function DashboardPage() {
                     value={reviewSearchQuery}
                     onChange={(e) => setReviewSearchQuery(e.target.value)}
                     placeholder="Search reviews by name, city, model..."
-                    className="w-full h-9 pl-8 pr-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 transition shadow-2xs"
+                    className="w-full h-9 pl-8 pr-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 transition shadow-2xs"
                   />
                   <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" />
                 </div>
@@ -3354,7 +3354,7 @@ function DashboardPage() {
               {/* Empty state */}
               {filteredReviews.length === 0 && (
                 <div className="text-center py-16 px-6 bg-white border border-slate-200/90 rounded-2xl">
-                  <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-3 border border-amber-200">
+                  <div className="w-14 h-14 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mx-auto mb-3 border border-slate-200">
                     <MessageSquare className="w-7 h-7" />
                   </div>
                   <h4 className="text-base font-bold text-slate-900">No reviews found</h4>
@@ -3372,21 +3372,21 @@ function DashboardPage() {
                   {filteredReviews.map((r) => (
                     <div
                       key={r.id}
-                      className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between text-left relative group hover:border-amber-400/80 hover:shadow-md transition-all duration-300"
+                      className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col justify-between text-left relative group hover:border-slate-400/80 hover:shadow-md transition-all duration-300"
                     >
                       <div>
                         {/* Top Meta Bar */}
                         <div className="flex items-center justify-between gap-2 mb-3">
-                          <div className="flex items-center gap-1 text-amber-500">
+                          <div className="flex items-center gap-1 text-slate-900">
                             {[...Array(r.rating || 5)].map((_, i) => (
-                              <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                              <Star key={i} className="w-3.5 h-3.5 fill-white text-white" />
                             ))}
                           </div>
                           <div className="flex items-center gap-1.5">
                             <button
                               onClick={() => handleToggleFeatured(r.id)}
                               className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border transition cursor-pointer ${r.featured
-                                  ? "bg-amber-50 text-amber-800 border-amber-300 hover:bg-amber-100"
+                                  ? "bg-slate-50 text-slate-800 border-slate-300 hover:bg-slate-100"
                                   : "bg-slate-50 text-slate-500 border-slate-200 hover:border-slate-300"
                                 }`}
                               title="Toggle visibility on /reviews"
@@ -3406,14 +3406,14 @@ function DashboardPage() {
 
                         {/* Model installed badge */}
                         <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/80 text-[10px] font-bold text-slate-700 mb-3">
-                          <ShieldCheck className="w-3 h-3 text-amber-600 shrink-0" />
+                          <ShieldCheck className="w-3 h-3 text-slate-900 shrink-0" />
                           <span>{r.installed || "Granger ISS In-Ground Shelter"}</span>
                         </div>
 
                         {/* Owner Reply Block */}
                         {(r.reply || r.replyText) && (
-                          <div className="mt-2 mb-3 p-3 bg-amber-50/60 border-l-2 border-amber-600 rounded-r-xl text-xs">
-                            <span className="font-bold text-amber-900 block text-[10px] uppercase tracking-wider">
+                          <div className="mt-2 mb-3 p-3 bg-slate-50 border-l-2 border-slate-900 rounded-r-xl text-xs">
+                            <span className="font-bold text-slate-900 block text-[10px] uppercase tracking-wider">
                               Owner Reply:
                             </span>
                             <p className="text-slate-700 mt-0.5 italic leading-relaxed">
@@ -3438,7 +3438,7 @@ function DashboardPage() {
                               setSelectedReview(r);
                               setReviewReplyText(r.reply || r.replyText || "");
                             }}
-                            className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-800 text-slate-700 text-xs font-semibold transition cursor-pointer"
+                            className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-100 hover:text-slate-800 text-slate-700 text-xs font-semibold transition cursor-pointer"
                           >
                             {r.reply || r.replyText ? "Edit Reply" : "Reply"}
                           </button>
@@ -3473,7 +3473,7 @@ function DashboardPage() {
                       </span>
                     </div>
                     <p className="text-xs text-slate-500 mt-1 max-w-2xl">
-                      Upload authentic installation photos directly to Cloudinary. Photos immediately sync across the website, <a href="/projects" target="_blank" className="text-amber-700 font-semibold underline">/projects</a>, and the homepage gallery.
+                      Upload authentic installation photos directly to Cloudinary. Photos immediately sync across the website, <a href="/projects" target="_blank" className="text-slate-800 font-semibold underline">/projects</a>, and the homepage gallery.
                     </p>
                   </div>
                   <a
@@ -3488,14 +3488,14 @@ function DashboardPage() {
                 </div>
 
                 {/* Upload Section - Clean, Direct File Picker */}
-                <div className="bg-slate-50/80 border-2 border-dashed border-slate-200 rounded-2xl p-4 sm:p-6 transition hover:border-amber-400">
+                <div className="bg-slate-50/80 border-2 border-dashed border-slate-200 rounded-2xl p-4 sm:p-6 transition hover:border-slate-400">
                   <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-5">
                     <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 flex items-center justify-center shrink-0">
                         <ImageIcon className="w-5 h-5 sm:w-6 sm:h-6" />
                       </div>
                       <div className="min-w-0">
-                        <label className="block text-xs font-bold text-slate-900 cursor-pointer hover:text-amber-600 transition">
+                        <label className="block text-xs font-bold text-slate-900 cursor-pointer hover:text-slate-900 transition">
                           Choose Photos to Upload
                           <input
                             type="file"
@@ -3507,7 +3507,7 @@ function DashboardPage() {
                         </label>
                         <p className="text-[11px] text-slate-500 mt-0.5 truncate">
                           {selectedGalleryFiles.length > 0 ? (
-                            <span className="font-semibold text-amber-700">
+                            <span className="font-semibold text-slate-800">
                               {selectedGalleryFiles.length} photo(s) selected ready to sync
                             </span>
                           ) : (
@@ -3541,7 +3541,7 @@ function DashboardPage() {
                       <button
                         onClick={handleUploadGallery}
                         disabled={selectedGalleryFiles.length === 0 || isUploadingGallery}
-                        className="flex-1 sm:flex-initial h-10 px-5 sm:px-6 rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 disabled:opacity-50 text-white text-xs font-bold uppercase tracking-wider transition cursor-pointer shadow-sm flex items-center justify-center gap-2"
+                        className="flex-1 sm:flex-initial h-10 px-5 sm:px-6 rounded-xl bg-black hover:bg-zinc-800 disabled:opacity-50 text-white text-xs font-bold uppercase tracking-wider transition cursor-pointer shadow-sm flex items-center justify-center gap-2"
                       >
                         {isUploadingGallery ? (
                           <>
@@ -3573,7 +3573,7 @@ function DashboardPage() {
               {/* Empty Gallery State */}
               {filteredGalleryPhotos.length === 0 && (
                 <div className="text-center py-16 px-6 bg-white border border-slate-200/90 rounded-2xl">
-                  <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-3 border border-amber-200">
+                  <div className="w-14 h-14 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mx-auto mb-3 border border-slate-200">
                     <ImageIcon className="w-7 h-7" />
                   </div>
                   <h4 className="text-base font-bold text-slate-900">No photos in gallery yet</h4>
@@ -3613,7 +3613,7 @@ function DashboardPage() {
                           href={photo.url}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-[10px] text-amber-700 hover:text-amber-800 font-bold flex items-center gap-1"
+                          className="text-[10px] text-slate-800 hover:text-slate-800 font-bold flex items-center gap-1"
                         >
                           <span>CDN Link</span>
                           <ExternalLink className="w-2.5 h-2.5" />
@@ -3655,11 +3655,11 @@ function DashboardPage() {
                           if (session.unread) markChatAsRead(session.id);
                         }}
                         className={`w-full p-3.5 sm:p-4 text-left transition-colors cursor-pointer flex items-start gap-3 ${activeSessionId === session.id
-                          ? "bg-white border-l-4 border-amber-600 shadow-xs"
+                          ? "bg-white border-l-4 border-slate-900 shadow-xs"
                           : "hover:bg-slate-100/60"
                           }`}
                       >
-                        <div className="w-9 h-9 rounded-full bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xs shrink-0">
+                        <div className="w-9 h-9 rounded-full bg-slate-100 text-slate-900 flex items-center justify-center font-bold text-xs shrink-0">
                           {session.clientName.charAt(0)}
                         </div>
                         <div className="flex-1 min-w-0">
@@ -3670,7 +3670,7 @@ function DashboardPage() {
                             </span>
                           </div>
                           {session.clientEmail && (
-                            <p className="text-[10px] text-amber-700/90 font-medium truncate">{session.clientEmail}</p>
+                            <p className="text-[10px] text-slate-800/90 font-medium truncate">{session.clientEmail}</p>
                           )}
                           <p className="text-[11px] text-slate-500 truncate mt-0.5">{session.lastMessage || "Chat initiated"}</p>
                         </div>
@@ -3715,7 +3715,7 @@ function DashboardPage() {
                         >
                           <div
                             className={`max-w-[85%] sm:max-w-[78%] rounded-2xl px-4 py-2.5 text-xs whitespace-pre-wrap break-words leading-relaxed select-text shadow-xs ${m.sender === "admin"
-                                ? "bg-amber-600 text-white rounded-br-none font-medium"
+                                ? "bg-slate-900 text-white rounded-br-none font-medium"
                                 : "bg-slate-100 text-slate-900 border border-slate-200/80 rounded-bl-none font-medium"
                               }`}
                           >
@@ -3735,12 +3735,12 @@ function DashboardPage() {
                         value={adminReplyText}
                         onChange={(e) => setAdminReplyText(e.target.value)}
                         placeholder="Type official reply..."
-                        className="flex-1 h-10 bg-slate-50 focus:bg-white border border-slate-200 rounded-xl px-3 sm:px-4 text-xs font-semibold text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition"
+                        className="flex-1 h-10 bg-slate-50 focus:bg-white border border-slate-200 rounded-xl px-3 sm:px-4 text-xs font-semibold text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/20 transition"
                       />
                       <button
                         type="submit"
                         disabled={!adminReplyText.trim() || isSendingAdminMsg}
-                        className="h-10 px-4 sm:px-5 rounded-xl bg-amber-600 hover:bg-amber-700 disabled:opacity-50 text-white text-xs font-bold uppercase tracking-wider transition cursor-pointer flex items-center gap-1.5 shadow-sm shrink-0"
+                        className="h-10 px-4 sm:px-5 rounded-xl bg-slate-900 hover:bg-slate-900 disabled:opacity-50 text-white text-xs font-bold uppercase tracking-wider transition cursor-pointer flex items-center gap-1.5 shadow-sm shrink-0"
                       >
                         {isSendingAdminMsg ? (
                           <>
@@ -3779,8 +3779,8 @@ function DashboardPage() {
                       <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                       MongoDB Atlas Live
                     </span>
-                    <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-800 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-amber-200">
-                      <Radio className="w-3 h-3 text-amber-600 animate-pulse" />
+                    <span className="inline-flex items-center gap-1 bg-slate-50 text-slate-800 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-slate-200">
+                      <Radio className="w-3 h-3 text-slate-900 animate-pulse" />
                       WebSocket Real-time
                     </span>
                   </div>
@@ -3824,22 +3824,22 @@ function DashboardPage() {
                 </div>
 
                 {/* New / Action Required */}
-                <div className="bg-white border border-amber-200/80 rounded-2xl p-4 shadow-xs bg-linear-to-br from-white to-amber-50/30">
+                <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-xs bg-linear-to-br from-white to-slate-50">
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-amber-700">New / Unhandled</span>
-                    <div className="p-2 rounded-xl bg-amber-100 text-amber-700">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-800">New / Unhandled</span>
+                    <div className="p-2 rounded-xl bg-slate-100 text-slate-800">
                       <AlertTriangle className="w-4 h-4" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-baseline gap-2">
-                    <span className="text-2xl font-black text-amber-900 font-mono">{emailMetrics.newCount}</span>
+                    <span className="text-2xl font-black text-slate-900 font-mono">{emailMetrics.newCount}</span>
                     {emailMetrics.newCount > 0 && (
                       <span className="text-[10px] font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200 animate-pulse">
                         Needs Action
                       </span>
                     )}
                   </div>
-                  <div className="text-[11px] text-amber-700/80 mt-0.5">Awaiting staff response</div>
+                  <div className="text-[11px] text-slate-800/80 mt-0.5">Awaiting staff response</div>
                 </div>
 
                 {/* In Discussion / Contacted */}
@@ -3884,7 +3884,7 @@ function DashboardPage() {
                       placeholder="Search inquiries by customer name, email, phone, city, or service..."
                       value={emailSearchQuery}
                       onChange={(e) => setEmailSearchQuery(e.target.value)}
-                      className="w-full pl-9 pr-8 py-2 rounded-xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
+                      className="w-full pl-9 pr-8 py-2 rounded-xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition"
                     />
                     {emailSearchQuery && (
                       <button
@@ -3964,7 +3964,7 @@ function DashboardPage() {
               {/* Inquiries Feed */}
               {filteredEmails.length === 0 ? (
                 <div className="bg-white border border-slate-200/90 rounded-2xl p-12 text-center shadow-xs">
-                  <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-4 border border-amber-100">
+                  <div className="w-14 h-14 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mx-auto mb-4 border border-slate-200">
                     <Inbox className="w-7 h-7" />
                   </div>
                   <h3 className="text-base font-bold text-slate-900 mb-1">No Inquiries Found</h3>
@@ -4006,7 +4006,7 @@ function DashboardPage() {
                       <div
                         key={inquiry.id}
                         className={`bg-white border rounded-2xl p-5 shadow-xs transition-all duration-200 hover:shadow-md ${isNew
-                            ? "border-amber-300 ring-1 ring-amber-400/20 bg-linear-to-r from-amber-50/20 via-white to-white"
+                            ? "border-slate-300 ring-1 ring-slate-400/20 bg-linear-to-r from-slate-50/50 via-white to-white"
                             : isConverted
                               ? "border-emerald-200/90"
                               : "border-slate-200/90"
@@ -4018,7 +4018,7 @@ function DashboardPage() {
                           <div className="flex items-start gap-3.5 min-w-0 flex-1">
                             <div
                               className={`w-11 h-11 rounded-2xl flex items-center justify-center font-black text-sm shrink-0 shadow-xs ${isNew
-                                  ? "bg-linear-to-br from-amber-500 to-amber-600 text-white"
+                                  ? "bg-black text-white"
                                   : isConverted
                                     ? "bg-linear-to-br from-emerald-500 to-teal-600 text-white"
                                     : "bg-slate-100 text-slate-700 border border-slate-200"
@@ -4070,18 +4070,18 @@ function DashboardPage() {
                                 {inquiry.phone && (
                                   <a
                                     href={`tel:${inquiry.phone}`}
-                                    className="inline-flex items-center gap-1 text-slate-700 hover:text-amber-600 font-semibold"
+                                    className="inline-flex items-center gap-1 text-slate-700 hover:text-slate-900 font-semibold"
                                   >
-                                    <Phone className="w-3 h-3 text-amber-500" />
+                                    <Phone className="w-3 h-3 text-slate-900" />
                                     <span>{inquiry.phone}</span>
                                   </a>
                                 )}
                                 {inquiry.email && (
                                   <a
                                     href={`mailto:${inquiry.email}`}
-                                    className="inline-flex items-center gap-1 text-slate-700 hover:text-amber-600 font-semibold"
+                                    className="inline-flex items-center gap-1 text-slate-700 hover:text-slate-900 font-semibold"
                                   >
-                                    <Mail className="w-3 h-3 text-amber-500" />
+                                    <Mail className="w-3 h-3 text-slate-900" />
                                     <span>{inquiry.email}</span>
                                   </a>
                                 )}
@@ -4110,8 +4110,8 @@ function DashboardPage() {
                               {/* Service requested badge */}
                               {inquiry.service && (
                                 <div className="pt-0.5">
-                                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-800 bg-amber-50/70 border border-amber-200/60 px-2 py-0.5 rounded-lg">
-                                    <HardHat className="w-3 h-3 text-amber-600" />
+                                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-800 bg-slate-50 border border-slate-200 px-2 py-0.5 rounded-lg">
+                                    <HardHat className="w-3 h-3 text-slate-900" />
                                     {inquiry.service}
                                   </span>
                                 </div>
@@ -4128,8 +4128,8 @@ function DashboardPage() {
 
                               {/* Internal Staff Notes indicator */}
                               {inquiry.notes && (
-                                <div className="mt-1.5 flex items-center gap-1.5 text-[11px] text-amber-800 bg-amber-50/50 border border-amber-100 rounded-lg px-2.5 py-1">
-                                  <FileText className="w-3 h-3 text-amber-600 shrink-0" />
+                                <div className="mt-1.5 flex items-center gap-1.5 text-[11px] text-slate-800 bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1">
+                                  <FileText className="w-3 h-3 text-slate-900 shrink-0" />
                                   <span className="font-bold">Staff Note:</span>
                                   <span className="truncate">{inquiry.notes}</span>
                                 </div>
@@ -4189,7 +4189,7 @@ function DashboardPage() {
                                 <button
                                   onClick={() => handleConvertInquiryToLead(inquiry)}
                                   disabled={isConvertingEmail}
-                                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition shadow-xs cursor-pointer"
+                                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-500 hover:bg-slate-900 text-slate-950 text-xs font-bold transition shadow-xs cursor-pointer"
                                   title="Add to Leads Pipeline as active CRM Lead"
                                 >
                                   <ArrowRightLeft className="w-3.5 h-3.5" />
@@ -4273,7 +4273,7 @@ function DashboardPage() {
                     type="button"
                     onClick={() => handleSaveSettings()}
                     disabled={isSavingSettings}
-                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white text-xs font-black uppercase tracking-wider transition shadow-md shadow-amber-600/20 active:scale-95 disabled:opacity-50 cursor-pointer"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-black hover:bg-zinc-800 text-white text-xs font-black uppercase tracking-wider transition shadow-md shadow-black/20 active:scale-95 disabled:opacity-50 cursor-pointer"
                   >
                     {isSavingSettings ? (
                       <>
@@ -4292,14 +4292,14 @@ function DashboardPage() {
 
               {/* ── CARD 1: WEBSITE MAINTENANCE SHIELD ── */}
               <div className={`rounded-3xl border transition-all duration-300 overflow-hidden shadow-xs ${maintenanceMode
-                  ? "bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent border-amber-400/90 shadow-amber-500/10"
+                  ? "bg-gradient-to-br from-slate-100 via-slate-50 to-transparent border-slate-400/90 shadow-sm"
                   : "bg-white border-slate-200/90"
                 }`}>
                 <div className="p-6 sm:p-7 space-y-5">
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div className="flex items-start gap-3.5">
                       <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border ${maintenanceMode
-                          ? "bg-amber-500 text-white border-amber-600 shadow-md shadow-amber-500/30"
+                          ? "bg-slate-500 text-white border-slate-900 shadow-md shadow-black/20"
                           : "bg-slate-100 text-slate-700 border-slate-200"
                         }`}>
                         {maintenanceMode ? <ShieldAlert className="w-6 h-6 animate-pulse" /> : <ShieldCheck className="w-6 h-6 text-emerald-600" />}
@@ -4336,13 +4336,13 @@ function DashboardPage() {
                           setMaintenanceMode(nextState);
                           handleSaveSettings(undefined, nextState);
                         }}
-                        className={`relative inline-flex h-8 w-16 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-4 focus:ring-amber-500/20 ${maintenanceMode ? "bg-amber-600" : "bg-slate-300"
+                        className={`relative inline-flex h-8 w-16 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-4 focus:ring-slate-900/20 ${maintenanceMode ? "bg-slate-900" : "bg-slate-300"
                           }`}
                         role="switch"
                         aria-checked={maintenanceMode}
                       >
                         <span
-                          className={`pointer-events-none inline-block h-7 w-7 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out flex items-center justify-center ${maintenanceMode ? "translate-x-8 text-amber-600" : "translate-x-0 text-slate-400"
+                          className={`pointer-events-none inline-block h-7 w-7 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out flex items-center justify-center ${maintenanceMode ? "translate-x-8 text-slate-900" : "translate-x-0 text-slate-400"
                             }`}
                         >
                           <Power className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -4363,7 +4363,7 @@ function DashboardPage() {
                           value={maintenanceTitle}
                           onChange={(e) => setMaintenanceTitle(e.target.value)}
                           placeholder="Scheduled System Maintenance Underway"
-                          className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                          className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                         />
                       </div>
                       <div className="space-y-1.5">
@@ -4375,7 +4375,7 @@ function DashboardPage() {
                           value={maintenanceMessage}
                           onChange={(e) => setMaintenanceMessage(e.target.value)}
                           placeholder="We are currently performing scheduled maintenance to upgrade our shelter estimating and dispatch systems..."
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition resize-none"
+                          className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition resize-none"
                         />
                       </div>
                     </div>
@@ -4384,7 +4384,7 @@ function DashboardPage() {
                       <button
                         type="button"
                         onClick={() => setShowMaintenancePreview(!showMaintenancePreview)}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 hover:text-amber-800 transition cursor-pointer"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-800 hover:text-slate-800 transition cursor-pointer"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         {showMaintenancePreview ? "Hide Visitor Screen Preview" : "Preview How Visitors See Maintenance Mode"}
@@ -4397,15 +4397,15 @@ function DashboardPage() {
                     {/* Expandable Visitor Preview Card */}
                     {showMaintenancePreview && (
                       <div className="mt-3 p-6 rounded-2xl bg-slate-950 text-white border border-slate-800 space-y-4 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-slate-500/10 rounded-full blur-2xl pointer-events-none" />
                         <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                          <span className="text-[10px] font-black uppercase tracking-widest text-amber-400">
+                          <span className="text-[10px] font-black uppercase tracking-widest text-white">
                             Live Visitor Shield Preview
                           </span>
                           <span className="text-[10px] text-slate-400">Rendered in site root</span>
                         </div>
                         <div className="text-center py-4 space-y-2 max-w-md mx-auto">
-                          <div className="w-12 h-12 mx-auto rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-xl">
+                          <div className="w-12 h-12 mx-auto rounded-2xl bg-slate-500/10 border border-slate-300 flex items-center justify-center text-xl">
                             🛡️
                           </div>
                           <h4 className="text-base font-black">{maintenanceTitle || "Scheduled System Maintenance Underway"}</h4>
@@ -4413,7 +4413,7 @@ function DashboardPage() {
                             {maintenanceMessage || "We are currently performing scheduled maintenance. Our emergency line remains open."}
                           </p>
                           <div className="pt-3">
-                            <span className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 text-white text-[11px] font-bold px-4 py-2 rounded-xl shadow-md">
+                            <span className="inline-flex items-center gap-2 bg-black text-white text-[11px] font-bold px-4 py-2 rounded-xl shadow-md">
                               📞 Call {officePhone}
                             </span>
                           </div>
@@ -4428,7 +4428,7 @@ function DashboardPage() {
               <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-7 shadow-xs space-y-5">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 flex items-center justify-center font-bold">
+                    <div className="w-9 h-9 rounded-xl bg-slate-500/10 border border-slate-300 text-slate-900 flex items-center justify-center font-bold">
                       <Building2 className="w-4 h-4" />
                     </div>
                     <div>
@@ -4436,7 +4436,7 @@ function DashboardPage() {
                       <p className="text-xs text-slate-400">Extracted from public site and structured SEO schemas</p>
                     </div>
                   </div>
-                  <span className="text-[11px] text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-0.5 rounded-full font-bold">
+                  <span className="text-[11px] text-slate-800 bg-slate-50 border border-slate-200 px-2.5 py-0.5 rounded-full font-bold">
                     Whole Website Sync
                   </span>
                 </div>
@@ -4451,7 +4451,7 @@ function DashboardPage() {
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
                       placeholder="Southern Storm Shelters"
-                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                     />
                   </div>
 
@@ -4464,7 +4464,7 @@ function DashboardPage() {
                       value={tagline}
                       onChange={(e) => setTagline(e.target.value)}
                       placeholder="Tennessee’s Premier Engineered Underground Storm Shelters & Safe Rooms"
-                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                     />
                   </div>
 
@@ -4477,7 +4477,7 @@ function DashboardPage() {
                       value={serviceRadius}
                       onChange={(e) => setServiceRadius(e.target.value)}
                       placeholder="Nashville, TN & 100-Mile Radius"
-                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                     />
                   </div>
 
@@ -4490,7 +4490,7 @@ function DashboardPage() {
                       value={licenseNotice}
                       onChange={(e) => setLicenseNotice(e.target.value)}
                       placeholder="Fully Insured Professional Installation Crews • Engineered Storm Protection"
-                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                     />
                   </div>
                 </div>
@@ -4500,7 +4500,7 @@ function DashboardPage() {
               <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-7 shadow-xs space-y-5">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 flex items-center justify-center font-bold">
+                    <div className="w-9 h-9 rounded-xl bg-slate-500/10 border border-slate-300 text-slate-900 flex items-center justify-center font-bold">
                       <PhoneCall className="w-4 h-4" />
                     </div>
                     <div>
@@ -4529,11 +4529,11 @@ function DashboardPage() {
                           }
                         }}
                         placeholder="(615) 991-2361"
-                        className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl pl-3.5 pr-20 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                        className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl pl-3.5 pr-20 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                       />
                       <a
                         href={`tel:${officePhoneRaw}`}
-                        className="absolute right-2 top-1.5 text-[10px] font-bold uppercase bg-slate-200 hover:bg-amber-100 hover:text-amber-800 text-slate-600 px-2 py-1 rounded-lg transition"
+                        className="absolute right-2 top-1.5 text-[10px] font-bold uppercase bg-slate-200 hover:bg-slate-100 hover:text-slate-800 text-slate-600 px-2 py-1 rounded-lg transition"
                       >
                         Test Call
                       </a>
@@ -4549,7 +4549,7 @@ function DashboardPage() {
                       value={officePhoneRaw}
                       onChange={(e) => setOfficePhoneRaw(e.target.value)}
                       placeholder="+16159912361"
-                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-mono font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-mono font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                     />
                   </div>
 
@@ -4563,11 +4563,11 @@ function DashboardPage() {
                         value={alertEmail}
                         onChange={(e) => setAlertEmail(e.target.value)}
                         placeholder="info@southernstormshelters.com"
-                        className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl pl-3.5 pr-20 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                        className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl pl-3.5 pr-20 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                       />
                       <a
                         href={`mailto:${alertEmail}`}
-                        className="absolute right-2 top-1.5 text-[10px] font-bold uppercase bg-slate-200 hover:bg-amber-100 hover:text-amber-800 text-slate-600 px-2 py-1 rounded-lg transition"
+                        className="absolute right-2 top-1.5 text-[10px] font-bold uppercase bg-slate-200 hover:bg-slate-100 hover:text-slate-800 text-slate-600 px-2 py-1 rounded-lg transition"
                       >
                         Test Email
                       </a>
@@ -4584,7 +4584,7 @@ function DashboardPage() {
                         value={officeAddress}
                         onChange={(e) => setOfficeAddress(e.target.value)}
                         placeholder="Nashville, TN"
-                        className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                        className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                       />
                     </div>
                     <span className="text-[10px] text-slate-400 block">
@@ -4598,7 +4598,7 @@ function DashboardPage() {
               <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-7 shadow-xs space-y-5">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 flex items-center justify-center font-bold">
+                    <div className="w-9 h-9 rounded-xl bg-slate-500/10 border border-slate-300 text-slate-900 flex items-center justify-center font-bold">
                       <Clock className="w-4 h-4" />
                     </div>
                     <div>
@@ -4616,7 +4616,7 @@ function DashboardPage() {
                       value={weekdays}
                       onChange={(e) => setWeekdays(e.target.value)}
                       placeholder="Monday–Friday: 8:00 AM – 5:00 PM"
-                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                     />
                   </div>
 
@@ -4627,7 +4627,7 @@ function DashboardPage() {
                       value={saturdays}
                       onChange={(e) => setSaturdays(e.target.value)}
                       placeholder="Saturday: By Appointment"
-                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                     />
                   </div>
 
@@ -4638,7 +4638,7 @@ function DashboardPage() {
                       value={sundays}
                       onChange={(e) => setSundays(e.target.value)}
                       placeholder="Sunday: Closed"
-                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                     />
                   </div>
                 </div>
@@ -4653,7 +4653,7 @@ function DashboardPage() {
                       value={shortBadge}
                       onChange={(e) => setShortBadge(e.target.value)}
                       placeholder="Mon–Sat: 8:00 AM – 5:00 PM"
-                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                      className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3.5 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                     />
                   </div>
 
@@ -4672,7 +4672,7 @@ function DashboardPage() {
               <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-7 shadow-xs space-y-5">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 flex items-center justify-center font-bold">
+                    <div className="w-9 h-9 rounded-xl bg-slate-500/10 border border-slate-300 text-slate-900 flex items-center justify-center font-bold">
                       <Send className="w-4 h-4" />
                     </div>
                     <div>
@@ -4692,7 +4692,7 @@ function DashboardPage() {
                       type="checkbox"
                       checked={emailAlert}
                       onChange={(e) => setEmailAlert(e.target.checked)}
-                      className="w-5 h-5 accent-amber-600 rounded cursor-pointer"
+                      className="w-5 h-5 accent-slate-900 rounded cursor-pointer"
                     />
                   </label>
 
@@ -4705,7 +4705,7 @@ function DashboardPage() {
                       type="checkbox"
                       checked={smsAlert}
                       onChange={(e) => setSmsAlert(e.target.checked)}
-                      className="w-5 h-5 accent-amber-600 rounded cursor-pointer"
+                      className="w-5 h-5 accent-slate-900 rounded cursor-pointer"
                     />
                   </label>
                 </div>
@@ -4722,7 +4722,7 @@ function DashboardPage() {
                           key={tag}
                           type="button"
                           onClick={() => setSmsTemplate((prev) => prev + " " + tag)}
-                          className="px-2 py-0.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 font-mono text-[10px] font-bold border border-amber-200 transition cursor-pointer"
+                          className="px-2 py-0.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-800 font-mono text-[10px] font-bold border border-slate-200 transition cursor-pointer"
                         >
                           {tag}
                         </button>
@@ -4733,7 +4733,7 @@ function DashboardPage() {
                     rows={3}
                     value={smsTemplate}
                     onChange={(e) => setSmsTemplate(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs font-medium text-slate-900 outline-none focus:border-amber-500 focus:bg-white transition"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs font-medium text-slate-900 outline-none focus:border-slate-900 focus:bg-white transition"
                   />
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-[11px] text-slate-400">
                     <span>Preview sample: "Hi John Doe, thank you for contacting Southern Storm Shelters! A specialist will contact you..."</span>
@@ -4745,7 +4745,7 @@ function DashboardPage() {
               {/* ── STICKY BOTTOM SAVE ACTION BAR ── */}
               <div className="sticky bottom-4 z-20 bg-slate-900/95 backdrop-blur-md text-white p-4 sm:p-5 rounded-2xl border border-slate-800 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center font-bold">
+                  <div className="w-8 h-8 rounded-xl bg-slate-500/20 border border-slate-300 text-white flex items-center justify-center font-bold">
                     🛡️
                   </div>
                   <div>
@@ -4793,7 +4793,7 @@ function DashboardPage() {
                     type="button"
                     onClick={() => handleSaveSettings()}
                     disabled={isSavingSettings}
-                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-black uppercase tracking-wider transition shadow-lg shadow-amber-500/20 active:scale-95 disabled:opacity-50 cursor-pointer"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-black hover:bg-zinc-800 text-white text-xs font-black uppercase tracking-wider transition shadow-lg shadow-black/20 active:scale-95 disabled:opacity-50 cursor-pointer"
                   >
                     {isSavingSettings ? (
                       <>
@@ -4822,7 +4822,7 @@ function DashboardPage() {
                 <div>
                   <div className="flex items-center gap-2.5 mb-1">
                     <div className="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center shrink-0">
-                      <Shield className="w-4 h-4 text-amber-400" />
+                      <Shield className="w-4 h-4 text-white" />
                     </div>
                     <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Security & Staff Access</h2>
                   </div>
@@ -4830,7 +4830,7 @@ function DashboardPage() {
                 </div>
                 <button
                   onClick={() => setIsCreatingUser(true)}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-xs font-bold uppercase tracking-wider transition shadow-sm cursor-pointer shrink-0"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-black hover:bg-zinc-800 text-white text-xs font-bold uppercase tracking-wider transition shadow-sm cursor-pointer shrink-0"
                 >
                   <UserPlus className="w-3.5 h-3.5" />
                   <span>Add Staff Member</span>
@@ -4852,9 +4852,9 @@ function DashboardPage() {
                     label: "Administrators",
                     value: portalUsers.filter(u => u.role === "admin").length,
                     icon: ShieldCheck,
-                    color: "text-amber-700",
-                    bg: "bg-amber-50",
-                    border: "border-amber-200"
+                    color: "text-slate-800",
+                    bg: "bg-slate-50",
+                    border: "border-slate-200"
                   },
                   {
                     label: "Active Staff",
@@ -4899,7 +4899,7 @@ function DashboardPage() {
                       value={staffSearchQuery}
                       onChange={(e) => setStaffSearchQuery(e.target.value)}
                       placeholder="Search by name or role..."
-                      className="w-full h-8.5 pl-8 pr-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition"
+                      className="w-full h-8.5 pl-8 pr-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition"
                     />
                     <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" />
                   </div>
@@ -4944,14 +4944,14 @@ function DashboardPage() {
                           <div className="flex items-center gap-4 min-w-0">
                             {/* Avatar */}
                             <div className={`relative w-11 h-11 rounded-2xl flex items-center justify-center text-sm font-black shrink-0 border-2 ${u.role === "admin"
-                                ? "bg-slate-900 text-amber-400 border-slate-700"
+                                ? "bg-slate-900 text-white border-slate-700"
                                 : u.role === "manager"
                                   ? "bg-emerald-50 text-emerald-800 border-emerald-200"
                                   : u.role === "sales"
                                     ? "bg-blue-50 text-blue-800 border-blue-200"
                                     : u.role === "field"
                                       ? "bg-purple-50 text-purple-800 border-purple-200"
-                                      : "bg-amber-50 text-amber-800 border-amber-200"
+                                      : "bg-slate-50 text-slate-800 border-slate-200"
                               }`}>
                               {initials}
                               {isCurrentUser && (
@@ -4993,7 +4993,7 @@ function DashboardPage() {
                                 <select
                                   value={editingUserRole.role}
                                   onChange={(e) => setEditingUserRole({ ...editingUserRole, role: e.target.value })}
-                                  className="h-7 px-2 bg-white border border-amber-300 rounded-lg text-[11px] font-bold text-slate-800 outline-none cursor-pointer"
+                                  className="h-7 px-2 bg-white border border-slate-300 rounded-lg text-[11px] font-bold text-slate-800 outline-none cursor-pointer"
                                 >
                                   {Object.entries(ROLE_CONFIG).map(([key, conf]) => (
                                     <option key={key} value={key}>{conf.title}</option>
@@ -5001,7 +5001,7 @@ function DashboardPage() {
                                 </select>
                                 <button
                                   onClick={() => handleUpdateRole(u.id, u.username, editingUserRole.role)}
-                                  className="h-7 px-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-[10px] font-bold transition cursor-pointer"
+                                  className="h-7 px-2.5 bg-slate-900 hover:bg-slate-900 text-white rounded-lg text-[10px] font-bold transition cursor-pointer"
                                 >
                                   Save
                                 </button>
@@ -5049,7 +5049,7 @@ function DashboardPage() {
               <div className="bg-white border border-slate-200/90 rounded-2xl shadow-xs overflow-hidden">
                 <div className="flex items-center gap-3 px-6 py-4 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white">
                   <div className="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center shrink-0">
-                    <KeyRound className="w-4 h-4 text-amber-400" />
+                    <KeyRound className="w-4 h-4 text-white" />
                   </div>
                   <div>
                     <h3 className="text-sm font-extrabold text-slate-900 tracking-tight">Update Admin Credentials</h3>
@@ -5069,7 +5069,7 @@ function DashboardPage() {
                         value={updateUsername}
                         onChange={(e) => setUpdateUsername(e.target.value)}
                         placeholder={currentUser?.username || "admin"}
-                        className="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition"
+                        className="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition"
                       />
                     </div>
 
@@ -5084,7 +5084,7 @@ function DashboardPage() {
                           value={newPassword}
                           onChange={(e) => setNewPassword(e.target.value)}
                           placeholder="••••••••••"
-                          className="w-full h-10 pl-3 pr-9 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition"
+                          className="w-full h-10 pl-3 pr-9 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition"
                         />
                         <button
                           type="button"
@@ -5109,7 +5109,7 @@ function DashboardPage() {
                           placeholder="Re-enter new password"
                           className={`w-full h-10 pl-3 pr-9 bg-slate-50 border rounded-xl text-xs font-medium text-slate-900 placeholder:text-slate-400 outline-none focus:ring-2 transition ${confirmPassword && newPassword !== confirmPassword
                               ? "border-rose-300 focus:border-rose-500 focus:ring-rose-500/10"
-                              : "border-slate-200 focus:border-amber-500 focus:ring-amber-500/10"
+                              : "border-slate-200 focus:border-slate-900 focus:ring-slate-900/10"
                             }`}
                         />
                         {confirmPassword && (
@@ -5132,7 +5132,7 @@ function DashboardPage() {
                       <div className="flex items-center justify-between mb-1">
                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Password Strength</span>
                         <span className={`text-[10px] font-bold ${newPassword.length < 6 ? "text-rose-500"
-                            : newPassword.length < 10 ? "text-amber-500"
+                            : newPassword.length < 10 ? "text-slate-900"
                               : "text-emerald-600"
                           }`}>
                           {newPassword.length < 6 ? "Weak" : newPassword.length < 10 ? "Moderate" : "Strong"}
@@ -5141,7 +5141,7 @@ function DashboardPage() {
                       <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
                         <div
                           className={`h-full rounded-full transition-all duration-300 ${newPassword.length < 6 ? "w-1/4 bg-rose-400"
-                              : newPassword.length < 10 ? "w-2/4 bg-amber-400"
+                              : newPassword.length < 10 ? "w-2/4 bg-slate-500"
                                 : "w-full bg-emerald-500"
                             }`}
                         />
@@ -5150,9 +5150,9 @@ function DashboardPage() {
                   )}
 
                   {/* Info note */}
-                  <div className="flex items-start gap-2.5 p-3.5 bg-amber-50 rounded-xl border border-amber-100">
-                    <ShieldAlert className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                    <p className="text-xs text-amber-800 leading-relaxed">
+                  <div className="flex items-start gap-2.5 p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                    <ShieldAlert className="w-4 h-4 text-slate-900 shrink-0 mt-0.5" />
+                    <p className="text-xs text-slate-800 leading-relaxed">
                       Credentials are hashed with PBKDF2 + SHA-512 before being stored in MongoDB Atlas. Minimum 6 characters required.
                     </p>
                   </div>
@@ -5315,7 +5315,7 @@ function DashboardPage() {
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
+                    className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-900 text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
                   >
                     Save Lead to Database
                   </button>
@@ -5386,7 +5386,7 @@ function DashboardPage() {
                   </button>
                   <button
                     onClick={handleSaveLeadDetails}
-                    className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
+                    className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-900 text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
                   >
                     Save Changes
                   </button>
@@ -5405,7 +5405,7 @@ function DashboardPage() {
               <div className="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 bg-slate-50/50">
                 <div className="flex items-center gap-3 min-w-0">
                   <div className={`w-10 h-10 rounded-2xl flex items-center justify-center font-black text-sm text-white shadow-xs shrink-0 ${selectedEmail.status === "new"
-                      ? "bg-linear-to-br from-amber-500 to-amber-600"
+                      ? "bg-black"
                       : selectedEmail.status === "converted"
                         ? "bg-linear-to-br from-emerald-500 to-teal-600"
                         : "bg-slate-800"
@@ -5479,7 +5479,7 @@ function DashboardPage() {
                       {selectedEmail.phone ? (
                         <a
                           href={`tel:${selectedEmail.phone}`}
-                          className="mt-1 font-bold text-xs text-amber-600 hover:text-amber-700 inline-flex items-center gap-1.5"
+                          className="mt-1 font-bold text-xs text-slate-900 hover:text-slate-800 inline-flex items-center gap-1.5"
                         >
                           <Phone className="w-3.5 h-3.5" />
                           <span>{selectedEmail.phone}</span>
@@ -5495,7 +5495,7 @@ function DashboardPage() {
                       {selectedEmail.email ? (
                         <a
                           href={`mailto:${selectedEmail.email}`}
-                          className="mt-1 font-bold text-xs text-amber-600 hover:text-amber-700 inline-flex items-center gap-1.5 break-all"
+                          className="mt-1 font-bold text-xs text-slate-900 hover:text-slate-800 inline-flex items-center gap-1.5 break-all"
                         >
                           <Mail className="w-3.5 h-3.5 shrink-0" />
                           <span>{selectedEmail.email}</span>
@@ -5518,7 +5518,7 @@ function DashboardPage() {
                     <div className="p-3 rounded-2xl bg-slate-50 border border-slate-100">
                       <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Shelter Service</div>
                       <div className="mt-1 font-semibold text-xs text-slate-800 inline-flex items-center gap-1.5">
-                        <HardHat className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                        <HardHat className="w-3.5 h-3.5 text-slate-900 shrink-0" />
                         <span>{selectedEmail.service || "Storm Shelter Inquiry"}</span>
                       </div>
                     </div>
@@ -5542,7 +5542,7 @@ function DashboardPage() {
                   <h4 className="text-[11px] font-black uppercase tracking-wider text-slate-400 mb-2">
                     Customer Message & Notes
                   </h4>
-                  <div className="p-4 rounded-2xl bg-amber-50/40 border border-amber-200/60 text-xs text-slate-800 leading-relaxed font-sans">
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-800 leading-relaxed font-sans">
                     <p className="whitespace-pre-wrap">{selectedEmail.message || "No additional message provided."}</p>
                   </div>
                 </div>
@@ -5560,7 +5560,7 @@ function DashboardPage() {
                     value={inquiryNotes}
                     onChange={(e) => setInquiryNotes(e.target.value)}
                     placeholder="Log customer discussions, pricing quotes, site notes, or survey appointments..."
-                    className="w-full p-3 rounded-2xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
+                    className="w-full p-3 rounded-2xl border border-slate-200 text-xs focus:outline-hidden focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition"
                   />
                   <div className="mt-2 flex justify-end">
                     <button
@@ -5598,7 +5598,7 @@ function DashboardPage() {
                           </>
                         ) : (
                           <>
-                            <ArrowRightLeft className="w-4 h-4 text-amber-400" />
+                            <ArrowRightLeft className="w-4 h-4 text-white" />
                             <span>Convert Inquiry into Official CRM Lead</span>
                           </>
                         )}
@@ -5625,7 +5625,7 @@ function DashboardPage() {
                       <button
                         onClick={() => handleConvertInquiryToLead(selectedEmail)}
                         disabled={isConvertingEmail}
-                        className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition whitespace-nowrap shadow-xs cursor-pointer"
+                        className="px-4 py-2 rounded-xl bg-slate-500 hover:bg-slate-900 text-slate-950 text-xs font-bold transition whitespace-nowrap shadow-xs cursor-pointer"
                       >
                         {isConvertingEmail ? "Converting..." : "Convert to Lead Now"}
                       </button>
@@ -5649,7 +5649,7 @@ function DashboardPage() {
                   {selectedEmail.phone && (
                     <a
                       href={`tel:${selectedEmail.phone}`}
-                      className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition shadow-xs"
+                      className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-500 hover:bg-slate-900 text-slate-950 text-xs font-bold transition shadow-xs"
                     >
                       <Phone className="w-3.5 h-3.5" />
                       <span>Call</span>
@@ -5688,7 +5688,7 @@ function DashboardPage() {
               <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white shrink-0">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center shrink-0">
-                    <UserPlus className="w-4 h-4 text-amber-400" />
+                    <UserPlus className="w-4 h-4 text-white" />
                   </div>
                   <div>
                     <h3 className="text-sm font-extrabold text-slate-900 tracking-tight">Add Staff Member</h3>
@@ -5713,7 +5713,7 @@ function DashboardPage() {
                       value={newUserName}
                       onChange={(e) => setNewUserName(e.target.value)}
                       placeholder="e.g. Sarah Johnson"
-                      className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition"
+                      className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition"
                     />
                   </div>
                   <div>
@@ -5724,7 +5724,7 @@ function DashboardPage() {
                       onChange={(e) => setNewUsername(e.target.value.toLowerCase().replace(/\s/g, ""))}
                       required
                       placeholder="e.g. sjohnson"
-                      className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition font-mono"
+                      className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition font-mono"
                     />
                   </div>
                 </div>
@@ -5739,7 +5739,7 @@ function DashboardPage() {
                       onChange={(e) => setNewUserPassword(e.target.value)}
                       required
                       placeholder="Min. 6 characters"
-                      className="w-full h-9 pl-3 pr-9 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition"
+                      className="w-full h-9 pl-3 pr-9 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition"
                     />
                     <button
                       type="button"
@@ -5759,7 +5759,7 @@ function DashboardPage() {
                       <label
                         key={key}
                         className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition ${newUserRole === key
-                            ? "border-amber-400 bg-amber-50/60"
+                            ? "border-slate-400 bg-slate-50"
                             : "border-slate-200 hover:border-slate-300 hover:bg-slate-50"
                           }`}
                       >
@@ -5771,7 +5771,7 @@ function DashboardPage() {
                           onChange={() => setNewUserRole(key)}
                           className="sr-only"
                         />
-                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition ${newUserRole === key ? "border-amber-500 bg-amber-500" : "border-slate-300"
+                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition ${newUserRole === key ? "border-slate-900 bg-slate-500" : "border-slate-300"
                           }`}>
                           {newUserRole === key && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
                         </div>
@@ -5801,7 +5801,7 @@ function DashboardPage() {
                   <button
                     type="submit"
                     disabled={!newUsername.trim() || !newUserPassword || newUserPassword.length < 6}
-                    className="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 disabled:opacity-40 text-white text-xs font-bold uppercase tracking-wider transition shadow-sm cursor-pointer flex items-center gap-2"
+                    className="px-5 py-2 rounded-xl bg-black hover:bg-zinc-800 disabled:opacity-40 text-white text-xs font-bold uppercase tracking-wider transition shadow-sm cursor-pointer flex items-center gap-2"
                   >
                     <UserPlus className="w-3.5 h-3.5" />
                     Create Account
@@ -5817,7 +5817,7 @@ function DashboardPage() {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/50 backdrop-blur-sm">
             <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl w-full max-w-lg max-h-[90vh] flex flex-col animate-in zoom-in-95 duration-200 overflow-hidden">
               {/* Modal Header */}
-              <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-slate-100 bg-gradient-to-r from-amber-50 to-orange-50 shrink-0">
+              <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-slate-100 bg-gradient-to-r from-slate-100 to-slate-50 shrink-0">
                 <div>
                   <h3 className="text-sm font-extrabold text-slate-900 tracking-tight">Add Customer Review</h3>
                   <p className="text-xs text-slate-500 mt-0.5">Manually publish a new customer testimonial</p>
@@ -5843,7 +5843,7 @@ function DashboardPage() {
                       onChange={(e) => setNewReviewAuthor(e.target.value)}
                       required
                       placeholder="e.g. Michael R."
-                      className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition"
+                      className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition"
                     />
                   </div>
                   <div>
@@ -5853,7 +5853,7 @@ function DashboardPage() {
                       value={newReviewLocation}
                       onChange={(e) => setNewReviewLocation(e.target.value)}
                       placeholder="e.g. Franklin, TN"
-                      className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition"
+                      className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition"
                     />
                   </div>
                 </div>
@@ -5866,7 +5866,7 @@ function DashboardPage() {
                     value={newReviewInstalled}
                     onChange={(e) => setNewReviewInstalled(e.target.value)}
                     placeholder="e.g. Granger ISS 6-Person In-Ground Shelter"
-                    className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition"
+                    className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition"
                   />
                 </div>
 
@@ -5879,7 +5879,7 @@ function DashboardPage() {
                     onChange={(e) => setNewReviewTitle(e.target.value)}
                     required
                     placeholder="e.g. Best investment we've ever made for our family's safety"
-                    className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition"
+                    className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition"
                   />
                 </div>
 
@@ -5896,7 +5896,7 @@ function DashboardPage() {
                       >
                         <Star
                           className={`w-5 h-5 ${star <= newReviewRating
-                              ? "fill-amber-400 text-amber-400"
+                              ? "fill-white text-white"
                               : "fill-slate-100 text-slate-300"
                             }`}
                         />
@@ -5915,7 +5915,7 @@ function DashboardPage() {
                     required
                     rows={4}
                     placeholder="Write the full customer testimonial here..."
-                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition resize-none leading-relaxed"
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition resize-none leading-relaxed"
                   />
                 </div>
 
@@ -5931,7 +5931,7 @@ function DashboardPage() {
                   <button
                     type="submit"
                     disabled={!newReviewAuthor.trim() || !newReviewTitle.trim() || !newReviewText.trim()}
-                    className="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 disabled:opacity-40 text-white text-xs font-bold uppercase tracking-wider transition shadow-sm cursor-pointer flex items-center gap-2"
+                    className="px-5 py-2 rounded-xl bg-black hover:bg-zinc-800 disabled:opacity-40 text-white text-xs font-bold uppercase tracking-wider transition shadow-sm cursor-pointer flex items-center gap-2"
                   >
                     <Send className="w-3.5 h-3.5" />
                     Publish Review
@@ -5947,7 +5947,7 @@ function DashboardPage() {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/50 backdrop-blur-sm">
             <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl w-full max-w-md animate-in zoom-in-95 duration-200 overflow-hidden">
               {/* Header */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-gradient-to-r from-amber-50 to-orange-50">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-gradient-to-r from-slate-100 to-slate-50">
                 <div>
                   <h3 className="text-sm font-extrabold text-slate-900 tracking-tight">Owner Reply</h3>
                   <p className="text-xs text-slate-500 mt-0.5">Replying to {selectedReview.author}</p>
@@ -5965,7 +5965,7 @@ function DashboardPage() {
                 <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
                   <div className="flex items-center gap-1 mb-2">
                     {[...Array(selectedReview.rating || 5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                      <Star key={i} className="w-3.5 h-3.5 fill-white text-white" />
                     ))}
                   </div>
                   <p className="text-xs font-bold text-slate-900 mb-1">"{selectedReview.title}"</p>
@@ -5983,7 +5983,7 @@ function DashboardPage() {
                     onChange={(e) => setReviewReplyText(e.target.value)}
                     rows={4}
                     placeholder="Thank the customer and address their feedback..."
-                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition resize-none leading-relaxed"
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition resize-none leading-relaxed"
                     autoFocus
                   />
                 </div>
@@ -5999,7 +5999,7 @@ function DashboardPage() {
                   <button
                     onClick={handleReplyReview}
                     disabled={!reviewReplyText.trim()}
-                    className="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 disabled:opacity-40 text-white text-xs font-bold uppercase tracking-wider transition shadow-sm cursor-pointer flex items-center gap-2"
+                    className="px-5 py-2 rounded-xl bg-black hover:bg-zinc-800 disabled:opacity-40 text-white text-xs font-bold uppercase tracking-wider transition shadow-sm cursor-pointer flex items-center gap-2"
                   >
                     <Send className="w-3.5 h-3.5" />
                     {selectedReview.reply || (selectedReview as any).replyText ? "Update Reply" : "Post Reply"}

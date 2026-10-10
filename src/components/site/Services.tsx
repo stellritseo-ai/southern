@@ -151,11 +151,11 @@ export function Services() {
       {/* Ambient Lighting & Atmosphere */}
       <div
         aria-hidden="true"
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-amber-500/[0.04] rounded-full blur-[120px] pointer-events-none"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-white/[0.02] rounded-full blur-[120px] pointer-events-none"
       />
       <div
         aria-hidden="true"
-        className="absolute bottom-10 right-10 w-[500px] h-[300px] bg-sky-500/[0.03] rounded-full blur-[100px] pointer-events-none"
+        className="absolute bottom-10 right-10 w-[500px] h-[300px] bg-slate-700/[0.04] rounded-full blur-[100px] pointer-events-none"
       />
       <div
         aria-hidden="true"
@@ -171,8 +171,8 @@ export function Services() {
         {/* Section Header */}
         <div className="text-center max-w-5xl mx-auto mb-14 sm:mb-16">
           {/* Eyebrow Status Ribbon */}
-          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-amber-400 mb-4 shadow-[0_0_20px_rgba(245,158,11,0.12)]">
-            <Shield className="w-3.5 h-3.5 text-amber-400" />
+          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-white mb-4 shadow-[0_0_20px_rgba(255,255,255,0.06)]">
+            <Shield className="w-3.5 h-3.5 text-white" />
             <span>
               {t(
                 "Turnkey Protection Services",
@@ -198,7 +198,7 @@ export function Services() {
           {/* Decorative Divider */}
           <div className="flex items-center justify-center gap-3 my-4">
             <div className="h-px w-10 bg-white/20" />
-            <div className="h-1.5 w-6 bg-gradient-to-r from-amber-500 to-amber-400 rounded-full shadow-[0_0_8px_#f59e0b]" />
+            <div className="h-1.5 w-6 bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
             <div className="h-px w-10 bg-white/20" />
           </div>
 
@@ -226,7 +226,7 @@ export function Services() {
               >
                 <Link
                   to={service.href}
-                  className="group relative flex flex-col justify-between h-full min-h-[380px] rounded-3xl overflow-hidden border border-white/[0.12] hover:border-amber-400/60 bg-[#080d16]/40 hover:bg-[#080d16]/20 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_50px_-10px_rgba(0,0,0,0.85),0_0_30px_rgba(245,158,11,0.22)] cursor-pointer"
+                  className="group relative flex flex-col justify-between h-full min-h-[380px] rounded-3xl overflow-hidden border border-white/[0.12] hover:border-white/40 bg-[#080d16]/40 hover:bg-[#080d16]/20 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_50px_-10px_rgba(0,0,0,0.85),0_0_30px_rgba(255,255,255,0.06)] cursor-pointer"
                 >
                   {/* Background Photo with Depth Overlay - Highly Visible */}
                   <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -240,19 +240,19 @@ export function Services() {
                   </div>
 
                   {/* Top Rim Specular Hairline */}
-                  <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-amber-400/60 transition-colors pointer-events-none" />
+                  <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-white/50 transition-colors pointer-events-none" />
 
                   {/* Card Top Row: Icon */}
                   <div className="relative z-10 p-5 sm:p-6 flex items-start justify-end">
-                    <div className="w-11 h-11 rounded-2xl bg-black/45 backdrop-blur-md border border-white/20 group-hover:bg-amber-500 group-hover:border-amber-400 group-hover:text-slate-950 text-amber-400 flex items-center justify-center transition-all duration-300 shadow-md group-hover:scale-105 shrink-0">
+                    <div className="w-11 h-11 rounded-2xl bg-black/45 backdrop-blur-md border border-white/20 group-hover:bg-white group-hover:border-white group-hover:text-black text-white flex items-center justify-center transition-all duration-300 shadow-md group-hover:scale-105 shrink-0">
                       <Icon className="w-5 h-5 transition-transform duration-300 group-hover:rotate-3" />
                     </div>
                   </div>
 
                   {/* Card Footer: Anchored to Bottom of Card */}
-                  <div className="relative z-10 mt-auto p-5 sm:p-6 bg-gradient-to-t from-[#060a12] via-[#060a12]/95 to-[#060a12]/75 backdrop-blur-md border-t border-white/[0.08] group-hover:border-amber-400/30 transition-all duration-300">
+                  <div className="relative z-10 mt-auto p-5 sm:p-6 bg-gradient-to-t from-[#060a12] via-[#060a12]/95 to-[#060a12]/75 backdrop-blur-md border-t border-white/[0.08] group-hover:border-white/20 transition-all duration-300">
                     <h3
-                      className="font-display text-white group-hover:text-amber-300 transition-colors leading-snug drop-shadow-md capitalize"
+                      className="font-display text-white group-hover:text-zinc-200 transition-colors leading-snug drop-shadow-md capitalize"
                       style={{
                         fontSize: "20px",
                         textTransform: "capitalize",
@@ -269,12 +269,12 @@ export function Services() {
                     {/* Action Link Footer - Smoothly reveals on hover with grid expansion */}
                     <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out">
                       <div className="overflow-hidden">
-                        <div className="h-px w-full bg-gradient-to-r from-transparent via-amber-400/40 to-transparent my-3" />
-                        <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-amber-400 group-hover:text-amber-300 pt-0.5">
+                        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/30 to-transparent my-3" />
+                        <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-white group-hover:text-white pt-0.5">
                           <span className="flex items-center gap-1.5 font-bold tracking-wider">
                             {t("Learn More", "Ver Detalles")}
                           </span>
-                          <div className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-400/50 group-hover:bg-amber-500 group-hover:text-slate-950 group-hover:border-amber-400 flex items-center justify-center transition-all duration-300 shadow-[0_0_12px_rgba(245,158,11,0.25)]">
+                          <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 group-hover:bg-white group-hover:text-black group-hover:border-white flex items-center justify-center transition-all duration-300 shadow-[0_0_12px_rgba(255,255,255,0.15)]">
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                           </div>
                         </div>
@@ -283,7 +283,7 @@ export function Services() {
                   </div>
 
                   {/* Bottom Active Glow Accent Bar */}
-                  <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-full" />
+                  <div className="absolute bottom-0 inset-x-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-full" />
                 </Link>
               </motion.div>
             );
@@ -294,7 +294,7 @@ export function Services() {
         <div className="mt-14 sm:mt-18 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
           <Link
             to="/services"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 font-black text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_4px_20px_rgba(217,119,6,0.35)] hover:shadow-[0_8px_30px_rgba(217,119,6,0.55)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white hover:bg-neutral-100 text-black font-black text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_4px_20px_rgba(255,255,255,0.2)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.35)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group cursor-pointer"
           >
             <span>
               {t(
@@ -302,14 +302,14 @@ export function Services() {
                 "Explorar Todas las Especificaciones",
               )}
             </span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-black" />
           </Link>
 
           <a
             href={`tel:${SITE_CONFIG.phoneRaw}`}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 hover:border-amber-400/40 text-white hover:text-amber-300 text-xs font-black uppercase tracking-widest px-8 py-4 rounded-xl backdrop-blur-md transition-all duration-300 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 hover:border-white/30 text-white hover:text-zinc-200 text-xs font-black uppercase tracking-widest px-8 py-4 rounded-xl backdrop-blur-md transition-all duration-300 group"
           >
-            <Phone className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
+            <Phone className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
             <span>
               {SITE_CONFIG.phone} • {t("Direct Project Line", "Línea Directa")}
             </span>

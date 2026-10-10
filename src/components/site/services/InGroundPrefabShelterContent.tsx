@@ -192,14 +192,14 @@ export function InGroundPrefabShelterContent() {
 
             {/* Left Column: Copy */}
             <div className="lg:col-span-7 space-y-5 text-left">
-              <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider text-amber-800">
-                <ShieldCheck className="w-4 h-4 text-amber-600" />
+              <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider text-slate-900">
+                <ShieldCheck className="w-4 h-4 text-slate-900" />
                 {t("Technologically Advanced Underground Protection", "Protección Subterránea Tecnológicamente Avanzada")}
               </div>
 
               <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-black tracking-tight text-[#0B0F15] leading-[1.22]">
                 {t("Near Absolute Protection.", "Protección Casi Absoluta.")}{" "}
-                <span className="text-amber-600">
+                <span className="text-slate-900">
                   {t("Installed by Construction Experts.", "Instalado por Expertos en Construcción.")}
                 </span>
               </h2>
@@ -221,13 +221,13 @@ export function InGroundPrefabShelterContent() {
               {/* Trust Metrics Bar */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
                 <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
-                  <div className="text-xl sm:text-2xl font-black text-amber-600">FEMA</div>
+                  <div className="text-xl sm:text-2xl font-black text-[#0B0F15]">FEMA</div>
                   <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mt-0.5">
                     320 & 361 Exceeded
                   </div>
                 </div>
                 <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
-                  <div className="text-xl sm:text-2xl font-black text-amber-600">500+ Yr</div>
+                  <div className="text-xl sm:text-2xl font-black text-[#0B0F15]">500+ Yr</div>
                   <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mt-0.5">
                     {t("Lifespan", "Vida Útil")}
                   </div>
@@ -258,7 +258,7 @@ export function InGroundPrefabShelterContent() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
 
                 <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-[#0B0F15]/90 backdrop-blur-md border border-white/10 text-white text-left">
-                  <div className="flex items-center gap-2 text-[#FBBF24] text-xs font-black uppercase tracking-wider">
+                  <div className="flex items-center gap-2 text-white text-xs font-black uppercase tracking-wider">
                     <Shield className="w-4 h-4" />
                     {t("Granger ISS In-Ground Safety Shelter", "Refugio Subterráneo Granger ISS")}
                   </div>
@@ -277,7 +277,7 @@ export function InGroundPrefabShelterContent() {
       <section className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/20">
+            <span className="text-xs font-black uppercase tracking-widest text-slate-900 bg-slate-100 px-3.5 py-1.5 rounded-full border border-slate-200">
               {t("The Granger ISS Advantage", "La Ventaja del Granger ISS")}
             </span>
             <h2 className="mt-3 font-display text-2xl sm:text-3xl lg:text-[34px] font-black text-[#0B0F15] tracking-tight leading-[1.22]">
@@ -297,14 +297,14 @@ export function InGroundPrefabShelterContent() {
               return (
                 <div
                   key={idx}
-                  className="bg-white p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-lg hover:border-amber-500/30 transition-all duration-300 flex flex-col justify-between text-left"
+                  className="bg-white p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-lg hover:border-slate-400 transition-all duration-300 flex flex-col justify-between text-left"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-700 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-900 flex items-center justify-center">
                         <Icon className="w-6 h-6" />
                       </div>
-                      <span className="text-[11px] font-black uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+                      <span className="text-[11px] font-black uppercase tracking-wider text-slate-800 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
                         {adv.badge}
                       </span>
                     </div>
@@ -318,7 +318,7 @@ export function InGroundPrefabShelterContent() {
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-bold text-slate-500">
-                    <CheckCircle2 className="w-4 h-4 text-amber-600" />
+                    <CheckCircle2 className="w-4 h-4 text-slate-900" />
                     <span>{adv.highlight}</span>
                   </div>
                 </div>
@@ -332,7 +332,7 @@ export function InGroundPrefabShelterContent() {
       <section className="py-14 sm:py-20 bg-white border-b border-slate-200/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/20">
+            <span className="text-xs font-black uppercase tracking-widest text-slate-900 bg-slate-100 px-3.5 py-1.5 rounded-full border border-slate-200">
               {t("FEMA 320 & FEMA 361 Exceeded", "Supera FEMA 320 y FEMA 361")}
             </span>
             <h2 className="mt-3 font-display text-2xl sm:text-3xl lg:text-[34px] font-black text-[#0B0F15] tracking-tight leading-[1.22]">
@@ -352,14 +352,14 @@ export function InGroundPrefabShelterContent() {
               return (
                 <div
                   key={idx}
-                  className="p-6 rounded-2xl bg-slate-50 border border-slate-200/90 hover:bg-white hover:border-amber-500/30 hover:shadow-md transition-all duration-300 flex flex-col justify-between text-left"
+                  className="p-6 rounded-2xl bg-slate-50 border border-slate-200/90 hover:bg-white hover:border-slate-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between text-left"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-700 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-900 flex items-center justify-center">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <span className="text-[10px] font-black uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-slate-800 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
                         {feat.badge}
                       </span>
                     </div>
@@ -379,7 +379,7 @@ export function InGroundPrefabShelterContent() {
           {/* Door Anatomy Banner */}
           <div className="mt-10 rounded-3xl bg-[#0B0F15] text-white p-6 sm:p-10 border border-slate-800 grid lg:grid-cols-12 gap-8 items-center text-left">
             <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 bg-amber-600/20 text-[#FBBF24] text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full border border-amber-600/30">
+              <div className="inline-flex items-center gap-2 bg-white/10 text-white text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full border border-white/20">
                 <Sparkles className="w-3.5 h-3.5" />
                 {t("Ballistic Impact Protection", "Protección contra Impacto Balístico")}
               </div>
@@ -394,11 +394,11 @@ export function InGroundPrefabShelterContent() {
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <div className="flex items-center gap-2 text-xs font-bold text-slate-200">
-                  <CheckCircle2 className="w-4 h-4 text-amber-600" />
+                  <CheckCircle2 className="w-4 h-4 text-white" />
                   <span>{t("Dual Gas Struts Included", "Amortiguadores Duales de Gas")}</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs font-bold text-slate-200">
-                  <CheckCircle2 className="w-4 h-4 text-amber-600" />
+                  <CheckCircle2 className="w-4 h-4 text-white" />
                   <span>{t("3-Point Positive Locking", "Cierre Positivo de 3 Puntos")}</span>
                 </div>
               </div>
@@ -421,7 +421,7 @@ export function InGroundPrefabShelterContent() {
       <section className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/20">
+            <span className="text-xs font-black uppercase tracking-widest text-slate-900 bg-slate-100 px-3.5 py-1.5 rounded-full border border-slate-200">
               {t("4 Hours or Less", "4 Horas o Menos")}
             </span>
             <h2 className="mt-3 font-display text-2xl sm:text-3xl lg:text-[34px] font-black text-[#0B0F15] tracking-tight leading-[1.22]">
@@ -442,7 +442,7 @@ export function InGroundPrefabShelterContent() {
                 key={i}
                 className="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm text-left relative overflow-hidden"
               >
-                <div className="text-3xl font-black text-amber-600/25 mb-2 font-display">
+                <div className="text-3xl font-black text-slate-900/20 mb-2 font-display">
                   {s.step}
                 </div>
                 <h3 className="font-display text-base font-black text-[#0B0F15] mb-2">
@@ -458,7 +458,7 @@ export function InGroundPrefabShelterContent() {
           {/* Construction Evaluation Banner */}
           <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-md text-left">
             <div className="max-w-3xl mb-6">
-              <div className="text-xs font-black uppercase tracking-wider text-amber-800 mb-1">
+              <div className="text-xs font-black uppercase tracking-wider text-slate-900 mb-1">
                 {t("Full-Service Construction Company", "Empresa de Construcción Integral")}
               </div>
               <h3 className="font-display text-xl sm:text-2xl font-black text-[#0B0F15]">
@@ -476,7 +476,7 @@ export function InGroundPrefabShelterContent() {
               {evaluationChecks.map((check, idx) => (
                 <div key={idx} className="p-4 rounded-xl bg-slate-50 border border-slate-200">
                   <div className="font-bold text-sm text-[#0B0F15] mb-1 flex items-center gap-2">
-                    <Check className="w-4 h-4 text-amber-600" />
+                    <Check className="w-4 h-4 text-slate-900" />
                     <span>{check.title}</span>
                   </div>
                   <p className="text-slate-600 text-xs leading-relaxed font-normal">
@@ -488,7 +488,7 @@ export function InGroundPrefabShelterContent() {
 
             <div className="mt-6 pt-5 border-t border-slate-100 flex flex-wrap gap-4 items-center justify-between text-xs text-slate-500 font-semibold">
               <span>{t("Flexible Placement: Outside existing homes, new construction builds, or retrofitted into designated areas.", "Ubicación Flexible: Fuera de casas existentes, nuevas construcciones o adaptado en áreas designadas.")}</span>
-              <Link to="/free-quote" className="text-amber-700 hover:underline font-bold flex items-center gap-1">
+              <Link to="/free-quote" className="text-slate-900 hover:underline font-bold flex items-center gap-1">
                 {t("Schedule Site Evaluation", "Programar Evaluación")} <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -559,7 +559,7 @@ export function InGroundPrefabShelterContent() {
 
             {/* Right Column: Copy */}
             <div className="lg:col-span-7 space-y-5 text-left">
-              <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/20">
+              <span className="text-xs font-black uppercase tracking-widest text-slate-900 bg-slate-100 px-3.5 py-1.5 rounded-full border border-slate-200">
                 {t("Architectural Integration", "Integración Arquitectónica")}
               </span>
 
@@ -583,15 +583,15 @@ export function InGroundPrefabShelterContent() {
 
               <div className="space-y-2.5 pt-2">
                 <div className="flex items-start gap-2.5 text-sm font-semibold text-slate-800">
-                  <CheckCircle2 className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-slate-900 shrink-0 mt-0.5" />
                   <span>{t("Green: Blends seamlessly with lawn and backyard vegetation", "Verde: Se integra a la perfección con el césped y jardines")}</span>
                 </div>
                 <div className="flex items-start gap-2.5 text-sm font-semibold text-slate-800">
-                  <CheckCircle2 className="w-4 h-4 text-amber-600" />
+                  <CheckCircle2 className="w-4 h-4 text-slate-900" />
                   <span>{t("Gray: Blends with garage slabs, patios, and concrete walkways", "Gris: Combina con losas de garaje, patios y andenes")}</span>
                 </div>
                 <div className="flex items-start gap-2.5 text-sm font-semibold text-slate-800">
-                  <CheckCircle2 className="w-4 h-4 text-amber-600" />
+                  <CheckCircle2 className="w-4 h-4 text-slate-900" />
                   <span>{t("Custom: Matched to your siding, brickwork, or trim colors", "Personalizado: Coordinado con el color de su casa o molduras")}</span>
                 </div>
               </div>
@@ -605,13 +605,13 @@ export function InGroundPrefabShelterContent() {
       <section className="py-14 sm:py-20 bg-[#0B0F15] text-white relative overflow-hidden">
         {/* Subtle background glow */}
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-slate-600/10 blur-[130px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-amber-500/10 blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-white/5 blur-[130px] pointer-events-none" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
 
             <div className="lg:col-span-8 space-y-5 text-left">
-              <span className="text-xs font-black uppercase tracking-widest text-[#FBBF24] bg-white/10 px-3.5 py-1.5 rounded-full border border-white/10">
+              <span className="text-xs font-black uppercase tracking-widest text-white bg-white/10 px-3.5 py-1.5 rounded-full border border-white/10">
                 {t("Unsurpassed Industry Warranty", "Garantía Insuperable en la Industria")}
               </span>
 
@@ -627,7 +627,7 @@ export function InGroundPrefabShelterContent() {
               </p>
 
               <div className="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm space-y-2">
-                <div className="text-xs font-black uppercase tracking-wider text-[#FBBF24]">
+                <div className="text-xs font-black uppercase tracking-wider text-white">
                   {t("Door Tornado Replacement Guarantee", "Garantía de Reemplazo de Puerta por Tornado")}
                 </div>
                 <p className="text-slate-200 text-sm leading-relaxed">
@@ -640,8 +640,8 @@ export function InGroundPrefabShelterContent() {
             </div>
 
             <div className="lg:col-span-4 flex justify-center">
-              <div className="p-8 rounded-3xl bg-gradient-to-br from-amber-600/20 to-amber-700/10 border-2 border-amber-600/40 text-center space-y-3 w-full max-w-sm shadow-2xl">
-                <div className="w-14 h-14 mx-auto rounded-2xl bg-amber-600 text-slate-950 flex items-center justify-center shadow-lg">
+              <div className="p-8 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 border-2 border-white/20 text-center space-y-3 w-full max-w-sm shadow-2xl">
+                <div className="w-14 h-14 mx-auto rounded-2xl bg-white text-black flex items-center justify-center shadow-lg">
                   <Award className="w-8 h-8" />
                 </div>
                 <div className="font-display text-2xl font-black text-white">
@@ -650,7 +650,7 @@ export function InGroundPrefabShelterContent() {
                 <div className="text-xs text-slate-300 leading-relaxed font-medium">
                   {t("Crack Proof · Rust Proof · Rot Proof · Float Proof", "Antigrietas · Antioxidante · Antiputrefacción · Antiflotación")}
                 </div>
-                <div className="pt-2 text-[11px] text-[#FBBF24] font-black uppercase tracking-wider">
+                <div className="pt-2 text-[11px] text-white/80 font-black uppercase tracking-wider">
                   Granger Plastics Company · Middletown, OH
                 </div>
               </div>
@@ -663,7 +663,7 @@ export function InGroundPrefabShelterContent() {
       {/* ── SECTION 7: READY TO PROTECT YOUR FAMILY? (CTA) ── */}
       <section className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200/80 text-center">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
-          <span className="text-xs font-black uppercase tracking-widest text-amber-800 bg-amber-500/10 px-4 py-1.5 rounded-full border border-amber-500/20">
+          <span className="text-xs font-black uppercase tracking-widest text-slate-900 bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200">
             {t("Ready to Protect Your Family?", "¿Listo para Proteger a Su Familia?")}
           </span>
 
@@ -681,7 +681,7 @@ export function InGroundPrefabShelterContent() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3">
             <Link
               to="/free-quote"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-slate-950 font-black text-sm uppercase tracking-wider px-8 py-4 rounded-xl shadow-lg shadow-amber-600/20 transition-all active:scale-95 cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black hover:bg-zinc-800 text-white font-black text-sm uppercase tracking-wider px-8 py-4 rounded-xl shadow-lg shadow-black/20 transition-all active:scale-95 cursor-pointer"
             >
               <span>{t("Request a Free Estimate", "Solicitar Estimación Gratuita")}</span>
               <ArrowRight className="w-4 h-4" />
@@ -691,7 +691,7 @@ export function InGroundPrefabShelterContent() {
               href="tel:6159912361"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0B0F15] hover:bg-black text-white font-black text-sm uppercase tracking-wider px-8 py-4 rounded-xl shadow-md transition-all active:scale-95 cursor-pointer border border-white/10"
             >
-              <Phone className="w-4 h-4 text-[#FBBF24]" />
+              <Phone className="w-4 h-4 text-white" />
               <span>{t("Call (615) 991-2361", "Llamar (615) 991-2361")}</span>
             </a>
           </div>

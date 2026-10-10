@@ -17,14 +17,14 @@ interface Review {
 }
 
 const avatarColors = [
-  "#1E3A8A",
-  "#B45309",
-  "#047857",
-  "#475569",
-  "#7C2D12",
-  "#0D9488",
-  "#1E293B",
-  "#D97706",
+  "#18181B",
+  "#27272A",
+  "#3F3F46",
+  "#52525B",
+  "#09090B",
+  "#1F2937",
+  "#111827",
+  "#262626",
 ];
 
 function StarRating({ count }: { count: number }) {
@@ -36,7 +36,7 @@ function StarRating({ count }: { count: number }) {
           className={cn(
             "w-3.5 h-3.5",
             i < count
-              ? "fill-[#FFD54F] text-[#FFD54F]"
+              ? "fill-white text-white"
               : "fill-white/15 text-white/15"
           )}
         />
@@ -58,12 +58,12 @@ function TestimonialCard({
     <div
       className={cn(
         "relative bg-[#0e1624]/90 border border-white/[0.08] rounded-2xl p-4 sm:p-4.5 flex flex-col gap-2.5 group transition-all duration-300 text-left",
-        "shadow-[0_4px_20px_rgba(0,0,0,0.35)] hover:shadow-[0_10px_32px_rgba(0,0,0,0.6),0_0_20px_rgba(245,158,11,0.12)] hover:border-amber-400/40 backdrop-blur-md",
+        "shadow-[0_4px_20px_rgba(0,0,0,0.35)] hover:shadow-[0_10px_32px_rgba(0,0,0,0.6),0_0_20px_rgba(255,255,255,0.1)] hover:border-white/40 backdrop-blur-md",
         isGrid ? "w-full" : "flex-shrink-0 w-[320px] sm:w-[350px] mx-2.5"
       )}
     >
       {/* Top Specular Rim */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:via-amber-400/40 transition-colors pointer-events-none" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:via-white/40 transition-colors pointer-events-none" />
 
       {/* Top row: rating + verified badge */}
       <div className="flex items-center justify-between">
@@ -76,7 +76,7 @@ function TestimonialCard({
 
       {/* Quote icon + text (compact height with line-clamp) */}
       <div className="relative">
-        <Quote className="absolute -top-0.5 -left-0.5 w-5 h-5 text-amber-400/20 fill-amber-400/20" />
+        <Quote className="absolute -top-0.5 -left-0.5 w-5 h-5 text-white/20 fill-white/20" />
         <p className="text-slate-300 text-[12.5px] sm:text-[13px] leading-snug font-medium pl-5 line-clamp-3">
           {review.text}
         </p>
@@ -84,15 +84,15 @@ function TestimonialCard({
 
       {/* Service tag */}
       {review.service && (
-        <span className="self-start inline-flex items-center bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[9.5px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">
+        <span className="self-start inline-flex items-center bg-white/10 border border-white/20 text-white text-[9.5px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">
           {review.service}
         </span>
       )}
 
       {/* Business reply (compact) */}
       {review.replyText && (
-        <div className="bg-white/[0.03] border border-amber-500/20 p-2 sm:p-2.5 rounded-lg text-[11px] leading-tight">
-          <p className="font-extrabold text-amber-400 uppercase tracking-wider text-[8.5px] mb-0.5">
+        <div className="bg-white/[0.03] border border-white/15 p-2 sm:p-2.5 rounded-lg text-[11px] leading-tight">
+          <p className="font-extrabold text-white uppercase tracking-wider text-[8.5px] mb-0.5">
             {t(
               "Southern Storm Shelters Response",
               "Respuesta de Southern Storm Shelters"
@@ -107,7 +107,7 @@ function TestimonialCard({
       {/* Author */}
       <div className="flex items-center gap-2.5 pt-2.5 border-t border-white/[0.07] mt-auto">
         <div
-          className="w-8 h-8 rounded-full flex items-center justify-center text-[#FFD54F] text-[11px] font-black flex-shrink-0 shadow-sm border border-white/10"
+          className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-black flex-shrink-0 shadow-sm border border-white/10"
           style={{ backgroundColor: review.avatarColor }}
         >
           {review.initials}
@@ -365,8 +365,8 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
       }}
     >
       {/* Background blobs */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-amber-500/[0.07] blur-[140px]" />
-      <div className="pointer-events-none absolute bottom-0 right-1/4 w-[450px] h-[300px] rounded-full bg-amber-400/[0.05] blur-[120px]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-white/[0.03] blur-[140px]" />
+      <div className="pointer-events-none absolute bottom-0 right-1/4 w-[450px] h-[300px] rounded-full bg-white/[0.02] blur-[120px]" />
 
       {/* Dot grid */}
       <div
@@ -388,15 +388,15 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
         className="mx-auto w-[90%] max-w-7xl text-center mb-8 sm:mb-12 relative z-10"
       >
         {/* Eyebrow */}
-        <div className="inline-flex items-center gap-2 bg-white/[0.05] border border-amber-500/30 rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest text-amber-300 mb-5 shadow-[0_0_15px_rgba(245,158,11,0.08)]">
-          <Star className="w-3.5 h-3.5 fill-[#FFD54F] text-[#FFD54F]" />
+        <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest text-white mb-5 shadow-sm">
+          <Star className="w-3.5 h-3.5 fill-white text-white" />
           {t("Client Reviews", "Opiniones de Clientes")}
-          <Star className="w-3.5 h-3.5 fill-[#FFD54F] text-[#FFD54F]" />
+          <Star className="w-3.5 h-3.5 fill-white text-white" />
         </div>
 
         <h2 className="text-[22px] sm:text-[32px] lg:text-[40px] font-black text-white tracking-tight leading-tight mt-0 sm:mt-[-8px] mb-[10px]">
           {t("What Our ", "Lo Que Dicen ")}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500">
+          <span className="text-white">
             {t("Customers Say", "Nuestros Clientes")}
           </span>
         </h2>
@@ -420,7 +420,7 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
               {["MR", "ST", "JK", "EW", "RM"].map((init, i) => (
                 <div
                   key={i}
-                  className="w-8 h-8 rounded-full border-2 border-[#0b0f15] flex items-center justify-center text-[10px] font-black text-[#FFD54F] shadow-md"
+                  className="w-8 h-8 rounded-full border-2 border-[#0b0f15] flex items-center justify-center text-[10px] font-black text-white shadow-md"
                   style={{
                     backgroundColor: avatarColors[i % avatarColors.length],
                     zIndex: 5 - i,
@@ -435,7 +435,7 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
                 {[1, 2, 3, 4, 5].map((i) => (
                   <Star
                     key={i}
-                    className="w-3.5 h-3.5 fill-[#FFD54F] text-[#FFD54F]"
+                    className="w-3.5 h-3.5 fill-white text-white"
                   />
                 ))}
                 <span className="text-[13px] font-black text-white ml-1">
@@ -477,18 +477,18 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
         <div className="mt-9 sm:mt-11 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10 px-4">
           <Link
             to="/reviews"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 font-black text-xs uppercase tracking-widest px-7 py-3.5 rounded-xl shadow-[0_4px_20px_rgba(217,119,6,0.35)] hover:shadow-[0_8px_30px_rgba(217,119,6,0.55)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-slate-950 hover:bg-slate-100 font-black text-xs uppercase tracking-widest px-7 py-3.5 rounded-xl shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
           >
             <span>
               {t("Read All 140+ Client Reviews", "Ver Todas las 140+ Reseñas")}
             </span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-black" />
           </Link>
           <Link
             to="/free-quote"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 hover:border-amber-400/40 text-white hover:text-amber-300 font-black text-xs uppercase tracking-widest px-7 py-3.5 rounded-xl backdrop-blur-md shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 hover:border-white text-white font-black text-xs uppercase tracking-widest px-7 py-3.5 rounded-xl backdrop-blur-md shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
           >
-            <Sparkles className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
+            <Sparkles className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
             <span>
               {t("Request On-Site Estimate", "Solicitar Estimación")}
             </span>

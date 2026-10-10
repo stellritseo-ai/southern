@@ -179,17 +179,17 @@ export function ReviewsPageContent() {
   };
 
   return (
-    <div className="bg-white text-slate-900 overflow-hidden selection:bg-amber-600 selection:text-white">
+    <div className="bg-white text-slate-900 overflow-hidden selection:bg-black selection:text-white">
 
       {/* ── SECTION 1: WHY OUR CUSTOMERS CHOOSE US ─────────────────────── */}
       <section className="relative py-16 sm:py-20 lg:py-24 border-b border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-50">
-        <div aria-hidden className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div aria-hidden className="absolute top-0 right-1/4 w-96 h-96 bg-black/[0.02] rounded-full blur-3xl pointer-events-none" />
         <div aria-hidden className="absolute bottom-0 left-10 w-96 h-96 bg-slate-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-4">
-              <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-100 text-slate-900 text-xs font-bold uppercase tracking-widest mb-4">
+              <Star className="w-3.5 h-3.5 fill-black text-black" />
               <span>{t("5-Star Reputation", "Reputación 5 Estrellas")}</span>
             </div>
 
@@ -211,14 +211,14 @@ export function ReviewsPageContent() {
               return (
                 <div
                   key={item.title}
-                  className="rounded-3xl bg-white border border-slate-200 p-7 flex flex-col justify-between hover:border-amber-500/40 hover:shadow-xl transition-all duration-300 shadow-xs group"
+                  className="rounded-3xl bg-white border border-slate-200 p-7 flex flex-col justify-between hover:border-black/30 hover:shadow-xl transition-all duration-300 shadow-xs group"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mb-5 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                    <div className="w-12 h-12 rounded-2xl bg-slate-100 border border-slate-200 text-slate-900 flex items-center justify-center mb-5 group-hover:bg-black group-hover:text-white transition-colors">
                       <Icon className="w-6 h-6" />
                     </div>
 
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-amber-700 transition-colors">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-black transition-colors">
                       {item.title}
                     </h3>
 
@@ -238,8 +238,8 @@ export function ReviewsPageContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs font-bold uppercase tracking-widest mb-3">
-              <Quote className="w-3.5 h-3.5 text-amber-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-100 text-slate-900 text-xs font-bold uppercase tracking-widest mb-3">
+              <Quote className="w-3.5 h-3.5 text-slate-900" />
               <span>{t("Verified Testimonials", "Testimonios Verificados")}</span>
             </div>
 
@@ -272,13 +272,13 @@ export function ReviewsPageContent() {
                 .map((rev) => (
                   <div
                     key={rev.id}
-                    className="rounded-3xl bg-slate-50/70 border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-amber-500/40 hover:shadow-lg transition-all duration-300 shadow-xs relative"
+                    className="rounded-3xl bg-slate-50/70 border border-slate-200 p-7 sm:p-8 flex flex-col justify-between hover:border-black/30 hover:shadow-lg transition-all duration-300 shadow-xs relative"
                   >
                     <div>
                       {/* Stars */}
-                      <div className="flex items-center gap-1 mb-4 text-amber-500">
+                      <div className="flex items-center gap-1 mb-4 text-slate-900">
                         {[...Array(rev.rating || 5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                          <Star key={i} className="w-4 h-4 fill-black text-black" />
                         ))}
                       </div>
 
@@ -294,8 +294,8 @@ export function ReviewsPageContent() {
 
                       {/* Owner Reply if present */}
                       {(rev.reply || rev.replyText) && (
-                        <div className="mb-4 p-3.5 bg-amber-50/80 border-l-2 border-amber-600 rounded-r-2xl text-xs">
-                          <span className="font-bold text-amber-950 block text-[10px] uppercase tracking-wider">
+                        <div className="mb-4 p-3.5 bg-slate-100 border-l-2 border-black rounded-r-2xl text-xs">
+                          <span className="font-bold text-slate-900 block text-[10px] uppercase tracking-wider">
                             {t("Southern Storm Shelters Response:", "Respuesta de Southern Storm Shelters:")}
                           </span>
                           <p className="text-slate-700 mt-1 italic leading-relaxed">
@@ -313,8 +313,8 @@ export function ReviewsPageContent() {
                           {new Date(rev.createdAt).toLocaleDateString()}
                         </span>
                       </div>
-                      <div className="text-[11px] font-bold text-amber-700 flex items-center gap-1.5 mt-0.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                      <div className="text-[11px] font-bold text-slate-700 flex items-center gap-1.5 mt-0.5">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-slate-900 shrink-0" />
                         <span>{t("Installed", "Instalado")}: {rev.installed || "Granger ISS In-Ground Shelter"}</span>
                       </div>
                     </div>
@@ -326,20 +326,20 @@ export function ReviewsPageContent() {
           {/* Empty State */}
           {!loading && reviews.filter((r) => r.featured !== false).length === 0 && (
             <div className="text-center py-16 px-6 bg-slate-50 border border-slate-200 rounded-3xl max-w-lg mx-auto">
-              <Star className="w-10 h-10 text-amber-500 fill-amber-500 mx-auto mb-3" />
+              <Star className="w-10 h-10 text-black fill-black mx-auto mb-3" />
               <h3 className="text-lg font-bold text-slate-900 mb-1">{t("No reviews yet", "Sin reseñas aún")}</h3>
               <p className="text-xs text-slate-500 mb-5">
                 {t("Be the first to share your experience with Southern Storm Shelters.", "Sea el primero en compartir su experiencia con Southern Storm Shelters.")}
               </p>
-              <Button onClick={() => setModalOpen(true)} className="bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl text-xs">
+              <Button onClick={() => setModalOpen(true)} className="bg-black hover:bg-zinc-800 text-white font-bold rounded-xl text-xs">
                 {t("Leave a Review", "Dejar una Reseña")}
               </Button>
             </div>
           )}
 
           {/* Share Your Experience Callout */}
-          <div className="mt-14 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-8 sm:p-12 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden border border-amber-500/20">
-            <div aria-hidden className="absolute -right-10 -bottom-10 w-60 h-60 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="mt-14 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-8 sm:p-12 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden border border-white/10">
+            <div aria-hidden className="absolute -right-10 -bottom-10 w-60 h-60 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
             <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-3">
               {t("Share Your Experience", "Comparta Su Experiencia")}
@@ -355,7 +355,7 @@ export function ReviewsPageContent() {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Button
                 onClick={() => setModalOpen(true)}
-                className="bg-amber-600 hover:bg-amber-700 text-white font-extrabold px-8 py-3.5 rounded-xl shadow-lg shadow-amber-600/30 text-sm cursor-pointer"
+                className="bg-white hover:bg-slate-100 text-black font-extrabold px-8 py-3.5 rounded-xl shadow-lg shadow-black/30 text-sm cursor-pointer"
               >
                 <MessageSquarePlus className="w-4 h-4 mr-2" />
                 <span>{t("LEAVE A REVIEW", "DEJAR UNA RESEÑA")}</span>
@@ -379,7 +379,7 @@ export function ReviewsPageContent() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-amber-700 bg-amber-50 px-3.5 py-1 rounded-full border border-amber-200">
+            <span className="text-xs font-bold uppercase tracking-widest text-slate-900 bg-slate-100 px-3.5 py-1 rounded-full border border-slate-200">
               {t("Why Reviews Matter", "¿Por Qué Importan las Reseñas?")}
             </span>
 
@@ -407,7 +407,7 @@ export function ReviewsPageContent() {
                 {valueMatrix.map((row, idx) => (
                   <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-slate-50/70"}>
                     <td className="p-4 sm:p-5 font-bold text-slate-900 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-slate-900 shrink-0" />
                       <span>{row.value}</span>
                     </td>
                     <td className="p-4 sm:p-5 text-slate-700 font-medium leading-relaxed">
@@ -426,8 +426,8 @@ export function ReviewsPageContent() {
       <section className="py-16 sm:py-24 bg-white relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
-          <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-8 sm:p-14 text-center max-w-5xl mx-auto shadow-2xl relative overflow-hidden border border-amber-500/30">
-            <div aria-hidden className="absolute -right-20 -top-20 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-8 sm:p-14 text-center max-w-5xl mx-auto shadow-2xl relative overflow-hidden border border-white/10">
+            <div aria-hidden className="absolute -right-20 -top-20 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
             <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-4">
               {t("Ready to Work With Nashville's Underground Shelter Builders?", "¿Listo Para Trabajar Con Constructores de Refugios de Confianza?")}
@@ -443,7 +443,7 @@ export function ReviewsPageContent() {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 to="/free-quote"
-                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold px-8 py-4 rounded-2xl shadow-xl transition text-sm sm:text-base"
+                className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-black font-extrabold px-8 py-4 rounded-2xl shadow-xl transition text-sm sm:text-base"
               >
                 <span>{t("Request a Free Estimate", "Solicitar Estimación Gratis")}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -453,7 +453,7 @@ export function ReviewsPageContent() {
                 href={`tel:${SITE_CONFIG.phoneRaw}`}
                 className="inline-flex items-center gap-2 bg-slate-950/80 hover:bg-slate-950 text-white font-extrabold px-8 py-4 rounded-2xl border border-white/20 transition text-sm sm:text-base"
               >
-                <Phone className="w-4 h-4 text-amber-400" />
+                <Phone className="w-4 h-4 text-white" />
                 <span>{SITE_CONFIG.phone}</span>
               </a>
             </div>
@@ -475,7 +475,7 @@ export function ReviewsPageContent() {
           <div className="rounded-3xl bg-white border border-slate-200 p-8 sm:p-12 shadow-md max-w-4xl mx-auto">
             
             <div className="text-center mb-8">
-              <span className="text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-50 px-3.5 py-1 rounded-full border border-amber-200">
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-900 bg-slate-100 px-3.5 py-1 rounded-full border border-slate-200">
                 {t("Contact Information Summary", "Resumen de Contacto")}
               </span>
               <h3 className="mt-3 text-2xl sm:text-3xl font-extrabold text-slate-900">
@@ -488,11 +488,11 @@ export function ReviewsPageContent() {
 
             <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/60">
               <table className="w-full text-left text-xs sm:text-sm border-collapse">
-                <tbody className="divide-y divide-slate-200">
+                <tbody className="divide-y border-slate-200">
                   <tr className="hover:bg-white transition-colors">
                     <td className="p-4 font-bold text-slate-500 w-1/3 sm:w-1/4">{t("Phone", "Teléfono")}</td>
                     <td className="p-4 font-extrabold text-slate-900">
-                      <a href={`tel:${SITE_CONFIG.phoneRaw}`} className="text-amber-700 hover:underline">
+                      <a href={`tel:${SITE_CONFIG.phoneRaw}`} className="text-slate-900 hover:underline">
                         {SITE_CONFIG.phone}
                       </a>
                     </td>
@@ -500,7 +500,7 @@ export function ReviewsPageContent() {
                   <tr className="hover:bg-white transition-colors">
                     <td className="p-4 font-bold text-slate-500">{t("Email", "Correo Electrónico")}</td>
                     <td className="p-4 font-semibold text-slate-900">
-                      <a href={`mailto:${SITE_CONFIG.email}`} className="text-amber-700 hover:underline">
+                      <a href={`mailto:${SITE_CONFIG.email}`} className="text-slate-900 hover:underline">
                         {SITE_CONFIG.email}
                       </a>
                     </td>
@@ -568,7 +568,7 @@ export function ReviewsPageContent() {
                   id="reviewerName"
                   required
                   placeholder={t("e.g. John Miller", "ej. Juan Pérez")}
-                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
+                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-black focus:ring-black/10"
                 />
               </div>
 
@@ -580,7 +580,7 @@ export function ReviewsPageContent() {
                   id="reviewerCity"
                   required
                   placeholder="Franklin, TN"
-                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
+                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-black focus:ring-black/10"
                 />
               </div>
 
@@ -593,7 +593,7 @@ export function ReviewsPageContent() {
                   required
                   placeholder="e.g. Granger ISS In-Ground Shelter"
                   defaultValue="Granger ISS In-Ground Shelter"
-                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
+                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-black focus:ring-black/10"
                 />
               </div>
 
@@ -605,7 +605,7 @@ export function ReviewsPageContent() {
                   id="reviewerHeadline"
                   required
                   placeholder={t("e.g. Flawless installation & great team!", "ej. ¡Instalación impecable y gran equipo!")}
-                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
+                  className="mt-1 bg-white border-slate-300 text-slate-900 h-10 text-xs rounded-xl focus:border-black focus:ring-black/10"
                 />
               </div>
 
@@ -626,7 +626,7 @@ export function ReviewsPageContent() {
                       <Star
                         className={`w-6 h-6 cursor-pointer ${
                           (hoverRating !== null ? star <= hoverRating : star <= rating)
-                            ? "fill-amber-400 text-amber-400"
+                            ? "fill-black text-black"
                             : "text-slate-300"
                         }`}
                       />
@@ -650,7 +650,7 @@ export function ReviewsPageContent() {
                     "Tell us about the installation, customer service, and how you feel about your shelter...",
                     "Cuéntenos sobre la instalación, atención al cliente y su refugio..."
                   )}
-                  className="mt-1 bg-white border-slate-300 text-slate-900 text-xs rounded-xl focus:border-amber-600 focus:ring-amber-600"
+                  className="mt-1 bg-white border-slate-300 text-slate-900 text-xs rounded-xl focus:border-black focus:ring-black/10"
                 />
               </div>
 
@@ -660,7 +660,7 @@ export function ReviewsPageContent() {
                   id="permission"
                   required
                   defaultChecked
-                  className="mt-0.5 rounded border-slate-300 text-amber-600 focus:ring-amber-600"
+                  className="mt-0.5 rounded border-slate-300 text-black focus:ring-black/20 accent-black"
                 />
                 <label htmlFor="permission" className="text-[11px] text-slate-600 leading-tight">
                   {t(
@@ -673,7 +673,7 @@ export function ReviewsPageContent() {
               <Button
                 type="submit"
                 disabled={submitting}
-                className="w-full h-12 bg-amber-600 hover:bg-amber-700 text-white font-extrabold uppercase tracking-wider rounded-xl shadow-lg shadow-amber-600/20 text-xs mt-2 cursor-pointer"
+                className="w-full h-12 bg-black hover:bg-zinc-800 text-white font-extrabold uppercase tracking-wider rounded-xl shadow-lg shadow-black/20 text-xs mt-2 cursor-pointer"
               >
                 {submitting ? t("Submitting...", "Enviando...") : t("SUBMIT REVIEW", "PUBLICAR RESEÑA")}
               </Button>

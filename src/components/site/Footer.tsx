@@ -89,13 +89,13 @@ export function Footer() {
   ];
 
   const linkCls = "text-slate-400 hover:text-white transition-colors duration-200 text-sm font-medium flex items-center gap-1.5 group py-0.5";
-  const arrowCls = "w-3 h-3 text-amber-500 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0";
+  const arrowCls = "w-3 h-3 text-white opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0";
   const colHeadCls = "text-[11px] font-black uppercase tracking-widest text-slate-500 mb-5";
 
   return (
     <footer className="relative bg-[#0b0f15] text-white overflow-hidden">
-      {/* Top amber gradient line */}
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
+      {/* Top specular hairline */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
       {/* Subtle dot grid */}
       <div
@@ -104,7 +104,7 @@ export function Footer() {
       />
 
       {/* Glow blobs */}
-      <div className="absolute -top-32 left-1/4 w-80 h-80 bg-amber-600/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-32 left-1/4 w-80 h-80 bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-slate-700/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 sm:pt-16 lg:pt-20">
@@ -140,7 +140,7 @@ export function Footer() {
                   aria-label={label}
                   whileHover={{ y: -3, scale: 1.08 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/40 hover:bg-amber-500/10 transition-colors duration-300"
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/40 hover:bg-white/10 transition-colors duration-300"
                 >
                   <Icon />
                 </motion.a>
@@ -152,10 +152,10 @@ export function Footer() {
               href={`tel:${SITE_CONFIG.phoneRaw}`}
               className="group inline-flex flex-col gap-0.5 border-t border-white/10 pt-5"
             >
-              <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-amber-400 transition-colors">
+              <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-white transition-colors">
                 {t("Call Direct", "Llamar Directo")}
               </span>
-              <span className="font-display font-black text-2xl tracking-tight text-white group-hover:text-amber-400 transition-colors">
+              <span className="font-display font-black text-2xl tracking-tight text-white group-hover:text-white transition-colors">
                 {SITE_CONFIG.phone}
               </span>
             </a>
@@ -214,8 +214,8 @@ export function Footer() {
                 { icon: MapPin, label: t("Area", "Área"), value: "Nashville, TN · 100-Mile Radius", href: null },
               ].map(({ icon: Icon, label, value, href }) => (
                 <li key={label} className="flex items-start gap-3 group">
-                  <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-amber-500/15 group-hover:border-amber-500/30 transition-all duration-300">
-                    <Icon className="w-3.5 h-3.5 text-amber-400" />
+                  <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-white/15 group-hover:border-white/30 transition-all duration-300">
+                    <Icon className="w-3.5 h-3.5 text-white" />
                   </div>
                   <div className="min-w-0 pt-0.5">
                     <div className="text-[9px] font-black uppercase tracking-widest text-slate-500 mb-0.5">{label}</div>
@@ -231,7 +231,7 @@ export function Footer() {
 
             {/* Hours card */}
             <div className="bg-white/[0.03] border border-white/10 rounded-xl p-4 mt-2">
-              <div className="flex items-center gap-1.5 text-amber-400 text-[10px] font-black uppercase tracking-widest mb-3">
+              <div className="flex items-center gap-1.5 text-white text-[10px] font-black uppercase tracking-widest mb-3">
                 <Clock className="w-3.5 h-3.5" />
                 {t("Business Hours", "Horario")}
               </div>
@@ -259,7 +259,7 @@ export function Footer() {
             </p>
             <a
               href={`tel:${SITE_CONFIG.phoneRaw}`}
-              className="flex items-center gap-3 bg-amber-500 hover:bg-amber-400 rounded-xl px-4 py-3 mb-4 transition-colors"
+              className="flex items-center gap-3 bg-white hover:bg-slate-200 rounded-xl px-4 py-3 mb-4 transition-colors"
             >
               <Phone className="h-4 w-4 text-[#0b0f15]" />
               <span className="font-black text-[#0b0f15] text-sm tracking-tight">{SITE_CONFIG.phone}</span>
@@ -272,7 +272,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:border-amber-500/40 transition-all"
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/40 transition-all"
                 >
                   <Icon />
                 </a>
@@ -303,15 +303,15 @@ export function Footer() {
 
           <MobileAccordion title={t("Contact", "Contacto")}>
             <ul className="space-y-3">
-              <li><a href={`tel:${SITE_CONFIG.phoneRaw}`} className="flex items-center gap-2.5 text-sm text-slate-400 hover:text-white transition-colors"><Phone className="h-3.5 w-3.5 text-amber-400 shrink-0" />{SITE_CONFIG.phone}</a></li>
-              <li><a href={`mailto:${SITE_CONFIG.email}`} className="flex items-center gap-2.5 text-sm text-slate-400 hover:text-white transition-colors break-all"><Mail className="h-3.5 w-3.5 text-amber-400 shrink-0" />{SITE_CONFIG.email}</a></li>
-              <li><div className="flex items-center gap-2.5 text-sm text-slate-400"><MapPin className="h-3.5 w-3.5 text-amber-400 shrink-0" />Nashville, TN · 100-Mile Radius</div></li>
+              <li><a href={`tel:${SITE_CONFIG.phoneRaw}`} className="flex items-center gap-2.5 text-sm text-slate-400 hover:text-white transition-colors"><Phone className="h-3.5 w-3.5 text-white shrink-0" />{SITE_CONFIG.phone}</a></li>
+              <li><a href={`mailto:${SITE_CONFIG.email}`} className="flex items-center gap-2.5 text-sm text-slate-400 hover:text-white transition-colors break-all"><Mail className="h-3.5 w-3.5 text-white shrink-0" />{SITE_CONFIG.email}</a></li>
+              <li><div className="flex items-center gap-2.5 text-sm text-slate-400"><MapPin className="h-3.5 w-3.5 text-white shrink-0" />Nashville, TN · 100-Mile Radius</div></li>
             </ul>
           </MobileAccordion>
         </div>
 
         {/* ── BOTTOM BAR ── */}
-        <div className="border-t border-white/10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <div className="border-t border-white/10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:left">
           <p className="text-xs text-slate-500 font-medium">
             © {new Date().getFullYear()} Southern Storm Shelters · Design by{" "}
             <a href="https://stellrit.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">StellR IT LLC</a>
@@ -328,7 +328,7 @@ export function Footer() {
               className="text-slate-400 hover:text-white transition-colors font-bold flex items-center gap-1 cursor-pointer select-none"
             >
               {t("Top", "Inicio")}
-              <ArrowRight className="h-3.5 w-3.5 -rotate-90 text-amber-400" />
+              <ArrowRight className="h-3.5 w-3.5 -rotate-90 text-white" />
             </motion.button>
           </div>
         </div>

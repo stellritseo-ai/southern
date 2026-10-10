@@ -91,7 +91,7 @@ export function Welcome() {
       {/* Ambient Lighting Accents */}
       <div
         aria-hidden="true"
-        className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-amber-500/[0.035] rounded-full blur-[130px] pointer-events-none"
+        className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-slate-400/[0.03] rounded-full blur-[130px] pointer-events-none"
       />
       <div
         aria-hidden="true"
@@ -138,13 +138,13 @@ export function Welcome() {
 
                 {/* Top Right Crane Rigging Tag */}
                 <div className="absolute top-4 right-4 z-20 hidden sm:flex items-center gap-1.5 bg-black/60 backdrop-blur-md border border-white/15 px-3 py-1.5 rounded-full text-white text-[10px] font-bold uppercase tracking-wider">
-                  <Wrench className="w-3 h-3 text-amber-400" />
+                  <Wrench className="w-3 h-3 text-white" />
                   <span>{t("Single-Day Crane Set", "Colocación con Grúa")}</span>
                 </div>
 
                 {/* Bottom Left Trust Ribbon */}
                 <div className="absolute bottom-4 left-4 right-4 sm:right-auto z-20 flex items-center gap-3 bg-slate-950/90 backdrop-blur-md border border-white/15 text-white px-4 py-3 rounded-2xl shadow-xl max-w-sm">
-                  <div className="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 font-black shadow-md">
+                  <div className="w-9 h-9 rounded-xl bg-white text-slate-950 flex items-center justify-center shrink-0 font-black shadow-md">
                     <Award className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
@@ -183,7 +183,7 @@ export function Welcome() {
                   className="w-full h-full object-cover group-hover/pip:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className="absolute top-2 left-2 bg-slate-950/80 backdrop-blur-md px-2 py-0.5 rounded text-[9.5px] font-black uppercase tracking-wider text-amber-300">
+                <div className="absolute top-2 left-2 bg-slate-950/90 backdrop-blur-md px-2 py-0.5 rounded text-[9.5px] font-black uppercase tracking-wider text-white border border-white/10">
                   {t("Finished Result", "Resultado Final")}
                 </div>
               </div>
@@ -210,8 +210,8 @@ export function Welcome() {
             className="lg:col-span-3 flex flex-col order-1 lg:order-2 w-full"
           >
             {/* Eyebrow Ribbon */}
-            <div className="inline-flex items-center gap-2 self-start rounded-full bg-amber-500/10 border border-amber-500/30 px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-amber-900 mb-4 shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+            <div className="inline-flex items-center gap-2 self-start rounded-full bg-slate-900/5 border border-slate-900/15 px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-slate-900 mb-4 shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-slate-900" />
               <span>
                 {t(
                   "Our Turnkey Construction Process",
@@ -231,7 +231,7 @@ export function Welcome() {
               <span className="block">
                 {t("Built Underground", "Construido Bajo Tierra")}
               </span>
-              <span className="block bg-gradient-to-r from-amber-600 via-amber-500 to-amber-700 bg-clip-text text-transparent lg:whitespace-nowrap">
+              <span className="block text-slate-950 lg:whitespace-nowrap">
                 {t(
                   "Engineered To Protect For Generations.",
                   "Diseñado Para Proteger Por Generaciones.",
@@ -266,17 +266,17 @@ export function Welcome() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.06 }}
-                    className="group relative flex items-center gap-3.5 py-2.5 px-3.5 sm:py-3 sm:px-4 rounded-xl sm:rounded-2xl bg-white hover:bg-white border border-slate-200/80 hover:border-amber-500/40 shadow-[0_2px_6px_rgba(15,23,42,0.03)] hover:shadow-[0_10px_25px_-6px_rgba(15,23,42,0.08),0_0_18px_rgba(245,158,11,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:translate-x-1 overflow-hidden"
+                    className="group relative flex items-center gap-3.5 py-2.5 px-3.5 sm:py-3 sm:px-4 rounded-xl sm:rounded-2xl bg-white hover:bg-white border border-slate-200/80 hover:border-slate-950 shadow-[0_2px_6px_rgba(15,23,42,0.03)] hover:shadow-[0_10px_25px_-6px_rgba(15,23,42,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:translate-x-1 overflow-hidden"
                   >
-                    {/* Left Amber Illumination Edge Bar on Hover */}
-                    <div className="absolute left-0 inset-y-0 w-1 bg-gradient-to-b from-amber-500 via-amber-400 to-amber-500 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-center rounded-r" />
+                    {/* Left Illumination Edge Bar on Hover */}
+                    <div className="absolute left-0 inset-y-0 w-1 bg-slate-950 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-center rounded-r" />
 
                     {/* Stage Number & Icon Hardware Plaque */}
                     <div className="relative shrink-0">
-                      <div className="w-10 h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-slate-900 to-slate-950 text-amber-400 group-hover:from-amber-500 group-hover:to-amber-400 group-hover:text-slate-950 flex items-center justify-center transition-all duration-300 shadow-sm border border-slate-800/80 group-hover:border-amber-400">
+                      <div className="w-10 h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-slate-900 to-slate-950 text-white group-hover:from-white group-hover:to-slate-100 group-hover:text-black flex items-center justify-center transition-all duration-300 shadow-sm border border-slate-800/80 group-hover:border-slate-900">
                         <Icon className="w-4 h-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />
                       </div>
-                      <span className="absolute -top-1 -right-1 w-4.5 h-4.5 rounded-full bg-amber-500 text-slate-950 text-[8.5px] font-black flex items-center justify-center border-2 border-white shadow-xs group-hover:scale-110 transition-transform">
+                      <span className="absolute -top-1 -right-1 w-4.5 h-4.5 rounded-full bg-black text-white text-[8.5px] font-black flex items-center justify-center border-2 border-white shadow-xs group-hover:scale-110 transition-transform">
                         {step.step}
                       </span>
                     </div>
@@ -284,10 +284,10 @@ export function Welcome() {
                     {/* Stage Details */}
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center justify-between gap-2 mb-0.5">
-                        <h3 className="text-slate-950 font-bold text-xs sm:text-[14.5px] tracking-tight leading-snug group-hover:text-amber-700 transition-colors">
+                        <h3 className="text-slate-950 font-bold text-xs sm:text-[14.5px] tracking-tight leading-snug group-hover:text-black transition-colors">
                           {t(step.titleEn, step.titleEs)}
                         </h3>
-                        <span className="text-[9.5px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-100 group-hover:bg-amber-500/15 border border-slate-200/60 group-hover:border-amber-400/40 text-slate-700 group-hover:text-amber-900 shrink-0 transition-colors">
+                        <span className="text-[9.5px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-100 group-hover:bg-slate-950 border border-slate-200/60 group-hover:border-slate-950 text-slate-700 group-hover:text-white shrink-0 transition-colors">
                           {t(step.tagEn, step.tagEs)}
                         </span>
                       </div>
@@ -297,7 +297,7 @@ export function Welcome() {
                     </div>
 
                     {/* Subtle Right Hover Micro-Arrow Cue */}
-                    <div className="w-6 h-6 rounded-full bg-slate-100 group-hover:bg-amber-500 group-hover:text-slate-950 text-slate-400 flex items-center justify-center opacity-0 group-hover:opacity-100 -translate-x-1.5 group-hover:translate-x-0 transition-all duration-300 shrink-0 hidden sm:flex">
+                    <div className="w-6 h-6 rounded-full bg-slate-100 group-hover:bg-slate-950 group-hover:text-white text-slate-400 flex items-center justify-center opacity-0 group-hover:opacity-100 -translate-x-1.5 group-hover:translate-x-0 transition-all duration-300 shrink-0 hidden sm:flex">
                       <ArrowRight className="w-3 h-3" />
                     </div>
                   </motion.div>
@@ -322,9 +322,9 @@ export function Welcome() {
 
               <a
                 href={`tel:${SITE_CONFIG.phoneRaw}`}
-                className="inline-flex items-center justify-center gap-2 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 hover:border-amber-500 text-amber-900 text-xs font-bold px-5 py-3.5 rounded-xl transition-all duration-300 group"
+                className="inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 hover:border-slate-900 text-slate-900 text-xs font-bold px-5 py-3.5 rounded-xl transition-all duration-300 group"
               >
-                <Phone className="w-4 h-4 text-amber-700 group-hover:scale-110 transition-transform" />
+                <Phone className="w-4 h-4 text-slate-900 group-hover:scale-110 transition-transform" />
                 <span>
                   {SITE_CONFIG.phone} • {t("Free Estimate", "Cotización")}
                 </span>

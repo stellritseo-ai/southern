@@ -102,11 +102,11 @@ function buildHtmlEmail(payload: EmailNotificationPayload, recipient: string): s
           
           <!-- Header Banner -->
           <tr>
-            <td style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); padding: 28px 24px; text-align: left; border-bottom: 3px solid #D97706;">
+            <td style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); padding: 28px 24px; text-align: left; border-bottom: 3px solid #334155;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                 <tr>
                   <td>
-                    <span style="display: inline-block; background-color: rgba(217, 119, 6, 0.2); border: 1px solid #D97706; color: #F59E0B; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 20px; margin-bottom: 8px;">
+                    <span style="display: inline-block; background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.25); color: #ffffff; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 20px; margin-bottom: 8px;">
                       ⚡ New Storm Shelter Lead
                     </span>
                     <h1 style="color: #ffffff; font-size: 22px; font-weight: 800; margin: 6px 0 2px 0; letter-spacing: -0.5px;">
@@ -124,11 +124,11 @@ function buildHtmlEmail(payload: EmailNotificationPayload, recipient: string): s
           <!-- Summary Alert Box -->
           <tr>
             <td style="padding: 24px 24px 12px 24px;">
-              <div style="background-color: #fffbeb; border-left: 4px solid #d97706; padding: 14px 16px; border-radius: 0 8px 8px 0;">
-                <p style="margin: 0; font-size: 14px; font-weight: 700; color: #92400e;">
+              <div style="background-color: #f8fafc; border-left: 4px solid #0f172a; padding: 14px 16px; border-radius: 0 8px 8px 0; border-top: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+                <p style="margin: 0; font-size: 14px; font-weight: 700; color: #0f172a;">
                   ${customerName} submitted a form via <em>${source}</em>
                 </p>
-                <p style="margin: 4px 0 0 0; font-size: 12px; color: #b45309;">
+                <p style="margin: 4px 0 0 0; font-size: 12px; color: #64748b;">
                   Received on ${submissionTime} (Central Time)
                 </p>
               </div>
@@ -171,7 +171,7 @@ function buildHtmlEmail(payload: EmailNotificationPayload, recipient: string): s
                     payload.email
                       ? `
                   <td align="left" style="padding-right: 8px;">
-                    <a href="mailto:${payload.email}?subject=Regarding%20Your%20Inquiry%20-%20Southern%20Storm%20Shelters" style="display: inline-block; background-color: #dc2626; color: #ffffff; font-size: 13px; font-weight: 700; text-decoration: none; padding: 10px 18px; border-radius: 8px; text-align: center;">
+                    <a href="mailto:${payload.email}?subject=Regarding%20Your%20Inquiry%20-%20Southern%20Storm%20Shelters" style="display: inline-block; background-color: #0f172a; color: #ffffff; font-size: 13px; font-weight: 700; text-decoration: none; padding: 10px 18px; border-radius: 8px; text-align: center;">
                       ✉️ Reply to ${payload.name || "Client"}
                     </a>
                   </td>`
@@ -196,7 +196,7 @@ function buildHtmlEmail(payload: EmailNotificationPayload, recipient: string): s
           <tr>
             <td style="background-color: #0F172A; padding: 20px 24px; text-align: center; border-top: 1px solid #e2e8f0;">
               <p style="margin: 0; font-size: 12px; color: #94a3b8;">
-                This notification was sent automatically from <strong style="color: #F59E0B;">Southern Storm Shelters</strong>.
+                This notification was sent automatically from <strong style="color: #ffffff;">Southern Storm Shelters</strong>.
               </p>
               <p style="margin: 4px 0 0 0; font-size: 11px; color: #64748b;">
                 Serving Nashville, TN &amp; a 100-Mile Radius &bull; Fully Insured Installation Crews

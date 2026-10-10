@@ -169,17 +169,17 @@ export function FloatingChat() {
             className="pointer-events-auto mb-4 w-[calc(100vw-2rem)] max-w-[360px] h-[520px] max-h-[calc(100vh-100px)] bg-white border border-slate-200 rounded-3xl shadow-[0_20px_50px_-12px_rgba(15,23,42,0.25)] overflow-hidden flex flex-col"
           >
             {/* Header */}
-            <div className="shrink-0 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-4 text-white flex justify-between items-center border-b border-amber-500/30">
+            <div className="shrink-0 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-4 text-white flex justify-between items-center border-b border-white/15">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center select-none overflow-hidden p-1 border-2 border-amber-500 shadow-md">
+                  <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center select-none overflow-hidden p-1 border border-slate-700 shadow-md">
                     <img src={logoImg} alt="Southern Storm Shelters Logo" className="w-full h-full object-contain" />
                   </div>
-                  <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-amber-400 border-2 border-slate-900" />
+                  <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-emerald-400 border-2 border-slate-900" />
                 </div>
                 <div className="flex flex-col text-left">
                   <span className="font-extrabold text-sm tracking-wide text-white">Storm Shelter Support</span>
-                  <span className="text-[10px] text-amber-300 font-bold uppercase tracking-wider">Project Consultation · Nashville & 100-Mi Radius</span>
+                  <span className="text-[10px] text-slate-300 font-bold uppercase tracking-wider">Project Consultation · Nashville & 100-Mi Radius</span>
                 </div>
               </div>
               <div className="flex items-center gap-1.5">
@@ -231,7 +231,7 @@ export function FloatingChat() {
                         <img src={logoImg} alt="Southern Logo" className="w-full h-full object-contain" />
                       </div>
                     ) : (
-                      <div className="w-7 h-7 rounded-full bg-amber-600 border border-amber-500 flex items-center justify-center select-none shrink-0 text-[10px] font-black text-white capitalize">
+                      <div className="w-7 h-7 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center select-none shrink-0 text-[10px] font-black text-white capitalize">
                         {name.charAt(0) || "V"}
                       </div>
                     )}
@@ -239,7 +239,7 @@ export function FloatingChat() {
                       className={`rounded-2xl p-3 shadow-sm text-left max-w-[80%] border ${
                         isAdmin
                           ? "bg-white border-slate-200 text-slate-900 rounded-tl-none"
-                          : "bg-gradient-to-r from-amber-600 to-amber-700 text-white border-amber-600 rounded-tr-none"
+                          : "bg-slate-900 text-white border-slate-800 rounded-tr-none"
                       }`}
                     >
                       <p className="text-xs font-semibold leading-relaxed whitespace-pre-wrap break-words">{msg.text}</p>
@@ -257,9 +257,9 @@ export function FloatingChat() {
                   <div className="grid grid-cols-1">
                     <a
                       href={`tel:${SITE_CONFIG.phoneRaw}`}
-                      className="flex items-center justify-center gap-2 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl py-1.5 px-2 text-xs font-extrabold text-amber-900 transition"
+                      className="flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-xl py-1.5 px-2 text-xs font-extrabold text-slate-900 transition"
                     >
-                      <Phone className="h-3.5 w-3.5 text-amber-700 shrink-0" /> Call {SITE_CONFIG.phone}
+                      <Phone className="h-3.5 w-3.5 text-slate-900 shrink-0" /> Call {SITE_CONFIG.phone}
                     </a>
                   </div>
 
@@ -270,7 +270,7 @@ export function FloatingChat() {
                       placeholder="Name *"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 focus:bg-white text-slate-900 placeholder:text-slate-400 px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 focus:bg-white text-slate-900 placeholder:text-slate-400 px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition"
                     />
                     <input
                       type="email"
@@ -278,7 +278,7 @@ export function FloatingChat() {
                       placeholder="Email *"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 focus:bg-white text-slate-900 placeholder:text-slate-400 px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 focus:bg-white text-slate-900 placeholder:text-slate-400 px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition"
                     />
                     <input
                       type="text"
@@ -286,12 +286,12 @@ export function FloatingChat() {
                       placeholder="Message *"
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 focus:bg-white text-slate-900 placeholder:text-slate-400 px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 focus:bg-white text-slate-900 placeholder:text-slate-400 px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition"
                     />
                     <button
                       type="submit"
                       disabled={isSubmitting || !message.trim() || !name.trim() || !email.trim()}
-                      className="w-full mt-0.5 flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-white font-bold text-xs bg-amber-600 hover:bg-amber-700 transition disabled:opacity-50 cursor-pointer shadow-sm"
+                      className="w-full mt-0.5 flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-white font-bold text-xs bg-slate-950 hover:bg-slate-900 transition disabled:opacity-50 cursor-pointer shadow-sm"
                     >
                       {isSubmitting ? (
                         <span>Starting Chat...</span>
@@ -312,12 +312,12 @@ export function FloatingChat() {
                     placeholder="Type a message..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 focus:bg-white text-slate-900 placeholder:text-slate-400 pl-3 pr-10 py-2.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 focus:bg-white text-slate-900 placeholder:text-slate-400 pl-3 pr-10 py-2.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition"
                   />
                   <button
                     type="submit"
                     disabled={isSubmitting || !message.trim()}
-                    className="absolute right-1.5 p-2 rounded-lg text-white bg-amber-600 hover:bg-amber-700 transition disabled:opacity-50 cursor-pointer shadow-sm"
+                    className="absolute right-1.5 p-2 rounded-lg text-white bg-slate-950 hover:bg-slate-900 transition disabled:opacity-50 cursor-pointer shadow-sm"
                   >
                     <Send className="h-3.5 w-3.5" />
                   </button>
@@ -334,15 +334,15 @@ export function FloatingChat() {
         whileTap={{ scale: 0.94 }}
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Close Chat" : "Open Chat"}
-        className="pointer-events-auto relative h-12 w-12 sm:h-13 sm:w-13 rounded-full bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 text-white flex items-center justify-center shadow-[0_10px_25px_-5px_rgba(217,119,6,0.5)] hover:shadow-[0_15px_30px_-5px_rgba(217,119,6,0.6)] transition-all duration-300 focus:outline-none select-none cursor-pointer border-2 border-amber-300/40"
+        className="pointer-events-auto relative h-12 w-12 sm:h-13 sm:w-13 rounded-full bg-slate-950 hover:bg-slate-900 text-white flex items-center justify-center shadow-[0_10px_25px_-5px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_30px_-5px_rgba(0,0,0,0.7)] transition-all duration-300 focus:outline-none select-none cursor-pointer border-2 border-white/20"
       >
-        <span className="absolute inset-0 rounded-full bg-amber-500 opacity-25 animate-ping -z-10" />
+        <span className="absolute inset-0 rounded-full bg-slate-400 opacity-20 animate-ping -z-10" />
         {isOpen ? (
           <X className="h-5 w-5 text-white transition-transform duration-200" />
         ) : (
           <div className="relative flex items-center justify-center">
             <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 text-white fill-white/15 transition-transform duration-200" />
-            <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-emerald-400 border-2 border-amber-600" />
+            <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-emerald-400 border-2 border-slate-900" />
           </div>
         )}
       </motion.button>

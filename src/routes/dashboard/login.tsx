@@ -96,20 +96,20 @@ function LoginPage() {
   if (checkingSession) {
     return (
       <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center gap-3">
-        <div className="h-8 w-8 rounded-full border-2 border-amber-600 border-t-transparent animate-spin" />
+        <div className="h-8 w-8 rounded-full border-2 border-slate-900 border-t-transparent animate-spin" />
         <p className="text-xs font-semibold text-slate-500 tracking-wider uppercase">Loading console...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col lg:flex-row text-slate-900 font-sans selection:bg-amber-100 selection:text-amber-900">
+    <div className="min-h-screen bg-[#F8FAFC] flex flex-col lg:flex-row text-slate-900 font-sans selection:bg-slate-200 selection:text-slate-900">
       
       {/* ── LEFT SHOWCASE PANEL (Visible on lg screens, 45% width) ── */}
-      <div className="hidden lg:flex lg:w-[46%] xl:w-[44%] bg-gradient-to-br from-slate-100/90 via-[#F8FAFC] to-amber-50/40 border-r border-slate-200/90 p-8 xl:p-12 flex-col justify-between relative overflow-hidden">
+      <div className="hidden lg:flex lg:w-[46%] xl:w-[44%] bg-gradient-to-br from-slate-100/90 via-[#F8FAFC] to-slate-200/40 border-r border-slate-200/90 p-8 xl:p-12 flex-col justify-between relative overflow-hidden">
         {/* Subtle engineering grid background */}
         <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-slate-400/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-slate-300/30 rounded-full blur-2xl pointer-events-none" />
 
         {/* Brand Header */}
@@ -122,8 +122,8 @@ function LoginPage() {
             />
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100/80 border border-amber-200 text-amber-900 text-[11px] font-bold tracking-wide uppercase mb-3">
-            <HardHat className="w-3.5 h-3.5 text-amber-700" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-900 text-[11px] font-bold tracking-wide uppercase mb-3">
+            <HardHat className="w-3.5 h-3.5 text-slate-900" />
             <span>Operations & Dispatch Control</span>
           </div>
 
@@ -148,7 +148,7 @@ function LoginPage() {
             {/* In-image caption & live badge */}
             <div className="absolute bottom-3.5 left-3.5 right-3.5 flex items-end justify-between">
               <div>
-                <p className="text-[10px] uppercase font-bold tracking-widest text-amber-400">Field Operations</p>
+                <p className="text-[10px] uppercase font-bold tracking-widest text-white">Field Operations</p>
                 <p className="text-xs font-bold text-white tracking-tight">Turnkey Crane Placement & Anchoring</p>
               </div>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/20 backdrop-blur-md border border-white/20 text-[10px] font-bold text-white shadow-xs">
@@ -161,7 +161,7 @@ function LoginPage() {
           {/* Quick Feature Pillars */}
           <div className="grid grid-cols-2 gap-3 mt-4">
             <div className="bg-white/80 backdrop-blur-sm border border-slate-200/80 rounded-xl p-3 shadow-xs flex items-start gap-2.5">
-              <CheckCircle2 className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-4 h-4 text-slate-900 shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-xs font-bold text-slate-900">Lead Automation</h4>
                 <p className="text-[11px] text-slate-500 leading-snug">Instant quote routing & call logs</p>
@@ -169,7 +169,7 @@ function LoginPage() {
             </div>
 
             <div className="bg-white/80 backdrop-blur-sm border border-slate-200/80 rounded-xl p-3 shadow-xs flex items-start gap-2.5">
-              <ShieldCheck className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+              <ShieldCheck className="w-4 h-4 text-slate-900 shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-xs font-bold text-slate-900">Craftsmanship</h4>
                 <p className="text-[11px] text-slate-500 leading-snug">Heavy steel & precision vault doors</p>
@@ -197,7 +197,7 @@ function LoginPage() {
             href="/"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700 hover:text-slate-900 transition-all duration-200 shadow-xs group"
           >
-            <ArrowLeft className="w-3.5 h-3.5 text-slate-500 group-hover:-translate-x-1 group-hover:text-amber-600 transition-all duration-200" />
+            <ArrowLeft className="w-3.5 h-3.5 text-slate-500 group-hover:-translate-x-1 group-hover:text-slate-900 transition-all duration-200" />
             <span>Back to Public Website</span>
           </a>
 
@@ -220,15 +220,15 @@ function LoginPage() {
                 className="h-10 w-auto object-contain"
               />
             </div>
-            <span className="text-[10px] font-extrabold uppercase tracking-widest text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-900 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">
               Operations Portal
             </span>
           </div>
 
           {/* Heading */}
           <div className="mb-7 text-left">
-            <div className="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-amber-50 border border-amber-200/80 text-[10.5px] font-extrabold uppercase tracking-wider text-amber-800 mb-2.5">
-              <LockKeyhole className="w-3 h-3 text-amber-700" />
+            <div className="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-[10.5px] font-extrabold uppercase tracking-wider text-slate-900 mb-2.5">
+              <LockKeyhole className="w-3 h-3 text-slate-900" />
               <span>Admin Authentication</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
@@ -270,7 +270,7 @@ function LoginPage() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="e.g. admin"
-                  className="w-full h-12 bg-slate-50 hover:bg-slate-50/80 focus:bg-white border border-slate-200 focus:border-amber-600 focus:ring-4 focus:ring-amber-500/10 rounded-xl pl-11 pr-4 text-sm text-slate-900 placeholder:text-slate-400 font-medium transition-all duration-200 outline-none"
+                  className="w-full h-12 bg-slate-50 hover:bg-slate-50/80 focus:bg-white border border-slate-200 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/10 rounded-xl pl-11 pr-4 text-sm text-slate-900 placeholder:text-slate-400 font-medium transition-all duration-200 outline-none"
                 />
                 <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
               </div>
@@ -296,7 +296,7 @@ function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your security password"
-                  className="w-full h-12 bg-slate-50 hover:bg-slate-50/80 focus:bg-white border border-slate-200 focus:border-amber-600 focus:ring-4 focus:ring-amber-500/10 rounded-xl pl-11 pr-11 text-sm text-slate-900 placeholder:text-slate-400 font-medium transition-all duration-200 outline-none"
+                  className="w-full h-12 bg-slate-50 hover:bg-slate-50/80 focus:bg-white border border-slate-200 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/10 rounded-xl pl-11 pr-11 text-sm text-slate-900 placeholder:text-slate-400 font-medium transition-all duration-200 outline-none"
                 />
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
                 <button
@@ -321,7 +321,7 @@ function LoginPage() {
                   type="checkbox"
                   checked={rememberDevice}
                   onChange={(e) => setRememberDevice(e.target.checked)}
-                  className="w-4 h-4 rounded border-slate-300 text-amber-600 focus:ring-amber-500 accent-amber-600 cursor-pointer"
+                  className="w-4 h-4 rounded border-slate-300 text-slate-900 focus:ring-slate-900 accent-slate-900 cursor-pointer"
                 />
                 <span className="text-xs text-slate-600 font-medium">Keep me signed in</span>
               </label>
@@ -332,19 +332,19 @@ function LoginPage() {
             </div>
 
             {/* Demo Quick-Fill Pill */}
-            <div className="bg-amber-50/70 border border-amber-200/80 rounded-xl p-3 flex items-center justify-between text-xs text-amber-950">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-center justify-between text-xs text-slate-900">
               <div className="flex items-center gap-2 truncate">
-                <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-slate-700 shrink-0" />
                 <span className="truncate">
-                  Demo access: <strong className="font-mono text-slate-900 bg-white px-1.5 py-0.5 rounded border border-amber-200">admin</strong> / <strong className="font-mono text-slate-900 bg-white px-1.5 py-0.5 rounded border border-amber-200">admin123</strong>
+                  Demo access: <strong className="font-mono text-slate-900 bg-white px-1.5 py-0.5 rounded border border-slate-300">admin</strong> / <strong className="font-mono text-slate-900 bg-white px-1.5 py-0.5 rounded border border-slate-300">admin123</strong>
                 </span>
               </div>
               <button
                 type="button"
                 onClick={handleQuickFill}
-                className="text-xs font-bold text-amber-800 hover:text-amber-950 bg-amber-200/70 hover:bg-amber-200 px-2.5 py-1 rounded-lg transition-colors cursor-pointer shrink-0 ml-2 inline-flex items-center gap-1 shadow-xs"
+                className="text-xs font-bold text-slate-900 hover:text-black bg-slate-200 hover:bg-slate-300 px-2.5 py-1 rounded-lg transition-colors cursor-pointer shrink-0 ml-2 inline-flex items-center gap-1 shadow-xs"
               >
-                <Sparkles className="w-3 h-3 text-amber-700" />
+                <Sparkles className="w-3 h-3 text-slate-800" />
                 <span>Auto-Fill</span>
               </button>
             </div>
@@ -353,7 +353,7 @@ function LoginPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full h-12 bg-gradient-to-r from-amber-600 via-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 active:from-amber-800 active:to-amber-900 text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl transition-all duration-200 shadow-md shadow-amber-600/25 hover:shadow-lg hover:shadow-amber-600/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] select-none cursor-pointer flex items-center justify-center gap-2 group disabled:opacity-75 disabled:pointer-events-none mt-4"
+              className="w-full h-12 bg-black hover:bg-zinc-800 active:bg-zinc-900 text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl transition-all duration-200 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] select-none cursor-pointer flex items-center justify-center gap-2 group disabled:opacity-75 disabled:pointer-events-none mt-4"
             >
               {isSubmitting ? (
                 <span className="flex items-center gap-2">
@@ -374,7 +374,7 @@ function LoginPage() {
             <span>Trouble signing in?</span>
             <a 
               href="tel:6158061445" 
-              className="text-amber-700 hover:text-amber-800 font-bold inline-flex items-center gap-1 hover:underline"
+              className="text-slate-900 hover:text-slate-700 font-bold inline-flex items-center gap-1 hover:underline"
             >
               <PhoneCall className="w-3 h-3" />
               <span>(615) 806-1445</span>

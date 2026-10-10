@@ -134,12 +134,12 @@ export function ShelterFeatures() {
               >
                 <div className="relative z-10">
                   {/* Tag badge */}
-                  <span className="inline-flex items-center text-[9px] font-black uppercase tracking-wider border rounded-full px-2 py-0.5 mb-4 bg-slate-100 text-slate-600 border-slate-200 group-hover:bg-white/10 group-hover:text-amber-300 group-hover:border-amber-500/30 transition-all duration-300">
+                  <span className="inline-flex items-center text-[9px] font-black uppercase tracking-wider border rounded-full px-2 py-0.5 mb-4 bg-slate-100 text-slate-600 border-slate-200 group-hover:bg-white/10 group-hover:text-white group-hover:border-white/30 transition-all duration-300">
                     {spec.tag}
                   </span>
 
                   {/* Icon */}
-                  <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center mb-4 group-hover:bg-amber-500/20 group-hover:text-amber-400 group-hover:border-amber-500/30 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center mb-4 group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300">
                     <Icon className="w-5 h-5" />
                   </div>
 
@@ -177,9 +177,9 @@ export function ShelterFeatures() {
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
             <a
               href="tel:6159912361"
-              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-[#0b0f15] text-xs font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97]"
+              className="inline-flex items-center gap-2 bg-white hover:bg-neutral-200 text-black text-xs font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97]"
             >
-              <Phone className="w-3.5 h-3.5" />
+              <Phone className="w-3.5 h-3.5 fill-current" />
               {t("Call (615) 991-2361", "Llamar (615) 991-2361")}
             </a>
             <Link

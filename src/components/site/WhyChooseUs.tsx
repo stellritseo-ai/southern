@@ -119,7 +119,7 @@ export function WhyChooseUs() {
                     transition={{ duration: 0.45, delay: i * 0.08 }}
                     className="p-3 sm:p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-slate-300 hover:bg-white transition-all duration-300 flex items-start gap-3 select-none"
                   >
-                    <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-amber-500/10 text-amber-700 shrink-0 border border-amber-500/20">
+                    <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-slate-900 text-white shrink-0 border border-slate-800">
                       <Icon className="h-4 w-4" />
                     </div>
                     <div className="flex flex-col min-w-0">
@@ -146,9 +146,9 @@ export function WhyChooseUs() {
               </Link>
               <a
                 href="tel:6159912361"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-[11px] font-black uppercase tracking-widest rounded-full px-5 sm:px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-pointer w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-950 text-[11px] font-black uppercase tracking-widest rounded-full px-5 sm:px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-pointer w-full sm:w-auto"
               >
-                <Phone className="w-3.5 h-3.5" />
+                <Phone className="w-3.5 h-3.5 text-slate-900" />
                 {t("Call (615) 991-2361", "Llamar (615) 991-2361")}
               </a>
             </div>
@@ -181,7 +181,7 @@ export function WhyChooseUs() {
 
               {/* Top-left badge — slate */}
               <div className="absolute top-4 left-4 z-20 bg-slate-900/90 backdrop-blur-sm text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
-                <Star className="w-3 h-3 fill-amber-300 text-amber-300" />
+                <Star className="w-3 h-3 fill-white text-white" />
                 {t("Nashville's Premier Shelter Team", "Equipo Líder en Nashville")}
               </div>
             </div>

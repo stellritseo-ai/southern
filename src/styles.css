@@ -7,15 +7,14 @@
 
 /*
  * Design system definition — Southern Storm Shelters
- * Established Heavy Construction & Structural Engineering
+ * Premium Architectural Monochrome — Black & White Edition
  *
- * Primary Architectural Slate: #0F172A
- * Secondary Steel Navy: #1E293B
- * Construction Amber: #D97706
- * Warm Bronze Accent: #B45309
- * Muted Slate: #334155 / #64748B
- * Amber Glow: #F59E0B
- * Foundation Light: #F8FAFC
+ * Primary Pure Black: #000000
+ * Rich Onyx / Slate: #09090B / #0F172A
+ * Secondary Deep Charcoal: #18181B / #1E293B
+ * Neutral Silver / Muted Zinc: #71717A / #A1A1AA
+ * Crisp Border: #E4E4E7 / rgba(255, 255, 255, 0.15)
+ * Light Foundation: #FAFAFA / #FFFFFF
  * Pure White: #FFFFFF
  */
 
@@ -55,72 +54,70 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-copper: #D97706;
-  --color-copper-deep: #B45309;
+  --color-copper: #09090B;
+  --color-copper-deep: #18181B;
 }
 
 :root {
   --radius: 1rem;
-  /* Brand palette: Architectural Slate #0F172A, Steel #1E293B, Construction Amber #D97706, Light #F8FAFC */
-  --background: #F8FAFC;
-  --foreground: #0F172A;
+  --background: #FFFFFF;
+  --foreground: #09090B;
   --card: #FFFFFF;
-  --card-foreground: #0F172A;
+  --card-foreground: #09090B;
   --popover: #FFFFFF;
-  --popover-foreground: #0F172A;
-  --primary: #0F172A;
+  --popover-foreground: #09090B;
+  --primary: #000000;
   --primary-foreground: #FFFFFF;
-  --secondary: #1E293B;
+  --secondary: #18181B;
   --secondary-foreground: #FFFFFF;
-  --muted: #F1F5F9;
-  --muted-foreground: #64748B;
-  --accent: #D97706;
+  --muted: #F4F4F5;
+  --muted-foreground: #71717A;
+  --accent: #000000;
   --accent-foreground: #FFFFFF;
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
-  --border: rgba(148, 163, 184, 0.3);
-  --input: #E2E8F0;
-  --ring: #D97706;
+  --border: rgba(0, 0, 0, 0.08);
+  --input: #E4E4E7;
+  --ring: #000000;
 
   /* Brand tokens */
-  --brand-red: #D97706;
-  --brand-dark-red: #B45309;
-  --brand-slate: #0F172A;
-  --brand-steel: #1E293B;
-  --brand-dark: #0B0F15;
-  --brand-gold: #F59E0B;
-  --brand-green: #059669;
-  --brand-dark-green: #064E3B;
-  --brand-brown: #1E293B;
-  --brand-yellow: #F59E0B;
-  --gradient-green: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
-  --gradient-gold: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  --gradient-text-gold: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  --shadow-elegant: 0 20px 50px -20px rgba(15, 23, 42, 0.25);
-  --shadow-glow: 0 0 60px -10px rgba(217, 119, 6, 0.4);
-  --shadow-card: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+  --brand-red: #000000;
+  --brand-dark-red: #18181B;
+  --brand-slate: #09090B;
+  --brand-steel: #18181B;
+  --brand-dark: #000000;
+  --brand-gold: #27272A;
+  --brand-green: #09090B;
+  --brand-dark-green: #18181B;
+  --brand-brown: #18181B;
+  --gradient-green: linear-gradient(135deg, #18181B 0%, #000000 100%);
+  --gradient-gold: linear-gradient(135deg, #27272A 0%, #000000 100%);
+  --gradient-text-gold: linear-gradient(135deg, #000000 0%, #27272A 100%);
+  --shadow-elegant: 0 20px 50px -20px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 50px -10px rgba(0, 0, 0, 0.2);
+  --shadow-card: 0 10px 30px -12px rgba(0, 0, 0, 0.06);
   --font-display: "Montserrat", sans-serif;
   --font-body: "Montserrat", sans-serif;
 }
 
 .dark {
-  --background: #0B0F15;
-  --foreground: #F8FAFC;
-  --card: #111722;
-  --card-foreground: #F8FAFC;
-  --popover: #111722;
-  --popover-foreground: #F8FAFC;
-  --primary: #F8FAFC;
-  --primary-foreground: #0F172A;
-  --secondary: #1E293B;
+  --background: #000000;
+  --foreground: #FAFAFA;
+  --card: #09090B;
+  --card-foreground: #FAFAFA;
+  --popover: #09090B;
+  --popover-foreground: #FAFAFA;
+  --primary: #FFFFFF;
+  --primary-foreground: #000000;
+  --secondary: #18181B;
   --secondary-foreground: #FFFFFF;
-  --muted: #1E293B;
-  --muted-foreground: #94A3B8;
-  --accent: #F59E0B;
-  --accent-foreground: #0B0F15;
-  --border: rgba(148, 163, 184, 0.2);
+  --muted: #18181B;
+  --muted-foreground: #A1A1AA;
+  --accent: #FFFFFF;
+  --accent-foreground: #000000;
+  --border: rgba(255, 255, 255, 0.12);
   --input: rgba(255, 255, 255, 0.15);
-  --ring: #F59E0B;
+  --ring: #FFFFFF;
 }
 
 @layer base {
@@ -192,33 +189,27 @@ dt,
   box-shadow: var(--shadow-card);
 }
 
-@utility gradient-text-orange {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
 
 @utility gradient-text-gold {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 @utility gradient-text-construction {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 60%, #B45309 100%);
+  background: linear-gradient(135deg, #09090B 0%, #27272A 60%, #52525B 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 @utility btn-glow {
-  box-shadow: 0 10px 30px -8px rgba(217, 119, 6, 0.45);
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.35);
 }
 
 @utility btn-green-glow {
-  box-shadow: 0 10px 30px -8px rgba(15, 23, 42, 0.35);
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.35);
 }
 
 @utility section-padding {

@@ -43,7 +43,7 @@ export function EmergencyCTA() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f15]/95 via-[#0b0f15]/70 to-[#0b0f15]/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f15]/90 via-transparent to-[#0b0f15]/50" />
-        <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 rounded-full bg-amber-500/8 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 rounded-full bg-white/[0.03] blur-3xl pointer-events-none" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -57,9 +57,9 @@ export function EmergencyCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full bg-black/60 backdrop-blur-xl border border-amber-500/40 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-amber-300"
+              className="inline-flex items-center gap-2 rounded-full bg-black/60 backdrop-blur-xl border border-white/20 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-white"
             >
-              <HardHat className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <HardHat className="w-3.5 h-3.5 text-white shrink-0" />
               {t("Master Construction & Site Specialists", "Especialistas en Construcción")}
             </motion.div>
 
@@ -115,9 +115,9 @@ export function EmergencyCTA() {
                 return (
                   <div
                     key={idx}
-                    className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-amber-500/40 transition-colors shadow-sm"
+                    className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-white/40 transition-colors shadow-sm"
                   >
-                    <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-300 shrink-0">
+                    <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white shrink-0">
                       <Icon className="h-4 w-4" />
                     </div>
                     <div className="flex flex-col text-left min-w-0">
@@ -140,21 +140,21 @@ export function EmergencyCTA() {
           >
             {/* Phone CTA card */}
             <div className="relative group w-full">
-              <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-700 rounded-[22px] blur-md opacity-25 group-hover:opacity-50 transition duration-500" />
+              <div className="absolute -inset-1 bg-white/10 rounded-[22px] blur-md opacity-25 group-hover:opacity-40 transition duration-500" />
               <a
                 href={`tel:${SITE_CONFIG.phoneRaw}`}
                 className="relative flex items-center justify-between gap-3 sm:gap-4 rounded-[18px] bg-[#0b0f15] border border-slate-700 p-4 sm:p-6 shadow-2xl hover:scale-[1.02] transition-all duration-300 w-full cursor-pointer"
               >
                 <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-                  <span className="grid place-items-center h-11 w-11 sm:h-12 sm:w-12 rounded-xl sm:rounded-2xl bg-amber-500 shrink-0">
-                    <Phone className="h-5 w-5 text-slate-950" />
+                  <span className="grid place-items-center h-11 w-11 sm:h-12 sm:w-12 rounded-xl sm:rounded-2xl bg-white shrink-0">
+                    <Phone className="h-5 w-5 text-black" />
                   </span>
                   <div className="min-w-0">
                     <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest truncate">{t("Call Us Direct", "Llámenos")}</div>
                     <div className="text-white font-black text-lg sm:text-2xl tracking-tight whitespace-nowrap">{SITE_CONFIG.phone}</div>
                   </div>
                 </div>
-                <span className="px-3.5 sm:px-4 py-2 rounded-xl bg-amber-500 text-slate-950 text-xs font-black uppercase tracking-wider shrink-0 group-hover:bg-amber-400 transition-colors">
+                <span className="px-3.5 sm:px-4 py-2 rounded-xl bg-white text-black text-xs font-black uppercase tracking-wider shrink-0 group-hover:bg-slate-200 transition-colors">
                   {t("Call", "Llamar")}
                 </span>
               </a>
@@ -175,7 +175,7 @@ export function EmergencyCTA() {
 
             {/* Micro-trust badge */}
             <div className="flex items-center gap-2 rounded-2xl bg-black/60 backdrop-blur-md border border-slate-700/60 px-4 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs text-slate-300 w-full justify-center shadow-md text-center">
-              <ShieldCheck className="h-4 w-4 text-amber-400 shrink-0" />
+              <ShieldCheck className="h-4 w-4 text-white shrink-0" />
               <span className="font-semibold">{t("Middle Tennessee's Trusted Shelter Builders", "Constructores de Confianza en Tennessee")}</span>
             </div>
           </motion.div>

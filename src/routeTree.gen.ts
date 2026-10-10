@@ -9,48 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ServicesRouteImport } from './routes/services'
-import { Route as ReviewsRouteImport } from './routes/reviews'
-import { Route as ProjectsRouteImport } from './routes/projects'
-import { Route as FreeQuoteRouteImport } from './routes/free-quote'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicesIndexRouteImport } from './routes/services/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FreeQuoteRouteImport } from './routes/free-quote'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
-import { Route as ServicesInGroundPrefabricatedStormSheltersRouteImport } from './routes/services/in-ground-prefabricated-storm-shelters'
-import { Route as ServicesCustomBuiltStormSheltersRouteImport } from './routes/services/custom-built-storm-shelters'
 import { Route as DashboardLoginRouteImport } from './routes/dashboard/login'
+import { Route as ServicesIndexRouteImport } from './routes/services/index'
+import { Route as ServicesCustomBuiltStormSheltersRouteImport } from './routes/services/custom-built-storm-shelters'
+import { Route as ServicesInGroundPrefabricatedStormSheltersRouteImport } from './routes/services/in-ground-prefabricated-storm-shelters'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ReviewsRoute = ReviewsRouteImport.update({
-  id: '/reviews',
-  path: '/reviews',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsRoute = ProjectsRouteImport.update({
-  id: '/projects',
-  path: '/projects',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FreeQuoteRoute = FreeQuoteRouteImport.update({
-  id: '/free-quote',
-  path: '/free-quote',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -58,9 +33,44 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreeQuoteRoute = FreeQuoteRouteImport.update({
+  id: '/free-quote',
+  path: '/free-quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardLoginRoute = DashboardLoginRouteImport.update({
+  id: '/dashboard/login',
+  path: '/dashboard/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
@@ -68,28 +78,18 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ServicesRoute,
 } as any)
-const DashboardIndexRoute = DashboardIndexRouteImport.update({
-  id: '/dashboard/',
-  path: '/dashboard/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesInGroundPrefabricatedStormSheltersRoute =
-  ServicesInGroundPrefabricatedStormSheltersRouteImport.update({
-    id: '/in-ground-prefabricated-storm-shelters',
-    path: '/in-ground-prefabricated-storm-shelters',
-    getParentRoute: () => ServicesRoute,
-  } as any)
 const ServicesCustomBuiltStormSheltersRoute =
   ServicesCustomBuiltStormSheltersRouteImport.update({
     id: '/custom-built-storm-shelters',
     path: '/custom-built-storm-shelters',
     getParentRoute: () => ServicesRoute,
   } as any)
-const DashboardLoginRoute = DashboardLoginRouteImport.update({
-  id: '/dashboard/login',
-  path: '/dashboard/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const ServicesInGroundPrefabricatedStormSheltersRoute =
+  ServicesInGroundPrefabricatedStormSheltersRouteImport.update({
+    id: '/in-ground-prefabricated-storm-shelters',
+    path: '/in-ground-prefabricated-storm-shelters',
+    getParentRoute: () => ServicesRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -198,46 +198,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reviews': {
-      id: '/reviews'
-      path: '/reviews'
-      fullPath: '/reviews'
-      preLoaderRoute: typeof ReviewsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects': {
-      id: '/projects'
-      path: '/projects'
-      fullPath: '/projects'
-      preLoaderRoute: typeof ProjectsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/free-quote': {
-      id: '/free-quote'
-      path: '/free-quote'
-      fullPath: '/free-quote'
-      preLoaderRoute: typeof FreeQuoteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -247,11 +212,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/free-quote': {
+      id: '/free-quote'
+      path: '/free-quote'
+      fullPath: '/free-quote'
+      preLoaderRoute: typeof FreeQuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/login': {
+      id: '/dashboard/login'
+      path: '/dashboard/login'
+      fullPath: '/dashboard/login'
+      preLoaderRoute: typeof DashboardLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/': {
@@ -261,20 +275,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof ServicesRoute
     }
-    '/dashboard/': {
-      id: '/dashboard/'
-      path: '/dashboard'
-      fullPath: '/dashboard/'
-      preLoaderRoute: typeof DashboardIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/in-ground-prefabricated-storm-shelters': {
-      id: '/services/in-ground-prefabricated-storm-shelters'
-      path: '/in-ground-prefabricated-storm-shelters'
-      fullPath: '/services/in-ground-prefabricated-storm-shelters'
-      preLoaderRoute: typeof ServicesInGroundPrefabricatedStormSheltersRouteImport
-      parentRoute: typeof ServicesRoute
-    }
     '/services/custom-built-storm-shelters': {
       id: '/services/custom-built-storm-shelters'
       path: '/custom-built-storm-shelters'
@@ -282,12 +282,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesCustomBuiltStormSheltersRouteImport
       parentRoute: typeof ServicesRoute
     }
-    '/dashboard/login': {
-      id: '/dashboard/login'
-      path: '/dashboard/login'
-      fullPath: '/dashboard/login'
-      preLoaderRoute: typeof DashboardLoginRouteImport
-      parentRoute: typeof rootRouteImport
+    '/services/in-ground-prefabricated-storm-shelters': {
+      id: '/services/in-ground-prefabricated-storm-shelters'
+      path: '/in-ground-prefabricated-storm-shelters'
+      fullPath: '/services/in-ground-prefabricated-storm-shelters'
+      preLoaderRoute: typeof ServicesInGroundPrefabricatedStormSheltersRouteImport
+      parentRoute: typeof ServicesRoute
     }
   }
 }

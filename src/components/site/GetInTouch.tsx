@@ -93,10 +93,10 @@ export function GetInTouch() {
       <div className="mx-auto w-[92%] max-w-7xl relative z-10">
         {/* ── Section Header ──────────────────────────── */}
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-700 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+          <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-300 text-slate-800 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-slate-900 fill-slate-900" />
             <span>{t("Request an On-Site Estimate", "Solicitar Cotización")}</span>
-            <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+            <Sparkles className="w-3.5 h-3.5 text-slate-900 fill-slate-900" />
           </div>
 
           <h2
@@ -107,7 +107,7 @@ export function GetInTouch() {
             }}
           >
             {t("Get Your Free, ", "Obtenga Su ")}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-500 to-amber-700">
+            <span className="text-slate-950">
               {t("No-Obligation Estimate", "Estimación Sin Compromiso")}
             </span>
           </h2>
@@ -128,18 +128,18 @@ export function GetInTouch() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#070b12] via-[#0b0f15] to-[#151c28] text-white p-6 sm:p-8 lg:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-amber-500/30 flex flex-col justify-between"
+            className="lg:col-span-5 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#070b12] via-[#0b0f15] to-[#151c28] text-white p-6 sm:p-8 lg:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/15 flex flex-col justify-between"
           >
             {/* Top Specular Rim Line */}
-            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent pointer-events-none" />
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
 
             {/* Ambient Background Glow */}
-            <div className="absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-amber-500/15 blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-white/5 blur-3xl pointer-events-none" />
 
             <div className="relative z-10">
               {/* Status Dispatch Badge */}
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 text-[10px] font-bold uppercase tracking-widest mb-6 border border-amber-400/30 text-amber-300">
-                <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 text-[10px] font-bold uppercase tracking-widest mb-6 border border-white/20 text-white">
+                <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
                 <span>{t("Nashville & 100-Mile Dispatch", "Nashville y Despacho a 100 Millas")}</span>
               </span>
 
@@ -184,13 +184,13 @@ export function GetInTouch() {
             {/* Bottom Verification Strip */}
             <div className="relative z-10 mt-10 pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-300">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="h-5 w-5 text-amber-400 shrink-0" />
+                <ShieldCheck className="h-5 w-5 text-white shrink-0" />
                 <span className="text-[11px] uppercase font-bold tracking-wider text-white">
                   FEMA 320/361 Tested
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <HardHat className="h-5 w-5 text-amber-400 shrink-0" />
+                <HardHat className="h-5 w-5 text-white shrink-0" />
                 <span className="text-[11px] uppercase font-bold tracking-wider text-white">
                   Turnkey Crews
                 </span>
@@ -214,8 +214,8 @@ export function GetInTouch() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   className="grid place-items-center text-center py-16"
                 >
-                  <div className="grid place-items-center h-16 w-16 rounded-full bg-amber-500/15 text-amber-600 mb-5 shadow-sm">
-                    <CheckCircle2 className="h-8 w-8 text-amber-600" />
+                  <div className="grid place-items-center h-16 w-16 rounded-full bg-black/10 text-black mb-5 shadow-sm">
+                    <CheckCircle2 className="h-8 w-8 text-black" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-slate-900 uppercase tracking-wider mb-2">
                     {t("Estimate Request Received!", "¡Solicitud Recibida!")}
@@ -229,7 +229,7 @@ export function GetInTouch() {
                   <button
                     type="button"
                     onClick={() => setSubmitted(false)}
-                    className="inline-flex items-center gap-2 text-xs font-bold text-amber-700 bg-amber-50 border border-amber-200 px-5 py-2.5 rounded-xl hover:bg-amber-100 transition cursor-pointer"
+                    className="inline-flex items-center gap-2 text-xs font-bold text-black bg-slate-100 border border-slate-300 px-5 py-2.5 rounded-xl hover:bg-slate-200 transition cursor-pointer"
                   >
                     <span>{t("Submit Another Inquiry", "Enviar Otra Consulta")}</span>
                   </button>
@@ -278,7 +278,7 @@ export function GetInTouch() {
                       <select
                         name="projectType"
                         required
-                        className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-amber-500/10 focus:border-amber-500 focus:bg-white transition-all cursor-pointer"
+                        className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-black/5 focus:border-black focus:bg-white transition-all cursor-pointer"
                       >
                         <option value="Granger ISS In-Ground Shelter">
                           Granger ISS In-Ground Shelter (Turnkey Crane Set)
@@ -303,7 +303,7 @@ export function GetInTouch() {
                       <select
                         name="timeframe"
                         required
-                        className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-amber-500/10 focus:border-amber-500 focus:bg-white transition-all cursor-pointer"
+                        className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-4 focus:ring-black/5 focus:border-black focus:bg-white transition-all cursor-pointer"
                       >
                         <option value="As Soon As Possible (Storm Season)">
                           As Soon As Possible (Upcoming Storm Season)
@@ -327,7 +327,7 @@ export function GetInTouch() {
                           "Tell us about fence gate width, backyard slope, rocky soil, or family capacity needed...",
                           "Describa el ancho del portón, pendiente del terreno, tipo de suelo o capacidad requerida..."
                         )}
-                        className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs sm:text-sm font-medium text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-amber-500/10 focus:border-amber-500 focus:bg-white transition-all resize-none"
+                        className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs sm:text-sm font-medium text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-black/5 focus:border-black focus:bg-white transition-all resize-none"
                       />
                     </div>
                   </div>
@@ -337,7 +337,7 @@ export function GetInTouch() {
                     whileTap={{ scale: 0.99 }}
                     type="submit"
                     disabled={submitting}
-                    className="w-full inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 font-black text-xs uppercase tracking-widest py-4 rounded-xl shadow-[0_4px_20px_rgba(217,119,6,0.35)] hover:shadow-[0_8px_30px_rgba(217,119,6,0.55)] transition-all duration-300 disabled:opacity-60 cursor-pointer mt-2 group"
+                    className="w-full inline-flex items-center justify-center gap-2.5 bg-slate-950 text-white hover:bg-slate-900 font-black text-xs uppercase tracking-widest py-4 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)] transition-all duration-300 disabled:opacity-60 cursor-pointer mt-2 group"
                   >
                     <span>
                       {submitting
@@ -383,11 +383,11 @@ function ContactItem({
         whileHover={{ scale: 1.06 }}
         className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
           isCall
-            ? "bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20"
-            : "bg-white/10 text-amber-400 border border-white/10 group-hover:bg-white/15"
+            ? "bg-white text-black font-bold shadow-md"
+            : "bg-white/10 text-white border border-white/10 group-hover:bg-white/15"
         }`}
       >
-        <Icon className={`w-4 h-4 ${isCall ? "text-slate-950" : "text-amber-400"}`} />
+        <Icon className={`w-4 h-4 ${isCall ? "text-black" : "text-white"}`} />
       </motion.div>
       <div className="min-w-0 text-left">
         <div className="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-0.5">
@@ -395,7 +395,7 @@ function ContactItem({
         </div>
         <div
           className={`font-display font-bold leading-tight truncate ${
-            isCall ? "text-lg sm:text-xl text-amber-300 group-hover:text-amber-200" : "text-xs sm:text-sm text-white/95"
+            isCall ? "text-lg sm:text-xl text-white group-hover:text-slate-200" : "text-xs sm:text-sm text-white/95"
           }`}
         >
           {value}
@@ -449,7 +449,7 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs sm:text-sm font-medium text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-amber-500/10 focus:border-amber-500 focus:bg-white transition-all"
+        className="mt-1.5 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs sm:text-sm font-medium text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-black/5 focus:border-black focus:bg-white transition-all"
       />
     </div>
   );
