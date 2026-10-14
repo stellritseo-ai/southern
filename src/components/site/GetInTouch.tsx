@@ -143,7 +143,7 @@ export function GetInTouch() {
                 <span>{t("Nashville & 100-Mile Dispatch", "Nashville y Despacho a 100 Millas")}</span>
               </span>
 
-              <h3 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-white mb-2">
+              <h3 className="text-2xl sm:text-3xl font-display font-semibold tracking-tight text-white mb-2">
                 Southern Storm Shelters
               </h3>
               <p className="text-sm text-slate-300 font-medium leading-relaxed mb-8">
@@ -217,7 +217,7 @@ export function GetInTouch() {
                   <div className="grid place-items-center h-16 w-16 rounded-full bg-black/10 text-black mb-5 shadow-sm">
                     <CheckCircle2 className="h-8 w-8 text-black" />
                   </div>
-                  <h3 className="text-2xl font-display font-black text-slate-900 uppercase tracking-wider mb-2">
+                  <h3 className="text-2xl font-display font-semibold text-slate-900 uppercase tracking-wider mb-2">
                     {t("Estimate Request Received!", "¡Solicitud Recibida!")}
                   </h3>
                   <p className="text-slate-600 text-sm max-w-sm leading-relaxed mb-6">
@@ -237,7 +237,7 @@ export function GetInTouch() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 text-left">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-slate-900 font-black text-xl tracking-tight">
+                    <h3 className="text-slate-900 font-semibold text-xl tracking-tight">
                       {t("Tell Us About Your Project", "Cuéntenos Sobre Su Proyecto")}
                     </h3>
                     <span className="text-[11px] font-bold text-slate-400">
@@ -337,7 +337,7 @@ export function GetInTouch() {
                     whileTap={{ scale: 0.99 }}
                     type="submit"
                     disabled={submitting}
-                    className="w-full inline-flex items-center justify-center gap-2.5 bg-slate-950 text-white hover:bg-slate-900 font-black text-xs uppercase tracking-widest py-4 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)] transition-all duration-300 disabled:opacity-60 cursor-pointer mt-2 group"
+                    className="w-full inline-flex items-center justify-center gap-2.5 bg-slate-950 text-white hover:bg-slate-900 font-semibold text-xs uppercase tracking-widest py-4 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)] transition-all duration-300 disabled:opacity-60 cursor-pointer mt-2 group"
                   >
                     <span>
                       {submitting
@@ -422,7 +422,7 @@ function ContactItem({
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <label className="block text-[10px] font-black uppercase tracking-wider text-slate-500 mb-1">
+    <label className="block text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-1">
       {children}
     </label>
   );

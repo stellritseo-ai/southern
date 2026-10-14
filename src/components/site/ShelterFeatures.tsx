@@ -51,7 +51,7 @@ export function ShelterFeatures() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7"
           >
-            <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-slate-700 mb-5">
+            <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-slate-700 mb-5">
               <Wrench className="w-3.5 h-3.5" />
               {t("Engineering & Construction Details", "Detalles de Ingeniería y Construcción")}
             </div>
@@ -134,7 +134,7 @@ export function ShelterFeatures() {
               >
                 <div className="relative z-10">
                   {/* Tag badge */}
-                  <span className="inline-flex items-center text-[9px] font-black uppercase tracking-wider border rounded-full px-2 py-0.5 mb-4 bg-slate-100 text-slate-600 border-slate-200 group-hover:bg-white/10 group-hover:text-white group-hover:border-white/30 transition-all duration-300">
+                  <span className="inline-flex items-center text-[9px] font-semibold uppercase tracking-wider border rounded-full px-2 py-0.5 mb-4 bg-slate-100 text-slate-600 border-slate-200 group-hover:bg-white/10 group-hover:text-white group-hover:border-white/30 transition-all duration-300">
                     {spec.tag}
                   </span>
 
@@ -177,14 +177,14 @@ export function ShelterFeatures() {
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
             <a
               href="tel:6159912361"
-              className="inline-flex items-center gap-2 bg-white hover:bg-neutral-200 text-black text-xs font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97]"
+              className="inline-flex items-center gap-2 bg-white hover:bg-neutral-200 text-black text-xs font-semibold uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97]"
             >
               <Phone className="w-3.5 h-3.5 fill-current" />
               {t("Call (615) 991-2361", "Llamar (615) 991-2361")}
             </a>
             <Link
               to="/free-quote"
-              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-black uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 hover:scale-[1.03] border border-white/20 cursor-pointer"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold uppercase tracking-widest rounded-full px-6 py-3.5 transition-all duration-300 hover:scale-[1.03] border border-white/20 cursor-pointer"
             >
               {t("Free Estimate", "Estimación Gratis")}
               <ArrowRight className="w-3.5 h-3.5" />

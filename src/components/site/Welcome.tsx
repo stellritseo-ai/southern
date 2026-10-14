@@ -131,7 +131,7 @@ export function Welcome() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                   </span>
-                  <span className="text-[11px] font-black uppercase tracking-wider text-emerald-400">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-emerald-400">
                     {t("FEMA 320/361 Certified", "Certificado FEMA 320/361")}
                   </span>
                 </div>
@@ -144,11 +144,11 @@ export function Welcome() {
 
                 {/* Bottom Left Trust Ribbon */}
                 <div className="absolute bottom-4 left-4 right-4 sm:right-auto z-20 flex items-center gap-3 bg-slate-950/90 backdrop-blur-md border border-white/15 text-white px-4 py-3 rounded-2xl shadow-xl max-w-sm">
-                  <div className="w-9 h-9 rounded-xl bg-white text-slate-950 flex items-center justify-center shrink-0 font-black shadow-md">
+                  <div className="w-9 h-9 rounded-xl bg-white text-slate-950 flex items-center justify-center shrink-0 font-semibold shadow-md">
                     <Award className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <div className="text-xs font-black text-white uppercase tracking-tight">
+                    <div className="text-xs font-semibold text-white uppercase tracking-tight">
                       {t(
                         "Nashville's Premier Shelter Builders",
                         "Constructores Premier en Nashville",
@@ -183,12 +183,12 @@ export function Welcome() {
                   className="w-full h-full object-cover group-hover/pip:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className="absolute top-2 left-2 bg-slate-950/90 backdrop-blur-md px-2 py-0.5 rounded text-[9.5px] font-black uppercase tracking-wider text-white border border-white/10">
+                <div className="absolute top-2 left-2 bg-slate-950/90 backdrop-blur-md px-2 py-0.5 rounded text-[9.5px] font-semibold uppercase tracking-wider text-white border border-white/10">
                   {t("Finished Result", "Resultado Final")}
                 </div>
               </div>
               <div className="px-1.5 pb-1">
-                <div className="text-xs font-black text-slate-900 leading-tight">
+                <div className="text-xs font-semibold text-slate-900 leading-tight">
                   {t("Turnkey Lawn Restoration", "Restauración de Jardín")}
                 </div>
                 <div className="text-[10.5px] text-slate-500 mt-0.5 font-medium leading-snug">
@@ -210,7 +210,7 @@ export function Welcome() {
             className="lg:col-span-3 flex flex-col order-1 lg:order-2 w-full"
           >
             {/* Eyebrow Ribbon */}
-            <div className="inline-flex items-center gap-2 self-start rounded-full bg-slate-900/5 border border-slate-900/15 px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-slate-900 mb-4 shadow-sm">
+            <div className="inline-flex items-center gap-2 self-start rounded-full bg-slate-900/5 border border-slate-900/15 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-slate-900 mb-4 shadow-sm">
               <Sparkles className="w-3.5 h-3.5 text-slate-900" />
               <span>
                 {t(
@@ -276,7 +276,7 @@ export function Welcome() {
                       <div className="w-10 h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-slate-900 to-slate-950 text-white group-hover:from-white group-hover:to-slate-100 group-hover:text-black flex items-center justify-center transition-all duration-300 shadow-sm border border-slate-800/80 group-hover:border-slate-900">
                         <Icon className="w-4 h-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />
                       </div>
-                      <span className="absolute -top-1 -right-1 w-4.5 h-4.5 rounded-full bg-black text-white text-[8.5px] font-black flex items-center justify-center border-2 border-white shadow-xs group-hover:scale-110 transition-transform">
+                      <span className="absolute -top-1 -right-1 w-4.5 h-4.5 rounded-full bg-black text-white text-[8.5px] font-semibold flex items-center justify-center border-2 border-white shadow-xs group-hover:scale-110 transition-transform">
                         {step.step}
                       </span>
                     </div>
@@ -287,7 +287,7 @@ export function Welcome() {
                         <h3 className="text-slate-950 font-bold text-xs sm:text-[14.5px] tracking-tight leading-snug group-hover:text-black transition-colors">
                           {t(step.titleEn, step.titleEs)}
                         </h3>
-                        <span className="text-[9.5px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-100 group-hover:bg-slate-950 border border-slate-200/60 group-hover:border-slate-950 text-slate-700 group-hover:text-white shrink-0 transition-colors">
+                        <span className="text-[9.5px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-100 group-hover:bg-slate-950 border border-slate-200/60 group-hover:border-slate-950 text-slate-700 group-hover:text-white shrink-0 transition-colors">
                           {t(step.tagEn, step.tagEs)}
                         </span>
                       </div>
@@ -309,7 +309,7 @@ export function Welcome() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
               <Link
                 to="/about"
-                className="inline-flex items-center justify-center gap-2 bg-slate-950 hover:bg-slate-900 text-white font-black text-xs uppercase tracking-widest px-7 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 group cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 bg-slate-950 hover:bg-slate-900 text-white font-semibold text-xs uppercase tracking-widest px-7 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 group cursor-pointer"
               >
                 <span>
                   {t(

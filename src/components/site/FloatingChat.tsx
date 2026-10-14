@@ -231,7 +231,7 @@ export function FloatingChat() {
                         <img src={logoImg} alt="Southern Logo" className="w-full h-full object-contain" />
                       </div>
                     ) : (
-                      <div className="w-7 h-7 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center select-none shrink-0 text-[10px] font-black text-white capitalize">
+                      <div className="w-7 h-7 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center select-none shrink-0 text-[10px] font-semibold text-white capitalize">
                         {name.charAt(0) || "V"}
                       </div>
                     )}

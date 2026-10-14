@@ -314,7 +314,7 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
         >
           <div className="max-w-2xl">
             {/* Eyebrow Ribbon */}
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-widest text-white mb-4 shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white mb-4 shadow-sm">
               <Camera className="w-3.5 h-3.5 text-white" />
               <span>
                 {t(
@@ -352,7 +352,7 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
           <div className="flex items-center gap-3 shrink-0">
             <Link
               to="/free-quote"
-              className="inline-flex items-center gap-2 bg-white text-slate-950 hover:bg-slate-100 font-black text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group"
+              className="inline-flex items-center gap-2 bg-white text-slate-950 hover:bg-slate-100 font-semibold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group"
             >
               <span>
                 {t("Request On-Site Estimate", "Solicitar Estimación")}
@@ -428,7 +428,7 @@ export function Projects({ isLanding = false }: { isLanding?: boolean }) {
             </a>
             <Link
               to="/free-quote"
-              className="inline-flex items-center gap-2 bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 hover:border-white text-white text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-xl transition backdrop-blur-md"
+              className="inline-flex items-center gap-2 bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 hover:border-white text-white text-xs font-semibold uppercase tracking-widest px-5 py-2.5 rounded-xl transition backdrop-blur-md"
             >
               <Sparkles className="w-3.5 h-3.5 text-white" />
               <span>{t("Free Estimate", "Cotización")}</span>

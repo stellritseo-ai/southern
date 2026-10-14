@@ -338,7 +338,7 @@ export function Header() {
                             <div className="w-6 h-6 rounded-md bg-white/10 border border-white/20 flex items-center justify-center text-white">
                               <Shield className="w-3.5 h-3.5" />
                             </div>
-                            <span className="text-[11px] font-black uppercase tracking-widest text-slate-200">
+                            <span className="text-[11px] font-semibold uppercase tracking-widest text-slate-200">
                               {t(
                                 "Engineered Shelter Systems",
                                 "Sistemas de Refugios",
@@ -375,7 +375,7 @@ export function Header() {
                                     </div>
                                     <span
                                       className={cn(
-                                        "text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md",
+                                        "text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-md",
                                         srv.tagHighlight
                                           ? "bg-white/15 text-white border border-white/30"
                                           : "bg-white/10 text-slate-300 border border-white/15",
@@ -386,7 +386,7 @@ export function Header() {
                                   </div>
 
                                   {/* Title & Description */}
-                                  <h4 className="text-[13px] font-black text-white group-hover/item:text-zinc-200 transition-colors uppercase font-display leading-snug mb-1">
+                                  <h4 className="text-[13px] font-semibold text-white group-hover/item:text-zinc-200 transition-colors uppercase font-display leading-snug mb-1">
                                     {srv.l}
                                   </h4>
                                   <p className="text-[11px] text-slate-400 leading-relaxed mb-3 line-clamp-2">
@@ -418,7 +418,7 @@ export function Header() {
                               <Calendar className="w-4 h-4" />
                             </div>
                             <div>
-                              <div className="text-[12px] font-black uppercase tracking-wider text-white">
+                              <div className="text-[12px] font-semibold uppercase tracking-wider text-white">
                                 {t(
                                   "Free On-Site Property Evaluation",
                                   "Evaluación Gratuita de Propiedad",
@@ -435,7 +435,7 @@ export function Header() {
 
                           <a
                             href={`tel:${SITE_CONFIG.phoneRaw}`}
-                            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white hover:bg-neutral-200 text-black text-xs font-black uppercase tracking-wider transition-colors shrink-0 shadow-sm"
+                            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white hover:bg-neutral-200 text-black text-xs font-semibold uppercase tracking-wider transition-colors shrink-0 shadow-sm"
                           >
                             <Phone className="w-3.5 h-3.5 fill-current" />
                             <span>{SITE_CONFIG.phone}</span>
@@ -476,7 +476,7 @@ export function Header() {
             <a
               href={`tel:${SITE_CONFIG.phoneRaw}`}
               aria-label={`Call Southern Storm Shelters at ${SITE_CONFIG.phone}`}
-              className="group/call relative inline-flex items-center gap-2 px-3.5 sm:px-4 lg:px-4.5 py-2 rounded-xl bg-white hover:bg-neutral-100 text-black font-black text-xs uppercase tracking-wider shadow-[0_4px_16px_rgba(255,255,255,0.18)] hover:shadow-[0_6px_24px_rgba(255,255,255,0.3)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              className="group/call relative inline-flex items-center gap-2 px-3.5 sm:px-4 lg:px-4.5 py-2 rounded-xl bg-white hover:bg-neutral-100 text-black font-semibold text-xs uppercase tracking-wider shadow-[0_4px_16px_rgba(255,255,255,0.18)] hover:shadow-[0_6px_24px_rgba(255,255,255,0.3)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
             >
               <span className="flex h-5 w-5 items-center justify-center rounded-lg bg-black/10 group-hover/call:rotate-12 transition-transform duration-200">
                 <Phone className="h-3.5 w-3.5 fill-current shrink-0 text-black" />
@@ -665,7 +665,7 @@ export function Header() {
             {/* Call Button */}
             <a
               href={`tel:${SITE_CONFIG.phoneRaw}`}
-              className="flex items-center justify-center gap-3 rounded-xl bg-black hover:bg-neutral-800 text-white py-3.5 text-sm font-black uppercase tracking-wider shadow-md transition-all active:scale-[0.98]"
+              className="flex items-center justify-center gap-3 rounded-xl bg-black hover:bg-neutral-800 text-white py-3.5 text-sm font-semibold uppercase tracking-wider shadow-md transition-all active:scale-[0.98]"
             >
               <Phone className="h-4 w-4 fill-current shrink-0" />
               <span>
@@ -697,7 +697,7 @@ export function Header() {
                   type="button"
                   onClick={() => setLanguage(lang)}
                   className={cn(
-                    "flex-1 py-2 rounded-lg text-xs font-black uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-1.5",
+                    "flex-1 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-1.5",
                     language === lang
                       ? "bg-black text-white shadow-sm"
                       : "text-slate-600 hover:text-slate-900",

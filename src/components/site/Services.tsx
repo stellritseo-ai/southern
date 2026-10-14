@@ -171,7 +171,7 @@ export function Services() {
         {/* Section Header */}
         <div className="text-center max-w-5xl mx-auto mb-14 sm:mb-16">
           {/* Eyebrow Status Ribbon */}
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-white mb-4 shadow-[0_0_20px_rgba(255,255,255,0.06)]">
+          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-white mb-4 shadow-[0_0_20px_rgba(255,255,255,0.06)]">
             <Shield className="w-3.5 h-3.5 text-white" />
             <span>
               {t(
@@ -294,7 +294,7 @@ export function Services() {
         <div className="mt-14 sm:mt-18 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
           <Link
             to="/services"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white hover:bg-neutral-100 text-black font-black text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_4px_20px_rgba(255,255,255,0.2)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.35)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white hover:bg-neutral-100 text-black font-semibold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_4px_20px_rgba(255,255,255,0.2)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.35)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group cursor-pointer"
           >
             <span>
               {t(
@@ -307,7 +307,7 @@ export function Services() {
 
           <a
             href={`tel:${SITE_CONFIG.phoneRaw}`}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 hover:border-white/30 text-white hover:text-zinc-200 text-xs font-black uppercase tracking-widest px-8 py-4 rounded-xl backdrop-blur-md transition-all duration-300 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 hover:border-white/30 text-white hover:text-zinc-200 text-xs font-semibold uppercase tracking-widest px-8 py-4 rounded-xl backdrop-blur-md transition-all duration-300 group"
           >
             <Phone className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
             <span>

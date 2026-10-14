@@ -68,7 +68,7 @@ function TestimonialCard({
       {/* Top row: rating + verified badge */}
       <div className="flex items-center justify-between">
         <StarRating count={review.rating} />
-        <span className="inline-flex items-center gap-1 text-[8.5px] font-black uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
+        <span className="inline-flex items-center gap-1 text-[8.5px] font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
           <BadgeCheck className="w-3 h-3 text-emerald-400" />
           {t("Verified", "Verificado")}
         </span>
@@ -107,7 +107,7 @@ function TestimonialCard({
       {/* Author */}
       <div className="flex items-center gap-2.5 pt-2.5 border-t border-white/[0.07] mt-auto">
         <div
-          className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-black flex-shrink-0 shadow-sm border border-white/10"
+          className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-semibold flex-shrink-0 shadow-sm border border-white/10"
           style={{ backgroundColor: review.avatarColor }}
         >
           {review.initials}
@@ -388,13 +388,13 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
         className="mx-auto w-[90%] max-w-7xl text-center mb-8 sm:mb-12 relative z-10"
       >
         {/* Eyebrow */}
-        <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-5 py-1.5 text-[11px] font-black uppercase tracking-widest text-white mb-5 shadow-sm">
+        <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-5 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-white mb-5 shadow-sm">
           <Star className="w-3.5 h-3.5 fill-white text-white" />
           {t("Client Reviews", "Opiniones de Clientes")}
           <Star className="w-3.5 h-3.5 fill-white text-white" />
         </div>
 
-        <h2 className="text-[22px] sm:text-[32px] lg:text-[40px] font-black text-white tracking-tight leading-tight mt-0 sm:mt-[-8px] mb-[10px]">
+        <h2 className="text-[22px] sm:text-[32px] lg:text-[40px] font-semibold text-white tracking-tight leading-tight mt-0 sm:mt-[-8px] mb-[10px]">
           {t("What Our ", "Lo Que Dicen ")}
           <span className="text-white">
             {t("Customers Say", "Nuestros Clientes")}
@@ -420,7 +420,7 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
               {["MR", "ST", "JK", "EW", "RM"].map((init, i) => (
                 <div
                   key={i}
-                  className="w-8 h-8 rounded-full border-2 border-[#0b0f15] flex items-center justify-center text-[10px] font-black text-white shadow-md"
+                  className="w-8 h-8 rounded-full border-2 border-[#0b0f15] flex items-center justify-center text-[10px] font-semibold text-white shadow-md"
                   style={{
                     backgroundColor: avatarColors[i % avatarColors.length],
                     zIndex: 5 - i,
@@ -438,7 +438,7 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
                     className="w-3.5 h-3.5 fill-white text-white"
                   />
                 ))}
-                <span className="text-[13px] font-black text-white ml-1">
+                <span className="text-[13px] font-semibold text-white ml-1">
                   5.0
                 </span>
               </div>
@@ -477,7 +477,7 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
         <div className="mt-9 sm:mt-11 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10 px-4">
           <Link
             to="/reviews"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-slate-950 hover:bg-slate-100 font-black text-xs uppercase tracking-widest px-7 py-3.5 rounded-xl shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-slate-950 hover:bg-slate-100 font-semibold text-xs uppercase tracking-widest px-7 py-3.5 rounded-xl shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
           >
             <span>
               {t("Read All 140+ Client Reviews", "Ver Todas las 140+ Reseñas")}
@@ -486,7 +486,7 @@ export function Testimonials({ isGrid = false }: { isGrid?: boolean }) {
           </Link>
           <Link
             to="/free-quote"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 hover:border-white text-white font-black text-xs uppercase tracking-widest px-7 py-3.5 rounded-xl backdrop-blur-md shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/[0.05] hover:bg-white/[0.1] border border-white/15 hover:border-white text-white font-semibold text-xs uppercase tracking-widest px-7 py-3.5 rounded-xl backdrop-blur-md shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
           >
             <Sparkles className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
             <span>

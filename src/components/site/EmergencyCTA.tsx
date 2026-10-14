@@ -57,7 +57,7 @@ export function EmergencyCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full bg-black/60 backdrop-blur-xl border border-white/20 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-white"
+              className="inline-flex items-center gap-2 rounded-full bg-black/60 backdrop-blur-xl border border-white/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white"
             >
               <HardHat className="w-3.5 h-3.5 text-white shrink-0" />
               {t("Master Construction & Site Specialists", "Especialistas en Construcción")}
@@ -150,11 +150,11 @@ export function EmergencyCTA() {
                     <Phone className="h-5 w-5 text-black" />
                   </span>
                   <div className="min-w-0">
-                    <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest truncate">{t("Call Us Direct", "Llámenos")}</div>
-                    <div className="text-white font-black text-lg sm:text-2xl tracking-tight whitespace-nowrap">{SITE_CONFIG.phone}</div>
+                    <div className="text-slate-400 text-[10px] font-semibold uppercase tracking-widest truncate">{t("Call Us Direct", "Llámenos")}</div>
+                    <div className="text-white font-semibold text-lg sm:text-2xl tracking-tight whitespace-nowrap">{SITE_CONFIG.phone}</div>
                   </div>
                 </div>
-                <span className="px-3.5 sm:px-4 py-2 rounded-xl bg-white text-black text-xs font-black uppercase tracking-wider shrink-0 group-hover:bg-slate-200 transition-colors">
+                <span className="px-3.5 sm:px-4 py-2 rounded-xl bg-white text-black text-xs font-semibold uppercase tracking-wider shrink-0 group-hover:bg-slate-200 transition-colors">
                   {t("Call", "Llamar")}
                 </span>
               </a>

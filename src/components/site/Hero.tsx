@@ -228,7 +228,7 @@ export function Hero() {
                   <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/25 flex items-center justify-center text-white shadow-[0_0_30px_rgba(255,255,255,0.15)]">
                     <ShieldCheck className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-white font-black text-xl uppercase tracking-wider font-display">
+                  <h3 className="text-white font-semibold text-xl uppercase tracking-wider font-display">
                     {t("Estimate Request Received!", "¡Solicitud Recibida!")}
                   </h3>
                   <p className="text-white/80 text-sm max-w-sm leading-relaxed">
@@ -246,7 +246,7 @@ export function Hero() {
                     </span>
                     <a
                       href={`tel:${SITE_CONFIG.phoneRaw}`}
-                      className="inline-flex items-center gap-2 text-xs font-black text-white hover:text-zinc-200 uppercase tracking-wider"
+                      className="inline-flex items-center gap-2 text-xs font-semibold text-white hover:text-zinc-200 uppercase tracking-wider"
                     >
                       <Phone className="w-3.5 h-3.5" />
                       {SITE_CONFIG.phone}
@@ -260,7 +260,7 @@ export function Hero() {
                       <Sparkles className="w-3.5 h-3.5 text-white" />
                       <span>{t("Free On-Site Estimate", "Cotización Gratuita")}</span>
                     </div>
-                    <h2 className="text-white font-black text-2xl sm:text-3xl uppercase tracking-tight font-display drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
+                    <h2 className="text-white font-semibold text-2xl sm:text-3xl capitalize lg:uppercase tracking-tight font-display drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
                       {t("Request Your Turnkey Quote", "Solicite su Cotización")}
                     </h2>
                     <p className="text-white/80 text-xs sm:text-sm mt-1.5 leading-relaxed font-normal drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
@@ -340,9 +340,9 @@ export function Hero() {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="w-full group/btn relative inline-flex items-center justify-center gap-2 mt-2 bg-white hover:bg-neutral-100 active:scale-[0.985] text-black font-black text-xs uppercase tracking-widest py-4 px-6 rounded-2xl shadow-[0_8px_25px_-5px_rgba(255,255,255,0.25)] transition-all duration-200 disabled:opacity-60 cursor-pointer overflow-hidden"
+                      className="w-full group/btn relative inline-flex items-center justify-center gap-2 mt-2 bg-white hover:bg-neutral-100 active:scale-[0.985] text-black font-semibold text-xs uppercase tracking-widest py-4 px-6 rounded-2xl shadow-[0_8px_25px_-5px_rgba(255,255,255,0.25)] transition-all duration-200 disabled:opacity-60 cursor-pointer overflow-hidden"
                     >
-                      <span className="font-display font-black tracking-wider text-[13px] relative z-10 text-black">
+                      <span className="font-display font-semibold tracking-wider text-[13px] relative z-10 text-black">
                         {submitting
                           ? t("Submitting Request...", "Enviando...")
                           : t(
@@ -375,7 +375,7 @@ export function Hero() {
                 {/* Top subtle highlight hairline */}
                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
 
-                <div className="flex items-center gap-2.5 text-xs font-black uppercase tracking-wider text-white mb-3">
+                <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider text-white mb-3">
                   <div className="w-8 h-8 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white shrink-0 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                     <HardHat className="w-4 h-4 text-white" />
                   </div>
@@ -395,7 +395,7 @@ export function Hero() {
 
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-2 text-white hover:text-zinc-300 text-xs font-black uppercase tracking-wider group/link transition-colors py-1"
+                  className="inline-flex items-center gap-2 text-white hover:text-zinc-300 text-xs font-semibold uppercase tracking-wider group/link transition-colors py-1"
                 >
                   <span>
                     {t(
@@ -418,14 +418,14 @@ export function Hero() {
                     <Phone className="w-5 h-5 sm:w-6 sm:h-6 fill-current text-black" />
                   </div>
                   <div className="min-w-0">
-                    <div className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-zinc-300 flex items-center gap-2 mb-0.5">
+                    <div className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-zinc-300 flex items-center gap-2 mb-0.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
                       {t(
                         "Direct Project Line • Priority Dispatch",
                         "Línea Directa de Proyecto",
                       )}
                     </div>
-                    <div className="text-white font-black text-xl sm:text-2xl lg:text-3xl tracking-tight leading-tight group-hover/call:text-zinc-200 transition-colors truncate font-display drop-shadow-sm">
+                    <div className="text-white font-semibold text-xl sm:text-2xl lg:text-3xl tracking-tight leading-tight group-hover/call:text-zinc-200 transition-colors truncate font-display drop-shadow-sm">
                       {SITE_CONFIG.phone}
                     </div>
                     <div className="text-xs text-slate-400 font-medium mt-0.5">

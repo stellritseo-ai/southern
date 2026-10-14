@@ -39,7 +39,7 @@ function MobileAccordion({ title, children }: { title: string; children: React.R
         onClick={() => setOpen((v) => !v)}
         className="flex items-center justify-between w-full py-4 text-left cursor-pointer"
       >
-        <span className="text-[11px] font-black uppercase tracking-widest text-slate-400">{title}</span>
+        <span className="text-[11px] font-semibold uppercase tracking-widest text-slate-400">{title}</span>
         <ChevronDown className={`h-4 w-4 text-slate-500 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
       </button>
       <AnimatePresence initial={false}>
@@ -90,7 +90,7 @@ export function Footer() {
 
   const linkCls = "text-slate-400 hover:text-white transition-colors duration-200 text-sm font-medium flex items-center gap-1.5 group py-0.5";
   const arrowCls = "w-3 h-3 text-white opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0";
-  const colHeadCls = "text-[11px] font-black uppercase tracking-widest text-slate-500 mb-5";
+  const colHeadCls = "text-[11px] font-semibold uppercase tracking-widest text-slate-500 mb-5";
 
   return (
     <footer className="relative bg-[#0b0f15] text-white overflow-hidden">
@@ -152,10 +152,10 @@ export function Footer() {
               href={`tel:${SITE_CONFIG.phoneRaw}`}
               className="group inline-flex flex-col gap-0.5 border-t border-white/10 pt-5"
             >
-              <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-white transition-colors">
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-500 group-hover:text-white transition-colors">
                 {t("Call Direct", "Llamar Directo")}
               </span>
-              <span className="font-display font-black text-2xl tracking-tight text-white group-hover:text-white transition-colors">
+              <span className="font-display font-semibold text-2xl tracking-tight text-white group-hover:text-white transition-colors">
                 {SITE_CONFIG.phone}
               </span>
             </a>
@@ -218,7 +218,7 @@ export function Footer() {
                     <Icon className="w-3.5 h-3.5 text-white" />
                   </div>
                   <div className="min-w-0 pt-0.5">
-                    <div className="text-[9px] font-black uppercase tracking-widest text-slate-500 mb-0.5">{label}</div>
+                    <div className="text-[9px] font-semibold uppercase tracking-widest text-slate-500 mb-0.5">{label}</div>
                     {href ? (
                       <a href={href} className="text-sm text-slate-300 hover:text-white transition-colors font-medium truncate block">{value}</a>
                     ) : (
@@ -231,7 +231,7 @@ export function Footer() {
 
             {/* Hours card */}
             <div className="bg-white/[0.03] border border-white/10 rounded-xl p-4 mt-2">
-              <div className="flex items-center gap-1.5 text-white text-[10px] font-black uppercase tracking-widest mb-3">
+              <div className="flex items-center gap-1.5 text-white text-[10px] font-semibold uppercase tracking-widest mb-3">
                 <Clock className="w-3.5 h-3.5" />
                 {t("Business Hours", "Horario")}
               </div>
@@ -262,7 +262,7 @@ export function Footer() {
               className="flex items-center gap-3 bg-white hover:bg-slate-200 rounded-xl px-4 py-3 mb-4 transition-colors"
             >
               <Phone className="h-4 w-4 text-[#0b0f15]" />
-              <span className="font-black text-[#0b0f15] text-sm tracking-tight">{SITE_CONFIG.phone}</span>
+              <span className="font-semibold text-[#0b0f15] text-sm tracking-tight">{SITE_CONFIG.phone}</span>
             </a>
             <div className="flex items-center gap-2">
               {socials.map(({ Icon, href, label }) => (

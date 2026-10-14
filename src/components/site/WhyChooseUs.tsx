@@ -75,7 +75,7 @@ export function WhyChooseUs() {
             className="flex flex-col order-2 lg:order-1 lg:col-span-7"
           >
             {/* Eyebrow Badge — slate */}
-            <div className="inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full border border-slate-300 bg-slate-100 text-slate-700 text-[10px] font-black uppercase tracking-widest mb-5 shadow-sm select-none">
+            <div className="inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full border border-slate-300 bg-slate-100 text-slate-700 text-[10px] font-semibold uppercase tracking-widest mb-5 shadow-sm select-none">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-500 opacity-60" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-600" />
@@ -139,14 +139,14 @@ export function WhyChooseUs() {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 to="/services"
-                className="inline-flex items-center justify-center gap-2 bg-[#0b0f15] hover:bg-[#111722] text-white text-[11px] font-black uppercase tracking-widest rounded-full px-5 sm:px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-pointer w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 bg-[#0b0f15] hover:bg-[#111722] text-white text-[11px] font-semibold uppercase tracking-widest rounded-full px-5 sm:px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-pointer w-full sm:w-auto"
               >
                 {t("Explore Shelters", "Explorar Refugios")}
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <a
                 href="tel:6159912361"
-                className="inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-950 text-[11px] font-black uppercase tracking-widest rounded-full px-5 sm:px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-pointer w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-950 text-[11px] font-semibold uppercase tracking-widest rounded-full px-5 sm:px-6 py-3.5 transition-all duration-300 shadow-md hover:scale-[1.03] active:scale-[0.97] cursor-pointer w-full sm:w-auto"
               >
                 <Phone className="w-3.5 h-3.5 text-slate-900" />
                 {t("Call (615) 991-2361", "Llamar (615) 991-2361")}
@@ -180,7 +180,7 @@ export function WhyChooseUs() {
 
 
               {/* Top-left badge — slate */}
-              <div className="absolute top-4 left-4 z-20 bg-slate-900/90 backdrop-blur-sm text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+              <div className="absolute top-4 left-4 z-20 bg-slate-900/90 backdrop-blur-sm text-white text-[9px] sm:text-[10px] font-semibold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
                 <Star className="w-3 h-3 fill-white text-white" />
                 {t("Nashville's Premier Shelter Team", "Equipo Líder en Nashville")}
               </div>
