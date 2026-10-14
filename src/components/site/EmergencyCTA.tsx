@@ -79,7 +79,7 @@ export function EmergencyCTA() {
               {t("Built for Protection.", "Construido para Proteger.")}
               <br />
               <span
-                className="gradient-text-construction text-[25px] sm:text-[34px] lg:text-[43px] leading-[1.12] lg:leading-[46px]"
+                className="text-white text-[25px] sm:text-[34px] lg:text-[43px] leading-[1.12] lg:leading-[46px]"
                 style={{
                   fontWeight: 700,
                 }}
